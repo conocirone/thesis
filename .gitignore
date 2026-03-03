@@ -9,3 +9,10 @@ __pycache__/
 .ipynb_checkpoints/
 
 .DS_Store
+
+# File auto-generati a runtime
+module_2/temp_logic.pl
+*.pl.bak
+
+# OWL files (grandi, opzionale)
+# SOMA/OWLs/
