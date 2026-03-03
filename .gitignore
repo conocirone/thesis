@@ -14,5 +14,7 @@ __pycache__/
 module_2/temp_logic.pl
 *.pl.bak
 
+module_1/ConceptNet/
+
 # OWL files (grandi, opzionale)
 # SOMA/OWLs/
