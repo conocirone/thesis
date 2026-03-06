@@ -1,9 +1,9 @@
 import json
 import ollama
 
-# ──────────────────────────────────────────────────────────────────────────────
-# 1. CONFIGURAZIONE E CODEBOOK
-# ──────────────────────────────────────────────────────────────────────────────
+# ------------------------------------------------------------------------------
+# 1. CONFIGURATION AND CODEBOOK
+# ------------------------------------------------------------------------------
 INPUT_JSON = "./jsons/conceptnet_objects_kept.json"
 OUTPUT_PROLOG = "./rules/background_knowledge.las"
 MODEL = "llama3.1:latest"
@@ -28,9 +28,9 @@ CODEBOOK = {
     ]
 }
 
-# ──────────────────────────────────────────────────────────────────────────────
+# ------------------------------------------------------------------------------
 # 2. SYSTEM PROMPT
-# ──────────────────────────────────────────────────────────────────────────────
+# ------------------------------------------------------------------------------
 system_prompt = f"""You are a semantic annotator for a domestic robot knowledge base.
 Given an object and its ConceptNet associations, assign SOMA ontology labels.
 Use YOUR OWN KNOWLEDGE as primary truth. ConceptNet data are noisy — ignore them if wrong.
@@ -111,13 +111,14 @@ blanket:       {{"hasPhysicalQuality":["Soft_Deformable","Washable"],  "hasRole"
 
 Return ONLY the JSON. No explanation, no markdown, no extra text.
 """
-# ──────────────────────────────────────────────────────────────────────────────
-# 3. FUNZIONI DI SUPPORTO
-# ──────────────────────────────────────────────────────────────────────────────
+# ------------------------------------------------------------------------------
+# 3. SUPPORT FUNCTIONS
+# ------------------------------------------------------------------------------
 def normalize_llm_output(raw) -> list[dict]:
     """
-    Accetta il formato atteso: {hasPhysicalQuality: [...], hasRole: [...], affordsTask: [...]}
-    Restituisce una lista di {relation, value} validati contro il codebook.
+    Validates LLM output against the codebook.
+    Accepts {hasPhysicalQuality: [...], hasRole: [...], affordsTask: [...]}
+    Returns a list of {relation, value} dicts with only valid entries.
     """
     mapping = {
         "hasPhysicalQuality": CODEBOOK["Qualities"],
@@ -137,7 +138,7 @@ def normalize_llm_output(raw) -> list[dict]:
 
 
 def format_to_prolog(obj_name: str, properties_list: list[dict]) -> str:
-    """Converte le triple SOMA in fatti Prolog/ASP per ILASP."""
+    """Convert SOMA triples to Prolog/ASP facts for ILASP."""
     obj_clean = obj_name.replace(' ', '_').replace('-', '_')
     lines = [f"% --- {obj_name} ---", f"obj({obj_clean})."]
     for prop in properties_list:
@@ -149,29 +150,29 @@ def format_to_prolog(obj_name: str, properties_list: list[dict]) -> str:
     return "\n".join(lines) + "\n\n"
 
 
-# ──────────────────────────────────────────────────────────────────────────────
-# 4. PIPELINE DI ESECUZIONE
-# ──────────────────────────────────────────────────────────────────────────────
+# ------------------------------------------------------------------------------
+# 4. EXECUTION PIPELINE
+# ------------------------------------------------------------------------------
 def main():
     print("=" * 60)
-    print(f"Semantic Parser {MODEL} — SOMA Ontology")
+    print(f"SOMA Semantic Parser -- {MODEL}")
     print("=" * 60)
 
     try:
         with open(INPUT_JSON, "r") as f:
             data = json.load(f)
-        # Supporta sia il formato piatto {nome: props} (objects_kept.json)
-        # sia il formato annidato con chiave "tool_usage_properties"
+        # Supports both flat format {name: props} (objects_kept.json)
+        # and nested format with "tool_usage_properties" key
         if "tool_usage_properties" in data:
             tool_usage_data = data["tool_usage_properties"]
         else:
-            tool_usage_data = data  # già formato piatto
+            tool_usage_data = data
     except FileNotFoundError:
-        print(f"[✗] File non trovato: {INPUT_JSON}")
+        print(f"[ERROR] File not found: {INPUT_JSON}")
         return
 
     oggetti = list(tool_usage_data.items())
-    print(f"Oggetti da analizzare: {len(oggetti):,}\n")
+    print(f"Objects to annotate: {len(oggetti):,}\n")
 
     with open(OUTPUT_PROLOG, "w") as out_file:
         out_file.write("% ==========================================\n")
@@ -203,13 +204,13 @@ def main():
                     model=MODEL,
                     messages=messages,
                     format='json',
-                    options={"temperature": 0.0}  # massima determinismo
+                    options={"temperature": 0.0}
                 )
                 raw_parsed = json.loads(response['message']['content'])
                 parsed = normalize_llm_output(raw_parsed)
 
-                # ── Validation retry ────────────────────────────────────────
-                # Se il risultato è vuoto o sembra incoerente, riprova una volta
+                # -- Validation retry ----------------------------------------
+                # If the result is empty or inconsistent, retry once
                 if not parsed:
                     correction = (
                         f"Your previous answer returned no valid SOMA values for '{obj_name}'.\n"
@@ -237,14 +238,14 @@ def main():
 
                 out_file.write(format_to_prolog(obj_name, parsed))
                 summary = ", ".join(f"{p['relation']}={p['value']}" for p in parsed)
-                print(f"✓  [{len(parsed)} triple]  {summary[:80]}")
+                print(f"  [{len(parsed)} triples]  {summary[:80]}")
 
             except json.JSONDecodeError:
-                print("✗  JSON non valido")
+                print("  [WARN] Invalid JSON from LLM")
             except Exception as e:
-                print(f"✗  Errore: {e}")
+                print(f"  [ERROR] {e}")
 
-    print(f"\n[✓] Completato → {OUTPUT_PROLOG}")
+    print(f"\nCompleted. Output: {OUTPUT_PROLOG}")
 
 
 if __name__ == "__main__":

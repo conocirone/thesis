@@ -8,29 +8,22 @@ PARQUET_PATH = "../ConceptNet/domestic_relations.parquet"
 OUTPUT_JSON  = "conceptnet_domestic_subgraph.json"
 
 SEED_ROOMS = [
-    # Zone giorno (da ConceptNet IsA room + verificate)
+    # Living areas
     'kitchen', 'dining room', 'living room', 'family room',
     'sitting room', 'front room', 'den', 'conservatory', 'library',
-
-    # Zone notte
+    # Bedrooms
     'bedroom', 'nursery', 'dressing room',
-
-    # Bagni
+    # Bathrooms
     'bathroom', 'washroom',
-
-    # Lavoro / studio / hobby
+    # Work / study / hobby
     'home office', 'study', 'music room', 'playroom', 'game room', 'darkroom', 'workroom',
-
-    # Servizi interni
+    # Utility rooms
     'laundry room', 'utility room', 'pantry', 'storage room', 'storeroom', 'closet',
-
-    # Transizione / accesso
+    # Transition / access
     'hallway', 'foyer', 'entryway', 'lobby',
-
-    # Garage / cantina / sottosuolo
+    # Garage / basement / underground
     'garage', 'basement', 'attic', 'cellar', 'wine cellar', 'workshop',
-
-    # Spazi esterni collegati
+    # Connected outdoor spaces
     'balcony', 'porch', 'terrace', 'garden', 'greenhouse',
 ]
 
@@ -40,7 +33,7 @@ ALL_RELATIONS  = RELATIONS_TIDY + RELATIONS_TOOL
 
 
 def build_parquet_cache(con: duckdb.DuckDBPyConnection) -> str:
-
+    """Build or reuse a Parquet cache of English ConceptNet relations."""
     if Path(PARQUET_PATH).exists():
         size = Path(PARQUET_PATH).stat().st_size / 1e6
         print(f" Parquet cache already found: {PARQUET_PATH} ({size:.1f} MB)")
@@ -68,7 +61,7 @@ def build_parquet_cache(con: duckdb.DuckDBPyConnection) -> str:
     """)
 
     size = Path(PARQUET_PATH).stat().st_size / 1e6
-    print(f"[✓] Parquet salvato: {size:.1f} MB\n")
+    print(f"  Parquet saved: {size:.1f} MB")
     return PARQUET_PATH
 
 def clean_label(uri: str) -> str | None:
@@ -81,14 +74,12 @@ def clean_label(uri: str) -> str | None:
     return raw
 
 def format_sql_list(items: list) -> str:
-    # Escape apostrophes (SQL: '' = literal quote) to avoid breaking the query
-    # e.g. "things_people_don't_use" → '/c/en/things_people_don''t_use'
     def escape(s: str) -> str:
         return s.replace(" ", "_").replace("'", "''")
     return ", ".join(f"'/c/en/{escape(item)}'" for item in items)
 
 def extract_tidy_up_hierarchy(con) -> tuple[dict, set]:
-
+    """Two-hop BFS from seed rooms via AtLocation to discover objects."""
     
     tidy_up_data = {room: {"direct_items": [], "nested_items": {}} for room in SEED_ROOMS}
     all_discovered_objects = set()
@@ -133,12 +124,12 @@ def extract_tidy_up_hierarchy(con) -> tuple[dict, set]:
     return tidy_up_data, all_discovered_objects
 
 def extract_tool_usage_properties(con, target_objects: set) -> dict:
-    
+    """Query UsedFor, HasProperty, CapableOf for each discovered object."""
     tool_usage_data = {}
     if not target_objects:
         return tool_usage_data
 
-    # Prepariamo la query per le proprietà
+    # Build query for object properties
     target_sql = format_sql_list(list(target_objects))
     rels_sql = ", ".join(f"'{r}'" for r in RELATIONS_TOOL)
     
@@ -153,7 +144,7 @@ def extract_tool_usage_properties(con, target_objects: set) -> dict:
         rel = rel_uri.split('/')[-1] # es. "UsedFor"
         
         if obj and val:
-            if obj not in tool_usage_data:
+            if obj not in tool_usage_data:  # e.g. rel = "UsedFor"
                 tool_usage_data[obj] = {"UsedFor": [], "HasProperty": [], "CapableOf": []}
             if val not in tool_usage_data[obj][rel]:
                 tool_usage_data[obj][rel].append(val)
@@ -180,7 +171,7 @@ def main():
     with open(OUTPUT_JSON, "w", encoding="utf-8") as f:
         json.dump(final_dataset, f, indent=2, ensure_ascii=False)
         
-    print(f"\nSubgraph saved to {OUTPUT_JSON}!")
+    print(f"\n  Subgraph saved to {OUTPUT_JSON}")
 
 if __name__ == "__main__":
     main()
