@@ -10,13 +10,16 @@ __pycache__/
 
 .DS_Store
 
-# File auto-generati a runtime
+# Auto-generated runtime files
 module_2/temp_logic.pl
 *.pl.bak
 
+# Large data files
 module_1/ConceptNet/assertions.csv
 
-# OWL files (grandi, opzionale)
-# SOMA/OWLs/
+# ILASP temporary test files
+module_1/scripts/rules/ilasp_test_*.las
+module_1/scripts/rules/learned_*.txt
 
+# Benchmark data (cloned separately)
 ./Robo-CSK-Benchmark

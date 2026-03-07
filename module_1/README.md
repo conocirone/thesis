@@ -60,7 +60,7 @@ module_1/
 
 - Download the ConceptNet assertions dump (`assertions.csv`, ~10 GB) and place
   it in `ConceptNet/`. The file is available at:
-  https://s3.amazonaws.com/conceptnet/downloads/2019/edges/conceptnet-assertions-5.7.0.csv.gz
+  https://github.com/commonsense/conceptnet5/wiki/Downloads
 
 ## Running the Pipeline
 
@@ -72,7 +72,7 @@ python run_pipeline.py
 ```
 
 This executes all 4 steps sequentially. Total runtime depends on the number of
-objects and LLM speed (typically 2-4 hours for ~960 objects on Apple Silicon).
+objects and LLM speed.
 
 ### Resume from a Specific Step
 
@@ -168,8 +168,6 @@ affordsTask(knife, foodPreparationTask).
 | ------------------------------ | -------- |
 | Total objects annotated        | 966      |
 | Total triples                  | 3,496    |
-| Estimated accuracy (raw)       | ~90.7%   |
-| Estimated accuracy (validated) | ~94.8%   |
 | ASP corrections applied        | 40 facts |
 
 For detailed error analysis, see `docs/quality_analysis.md`.
