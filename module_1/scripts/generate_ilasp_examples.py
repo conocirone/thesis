@@ -103,6 +103,9 @@ SUBLOCATION_MAPPING = {
 ALL_MAPPING = {**ROOM_MAPPING, **SUBLOCATION_MAPPING}
 ALL_CANONICAL_LOCATIONS = sorted(set(ALL_MAPPING.values()))
 
+# Core locations for MVP testing
+MVP_LOCATIONS = ["kitchen", "bedroom", "bathroom", "living_room", "garage", "fridge", "closet"]
+
 
 # -- Helper functions -------------------------------------------------------
 
@@ -318,9 +321,20 @@ def main():
         "--full", action="store_true",
         help="Use ALL examples (no stratified sampling)"
     )
+    parser.add_argument(
+        "--mvp", action="store_true",
+        help="Use minimal dataset (core locations, max 2 examples, 1 negative) for fast testing"
+    )
     args = parser.parse_args()
 
     output_path = Path(args.output) if args.output else DEFAULT_OUTPUT
+
+    global ALL_CANONICAL_LOCATIONS
+    if args.mvp:
+        args.max_per_loc = min(args.max_per_loc, 2)
+        args.neg_per_obj = min(args.neg_per_obj, 1)
+        ALL_CANONICAL_LOCATIONS = MVP_LOCATIONS
+        print("\n*** RUNNING IN MVP MODE (Minimal subset for fast testing) ***")
 
     print("=" * 60)
     print("ILASP Example Generator -- goesIn(Object, Location)")
