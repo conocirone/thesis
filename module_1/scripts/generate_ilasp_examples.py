@@ -248,7 +248,6 @@ def generate_ilasp_file(kb_objects: dict, obj_locations: dict,
         f.write("% ==========================================================\n\n")
 
         # Constants
-        f.write("#maxv(1).\n\n")
         for loc in ALL_CANONICAL_LOCATIONS:
             f.write(f"#constant(location, {loc}).\n")
         f.write("\n")

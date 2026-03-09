@@ -4,8 +4,6 @@
 % Generated from ConceptNet + SOMA background knowledge
 % ==========================================================
 
-#maxv(1).
-
 #constant(location, kitchen).
 #constant(location, bedroom).
 #constant(location, bathroom).
