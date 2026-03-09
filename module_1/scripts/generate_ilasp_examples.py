@@ -19,6 +19,8 @@ Usage:
     --ml N            Max body literals for mode declarations (default: 2)
     --output PATH     Output file path (default: rules/ilasp_tidy_up.las)
     --full            Use ALL examples (no stratified sampling)
+    --mvp             Use minimal dataset (core locations, max 2 examples)
+                      Designed for fast testing and online phase integration
 =============================================================================
 """
 

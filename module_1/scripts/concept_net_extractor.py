@@ -5,7 +5,7 @@ from pathlib import Path
 
 CSV_PATH     = "../ConceptNet/assertions.csv"
 PARQUET_PATH = "../ConceptNet/domestic_relations.parquet"
-OUTPUT_JSON  = "conceptnet_domestic_subgraph.json"
+OUTPUT_JSON  = "./jsons/conceptnet_domestic_subgraph.json"
 
 SEED_ROOMS = [
     # Living areas
