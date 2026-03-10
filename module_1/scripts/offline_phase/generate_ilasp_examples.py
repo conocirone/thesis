@@ -250,6 +250,7 @@ def generate_ilasp_file(kb_objects: dict, obj_locations: dict,
         f.write("% Context-dependent examples (each carries its own BK)\n")
         f.write("% Generated from ConceptNet + SOMA background knowledge\n")
         f.write("% ==========================================================\n\n")
+        f.write("#maxv(1).\n\n")
 
         # Constants
         for loc in ALL_CANONICAL_LOCATIONS:
