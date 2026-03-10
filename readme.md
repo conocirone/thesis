@@ -7,12 +7,12 @@ A thesis project implementing a neuro-symbolic pipeline that uses an LLM to tran
 ```
 thesis/
 ├── module_1/                          # LLM → ILASP pipeline (Tidy Up & Tool Usage)
-│   ├── Robo-CSK-Benchmark/            # Benchmark for evaluating CSK in robots
-│   ├── SOMA/
-│   │   ├── OWLs/                      # SOMA and SOMA-HOME ontology files (.owl)
-│   │   └── soma_analysis.md           # Analysis of relevant SOMA classes and properties
-│   ├── pipeline_MVP_mod1.py           # Main pipeline: LLM extracts SOMA triples → ILASP learns rules
-│   └── tidy_up.las                    # ILASP learning task for Tidy Up
+│   ├── ConceptNet/                    # Raw ConceptNet datasets
+│   ├── SOMA/                          # SOMA ontology files (.owl)
+│   ├── docs/                          # Development and Analysis Reports
+│   ├── scripts/                       # Pipeline scripts (offline/online phases)
+│   ├── rules/                         # ASP constraints and learned rules
+│   └── jsons/                         # Intermediate extracted data
 ├── module_2/                          # LLM → SWI-Prolog pipeline (Table Setting)
 │   └── pipeline_MVP_mod2.py           # LLM synthesizes Prolog logic → PySwip executes it
 ├── .gitignore
@@ -112,23 +112,24 @@ pip install -r requirements.txt
 
 ### Module 1 — LLM → ILASP (Tidy Up)
 
-This module uses an LLM to extract SOMA-grounded properties from ConceptNet associations, then feeds them to ILASP to inductively learn placement rules for domestic objects.
+This module uses an LLM to extract SOMA-grounded properties from ConceptNet associations, validates them using ASP integrity constraints, and feeds them to ILASP to inductively learn placement rules for domestic objects. Finally, it evaluates the learned rules simulating a real-world scenario against the Robo-CSK benchmark.
 
 ```bash
 source .thesis_env/bin/activate
+cd module_1/scripts
 
-# Step 1: Run the LLM extraction pipeline
-python module_1/pipeline_MVP_mod1.py
-
-# Step 2: Run ILASP on the generated learning task
-ILASP --version=3 module_1/tidy_up.las
+# Run the complete 7-step pipeline
+python run_pipeline.py
 ```
 
-**Expected ILASP output:**
+**Expected pipeline report output:**
 
-```prolog
-location(V1, fridge) :- affordsTask(V1, drinkingTask).
-location(V1, kitchen_cabinet) :- affordsTask(V1, cookingTask).
+```text
+Evaluation Complete! (Hits: 31/50 -> 62.00%)
+MRR: 0.5467
+k=1 | P@1: ...
+k=3 | P@3: ...
+k=5 | P@5: ...
 ```
 
 ---
