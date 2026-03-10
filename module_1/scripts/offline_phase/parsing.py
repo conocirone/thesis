@@ -4,8 +4,8 @@ import ollama
 # ------------------------------------------------------------------------------
 # 1. CONFIGURATION AND CODEBOOK
 # ------------------------------------------------------------------------------
-INPUT_JSON = "./jsons/conceptnet_objects_kept.json"
-OUTPUT_PROLOG = "./rules/background_knowledge.las"
+INPUT_JSON = "../../jsons/conceptnet_objects_kept.json"
+OUTPUT_PROLOG = "../../rules/background_knowledge.las"
 MODEL = "llama3.1:latest"
 CODEBOOK = {
     "Qualities": [

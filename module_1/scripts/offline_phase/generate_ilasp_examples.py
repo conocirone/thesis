@@ -34,9 +34,13 @@ from collections import defaultdict, Counter
 random.seed(42)
 
 SCRIPT_DIR = Path(__file__).parent
-BK_FILE = SCRIPT_DIR / "rules" / "background_knowledge_validated.las"
-SUBGRAPH_FILE = SCRIPT_DIR / "jsons" / "conceptnet_domestic_subgraph.json"
-DEFAULT_OUTPUT = SCRIPT_DIR / "rules" / "ilasp_tidy_up.las"
+MODULE_DIR = SCRIPT_DIR.parent.parent
+RULES_DIR = MODULE_DIR / "rules"
+JSONS_DIR = MODULE_DIR / "jsons"
+
+BK_FILE = RULES_DIR / "background_knowledge_validated.las"
+SUBGRAPH_FILE = JSONS_DIR / "conceptnet_domestic_subgraph.json"
+DEFAULT_OUTPUT = RULES_DIR / "ilasp_tidy_up.las"
 
 # -- Canonical location mapping ---------------------------------------------
 ROOM_MAPPING = {

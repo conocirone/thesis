@@ -21,10 +21,10 @@ from pathlib import Path
 import ollama
 
 # -- Configuration ----------------------------------------------------------
-INPUT_JSON    = "conceptnet_domestic_subgraph.json"
-KEPT_JSON     = "conceptnet_objects_kept.json"
-REJECTED_JSON = "conceptnet_objects_rejected.json"
-PROGRESS_JSON = "filter_progress.json"
+INPUT_JSON    = "../../jsons/conceptnet_domestic_subgraph.json"
+KEPT_JSON     = "../../jsons/conceptnet_objects_kept.json"
+REJECTED_JSON = "../../jsons/conceptnet_objects_rejected.json"
+PROGRESS_JSON = "../../jsons/filter_progress.json"
 
 MODEL       = "llama3.1"
 BATCH_SIZE  = 30

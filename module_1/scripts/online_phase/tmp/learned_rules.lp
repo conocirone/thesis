@@ -1,0 +1,16 @@
+% Learned goesIn rules extracted from ILASP
+goesIn(V1,bathroom) :- affordsTask(V1,hygieneTask).
+goesIn(V1,living_room) :- affordsTask(V1,leisureTask).
+goesIn(V1,garage) :- affordsTask(V1,leisureTask).
+goesIn(V1,kitchen) :- affordsTask(V1,foodPreparationTask).
+goesIn(V1,bathroom) :- affordsTask(V1,eatingDrinkingTask).
+goesIn(V1,kitchen) :- affordsTask(V1,eatingDrinkingTask).
+goesIn(V1,garage) :- hasRole(V1,cleaningToolRole).
+goesIn(V1,bedroom) :- hasRole(V1,clothingRole).
+goesIn(V1,fridge) :- hasRole(V1,consumableRole).
+goesIn(V1,closet) :- hasRole(V1,lightingRole).
+goesIn(V1,closet) :- hasRole(V1,safetyEquipmentRole).
+goesIn(V1,bedroom) :- hasRole(V1,storageContainerRole).
+goesIn(V1,living_room) :- hasRole(V1,toolRole).
+
+#show goesIn/2.

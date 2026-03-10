@@ -14,9 +14,11 @@ from pathlib import Path
 from collections import defaultdict
 
 SCRIPT_DIR = Path(__file__).parent
-BK_FILE = SCRIPT_DIR / "rules" / "background_knowledge.las"
-IC_FILE = SCRIPT_DIR / "rules" / "integrity_constraints.lp"
-OUT_FILE = SCRIPT_DIR / "rules" / "background_knowledge_validated.las"
+MODULE_DIR = SCRIPT_DIR.parent.parent
+RULES_DIR = MODULE_DIR / "rules"
+BK_FILE = RULES_DIR / "background_knowledge.las"
+IC_FILE = RULES_DIR / "integrity_constraints.lp"
+OUT_FILE = RULES_DIR / "background_knowledge_validated.las"
 
 def run_clingo():
     """Run clingo and return the answer set as a string."""

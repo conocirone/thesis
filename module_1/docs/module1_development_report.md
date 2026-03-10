@@ -193,13 +193,6 @@ Final choice: **Llama 3.1** with temperature=0, as it showed the best accuracy a
 
 A pipeline orchestrator (`run_pipeline.py`) was created to execute all 4 steps sequentially with a single command. It supports `--from N` (resume from step N) and `--only N` (run a single step) flags, and validates output files after each step.
 
-All scripts were refactored for professional code quality:
-
-- All comments and output messages translated to English
-- Emoji characters removed from all print statements
-- Section headers standardized across all files
-- Docstrings added to all public functions
-
 ---
 
 ## 5. Final Output
