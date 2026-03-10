@@ -8,7 +8,7 @@ Produces a complete ILASP input file with context-dependent examples:
   - Negative examples via closed-world sampling
   - Mode declarations with #constant definitions
 
-Data sources: ConceptNet ONLY (no benchmark data to avoid leakage).
+Data sources: ConceptNet.
 
 Usage:
     python generate_ilasp_examples.py [--max-per-loc N] [--neg-per-obj N]
@@ -225,7 +225,7 @@ def stratified_sample(obj_locations: dict, kb_objects: dict,
 
 
 def generate_ilasp_file(kb_objects: dict, obj_locations: dict,
-                        selected_pos: list, neg_per_obj: int,
+                        selected_pos: list, neg_per_obj: int, ml: int,
                         output_path: Path):
     """Write the complete ILASP input file with context-dependent examples."""
     # Collect all unique SOMA constants
@@ -260,8 +260,8 @@ def generate_ilasp_file(kb_objects: dict, obj_locations: dict,
 
         # Mode declarations
         f.write("#modeh(goesIn(var(obj), const(location))).\n")
-        f.write("#modeb(1, hasRole(var(obj), const(role))).\n")
-        f.write("#modeb(1, affordsTask(var(obj), const(task))).\n\n")
+        f.write(f"#modeb({ml}, hasRole(var(obj), const(role))).\n")
+        f.write(f"#modeb({ml}, affordsTask(var(obj), const(task))).\n\n")
 
         # Positive examples
         f.write("% --- Positive examples (weight 100) ---\n")
@@ -313,6 +313,10 @@ def main():
     parser.add_argument(
         "--neg-per-obj", type=int, default=2,
         help="Negative examples per unique object (default: 2)"
+    )
+    parser.add_argument(
+        "--ml", type=int, default=2,
+        help="Max body literals for mode declarations (default: 2)"
     )
     parser.add_argument(
         "--output", type=str, default=None,
@@ -372,7 +376,7 @@ def main():
 
     print("[4/4] Generating ILASP file...")
     n_pos, n_neg = generate_ilasp_file(
-        kb_objects, obj_locations, selected, args.neg_per_obj, output_path
+        kb_objects, obj_locations, selected, args.neg_per_obj, args.ml, output_path
     )
     size_kb = output_path.stat().st_size / 1024
     print(f"      {n_pos} positive examples (weight 100)")
