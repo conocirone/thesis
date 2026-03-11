@@ -77,12 +77,11 @@ STEPS = [
     },
     {
         "number": 6,
-        "name": "ILASP Rule Learning",
-        "type": "shell",
-        "command": ["ILASP", "--version=4", str(RULES_DIR / "ilasp_tidy_up.las")],
-        "stdout_file": RULES_DIR / "learned_rules_mvp.txt",
-        "description": "Run ILASP Engine to induce logical rules",
-        "output_files": [RULES_DIR / "learned_rules_mvp.txt"],
+        "name": "LLM Rule Learning (Replacing ILASP)",
+        "type": "python",
+        "script": "offline_phase/llm_rule_induction.py",
+        "description": "Use LLM generator and Clingo verifier to induce rules",
+        "output_files": [RULES_DIR / "learned_rules_llm.txt"],
     },
     {
         "number": 7,

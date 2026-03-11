@@ -1,0 +1,8 @@
+% ==========================================
+% LEARNED RULES FOR goesIn/2
+% Inducted by LLM (Llama 3.1) and verified by ASP
+% ==========================================
+
+% --- fridge ---
+goesIn(X, fridge) :- hasRole(X, consumableRole), affordsTask(X, _).
+
