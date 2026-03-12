@@ -19,7 +19,8 @@ module_1/ConceptNet/assertions.csv
 
 # ILASP temporary test files
 module_1/scripts/rules/ilasp_test_*.las
-module_1/scripts/rules/learned_*.txt
+module_1/scripts/rules/learned_*.txt 
+module_1/scripts/offline_phase/run_llm_rule_induction.sh
 
 # Benchmark data (cloned separately)
 ./Robo-CSK-Benchmark
