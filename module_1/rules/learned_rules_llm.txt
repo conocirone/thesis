@@ -3,6 +3,30 @@
 % Inducted by LLM (Llama 3.1) and verified by ASP
 % ==========================================
 
-% --- fridge ---
-goesIn(X, fridge) :- hasRole(X, consumableRole), affordsTask(X, _).
+% --- kitchen ---
+goesIn(X, kitchen) :- hasRole(X, furnitureRole), affordsTask(X, eatingDrinkingTask).
+goesIn(X, kitchen) :- hasRole(X, furnitureRole), affordsTask(X, storageTask).
+goesIn(X, kitchen) :- hasRole(X, toolRole), affordsTask(X, foodPreparationTask).
+
+% --- bedroom ---
+goesIn(X, bedroom) :- hasRole(X, clothingRole).
+goesIn(X, bedroom) :- affordsTask(X, dressingTask).
+goesIn(X, bedroom) :- hasRole(X, storageContainerRole).
+goesIn(X, bedroom) :- affordsTask(X, storageTask).
+
+% --- living_room ---
+goesIn(X, living_room) :- hasRole(X, furnitureRole), affordsTask(X, leisureTask).
+goesIn(X, living_room) :- hasRole(X, toolRole), affordsTask(X, workStudyTask).
+
+% --- garage ---
+goesIn(X, garage) :- hasRole(X, cleaningToolRole), affordsTask(X, cleaningTask).
+goesIn(X, garage) :- hasRole(X, furnitureRole), affordsTask(X, leisureTask).
+goesIn(X, garage) :- hasRole(X, cleaningToolRole).
+goesIn(X, garage) :- hasRole(X, furnitureRole).
+
+% --- closet ---
+goesIn(X, closet) :- hasRole(X, lightingRole).
+goesIn(X, closet) :- hasRole(X, consumableRole), affordsTask(X, hygieneTask).
+goesIn(X, closet) :- hasRole(X, consumableRole), affordsTask(X, wasteDisposalTask).
+goesIn(X, closet) :- hasRole(X, safetyEquipmentRole).
 

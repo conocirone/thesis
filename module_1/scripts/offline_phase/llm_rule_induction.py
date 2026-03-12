@@ -7,7 +7,9 @@ and use Clingo (symbolic) to rapidly verify if it covers the examples.
 """
 import subprocess
 import re
+import os
 import ollama
+from ollama import Client
 from pathlib import Path
 from collections import defaultdict
 
@@ -18,8 +20,13 @@ BK_FILE = RULES_DIR / "background_knowledge_validated.las"
 INPUT_EXAMPLES_FILE = RULES_DIR / "ilasp_tidy_up.las"
 OUTPUT_RULES_FILE = RULES_DIR / "learned_rules_llm.txt"
 
-MODEL = "llama3.1:latest"
+# Make model and host configurable for Slurm/Cluster environments
+MODEL = os.environ.get("OLLAMA_MODEL", "llama3.1:latest")
+OLLAMA_HOST = os.environ.get("OLLAMA_HOST", "http://localhost:11434")
 MAX_RETRIES = 5
+
+# Initialize the Ollama client
+client = Client(host=OLLAMA_HOST)
 
 def parse_ilasp_file(filename):
     """Parses the ILASP format to extract sets of context facts and pos/neg examples."""
@@ -200,7 +207,7 @@ def main():
             
             print(f"  Attempt {attempt}/{MAX_RETRIES}...", end=" ", flush=True)
             
-            response = ollama.chat(
+            response = client.chat(
                 model=MODEL,
                 messages=messages,
                 options={"temperature": 0.2}
