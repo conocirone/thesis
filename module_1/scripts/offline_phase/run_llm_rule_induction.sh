@@ -1,12 +1,11 @@
 #!/bin/bash
 #SBATCH --job-name=llm_rule_induction
-#SBATCH --partition=gpu
+#SBATCH --partition=cpu        
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
-#SBATCH --mem=16G
-#SBATCH --gres=gpu:1          # Request 1 GPU
-#SBATCH --time=02:00:00       # 2 hours max
+#SBATCH --mem=8G                    
+#SBATCH --time=08:00:00            
 #SBATCH --output=logs/llm_induction_%j.out
 #SBATCH --error=logs/llm_induction_%j.err
 
@@ -16,46 +15,79 @@ echo "Date: $(date)"
 # ------------------------------------------------------------------------------
 # ENVIRONMENT SETUP
 # ------------------------------------------------------------------------------
-# If you are using Miniconda/Anaconda on the cluster, uncomment and set path:
-# source /home/ccirone/miniconda3/etc/profile.d/conda.sh
-# conda activate neurosymbolic_env
-
-# Or if you are using python venv:
-# source /home/ccirone/myenv/bin/activate
+source /homes/ccirone/thesis/thesis_env/bin/activate
 
 # ------------------------------------------------------------------------------
-# OLLAMA CONFIGURATION (Assuming Ollama is running locally on the allocated GPU node)
+# HUGGING FACE CONFIGURATION
 # ------------------------------------------------------------------------------
-# If Ollama is running on a different node, change this IP.
-export OLLAMA_HOST="http://localhost:11434"
-export OLLAMA_MODEL="llama3.1:latest" # or "qwen2.5-coder" 
+export HF_TOKEN="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"  
+export HF_MODEL="Qwen/Qwen3-Coder-Next"
 
-# Check if clingo is installed
-if ! command -v clingo &> /dev/null
-then
-    echo "[ERROR] Clingo could not be found! Please install it (e.g., conda install -c potassco clingo)"
+# Fallback model if Qwen3-Coder-Next is unavailable on free tier:
+# export HF_MODEL="Qwen/Qwen2.5-Coder-7B-Instruct"
+
+# ------------------------------------------------------------------------------
+# PRE-FLIGHT CHECKS
+# ------------------------------------------------------------------------------
+
+# Check if HF_TOKEN is set
+if [ -z "$HF_TOKEN" ]; then
+    echo "[ERROR] HF_TOKEN environment variable is not set!"
+    echo "Please set it in this script or export it before submitting:"
+    echo "  export HF_TOKEN='hf_your_token_here'"
+    echo "Get a token at: https://huggingface.co/settings/tokens"
     exit 1
 fi
 
-# Check if ollama python package is installed
-python3 -c "import ollama" 2>/dev/null
+# Check if clingo is installed (via python module)
+python3 -m clingo --version &>/dev/null
 if [ $? -ne 0 ]; then
-    echo "[ERROR] Ollama python package not found! Run: pip install ollama"
+    echo "[ERROR] Clingo module not found! Run: pip install clingo"
+    exit 1
+fi
+
+# Check if huggingface_hub python package is installed
+python3 -c "from huggingface_hub import InferenceClient" 2>/dev/null
+if [ $? -ne 0 ]; then
+    echo "[ERROR] huggingface_hub package not found!"
+    echo "Run: pip install huggingface_hub"
     exit 1
 fi
 
 # ------------------------------------------------------------------------------
-# EXECUTION
+# EXECUTION SETUP (CRITICAL: Change to script directory FIRST)
 # ------------------------------------------------------------------------------
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &> /dev/null && pwd)"
-cd "$SCRIPT_DIR"
+cd ~/thesis/module_1/scripts/offline_phase
 
-# Ensure log directory exists
+# Create logs directory in the CORRECT location (after cd)
 mkdir -p logs
 
-echo "Running with Model: $OLLAMA_MODEL via Host: $OLLAMA_HOST"
-echo "Starting induction script..."
+echo "=============================================="
+echo "Job Configuration:"
+echo 
+echo "  Working Dir: $(pwd)"
+echo "  Model: $HF_MODEL"
+echo "  Token: ${HF_TOKEN:0:10}..."
+echo "  Python: $(which python3)"
+echo "=============================================="
 
+echo "Starting induction script..."
+echo ""
+
+# Run the Python script
 python3 llm_rule_induction.py
 
-echo "Job finished at: $(date)"
+# Capture exit code
+EXIT_CODE=$?
+
+echo ""
+echo "=============================================="
+if [ $EXIT_CODE -eq 0 ]; then
+    echo "Job completed SUCCESSFULLY at: $(date)"
+else
+    echo "Job FAILED with exit code $EXIT_CODE at: $(date)"
+fi
+echo "=============================================="
+
+# Exit with the same code as the Python script
+exit $EXIT_CODE

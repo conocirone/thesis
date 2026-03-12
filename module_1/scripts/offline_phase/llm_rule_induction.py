@@ -1,252 +1,366 @@
 """
 llm_rule_induction.py
 =====================
-Given the valid background knowledge and a set of positive/negative examples (from ConceptNet),
-use an LLM (neural) to propose an ASP rule for goesIn(X, Location), 
-and use Clingo (symbolic) to rapidly verify if it covers the examples.
+LLM + Clingo Rule Induction using Qwen3-Coder-Next (local inference)
 """
 import subprocess
 import re
 import os
-import ollama
-from ollama import Client
+import sys
+import time
+import torch
+from transformers import AutoTokenizer, AutoModelForCausalLM, GenerationConfig
 from pathlib import Path
 from collections import defaultdict
 
+# =============================================================================
+# DEBUG CONFIGURATION
+# =============================================================================
+DEBUG = os.environ.get("DEBUG_LLM", "false").lower() == "true"
+DEBUG_CLINGO = os.environ.get("DEBUG_CLINGO", "false").lower() == "true"
+
+# =============================================================================
+# PATHS
+# =============================================================================
 SCRIPT_DIR = Path(__file__).parent
 MODULE_DIR = SCRIPT_DIR.parent.parent
 RULES_DIR = MODULE_DIR / "rules"
-BK_FILE = RULES_DIR / "background_knowledge_validated.las"
 INPUT_EXAMPLES_FILE = RULES_DIR / "ilasp_tidy_up.las"
 OUTPUT_RULES_FILE = RULES_DIR / "learned_rules_llm.txt"
 
-# Make model and host configurable for Slurm/Cluster environments
-MODEL = os.environ.get("OLLAMA_MODEL", "llama3.1:latest")
-OLLAMA_HOST = os.environ.get("OLLAMA_HOST", "http://localhost:11434")
-MAX_RETRIES = 5
+# =============================================================================
+# MODEL CONFIGURATION: Qwen3-Coder-Next
+# =============================================================================
+MODEL_NAME = os.environ.get("HF_MODEL_NAME", "Qwen/Qwen3-Coder-Next")
+QUANTIZATION_MODE = os.environ.get("HF_QUANTIZATION", "4bit").lower()
+MAX_CONTEXT_LENGTH = int(os.environ.get("HF_MAX_CONTEXT", "32768"))
+MAX_NEW_TOKENS = int(os.environ.get("HF_MAX_NEW_TOKENS", "4096"))
+TEMPERATURE = float(os.environ.get("HF_TEMPERATURE", "1.0"))
+TOP_P = float(os.environ.get("HF_TOP_P", "0.95"))
+TOP_K = int(os.environ.get("HF_TOP_K", "40"))
 
-# Initialize the Ollama client
-client = Client(host=OLLAMA_HOST)
+# Global model state (loaded once)
+_tokenizer = None
+_model = None
 
+# =============================================================================
+# MODEL LOADING FUNCTION (FIXED: uses local quant_mode variable)
+# =============================================================================
+def load_qwen3_coder_next():
+    """Load Qwen3-Coder-Next for CPU-only inference (cluster-safe)."""
+    global _tokenizer, _model
+    
+    if _model is not None and _tokenizer is not None:
+        return _model, _tokenizer
+    
+    quant_mode = QUANTIZATION_MODE
+    hf_token = os.environ.get("HF_TOKEN")
+    
+    print(f"[INFO] Loading {MODEL_NAME}...")
+    print(f"[INFO] Requested quantization: {quant_mode}")
+    print(f"[INFO] Running on CPU (cluster-safe mode)")
+    
+    try:
+        # Prepare common kwargs
+        common_kwargs = {"trust_remote_code": True}
+        if hf_token:
+            common_kwargs["token"] = hf_token
+        
+        # Load tokenizer
+        print("[INFO] Loading tokenizer...")
+        _tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, **common_kwargs)
+        
+        # ✅ CPU-SAFE model kwargs: NO device_map, NO torch_dtype
+        model_kwargs = {
+            "trust_remote_code": True,
+            "low_cpu_mem_usage": True,
+        }
+        if hf_token:
+            model_kwargs["token"] = hf_token
+        
+        # Apply quantization via BitsAndBytesConfig (CPU-compatible)
+        if quant_mode == "4bit":
+            try:
+                from transformers import BitsAndBytesConfig
+                
+                bnb_config = BitsAndBytesConfig(
+                    load_in_4bit=True,
+                    bnb_4bit_compute_dtype=torch.float32,  # ✅ CPU needs float32
+                    bnb_4bit_quant_type="nf4",
+                    bnb_4bit_use_double_quant=True,
+                    # ✅ CRITICAL: Enable CPU offloading for 4-bit
+                    llm_int8_enable_fp32_cpu_offload=True,
+                )
+                model_kwargs["quantization_config"] = bnb_config
+                print("[INFO] Using 4-bit quantization with CPU offload")
+                
+            except ImportError:
+                print("[WARN] bitsandbytes not installed; falling back to unquantized")
+                quant_mode = "none"
+        
+        # ✅ Load model WITHOUT device_map (lets transformers decide CPU/GPU)
+        print("[INFO] Loading model weights (may take 2-5 minutes on CPU)...")
+        _model = AutoModelForCausalLM.from_pretrained(MODEL_NAME, **model_kwargs)
+        
+        # Configure generation
+        _model.generation_config = GenerationConfig(
+            temperature=TEMPERATURE,
+            top_p=TOP_P,
+            top_k=TOP_K,
+            max_new_tokens=MAX_NEW_TOKENS,
+            do_sample=True,
+            pad_token_id=_tokenizer.eos_token_id,
+            eos_token_id=_tokenizer.eos_token_id,
+        )
+        
+        # Report where model ended up
+        device = next(_model.parameters()).device
+        print(f"[INFO] ✅ Loaded on {device} | Effective quant: {quant_mode}")
+        print(f"[INFO] 💡 Tip: CPU inference is ~1-2 tokens/sec. Be patient!")
+        return _model, _tokenizer
+        
+    except Exception as e:
+        print(f"[ERROR] Failed to load model: {type(e).__name__}: {e}")
+        if "CPU" in str(e) or "offload" in str(e).lower():
+            print("[TIP] Try smaller model: export HF_MODEL_NAME='Qwen/Qwen2.5-Coder-1.5B-Instruct'")
+        raise
+# =============================================================================
+# PARSING & VERIFICATION FUNCTIONS
+# =============================================================================
 def parse_ilasp_file(filename):
-    """Parses the ILASP format to extract sets of context facts and pos/neg examples."""
+    """Parse ILASP format examples."""
     examples_by_loc = defaultdict(lambda: {"pos": set(), "neg": set(), "ctx": {}})
-    current_loc = None
     
     with open(filename, "r") as f:
         content = f.read()
-
-    # Match #pos(name, {pos_atoms}, {neg_atoms}, {context})
+    
     pattern = re.compile(r'#pos\((e\d+)@\d+,\s*\{(.*?)\},\s*\{(.*?)\},\s*\{(.*?)\}\)\.', re.DOTALL)
     
     for match in pattern.finditer(content):
-        ex_id = match.group(1)
         pos_atoms_str = match.group(2).strip()
         neg_atoms_str = match.group(3).strip()
         ctx_str = match.group(4).strip()
         
-        # Determine the target atom (either goesIn(obj, loc) in pos or neg)
-        target_atom = pos_atoms_str if pos_atoms_str else neg_atoms_str
-        atom_match = re.search(r'goesIn\((.*?),\s*(.*?)\)', target_atom)
+        target = pos_atoms_str if pos_atoms_str else neg_atoms_str
+        atom_match = re.search(r'goesIn\((.*?),\s*(.*?)\)', target)
         if not atom_match:
             continue
-            
-        obj_id = atom_match.group(1)
-        loc = atom_match.group(2)
         
-        # Clean context
-        ctx_facts = [line.strip() for line in ctx_str.split('\n') if line.strip()]
+        obj_id, loc = atom_match.group(1), atom_match.group(2)
+        ctx_facts = [l.strip() for l in ctx_str.split('\n') if l.strip()]
         examples_by_loc[loc]["ctx"][obj_id] = ctx_facts
-
+        
         if pos_atoms_str:
             examples_by_loc[loc]["pos"].add(obj_id)
         if neg_atoms_str:
             examples_by_loc[loc]["neg"].add(obj_id)
-            
+    
     return examples_by_loc
 
-def create_clingo_validation_program(loc, rule, pos_objs, neg_objs, ctx_dict):
-    """
-    Creates a temporary ASP program to test the candidate rule.
-    Adds constraints to ensure all positive objects are derived,
-    and no negative objects are derived.
-    """
-    prog = [
-        f"% Testing rule for location: {loc}",
-        rule,
-        ""
-    ]
-    
-    # Add context facts for all relevant objects
+def create_clingo_program(loc, rule, pos_objs, neg_objs, ctx_dict):
+    """Create ASP program for verification."""
+    prog = [f"% Testing: {loc}", rule, ""]
     for obj in list(pos_objs) + list(neg_objs):
         prog.extend(ctx_dict.get(obj, []))
-        
     prog.append("")
-        
-    # Add verification constraints
     for obj in pos_objs:
         prog.append(f"failed_pos({obj}) :- not goesIn({obj}, {loc}).")
-        
     for obj in neg_objs:
         prog.append(f"failed_neg({obj}) :- goesIn({obj}, {loc}).")
-
     return "\n".join(prog)
 
-def run_clingo_verification(loc, rule, pos_objs, neg_objs, ctx_dict):
-    """Runs Clingo on the test program and parses failures."""
-    clingo_prog = create_clingo_validation_program(loc, rule, pos_objs, neg_objs, ctx_dict)
+def run_clingo_check(loc, rule, pos_objs, neg_objs, ctx_dict):
+    """Run Clingo verification with optional debug output."""
+    prog = create_clingo_program(loc, rule, pos_objs, neg_objs, ctx_dict)
+    tmp = Path(f"/tmp/verify_{loc}.lp")
+    with open(tmp, "w") as f:
+        f.write(prog)
     
-    # Write to temp file for debugging
-    tmp_file = Path(f"/tmp/verify_{loc}.lp")
-    with open(tmp_file, "w") as f:
-        f.write(clingo_prog)
-        
+    if DEBUG_CLINGO:
+        print(f"\n[CLINGO] Program for '{loc}':\n{'='*50}\n{prog}\n{'='*50}", file=sys.stderr, flush=True)
+    
     result = subprocess.run(
-        ["clingo", str(tmp_file), "0", "--out-ifs=\n"],
+        [sys.executable, "-m", "clingo", str(tmp), "0", "--out-ifs=\n"],
         capture_output=True, text=True
     )
-
+    
+    if DEBUG_CLINGO and (result.stdout.strip() or result.stderr.strip()):
+        print(f"[CLINGO] Return: {result.returncode}", file=sys.stderr, flush=True)
+        if result.stdout: print(f"[CLINGO] OUT:\n{result.stdout}", file=sys.stderr, flush=True)
+        if result.stderr: print(f"[CLINGO] ERR:\n{result.stderr}", file=sys.stderr, flush=True)
+    
     failures = {"pos": [], "neg": []}
-    
-    # Parse the answer set for failed_pos or failed_neg atoms
     for line in result.stdout.split("\n"):
-        m_pos = re.match(r'failed_pos\((\w+)\)', line)
-        if m_pos:
-            failures["pos"].append(m_pos.group(1))
-            
-        m_neg = re.match(r'failed_neg\((\w+)\)', line)
-        if m_neg:
-            failures["neg"].append(m_neg.group(1))
-            
-    # Also handle syntax errors where Clingo fails entirely
-    if "ERROR" in result.stderr:
+        m = re.match(r'failed_pos\((\w+)\)', line)
+        if m: failures["pos"].append(m.group(1))
+        m = re.match(r'failed_neg\((\w+)\)', line)
+        if m: failures["neg"].append(m.group(1))
+    
+    if "ERROR" in result.stderr or result.returncode != 0:
         return False, {"syntax_error": result.stderr}
-
-    is_valid = len(failures["pos"]) == 0 and len(failures["neg"]) == 0
-    return is_valid, failures
-
-def format_prompt(loc, pos_objs, neg_objs, ctx_dict, previous_errors=None):
-    """Generates the LLM prompt for a specific location."""
     
-    pos_str = "\n".join([f"  + {obj} ({', '.join(ctx_dict[obj])})" for obj in pos_objs])
-    neg_str = "\n".join([f"  - {obj} ({', '.join(ctx_dict[obj])})" for obj in list(neg_objs)[:20]])
-    
-    prompt = f"""You are an expert in Answer Set Programming (ASP) and domestic robotics.
-I need you to write ASP rules to determine if an object goes in the '{loc}'.
+    valid = len(failures["pos"]) == 0 and len(failures["neg"]) == 0
+    if DEBUG_CLINGO:
+        print(f"[CLINGO] {'✅ VALID' if valid else '❌ INVALID'} | pos:{len(failures['pos'])} neg:{len(failures['neg'])}\n", file=sys.stderr, flush=True)
+    return valid, failures
 
-Positive examples (objects that go in {loc}):
+# =============================================================================
+# PROMPT & EXTRACTION
+# =============================================================================
+def format_prompt(loc, pos, neg, ctx, prev_err=None):
+    """Format prompt using Qwen chat template."""
+    pos_str = "\n".join([f"  + {o} ({', '.join(ctx[o])})" for o in pos])
+    neg_str = "\n".join([f"  - {o} ({', '.join(ctx[o])})" for o in list(neg)[:20]])
+    
+    system = """You are an ASP expert. Write concise rules for goesIn(X, LOCATION).
+Use ONLY properties from examples: hasRole, affordsTask, hasPhysicalQuality.
+Format: goesIn(X, L) :- hasRole(X, R), affordsTask(X, T)."""
+    
+    user = f"""Location: '{loc}'
+Positives:
 {pos_str}
-
-Negative examples (objects that DO NOT go in {loc}):
+Negatives:
 {neg_str}
 
-Your task is to write ASP rules using the `hasRole` or `affordsTask` properties.
-Format: goesIn(X, {loc}) :- hasRole(X, exactRoleName), affordsTask(X, exactTaskName).
-
-RULES:
-1. ONLY USE EXACT property names found in the examples. DO NOT USE 'someRole', 'someTask', '_', or make up properties!
-2. Use 'X' as the variable name.
-3. You can write MULTIPLE separate rules if there are distinctly different objects. Put each rule on a new line!
-4. Example for fridge: 
-goesIn(X, fridge) :- hasRole(X, consumableRole).
-goesIn(X, fridge) :- affordsTask(X, storageTask).
-"""
-
-    if previous_errors:
-        if "syntax_error" in previous_errors:
-             prompt += f"\n\nYOUR PREVIOUS RULE HAD A SYNTAX ERROR:\n{previous_errors['syntax_error']}\nPlease fix it (make sure you end with a period and use standard Prolog/ASP syntax)."
+Rules:
+1. Use EXACT property names from examples.
+2. Use variable 'X'.
+3. Multiple rules on separate lines OK.
+4. NEVER use 'not goesIn(...)'.
+5. Example: goesIn(X, fridge) :- hasRole(X, consumableRole)."""
+    
+    if prev_err:
+        if "syntax_error" in prev_err:
+            user += f"\n\n⚠️ Syntax error before: {prev_err['syntax_error'][:200]}. Fix: end with '.', valid ASP."
         else:
-             failed_pos = previous_errors.get('pos', [])
-             failed_neg = previous_errors.get('neg', [])
-             prompt += "\n\nYOUR PREVIOUS SET OF RULES FAILED VERIFICATION!"
-             if failed_pos:
-                 prompt += f"\nIt FAILED to cover these POSITIVE examples: {', '.join(failed_pos)} (You need to add a rule to cover these)"
-             if failed_neg:
-                 prompt += f"\nIt INCORRECTLY covered these NEGATIVE examples: {', '.join(failed_neg)} (Your rule was too broad, make it more specific)"
-             prompt += "\nRevise your rules to fix these errors."
+            fp, fn = prev_err.get('pos',[]), prev_err.get('neg',[])
+            user += "\n\n⚠️ Previous rule failed:"
+            if fp and not fn:
+                user += f"\n- Too narrow: missed {fp}\n- FIX: Add rule for missing positives"
+            elif fn and not fp:
+                user += f"\n- Too broad: included {fn}"
+                for o in fn:
+                    props = ctx.get(o,[])
+                    user += f"\n  {o}: {', '.join(props) if props else 'NO PROPS'}"
+                user += "\n- FIX: Add condition to exclude these"
+            else:
+                user += f"\n- Missed:{fp}, Wrong:{fn}\n- FIX: Refine rule body"
+    
+    messages = [{"role":"system","content":system},{"role":"user","content":user}]
+    if hasattr(_tokenizer, 'apply_chat_template'):
+        return _tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
+    return "\n".join([f"{m['role'].upper()}: {m['content']}" for m in messages]) + "\nASSISTANT:"
 
-    prompt += "\n\nCRITICAL: OUTPUT ONLY THE RAW ASP RULES. ONE PER LINE. NO MARKDOWN. NO EXPLANATIONS."
-    return prompt
-
-def extract_rule(text):
-    """Clean the LLM output to extract all ASP rules as a multiline string."""
-    lines = text.strip().split('\n')
+def extract_rules(text):
+    """Extract goesIn ASP rules from LLM output."""
     rules = []
-    for line in lines:
-        line = line.strip().replace('```asp', '').replace('```prolog', '').replace('```', '')
-        if line.startswith('goesIn') and line.endswith('.'):
-            rules.append(line)
-        elif line.startswith('goesIn'):
-             rules.append(line + '.')
+    for line in text.strip().split('\n'):
+        line = re.sub(r'```(?:asp|prolog)?', '', line).replace('```','').strip()
+        if 'goesIn(' in line and ':' in line:
+            rule = re.sub(r'\s+',' ',line).rstrip('.') + '.'
+            if rule and not rule.startswith('%'):
+                rules.append(rule)
     return "\n".join(rules) if rules else text.strip()
 
-def main():
-    print("=" * 60)
-    print("LLM + Clingo Rule Induction")
-    print("=" * 60)
+# =============================================================================
+# LLM CALL WRAPPER
+# =============================================================================
+def call_llm(prompt, retries=3):
+    """Call Qwen3-Coder-Next with generation."""
+    global _model, _tokenizer
+    if _model is None:
+        _model, _tokenizer = load_qwen3_coder_next()
     
-    print("[1/3] Parsing ILASP examples...")
-    examples_by_loc = parse_ilasp_file(INPUT_EXAMPLES_FILE)
-    print(f"      Parsed examples for {len(examples_by_loc)} locations.")
-    
-    successful_rules = {}
+    for attempt in range(retries):
+        try:
+            inputs = _tokenizer(prompt, return_tensors="pt", truncation=True, max_length=MAX_CONTEXT_LENGTH).to(_model.device)
+            with torch.no_grad():
+                out = _model.generate(**inputs, max_new_tokens=MAX_NEW_TOKENS)
+            new_tokens = out[0][inputs.input_ids.shape[1]:]
+            return _tokenizer.decode(new_tokens.tolist(), skip_special_tokens=True).strip()
+        except torch.cuda.OutOfMemoryError:
+            print("[ERROR] GPU OOM. Try smaller context or 4-bit.", file=sys.stderr, flush=True)
+            raise
+        except Exception as e:
+            if attempt < retries-1:
+                print(f"[WARN] Retry {attempt+1}/{retries}: {e}", file=sys.stderr, flush=True)
+                time.sleep(2**attempt)
+            else:
+                print(f"[ERROR] Failed after {retries} attempts: {e}", file=sys.stderr, flush=True)
+                raise
+    raise Exception("Max retries exceeded")
 
-    print("\n[2/3] Inducing rules via LLM & Verifying via Clingo...")
-    for loc, data in examples_by_loc.items():
-        if not data["pos"]:
-            continue
-            
-        print(f"\n--- Location: {loc} ({len(data['pos'])} pos, {len(data['neg'])} neg) ---")
-        
-        messages = [{'role': 'system', 'content': 'You provide purely logical ASP rules based on user examples.'}]
+# =============================================================================
+# MAIN
+# =============================================================================
+def main():
+    print("="*70)
+    print("LLM+Clingo Rule Induction | Qwen3-Coder-Next")
+    print("="*70)
+    print(f"Model: {MODEL_NAME} | Quant: {QUANTIZATION_MODE}")
+    print(f"Context:{MAX_CONTEXT_LENGTH} | New tokens:{MAX_NEW_TOKENS}")
+    print(f"Device: {torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'CPU'}")
+    print(f"Debug: LLM={'ON' if DEBUG else 'OFF'} | Clingo={'ON' if DEBUG_CLINGO else 'OFF'}")
+    print("="*70)
+    
+    try:
+        load_qwen3_coder_next()
+    except Exception as e:
+        print(f"\n[ERROR] Model init failed: {e}")
+        print("[TIP] Try: export HF_MODEL_NAME='Qwen/Qwen2.5-Coder-7B-Instruct'")
+        return
+    
+    print("[1/3] Parsing examples...")
+    examples = parse_ilasp_file(INPUT_EXAMPLES_FILE)
+    print(f"      Found {len(examples)} locations.")
+    
+    results = {}
+    print("\n[2/3] Inducing rules...")
+    
+    for loc, data in examples.items():
+        if not data["pos"]: continue
+        print(f"\n--- {loc} ({len(data['pos'])}+, {len(data['neg'])}-) ---")
         failures = None
         
-        for attempt in range(1, MAX_RETRIES + 1):
+        for attempt in range(1, 101):
             prompt = format_prompt(loc, data["pos"], data["neg"], data["ctx"], failures)
-            messages.append({'role': 'user', 'content': prompt})
+            print(f"  Attempt {attempt}/100...", end=" ", flush=True)
             
-            print(f"  Attempt {attempt}/{MAX_RETRIES}...", end=" ", flush=True)
+            try:
+                raw = call_llm(prompt)
+                if DEBUG:
+                    print(f"\n[LLM] Output:\n{'-'*50}\n{raw[:800]}{'...' if len(raw)>800 else ''}\n{'-'*50}", file=sys.stderr, flush=True)
+            except Exception as e:
+                print(f"[FAIL] {type(e).__name__}: {str(e)[:80]}", flush=True)
+                failures = {"syntax_error": str(e)}
+                continue
             
-            response = client.chat(
-                model=MODEL,
-                messages=messages,
-                options={"temperature": 0.2}
-            )
+            rule = extract_rules(raw)
+            print(f"Rule: {rule[:120]}{'...' if len(rule)>120 else ''}")
             
-            raw_rule = response['message']['content']
-            rule = extract_rule(raw_rule)
-            messages.append({'role': 'assistant', 'content': rule})
-            
-            print(f"Rule: {rule}")
-            
-            is_valid, failures = run_clingo_verification(loc, rule, data["pos"], data["neg"], data["ctx"])
-            
-            if is_valid:
-                print("  [SUCCESS] Rule verified by Clingo!")
-                successful_rules[loc] = rule
+            valid, failures = run_clingo_check(loc, rule, data["pos"], data["neg"], data["ctx"])
+            if valid:
+                print("  [✅] Verified!")
+                results[loc] = rule
                 break
             else:
                 if "syntax_error" in failures:
-                    print("  [FAILED] Syntax Error.")
+                    print("  [❌] Syntax error")
                 else:
-                    n_pos_fail = len(failures['pos'])
-                    n_neg_fail = len(failures['neg'])
-                    print(f"  [FAILED] Uncovered pos: {n_pos_fail}, Invalid neg: {n_neg_fail}")
-                
-        if loc not in successful_rules:
-            print(f"  [GAVE UP] Could not find valid rule for {loc}.")
-
-    print("\n[3/3] Writing optimal rules...")
+                    pf, nf = len(failures['pos']), len(failures['neg'])
+                    print(f"  [❌] pos_miss:{pf} neg_wrong:{nf}")
+            time.sleep(0.2)
+        
+        if loc not in results:
+            print(f"  [GAVE UP] No valid rule after 100 attempts")
+    
+    print("\n[3/3] Saving results...")
     with open(OUTPUT_RULES_FILE, "w") as f:
-        f.write("% ==========================================\n")
-        f.write("% LEARNED RULES FOR goesIn/2\n")
-        f.write("% Inducted by LLM (Llama 3.1) and verified by ASP\n")
-        f.write("% ==========================================\n\n")
-        for loc, rule in successful_rules.items():
-            f.write(f"% --- {loc} ---\n")
-            f.write(f"{rule}\n\n")
-            
-    print(f"      Saved {len(successful_rules)} rules to {OUTPUT_RULES_FILE}")
+        f.write(f"% Qwen3-Coder-Next Rules | Model:{MODEL_NAME} | Quant:{QUANTIZATION_MODE}\n")
+        f.write(f"% Verified by Clingo\n% {'='*50}\n\n")
+        for loc, rule in results.items():
+            f.write(f"% --- {loc} ---\n{rule}\n\n")
+    print(f"      ✅ Saved {len(results)}/{len(examples)} rules to {OUTPUT_RULES_FILE}")
 
 if __name__ == "__main__":
     main()

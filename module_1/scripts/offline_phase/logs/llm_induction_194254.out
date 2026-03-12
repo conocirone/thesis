@@ -1,0 +1,84 @@
+Starting LLM + Clingo Rule Induction Job on node: assistant-1
+Date: Thu Mar 12 12:01:54 CET 2026
+==============================================
+Job Configuration:
+
+  Working Dir: /homes/ccirone/thesis/module_1/scripts/offline_phase
+  Model: Qwen/Qwen3-Coder-Next
+  Token: hf_tSwzgzi...
+  Python: /homes/ccirone/thesis/thesis_env/bin/python3
+==============================================
+Starting induction script...
+
+============================================================
+LLM + Clingo Rule Induction (Hugging Face)
+============================================================
+      Using model: Qwen/Qwen3-Coder-Next
+[1/3] Parsing ILASP examples...
+      Parsed examples for 24 locations.
+
+[2/3] Inducing rules via LLM & Verifying via Clingo...
+
+--- Location: table (155 pos, 81 neg) ---
+  Attempt 1/100... API Error: Server error '504 Gateway Time-out' for url 'https://router.huggingface.co/v1/chat/completions' (Amz CF ID: uFIHkrANDKDmpmLqeL-rAIsfJIaXd1MukNw_bQYWOqf80HaSPe7NHg==)
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/504
+[FAILED] API Error: Server error '504 Gateway Time-out' for url 'https://router.huggingface.co/v1/chat/completions' (Amz CF ID: uFIHkrANDKDmpmLqeL-rAIsfJIaXd1MukNw_bQYWOqf80HaSPe7NHg==)
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/504
+  Attempt 2/100... Rule: goesIn(X, table) :- hasRole(X, utensilRole), affordsTask(X, eatingDrinkingTask).
+goesIn(X, table) :- hasRole(X, utensilRole), affordsTask(X, foodPreparationTask).
+goesIn(X, table) :- hasRole(X, toolRole), affordsTask(X, maintenanceTask).
+goesIn(X, table) :- hasRole(X, toolRole), affordsTask(X, workStudyTask).
+goesIn(X, table) :- hasRole(X, storageContainerRole), affordsTask(X, storageTask).
+goesIn(X, table) :- hasRole(X, furnitureRole), affordsTask(X, leisureTask).
+goesIn(X, table) :- hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
+goesIn(X, table) :- hasRole(X, consumableRole), affordsTask(X, foodPreparationTask).
+goesIn(X, table) :- hasRole(X, decorationRole).
+goesIn(X, table) :- hasRole(X, documentRole), affordsTask(X, workStudyTask).
+goesIn(X, table) :- hasRole(X, entertainmentRole), affordsTask(X, leisureTask).
+goesIn(X, table) :- hasRole(X, lightingRole), affordsTask(X, leisureTask).
+goesIn(X, table) :- hasRole(X, musicalInstrumentRole), affordsTask(X, leisureTask).
+goesIn(X, table) :- hasRole(X, applianceRole), affordsTask(X, workStudyTask).
+goesIn(X, table) :- hasRole(X, cleaningToolRole), affordsTask(X, maintenanceTask).
+goesIn(X, table) :- hasRole(X, wasteRole), affordsTask(X, cleaningTask).
+goesIn(X, table) :- hasRole(X, beddingRole), affordsTask(X, sleepingTask).
+goesIn(X, table) :- hasRole(X, clothingRole), affordsTask(X, dressingTask).
+goesIn(X, table) :- hasRole(X, storageContainerRole), affordsTask(X, storageTask), affordsTask(X, workStudyTask).
+goesIn(X, table) :- hasRole(X, toolRole), affordsTask(X, maintenanceTask), affordsTask(X, workStudyTask).
+goesIn(X, table) :- hasRole(X, toolRole), affordsTask(X, workStudyTask), affordsTask(X, leisureTask).
+goesIn(X, table) :- hasRole(X, entertainmentRole), affordsTask(X, leisureTask), affordsTask(X, workStudyTask).
+goesIn(X, table) :- hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask), affordsTask(X, leisureTask).
+goesIn(X, table) :- hasRole(X, furnitureRole), affordsTask(X, storageTask).
+goesIn(X, table) :- hasRole(X, storageContainerRole), affordsTask(X, storageTask), affordsTask(X, leisureTask).
+goesIn(X, table) :- hasRole(X, toolRole), affordsTask(X, foodPreparationTask).
+goesIn(X, table) :- hasRole(X, utensilRole), affordsTask(X, eatingDrinkingTask), affordsTask(X, foodPreparationTask).
+goesIn(X, table) :- hasRole(X, documentRole), affordsTask(X, workStudyTask), affordsTask(X, leisureTask).
+goesIn(X, table) :- hasRole(X, toolRole), affordsTask(X, maintenanceTask), affordsTask(X, foodPreparationTask).
+goesIn(X, table) :- hasRole(X, toolRole), affordsTask(X, maintenanceTask), affordsTask(X, cleaningTask).
+goesIn(X, table) :- hasRole(X, toolRole), affordsTask(X, workStudyTask), affordsTask(X, maintenanceTask).
+goesIn(X, table) :- hasRole(X, toolRole), affordsTask(X, workStudyTask), affordsTask(X, storageTask).
+goesIn(X, table) :- hasRole(X, toolRole), affordsTask(X, workStudyTask), affordsTask(X, cleaningTask).
+goesIn(X, table) :- hasRole(X, toolRole), affordsTask(X, workStudyTask), affordsTask(X, foodPreparationTask).
+goesIn(X, table) :- hasRole(X, toolRole), affordsTask(X, workStudyTask), affordsTask(X, maintenanceTask), affordsTask(X, cleaningTask).
+goesIn(X, table) :- hasRole(X, toolRole), affordsTask(X, workStudyTask), affordsTask(X, leisureTask), affordsTask(X, maintenanceTask).
+goesIn(X, table) :- hasRole(X, toolRole), affordsTask(X, workStudyTask), affordsTask(X, leisureTask), affordsTask(X, foodPreparationTask).
+goesIn(X, table) :- hasRole(X, toolRole), affordsTask(X, workStudyTask), affordsTask(X, leisureTask), affordsTask(X, storageTask).
+goesIn(X, table) :- hasRole(X, toolRole), affordsTask(X, workStudyTask), affordsTask(X, leisureTask), affordsTask(X, cleaningTask).
+goesIn(X, table) :- hasRole(X, toolRole), affordsTask(X, workStudyTask), affordsTask(X, leisureTask), affordsTask(X, maintenanceTask), affordsTask(X, cleaningTask).
+goesIn(X, table) :- hasRole(X, toolRole), affordsTask(X, workStudyTask), affordsTask(X, leisureTask), affordsTask(X, foodPreparationTask), affordsTask(X, maintenanceTask).
+goesIn(X, table) :- hasRole(X, toolRole), affordsTask(X, workStudyTask), affordsTask(X, leisureTask), affordsTask(X, foodPreparationTask), affordsTask(X, storageTask).
+goesIn(X, table) :- hasRole(X, toolRole), affordsTask(X, workStudyTask), affordsTask(X, leisureTask), affordsTask(X, foodPreparationTask), affordsTask(X, cleaningTask).
+goesIn(X, table) :- hasRole(X, toolRole), affordsTask(X, workStudyTask), affordsTask(X, leisureTask), affordsTask(X, foodPreparationTask), affordsTask(X, maintenanceTask), affordsTask(X, cleaningTask).
+goesIn(X, table) :- hasRole(X, toolRole), affordsTask(X, workStudyTask), affordsTask(X, leisureTask), affordsTask(X, foodPreparationTask), affordsTask(X, maintenanceTask), affordsTask(X, storageTask).
+goesIn(X, table) :- hasRole(X, toolRole), affordsTask(X, workStudyTask), affordsTask(X, leisureTask), affordsTask(X, foodPreparationTask), affordsTask(X, maintenanceTask), affordsTask(X, cleaningTask), affordsTask(X, storageTask).
+goesIn(X, table) :- hasRole(X, toolRole), affordsTask(X, workStudyTask), affordsTask(X, leisureTask), affordsTask(X, foodPreparationTask), affordsTask(X, maintenanceTask), affordsTask(X, cleaningTask), affordsTask(X, storageTask), affordsTask(X, dressingTask).
+goesIn(X, table) :- hasRole(X, toolRole), affordsTask(X, workStudyTask), affordsTask(X, leisureTask), affordsTask(X, foodPreparationTask), affordsTask(X, maintenanceTask), affordsTask(X, cleaningTask), affordsTask(X, storageTask), affordsTask(X, dressingTask), affordsTask(X, sleepingTask).
+goesIn(X, table) :- hasRole(X, toolRole), affordsTask(X, workStudyTask), affordsTask(X, leisureTask), affordsTask(X, foodPreparationTask), affordsTask(X, maintenanceTask), affordsTask(X, cleaningTask), affordsTask(X, storageTask), affordsTask(X, dressingTask), affordsTask(X, sleepingTask), affordsTask(X, gardeningTask).
+goesIn(X, table) :- hasRole(X, toolRole), affordsTask(X, workStudyTask), affordsTask(X, leisureTask), affordsTask(X, foodPreparationTask), affordsTask(X, maintenanceTask), affordsTask(X, cleaningTask), affordsTask(X, storageTask), affordsTask(X, dressingTask), affordsTask(X, sleepingTask), affordsTask(X, gardeningTask), affordsTask(X, wasteDisposalTask).
+goesIn(X, table) :- hasRole(X, toolRole), affordsTask(X, workStudyTask), affordsTask(X, leisureTask), affordsTask(X, foodPreparationTask), affordsTask(X, maintenanceTask), affordsTask(X, cleaningTask), affordsTask(X, storageTask), affordsTask(X, dressingTask), affordsTask(X, sleepingTask), affordsTask(X, gardeningTask), affordsTask(X, wasteDisposalTask), affordsTask(X, eatingDrinkingTask).
+goesIn(X, table) :- hasRole(X, toolRole), affordsTask(X, workStudyTask), affordsTask(X, leisureTask), affordsTask(X, foodPreparationTask), affordsTask(X, maintenanceTask), affordsTask(X, cleaningTask), affordsTask(X, storageTask), affordsTask(X, dressingTask), affordsTask(X, sleepingTask), affordsTask(X, gardeningTask), affordsTask(X, wasteDisposalTask), affordsTask(X, eatingDrinkingTask), affordsTask(X, workStudyTask).
+  [FAILED] Uncovered pos: 35, Invalid neg: 60
+  Attempt 3/100... API Error: Server error '504 Gateway Time-out' for url 'https://router.huggingface.co/v1/chat/completions' (Amz CF ID: FL_iK0gSzW6QxXIwHdUjsWrDxh3OhF28792OytytO86oqY9y4AAByw==)
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/504
+[FAILED] API Error: Server error '504 Gateway Time-out' for url 'https://router.huggingface.co/v1/chat/completions' (Amz CF ID: FL_iK0gSzW6QxXIwHdUjsWrDxh3OhF28792OytytO86oqY9y4AAByw==)
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/504
+  Attempt 4/100... 
