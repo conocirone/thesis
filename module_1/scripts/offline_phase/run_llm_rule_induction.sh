@@ -20,7 +20,6 @@ source /homes/ccirone/thesis/thesis_env/bin/activate
 # ------------------------------------------------------------------------------
 # HUGGING FACE CONFIGURATION
 # ------------------------------------------------------------------------------
-export HF_TOKEN="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"  
 export HF_MODEL="Qwen/Qwen3-Coder-Next"
 
 # Fallback model if Qwen3-Coder-Next is unavailable on free tier:
