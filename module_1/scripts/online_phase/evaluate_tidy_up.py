@@ -13,7 +13,7 @@ SCRIPTS_ROOT = SCRIPT_DIR.parent      # scripts
 MODULE_DIR = SCRIPTS_ROOT.parent      # module_1
 DATA_DIR = MODULE_DIR.parent / "Robo-CSK-Benchmark" / "tidy_up" # thesis/Robo-CSK-Benchmark/tidy_up
 CSV_FILE = DATA_DIR / "tidy_up_data.csv"
-ILASP_OUT = MODULE_DIR / "rules" / "learned_rules_mvp.txt"
+ILASP_OUT = MODULE_DIR / "rules" / "learned_rules_llm_total.txt"
 TMP_DIR = SCRIPT_DIR / "tmp"
 TMP_DIR.mkdir(exist_ok=True)
 
@@ -54,22 +54,85 @@ def map_location(loc_str):
 # ------------------------------------------------------------------------------
 # NEURO PROMPT (SOMA Feature Extraction)
 # ------------------------------------------------------------------------------
-SYSTEM_PROMPT = """You are a semantic annotator for a domestic robot knowledge base.
-Given an object, assign SOMA ontology labels based on its physical properties and intended use.
+SYSTEM_PROMPT = f"""You are a semantic annotator for a domestic robot knowledge base.
+Given an object and its ConceptNet associations, assign SOMA ontology labels.
+Use YOUR OWN KNOWLEDGE as primary truth. ConceptNet data are noisy — ignore them if wrong.
 
-You MUST return a valid JSON object with EXACTLY these three keys:
-"hasPhysicalQuality", "hasRole", "affordsTask".
+Return a JSON with EXACTLY three keys. Use ONLY values from these lists:
 
-For each key, provide a list of values CHOSEN STRICTLY FROM THE ALLOWED LISTS BELOW. DO NOT INVENT NEW CLASSES.
-If none apply, return an empty list `[]` for that key.
+"hasPhysicalQuality" — pick from:
+  RequiresCooling (dairy, fresh meat — needs fridge)
+  RequiresFreezing (ice cream, frozen food — needs freezer)
+  Perishable (any food, drink, medicine — expires)
+  Heated (stove, oven, iron — object PRODUCES heat. NOT fridge, NOT air conditioning)
+  Liquid (water, oil, shampoo — object IS a liquid at room temperature. NOT bottles, NOT faucets)
+  Granular (salt, sugar, rice, flour — object IS powder/grains. NOT cookies, NOT fruit)
+  Gas_Aerosol (spray, deodorant — gaseous)
+  Heavy (furniture, appliances >5kg)
+  Lightweight (pen, phone, spoon <1kg)
+  Fragile (glass, ceramics, electronics — breaks easily)
+  Rigid (metal, wood, plastic — does not bend)
+  Soft_Deformable (fabric, pillow, sponge — bends/squishes)
+  Sharp (knife, blade, needle — can cut. NOT fork, NOT spatula)
+  Electronic (has battery or plug)
+  Toxic_Hazardous (bleach, pesticide, paint — dangerous to ingest/touch)
+  Flammable (paper, gas, alcohol — catches fire)
+  Washable (clothing, towel — can be machine/hand washed)
 
-"hasPhysicalQuality" allowed ONLY: RequiresCooling, RequiresFreezing, Perishable, Heated, Liquid, Granular, Gas_Aerosol, Heavy, Lightweight, Fragile, Rigid, Soft_Deformable, Sharp, Electronic, Toxic_Hazardous, Flammable, Washable
+"hasRole" — pick from:
+  ConsumableRole (food, drink, medicine — gets consumed. NEVER containers or tools)
+  UtensilRole (fork, knife, spatula, plate, cup — ONLY kitchen/table items for eating or food prep)
+  CookwareRole (pot, pan, baking tray — for cooking ON heat)
+  ToolRole (hammer, drill, screwdriver, brush, scissors — general-purpose tools and instruments)
+  CleaningToolRole (broom, mop, sponge, detergent — for cleaning the house)
+  ApplianceRole (fridge, washing machine, TV — powered household device)
+  StorageContainerRole (box, jar, shelf, closet — holds other things)
+  FurnitureRole (chair, table, sofa, bed — large, inhabits a room)
+  BeddingRole (blanket, pillow, sheet — for sleeping)
+  LightingRole (lamp, bulb, candle — produces light)
+  ClothingRole (shirt, pants, shoes, hat — worn on the body)
+  EntertainmentRole (toy, teddy bear, board game, stuffed animal, puzzle — for play/fun)
+  MusicalInstrumentRole (guitar, piano, drum)
+  DecorationRole (painting, vase, statue, ornament — aesthetic)
+  DocumentRole (book, notebook, letter, newspaper — readable)
+  WasteRole (trash, garbage, refuse — to be disposed)
+  SafetyEquipmentRole (fire extinguisher, bandaid, first aid kit, smoke detector)
 
-"hasRole" allowed ONLY: ConsumableRole, UtensilRole, CookwareRole, ToolRole, CleaningToolRole, ApplianceRole, StorageContainerRole, FurnitureRole, BeddingRole, LightingRole, ClothingRole, EntertainmentRole, MusicalInstrumentRole, DecorationRole, DocumentRole, WasteRole, SafetyEquipmentRole
+"affordsTask" — pick from:
+  FoodPreparationTask (knife, pan, blender — DIRECTLY cuts/cooks/mixes food. NOT hammer, NOT cleaning tools)
+  EatingDrinkingTask (food, drink, plate, fork — consumed or used AT the table during a meal)
+  MaintenanceTask (hammer, drill, paint, ladder — fix/build/repair things)
+  CleaningTask (broom, mop, detergent — clean the house. NOT personal hygiene)
+  WasteDisposalTask (trash can, garbage bag — dispose of waste)
+  HygieneTask (toothbrush, soap, shampoo, bandaid — personal body care)
+  DressingTask (shirt, pants, shoes — getting dressed)
+  StorageTask (shelf, box, closet — storing objects)
+  SleepingTask (bed, blanket, pillow — sleeping)
+  WorkStudyTask (desk, pen, computer — work or study activities)
+  LeisureTask (TV, toy, book, game — fun and relaxation)
+  GardeningTask (shovel, hose, fertilizer — garden work)
 
-"affordsTask" allowed ONLY: FoodPreparationTask, EatingDrinkingTask, MaintenanceTask, CleaningTask, WasteDisposalTask, HygieneTask, DressingTask, StorageTask, SleepingTask, WorkStudyTask, LeisureTask, GardeningTask
+COMMON MISTAKES TO AVOID:
+- Fridge/freezer/air conditioner → NOT Heated! They COOL things. Use RequiresCooling or just Electronic+Heavy.
+- Chocolate/butter/fruit → NOT Liquid! They are solid at room temperature.
+- Cookies/fruit → NOT Granular! They are solid pieces.
+- Teddy bear/stuffed animal → EntertainmentRole, NOT FurnitureRole.
+- Bandaid/plaster → SafetyEquipmentRole + HygieneTask, NOT Liquid or ConsumableRole.
+- Hammer/vice → MaintenanceTask, NOT FoodPreparationTask.
+- Umbrella/hairbrush → ToolRole, NOT UtensilRole.
+- Egg shells → WasteRole, NOT ConsumableRole.
 
-CRITICAL: Return ONLY raw, valid JSON containing arrays. DO NOT invent new roles like ArtSuppliesRole. Only pick from the allowed list.
+EXAMPLES:
+knife:         {{"hasPhysicalQuality":["Sharp","Rigid"],               "hasRole":["UtensilRole"],            "affordsTask":["FoodPreparationTask"]}}
+shampoo:       {{"hasPhysicalQuality":["Liquid"],                      "hasRole":["CleaningToolRole"],       "affordsTask":["HygieneTask"]}}
+fridge:        {{"hasPhysicalQuality":["Electronic","Heavy"],          "hasRole":["ApplianceRole"],          "affordsTask":["StorageTask"]}}
+teddy bear:    {{"hasPhysicalQuality":["Soft_Deformable","Lightweight"],"hasRole":["EntertainmentRole"],     "affordsTask":["LeisureTask"]}}
+bandaid:       {{"hasPhysicalQuality":["Lightweight"],                 "hasRole":["SafetyEquipmentRole"],    "affordsTask":["HygieneTask"]}}
+chocolate:     {{"hasPhysicalQuality":["Perishable"],                  "hasRole":["ConsumableRole"],         "affordsTask":["EatingDrinkingTask"]}}
+hammer:        {{"hasPhysicalQuality":["Heavy","Rigid"],               "hasRole":["ToolRole"],               "affordsTask":["MaintenanceTask"]}}
+blanket:       {{"hasPhysicalQuality":["Soft_Deformable","Washable"],  "hasRole":["BeddingRole"],            "affordsTask":["SleepingTask"]}}
+
+Return ONLY the JSON. No explanation, no markdown, no extra text.
 """
 
 def query_ollama_soma(object_name: str) -> dict:
@@ -197,7 +260,10 @@ def run_evaluation(num_tests=50):
     import random
     random.seed(42)
     random.shuffle(test_cases)
-    test_cases = test_cases[:num_tests]
+    
+    # Only limit if num_tests is explicitly set and less than total
+    if num_tests and num_tests < len(test_cases):
+        test_cases = test_cases[:num_tests]
     
     print(f"Selected {len(test_cases)} validation objects.")
     
@@ -219,7 +285,7 @@ def run_evaluation(num_tests=50):
         # Step C: Logical Inference
         deduced = run_clingo_inference(rules_lp, facts_str)
         # Sort alphabetically for deterministic metric handling as it's an unranked set
-        deduced.sort()
+        #deduced.sort()
         
         ground_truth = case["target_locations"]
         
@@ -302,7 +368,7 @@ def run_evaluation(num_tests=50):
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser()
-    parser.add_argument("--num-tests", type=int, default=10, help="Number of objects to evaluate")
+    parser.add_argument("--num-tests", type=int, default=None, help="Number of objects to evaluate (default: all)")
     args = parser.parse_args()
     
     run_evaluation(num_tests=args.num_tests)

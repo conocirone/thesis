@@ -13,22 +13,10 @@
 echo "Starting LLM + Clingo Rule Induction Job on node: $HOSTNAME"
 echo "Date: $(date)"
 
-# ------------------------------------------------------------------------------
-# ENVIRONMENT SETUP
-# ------------------------------------------------------------------------------
-# If you are using Miniconda/Anaconda on the cluster, uncomment and set path:
-# source /home/ccirone/miniconda3/etc/profile.d/conda.sh
-# conda activate neurosymbolic_env
-
-# Or if you are using python venv:
 # source /home/ccirone/myenv/bin/activate
 
-# ------------------------------------------------------------------------------
-# OLLAMA CONFIGURATION (Assuming Ollama is running locally on the allocated GPU node)
-# ------------------------------------------------------------------------------
-# If Ollama is running on a different node, change this IP.
 export OLLAMA_HOST="http://localhost:11434"
-export OLLAMA_MODEL="llama3.1:latest" # or "qwen2.5-coder" 
+export OLLAMA_MODEL="llama3.1:latest" 
 
 # Check if clingo is installed
 if ! command -v clingo &> /dev/null

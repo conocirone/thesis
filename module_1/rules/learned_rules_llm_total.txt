@@ -1,4 +1,6 @@
-% Learned goesIn rules extracted from ILASP
+% === PROGRESSIVE LLM RULE INDUCTION OUTPUT ===
+
+% --- table ---
 goesIn(X, table) :- obj(X), hasRole(X, clothingRole), affordsTask(X, dressingTask), affordsTask(X, storageTask).
 goesIn(X, table) :- obj(X), hasRole(X, storageContainerRole), hasRole(X, wasteRole), affordsTask(X, wasteDisposalTask).
 goesIn(X, table) :- obj(X), hasRole(X, utensilRole), affordsTask(X, eatingDrinkingTask).
@@ -35,6 +37,8 @@ goesIn(X, table) :- obj(X), hasRole(X, documentRole), affordsTask(X, cleaningTas
 goesIn(X, table) :- obj(X), hasRole(X, toolRole), affordsTask(X, storageTask).
 goesIn(X, table) :- obj(X), hasRole(X, cleaningToolRole), affordsTask(X, maintenanceTask).
 goesIn(X, table) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, leisureTask).
+
+% --- bathroom ---
 goesIn(X, bathroom) :- obj(X), hasRole(X, cleaningToolRole), affordsTask(X, hygieneTask).
 goesIn(X, bathroom) :- obj(X), hasRole(X, toolRole), affordsTask(X, hygieneTask).
 goesIn(X, bathroom) :- obj(X), hasRole(X, clothingRole), affordsTask(X, dressingTask), affordsTask(X, storageTask).
@@ -69,6 +73,8 @@ goesIn(X, bathroom) :- obj(X), hasRole(X, toolRole), affordsTask(X, foodPreparat
 goesIn(X, bathroom) :- obj(X), hasRole(X, wasteRole), affordsTask(X, cleaningTask).
 goesIn(X, bathroom) :- obj(X), hasRole(X, applianceRole), affordsTask(X, leisureTask).
 goesIn(X, bathroom) :- obj(X), affordsTask(X, hygieneTask).
+
+% --- cabinet ---
 goesIn(X, cabinet) :- obj(X), hasRole(X, utensilRole), affordsTask(X, eatingDrinkingTask).
 goesIn(X, cabinet) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, eatingDrinkingTask).
 goesIn(X, cabinet) :- obj(X), hasRole(X, storageContainerRole), hasRole(X, wasteRole), affordsTask(X, wasteDisposalTask).
@@ -83,6 +89,8 @@ goesIn(X, cabinet) :- obj(X), hasRole(X, utensilRole), affordsTask(X, foodPrepar
 goesIn(X, cabinet) :- obj(X), hasRole(X, entertainmentRole), affordsTask(X, leisureTask).
 goesIn(X, cabinet) :- obj(X), hasRole(X, consumableRole), affordsTask(X, hygieneTask).
 goesIn(X, cabinet) :- obj(X), hasRole(X, utensilRole).
+
+% --- library ---
 goesIn(X, library) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, eatingDrinkingTask), affordsTask(X, foodPreparationTask), affordsTask(X, leisureTask), affordsTask(X, workStudyTask).
 goesIn(X, library) :- obj(X), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask), affordsTask(X, foodPreparationTask), affordsTask(X, leisureTask), affordsTask(X, workStudyTask).
 goesIn(X, library) :- obj(X), hasRole(X, documentRole), affordsTask(X, leisureTask), affordsTask(X, workStudyTask).
@@ -131,6 +139,8 @@ goesIn(X, library) :- obj(X), hasRole(X, documentRole).
 goesIn(X, library) :- obj(X), hasRole(X, decorationRole).
 goesIn(X, library) :- obj(X), hasRole(X, applianceRole), affordsTask(X, storageTask).
 goesIn(X, library) :- obj(X), affordsTask(X, maintenanceTask).
+
+% --- garage ---
 goesIn(X, garage) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, maintenanceTask).
 goesIn(X, garage) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
 goesIn(X, garage) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, leisureTask).
@@ -145,6 +155,8 @@ goesIn(X, garage) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, maintenan
 goesIn(X, garage) :- obj(X), hasRole(X, clothingRole), affordsTask(X, dressingTask).
 goesIn(X, garage) :- obj(X), hasRole(X, toolRole), affordsTask(X, leisureTask).
 goesIn(X, garage) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, storageTask).
+
+% --- bedroom ---
 goesIn(X, bedroom) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, eatingDrinkingTask), affordsTask(X, foodPreparationTask), affordsTask(X, leisureTask), affordsTask(X, workStudyTask).
 goesIn(X, bedroom) :- obj(X), hasRole(X, documentRole), affordsTask(X, leisureTask), affordsTask(X, workStudyTask).
 goesIn(X, bedroom) :- obj(X), hasRole(X, applianceRole), hasRole(X, storageContainerRole), affordsTask(X, eatingDrinkingTask), affordsTask(X, foodPreparationTask), affordsTask(X, storageTask).
@@ -191,6 +203,8 @@ goesIn(X, bedroom) :- obj(X), hasRole(X, toolRole), affordsTask(X, workStudyTask
 goesIn(X, bedroom) :- obj(X), hasRole(X, documentRole), affordsTask(X, workStudyTask).
 goesIn(X, bedroom) :- obj(X), hasRole(X, documentRole).
 goesIn(X, bedroom) :- obj(X), hasRole(X, storageContainerRole).
+
+% --- closet ---
 goesIn(X, closet) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, maintenanceTask).
 goesIn(X, closet) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
 goesIn(X, closet) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, eatingDrinkingTask), affordsTask(X, foodPreparationTask), affordsTask(X, leisureTask), affordsTask(X, workStudyTask).
@@ -236,6 +250,8 @@ goesIn(X, closet) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, dr
 goesIn(X, closet) :- obj(X), hasRole(X, applianceRole), affordsTask(X, maintenanceTask).
 goesIn(X, closet) :- obj(X), hasRole(X, wasteRole), affordsTask(X, cleaningTask).
 goesIn(X, closet) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, leisureTask).
+
+% --- music_room ---
 goesIn(X, music_room) :- obj(X), hasRole(X, toolRole), affordsTask(X, foodPreparationTask), affordsTask(X, leisureTask).
 goesIn(X, music_room) :- obj(X), hasRole(X, musicalInstrumentRole).
 goesIn(X, music_room) :- obj(X), hasRole(X, toolRole), affordsTask(X, maintenanceTask).
@@ -245,6 +261,8 @@ goesIn(X, music_room) :- obj(X), hasRole(X, toolRole), affordsTask(X, workStudyT
 goesIn(X, music_room) :- obj(X), hasRole(X, toolRole), affordsTask(X, foodPreparationTask).
 goesIn(X, music_room) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, storageTask).
 goesIn(X, music_room) :- obj(X), hasRole(X, toolRole), affordsTask(X, leisureTask).
+
+% --- garden ---
 goesIn(X, garden) :- obj(X), hasRole(X, furnitureRole).
 goesIn(X, garden) :- obj(X), hasRole(X, documentRole), affordsTask(X, leisureTask), affordsTask(X, workStudyTask).
 goesIn(X, garden) :- obj(X), hasRole(X, toolRole), affordsTask(X, eatingDrinkingTask), affordsTask(X, hygieneTask), affordsTask(X, maintenanceTask).
@@ -267,6 +285,8 @@ goesIn(X, garden) :- obj(X), hasRole(X, documentRole), affordsTask(X, workStudyT
 goesIn(X, garden) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, leisureTask).
 goesIn(X, garden) :- obj(X), hasRole(X, wasteRole), affordsTask(X, wasteDisposalTask).
 goesIn(X, garden) :- obj(X), hasRole(X, documentRole).
+
+% --- storage_room ---
 goesIn(X, storage_room) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, maintenanceTask).
 goesIn(X, storage_room) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
 goesIn(X, storage_room) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, storageTask).
@@ -294,6 +314,8 @@ goesIn(X, storage_room) :- obj(X), hasRole(X, decorationRole), affordsTask(X, le
 goesIn(X, storage_room) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, sleepingTask).
 goesIn(X, storage_room) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, maintenanceTask).
 goesIn(X, storage_room) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, workStudyTask).
+
+% --- fridge ---
 goesIn(X, fridge) :- obj(X), hasRole(X, consumableRole), hasRole(X, utensilRole), affordsTask(X, eatingDrinkingTask), affordsTask(X, foodPreparationTask).
 goesIn(X, fridge) :- obj(X), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
 goesIn(X, fridge) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, eatingDrinkingTask).
@@ -308,6 +330,8 @@ goesIn(X, fridge) :- obj(X), hasRole(X, documentRole), affordsTask(X, workStudyT
 goesIn(X, fridge) :- obj(X), hasRole(X, toolRole), affordsTask(X, maintenanceTask).
 goesIn(X, fridge) :- obj(X), hasRole(X, lightingRole), affordsTask(X, leisureTask).
 goesIn(X, fridge) :- obj(X), hasRole(X, consumableRole), affordsTask(X, leisureTask).
+
+% --- trash ---
 goesIn(X, trash) :- obj(X), hasRole(X, wasteRole).
 goesIn(X, trash) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, wasteDisposalTask).
 goesIn(X, trash) :- obj(X), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
@@ -318,10 +342,14 @@ goesIn(X, trash) :- obj(X), hasRole(X, toolRole), affordsTask(X, workStudyTask).
 goesIn(X, trash) :- obj(X), hasRole(X, toolRole), affordsTask(X, maintenanceTask).
 goesIn(X, trash) :- obj(X), hasRole(X, utensilRole), affordsTask(X, foodPreparationTask).
 goesIn(X, trash) :- obj(X), hasRole(X, documentRole), affordsTask(X, leisureTask).
+
+% --- home_office ---
 goesIn(X, home_office) :- obj(X), hasRole(X, documentRole), affordsTask(X, workStudyTask).
 goesIn(X, home_office) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, workStudyTask).
 goesIn(X, home_office) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, storageTask).
 goesIn(X, home_office) :- obj(X), hasRole(X, documentRole).
+
+% --- living_room ---
 goesIn(X, living_room) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, eatingDrinkingTask), affordsTask(X, foodPreparationTask), affordsTask(X, leisureTask), affordsTask(X, workStudyTask).
 goesIn(X, living_room) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, leisureTask).
 goesIn(X, living_room) :- obj(X), hasRole(X, storageContainerRole), hasRole(X, wasteRole), affordsTask(X, wasteDisposalTask).
@@ -346,6 +374,8 @@ goesIn(X, living_room) :- obj(X), hasRole(X, toolRole), affordsTask(X, hygieneTa
 goesIn(X, living_room) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, workStudyTask).
 goesIn(X, living_room) :- obj(X), hasRole(X, wasteRole), affordsTask(X, cleaningTask).
 goesIn(X, living_room) :- obj(X), hasRole(X, documentRole).
+
+% --- pantry ---
 goesIn(X, pantry) :- obj(X), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
 goesIn(X, pantry) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
 goesIn(X, pantry) :- obj(X), hasRole(X, consumableRole), affordsTask(X, foodPreparationTask).
@@ -367,6 +397,8 @@ goesIn(X, pantry) :- obj(X), hasRole(X, entertainmentRole), affordsTask(X, leisu
 goesIn(X, pantry) :- obj(X), hasRole(X, wasteRole), affordsTask(X, wasteDisposalTask).
 goesIn(X, pantry) :- obj(X), hasRole(X, cookwareRole), affordsTask(X, foodPreparationTask).
 goesIn(X, pantry) :- obj(X), hasRole(X, toolRole), affordsTask(X, hygieneTask).
+
+% --- hallway ---
 goesIn(X, hallway) :- obj(X), hasRole(X, beddingRole), hasRole(X, clothingRole), affordsTask(X, dressingTask), affordsTask(X, sleepingTask).
 goesIn(X, hallway) :- obj(X), hasRole(X, cleaningToolRole), affordsTask(X, cleaningTask).
 goesIn(X, hallway) :- obj(X), hasRole(X, decorationRole), affordsTask(X, leisureTask), affordsTask(X, workStudyTask).
@@ -382,6 +414,8 @@ goesIn(X, hallway) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, storageT
 goesIn(X, hallway) :- obj(X), hasRole(X, clothingRole), affordsTask(X, dressingTask).
 goesIn(X, hallway) :- obj(X), hasRole(X, consumableRole), affordsTask(X, leisureTask).
 goesIn(X, hallway) :- obj(X), hasRole(X, beddingRole), affordsTask(X, leisureTask).
+
+% --- kitchen ---
 goesIn(X, kitchen) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, eatingDrinkingTask), affordsTask(X, foodPreparationTask), affordsTask(X, leisureTask), affordsTask(X, workStudyTask).
 goesIn(X, kitchen) :- obj(X), hasRole(X, consumableRole), affordsTask(X, foodPreparationTask).
 goesIn(X, kitchen) :- obj(X), hasRole(X, furnitureRole), hasRole(X, storageContainerRole), affordsTask(X, eatingDrinkingTask), affordsTask(X, foodPreparationTask), affordsTask(X, storageTask).
@@ -403,12 +437,16 @@ goesIn(X, kitchen) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, storageT
 goesIn(X, kitchen) :- obj(X), hasRole(X, toolRole), affordsTask(X, maintenanceTask).
 goesIn(X, kitchen) :- obj(X), hasRole(X, toolRole), affordsTask(X, eatingDrinkingTask).
 goesIn(X, kitchen) :- obj(X), hasRole(X, toolRole), affordsTask(X, foodPreparationTask).
+
+% --- bed ---
 goesIn(X, bed) :- obj(X), hasRole(X, beddingRole), affordsTask(X, sleepingTask).
 goesIn(X, bed) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
 goesIn(X, bed) :- obj(X), hasRole(X, clothingRole), affordsTask(X, dressingTask).
 goesIn(X, bed) :- obj(X), hasRole(X, entertainmentRole), affordsTask(X, leisureTask).
 goesIn(X, bed) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, storageTask).
 goesIn(X, bed) :- obj(X), hasRole(X, toolRole), affordsTask(X, hygieneTask).
+
+% --- drawer ---
 goesIn(X, drawer) :- obj(X), hasRole(X, clothingRole), affordsTask(X, dressingTask).
 goesIn(X, drawer) :- obj(X), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask), affordsTask(X, foodPreparationTask), affordsTask(X, leisureTask), affordsTask(X, workStudyTask).
 goesIn(X, drawer) :- obj(X), hasRole(X, utensilRole), affordsTask(X, eatingDrinkingTask), affordsTask(X, foodPreparationTask).
@@ -435,6 +473,8 @@ goesIn(X, drawer) :- obj(X), hasRole(X, toolRole).
 goesIn(X, drawer) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, storageTask), not hasRole(X, clothingRole), not hasRole(X, consumableRole), not hasRole(X, toolRole), not hasRole(X, lightingRole), not hasRole(X, musicalInstrumentRole), not hasRole(X, safetyEquipmentRole), not hasRole(X, storageContainerRole), not hasRole(X, utensilRole), not hasRole(X, wasteRole).
 goesIn(X, drawer) :- obj(X), hasRole(X, lightingRole), affordsTask(X, leisureTask).
 goesIn(X, drawer) :- obj(X), hasRole(X, consumableRole), affordsTask(X, leisureTask).
+
+% --- shelf ---
 goesIn(X, shelf) :- obj(X), hasRole(X, utensilRole), affordsTask(X, eatingDrinkingTask), affordsTask(X, foodPreparationTask).
 goesIn(X, shelf) :- obj(X), hasRole(X, documentRole), affordsTask(X, leisureTask), affordsTask(X, workStudyTask).
 goesIn(X, shelf) :- obj(X), hasRole(X, decorationRole), affordsTask(X, storageTask).
@@ -457,6 +497,8 @@ goesIn(X, shelf) :- obj(X), hasRole(X, decorationRole), affordsTask(X, leisureTa
 goesIn(X, shelf) :- obj(X), hasRole(X, toolRole).
 goesIn(X, shelf) :- obj(X), hasRole(X, consumableRole), affordsTask(X, leisureTask).
 goesIn(X, shelf) :- obj(X), hasRole(X, decorationRole).
+
+% --- sink ---
 goesIn(X, sink) :- obj(X), hasRole(X, toolRole), affordsTask(X, eatingDrinkingTask), affordsTask(X, hygieneTask), affordsTask(X, maintenanceTask).
 goesIn(X, sink) :- obj(X), hasRole(X, cleaningToolRole), affordsTask(X, hygieneTask).
 goesIn(X, sink) :- obj(X), hasRole(X, consumableRole), affordsTask(X, cleaningTask), affordsTask(X, eatingDrinkingTask), affordsTask(X, hygieneTask).
@@ -468,8 +510,12 @@ goesIn(X, sink) :- obj(X), hasRole(X, utensilRole), affordsTask(X, eatingDrinkin
 goesIn(X, sink) :- obj(X), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
 goesIn(X, sink) :- obj(X), hasRole(X, utensilRole), affordsTask(X, foodPreparationTask).
 goesIn(X, sink) :- obj(X), hasRole(X, toolRole), affordsTask(X, maintenanceTask).
+
+% --- playroom ---
 goesIn(X, playroom) :- obj(X), hasRole(X, toolRole), affordsTask(X, leisureTask).
 goesIn(X, playroom) :- obj(X), hasRole(X, entertainmentRole), affordsTask(X, leisureTask).
+
+% --- dining_room ---
 goesIn(X, dining_room) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, eatingDrinkingTask), affordsTask(X, foodPreparationTask), affordsTask(X, leisureTask), affordsTask(X, workStudyTask).
 goesIn(X, dining_room) :- obj(X), hasRole(X, furnitureRole), hasRole(X, storageContainerRole), affordsTask(X, eatingDrinkingTask), affordsTask(X, foodPreparationTask), affordsTask(X, storageTask).
 goesIn(X, dining_room) :- obj(X), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
@@ -477,9 +523,10 @@ goesIn(X, dining_room) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, leis
 goesIn(X, dining_room) :- obj(X), hasRole(X, utensilRole), affordsTask(X, eatingDrinkingTask).
 goesIn(X, dining_room) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, eatingDrinkingTask), affordsTask(X, leisureTask).
 goesIn(X, dining_room) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
+
+% --- laundry_room ---
 goesIn(X, laundry_room) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
 goesIn(X, laundry_room) :- obj(X), hasRole(X, utensilRole), affordsTask(X, cleaningTask), affordsTask(X, eatingDrinkingTask), affordsTask(X, hygieneTask).
 goesIn(X, laundry_room) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, eatingDrinkingTask), affordsTask(X, storageTask).
 goesIn(X, laundry_room) :- obj(X), hasRole(X, toolRole), affordsTask(X, foodPreparationTask).
 
-#show goesIn/2.
