@@ -24,10 +24,10 @@ MODULE_DIR = Path(__file__).resolve().parent.parent.parent  # module_1/
 CONFIG_PATH = MODULE_DIR / "config.json"
 
 DEFAULTS = {
-    "annotation": "llama3.1",
-    "filtering": "llama3.1",
+    "annotation": "meta-llama/Llama-3.1-8B-Instruct",
+    "filtering": "meta-llama/Llama-3.1-8B-Instruct",
     "rule_induction": "Qwen/Qwen2.5-Coder-7B-Instruct",
-    "evaluation": "llama3.1",
+    "evaluation": "meta-llama/Llama-3.1-8B-Instruct",
 }
 
 _cache: dict | None = None
@@ -47,4 +47,4 @@ def _load() -> dict:
 def get_model(role: str) -> str:
     """Return the model name for *role* (annotation / filtering / evaluation / rule_induction)."""
     config = _load()
-    return config.get("models", {}).get(role, DEFAULTS.get(role, "llama3.1"))
+    return config.get("models", {}).get(role, DEFAULTS.get(role, "meta-llama/Llama-3.1-8B-Instruct"))

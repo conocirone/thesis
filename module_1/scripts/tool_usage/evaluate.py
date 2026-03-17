@@ -25,7 +25,6 @@ import sys
 import random
 from pathlib import Path
 from tqdm import tqdm
-import ollama
 
 SCRIPT_DIR = Path(__file__).parent      # scripts/tool_usage
 SCRIPTS_ROOT = SCRIPT_DIR.parent        # scripts
@@ -33,6 +32,7 @@ MODULE_DIR = SCRIPTS_ROOT.parent        # module_1
 
 sys.path.insert(0, str(SCRIPTS_ROOT))
 from shared.config import get_model
+from shared.inference import chat as llm_chat
 
 EVAL_MODEL = get_model("evaluation")
 
@@ -133,19 +133,18 @@ Return ONLY the JSON. No explanation, no markdown, no extra text.
 """
 
 
-def query_ollama_soma(object_name: str) -> dict:
-    """Query Llama to extract SOMA features for an unseen object."""
-    response = ollama.chat(
-        model=EVAL_MODEL,
-        format='json',
-        options={"temperature": 0.0},
+def query_soma(object_name: str) -> dict:
+    """Extract SOMA features for an unseen object via LLM."""
+    text = llm_chat(
         messages=[
             {'role': 'system', 'content': SYSTEM_PROMPT},
             {'role': 'user', 'content': f"Object: {object_name}"}
-        ]
+        ],
+        role="evaluation",
+        temperature=0.0,
+        json_mode=True,
     )
 
-    text = response['message']['content']
     match = re.search(r'\{.*\}', text, re.DOTALL)
     if match:
         text = match.group(0)
@@ -273,14 +272,13 @@ def predict_required_affordance(task_text: str, canonical_affordances: list[str]
         f"Task: \"{task_text}\"\n"
         "Your answer (one affordance from the list):"
     )
-    response = ollama.chat(
-        model=EVAL_MODEL,
+    text = llm_chat(
         messages=[{"role": "system", "content": system},
                   {"role": "user", "content": user}],
-        options={"temperature": 0.0},
+        role="evaluation",
+        temperature=0.0,
     )
-    text = response["message"]["content"].strip().lower()
-    text = text.strip().strip("\"'`")
+    text = text.strip().lower().strip("\"'`")
     pred = clean_affordance_id(text)
     if pred in set(canonical_affordances):
         return pred
@@ -303,13 +301,12 @@ def llm_fallback_tool_selection(task_text: str, tools: list[str]) -> str:
         f"Tools: {tools_str}\n"
         "Best tool:"
     )
-    response = ollama.chat(
-        model=EVAL_MODEL,
+    pred = llm_chat(
         messages=[{"role": "system", "content": system},
                   {"role": "user", "content": user}],
-        options={"temperature": 0.0},
-    )
-    pred = response["message"]["content"].strip().strip("\"'`").lower()
+        role="evaluation",
+        temperature=0.0,
+    ).strip().strip("\"'`").lower()
     for t in tools:
         if t.lower() == pred:
             return t
@@ -326,6 +323,7 @@ def llm_fallback_tool_selection(task_text: str, tools: list[str]) -> str:
 def run_evaluation(num_tests=None):
     print("=" * 60)
     print("Neuro-Symbolic Evaluation: Tool Usage Task")
+    print(f'Using model: {EVAL_MODEL}')
     print("=" * 60)
 
     # 1. Prepare Rules
@@ -384,7 +382,7 @@ def run_evaluation(num_tests=None):
 
             # Step A: Neuro (Llama 3.1 SOMA Extraction) — cached
             if tool_name not in soma_cache:
-                soma_cache[tool_name] = query_ollama_soma(tool_name)
+                soma_cache[tool_name] = query_soma(tool_name)
             soma_data = soma_cache[tool_name]
 
             # Step B: Symbolic format

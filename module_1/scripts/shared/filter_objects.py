@@ -19,7 +19,6 @@ import sys
 import time
 from concurrent.futures import ThreadPoolExecutor, TimeoutError
 from pathlib import Path
-import ollama
 
 # -- Configuration ----------------------------------------------------------
 SCRIPT_DIR    = Path(__file__).parent          # scripts/shared/
@@ -28,6 +27,7 @@ JSONS_DIR     = MODULE_DIR / "jsons"
 
 sys.path.insert(0, str(SCRIPT_DIR.parent))
 from shared.config import get_model
+from shared.inference import chat as llm_chat
 
 INPUT_JSON    = str(JSONS_DIR / "conceptnet_domestic_subgraph.json")
 KEPT_JSON     = str(JSONS_DIR / "conceptnet_objects_kept.json")
@@ -73,20 +73,19 @@ Return ONLY a JSON object with one key:
 
 
 # -- LLM call with timeout -------------------------------------------------
-def _call_ollama(batch: list[str]) -> list[str]:
+def _call_llm(batch: list[str]) -> list[str]:
     """Send a batch to the LLM and return the list of kept items."""
     concept_list = "\n".join(f"- {c}" for c in batch)
-    response = ollama.chat(
-        model=MODEL,
+    raw = llm_chat(
         messages=[
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user",   "content": f"Filter this list:\n{concept_list}"},
-        ]
+        ],
+        role="filtering",
     )
-    raw = response["message"]["content"]
     match = re.search(r'\{.*?"keep"\s*:\s*\[.*?\]\s*\}', raw, re.DOTALL)
     if not match:
-        return batch  # fallback: keep everything
+        return batch
     data = json.loads(match.group())
     return data.get("keep", batch)
 
@@ -96,7 +95,7 @@ def filter_batch(batch: list[str]) -> list[str]:
     for attempt in range(1, MAX_RETRIES + 1):
         try:
             with ThreadPoolExecutor(max_workers=1) as ex:
-                return ex.submit(_call_ollama, batch).result(timeout=LLM_TIMEOUT)
+                return ex.submit(_call_llm, batch).result(timeout=LLM_TIMEOUT)
         except TimeoutError:
             print(f"\n    [WARN] Timeout on attempt {attempt}/{MAX_RETRIES}", end=" ")
             if attempt < MAX_RETRIES:

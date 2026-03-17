@@ -65,18 +65,6 @@ from pathlib import Path
 from collections import defaultdict
 
 # =============================================================================
-# MLX
-# =============================================================================
-
-try:
-    import mlx.core as mx
-    from mlx_lm import load, generate
-    from mlx_lm.sample_utils import make_sampler
-except ImportError:
-    print("[ERROR] Install MLX: pip install mlx mlx-lm")
-    sys.exit(1)
-
-# =============================================================================
 # CLINGO
 # =============================================================================
 
@@ -95,12 +83,13 @@ MODULE_DIR = SCRIPT_DIR.parent.parent
 
 sys.path.insert(0, str(SCRIPT_DIR.parent))
 from shared.config import get_model
+from shared.inference import generate as llm_generate
 
-MODEL_NAME = os.environ.get("HF_MODEL_NAME", get_model("rule_induction"))
+MODEL_NAME = get_model("rule_induction")
 
-MAX_TOKENS = int(os.environ.get("MLX_MAX_TOKENS", "2048"))
-TEMPERATURE = float(os.environ.get("MLX_TEMPERATURE", "0.7"))
-TOP_P = float(os.environ.get("MLX_TOP_P", "0.85"))
+MAX_TOKENS = int(os.environ.get("LLM_MAX_TOKENS", "2048"))
+TEMPERATURE = float(os.environ.get("LLM_TEMPERATURE", "0.7"))
+TOP_P = float(os.environ.get("LLM_TOP_P", "0.85"))
 
 NUM_RULE_CANDIDATES = int(os.environ.get("NUM_RULE_CANDIDATES", "3"))
 MIN_POS_COVERAGE = int(os.environ.get("MIN_POS_COVERAGE", "1"))
@@ -108,31 +97,6 @@ RULES_DIR = MODULE_DIR / "rules"
 
 INPUT_EXAMPLES_FILE = RULES_DIR / "tidy_up" / "ilasp_tidy_up.las"
 OUTPUT_RULES_FILE = RULES_DIR / "tidy_up" / "learned_rules_llm_total.txt"
-
-_model = None
-_tokenizer = None
-
-
-# =============================================================================
-# MODEL LOADING
-# =============================================================================
-
-def load_model():
-
-    global _model, _tokenizer
-
-    if _model is not None:
-        return _model, _tokenizer
-
-    print(f"Loading model {MODEL_NAME}...")
-
-    start = time.time()
-
-    _model, _tokenizer = load(MODEL_NAME)
-
-    print(f"Loaded in {time.time()-start:.1f}s")
-
-    return _model, _tokenizer
 
 
 # =============================================================================
@@ -610,28 +574,15 @@ def extract_rules(text):
 def call_llm(prompt, boost_temperature=False):
     """Call the LLM. When boost_temperature=True, ramp up temperature to
     escape stuck loops and encourage more diverse rule proposals."""
-
-    global _model, _tokenizer
-
-    if _model is None:
-        load_model()
-
-    # FIX: Ramp up temperature when stuck to inject entropy and break loops.
-    # Cap at 1.4 to avoid incoherent output.
     temp = min(TEMPERATURE * 2.0, 1.4) if boost_temperature else TEMPERATURE
 
-    sampler = make_sampler(temp=temp, top_p=TOP_P)
-
-    response = generate(
-        model=_model,
-        tokenizer=_tokenizer,
+    return llm_generate(
         prompt=prompt,
+        role="rule_induction",
         max_tokens=MAX_TOKENS,
-        sampler=sampler,
-        verbose=False
+        temperature=temp,
+        top_p=TOP_P,
     )
-
-    return response.strip()
 
 
 # =============================================================================
@@ -857,7 +808,7 @@ def learn_rules_for_location(loc, data, valid_roles, valid_tasks):
 
 def main():
 
-    load_model()
+    print(f"[config] Rule induction model: {MODEL_NAME}")
 
     # Parse valid role/task constants directly from the ILASP file header.
     # Injected into every prompt and used to validate rules, preventing the LLM

@@ -6,7 +6,6 @@ import subprocess
 import sys
 from pathlib import Path
 from tqdm import tqdm
-import ollama
 
 SCRIPT_DIR = Path(__file__).parent      # scripts/tidy_up
 SCRIPTS_ROOT = SCRIPT_DIR.parent      # scripts
@@ -14,6 +13,7 @@ MODULE_DIR = SCRIPTS_ROOT.parent      # module_1
 
 sys.path.insert(0, str(SCRIPTS_ROOT))
 from shared.config import get_model
+from shared.inference import chat as llm_chat
 
 EVAL_MODEL = get_model("evaluation")
 
@@ -141,24 +141,22 @@ blanket:       {{"hasPhysicalQuality":["Soft_Deformable","Washable"],  "hasRole"
 Return ONLY the JSON. No explanation, no markdown, no extra text.
 """
 
-def query_ollama_soma(object_name: str) -> dict:
-    """Query Llama to extract SOMA features for an unseen object."""
-    response = ollama.chat(
-        model=EVAL_MODEL,
-        format='json',
-        options={"temperature": 0.0},
+def query_soma(object_name: str) -> dict:
+    """Extract SOMA features for an unseen object via LLM."""
+    text = llm_chat(
         messages=[
             {'role': 'system', 'content': SYSTEM_PROMPT},
             {'role': 'user', 'content': f"Object: {object_name}"}
-        ]
+        ],
+        role="evaluation",
+        temperature=0.0,
+        json_mode=True,
     )
-    
-    text = response['message']['content']
-    # Extract JSON if markdown is present
+
     match = re.search(r'\{.*\}', text, re.DOTALL)
     if match:
         text = match.group(0)
-        
+
     try:
         data = json.loads(text)
         return data
@@ -352,7 +350,7 @@ def run_evaluation(num_tests=50):
             obj_id = "o_" + obj_id
             
         # Step A: Neuro (Llama 3.1 SOMA Extraction)
-        soma_data = query_ollama_soma(obj_name)
+        soma_data = query_soma(obj_name)
         
         # Step B: Symbolic format
         facts_str = format_soma_facts(obj_id, soma_data)

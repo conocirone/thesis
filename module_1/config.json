@@ -1,8 +1,8 @@
 {
   "models": {
-    "annotation": "llama3.1:latest",
-    "filtering": "llama3.1:latest",
+    "annotation": "meta-llama/Llama-3.1-8B-Instruct",
+    "filtering": "meta-llama/Llama-3.1-8B-Instruct",
     "rule_induction": "Qwen/Qwen2.5-Coder-7B-Instruct",
-    "evaluation": "llama3.1:latest"
+    "evaluation": "meta-llama/Llama-3.1-8B-Instruct"
   }
 }

@@ -1,6 +1,5 @@
 import json
 import sys
-import ollama
 from pathlib import Path
 
 # ------------------------------------------------------------------------------
@@ -11,6 +10,7 @@ MODULE_DIR = SCRIPT_DIR.parent.parent       # module_1/
 
 sys.path.insert(0, str(SCRIPT_DIR.parent))
 from shared.config import get_model
+from shared.inference import chat as llm_chat
 
 INPUT_JSON = str(MODULE_DIR / "jsons" / "conceptnet_objects_kept.json")
 OUTPUT_PROLOG = str(MODULE_DIR / "rules" / "shared" / "background_knowledge.las")
@@ -206,13 +206,13 @@ def main():
                     {'role': 'user',   'content': user_message}
                 ]
 
-                response = ollama.chat(
-                    model=MODEL,
+                response_text = llm_chat(
                     messages=messages,
-                    format='json',
-                    options={"temperature": 0.0}
+                    role="annotation",
+                    temperature=0.0,
+                    json_mode=True,
                 )
-                raw_parsed = json.loads(response['message']['content'])
+                raw_parsed = json.loads(response_text)
                 parsed = normalize_llm_output(raw_parsed)
 
                 if not parsed:
@@ -225,15 +225,15 @@ def main():
                         f"If '{obj_name}' is abstract or a person, return empty lists. "
                         f"Otherwise try again with at least one value per key."
                     )
-                    messages.append({'role': 'assistant', 'content': response['message']['content']})
+                    messages.append({'role': 'assistant', 'content': response_text})
                     messages.append({'role': 'user', 'content': correction})
-                    response2 = ollama.chat(
-                        model=MODEL,
+                    response_text2 = llm_chat(
                         messages=messages,
-                        format='json',
-                        options={"temperature": 0.0}
+                        role="annotation",
+                        temperature=0.0,
+                        json_mode=True,
                     )
-                    raw_parsed = json.loads(response2['message']['content'])
+                    raw_parsed = json.loads(response_text2)
                     parsed = normalize_llm_output(raw_parsed)
 
                 if not parsed:

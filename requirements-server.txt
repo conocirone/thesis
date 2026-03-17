@@ -1,0 +1,39 @@
+# =============================================================================
+# requirements-server.txt — SLURM GPU cluster dependencies
+# =============================================================================
+# Install: pip install -r requirements-server.txt
+# For PyTorch with CUDA, install separately first:
+#   pip install torch --index-url https://download.pytorch.org/whl/cu121
+# =============================================================================
+
+# -- HuggingFace ML stack (replaces ollama + mlx) --
+torch
+transformers
+accelerate
+huggingface_hub
+
+# -- ASP / Logic --
+clingo
+
+# -- Data processing --
+duckdb
+pandas
+numpy
+
+# -- Utilities --
+tqdm
+requests
+regex
+pyyaml
+
+# -- ConceptNet --
+ftfy
+wordfreq
+langcodes
+marisa-trie
+
+# -- JSON / schema --
+jsonschema
+
+# -- Other pipeline deps --
+tabulate
