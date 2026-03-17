@@ -11,7 +11,13 @@ import ollama
 SCRIPT_DIR = Path(__file__).parent      # scripts/tidy_up
 SCRIPTS_ROOT = SCRIPT_DIR.parent      # scripts
 MODULE_DIR = SCRIPTS_ROOT.parent      # module_1
-DATA_DIR = MODULE_DIR.parent / "Robo-CSK-Benchmark" / "tidy_up" # thesis/Robo-CSK-Benchmark/tidy_up
+
+sys.path.insert(0, str(SCRIPTS_ROOT))
+from shared.config import get_model
+
+EVAL_MODEL = get_model("evaluation")
+
+DATA_DIR = MODULE_DIR.parent / "Robo-CSK-Benchmark" / "tidy_up"
 CSV_FILE = DATA_DIR / "tidy_up_data.csv"
 ILASP_OUT = MODULE_DIR / "rules" / "tidy_up" / "learned_rules_llm_total.txt"
 TMP_DIR = SCRIPT_DIR / "tmp"
@@ -138,9 +144,9 @@ Return ONLY the JSON. No explanation, no markdown, no extra text.
 def query_ollama_soma(object_name: str) -> dict:
     """Query Llama to extract SOMA features for an unseen object."""
     response = ollama.chat(
-        model='llama3.1',
+        model=EVAL_MODEL,
         format='json',
-        options={"temperature": 0.0}, # deterministic as possible
+        options={"temperature": 0.0},
         messages=[
             {'role': 'system', 'content': SYSTEM_PROMPT},
             {'role': 'user', 'content': f"Object: {object_name}"}
@@ -221,6 +227,74 @@ def run_clingo_inference(rules_path: Path, facts_str: str) -> list:
             
     return list(set(deduced_locations))
 
+
+def load_rules_by_location(ilasp_output_path: Path) -> dict[str, list[str]]:
+    """Parse learned goesIn rules into {location: [rule, ...]}."""
+    if not ilasp_output_path.exists():
+        raise FileNotFoundError(f"Learned rules not found at {ilasp_output_path}")
+
+    rules_by_loc: dict[str, list[str]] = {}
+    with open(ilasp_output_path, "r", encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if not line or line.startswith("%"):
+                continue
+            if ":-" not in line or not line.endswith("."):
+                continue
+            m = re.match(r"goesIn\(X,\s*([a-zA-Z0-9_]+)\)\s*:-", line)
+            if not m:
+                continue
+            loc = m.group(1)
+            rules_by_loc.setdefault(loc, []).append(line)
+    return rules_by_loc
+
+
+def rule_fires_for_object(rule: str, obj_id: str, facts_str: str, loc: str) -> bool:
+    """Return True if a single rule derives goesIn(obj_id, loc) under given facts."""
+    tmp_prog = TMP_DIR / "rule_probe.lp"
+    with open(tmp_prog, "w", encoding="utf-8") as f:
+        f.write(facts_str)
+        f.write("\n\n")
+        f.write(rule)
+        f.write("\n\n")
+        f.write(f"covered :- goesIn({obj_id}, {loc}).\n")
+        f.write("#show covered/0.\n")
+
+    result = subprocess.run(
+        ["clingo", str(tmp_prog), "0", "--out-ifs=\n"],
+        capture_output=True, text=True
+    )
+    return "covered" in result.stdout
+
+
+def count_body_literals(rule: str) -> int:
+    """Count the number of body literals in an ASP rule (after ':-')."""
+    head_body = rule.split(":-", 1)
+    if len(head_body) < 2:
+        return 0
+    body = head_body[1].rstrip(".")
+    literals = [lit.strip() for lit in body.split("),") if lit.strip()]
+    return len(literals)
+
+
+def rank_locations(obj_id: str, facts_str: str, rules_by_loc: dict[str, list[str]]) -> list[str]:
+    """Produce a ranked list of locations using specificity-weighted rule scoring.
+
+    Each firing rule contributes its number of body literals to the location's
+    score. More specific rules (more conditions) provide stronger evidence.
+    """
+    scored: list[tuple[str, float]] = []
+    for loc, rules in rules_by_loc.items():
+        score = 0.0
+        for rule in rules:
+            if rule_fires_for_object(rule, obj_id, facts_str, loc):
+                score += count_body_literals(rule)
+        if score > 0:
+            scored.append((loc, score))
+
+    scored.sort(key=lambda x: (-x[1], x[0]))
+    return [loc for loc, _ in scored]
+
 # ------------------------------------------------------------------------------
 # MAIN PIPELINE
 # ------------------------------------------------------------------------------
@@ -233,6 +307,7 @@ def run_evaluation(num_tests=50):
     rules_lp = TMP_DIR / "learned_rules.lp"
     print(f"Extracting rules from {ILASP_OUT.name}...")
     extract_ilasp_rules(ILASP_OUT, rules_lp)
+    rules_by_loc = load_rules_by_location(ILASP_OUT)
     
     # 2. Read Benchmark
     print("Reading Robo-CSK Benchmark...")
@@ -282,10 +357,8 @@ def run_evaluation(num_tests=50):
         # Step B: Symbolic format
         facts_str = format_soma_facts(obj_id, soma_data)
         
-        # Step C: Logical Inference
-        deduced = run_clingo_inference(rules_lp, facts_str)
-        # Sort alphabetically for deterministic metric handling as it's an unranked set
-        #deduced.sort()
+        # Step C: Logical Inference (ranked)
+        deduced = rank_locations(obj_id, facts_str, rules_by_loc)
         
         ground_truth = case["target_locations"]
         

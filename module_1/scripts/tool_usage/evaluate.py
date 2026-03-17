@@ -31,9 +31,15 @@ SCRIPT_DIR = Path(__file__).parent      # scripts/tool_usage
 SCRIPTS_ROOT = SCRIPT_DIR.parent        # scripts
 MODULE_DIR = SCRIPTS_ROOT.parent        # module_1
 
+sys.path.insert(0, str(SCRIPTS_ROOT))
+from shared.config import get_model
+
+EVAL_MODEL = get_model("evaluation")
+
 BENCHMARK_DIR = MODULE_DIR.parent / "Robo-CSK-Benchmark" / "tool_usage"
 CSV_FILE = BENCHMARK_DIR / "tool_usage_multichoice_questions.csv"
 AFFORDANCE_TASK_MAP = BENCHMARK_DIR / "affordance_task_map.json"
+AFFORDANCE_LIST_FILE = BENCHMARK_DIR / "affordances_after_mapping.json"
 
 LEARNED_RULES = MODULE_DIR / "rules" / "tool_usage" / "learned_rules_tool_usage.txt"
 TMP_DIR = SCRIPT_DIR / "tmp"
@@ -130,7 +136,7 @@ Return ONLY the JSON. No explanation, no markdown, no extra text.
 def query_ollama_soma(object_name: str) -> dict:
     """Query Llama to extract SOMA features for an unseen object."""
     response = ollama.chat(
-        model='llama3.1',
+        model=EVAL_MODEL,
         format='json',
         options={"temperature": 0.0},
         messages=[
@@ -219,6 +225,100 @@ def clean_affordance_id(name: str) -> str:
     return name.strip().lower().replace(" ", "_").replace("-", "_")
 
 
+def load_canonical_affordances() -> list[str]:
+    with open(AFFORDANCE_LIST_FILE, encoding="utf-8") as f:
+        raw = json.load(f)
+    return [clean_affordance_id(a) for a in raw]
+
+
+def load_affordance_task_map() -> dict[str, list[str]]:
+    """Load the affordance -> example tasks mapping for few-shot prompting."""
+    if not AFFORDANCE_TASK_MAP.exists():
+        return {}
+    with open(AFFORDANCE_TASK_MAP, encoding="utf-8") as f:
+        raw = json.load(f)
+    return {clean_affordance_id(k): v for k, v in raw.items()}
+
+
+def predict_required_affordance(task_text: str, canonical_affordances: list[str],
+                                aff_task_map: dict[str, list[str]]) -> str:
+    """Infer the affordance required by the task text (paper-aligned).
+
+    Uses few-shot examples from the affordance_task_map to ground the LLM's
+    prediction in concrete task-to-affordance mappings.
+    """
+    affordances_str = ", ".join(sorted(set(canonical_affordances)))
+
+    few_shot_lines = []
+    examples_used = 0
+    for aff in sorted(aff_task_map.keys()):
+        if aff not in set(canonical_affordances):
+            continue
+        tasks = aff_task_map[aff]
+        if tasks:
+            few_shot_lines.append(f"Task: \"{tasks[0]}\" -> {aff}")
+            examples_used += 1
+            if examples_used >= 15:
+                break
+    few_shot_block = "\n".join(few_shot_lines)
+
+    system = (
+        "You are a household robot reasoning about object affordances. "
+        "Given a household task, pick the SINGLE most relevant affordance "
+        "from the provided list. Output ONLY the affordance string, nothing else."
+    )
+    user = (
+        f"Valid affordances:\n{affordances_str}\n\n"
+        f"Examples:\n{few_shot_block}\n\n"
+        f"Task: \"{task_text}\"\n"
+        "Your answer (one affordance from the list):"
+    )
+    response = ollama.chat(
+        model=EVAL_MODEL,
+        messages=[{"role": "system", "content": system},
+                  {"role": "user", "content": user}],
+        options={"temperature": 0.0},
+    )
+    text = response["message"]["content"].strip().lower()
+    text = text.strip().strip("\"'`")
+    pred = clean_affordance_id(text)
+    if pred in set(canonical_affordances):
+        return pred
+    for a in canonical_affordances:
+        if a in pred or pred in a:
+            return a
+    return canonical_affordances[0] if canonical_affordances else pred
+
+
+def llm_fallback_tool_selection(task_text: str, tools: list[str]) -> str:
+    """Direct LLM fallback when symbolic matching finds no tool."""
+    tools_str = ", ".join(tools)
+    system = (
+        "You are a household robot. Given a task and a list of tools, "
+        "pick the SINGLE best tool to accomplish the task. "
+        "Output ONLY the tool name exactly as listed, nothing else."
+    )
+    user = (
+        f"Task: {task_text}\n"
+        f"Tools: {tools_str}\n"
+        "Best tool:"
+    )
+    response = ollama.chat(
+        model=EVAL_MODEL,
+        messages=[{"role": "system", "content": system},
+                  {"role": "user", "content": user}],
+        options={"temperature": 0.0},
+    )
+    pred = response["message"]["content"].strip().strip("\"'`").lower()
+    for t in tools:
+        if t.lower() == pred:
+            return t
+    for t in tools:
+        if t.lower() in pred or pred in t.lower():
+            return t
+    return sorted(tools)[0]
+
+
 # ------------------------------------------------------------------------------
 # MAIN PIPELINE
 # ------------------------------------------------------------------------------
@@ -240,13 +340,13 @@ def run_evaluation(num_tests=None):
         reader = csv.DictReader(f)
         for row in reader:
             task_name = row["Task"].strip()
-            affordance = clean_affordance_id(row["Affordance"].strip())
+            gold_affordance = clean_affordance_id(row["Affordance"].strip())
             correct_tool = row["Correct_Tool"].strip()
             wrong_tools = ast.literal_eval(row["Wrong_Tools"])
 
             test_cases.append({
                 "task": task_name,
-                "affordance": affordance,
+                "gold_affordance": gold_affordance,
                 "correct_tool": correct_tool,
                 "wrong_tools": wrong_tools,
                 "all_tools": [correct_tool] + wrong_tools,
@@ -263,14 +363,17 @@ def run_evaluation(num_tests=None):
     correct_count = 0
     results_log = []
 
-    # Cache SOMA extractions to avoid re-querying the same tool
     soma_cache = {}
+    canonical_affordances = load_canonical_affordances()
+    aff_task_map = load_affordance_task_map()
 
     for case in tqdm(test_cases):
         task_name = case["task"]
-        required_aff = case["affordance"]
+        gold_aff = case["gold_affordance"]
         correct_tool = case["correct_tool"]
         all_tools = case["all_tools"]
+
+        required_aff = predict_required_affordance(task_name, canonical_affordances, aff_task_map)
 
         tool_results = {}
 
@@ -307,8 +410,8 @@ def run_evaluation(num_tests=None):
             predicted_tool = min(matching_tools,
                                 key=lambda t: len(tool_results[t]["deduced_affordances"]))
         else:
-            # No tool matched — fall back to random choice
-            predicted_tool = random.choice(all_tools)
+            # No symbolic match — use LLM commonsense as fallback
+            predicted_tool = llm_fallback_tool_selection(task_name, all_tools)
 
         is_correct = predicted_tool.lower() == correct_tool.lower()
         if is_correct:
@@ -316,7 +419,9 @@ def run_evaluation(num_tests=None):
 
         results_log.append({
             "task": task_name,
-            "affordance": required_aff,
+            "required_affordance_pred": required_aff,
+            "required_affordance_gold": gold_aff,
+            "affordance_pred_correct": (required_aff == gold_aff),
             "correct_tool": correct_tool,
             "predicted_tool": predicted_tool,
             "is_correct": is_correct,
@@ -334,7 +439,7 @@ def run_evaluation(num_tests=None):
     aff_correct = {}
     aff_total = {}
     for res in results_log:
-        aff = res["affordance"]
+        aff = res["required_affordance_gold"]
         aff_total[aff] = aff_total.get(aff, 0) + 1
         if res["is_correct"]:
             aff_correct[aff] = aff_correct.get(aff, 0) + 1
@@ -352,12 +457,14 @@ def run_evaluation(num_tests=None):
     no_match = sum(1 for r in results_log if not r["matching_tools"])
     multi_match = sum(1 for r in results_log if len(r["matching_tools"]) > 1)
     single_match = sum(1 for r in results_log if len(r["matching_tools"]) == 1)
+    aff_pred_acc = sum(1 for r in results_log if r["affordance_pred_correct"]) / len(results_log) * 100
 
     print(f"\n{'─' * 60}")
     print(f"Match diagnostics:")
     print(f"  Single match (ideal): {single_match} ({single_match/len(test_cases)*100:.1f}%)")
     print(f"  Multiple matches:     {multi_match} ({multi_match/len(test_cases)*100:.1f}%)")
     print(f"  No match (fallback):  {no_match} ({no_match/len(test_cases)*100:.1f}%)")
+    print(f"  Affordance prediction accuracy (task→affordance): {aff_pred_acc:.1f}%")
 
     # Save Report
     with open(EVAL_REPORT_PATH, "w", encoding="utf-8") as f:
@@ -367,6 +474,7 @@ def run_evaluation(num_tests=None):
         f.write(f"- **Total Questions Tested**: {len(test_cases)}\n")
         f.write(f"- **Accuracy**: {accuracy:.2f}%\n")
         f.write(f"- **Correct Predictions**: {correct_count}/{len(test_cases)}\n\n")
+        f.write(f"- **Affordance Prediction Accuracy**: {aff_pred_acc:.1f}%\n\n")
 
         f.write("### Match Diagnostics\n")
         f.write(f"- Single match: {single_match} ({single_match/len(test_cases)*100:.1f}%)\n")
@@ -392,7 +500,8 @@ def run_evaluation(num_tests=None):
         for res in results_log:
             status = "✅ CORRECT" if res["is_correct"] else "❌ WRONG"
             f.write(f"### {res['task']} ({status})\n")
-            f.write(f"- **Required Affordance**: {res['affordance']}\n")
+            f.write(f"- **Required Affordance (pred)**: {res['required_affordance_pred']}\n")
+            f.write(f"- **Required Affordance (gold)**: {res['required_affordance_gold']}\n")
             f.write(f"- **Correct Tool**: {res['correct_tool']}\n")
             f.write(f"- **Predicted Tool**: {res['predicted_tool']}\n")
             f.write(f"- **Matching Tools**: {', '.join(res['matching_tools']) if res['matching_tools'] else 'None'}\n")

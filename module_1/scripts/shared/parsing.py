@@ -1,4 +1,5 @@
 import json
+import sys
 import ollama
 from pathlib import Path
 
@@ -8,9 +9,12 @@ from pathlib import Path
 SCRIPT_DIR = Path(__file__).parent          # scripts/shared/
 MODULE_DIR = SCRIPT_DIR.parent.parent       # module_1/
 
+sys.path.insert(0, str(SCRIPT_DIR.parent))
+from shared.config import get_model
+
 INPUT_JSON = str(MODULE_DIR / "jsons" / "conceptnet_objects_kept.json")
 OUTPUT_PROLOG = str(MODULE_DIR / "rules" / "shared" / "background_knowledge.las")
-MODEL = "llama3.1:latest"
+MODEL = get_model("annotation")
 CODEBOOK = {
     "Qualities": [
         "RequiresCooling", "RequiresFreezing", "Perishable", "Heated", "Liquid",

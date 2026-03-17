@@ -1,0 +1,8 @@
+{
+  "models": {
+    "annotation": "llama3.1:latest",
+    "filtering": "llama3.1:latest",
+    "rule_induction": "Qwen/Qwen2.5-Coder-7B-Instruct",
+    "evaluation": "llama3.1:latest"
+  }
+}

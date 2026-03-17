@@ -179,10 +179,10 @@ def extract_location_pairs(subgraph: dict, kb_objects: set) -> dict:
 
 
 def format_obj_context(obj_id: str, obj_data: dict) -> str:
-    """Format an object's SOMA annotations as Prolog facts for ILASP context.
-    Uses only roles and tasks (not qualities) to reduce search space.
-    """
+    """Format an object's SOMA annotations as Prolog facts for ILASP context."""
     facts = [f"obj({obj_id})."]
+    for q in obj_data["qualities"]:
+        facts.append(f"hasPhysicalQuality({obj_id}, {q}).")
     for r in obj_data["roles"]:
         facts.append(f"hasRole({obj_id}, {r}).")
     for t in obj_data["tasks"]:
@@ -199,6 +199,7 @@ def stratified_sample(obj_locations: dict, kb_objects: dict,
     by_loc = defaultdict(list)
     for obj_id, locs in obj_locations.items():
         sig = (
+            tuple(sorted(kb_objects[obj_id]["qualities"])),
             tuple(sorted(kb_objects[obj_id]["roles"])),
             tuple(sorted(kb_objects[obj_id]["tasks"])),
         )
@@ -233,9 +234,11 @@ def generate_ilasp_file(kb_objects: dict, obj_locations: dict,
                         output_path: Path):
     """Write the complete ILASP input file with context-dependent examples."""
     # Collect all unique SOMA constants
+    all_qualities = set()
     all_roles = set()
     all_tasks = set()
     for data in kb_objects.values():
+        all_qualities.update(data["qualities"])
         all_roles.update(data["roles"])
         all_tasks.update(data["tasks"])
 
@@ -256,6 +259,9 @@ def generate_ilasp_file(kb_objects: dict, obj_locations: dict,
         for loc in ALL_CANONICAL_LOCATIONS:
             f.write(f"#constant(location, {loc}).\n")
         f.write("\n")
+        for q in sorted(all_qualities):
+            f.write(f"#constant(quality, {q}).\n")
+        f.write("\n")
         for r in sorted(all_roles):
             f.write(f"#constant(role, {r}).\n")
         f.write("\n")
@@ -265,6 +271,7 @@ def generate_ilasp_file(kb_objects: dict, obj_locations: dict,
 
         # Mode declarations
         f.write("#modeh(goesIn(var(obj), const(location))).\n")
+        f.write(f"#modeb({ml}, hasPhysicalQuality(var(obj), const(quality))).\n")
         f.write(f"#modeb({ml}, hasRole(var(obj), const(role))).\n")
         f.write(f"#modeb({ml}, affordsTask(var(obj), const(task))).\n\n")
 

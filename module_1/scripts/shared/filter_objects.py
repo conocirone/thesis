@@ -15,6 +15,7 @@ Output:
 
 import json
 import re
+import sys
 import time
 from concurrent.futures import ThreadPoolExecutor, TimeoutError
 from pathlib import Path
@@ -25,12 +26,15 @@ SCRIPT_DIR    = Path(__file__).parent          # scripts/shared/
 MODULE_DIR    = SCRIPT_DIR.parent.parent       # module_1/
 JSONS_DIR     = MODULE_DIR / "jsons"
 
+sys.path.insert(0, str(SCRIPT_DIR.parent))
+from shared.config import get_model
+
 INPUT_JSON    = str(JSONS_DIR / "conceptnet_domestic_subgraph.json")
 KEPT_JSON     = str(JSONS_DIR / "conceptnet_objects_kept.json")
 REJECTED_JSON = str(JSONS_DIR / "conceptnet_objects_rejected.json")
 PROGRESS_JSON = str(JSONS_DIR / "filter_progress.json")
 
-MODEL       = "llama3.1"
+MODEL       = get_model("filtering")
 BATCH_SIZE  = 30
 LLM_TIMEOUT = 90
 MAX_RETRIES = 3

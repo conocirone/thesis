@@ -48,7 +48,13 @@ except ImportError:
 # CONFIG
 # =============================================================================
 
-MODEL_NAME = os.environ.get("HF_MODEL_NAME", "Qwen/Qwen2.5-Coder-7B-Instruct")
+SCRIPT_DIR = Path(__file__).parent
+MODULE_DIR = SCRIPT_DIR.parent.parent
+
+sys.path.insert(0, str(SCRIPT_DIR.parent))
+from shared.config import get_model
+
+MODEL_NAME = os.environ.get("HF_MODEL_NAME", get_model("rule_induction"))
 
 MAX_TOKENS = int(os.environ.get("MLX_MAX_TOKENS", "2048"))
 TEMPERATURE = float(os.environ.get("MLX_TEMPERATURE", "0.7"))
@@ -56,9 +62,6 @@ TOP_P = float(os.environ.get("MLX_TOP_P", "0.85"))
 
 NUM_RULE_CANDIDATES = int(os.environ.get("NUM_RULE_CANDIDATES", "3"))
 MIN_POS_COVERAGE = int(os.environ.get("MIN_POS_COVERAGE", "1"))
-
-SCRIPT_DIR = Path(__file__).parent
-MODULE_DIR = SCRIPT_DIR.parent.parent
 RULES_DIR = MODULE_DIR / "rules"
 
 INPUT_EXAMPLES_FILE = RULES_DIR / "tool_usage" / "ilasp_tool_usage.las"
