@@ -1,11 +1,15 @@
 import json
 import ollama
+from pathlib import Path
 
 # ------------------------------------------------------------------------------
 # 1. CONFIGURATION AND CODEBOOK
 # ------------------------------------------------------------------------------
-INPUT_JSON = "../../jsons/conceptnet_objects_kept.json"
-OUTPUT_PROLOG = "../../rules/background_knowledge.las"
+SCRIPT_DIR = Path(__file__).parent          # scripts/shared/
+MODULE_DIR = SCRIPT_DIR.parent.parent       # module_1/
+
+INPUT_JSON = str(MODULE_DIR / "jsons" / "conceptnet_objects_kept.json")
+OUTPUT_PROLOG = str(MODULE_DIR / "rules" / "shared" / "background_knowledge.las")
 MODEL = "llama3.1:latest"
 CODEBOOK = {
     "Qualities": [
@@ -161,8 +165,6 @@ def main():
     try:
         with open(INPUT_JSON, "r") as f:
             data = json.load(f)
-        # Supports both flat format {name: props} (objects_kept.json)
-        # and nested format with "tool_usage_properties" key
         if "tool_usage_properties" in data:
             tool_usage_data = data["tool_usage_properties"]
         else:
@@ -209,8 +211,6 @@ def main():
                 raw_parsed = json.loads(response['message']['content'])
                 parsed = normalize_llm_output(raw_parsed)
 
-                # -- Validation retry ----------------------------------------
-                # If the result is empty or inconsistent, retry once
                 if not parsed:
                     correction = (
                         f"Your previous answer returned no valid SOMA values for '{obj_name}'.\n"

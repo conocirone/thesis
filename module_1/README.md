@@ -6,42 +6,60 @@ The pipeline follows a **neurosymbolic approach**: an LLM (neural component)
 performs semantic annotation, and ASP integrity constraints (symbolic component)
 validate and correct the output.
 
+The pipeline supports two downstream tasks:
+- **Tidy Up** (`goesIn`): predict which location an object belongs in
+- **Tool Usage** (`hasAffordance`): predict which affordances an object has
+
 ## Directory Structure
 
 ```
 module_1/
-├── README.md                          # This file
-├── ConceptNet/                        # Raw ConceptNet data (not versioned)
-│   ├── assertions.csv                 # Full ConceptNet dump (~10 GB)
-│   └── domestic_relations.parquet     # Filtered Parquet cache (auto-generated)
-├── SOMA/                              # SOMA ontology reference
+├── README.md
+├── ConceptNet/                               # Raw ConceptNet data (not versioned)
+│   ├── assertions.csv                        # Full ConceptNet dump (~10 GB)
+│   └── domestic_relations.parquet            # Filtered Parquet cache (auto-generated)
+├── SOMA/                                     # SOMA ontology reference
 │   └── OWLs/
-│       ├── SOMA.owl                   # Base SOMA ontology
-│       └── SOMA-HOME.owl              # Home-specific extension
-├── jsons/                             # Intermediate JSON files
-│   ├── conceptnet_domestic_subgraph.json   # Step 1 output
-│   ├── conceptnet_objects_kept.json        # Step 2 output (kept)
-│   └── conceptnet_objects_rejected.json    # Step 2 output (rejected)
-├── rules/                             # Logic programming files
-│   ├── background_knowledge.las            # Step 3 output (raw LLM)
-│   ├── integrity_constraints.lp            # ASP validation rules
-│   ├── background_knowledge_validated.las  # Step 4 output (final)
-│   ├── ilasp_tidy_up.las                   # Step 5 output (ILASP problem)
-│   └── learned_rules_mvp.txt               # Step 6 output (Learned rules)
-├── scripts/                           # Pipeline scripts
-│   ├── run_pipeline.py                # Pipeline orchestrator (runs all steps)
-│   ├── offline_phase/                 # Rule Discovery and Knowledge Generation
-│   │   ├── concept_net_extractor.py   # Step 1: ConceptNet extraction
-│   │   ├── filter_objects.py          # Step 2: LLM-based object filtering
-│   │   ├── parsing.py                 # Step 3: LLM-based SOMA annotation
-│   │   ├── apply_constraints.py       # Step 4: ASP symbolic validation
-│   │   └── generate_ilasp_examples.py # Step 5: ILASP example generation
-│   └── online_phase/                  # Inference and Evaluation
-│       └── evaluate_tidy_up.py        # Step 7: Clingo online evaluation
-└── docs/                              # Documentation and analysis
-    ├── module1_development_report.md  # Full development process report
-    ├── quality_analysis.md            # Detailed error analysis and metrics
-    └── soma_analysis.md               # SOMA ontology codebook analysis
+│       ├── SOMA.owl
+│       └── SOMA-HOME.owl
+├── jsons/                                    # Intermediate JSON files
+│   ├── conceptnet_domestic_subgraph.json     # Step 1 output
+│   ├── conceptnet_objects_kept.json          # Step 2 output (kept)
+│   └── conceptnet_objects_rejected.json      # Step 2 output (rejected)
+├── rules/
+│   ├── shared/                               # Task-agnostic knowledge (Steps 3-4)
+│   │   ├── background_knowledge.las
+│   │   ├── background_knowledge_validated.las
+│   │   └── integrity_constraints.lp
+│   ├── tidy_up/                              # Tidy Up ILASP & learned rules
+│   │   ├── ilasp_tidy_up.las
+│   │   └── learned_rules_*.txt
+│   └── tool_usage/                           # Tool Usage ILASP & learned rules
+│       ├── ilasp_tool_usage.las
+│       └── learned_rules_tool_usage.txt
+├── scripts/
+│   ├── run_pipeline.py                       # Pipeline orchestrator (all 10 steps)
+│   ├── shared/                               # Steps 1-4: Task-agnostic preprocessing
+│   │   ├── concept_net_extractor.py          # Step 1: ConceptNet extraction
+│   │   ├── filter_objects.py                 # Step 2: LLM-based object filtering
+│   │   ├── parsing.py                        # Step 3: LLM-based SOMA annotation
+│   │   └── apply_constraints.py              # Step 4: ASP symbolic validation
+│   ├── tidy_up/                              # Steps 5-7: Tidy Up task
+│   │   ├── generate_ilasp_examples.py        # Step 5: ILASP example generation
+│   │   ├── llm_rule_induction.py             # Step 6: LLM rule induction
+│   │   ├── evaluate_rules.py                 # Offline rule evaluation
+│   │   ├── evaluate.py                       # Step 7: Online evaluation
+│   │   └── run_llm_rule_induction.sh         # SLURM script for Step 6
+│   └── tool_usage/                           # Steps 8-10: Tool Usage task
+│       ├── generate_ilasp_examples.py        # Step 8: ILASP example generation
+│       ├── llm_rule_induction.py             # Step 9: LLM rule induction
+│       ├── evaluate_rules.py                 # Offline rule evaluation
+│       ├── evaluate.py                       # Step 10: Online evaluation
+│       └── run_llm_rule_induction.sh         # SLURM script for Step 9
+└── docs/
+    ├── module1_development_report.md
+    ├── quality_analysis.md
+    └── soma_analysis.md
 ```
 
 ## Prerequisites
@@ -57,7 +75,7 @@ module_1/
   brew install ollama
   ollama pull llama3.1
   ```
-- **Clingo** (ASP solver) for Step 4 and 7:
+- **Clingo** (ASP solver) for Steps 4, 7, and 10:
   ```
   brew install clingo
   ```
@@ -79,23 +97,25 @@ cd module_1/scripts
 python run_pipeline.py
 ```
 
-This executes all 7 steps sequentially. Total runtime depends on the number of
-objects, LLM speed, and ILASP search space.
+This executes all 10 steps sequentially. Total runtime depends on the number of
+objects, LLM speed, and search space.
 
 ### Resume from a Specific Step
 
 ```bash
-python run_pipeline.py --from 5    # Resume from Step 5 (ILASP prep)
-python run_pipeline.py --only 7    # Run only Step 7 (Evaluation)
+python run_pipeline.py --from 5    # Resume from Step 5 (tidy_up ILASP)
+python run_pipeline.py --from 8    # Run tool_usage pipeline only
+python run_pipeline.py --only 7    # Run only tidy_up evaluation
+python run_pipeline.py --only 10   # Run only tool_usage evaluation
 ```
 
 ### Running Steps Individually
 
 ```bash
-python concept_net_extractor.py    # Step 1
-python filter_objects.py           # Step 2
-python parsing.py                  # Step 3
-python apply_constraints.py        # Step 4
+cd shared && python concept_net_extractor.py    # Step 1
+cd shared && python filter_objects.py           # Step 2
+cd shared && python parsing.py                  # Step 3
+cd shared && python apply_constraints.py        # Step 4
 ```
 
 Steps 2 and 3 support **automatic resume**: if interrupted, they pick up
@@ -103,17 +123,20 @@ from where they left off using progress files.
 
 ## Pipeline Steps
 
-### Step 1: ConceptNet Extraction (`offline_phase/concept_net_extractor.py`)
+### Shared Steps (1-4)
+
+These steps are task-agnostic and shared between both tidy_up and tool_usage.
+
+**Step 1: ConceptNet Extraction** (`shared/concept_net_extractor.py`)
 
 Queries the ConceptNet dump to extract objects found in domestic environments.
-Uses a two-hop BFS starting from 35 seed rooms (kitchen, bedroom, bathroom, etc.)
-via `AtLocation` relations, then enriches each object with `UsedFor`,
-`HasProperty`, and `CapableOf` relations.
+Uses a two-hop BFS starting from 35 seed rooms via `AtLocation` relations,
+then enriches each object with `UsedFor`, `HasProperty`, and `CapableOf` relations.
 
 - **Input**: `ConceptNet/assertions.csv`
 - **Output**: `jsons/conceptnet_domestic_subgraph.json` (~1,346 candidate objects)
 
-### Step 2: Semantic Filtering (`offline_phase/filter_objects.py`)
+**Step 2: Semantic Filtering** (`shared/filter_objects.py`)
 
 An LLM filter that classifies each object as KEEP or DISCARD based on whether
 it can realistically be found in a home. Processes objects in batches of 30.
@@ -122,7 +145,7 @@ it can realistically be found in a home. Processes objects in batches of 30.
 - **Output**: `jsons/conceptnet_objects_kept.json` (~966 objects)
 - **Model**: Llama 3.1 via Ollama
 
-### Step 3: SOMA Annotation (`offline_phase/parsing.py`)
+**Step 3: SOMA Annotation** (`shared/parsing.py`)
 
 The core neural component. For each kept object, the LLM assigns three types
 of SOMA ontology labels:
@@ -134,50 +157,76 @@ of SOMA ontology labels:
 | `affordsTask`        | Tasks the object enables    | FoodPreparationTask, CleaningTask    |
 
 - **Input**: `jsons/conceptnet_objects_kept.json`
-- **Output**: `rules/background_knowledge.las`
+- **Output**: `rules/shared/background_knowledge.las`
 - **Model**: Llama 3.1 with `temperature=0.0`
 
-The prompt includes micro-definitions for each codebook value, 8 few-shot
-examples, and explicit negative constraints to prevent common LLM errors.
-
-### Step 4: ASP Validation (`offline_phase/apply_constraints.py`)
+**Step 4: ASP Validation** (`shared/apply_constraints.py`)
 
 The symbolic component. Runs Clingo with 6 integrity constraints that detect
-and remove logically inconsistent annotations:
+and remove logically inconsistent annotations.
 
-| Constraint | Rule                                            | Example Correction         |
-| ---------- | ----------------------------------------------- | -------------------------- |
-| #1         | Toxic objects cannot be consumable              | ink: remove ConsumableRole |
-| #2         | Containers are not liquids                      | bottle: remove Liquid      |
-| #3         | Furniture/appliances are not liquids            | linoleum: remove Liquid    |
-| #4         | Perishable+fragile food is not granular         | —                          |
-| #5         | Eating utensils without food prep are not sharp | silverware: remove Sharp   |
-| #6         | Cooling appliances are not heated               | fridge: remove Heated      |
+- **Input**: `rules/shared/background_knowledge.las` + `rules/shared/integrity_constraints.lp`
+- **Output**: `rules/shared/background_knowledge_validated.las`
 
-- **Input**: `rules/background_knowledge.las` + `rules/integrity_constraints.lp`
-- **Output**: `rules/background_knowledge_validated.las`
+---
 
-### Step 5: ILASP Example Generation (`offline_phase/generate_ilasp_examples.py`)
+### Tidy Up Task (Steps 5-7)
 
-Extracts positive examples from ConceptNet `atLocation` edges and generates negative examples using closed-world heuristics. Outputs a full `.las` ILASP logic program.
+Target predicate: `goesIn(Object, Location)`
 
-- **Output**: `rules/ilasp_tidy_up.las`
+**Step 5: ILASP Example Generation** (`tidy_up/generate_ilasp_examples.py`)
 
-### Step 6: ILASP Rule Learning (Shell command)
+Extracts positive examples from ConceptNet `atLocation` edges and generates
+negative examples using closed-world heuristics.
 
-Executes the ILASP engine to induce the general `goesIn/2` symbolic logic rules.
+- **Output**: `rules/tidy_up/ilasp_tidy_up.las`
 
-- **Output**: `rules/learned_rules_mvp.txt`
+**Step 6: LLM Rule Learning** (`tidy_up/llm_rule_induction.py`)
 
-### Step 7: Online Evaluation (`online_phase/evaluate_tidy_up.py`)
+Uses a separate-and-conquer strategy with an LLM proposing candidate rules
+and Clingo verifying coverage.
 
-Simulates a robotic scenario: unseen objects from the Robo-CSK benchmark are annotated dynamically with the LLM (SOMA features) and their location is deduced by Clingo using the ILASP learned rules. Output contains hit-rates and IR-metrics (P@k, R@k, MAP).
+- **Output**: `rules/tidy_up/learned_rules_llm_total.txt`
 
-- **Output**: `scripts/online_phase/evaluation_report.md`
+**Step 7: Online Evaluation** (`tidy_up/evaluate.py`)
+
+Unseen objects from the Robo-CSK benchmark are annotated via LLM, and their
+location is deduced by Clingo. Metrics: P@k, R@k, MAP, MRR.
+
+- **Output**: `scripts/tidy_up/evaluation_report.md`
+
+---
+
+### Tool Usage Task (Steps 8-10)
+
+Target predicate: `hasAffordance(Object, Affordance)`
+
+**Step 8: ILASP Example Generation** (`tool_usage/generate_ilasp_examples.py`)
+
+Matches objects from the Robo-CSK-Benchmark `affordance_data.csv` with
+SOMA-annotated objects. Generates positive and negative examples.
+
+- **Output**: `rules/tool_usage/ilasp_tool_usage.las`
+
+**Step 9: LLM Rule Learning** (`tool_usage/llm_rule_induction.py`)
+
+Same LLM + Clingo strategy as Step 6 but targets `hasAffordance` rules.
+Includes physical qualities in mode declarations (e.g., Sharp → cut).
+
+- **Output**: `rules/tool_usage/learned_rules_tool_usage.txt`
+
+**Step 10: Online Evaluation** (`tool_usage/evaluate.py`)
+
+For each multi-choice question (task + 5 candidate tools), extracts SOMA
+features, runs Clingo inference, and selects the tool with the required
+affordance. Metric: accuracy.
+
+- **Output**: `scripts/tool_usage/evaluation_report.md`
 
 ## Output Format
 
-The final output (`background_knowledge_validated.las`) is in Prolog/ASP format:
+The final background knowledge (`rules/shared/background_knowledge_validated.las`)
+is in Prolog/ASP format:
 
 ```prolog
 % --- knife ---

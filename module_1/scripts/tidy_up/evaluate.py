@@ -8,12 +8,12 @@ from pathlib import Path
 from tqdm import tqdm
 import ollama
 
-SCRIPT_DIR = Path(__file__).parent      # online_phase
+SCRIPT_DIR = Path(__file__).parent      # scripts/tidy_up
 SCRIPTS_ROOT = SCRIPT_DIR.parent      # scripts
 MODULE_DIR = SCRIPTS_ROOT.parent      # module_1
 DATA_DIR = MODULE_DIR.parent / "Robo-CSK-Benchmark" / "tidy_up" # thesis/Robo-CSK-Benchmark/tidy_up
 CSV_FILE = DATA_DIR / "tidy_up_data.csv"
-ILASP_OUT = MODULE_DIR / "rules" / "learned_rules_llm_total.txt"
+ILASP_OUT = MODULE_DIR / "rules" / "tidy_up" / "learned_rules_llm_total.txt"
 TMP_DIR = SCRIPT_DIR / "tmp"
 TMP_DIR.mkdir(exist_ok=True)
 

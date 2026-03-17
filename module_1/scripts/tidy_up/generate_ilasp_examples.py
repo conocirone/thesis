@@ -17,7 +17,7 @@ Usage:
     --max-per-loc N   Max positive examples per location (default: 5)
     --neg-per-obj N   Negative examples per unique object (default: 2)
     --ml N            Max body literals for mode declarations (default: 2)
-    --output PATH     Output file path (default: rules/ilasp_tidy_up.las)
+    --output PATH     Output file path (default: rules/tidy_up/ilasp_tidy_up.las)
     --full            Use ALL examples (no stratified sampling)
     --mvp             Use minimal dataset (core locations, max 2 examples)
                       Designed for fast testing and online phase integration
@@ -38,9 +38,9 @@ MODULE_DIR = SCRIPT_DIR.parent.parent
 RULES_DIR = MODULE_DIR / "rules"
 JSONS_DIR = MODULE_DIR / "jsons"
 
-BK_FILE = RULES_DIR / "background_knowledge_validated.las"
+BK_FILE = RULES_DIR / "shared" / "background_knowledge_validated.las"
 SUBGRAPH_FILE = JSONS_DIR / "conceptnet_domestic_subgraph.json"
-DEFAULT_OUTPUT = RULES_DIR / "ilasp_tidy_up.las"
+DEFAULT_OUTPUT = RULES_DIR / "tidy_up" / "ilasp_tidy_up.las"
 
 # -- Canonical location mapping ---------------------------------------------
 ROOM_MAPPING = {

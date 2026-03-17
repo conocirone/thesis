@@ -21,10 +21,14 @@ from pathlib import Path
 import ollama
 
 # -- Configuration ----------------------------------------------------------
-INPUT_JSON    = "../../jsons/conceptnet_domestic_subgraph.json"
-KEPT_JSON     = "../../jsons/conceptnet_objects_kept.json"
-REJECTED_JSON = "../../jsons/conceptnet_objects_rejected.json"
-PROGRESS_JSON = "../../jsons/filter_progress.json"
+SCRIPT_DIR    = Path(__file__).parent          # scripts/shared/
+MODULE_DIR    = SCRIPT_DIR.parent.parent       # module_1/
+JSONS_DIR     = MODULE_DIR / "jsons"
+
+INPUT_JSON    = str(JSONS_DIR / "conceptnet_domestic_subgraph.json")
+KEPT_JSON     = str(JSONS_DIR / "conceptnet_objects_kept.json")
+REJECTED_JSON = str(JSONS_DIR / "conceptnet_objects_rejected.json")
+PROGRESS_JSON = str(JSONS_DIR / "filter_progress.json")
 
 MODEL       = "llama3.1"
 BATCH_SIZE  = 30
@@ -119,7 +123,6 @@ def main():
     all_objects = sorted(tool_usage.keys())
     print(f"\nTotal objects from subgraph: {len(all_objects):,}")
 
-    # Resume: load previous progress
     progress = {}
     if Path(PROGRESS_JSON).exists():
         with open(PROGRESS_JSON, encoding="utf-8") as f:
@@ -136,7 +139,6 @@ def main():
     rejected = set(already_processed) - already_kept
     total_batches = max(1, (len(remaining) + BATCH_SIZE - 1) // BATCH_SIZE)
 
-    # Load existing rejected list
     existing_rejected = list(rejected)
     if Path(REJECTED_JSON).exists():
         with open(REJECTED_JSON, encoding="utf-8") as f:
@@ -156,19 +158,16 @@ def main():
         kept.update(approved_set)
         existing_rejected.extend(batch_rejected)
 
-        # Save progress
         progress["processed"] = list(set(progress.get("processed", [])) | set(batch))
         progress["kept"]      = list(kept)
         with open(PROGRESS_JSON, "w", encoding="utf-8") as f:
             json.dump(progress, f, indent=2, ensure_ascii=False)
 
-        # Save rejected
         with open(REJECTED_JSON, "w", encoding="utf-8") as f:
             json.dump(sorted(set(existing_rejected)), f, indent=2, ensure_ascii=False)
 
         print(f"kept {len(approved)}/{len(batch)}  (discarded: {len(batch_rejected)})")
 
-    # Save the filtered dataset (only properties of approved objects)
     kept_data = {obj: tool_usage[obj] for obj in kept if obj in tool_usage}
     with open(KEPT_JSON, "w", encoding="utf-8") as f:
         json.dump(kept_data, f, indent=2, ensure_ascii=False)

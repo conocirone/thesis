@@ -3,9 +3,12 @@ import json
 import re
 from pathlib import Path    
 
-CSV_PATH     = "../ConceptNet/assertions.csv"
-PARQUET_PATH = "../ConceptNet/domestic_relations.parquet"
-OUTPUT_JSON  = "../../jsons/conceptnet_domestic_subgraph.json"
+SCRIPT_DIR   = Path(__file__).parent          # scripts/shared/
+MODULE_DIR   = SCRIPT_DIR.parent.parent       # module_1/
+
+CSV_PATH     = str(MODULE_DIR / "ConceptNet" / "assertions.csv")
+PARQUET_PATH = str(MODULE_DIR / "ConceptNet" / "domestic_relations.parquet")
+OUTPUT_JSON  = str(MODULE_DIR / "jsons" / "conceptnet_domestic_subgraph.json")
 
 SEED_ROOMS = [
     # Living areas
@@ -84,7 +87,6 @@ def extract_tidy_up_hierarchy(con) -> tuple[dict, set]:
     tidy_up_data = {room: {"direct_items": [], "nested_items": {}} for room in SEED_ROOMS}
     all_discovered_objects = set()
 
-    # First step: from given rooms, get all objects that are at location
     seed_sql = format_sql_list(SEED_ROOMS)
     rows_hop1 = con.execute(f"""
         SELECT "start", "end" FROM read_parquet('{PARQUET_PATH}')
@@ -100,7 +102,6 @@ def extract_tidy_up_hierarchy(con) -> tuple[dict, set]:
             level_1_items.add(item)
             all_discovered_objects.add(item)
 
-    # Second step: From containers, get all objects that are at location
     if level_1_items:
         level_1_sql = format_sql_list(list(level_1_items))
         rows_hop2 = con.execute(f"""
@@ -129,7 +130,6 @@ def extract_tool_usage_properties(con, target_objects: set) -> dict:
     if not target_objects:
         return tool_usage_data
 
-    # Build query for object properties
     target_sql = format_sql_list(list(target_objects))
     rels_sql = ", ".join(f"'{r}'" for r in RELATIONS_TOOL)
     
@@ -141,10 +141,10 @@ def extract_tool_usage_properties(con, target_objects: set) -> dict:
     for start_uri, rel_uri, end_uri in rows_props:
         obj = clean_label(start_uri)
         val = clean_label(end_uri)
-        rel = rel_uri.split('/')[-1] # es. "UsedFor"
+        rel = rel_uri.split('/')[-1]
         
         if obj and val:
-            if obj not in tool_usage_data:  # e.g. rel = "UsedFor"
+            if obj not in tool_usage_data:
                 tool_usage_data[obj] = {"UsedFor": [], "HasProperty": [], "CapableOf": []}
             if val not in tool_usage_data[obj][rel]:
                 tool_usage_data[obj][rel].append(val)
@@ -156,12 +156,8 @@ def main():
     con = duckdb.connect()
     build_parquet_cache(con)
     
-    
     tidy_up_dict, discovered_objects = extract_tidy_up_hierarchy(con)
-    
-    
     tool_usage_dict = extract_tool_usage_properties(con, discovered_objects)
-    
    
     final_dataset = {
         "tidy_up_hierarchy": tidy_up_dict,

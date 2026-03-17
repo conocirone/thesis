@@ -13,11 +13,12 @@ import re
 from pathlib import Path
 from collections import defaultdict
 
-SCRIPT_DIR = Path(__file__).parent
-MODULE_DIR = SCRIPT_DIR.parent.parent
-RULES_DIR = MODULE_DIR / "rules"
-BK_FILE = RULES_DIR / "background_knowledge.las"
-IC_FILE = RULES_DIR / "integrity_constraints.lp"
+SCRIPT_DIR = Path(__file__).parent          # scripts/shared/
+MODULE_DIR = SCRIPT_DIR.parent.parent       # module_1/
+RULES_DIR  = MODULE_DIR / "rules" / "shared"
+
+BK_FILE  = RULES_DIR / "background_knowledge.las"
+IC_FILE  = RULES_DIR / "integrity_constraints.lp"
 OUT_FILE = RULES_DIR / "background_knowledge_validated.las"
 
 def run_clingo():
@@ -26,8 +27,6 @@ def run_clingo():
         ["clingo", str(BK_FILE), str(IC_FILE), "0", "--out-ifs=\n"],
         capture_output=True, text=True
     )
-    # Clingo exit code 10 = SATISFIABLE (with at least one model)
-    # exit code 30 = SATISFIABLE (all models enumerated)
     if result.returncode not in (10, 30):
         print("Clingo stderr:", result.stderr)
         raise RuntimeError(f"Clingo failed with exit code {result.returncode}")
@@ -42,25 +41,21 @@ def parse_clingo_output(output: str):
     for line in output.split("\n"):
         line = line.strip()
 
-        # valid_quality(obj, val)
         m = re.match(r'valid_quality\((\w+),\s*(\w+)\)', line)
         if m:
             objects[m.group(1)]["qualities"].append(m.group(2))
             continue
 
-        # valid_role(obj, val)
         m = re.match(r'valid_role\((\w+),\s*(\w+)\)', line)
         if m:
             objects[m.group(1)]["roles"].append(m.group(2))
             continue
 
-        # valid_task(obj, val)
         m = re.match(r'valid_task\((\w+),\s*(\w+)\)', line)
         if m:
             objects[m.group(1)]["tasks"].append(m.group(2))
             continue
 
-        # removed_quality/role/task
         m = re.match(r'removed_quality\((\w+),\s*(\w+)\)', line)
         if m:
             removed["qualities"].append((m.group(1), m.group(2)))
@@ -90,7 +85,6 @@ def write_prolog(objects: dict, removed: dict):
             if not all_vals:
                 continue
 
-            # Convert obj_id back to readable name
             obj_name = obj_id.replace("_", " ")
             f.write(f"% --- {obj_name} ---\n")
             f.write(f"obj({obj_id}).\n")
@@ -127,7 +121,6 @@ def main():
     count = write_prolog(objects, removed)
     print(f"      [OK] {count} objects written to {OUT_FILE}")
 
-    # Summary of corrections
     total_removed = len(removed["qualities"]) + len(removed["roles"]) + len(removed["tasks"])
     print(f"\n{'─' * 60}")
     print(f"CORRECTIONS APPLIED: {total_removed} facts removed")

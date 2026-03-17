@@ -1,23 +1,35 @@
 """
 run_pipeline.py - Full End-to-End Pipeline Orchestrator
 =============================================================================
-Deploys the entire neuro-symbolic logic pipeline spanning Phase 1 & 2 for the 'goesIn' task.
+Deploys the entire neuro-symbolic logic pipeline spanning Phase 1 & 2
+for both the 'goesIn' (tidy_up) and 'hasAffordance' (tool_usage) tasks.
 
-OFFLINE PHASE (Rule Discovery via ConceptNet & LLM-guided ASP):
-  Step 1: ConceptNet extraction    (offline_phase/concept_net_extractor.py)
-  Step 2: Semantic object filter   (offline_phase/filter_objects.py)
-  Step 3: LLM SOMA annotation      (offline_phase/parsing.py)
-  Step 4: ASP integrity constraints(offline_phase/apply_constraints.py)
-  Step 5: ILASP example generation (offline_phase/generate_ilasp_examples.py)
-  Step 6: Logical Rule Learning    (ILASP --version=4)
+SHARED OFFLINE PHASE (Steps 1-4):
+  Step 1: ConceptNet extraction     (shared/concept_net_extractor.py)
+  Step 2: Semantic object filter    (shared/filter_objects.py)
+  Step 3: LLM SOMA annotation       (shared/parsing.py)
+  Step 4: ASP integrity constraints (shared/apply_constraints.py)
 
-ONLINE PHASE (Validation via Symbolic Inference):
-  Step 7: Real-world inference eval(online_phase/evaluate_tidy_up.py)
+TIDY UP — OFFLINE (Steps 5-6):
+  Step 5: ILASP example generation  (tidy_up/generate_ilasp_examples.py)
+  Step 6: Logical Rule Learning     (tidy_up/llm_rule_induction.py)
+
+TIDY UP — ONLINE (Step 7):
+  Step 7: Real-world inference eval (tidy_up/evaluate.py)
+
+TOOL USAGE — OFFLINE (Steps 8-9):
+  Step 8: ILASP example generation  (tool_usage/generate_ilasp_examples.py)
+  Step 9: Logical Rule Learning     (tool_usage/llm_rule_induction.py)
+
+TOOL USAGE — ONLINE (Step 10):
+  Step 10: Tool usage inference eval(tool_usage/evaluate.py)
 
 Usage:
     python run_pipeline.py              # Run all steps continuously
     python run_pipeline.py --from 5     # Resume from step 5
-    python run_pipeline.py --only 7     # Run only evaluation
+    python run_pipeline.py --only 7     # Run only tidy_up evaluation
+    python run_pipeline.py --only 10    # Run only tool_usage evaluation
+    python run_pipeline.py --from 8     # Run tool_usage steps only
 =============================================================================
 """
 
@@ -32,11 +44,12 @@ RULES_DIR = MODULE_DIR / "rules"
 JSONS_DIR = MODULE_DIR / "jsons"
 
 STEPS = [
+    # ── SHARED (Steps 1-4) ──────────────────────────────────────────────
     {
         "number": 1,
         "name": "ConceptNet Extraction",
         "type": "python",
-        "script": "offline_phase/concept_net_extractor.py",
+        "script": "shared/concept_net_extractor.py",
         "description": "Extract domestic object subgraph from ConceptNet",
         "output_files": [JSONS_DIR / "conceptnet_domestic_subgraph.json"],
     },
@@ -44,53 +57,83 @@ STEPS = [
         "number": 2,
         "name": "Semantic Object Filtering",
         "type": "python",
-        "script": "offline_phase/filter_objects.py",
+        "script": "shared/filter_objects.py",
         "description": "Filter objects using LLM to keep only domestic items",
-        "output_files": [JSONS_DIR / "conceptnet_objects_kept.json", JSONS_DIR / "conceptnet_objects_rejected.json"],
+        "output_files": [JSONS_DIR / "conceptnet_objects_kept.json",
+                         JSONS_DIR / "conceptnet_objects_rejected.json"],
     },
     {
         "number": 3,
         "name": "SOMA Annotation",
         "type": "python",
-        "script": "offline_phase/parsing.py",
+        "script": "shared/parsing.py",
         "description": "Annotate objects with SOMA ontology labels via LLM",
-        "output_files": [RULES_DIR / "background_knowledge.las"],
+        "output_files": [RULES_DIR / "shared" / "background_knowledge.las"],
     },
     {
         "number": 4,
         "name": "ASP Integrity Constraints",
         "type": "python",
-        "script": "offline_phase/apply_constraints.py",
+        "script": "shared/apply_constraints.py",
         "description": "Validate and correct annotations using ASP constraints",
-        "output_files": [RULES_DIR / "background_knowledge_validated.las"],
+        "output_files": [RULES_DIR / "shared" / "background_knowledge_validated.las"],
     },
+
+    # ── TIDY UP (Steps 5-7) ─────────────────────────────────────────────
     {
         "number": 5,
-        "name": "Generate ILASP Examples",
+        "name": "Generate ILASP Examples — Tidy Up",
         "type": "python",
-        "script": "offline_phase/generate_ilasp_examples.py",
-        # Using MVP configs here to keep the pipeline execution fast.
-        # Remove --ml 1 --mvp for full runs.
+        "script": "tidy_up/generate_ilasp_examples.py",
         "args": ["--ml", "1", "--mvp"],
-        "description": "Construct context-dependent inductive problem file",
-        "output_files": [RULES_DIR / "ilasp_tidy_up.las"],
+        "description": "Construct context-dependent inductive problem file (goesIn)",
+        "output_files": [RULES_DIR / "tidy_up" / "ilasp_tidy_up.las"],
     },
     {
         "number": 6,
-        "name": "LLM Rule Learning (Replacing ILASP)",
+        "name": "LLM Rule Learning — Tidy Up",
         "type": "python",
-        "script": "offline_phase/llm_rule_induction.py",
-        "description": "Use LLM generator and Clingo verifier to induce rules",
-        "output_files": [RULES_DIR / "learned_rules_llm.txt"],
+        "script": "tidy_up/llm_rule_induction.py",
+        "description": "Use LLM generator and Clingo verifier to induce goesIn rules",
+        "output_files": [RULES_DIR / "tidy_up" / "learned_rules_llm_total.txt"],
     },
     {
         "number": 7,
-        "name": "Online Evaluation (Inference)",
+        "name": "Online Evaluation — Tidy Up",
         "type": "python",
-        "script": "online_phase/evaluate_tidy_up.py",
+        "script": "tidy_up/evaluate.py",
         "args": ["--num-tests", "50"],
-        "description": "Execute Clingo inference on unseen objects simulating real world",
-        "output_files": [SCRIPT_DIR / "online_phase/evaluation_report.md"],
+        "description": "Execute Clingo inference on unseen objects (tidy_up)",
+        "output_files": [SCRIPT_DIR / "tidy_up" / "evaluation_report.md"],
+    },
+
+    # ── TOOL USAGE (Steps 8-10) ─────────────────────────────────────────
+    {
+        "number": 8,
+        "name": "Generate ILASP Examples — Tool Usage",
+        "type": "python",
+        "script": "tool_usage/generate_ilasp_examples.py",
+      #  "args": ["--ml", "1", "--mvp"],
+        "args": ["--full"],
+        "description": "Construct ILASP input for hasAffordance rule learning",
+        "output_files": [RULES_DIR / "tool_usage" / "ilasp_tool_usage.las"],
+    },
+    {
+        "number": 9,
+        "name": "LLM Rule Learning — Tool Usage",
+        "type": "python",
+        "script": "tool_usage/llm_rule_induction.py",
+        "description": "Use LLM generator and Clingo verifier to induce hasAffordance rules",
+        "output_files": [RULES_DIR / "tool_usage" / "learned_rules_tool_usage.txt"],
+    },
+    {
+        "number": 10,
+        "name": "Online Evaluation — Tool Usage",
+        "type": "python",
+        "script": "tool_usage/evaluate.py",
+       # "args": ["--num-tests", "50"],
+        "description": "Execute Clingo inference for tool selection (tool_usage)",
+        "output_files": [SCRIPT_DIR / "tool_usage" / "evaluation_report.md"],
     },
 ]
 
@@ -127,7 +170,6 @@ def run_step(step: dict) -> bool:
         print(f"\n  [FAILED] Step {step['number']} failed with exit code {result.returncode}")
         return False
 
-    # Verify output files exist
     for out_file in step["output_files"]:
         full_path = out_file
         if full_path.exists():
@@ -141,7 +183,6 @@ def run_step(step: dict) -> bool:
 
 
 def main():
-    # Parse arguments
     start_from = 1
     only_step = None
 
@@ -154,7 +195,8 @@ def main():
         only_step = int(args[idx + 1])
 
     print("\n" + "#" * 70)
-    print("#  END-TO-END PIPELINE: Neuro-Symbolic Logic Learning (goesIn phase)")
+    print("#  END-TO-END PIPELINE: Neuro-Symbolic Logic Learning")
+    print("#  Tasks: goesIn (tidy_up) + hasAffordance (tool_usage)")
     print("#" * 70)
 
     if only_step:
