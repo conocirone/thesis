@@ -295,6 +295,11 @@ It is acceptable if false positives have the SAME properties as true positives
 Do not output explanations, markdown, or meta-commentary.
 Output EXACTLY ONE rule per response.
 
+CRITICAL INSTRUCTION - MINIMAL RULES ONLY:
+- You MUST generate the SHORTEST POSSIBLE rule.
+- Use the absolute MINIMUM number of conditions necessary to distinguish the focus object from negatives.
+- DO NOT just copy all properties of the focus object. Choose 1 or 2 most important discriminative features.
+
 CRITICAL SYNTAX RULES:
 - Do NOT use semicolons (;) at the top level of the rule body.
   Disjunction at the top level creates invalid ASP. Use commas only.
@@ -380,7 +385,7 @@ def is_valid_rule(rule, uncovered_pos, ctx,
     if not re.search(r":-\s*obj\(X\),\s+\S+", rule):
         return False
 
-    if rule.count(",") < 2:
+    if rule.count(",") < 1:
         return False
 
     if not rule.rstrip().endswith("."):
@@ -473,6 +478,66 @@ def call_llm(prompt, boost_temperature=False):
 
 
 # =============================================================================
+# RULE PRUNING (MINIMALIZATION)
+# =============================================================================
+
+def prune_rule(rule: str, aff: str, data: dict, uncovered: set) -> tuple[str, list, list]:
+    """
+    Attempt to drop optional conditions from the rule body while maintaining
+    coverage of the focus positives and avoiding negative coverage.
+    This guarantees mathematically minimal rules and prevents LLM over-fitting.
+    """
+    if ":-" not in rule:
+        return rule, [], []
+        
+    head, body_str = rule.split(":-", 1)
+    body_str = body_str.strip()
+    if body_str.endswith("."):
+        body_str = body_str[:-1]
+    import re
+    
+    # Split by comma ONLY when not inside parentheses
+    literals = [l.strip() for l in re.split(r',\s*(?![^()]*\))', body_str)]
+    
+    essential = []
+    optional = []
+    for lit in literals:
+        if lit.startswith("obj("):
+            essential.append(lit)
+        else:
+            optional.append(lit)
+            
+    best_rule = rule
+    best_covered_pos, best_covered_neg = evaluate_rule(rule, aff, data, uncovered)
+    
+    if not best_covered_pos or best_covered_neg:
+        return best_rule, best_covered_pos, best_covered_neg
+        
+    current_optional = optional.copy()
+    changed = True
+    
+    while changed and len(current_optional) > 1:
+        changed = False
+        for lit in current_optional:
+            test_optional = [l for l in current_optional if l != lit]
+            test_body = ", ".join(essential + test_optional)
+            test_rule = f"{head.strip()} :- {test_body}."
+            
+            test_pos, test_neg = evaluate_rule(test_rule, aff, data, uncovered)
+            
+            if not test_neg:
+                best_rule = test_rule
+                best_covered_pos = test_pos
+                best_covered_neg = test_neg
+                current_optional = test_optional
+                changed = True
+                print(f"  [pruner] Successfully dropped condition: {lit}")
+                break
+                
+    return best_rule, best_covered_pos, best_covered_neg
+
+
+# =============================================================================
 # MAIN LEARNING LOOP
 # =============================================================================
 
@@ -492,7 +557,7 @@ def learn_rules_for_affordance(aff, data, valid_qualities, valid_roles, valid_ta
     rules = []
     rejected_set = set()
     iteration = 1
-    max_retries = 5
+    max_retries = 10
     retries = 0
 
     MAX_FOCUS_FAILS = 3
@@ -609,17 +674,25 @@ def learn_rules_for_affordance(aff, data, valid_qualities, valid_roles, valid_ta
                         all_false_pos_compatible = False
                         incompatible_negs.append(neg_obj)
 
-                if all_false_pos_compatible:
-                    print(">>> ACCEPTING rule: All false positives are functionally identical to true positives.")
-                    feedback_rule = None
-                    falsely_covered_negs = None
-                else:
-                    print(f"Rule rejected: These negatives are fundamentally different "
-                          f"from positives: {incompatible_negs}")
+                if not all_false_pos_compatible:
+                    print(f"Rule rejected. Covers incompatible negatives: {incompatible_negs}")
                     feedback_rule = rule
                     falsely_covered_negs = incompatible_negs
                     focus_fail_count[focus_obj] += 1
                     continue
+                else:
+                    print("Rule covers negatives, but all are highly similar to covered positives. "
+                          "Accepting rule anyway.")
+
+            # --- ALGORITHMIC RULE PRUNING ---
+            pruned_rule, pruned_pos, pruned_neg = prune_rule(rule, aff, data, uncovered)
+            if pruned_rule != rule:
+                print(f"  [pruner] Pruned rule from {len(rule.split(','))} to {len(pruned_rule.split(','))} conditions.")
+                print(f"  [pruner] Optimized rule: {pruned_rule}")
+                rule = pruned_rule
+                covered_pos = pruned_pos
+                covered_neg = pruned_neg
+            # --------------------------------
 
             print("Accepted rule:")
             print(rule)
