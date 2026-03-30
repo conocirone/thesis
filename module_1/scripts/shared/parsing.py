@@ -20,7 +20,9 @@ CODEBOOK = {
         "RequiresCooling", "RequiresFreezing", "Perishable", "Heated", "Liquid",
         "Granular", "Gas_Aerosol", "Heavy", "Lightweight", "Fragile",
         "Rigid", "Soft_Deformable", "Sharp", "Electronic", "Toxic_Hazardous",
-        "Flammable", "Washable"
+        "Flammable", "Washable",
+        "HasBlade", "HasPointedTip", "IsRotary", "HasAbrasiveSurface",
+        "HasContainer", "HasHeatElement", "IsFlexible", "HasTeeth"
     ],
     "Roles": [
         "ConsumableRole", "UtensilRole", "CookwareRole", "ToolRole",
@@ -63,6 +65,14 @@ Return a JSON with EXACTLY three keys. Use ONLY values from these lists:
   Toxic_Hazardous (bleach, pesticide, paint — dangerous to ingest/touch)
   Flammable (paper, gas, alcohol — catches fire)
   Washable (clothing, towel — can be machine/hand washed)
+  HasBlade (knife, saw, scissors, axe — has a sharp cutting edge)
+  HasPointedTip (needle, awl, drill bit, nail — pointed end for piercing)
+  IsRotary (drill, screwdriver, grinder — operates by rotation)
+  HasAbrasiveSurface (sandpaper, file, grindstone — rough surface for grinding)
+  HasContainer (bowl, bucket, bottle, cup — can hold contents)
+  HasHeatElement (soldering iron, heat gun, welding torch — produces focused heat)
+  IsFlexible (rope, wire, hose, tape — bends without breaking. NOT rigid tools)
+  HasTeeth (saw, comb, rake, gear — tooth-like serrations)
 
 "hasRole" — pick from:
   ConsumableRole (food, drink, medicine — gets consumed. NEVER containers or tools)
@@ -106,6 +116,10 @@ COMMON MISTAKES TO AVOID:
 - Hammer/vice → MaintenanceTask, NOT FoodPreparationTask.
 - Umbrella/hairbrush → ToolRole, NOT UtensilRole.
 - Egg shells → WasteRole, NOT ConsumableRole.
+- Saw → HasBlade AND HasTeeth. Knife → HasBlade but NOT HasTeeth.
+- Drill → IsRotary AND HasPointedTip. Screwdriver → IsRotary but NOT HasPointedTip.
+- Bowl/cup → HasContainer. Knife → NOT HasContainer.
+- Rope/hose → IsFlexible. Hammer → NOT IsFlexible.
 
 EXAMPLES:
 knife:         {{"hasPhysicalQuality":["Sharp","Rigid"],               "hasRole":["UtensilRole"],            "affordsTask":["FoodPreparationTask"]}}
@@ -115,6 +129,8 @@ teddy bear:    {{"hasPhysicalQuality":["Soft_Deformable","Lightweight"],"hasRole
 bandaid:       {{"hasPhysicalQuality":["Lightweight"],                 "hasRole":["SafetyEquipmentRole"],    "affordsTask":["HygieneTask"]}}
 chocolate:     {{"hasPhysicalQuality":["Perishable"],                  "hasRole":["ConsumableRole"],         "affordsTask":["EatingDrinkingTask"]}}
 hammer:        {{"hasPhysicalQuality":["Heavy","Rigid"],               "hasRole":["ToolRole"],               "affordsTask":["MaintenanceTask"]}}
+saw:           {{"hasPhysicalQuality":["Heavy","Rigid","HasBlade","HasTeeth"],"hasRole":["ToolRole"],             "affordsTask":["MaintenanceTask"]}}
+drill:         {{"hasPhysicalQuality":["Heavy","Rigid","IsRotary","HasPointedTip"],"hasRole":["ToolRole"],       "affordsTask":["MaintenanceTask"]}}
 blanket:       {{"hasPhysicalQuality":["Soft_Deformable","Washable"],  "hasRole":["BeddingRole"],            "affordsTask":["SleepingTask"]}}
 
 Return ONLY the JSON. No explanation, no markdown, no extra text.

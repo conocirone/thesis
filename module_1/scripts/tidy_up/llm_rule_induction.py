@@ -3,50 +3,6 @@ llm_rule_induction_multirule.py
 ================================
 LLM + Clingo Rule Induction with MULTI-RULE learning (ILP style).
 
-Key improvements over the original version:
-
-1. Learn a SET of rules instead of forcing a single rule.
-2. Separate-and-conquer ILP strategy.
-3. Each rule must cover SOME uncovered positives and ZERO negatives.
-4. Coverage-based scoring instead of pos_miss+neg_wrong.
-5. Hard duplicate filtering.
-6. Multiple candidate rules per iteration.
-7. Stronger exploration parameters.
-
-Fixes applied (v2):
-- Permanent rejected_set replaces sliding-window tried_rules for prompt context,
-  preventing the LLM from regenerating previously forbidden rules.
-- retries counter is no longer reset when feedback_rule is set, so max_retries
-  actually fires correctly in refinement loops.
-- Top-level semicolon (disjunction) in rule body is now rejected in is_valid_rule,
-  fixing the zero-coverage issue for library/music_room style rules.
-- Temperature is ramped up progressively when the loop is stuck.
-- Stuck-loop detection is unified: tracks consecutive iterations with no accepted rule.
-
-Fixes applied (v3):
-- normalize_facts() strips object-specific names from ctx facts before comparison,
-  so that hasRole(pail, storageContainerRole) and hasRole(jar, storageContainerRole)
-  are correctly seen as identical. Without this, Jaccard similarity was always ~0
-  because raw fact strings never matched across different objects, making the
-  similarity-based acceptance logic completely ineffective (threshold of 0.6 was
-  unreachable).
-- compute_similarity() replaces the inline Jaccard block, using normalized facts.
-
-Fixes applied (v4):
-- parse_valid_constants() reads #constant(role,...) and #constant(task,...) directly
-  from the ILASP file header. These are injected into every prompt and used to
-  validate rules, preventing the LLM from hallucinating predicates like medicineRole
-  that don't exist in the ontology and can never cover any object.
-- is_valid_rule() now rejects rules containing unknown roles or tasks.
-- detect_sparse_objects() identifies objects with no role/task facts at all (e.g.
-  aspirin, which has only obj(aspirin).). These are inherently uncoverable by any
-  discriminative rule. They are skipped early with a warning instead of burning
-  all retries.
-- pick_focus_object() selects a single object to focus on per iteration when the
-  uncovered set is heterogeneous. This prevents the LLM from over-constraining by
-  AND-ing all remaining objects' properties together (which always covers zero).
-- format_prompt() now shows the focus object prominently and lists valid roles/tasks.
-
 Pipeline:
 
 LLM -> propose candidate rules
@@ -159,13 +115,7 @@ def parse_ilasp_file(filename):
             continue
 
         obj_id, loc = atom_match.group(1), atom_match.group(2)
-
-        # Split individual facts out of the context block. Facts are separated
-        # by '.' in the ILASP file and may all appear on a single line, e.g.:
-        #   obj(pail). hasRole(pail, storageContainerRole). affordsTask(pail, storageTask).
-        # Splitting by '\n' produces one element for the whole line, which breaks
-        # any downstream code that checks startswith("hasRole(") per element.
-        # Instead, split on '.' and strip whitespace, discarding empty fragments.
+        
         raw_facts = ctx_str.replace('\n', ' ')
         ctx_facts = [f.strip() for f in raw_facts.split('.') if f.strip()]
         examples_by_loc[loc]["ctx"][obj_id] = ctx_facts
@@ -183,23 +133,23 @@ def parse_ilasp_file(filename):
 # =============================================================================
 
 def parse_valid_constants(filename):
-    """Parse valid role and task constants directly from the ILASP file header.
+    """Parse valid quality, role, and task constants from the ILASP file header.
 
     The file declares these authoritatively as:
+        #constant(quality, heavy).
         #constant(role, applianceRole).
         #constant(task, cleaningTask).
-
-    Parsing from the file (rather than hardcoding) ensures the valid set
-    is always in sync with the actual ontology, and prevents the LLM from
-    hallucinating predicates like 'medicineRole' that don't exist and can
-    never cover any object.
     """
+    valid_qualities = set()
     valid_roles = set()
     valid_tasks = set()
 
     with open(filename, "r") as f:
         for line in f:
             line = line.strip()
+            m = re.match(r"#constant\(quality,\s*(\w+)\)\.", line)
+            if m:
+                valid_qualities.add(m.group(1))
             m = re.match(r"#constant\(role,\s*(\w+)\)\.", line)
             if m:
                 valid_roles.add(m.group(1))
@@ -207,7 +157,7 @@ def parse_valid_constants(filename):
             if m:
                 valid_tasks.add(m.group(1))
 
-    return valid_roles, valid_tasks
+    return valid_qualities, valid_roles, valid_tasks
 
 
 # =============================================================================
@@ -227,11 +177,11 @@ def detect_sparse_objects(uncovered_pos, ctx):
     sparse = set()
     for obj in uncovered_pos:
         facts = ctx.get(obj, [])
-        has_role_or_task = any(
-            f.startswith("hasRole(") or f.startswith("affordsTask(")
+        has_descriptive_fact = any(
+            f.startswith("hasRole(") or f.startswith("affordsTask(") or f.startswith("hasPhysicalQuality(")
             for f in facts
         )
-        if not has_role_or_task:
+        if not has_descriptive_fact:
             sparse.add(obj)
     return sparse
 
@@ -403,7 +353,7 @@ def compute_similarity(obj_a, facts_a, obj_b, facts_b):
 # =============================================================================
 
 def format_prompt(loc, uncovered_pos, neg, ctx, rejected_set,
-                  valid_roles, valid_tasks,
+                  valid_qualities, valid_roles, valid_tasks,
                   focus_obj=None, feedback_rule=None, falsely_covered_negs=None):
 
     # Focus object is the single object the LLM must cover this iteration.
@@ -418,6 +368,7 @@ def format_prompt(loc, uncovered_pos, neg, ctx, rejected_set,
     neg_str = "\n".join([f"- {o} ({', '.join(ctx[o])})" for o in list(neg)[:10]])
 
     # Valid ontology values — injected so the LLM cannot hallucinate predicates
+    qualities_list = ", ".join(sorted(valid_qualities))
     roles_list = ", ".join(sorted(valid_roles))
     tasks_list = ", ".join(sorted(valid_tasks))
 
@@ -437,16 +388,25 @@ It is acceptable if false positives have the SAME properties as true positives
 Do not output explanations, markdown, or meta-commentary.
 Output EXACTLY ONE rule per response.
 
+CRITICAL INSTRUCTION - MINIMAL RULES ONLY:
+- You MUST generate the SHORTEST POSSIBLE rule.
+- Use the absolute MINIMUM number of conditions necessary to distinguish the focus object from negatives.
+- DO NOT just copy all properties of the focus object. Choose 1 or 2 most important discriminative features.
+
 CRITICAL SYNTAX RULES:
 - Do NOT use semicolons (;) at the top level of the rule body.
   Disjunction at the top level creates invalid ASP. Use commas only.
 - Example of INVALID rule: goesIn(X, loc) :- obj(X), hasRole(X, roleA) ; hasRole(X, roleB).
 - Example of VALID rule:   goesIn(X, loc) :- obj(X), hasRole(X, roleA), affordsTask(X, taskB).
+- Example of VALID rule:   goesIn(X, loc) :- obj(X), hasPhysicalQuality(X, requiresCooling).
+-  Write the MOST GENERAL rule possible. Use the MINIMUM number of conditions necessary to distinguish the positives from the negatives. Do not just copy all properties of the focus object.
+
 
 VALID ONTOLOGY VALUES — you MUST only use these exact strings, nothing else:
-Roles:  {roles_list}
-Tasks:  {tasks_list}
-Using any role or task NOT in these lists will cause the rule to cover nothing and be rejected.
+Qualities: {qualities_list}
+Roles:     {roles_list}
+Tasks:     {tasks_list}
+Using any value NOT in these lists will cause the rule to cover nothing and be rejected.
 """
 
     falses_list = falsely_covered_negs or []
@@ -515,14 +475,15 @@ Generate EXACTLY ONE candidate rule.
 # RULE VALIDATION
 # =============================================================================
 
-def is_valid_rule(rule, uncovered_pos, ctx, valid_roles=None, valid_tasks=None):
+def is_valid_rule(rule, uncovered_pos, ctx,
+                  valid_qualities=None, valid_roles=None, valid_tasks=None):
     """Quick sanity checks before Clingo evaluation."""
     # Rule must have at least one body condition beyond obj(X)
     if not re.search(r":-\s*obj\(X\),\s+\S+", rule):
         return False
 
     # Avoid overly generic rules with too few conditions
-    if rule.count(",") < 2:
+    if rule.count(",") < 1:
         return False
 
     # Rule must end with period
@@ -540,9 +501,14 @@ def is_valid_rule(rule, uncovered_pos, ctx, valid_roles=None, valid_tasks=None):
         elif ch == ";" and depth == 0:
             return False  # top-level disjunction — reject
 
-    # Reject rules that reference hallucinated roles or tasks not in the ontology.
-    # e.g. 'medicineRole' is invented by the LLM and can never match any object,
-    # so any rule using it will always cover zero positives.
+    # Reject rules that reference hallucinated predicates not in the ontology.
+    if valid_qualities is not None:
+        claimed_quals = re.findall(r"hasPhysicalQuality\(X,\s*(\w+)\)", rule)
+        for q in claimed_quals:
+            if q not in valid_qualities:
+                print(f"  [validator] Unknown quality '{q}' — not in ontology. Rejecting.")
+                return False
+
     if valid_roles is not None:
         claimed_roles = re.findall(r"hasRole\(X,\s*(\w+)\)", rule)
         for r in claimed_roles:
@@ -635,10 +601,73 @@ def call_llm(prompt, boost_temperature=False):
 
 
 # =============================================================================
+# RULE PRUNING (MINIMALIZATION)
+# =============================================================================
+
+def prune_rule(rule: str, loc: str, data: dict, uncovered: set) -> tuple[str, list, list]:
+    """
+    Attempt to drop optional conditions from the rule body while maintaining
+    coverage of the focus positives and avoiding negative coverage.
+    This guarantees mathematically minimal rules and prevents LLM over-fitting.
+    """
+    if ":-" not in rule:
+        return rule, [], []
+        
+    head, body_str = rule.split(":-", 1)
+    body_str = body_str.strip()
+    if body_str.endswith("."):
+        body_str = body_str[:-1]
+    import re
+    
+    # Split by comma ONLY when not inside parentheses
+    literals = [l.strip() for l in re.split(r',\s*(?![^()]*\))', body_str)]
+    
+    essential = []
+    optional = []
+    for lit in literals:
+        if lit.startswith("obj("):
+            essential.append(lit)
+        else:
+            optional.append(lit)
+            
+    best_rule = rule
+    best_covered_pos, best_covered_neg = evaluate_rule(rule, loc, data, uncovered)
+    
+    # Only prune if the rule is already perfectly clean (covers 0 negatives)
+    if not best_covered_pos or best_covered_neg:
+        return best_rule, best_covered_pos, best_covered_neg
+        
+    current_optional = optional.copy()
+    changed = True
+    
+    while changed and len(current_optional) > 1:
+        changed = False
+        for lit in current_optional:
+            test_optional = [l for l in current_optional if l != lit]
+            test_body = ", ".join(essential + test_optional)
+            test_rule = f"{head.strip()} :- {test_body}."
+            
+            test_pos, test_neg = evaluate_rule(test_rule, loc, data, uncovered)
+            
+            # If the pruned rule still covers no negatives, it is strictly better!
+            # It will mathematically cover at least as many positives.
+            if not test_neg:
+                best_rule = test_rule
+                best_covered_pos = test_pos
+                best_covered_neg = test_neg
+                current_optional = test_optional
+                changed = True
+                print(f"  [pruner] Successfully dropped condition: {lit}")
+                break
+                
+    return best_rule, best_covered_pos, best_covered_neg
+
+
+# =============================================================================
 # MAIN LEARNING LOOP
 # =============================================================================
 
-def learn_rules_for_location(loc, data, valid_roles, valid_tasks):
+def learn_rules_for_location(loc, data, valid_qualities, valid_roles, valid_tasks):
 
     uncovered = set(data["pos"])
 
@@ -689,7 +718,7 @@ def learn_rules_for_location(loc, data, valid_roles, valid_tasks):
 
         prompt = format_prompt(
             loc, uncovered, data["neg"], data["ctx"], rejected_set,
-            valid_roles, valid_tasks,
+            valid_qualities, valid_roles, valid_tasks,
             focus_obj=focus_obj,
             feedback_rule=feedback_rule,
             falsely_covered_negs=falsely_covered_negs
@@ -744,7 +773,7 @@ def learn_rules_for_location(loc, data, valid_roles, valid_tasks):
             if not uncovered:
                 break
 
-            if not is_valid_rule(rule, uncovered, data["ctx"], valid_roles, valid_tasks):
+            if not is_valid_rule(rule, uncovered, data["ctx"], valid_qualities, valid_roles, valid_tasks):
                 print(f"Rule failed pre-validation: {rule}")
                 rejected_set.add(rule)
                 continue
@@ -790,17 +819,25 @@ def learn_rules_for_location(loc, data, valid_roles, valid_tasks):
                         all_false_pos_compatible = False
                         incompatible_negs.append(neg_obj)
 
-                if all_false_pos_compatible:
-                    print(">>> ACCEPTING rule: All false positives are functionally identical to true positives.")
-                    feedback_rule        = None
-                    falsely_covered_negs = None
-                else:
-                    print(f"Rule rejected: These negatives are fundamentally different "
-                          f"from positives: {incompatible_negs}")
-                    feedback_rule        = rule
+                if not all_false_pos_compatible:
+                    print(f"Rule rejected. Covers incompatible negatives: {incompatible_negs}")
+                    feedback_rule = rule
                     falsely_covered_negs = incompatible_negs
                     focus_fail_count[focus_obj] += 1
                     continue
+                else:
+                    print("Rule covers negatives, but all are highly similar to covered positives. "
+                          "Accepting rule anyway.")
+
+            # --- ALGORITHMIC RULE PRUNING ---
+            pruned_rule, pruned_pos, pruned_neg = prune_rule(rule, loc, data, uncovered)
+            if pruned_rule != rule:
+                print(f"  [pruner] Pruned rule from {len(rule.split(','))} to {len(pruned_rule.split(','))} conditions.")
+                print(f"  [pruner] Optimized rule: {pruned_rule}")
+                rule = pruned_rule
+                covered_pos = pruned_pos
+                covered_neg = pruned_neg
+            # --------------------------------
 
             print("Accepted rule:")
             print(rule)
@@ -862,8 +899,8 @@ def main():
     # Parse valid role/task constants directly from the ILASP file header.
     # Injected into every prompt and used to validate rules, preventing the LLM
     # from hallucinating predicates like medicineRole that don't exist in the ontology.
-    valid_roles, valid_tasks = parse_valid_constants(INPUT_EXAMPLES_FILE)
-    print(f"Loaded {len(valid_roles)} valid roles and {len(valid_tasks)} valid tasks from ontology.")
+    valid_qualities, valid_roles, valid_tasks = parse_valid_constants(INPUT_EXAMPLES_FILE)
+    print(f"Loaded {len(valid_qualities)} valid qualities, {len(valid_roles)} valid roles, and {len(valid_tasks)} valid tasks from ontology.")
 
     examples = parse_ilasp_file(INPUT_EXAMPLES_FILE)
     all_rules = {}
@@ -892,7 +929,7 @@ def main():
         print("Learning rules for", loc)
         print("===========================")
 
-        rules = learn_rules_for_location(loc, data, valid_roles, valid_tasks)
+        rules = learn_rules_for_location(loc, data, valid_qualities, valid_roles, valid_tasks)
 
         all_rules[loc] = rules
 

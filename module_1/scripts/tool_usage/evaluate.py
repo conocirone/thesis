@@ -47,6 +47,43 @@ TMP_DIR.mkdir(exist_ok=True)
 
 EVAL_REPORT_PATH = SCRIPT_DIR / "evaluation_report.md"
 
+# ------------------------------------------------------------------------------
+# AFFORDANCE SYNONYM GROUPS
+# Semantically equivalent affordances are grouped so that predicting any member
+# of a group counts as a match for any other member. This addresses cases where
+# the LLM predicts e.g. 'chop' but learned rules only cover 'cut'.
+# ------------------------------------------------------------------------------
+AFFORDANCE_SYNONYM_GROUPS = [
+    {"cut", "chop", "dice", "slit", "carve", "cube", "separate"},
+    {"clean", "wash", "wipe"},
+    {"fix", "repair"},
+    {"heat", "be_heated", "melt"},
+    {"bore", "drill"},
+    {"grasp", "hold", "pick", "handle"},
+    {"illuminate", "display"},
+    {"compress", "press", "tamp"},
+    {"peel", "skin", "strip"},
+    {"poke", "pierce"},
+    {"polish", "smoothen", "rub"},
+    {"break", "crack", "crumble", "crunch"},
+    {"carry", "lift", "support"},
+    {"contain", "store"},
+    {"mark", "write", "engrave"},
+    {"spread", "pour"},
+    {"cover", "wrap"},
+]
+
+# Build reverse lookup: affordance -> its synonym set
+_SYNONYM_LOOKUP: dict[str, set[str]] = {}
+for _group in AFFORDANCE_SYNONYM_GROUPS:
+    for _aff in _group:
+        _SYNONYM_LOOKUP[_aff] = _group
+
+
+def expand_with_synonyms(affordance: str) -> set[str]:
+    """Return the synonym set for an affordance, or {affordance} if standalone."""
+    return _SYNONYM_LOOKUP.get(affordance, {affordance})
+
 
 # ------------------------------------------------------------------------------
 # NEURO PROMPT (SOMA Feature Extraction) — same ontology as tidy_up
@@ -75,6 +112,14 @@ Return a JSON with EXACTLY three keys. Use ONLY values from these lists:
   Toxic_Hazardous (bleach, pesticide, paint — dangerous to ingest/touch)
   Flammable (paper, gas, alcohol — catches fire)
   Washable (clothing, towel — can be machine/hand washed)
+  HasBlade (knife, saw, scissors, axe — has a sharp cutting edge)
+  HasPointedTip (needle, awl, drill bit, nail — pointed end for piercing)
+  IsRotary (drill, screwdriver, grinder — operates by rotation)
+  HasAbrasiveSurface (sandpaper, file, grindstone — rough surface for grinding)
+  HasContainer (bowl, bucket, bottle, cup — can hold contents)
+  HasHeatElement (soldering iron, heat gun, welding torch — produces focused heat)
+  IsFlexible (rope, wire, hose, tape — bends without breaking. NOT rigid tools)
+  HasTeeth (saw, comb, rake, gear — tooth-like serrations)
 
 "hasRole" — pick from:
   ConsumableRole (food, drink, medicine — gets consumed. NEVER containers or tools)
@@ -118,6 +163,10 @@ COMMON MISTAKES TO AVOID:
 - Hammer/vice → MaintenanceTask, NOT FoodPreparationTask.
 - Umbrella/hairbrush → ToolRole, NOT UtensilRole.
 - Egg shells → WasteRole, NOT ConsumableRole.
+- Saw → HasBlade AND HasTeeth. Knife → HasBlade but NOT HasTeeth.
+- Drill → IsRotary AND HasPointedTip. Screwdriver → IsRotary but NOT HasPointedTip.
+- Bowl/cup → HasContainer. Knife → NOT HasContainer.
+- Rope/hose → IsFlexible. Hammer → NOT IsFlexible.
 
 EXAMPLES:
 knife:         {{"hasPhysicalQuality":["Sharp","Rigid"],               "hasRole":["UtensilRole"],            "affordsTask":["FoodPreparationTask"]}}
@@ -127,6 +176,8 @@ teddy bear:    {{"hasPhysicalQuality":["Soft_Deformable","Lightweight"],"hasRole
 bandaid:       {{"hasPhysicalQuality":["Lightweight"],                 "hasRole":["SafetyEquipmentRole"],    "affordsTask":["HygieneTask"]}}
 chocolate:     {{"hasPhysicalQuality":["Perishable"],                  "hasRole":["ConsumableRole"],         "affordsTask":["EatingDrinkingTask"]}}
 hammer:        {{"hasPhysicalQuality":["Heavy","Rigid"],               "hasRole":["ToolRole"],               "affordsTask":["MaintenanceTask"]}}
+saw:           {{"hasPhysicalQuality":["Heavy","Rigid","HasBlade","HasTeeth"],"hasRole":["ToolRole"],             "affordsTask":["MaintenanceTask"]}}
+drill:         {{"hasPhysicalQuality":["Heavy","Rigid","IsRotary","HasPointedTip"],"hasRole":["ToolRole"],       "affordsTask":["MaintenanceTask"]}}
 blanket:       {{"hasPhysicalQuality":["Soft_Deformable","Washable"],  "hasRole":["BeddingRole"],            "affordsTask":["SleepingTask"]}}
 
 Return ONLY the JSON. No explanation, no markdown, no extra text.
@@ -242,36 +293,23 @@ def load_affordance_task_map() -> dict[str, list[str]]:
 
 def predict_required_affordance(task_text: str, canonical_affordances: list[str],
                                 aff_task_map: dict[str, list[str]]) -> str:
-    """Infer the affordance required by the task text (paper-aligned).
+    """Infer the affordance required by the task text.
 
-    Uses few-shot examples from the affordance_task_map to ground the LLM's
-    prediction in concrete task-to-affordance mappings.
+    Uses a Zero-Shot Chain-of-Thought approach to prevent data leakage in evaluations.
     """
     affordances_str = ", ".join(sorted(set(canonical_affordances)))
 
-    few_shot_lines = []
-    examples_used = 0
-    for aff in sorted(aff_task_map.keys()):
-        if aff not in set(canonical_affordances):
-            continue
-        tasks = aff_task_map[aff]
-        if tasks:
-            few_shot_lines.append(f"Task: \"{tasks[0]}\" -> {aff}")
-            examples_used += 1
-            if examples_used >= 15:
-                break
-    few_shot_block = "\n".join(few_shot_lines)
-
     system = (
         "You are a household robot reasoning about object affordances. "
-        "Given a household task, pick the SINGLE most relevant affordance "
-        "from the provided list. Output ONLY the affordance string, nothing else."
+        "Given a household task, you must pick the SINGLE most relevant affordance "
+        "from the provided list. "
+        "First, briefly reason about the physical action required. "
+        "Then, output the final exact affordance string inside <affordance></affordance> tags."
     )
     user = (
         f"Valid affordances:\n{affordances_str}\n\n"
-        f"Examples:\n{few_shot_block}\n\n"
         f"Task: \"{task_text}\"\n"
-        "Your answer (one affordance from the list):"
+        "Reasoning and final answer:"
     )
     response = ollama.chat(
         model=EVAL_MODEL,
@@ -279,28 +317,66 @@ def predict_required_affordance(task_text: str, canonical_affordances: list[str]
                   {"role": "user", "content": user}],
         options={"temperature": 0.0},
     )
-    text = response["message"]["content"].strip().lower()
-    text = text.strip().strip("\"'`")
-    pred = clean_affordance_id(text)
+    
+    text = response["message"]["content"].strip()
+    
+    # Extract the affordance from the XML tags
+    match = re.search(r'<affordance>\s*([^<]+?)\s*</affordance>', text, re.IGNORECASE)
+    if match:
+        pred_raw = match.group(1)
+    else:
+        # Fallback if the LLM forgot the tags
+        pred_raw = text.split('\n')[-1]
+        
+    pred_raw = pred_raw.strip().strip("\"'`").lower()
+    pred = clean_affordance_id(pred_raw)
+    
     if pred in set(canonical_affordances):
         return pred
     for a in canonical_affordances:
         if a in pred or pred in a:
             return a
+            
+    # As a last resort, scan the raw text just in case the tag parser missed it
+    for a in canonical_affordances:
+        if a in text.lower():
+            return a
+            
+    # If totally failed, return a safe default
     return canonical_affordances[0] if canonical_affordances else pred
 
 
-def llm_fallback_tool_selection(task_text: str, tools: list[str]) -> str:
-    """Direct LLM fallback when symbolic matching finds no tool."""
-    tools_str = ", ".join(tools)
+def llm_fallback_tool_selection(task_text: str, tools: list[str],
+                                tool_results: dict = None) -> str:
+    """Direct LLM fallback when symbolic matching finds no tool.
+
+    When tool_results is provided, includes each tool's SOMA features
+    in the prompt to give the LLM richer context for selection.
+    """
+    if tool_results:
+        # Build a rich description of each tool using its SOMA features
+        tool_descriptions = []
+        for t in tools:
+            info = tool_results.get(t, {})
+            soma = info.get("soma", {})
+            roles = ", ".join(soma.get("hasRole", []) if isinstance(soma.get("hasRole", []), list) else [soma.get("hasRole", "")])
+            tasks = ", ".join(soma.get("affordsTask", []) if isinstance(soma.get("affordsTask", []), list) else [soma.get("affordsTask", "")])
+            quals = ", ".join(soma.get("hasPhysicalQuality", []) if isinstance(soma.get("hasPhysicalQuality", []), list) else [soma.get("hasPhysicalQuality", "")])
+            deduced = ", ".join(info.get("deduced_affordances", []))
+            desc = f"- {t}: roles=[{roles}], tasks=[{tasks}], qualities=[{quals}], affordances=[{deduced}]"
+            tool_descriptions.append(desc)
+        tools_block = "\n".join(tool_descriptions)
+    else:
+        tools_block = ", ".join(tools)
+
     system = (
-        "You are a household robot. Given a task and a list of tools, "
-        "pick the SINGLE best tool to accomplish the task. "
+        "You are a household robot. Given a task and a list of tools with "
+        "their properties, pick the SINGLE best tool to accomplish the task. "
         "Output ONLY the tool name exactly as listed, nothing else."
     )
     user = (
         f"Task: {task_text}\n"
-        f"Tools: {tools_str}\n"
+        f"Tools:\n{tools_block}\n"
         "Best tool:"
     )
     response = ollama.chat(
@@ -393,11 +469,20 @@ def run_evaluation(num_tests=None):
             # Step C: Logical Inference
             deduced = run_clingo_inference(rules_lp, facts_str)
 
+            # Expand the predicted affordance to its synonym set
+            synonym_set = expand_with_synonyms(required_aff)
+            deduced_set = set(deduced)
+            has_match = bool(synonym_set & deduced_set)
+            # Track which synonym(s) actually matched (for diagnostics)
+            matched_synonyms = synonym_set & deduced_set
+
             tool_results[tool_name] = {
                 "obj_id": obj_id,
                 "soma": soma_data,
                 "deduced_affordances": deduced,
-                "has_required": required_aff in deduced,
+                "has_required": has_match,
+                "matched_via_synonym": bool(matched_synonyms - {required_aff}),
+                "matched_synonyms": matched_synonyms,
             }
 
         # Step D: Pick the best tool
@@ -406,12 +491,12 @@ def run_evaluation(num_tests=None):
         if len(matching_tools) == 1:
             predicted_tool = matching_tools[0]
         elif len(matching_tools) > 1:
-            # Tiebreaker: prefer the tool with fewest total deduced affordances (more specific)
-            predicted_tool = min(matching_tools,
-                                key=lambda t: len(tool_results[t]["deduced_affordances"]))
+            # Semantic Tie-Breaker: Pass only the strictly valid tools to the LLM
+            # passing the burden of picking between two physically valid tools to contextual semantics.
+            predicted_tool = llm_fallback_tool_selection(task_name, matching_tools, tool_results)
         else:
             # No symbolic match — use LLM commonsense as fallback
-            predicted_tool = llm_fallback_tool_selection(task_name, all_tools)
+            predicted_tool = llm_fallback_tool_selection(task_name, all_tools, tool_results)
 
         is_correct = predicted_tool.lower() == correct_tool.lower()
         if is_correct:
@@ -459,12 +544,31 @@ def run_evaluation(num_tests=None):
     single_match = sum(1 for r in results_log if len(r["matching_tools"]) == 1)
     aff_pred_acc = sum(1 for r in results_log if r["affordance_pred_correct"]) / len(results_log) * 100
 
+    # Count how many matches were gained via synonym expansion
+    synonym_gained = 0
+    for r in results_log:
+        if r["matching_tools"]:
+            # Check if any matching tool was found ONLY via synonym (not direct match)
+            for t in r["matching_tools"]:
+                if r["tool_details"][t].get("matched_via_synonym", False):
+                    synonym_gained += 1
+                    break
+
+    # Count affordance prediction accuracy including synonym matches
+    aff_pred_synonym_acc = sum(
+        1 for r in results_log
+        if r["affordance_pred_correct"] or
+           r["required_affordance_gold"] in expand_with_synonyms(r["required_affordance_pred"])
+    ) / len(results_log) * 100
+
     print(f"\n{'─' * 60}")
     print(f"Match diagnostics:")
     print(f"  Single match (ideal): {single_match} ({single_match/len(test_cases)*100:.1f}%)")
     print(f"  Multiple matches:     {multi_match} ({multi_match/len(test_cases)*100:.1f}%)")
     print(f"  No match (fallback):  {no_match} ({no_match/len(test_cases)*100:.1f}%)")
-    print(f"  Affordance prediction accuracy (task→affordance): {aff_pred_acc:.1f}%")
+    print(f"  Matches gained via synonyms: {synonym_gained}")
+    print(f"  Affordance prediction accuracy (exact): {aff_pred_acc:.1f}%")
+    print(f"  Affordance prediction accuracy (with synonyms): {aff_pred_synonym_acc:.1f}%")
 
     # Save Report
     with open(EVAL_REPORT_PATH, "w", encoding="utf-8") as f:
@@ -479,7 +583,10 @@ def run_evaluation(num_tests=None):
         f.write("### Match Diagnostics\n")
         f.write(f"- Single match: {single_match} ({single_match/len(test_cases)*100:.1f}%)\n")
         f.write(f"- Multiple matches: {multi_match} ({multi_match/len(test_cases)*100:.1f}%)\n")
-        f.write(f"- No match (random fallback): {no_match} ({no_match/len(test_cases)*100:.1f}%)\n\n")
+        f.write(f"- No match (fallback): {no_match} ({no_match/len(test_cases)*100:.1f}%)\n")
+        f.write(f"- Matches gained via synonym expansion: {synonym_gained}\n")
+        f.write(f"- Affordance prediction accuracy (exact): {aff_pred_acc:.1f}%\n")
+        f.write(f"- Affordance prediction accuracy (with synonyms): {aff_pred_synonym_acc:.1f}%\n\n")
 
         f.write("### Per-Affordance Accuracy\n")
         f.write("| Affordance | Correct | Total | Accuracy |\n")
@@ -515,6 +622,9 @@ def run_evaluation(num_tests=None):
                 f.write(f"  - Qualities: {', '.join(get_list(soma, 'hasPhysicalQuality'))}\n")
                 f.write(f"  - Deduced Affordances: "
                         f"{', '.join(correct_details.get('deduced_affordances', [])) or 'None'}\n")
+                matched_syns = correct_details.get('matched_synonyms', set())
+                if matched_syns:
+                    f.write(f"  - Matched via synonyms: {', '.join(sorted(matched_syns))}\n")
             f.write("\n")
 
     print(f"\nDetailed report saved to {EVAL_REPORT_PATH}")

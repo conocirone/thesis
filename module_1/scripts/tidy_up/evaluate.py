@@ -84,6 +84,14 @@ Return a JSON with EXACTLY three keys. Use ONLY values from these lists:
   Toxic_Hazardous (bleach, pesticide, paint — dangerous to ingest/touch)
   Flammable (paper, gas, alcohol — catches fire)
   Washable (clothing, towel — can be machine/hand washed)
+  HasBlade (knife, saw, scissors, axe — has a sharp cutting edge)
+  HasPointedTip (needle, awl, drill bit, nail — pointed end for piercing)
+  IsRotary (drill, screwdriver, grinder — operates by rotation)
+  HasAbrasiveSurface (sandpaper, file, grindstone — rough surface for grinding)
+  HasContainer (bowl, bucket, bottle, cup — can hold contents)
+  HasHeatElement (soldering iron, heat gun, welding torch — produces focused heat)
+  IsFlexible (rope, wire, hose, tape — bends without breaking. NOT rigid tools)
+  HasTeeth (saw, comb, rake, gear — tooth-like serrations)
 
 "hasRole" — pick from:
   ConsumableRole (food, drink, medicine — gets consumed. NEVER containers or tools)
@@ -127,6 +135,10 @@ COMMON MISTAKES TO AVOID:
 - Hammer/vice → MaintenanceTask, NOT FoodPreparationTask.
 - Umbrella/hairbrush → ToolRole, NOT UtensilRole.
 - Egg shells → WasteRole, NOT ConsumableRole.
+- Saw → HasBlade AND HasTeeth. Knife → HasBlade but NOT HasTeeth.
+- Drill → IsRotary AND HasPointedTip. Screwdriver → IsRotary but NOT HasPointedTip.
+- Bowl/cup → HasContainer. Knife → NOT HasContainer.
+- Rope/hose → IsFlexible. Hammer → NOT IsFlexible.
 
 EXAMPLES:
 knife:         {{"hasPhysicalQuality":["Sharp","Rigid"],               "hasRole":["UtensilRole"],            "affordsTask":["FoodPreparationTask"]}}
@@ -136,6 +148,8 @@ teddy bear:    {{"hasPhysicalQuality":["Soft_Deformable","Lightweight"],"hasRole
 bandaid:       {{"hasPhysicalQuality":["Lightweight"],                 "hasRole":["SafetyEquipmentRole"],    "affordsTask":["HygieneTask"]}}
 chocolate:     {{"hasPhysicalQuality":["Perishable"],                  "hasRole":["ConsumableRole"],         "affordsTask":["EatingDrinkingTask"]}}
 hammer:        {{"hasPhysicalQuality":["Heavy","Rigid"],               "hasRole":["ToolRole"],               "affordsTask":["MaintenanceTask"]}}
+saw:           {{"hasPhysicalQuality":["Heavy","Rigid","HasBlade","HasTeeth"],"hasRole":["ToolRole"],             "affordsTask":["MaintenanceTask"]}}
+drill:         {{"hasPhysicalQuality":["Heavy","Rigid","IsRotary","HasPointedTip"],"hasRole":["ToolRole"],       "affordsTask":["MaintenanceTask"]}}
 blanket:       {{"hasPhysicalQuality":["Soft_Deformable","Washable"],  "hasRole":["BeddingRole"],            "affordsTask":["SleepingTask"]}}
 
 Return ONLY the JSON. No explanation, no markdown, no extra text.
@@ -295,6 +309,50 @@ def rank_locations(obj_id: str, facts_str: str, rules_by_loc: dict[str, list[str
     scored.sort(key=lambda x: (-x[1], x[0]))
     return [loc for loc, _ in scored]
 
+
+def llm_semantic_rerank(obj_name: str, soma_data: dict, candidate_locs: list[str]) -> list[str]:
+    """Break ties by semantically re-ranking the valid locations identified by Clingo."""
+    if len(candidate_locs) <= 1:
+        return candidate_locs
+        
+    roles = ", ".join(soma_data.get("hasRole", []) if isinstance(soma_data.get("hasRole", []), list) else [soma_data.get("hasRole", "")])
+    tasks = ", ".join(soma_data.get("affordsTask", []) if isinstance(soma_data.get("affordsTask", []), list) else [soma_data.get("affordsTask", "")])
+    quals = ", ".join(soma_data.get("hasPhysicalQuality", []) if isinstance(soma_data.get("hasPhysicalQuality", []), list) else [soma_data.get("hasPhysicalQuality", "")])
+
+    system = (
+        "You are a household robot. I need to place an object. "
+        "The logical symbolic engine has narrowed the possible locations down to a short list. "
+        "Your job is to semantically RANK these valid locations from BEST (most common/natural) to WORST. "
+        "Output ONLY a comma-separated list of the locations in ranked order, nothing else."
+    )
+    user = (
+        f"Object: {obj_name}\n"
+        f"Properties: roles=[{roles}], tasks=[{tasks}], qualities=[{quals}]\n"
+        f"Candidate Locations: {', '.join(candidate_locs)}\n"
+        "Ranked Locations (comma-separated):"
+    )
+    response = ollama.chat(
+        model=EVAL_MODEL,
+        messages=[{"role": "system", "content": system},
+                  {"role": "user", "content": user}],
+        options={"temperature": 0.0},
+    )
+    text = response["message"]["content"].strip().strip("\"'`")
+    
+    # Parse the ranked list from LLM
+    ranked = []
+    for loc_raw in text.split(","):
+        loc = loc_raw.strip().lower()
+        if loc in candidate_locs and loc not in ranked:
+            ranked.append(loc)
+            
+    # Append any that the LLM missed to the end
+    for loc in candidate_locs:
+        if loc not in ranked:
+            ranked.append(loc)
+            
+    return ranked
+
 # ------------------------------------------------------------------------------
 # MAIN PIPELINE
 # ------------------------------------------------------------------------------
@@ -360,6 +418,12 @@ def run_evaluation(num_tests=50):
         # Step C: Logical Inference (ranked)
         deduced = rank_locations(obj_id, facts_str, rules_by_loc)
         
+        # Step C.2: LLM Semantic Re-Ranking for ties
+        if len(deduced) > 1:
+            top_n = deduced[:5]
+            reranked_top = llm_semantic_rerank(obj_name, soma_data, top_n)
+            deduced = reranked_top + deduced[5:]
+            
         ground_truth = case["target_locations"]
         
         # Calculate Metrics

@@ -1,532 +1,674 @@
 % === PROGRESSIVE LLM RULE INDUCTION OUTPUT ===
 
 % --- table ---
-goesIn(X, table) :- obj(X), hasRole(X, clothingRole), affordsTask(X, dressingTask), affordsTask(X, storageTask).
-goesIn(X, table) :- obj(X), hasRole(X, storageContainerRole), hasRole(X, wasteRole), affordsTask(X, wasteDisposalTask).
-goesIn(X, table) :- obj(X), hasRole(X, utensilRole), affordsTask(X, eatingDrinkingTask).
-goesIn(X, table) :- obj(X), hasRole(X, musicalInstrumentRole), affordsTask(X, leisureTask), affordsTask(X, workStudyTask).
-goesIn(X, table) :- obj(X), hasRole(X, toolRole), affordsTask(X, maintenanceTask).
-goesIn(X, table) :- obj(X), hasRole(X, toolRole), affordsTask(X, leisureTask), affordsTask(X, workStudyTask).
-goesIn(X, table) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, leisureTask), affordsTask(X, storageTask).
-goesIn(X, table) :- obj(X), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
-goesIn(X, table) :- obj(X), hasRole(X, consumableRole), affordsTask(X, gardeningTask), affordsTask(X, leisureTask).
-goesIn(X, table) :- obj(X), hasRole(X, applianceRole), affordsTask(X, leisureTask), affordsTask(X, workStudyTask).
-goesIn(X, table) :- obj(X), hasRole(X, documentRole), affordsTask(X, leisureTask), affordsTask(X, workStudyTask).
-goesIn(X, table) :- obj(X), hasRole(X, consumableRole), affordsTask(X, maintenanceTask).
-goesIn(X, table) :- obj(X), hasRole(X, decorationRole), affordsTask(X, storageTask).
-goesIn(X, table) :- obj(X), hasRole(X, entertainmentRole), affordsTask(X, leisureTask).
-goesIn(X, table) :- obj(X), hasRole(X, documentRole), affordsTask(X, workStudyTask).
-goesIn(X, table) :- obj(X), hasRole(X, decorationRole), affordsTask(X, leisureTask).
-goesIn(X, table) :- obj(X), hasRole(X, beddingRole), affordsTask(X, leisureTask).
-goesIn(X, table) :- obj(X), hasRole(X, toolRole), affordsTask(X, foodPreparationTask).
-goesIn(X, table) :- obj(X), hasRole(X, applianceRole), affordsTask(X, leisureTask).
-goesIn(X, table) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, leisureTask).
-goesIn(X, table) :- obj(X), hasRole(X, clothingRole), affordsTask(X, dressingTask).
-goesIn(X, table) :- obj(X), hasRole(X, utensilRole), affordsTask(X, maintenanceTask).
-goesIn(X, table) :- obj(X), hasRole(X, utensilRole), affordsTask(X, foodPreparationTask).
-goesIn(X, table) :- obj(X), hasRole(X, consumableRole), affordsTask(X, foodPreparationTask).
-goesIn(X, table) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
-goesIn(X, table) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, workStudyTask).
-goesIn(X, table) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, wasteDisposalTask).
-goesIn(X, table) :- obj(X), hasRole(X, toolRole), affordsTask(X, workStudyTask).
-goesIn(X, table) :- obj(X), hasRole(X, consumableRole), affordsTask(X, leisureTask).
-goesIn(X, table) :- obj(X), hasRole(X, applianceRole), affordsTask(X, workStudyTask).
-goesIn(X, table) :- obj(X), hasRole(X, beddingRole), affordsTask(X, sleepingTask).
-goesIn(X, table) :- obj(X), hasRole(X, cleaningToolRole), affordsTask(X, cleaningTask).
-goesIn(X, table) :- obj(X), hasRole(X, documentRole), affordsTask(X, cleaningTask).
-goesIn(X, table) :- obj(X), hasRole(X, toolRole), affordsTask(X, storageTask).
-goesIn(X, table) :- obj(X), hasRole(X, cleaningToolRole), affordsTask(X, maintenanceTask).
-goesIn(X, table) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, leisureTask).
+goesIn(X, table) :- obj(X), hasPhysicalQuality(X, soft_Deformable), affordsTask(X, maintenanceTask).
+goesIn(X, table) :- obj(X), hasPhysicalQuality(X, sharp), affordsTask(X, maintenanceTask).
+goesIn(X, table) :- obj(X), hasPhysicalQuality(X, lightweight), hasPhysicalQuality(X, rigid), hasPhysicalQuality(X, sharp), hasRole(X, utensilRole), affordsTask(X, foodPreparationTask).
+goesIn(X, table) :- obj(X), hasPhysicalQuality(X, washable).
+goesIn(X, table) :- obj(X), affordsTask(X, workStudyTask).
+goesIn(X, table) :- obj(X), hasPhysicalQuality(X, fragile), affordsTask(X, leisureTask).
+goesIn(X, table) :- obj(X), hasPhysicalQuality(X, liquid), hasPhysicalQuality(X, perishable), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
+goesIn(X, table) :- obj(X), hasPhysicalQuality(X, toxic_Hazardous), hasRole(X, toolRole).
+goesIn(X, table) :- obj(X), hasRole(X, wasteRole).
+goesIn(X, table) :- obj(X), hasPhysicalQuality(X, lightweight), hasPhysicalQuality(X, rigid), hasRole(X, toolRole), affordsTask(X, maintenanceTask).
+goesIn(X, table) :- obj(X), hasPhysicalQuality(X, heavy), hasRole(X, toolRole).
+goesIn(X, table) :- obj(X), hasPhysicalQuality(X, rigid), hasPhysicalQuality(X, sharp), hasRole(X, utensilRole), affordsTask(X, foodPreparationTask).
+goesIn(X, table) :- obj(X), hasPhysicalQuality(X, fragile), affordsTask(X, dressingTask).
+goesIn(X, table) :- obj(X), hasPhysicalQuality(X, soft_Deformable), hasRole(X, toolRole).
+goesIn(X, table) :- obj(X), hasPhysicalQuality(X, soft_Deformable), hasRole(X, furnitureRole).
+goesIn(X, table) :- obj(X), hasPhysicalQuality(X, hasContainer), affordsTask(X, wasteDisposalTask).
+goesIn(X, table) :- obj(X), hasPhysicalQuality(X, rigid), affordsTask(X, eatingDrinkingTask).
+goesIn(X, table) :- obj(X), hasPhysicalQuality(X, lightweight), hasRole(X, lightingRole).
+goesIn(X, table) :- obj(X), hasRole(X, musicalInstrumentRole).
+goesIn(X, table) :- obj(X), hasPhysicalQuality(X, lightweight), hasPhysicalQuality(X, rigid), hasRole(X, utensilRole), affordsTask(X, foodPreparationTask).
+goesIn(X, table) :- obj(X), hasPhysicalQuality(X, liquid), hasRole(X, toolRole).
+goesIn(X, table) :- obj(X), hasPhysicalQuality(X, granular), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
+goesIn(X, table) :- obj(X), hasPhysicalQuality(X, hasContainer), hasPhysicalQuality(X, lightweight), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
+goesIn(X, table) :- obj(X), hasPhysicalQuality(X, liquid), hasRole(X, utensilRole), affordsTask(X, eatingDrinkingTask).
+goesIn(X, table) :- obj(X), hasPhysicalQuality(X, heavy), hasRole(X, furnitureRole), affordsTask(X, leisureTask).
+goesIn(X, table) :- obj(X), hasPhysicalQuality(X, electronic), hasRole(X, toolRole), affordsTask(X, leisureTask).
+goesIn(X, table) :- obj(X), hasPhysicalQuality(X, heated), affordsTask(X, leisureTask).
+goesIn(X, table) :- obj(X), hasRole(X, documentRole).
+goesIn(X, table) :- obj(X), hasPhysicalQuality(X, hasContainer), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
+goesIn(X, table) :- obj(X), hasPhysicalQuality(X, heavy), hasPhysicalQuality(X, rigid), hasRole(X, furnitureRole), affordsTask(X, storageTask).
+goesIn(X, table) :- obj(X), affordsTask(X, foodPreparationTask), hasPhysicalQuality(X, perishable).
 
 % --- bathroom ---
-goesIn(X, bathroom) :- obj(X), hasRole(X, cleaningToolRole), affordsTask(X, hygieneTask).
-goesIn(X, bathroom) :- obj(X), hasRole(X, toolRole), affordsTask(X, hygieneTask).
-goesIn(X, bathroom) :- obj(X), hasRole(X, clothingRole), affordsTask(X, dressingTask), affordsTask(X, storageTask).
-goesIn(X, bathroom) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, wasteDisposalTask).
-goesIn(X, bathroom) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
-goesIn(X, bathroom) :- obj(X), hasRole(X, consumableRole), affordsTask(X, cleaningTask).
-goesIn(X, bathroom) :- obj(X), hasRole(X, applianceRole), affordsTask(X, eatingDrinkingTask), affordsTask(X, hygieneTask).
-goesIn(X, bathroom) :- obj(X), hasRole(X, applianceRole), affordsTask(X, hygieneTask), affordsTask(X, leisureTask).
-goesIn(X, bathroom) :- obj(X), hasRole(X, consumableRole), affordsTask(X, hygieneTask), affordsTask(X, leisureTask).
-goesIn(X, bathroom) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, leisureTask), affordsTask(X, storageTask).
-goesIn(X, bathroom) :- obj(X), hasRole(X, toolRole), affordsTask(X, maintenanceTask).
-goesIn(X, bathroom) :- obj(X), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
-goesIn(X, bathroom) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, wasteDisposalTask).
-goesIn(X, bathroom) :- obj(X), hasRole(X, consumableRole), affordsTask(X, hygieneTask).
-goesIn(X, bathroom) :- obj(X), hasRole(X, cleaningToolRole), affordsTask(X, cleaningTask).
-goesIn(X, bathroom) :- obj(X), hasRole(X, utensilRole), affordsTask(X, eatingDrinkingTask).
-goesIn(X, bathroom) :- obj(X), hasRole(X, toolRole), affordsTask(X, dressingTask).
-goesIn(X, bathroom) :- obj(X), hasRole(X, beddingRole), affordsTask(X, sleepingTask).
-goesIn(X, bathroom) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, leisureTask).
-goesIn(X, bathroom) :- obj(X), hasRole(X, cookwareRole), affordsTask(X, foodPreparationTask).
-goesIn(X, bathroom) :- obj(X), hasRole(X, utensilRole), affordsTask(X, foodPreparationTask).
-goesIn(X, bathroom) :- obj(X), hasRole(X, safetyEquipmentRole), affordsTask(X, hygieneTask).
-goesIn(X, bathroom) :- obj(X), hasRole(X, documentRole), affordsTask(X, leisureTask).
+goesIn(X, bathroom) :- obj(X), hasPhysicalQuality(X, liquid), affordsTask(X, hygieneTask).
+goesIn(X, bathroom) :- obj(X), hasPhysicalQuality(X, rigid), affordsTask(X, storageTask).
+goesIn(X, bathroom) :- obj(X), hasPhysicalQuality(X, washable), affordsTask(X, leisureTask).
+goesIn(X, bathroom) :- obj(X), hasPhysicalQuality(X, washable), hasRole(X, consumableRole).
+goesIn(X, bathroom) :- obj(X), affordsTask(X, cleaningTask).
+goesIn(X, bathroom) :- obj(X), hasPhysicalQuality(X, electronic), hasRole(X, toolRole), affordsTask(X, maintenanceTask).
+goesIn(X, bathroom) :- obj(X), hasPhysicalQuality(X, lightweight), affordsTask(X, maintenanceTask).
+goesIn(X, bathroom) :- obj(X), hasPhysicalQuality(X, rigid), hasPhysicalQuality(X, sharp), hasRole(X, utensilRole), affordsTask(X, foodPreparationTask).
 goesIn(X, bathroom) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, hygieneTask).
-goesIn(X, bathroom) :- obj(X), hasRole(X, consumableRole), affordsTask(X, foodPreparationTask).
-goesIn(X, bathroom) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, eatingDrinkingTask).
-goesIn(X, bathroom) :- obj(X), hasRole(X, utensilRole), affordsTask(X, dressingTask).
-goesIn(X, bathroom) :- obj(X), hasRole(X, clothingRole), affordsTask(X, dressingTask).
-goesIn(X, bathroom) :- obj(X), hasRole(X, toolRole), affordsTask(X, leisureTask).
-goesIn(X, bathroom) :- obj(X), hasRole(X, toolRole), affordsTask(X, eatingDrinkingTask).
-goesIn(X, bathroom) :- obj(X), hasRole(X, toolRole), affordsTask(X, foodPreparationTask).
-goesIn(X, bathroom) :- obj(X), hasRole(X, wasteRole), affordsTask(X, cleaningTask).
-goesIn(X, bathroom) :- obj(X), hasRole(X, applianceRole), affordsTask(X, leisureTask).
-goesIn(X, bathroom) :- obj(X), affordsTask(X, hygieneTask).
+goesIn(X, bathroom) :- obj(X), hasRole(X, applianceRole), affordsTask(X, hygieneTask).
+goesIn(X, bathroom) :- obj(X), hasPhysicalQuality(X, heavy), hasPhysicalQuality(X, rigid), hasRole(X, toolRole), affordsTask(X, maintenanceTask).
+goesIn(X, bathroom) :- obj(X), hasPhysicalQuality(X, lightweight), hasRole(X, cleaningToolRole).
+goesIn(X, bathroom) :- obj(X), hasPhysicalQuality(X, toxic_Hazardous).
+goesIn(X, bathroom) :- obj(X), hasPhysicalQuality(X, liquid), hasRole(X, utensilRole), affordsTask(X, eatingDrinkingTask).
+goesIn(X, bathroom) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, storageTask).
+goesIn(X, bathroom) :- obj(X), hasRole(X, applianceRole), affordsTask(X, wasteDisposalTask).
+goesIn(X, bathroom) :- obj(X), hasRole(X, toolRole), affordsTask(X, hygieneTask).
+goesIn(X, bathroom) :- obj(X), hasPhysicalQuality(X, electronic), hasPhysicalQuality(X, heavy), hasRole(X, applianceRole), affordsTask(X, leisureTask).
+goesIn(X, bathroom) :- obj(X), hasPhysicalQuality(X, lightweight), hasPhysicalQuality(X, rigid), hasRole(X, furnitureRole).
+goesIn(X, bathroom) :- obj(X), hasPhysicalQuality(X, liquid), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
+goesIn(X, bathroom) :- obj(X), hasPhysicalQuality(X, fragile), affordsTask(X, foodPreparationTask).
+goesIn(X, bathroom) :- obj(X), hasPhysicalQuality(X, washable), affordsTask(X, dressingTask).
+goesIn(X, bathroom) :- obj(X), hasPhysicalQuality(X, heavy), affordsTask(X, hygieneTask).
+goesIn(X, bathroom) :- obj(X), hasRole(X, safetyEquipmentRole).
+goesIn(X, bathroom) :- obj(X), hasPhysicalQuality(X, fragile), hasRole(X, utensilRole).
+goesIn(X, bathroom) :- obj(X), hasPhysicalQuality(X, perishable), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
+goesIn(X, bathroom) :- obj(X), hasPhysicalQuality(X, heated), hasRole(X, cookwareRole), affordsTask(X, foodPreparationTask).
+goesIn(X, bathroom) :- obj(X), hasPhysicalQuality(X, granular).
+goesIn(X, bathroom) :- obj(X), hasPhysicalQuality(X, liquid), hasRole(X, toolRole), affordsTask(X, maintenanceTask).
+goesIn(X, bathroom) :- obj(X), hasPhysicalQuality(X, lightweight), affordsTask(X, eatingDrinkingTask).
+goesIn(X, bathroom) :- obj(X), hasPhysicalQuality(X, perishable), hasRole(X, consumableRole).
+goesIn(X, bathroom) :- obj(X), hasPhysicalQuality(X, rigid), hasRole(X, furnitureRole).
+goesIn(X, bathroom) :- obj(X), hasPhysicalQuality(X, fragile), hasRole(X, wasteRole).
+goesIn(X, bathroom) :- obj(X), hasPhysicalQuality(X, lightweight), hasPhysicalQuality(X, soft_Deformable), affordsTask(X, hygieneTask).
 
 % --- cabinet ---
-goesIn(X, cabinet) :- obj(X), hasRole(X, utensilRole), affordsTask(X, eatingDrinkingTask).
-goesIn(X, cabinet) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, eatingDrinkingTask).
-goesIn(X, cabinet) :- obj(X), hasRole(X, storageContainerRole), hasRole(X, wasteRole), affordsTask(X, wasteDisposalTask).
-goesIn(X, cabinet) :- obj(X), hasRole(X, toolRole), affordsTask(X, workStudyTask).
-goesIn(X, cabinet) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
-goesIn(X, cabinet) :- obj(X), hasRole(X, cleaningToolRole), affordsTask(X, cleaningTask).
-goesIn(X, cabinet) :- obj(X), hasRole(X, cookwareRole), affordsTask(X, foodPreparationTask).
-goesIn(X, cabinet) :- obj(X), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
-goesIn(X, cabinet) :- obj(X), hasRole(X, beddingRole), affordsTask(X, leisureTask).
-goesIn(X, cabinet) :- obj(X), hasRole(X, consumableRole), affordsTask(X, foodPreparationTask).
-goesIn(X, cabinet) :- obj(X), hasRole(X, utensilRole), affordsTask(X, foodPreparationTask).
+goesIn(X, cabinet) :- obj(X), hasPhysicalQuality(X, heavy), hasPhysicalQuality(X, rigid), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
+goesIn(X, cabinet) :- obj(X), hasRole(X, wasteRole).
+goesIn(X, cabinet) :- obj(X), hasPhysicalQuality(X, lightweight), hasRole(X, beddingRole).
+goesIn(X, cabinet) :- obj(X), hasPhysicalQuality(X, hasContainer), hasRole(X, utensilRole), affordsTask(X, eatingDrinkingTask).
+goesIn(X, cabinet) :- obj(X), hasPhysicalQuality(X, lightweight), affordsTask(X, eatingDrinkingTask).
+goesIn(X, cabinet) :- obj(X), hasRole(X, cleaningToolRole), affordsTask(X, hygieneTask).
+goesIn(X, cabinet) :- obj(X), hasPhysicalQuality(X, liquid), hasPhysicalQuality(X, perishable), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
+goesIn(X, cabinet) :- obj(X), hasPhysicalQuality(X, rigid), hasPhysicalQuality(X, sharp).
+goesIn(X, cabinet) :- obj(X), hasRole(X, cookwareRole).
+goesIn(X, cabinet) :- obj(X), hasPhysicalQuality(X, granular), affordsTask(X, foodPreparationTask).
+goesIn(X, cabinet) :- obj(X), hasPhysicalQuality(X, granular), hasPhysicalQuality(X, rigid).
+goesIn(X, cabinet) :- obj(X), hasPhysicalQuality(X, granular), hasPhysicalQuality(X, perishable), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
+goesIn(X, cabinet) :- obj(X), hasPhysicalQuality(X, toxic_Hazardous), affordsTask(X, hygieneTask).
+goesIn(X, cabinet) :- obj(X), hasPhysicalQuality(X, hasContainer), affordsTask(X, storageTask).
+goesIn(X, cabinet) :- obj(X), hasPhysicalQuality(X, lightweight), hasPhysicalQuality(X, rigid), hasRole(X, utensilRole), affordsTask(X, foodPreparationTask).
+goesIn(X, cabinet) :- obj(X), hasPhysicalQuality(X, lightweight), hasRole(X, entertainmentRole).
+goesIn(X, cabinet) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, foodPreparationTask).
+goesIn(X, cabinet) :- obj(X), hasPhysicalQuality(X, granular), hasRole(X, consumableRole).
+goesIn(X, cabinet) :- obj(X), hasPhysicalQuality(X, lightweight), hasRole(X, consumableRole).
 goesIn(X, cabinet) :- obj(X), hasRole(X, entertainmentRole), affordsTask(X, leisureTask).
-goesIn(X, cabinet) :- obj(X), hasRole(X, consumableRole), affordsTask(X, hygieneTask).
-goesIn(X, cabinet) :- obj(X), hasRole(X, utensilRole).
 
 % --- library ---
-goesIn(X, library) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, eatingDrinkingTask), affordsTask(X, foodPreparationTask), affordsTask(X, leisureTask), affordsTask(X, workStudyTask).
-goesIn(X, library) :- obj(X), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask), affordsTask(X, foodPreparationTask), affordsTask(X, leisureTask), affordsTask(X, workStudyTask).
-goesIn(X, library) :- obj(X), hasRole(X, documentRole), affordsTask(X, leisureTask), affordsTask(X, workStudyTask).
-goesIn(X, library) :- obj(X), hasRole(X, toolRole), affordsTask(X, eatingDrinkingTask).
-goesIn(X, library) :- obj(X), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
-goesIn(X, library) :- obj(X), hasRole(X, applianceRole), affordsTask(X, eatingDrinkingTask), affordsTask(X, hygieneTask).
-goesIn(X, library) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
-goesIn(X, library) :- obj(X), hasRole(X, toolRole), affordsTask(X, workStudyTask).
-goesIn(X, library) :- obj(X), hasRole(X, toolRole), affordsTask(X, hygieneTask), affordsTask(X, leisureTask).
-goesIn(X, library) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, storageTask).
-goesIn(X, library) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, leisureTask), affordsTask(X, workStudyTask).
-goesIn(X, library) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, leisureTask), affordsTask(X, workStudyTask).
-goesIn(X, library) :- obj(X), hasRole(X, applianceRole), affordsTask(X, workStudyTask).
-goesIn(X, library) :- obj(X), hasRole(X, applianceRole), affordsTask(X, hygieneTask), affordsTask(X, leisureTask).
-goesIn(X, library) :- obj(X), hasRole(X, consumableRole), affordsTask(X, hygieneTask).
-goesIn(X, library) :- obj(X), hasRole(X, storageContainerRole), hasRole(X, wasteRole), affordsTask(X, wasteDisposalTask).
-goesIn(X, library) :- obj(X), hasRole(X, clothingRole), affordsTask(X, dressingTask).
-goesIn(X, library) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, hygieneTask), affordsTask(X, leisureTask).
-goesIn(X, library) :- obj(X), hasRole(X, cleaningToolRole), affordsTask(X, hygieneTask).
-goesIn(X, library) :- obj(X), hasRole(X, toolRole), affordsTask(X, foodPreparationTask).
-goesIn(X, library) :- obj(X), hasRole(X, applianceRole), affordsTask(X, leisureTask).
-goesIn(X, library) :- obj(X), hasRole(X, consumableRole), affordsTask(X, maintenanceTask).
-goesIn(X, library) :- obj(X), hasRole(X, toolRole), affordsTask(X, maintenanceTask).
-goesIn(X, library) :- obj(X), hasRole(X, documentRole), affordsTask(X, leisureTask).
-goesIn(X, library) :- obj(X), hasRole(X, toolRole), affordsTask(X, leisureTask).
+goesIn(X, library) :- obj(X), hasPhysicalQuality(X, heavy), hasPhysicalQuality(X, rigid), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
 goesIn(X, library) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, leisureTask).
-goesIn(X, library) :- obj(X), hasRole(X, utensilRole), affordsTask(X, eatingDrinkingTask).
-goesIn(X, library) :- obj(X), hasRole(X, entertainmentRole), affordsTask(X, leisureTask).
-goesIn(X, library) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, wasteDisposalTask).
-goesIn(X, library) :- obj(X), hasRole(X, cleaningToolRole), affordsTask(X, cleaningTask).
-goesIn(X, library) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, maintenanceTask).
-goesIn(X, library) :- obj(X), hasRole(X, documentRole), affordsTask(X, workStudyTask).
-goesIn(X, library) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, workStudyTask).
-goesIn(X, library) :- obj(X), hasRole(X, safetyEquipmentRole), affordsTask(X, hygieneTask).
+goesIn(X, library) :- obj(X), hasPhysicalQuality(X, fragile), affordsTask(X, workStudyTask).
+goesIn(X, library) :- obj(X), hasPhysicalQuality(X, lightweight), hasPhysicalQuality(X, rigid), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
+goesIn(X, library) :- obj(X), affordsTask(X, eatingDrinkingTask), affordsTask(X, hygieneTask).
+goesIn(X, library) :- obj(X), hasRole(X, beddingRole), hasRole(X, furnitureRole).
+goesIn(X, library) :- obj(X), hasPhysicalQuality(X, liquid), hasPhysicalQuality(X, perishable), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
+goesIn(X, library) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, hygieneTask).
+goesIn(X, library) :- obj(X), hasPhysicalQuality(X, toxic_Hazardous), affordsTask(X, hygieneTask).
+goesIn(X, library) :- obj(X), hasPhysicalQuality(X, soft_Deformable), hasRole(X, consumableRole), affordsTask(X, hygieneTask).
+goesIn(X, library) :- obj(X), affordsTask(X, cleaningTask).
+goesIn(X, library) :- obj(X), hasRole(X, toolRole), affordsTask(X, workStudyTask).
+goesIn(X, library) :- obj(X), hasPhysicalQuality(X, lightweight), affordsTask(X, maintenanceTask).
+goesIn(X, library) :- obj(X), hasPhysicalQuality(X, heavy), hasPhysicalQuality(X, rigid), hasRole(X, furnitureRole), affordsTask(X, storageTask).
 goesIn(X, library) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, hygieneTask).
-goesIn(X, library) :- obj(X), hasRole(X, decorationRole), affordsTask(X, leisureTask).
-goesIn(X, library) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, cleaningTask).
+goesIn(X, library) :- obj(X), hasPhysicalQuality(X, fragile), affordsTask(X, dressingTask).
+goesIn(X, library) :- obj(X), hasPhysicalQuality(X, electronic), affordsTask(X, maintenanceTask).
+goesIn(X, library) :- obj(X), hasRole(X, applianceRole), affordsTask(X, workStudyTask).
+goesIn(X, library) :- obj(X), hasPhysicalQuality(X, heavy), hasPhysicalQuality(X, rigid), hasRole(X, toolRole), affordsTask(X, maintenanceTask).
+goesIn(X, library) :- obj(X), hasPhysicalQuality(X, fragile), hasRole(X, consumableRole).
+goesIn(X, library) :- obj(X), hasPhysicalQuality(X, soft_Deformable), hasRole(X, furnitureRole), affordsTask(X, storageTask).
+goesIn(X, library) :- obj(X), hasPhysicalQuality(X, hasContainer), hasPhysicalQuality(X, heavy).
+goesIn(X, library) :- obj(X), hasPhysicalQuality(X, rigid), hasRole(X, documentRole).
+goesIn(X, library) :- obj(X), hasPhysicalQuality(X, electronic), hasPhysicalQuality(X, heavy), hasRole(X, applianceRole), affordsTask(X, storageTask).
 goesIn(X, library) :- obj(X), hasRole(X, toolRole), affordsTask(X, hygieneTask).
-goesIn(X, library) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, eatingDrinkingTask).
-goesIn(X, library) :- obj(X), hasRole(X, utensilRole), affordsTask(X, dressingTask).
-goesIn(X, library) :- obj(X), hasRole(X, toolRole), affordsTask(X, dressingTask).
-goesIn(X, library) :- obj(X), hasRole(X, wasteRole), affordsTask(X, cleaningTask).
-goesIn(X, library) :- obj(X), hasRole(X, utensilRole), affordsTask(X, foodPreparationTask).
-goesIn(X, library) :- obj(X), hasRole(X, consumableRole), affordsTask(X, leisureTask).
-goesIn(X, library) :- obj(X), hasRole(X, documentRole).
+goesIn(X, library) :- obj(X), hasRole(X, applianceRole), affordsTask(X, leisureTask).
+goesIn(X, library) :- obj(X), hasPhysicalQuality(X, lightweight), hasRole(X, furnitureRole), affordsTask(X, storageTask).
+goesIn(X, library) :- obj(X), hasPhysicalQuality(X, fragile), affordsTask(X, foodPreparationTask).
+goesIn(X, library) :- obj(X), hasPhysicalQuality(X, heavy), affordsTask(X, workStudyTask).
+goesIn(X, library) :- obj(X), hasPhysicalQuality(X, lightweight), affordsTask(X, hygieneTask).
+goesIn(X, library) :- obj(X), hasPhysicalQuality(X, liquid), hasRole(X, utensilRole).
+goesIn(X, library) :- obj(X), hasPhysicalQuality(X, lightweight), hasPhysicalQuality(X, soft_Deformable), hasRole(X, clothingRole), affordsTask(X, dressingTask).
+goesIn(X, library) :- obj(X), hasPhysicalQuality(X, washable), affordsTask(X, dressingTask).
+goesIn(X, library) :- obj(X), hasRole(X, toolRole), affordsTask(X, leisureTask).
+goesIn(X, library) :- obj(X), hasRole(X, documentRole), affordsTask(X, leisureTask).
+goesIn(X, library) :- obj(X), hasPhysicalQuality(X, lightweight), hasPhysicalQuality(X, soft_Deformable), affordsTask(X, leisureTask).
+goesIn(X, library) :- obj(X), hasPhysicalQuality(X, lightweight), hasRole(X, entertainmentRole), affordsTask(X, leisureTask).
+goesIn(X, library) :- obj(X), hasPhysicalQuality(X, granular), hasRole(X, furnitureRole).
+goesIn(X, library) :- obj(X), hasPhysicalQuality(X, rigid), hasPhysicalQuality(X, heavy), hasRole(X, furnitureRole).
+goesIn(X, library) :- obj(X), hasPhysicalQuality(X, liquid), hasRole(X, cleaningToolRole).
+goesIn(X, library) :- obj(X), hasPhysicalQuality(X, granular), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
+goesIn(X, library) :- obj(X), hasRole(X, wasteRole).
+goesIn(X, library) :- obj(X), hasPhysicalQuality(X, liquid), hasPhysicalQuality(X, toxic_Hazardous).
+goesIn(X, library) :- obj(X), hasRole(X, toolRole), affordsTask(X, foodPreparationTask).
+goesIn(X, library) :- obj(X), hasRole(X, applianceRole), affordsTask(X, hygieneTask).
+goesIn(X, library) :- obj(X), hasRole(X, documentRole), affordsTask(X, storageTask).
+goesIn(X, library) :- obj(X), hasPhysicalQuality(X, liquid), affordsTask(X, maintenanceTask).
+goesIn(X, library) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, maintenanceTask).
+goesIn(X, library) :- obj(X), hasPhysicalQuality(X, hasContainer), hasRole(X, utensilRole), affordsTask(X, eatingDrinkingTask).
+goesIn(X, library) :- obj(X), hasPhysicalQuality(X, requiresCooling).
+goesIn(X, library) :- obj(X), hasPhysicalQuality(X, lightweight), hasRole(X, consumableRole).
+goesIn(X, library) :- obj(X), hasPhysicalQuality(X, rigid), hasRole(X, entertainmentRole), affordsTask(X, leisureTask).
+goesIn(X, library) :- obj(X), hasRole(X, entertainmentRole), affordsTask(X, leisureTask).
 goesIn(X, library) :- obj(X), hasRole(X, decorationRole).
-goesIn(X, library) :- obj(X), hasRole(X, applianceRole), affordsTask(X, storageTask).
-goesIn(X, library) :- obj(X), affordsTask(X, maintenanceTask).
-
-% --- garage ---
-goesIn(X, garage) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, maintenanceTask).
-goesIn(X, garage) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
-goesIn(X, garage) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, leisureTask).
-goesIn(X, garage) :- obj(X), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
-goesIn(X, garage) :- obj(X), hasRole(X, toolRole), affordsTask(X, maintenanceTask).
-goesIn(X, garage) :- obj(X), hasRole(X, applianceRole), affordsTask(X, storageTask).
-goesIn(X, garage) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, wasteDisposalTask).
-goesIn(X, garage) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, eatingDrinkingTask), affordsTask(X, storageTask).
-goesIn(X, garage) :- obj(X), hasRole(X, toolRole), affordsTask(X, cleaningTask), affordsTask(X, gardeningTask).
-goesIn(X, garage) :- obj(X), hasRole(X, applianceRole), affordsTask(X, leisureTask), affordsTask(X, workStudyTask).
-goesIn(X, garage) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, maintenanceTask).
-goesIn(X, garage) :- obj(X), hasRole(X, clothingRole), affordsTask(X, dressingTask).
-goesIn(X, garage) :- obj(X), hasRole(X, toolRole), affordsTask(X, leisureTask).
-goesIn(X, garage) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, storageTask).
-
-% --- bedroom ---
-goesIn(X, bedroom) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, eatingDrinkingTask), affordsTask(X, foodPreparationTask), affordsTask(X, leisureTask), affordsTask(X, workStudyTask).
-goesIn(X, bedroom) :- obj(X), hasRole(X, documentRole), affordsTask(X, leisureTask), affordsTask(X, workStudyTask).
-goesIn(X, bedroom) :- obj(X), hasRole(X, applianceRole), hasRole(X, storageContainerRole), affordsTask(X, eatingDrinkingTask), affordsTask(X, foodPreparationTask), affordsTask(X, storageTask).
-goesIn(X, bedroom) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, workStudyTask).
-goesIn(X, bedroom) :- obj(X), hasRole(X, cookwareRole), hasRole(X, storageContainerRole), affordsTask(X, eatingDrinkingTask), affordsTask(X, foodPreparationTask), affordsTask(X, storageTask).
-goesIn(X, bedroom) :- obj(X), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
-goesIn(X, bedroom) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, leisureTask).
-goesIn(X, bedroom) :- obj(X), hasRole(X, applianceRole), affordsTask(X, cleaningTask), affordsTask(X, hygieneTask).
-goesIn(X, bedroom) :- obj(X), hasRole(X, applianceRole), affordsTask(X, storageTask).
-goesIn(X, bedroom) :- obj(X), hasRole(X, toolRole), affordsTask(X, maintenanceTask).
-goesIn(X, bedroom) :- obj(X), hasRole(X, decorationRole), affordsTask(X, leisureTask).
-goesIn(X, bedroom) :- obj(X), hasRole(X, decorationRole).
-goesIn(X, bedroom) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
-goesIn(X, bedroom) :- obj(X), hasRole(X, beddingRole), affordsTask(X, sleepingTask).
-goesIn(X, bedroom) :- obj(X), hasRole(X, consumableRole), affordsTask(X, leisureTask).
-goesIn(X, bedroom) :- obj(X), hasRole(X, applianceRole), affordsTask(X, leisureTask).
-goesIn(X, bedroom) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, sleepingTask).
-goesIn(X, bedroom) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, storageTask).
-goesIn(X, bedroom) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, cleaningTask).
-goesIn(X, bedroom) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, maintenanceTask).
-goesIn(X, bedroom) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, eatingDrinkingTask).
-goesIn(X, bedroom) :- obj(X), hasRole(X, cleaningToolRole), affordsTask(X, hygieneTask).
-goesIn(X, bedroom) :- obj(X), hasRole(X, lightingRole), affordsTask(X, leisureTask), affordsTask(X, workStudyTask).
-goesIn(X, bedroom) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, workStudyTask).
-goesIn(X, bedroom) :- obj(X), hasRole(X, storageContainerRole), hasRole(X, wasteRole), affordsTask(X, wasteDisposalTask).
-goesIn(X, bedroom) :- obj(X), hasRole(X, clothingRole), affordsTask(X, dressingTask), affordsTask(X, storageTask).
-goesIn(X, bedroom) :- obj(X), hasRole(X, musicalInstrumentRole), affordsTask(X, leisureTask), affordsTask(X, workStudyTask).
-goesIn(X, bedroom) :- obj(X), hasRole(X, clothingRole), affordsTask(X, dressingTask).
-goesIn(X, bedroom) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, wasteDisposalTask).
-goesIn(X, bedroom) :- obj(X), hasRole(X, entertainmentRole), affordsTask(X, leisureTask).
-goesIn(X, bedroom) :- obj(X), hasRole(X, lightingRole), affordsTask(X, leisureTask).
-goesIn(X, bedroom) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, cleaningTask).
-goesIn(X, bedroom) :- obj(X), hasRole(X, toolRole), affordsTask(X, foodPreparationTask).
-goesIn(X, bedroom) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, dressingTask).
-goesIn(X, bedroom) :- obj(X), hasRole(X, toolRole), affordsTask(X, leisureTask).
-goesIn(X, bedroom) :- obj(X), hasRole(X, toolRole), affordsTask(X, hygieneTask).
-goesIn(X, bedroom) :- obj(X), hasRole(X, beddingRole), affordsTask(X, leisureTask).
-goesIn(X, bedroom) :- obj(X), hasRole(X, utensilRole), affordsTask(X, eatingDrinkingTask).
-goesIn(X, bedroom) :- obj(X), hasRole(X, documentRole), affordsTask(X, eatingDrinkingTask).
-goesIn(X, bedroom) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, leisureTask).
-goesIn(X, bedroom) :- obj(X), hasRole(X, cleaningToolRole), affordsTask(X, cleaningTask).
-goesIn(X, bedroom) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, gardeningTask).
-goesIn(X, bedroom) :- obj(X), hasRole(X, toolRole), affordsTask(X, workStudyTask).
-goesIn(X, bedroom) :- obj(X), hasRole(X, documentRole), affordsTask(X, workStudyTask).
-goesIn(X, bedroom) :- obj(X), hasRole(X, documentRole).
-goesIn(X, bedroom) :- obj(X), hasRole(X, storageContainerRole).
-
-% --- closet ---
-goesIn(X, closet) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, maintenanceTask).
-goesIn(X, closet) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
-goesIn(X, closet) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, eatingDrinkingTask), affordsTask(X, foodPreparationTask), affordsTask(X, leisureTask), affordsTask(X, workStudyTask).
-goesIn(X, closet) :- obj(X), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask), affordsTask(X, foodPreparationTask), affordsTask(X, leisureTask), affordsTask(X, workStudyTask).
-goesIn(X, closet) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, eatingDrinkingTask), affordsTask(X, foodPreparationTask), affordsTask(X, leisureTask), affordsTask(X, storageTask).
-goesIn(X, closet) :- obj(X), hasRole(X, documentRole), affordsTask(X, leisureTask), affordsTask(X, workStudyTask).
-goesIn(X, closet) :- obj(X), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
-goesIn(X, closet) :- obj(X), hasRole(X, clothingRole), affordsTask(X, dressingTask).
-goesIn(X, closet) :- obj(X), hasRole(X, toolRole), affordsTask(X, eatingDrinkingTask), affordsTask(X, hygieneTask).
-goesIn(X, closet) :- obj(X), hasRole(X, beddingRole), affordsTask(X, sleepingTask).
-goesIn(X, closet) :- obj(X), hasRole(X, toolRole), affordsTask(X, eatingDrinkingTask).
-goesIn(X, closet) :- obj(X), hasRole(X, consumableRole), affordsTask(X, hygieneTask).
-goesIn(X, closet) :- obj(X), hasRole(X, utensilRole), affordsTask(X, foodPreparationTask).
-goesIn(X, closet) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, storageTask).
-goesIn(X, closet) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, sleepingTask).
-goesIn(X, closet) :- obj(X), hasRole(X, applianceRole), affordsTask(X, leisureTask).
-goesIn(X, closet) :- obj(X), hasRole(X, consumableRole), affordsTask(X, leisureTask).
-goesIn(X, closet) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, maintenanceTask).
-goesIn(X, closet) :- obj(X), hasRole(X, storageContainerRole), hasRole(X, wasteRole), affordsTask(X, wasteDisposalTask).
-goesIn(X, closet) :- obj(X), hasRole(X, applianceRole), affordsTask(X, foodPreparationTask), affordsTask(X, storageTask).
-goesIn(X, closet) :- obj(X), hasRole(X, consumableRole), affordsTask(X, dressingTask), affordsTask(X, storageTask).
-goesIn(X, closet) :- obj(X), hasRole(X, musicalInstrumentRole), affordsTask(X, leisureTask), affordsTask(X, workStudyTask).
-goesIn(X, closet) :- obj(X), hasRole(X, consumableRole), affordsTask(X, dressingTask).
-goesIn(X, closet) :- obj(X), hasRole(X, toolRole), affordsTask(X, maintenanceTask).
-goesIn(X, closet) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, leisureTask).
-goesIn(X, closet) :- obj(X), hasRole(X, toolRole), affordsTask(X, workStudyTask).
-goesIn(X, closet) :- obj(X), hasRole(X, consumableRole), affordsTask(X, maintenanceTask).
-goesIn(X, closet) :- obj(X), hasRole(X, cleaningToolRole), affordsTask(X, cleaningTask).
-goesIn(X, closet) :- obj(X), hasRole(X, toolRole), affordsTask(X, leisureTask).
-goesIn(X, closet) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, wasteDisposalTask).
-goesIn(X, closet) :- obj(X), hasRole(X, entertainmentRole), affordsTask(X, leisureTask).
-goesIn(X, closet) :- obj(X), hasRole(X, documentRole), affordsTask(X, workStudyTask).
-goesIn(X, closet) :- obj(X), hasRole(X, cookwareRole), affordsTask(X, foodPreparationTask).
-goesIn(X, closet) :- obj(X), hasRole(X, consumableRole), affordsTask(X, foodPreparationTask).
-goesIn(X, closet) :- obj(X), hasRole(X, toolRole), affordsTask(X, foodPreparationTask).
-goesIn(X, closet) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, cleaningTask).
-goesIn(X, closet) :- obj(X), hasRole(X, safetyEquipmentRole), affordsTask(X, maintenanceTask).
-goesIn(X, closet) :- obj(X), hasRole(X, utensilRole), affordsTask(X, eatingDrinkingTask).
-goesIn(X, closet) :- obj(X), hasRole(X, decorationRole), affordsTask(X, leisureTask).
-goesIn(X, closet) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, cleaningTask).
-goesIn(X, closet) :- obj(X), hasRole(X, lightingRole), affordsTask(X, leisureTask).
-goesIn(X, closet) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, dressingTask).
-goesIn(X, closet) :- obj(X), hasRole(X, applianceRole), affordsTask(X, maintenanceTask).
-goesIn(X, closet) :- obj(X), hasRole(X, wasteRole), affordsTask(X, cleaningTask).
-goesIn(X, closet) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, leisureTask).
-
-% --- music_room ---
-goesIn(X, music_room) :- obj(X), hasRole(X, toolRole), affordsTask(X, foodPreparationTask), affordsTask(X, leisureTask).
-goesIn(X, music_room) :- obj(X), hasRole(X, musicalInstrumentRole).
-goesIn(X, music_room) :- obj(X), hasRole(X, toolRole), affordsTask(X, maintenanceTask).
-goesIn(X, music_room) :- obj(X), hasRole(X, entertainmentRole), affordsTask(X, leisureTask).
-goesIn(X, music_room) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, leisureTask).
-goesIn(X, music_room) :- obj(X), hasRole(X, toolRole), affordsTask(X, workStudyTask).
-goesIn(X, music_room) :- obj(X), hasRole(X, toolRole), affordsTask(X, foodPreparationTask).
-goesIn(X, music_room) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, storageTask).
-goesIn(X, music_room) :- obj(X), hasRole(X, toolRole), affordsTask(X, leisureTask).
-
-% --- garden ---
-goesIn(X, garden) :- obj(X), hasRole(X, furnitureRole).
-goesIn(X, garden) :- obj(X), hasRole(X, documentRole), affordsTask(X, leisureTask), affordsTask(X, workStudyTask).
-goesIn(X, garden) :- obj(X), hasRole(X, toolRole), affordsTask(X, eatingDrinkingTask), affordsTask(X, hygieneTask), affordsTask(X, maintenanceTask).
-goesIn(X, garden) :- obj(X), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
-goesIn(X, garden) :- obj(X), hasRole(X, toolRole), affordsTask(X, cleaningTask), affordsTask(X, gardeningTask).
-goesIn(X, garden) :- obj(X), hasRole(X, consumableRole), affordsTask(X, gardeningTask), affordsTask(X, leisureTask).
-goesIn(X, garden) :- obj(X), hasRole(X, entertainmentRole), affordsTask(X, gardeningTask), affordsTask(X, leisureTask).
-goesIn(X, garden) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
-goesIn(X, garden) :- obj(X), hasRole(X, toolRole), affordsTask(X, maintenanceTask).
-goesIn(X, garden) :- obj(X), hasRole(X, entertainmentRole), affordsTask(X, leisureTask).
-goesIn(X, garden) :- obj(X), hasRole(X, cookwareRole), affordsTask(X, foodPreparationTask).
-goesIn(X, garden) :- obj(X), hasRole(X, consumableRole), affordsTask(X, leisureTask).
-goesIn(X, garden) :- obj(X), hasRole(X, consumableRole), affordsTask(X, maintenanceTask).
-goesIn(X, garden) :- obj(X), hasRole(X, decorationRole), affordsTask(X, leisureTask).
-goesIn(X, garden) :- obj(X), hasRole(X, decorationRole).
-goesIn(X, garden) :- obj(X), hasRole(X, consumableRole), affordsTask(X, foodPreparationTask).
-goesIn(X, garden) :- obj(X), hasRole(X, toolRole), affordsTask(X, workStudyTask).
-goesIn(X, garden) :- obj(X), hasRole(X, documentRole), affordsTask(X, leisureTask).
-goesIn(X, garden) :- obj(X), hasRole(X, documentRole), affordsTask(X, workStudyTask).
-goesIn(X, garden) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, leisureTask).
-goesIn(X, garden) :- obj(X), hasRole(X, wasteRole), affordsTask(X, wasteDisposalTask).
-goesIn(X, garden) :- obj(X), hasRole(X, documentRole).
-
-% --- storage_room ---
-goesIn(X, storage_room) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, maintenanceTask).
-goesIn(X, storage_room) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
-goesIn(X, storage_room) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, storageTask).
-goesIn(X, storage_room) :- obj(X), hasRole(X, beddingRole), affordsTask(X, sleepingTask).
-goesIn(X, storage_room) :- obj(X), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
-goesIn(X, storage_room) :- obj(X), hasRole(X, toolRole), affordsTask(X, eatingDrinkingTask), affordsTask(X, hygieneTask), affordsTask(X, maintenanceTask).
-goesIn(X, storage_room) :- obj(X), hasRole(X, clothingRole), affordsTask(X, dressingTask).
-goesIn(X, storage_room) :- obj(X), hasRole(X, toolRole), affordsTask(X, maintenanceTask).
-goesIn(X, storage_room) :- obj(X), hasRole(X, utensilRole), affordsTask(X, cleaningTask), affordsTask(X, eatingDrinkingTask), affordsTask(X, hygieneTask).
-goesIn(X, storage_room) :- obj(X), hasRole(X, cleaningToolRole), affordsTask(X, cleaningTask).
-goesIn(X, storage_room) :- obj(X), hasRole(X, utensilRole), affordsTask(X, eatingDrinkingTask), affordsTask(X, foodPreparationTask).
-goesIn(X, storage_room) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, leisureTask).
-goesIn(X, storage_room) :- obj(X), hasRole(X, storageContainerRole).
-goesIn(X, storage_room) :- obj(X), hasRole(X, applianceRole), affordsTask(X, foodPreparationTask), affordsTask(X, storageTask).
-goesIn(X, storage_room) :- obj(X), hasRole(X, lightingRole), affordsTask(X, leisureTask).
-goesIn(X, storage_room) :- obj(X), hasRole(X, toolRole), affordsTask(X, cleaningTask).
-goesIn(X, storage_room) :- obj(X), hasRole(X, toolRole), affordsTask(X, workStudyTask).
-goesIn(X, storage_room) :- obj(X), hasRole(X, applianceRole), affordsTask(X, hygieneTask), affordsTask(X, leisureTask).
-goesIn(X, storage_room) :- obj(X), hasRole(X, applianceRole), affordsTask(X, cleaningTask).
-goesIn(X, storage_room) :- obj(X), hasRole(X, applianceRole), affordsTask(X, leisureTask), affordsTask(X, workStudyTask).
-goesIn(X, storage_room) :- obj(X), hasRole(X, documentRole), affordsTask(X, leisureTask).
-goesIn(X, storage_room) :- obj(X), hasRole(X, entertainmentRole), affordsTask(X, leisureTask).
-goesIn(X, storage_room) :- obj(X), hasRole(X, toolRole), affordsTask(X, eatingDrinkingTask).
-goesIn(X, storage_room) :- obj(X), hasRole(X, decorationRole), affordsTask(X, leisureTask).
-goesIn(X, storage_room) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, sleepingTask).
-goesIn(X, storage_room) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, maintenanceTask).
-goesIn(X, storage_room) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, workStudyTask).
-
-% --- fridge ---
-goesIn(X, fridge) :- obj(X), hasRole(X, consumableRole), hasRole(X, utensilRole), affordsTask(X, eatingDrinkingTask), affordsTask(X, foodPreparationTask).
-goesIn(X, fridge) :- obj(X), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
-goesIn(X, fridge) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, eatingDrinkingTask).
-goesIn(X, fridge) :- obj(X), hasRole(X, consumableRole), affordsTask(X, foodPreparationTask).
-goesIn(X, fridge) :- obj(X), hasRole(X, consumableRole), affordsTask(X, hygieneTask), affordsTask(X, leisureTask).
-goesIn(X, fridge) :- obj(X), hasRole(X, applianceRole), affordsTask(X, maintenanceTask).
-goesIn(X, fridge) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
-goesIn(X, fridge) :- obj(X), hasRole(X, toolRole), affordsTask(X, storageTask).
-goesIn(X, fridge) :- obj(X), hasRole(X, applianceRole), affordsTask(X, storageTask).
-goesIn(X, fridge) :- obj(X), hasRole(X, decorationRole), affordsTask(X, leisureTask).
-goesIn(X, fridge) :- obj(X), hasRole(X, documentRole), affordsTask(X, workStudyTask).
-goesIn(X, fridge) :- obj(X), hasRole(X, toolRole), affordsTask(X, maintenanceTask).
-goesIn(X, fridge) :- obj(X), hasRole(X, lightingRole), affordsTask(X, leisureTask).
-goesIn(X, fridge) :- obj(X), hasRole(X, consumableRole), affordsTask(X, leisureTask).
-
-% --- trash ---
-goesIn(X, trash) :- obj(X), hasRole(X, wasteRole).
-goesIn(X, trash) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, wasteDisposalTask).
-goesIn(X, trash) :- obj(X), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
-goesIn(X, trash) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, sleepingTask).
-goesIn(X, trash) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, wasteDisposalTask).
-goesIn(X, trash) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
-goesIn(X, trash) :- obj(X), hasRole(X, toolRole), affordsTask(X, workStudyTask).
-goesIn(X, trash) :- obj(X), hasRole(X, toolRole), affordsTask(X, maintenanceTask).
-goesIn(X, trash) :- obj(X), hasRole(X, utensilRole), affordsTask(X, foodPreparationTask).
-goesIn(X, trash) :- obj(X), hasRole(X, documentRole), affordsTask(X, leisureTask).
-
-% --- home_office ---
-goesIn(X, home_office) :- obj(X), hasRole(X, documentRole), affordsTask(X, workStudyTask).
-goesIn(X, home_office) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, workStudyTask).
-goesIn(X, home_office) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, storageTask).
-goesIn(X, home_office) :- obj(X), hasRole(X, documentRole).
-
-% --- living_room ---
-goesIn(X, living_room) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, eatingDrinkingTask), affordsTask(X, foodPreparationTask), affordsTask(X, leisureTask), affordsTask(X, workStudyTask).
-goesIn(X, living_room) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, leisureTask).
-goesIn(X, living_room) :- obj(X), hasRole(X, storageContainerRole), hasRole(X, wasteRole), affordsTask(X, wasteDisposalTask).
-goesIn(X, living_room) :- obj(X), hasRole(X, entertainmentRole), affordsTask(X, leisureTask).
-goesIn(X, living_room) :- obj(X), hasRole(X, toolRole), affordsTask(X, maintenanceTask).
-goesIn(X, living_room) :- obj(X), hasRole(X, applianceRole), affordsTask(X, leisureTask), affordsTask(X, workStudyTask).
-goesIn(X, living_room) :- obj(X), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
-goesIn(X, living_room) :- obj(X), hasRole(X, documentRole), affordsTask(X, leisureTask), affordsTask(X, workStudyTask).
-goesIn(X, living_room) :- obj(X), hasRole(X, decorationRole), affordsTask(X, leisureTask).
-goesIn(X, living_room) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, sleepingTask).
-goesIn(X, living_room) :- obj(X), hasRole(X, applianceRole), affordsTask(X, leisureTask).
-goesIn(X, living_room) :- obj(X), hasRole(X, toolRole), affordsTask(X, workStudyTask).
-goesIn(X, living_room) :- obj(X), hasRole(X, cookwareRole), affordsTask(X, foodPreparationTask).
-goesIn(X, living_room) :- obj(X), hasRole(X, clothingRole), affordsTask(X, dressingTask).
-goesIn(X, living_room) :- obj(X), hasRole(X, toolRole), affordsTask(X, leisureTask).
-goesIn(X, living_room) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, storageTask), not hasRole(X, applianceRole), not hasRole(X, beddingRole), not hasRole(X, cleaningToolRole), not hasRole(X, clothingRole), not hasRole(X, consumableRole), not hasRole(X, cookwareRole), not hasRole(X, decorationRole), not hasRole(X, documentRole), not hasRole(X, entertainmentRole), not hasRole(X, furnitureRole), not hasRole(X, lightingRole), not hasRole(X, musicalInstrumentRole), not hasRole(X, safetyEquipmentRole), not hasRole(X, toolRole), not hasRole(X, utensilRole), not hasRole(X, wasteRole).
-goesIn(X, living_room) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, leisureTask).
-goesIn(X, living_room) :- obj(X), hasRole(X, utensilRole), affordsTask(X, eatingDrinkingTask).
-goesIn(X, living_room) :- obj(X), hasRole(X, beddingRole), affordsTask(X, sleepingTask).
-goesIn(X, living_room) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, storageTask).
-goesIn(X, living_room) :- obj(X), hasRole(X, toolRole), affordsTask(X, hygieneTask).
-goesIn(X, living_room) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, workStudyTask).
-goesIn(X, living_room) :- obj(X), hasRole(X, wasteRole), affordsTask(X, cleaningTask).
-goesIn(X, living_room) :- obj(X), hasRole(X, documentRole).
-
-% --- pantry ---
-goesIn(X, pantry) :- obj(X), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
-goesIn(X, pantry) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
-goesIn(X, pantry) :- obj(X), hasRole(X, consumableRole), affordsTask(X, foodPreparationTask).
-goesIn(X, pantry) :- obj(X), hasRole(X, consumableRole), hasRole(X, safetyEquipmentRole), affordsTask(X, hygieneTask), affordsTask(X, wasteDisposalTask).
-goesIn(X, pantry) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, maintenanceTask), affordsTask(X, storageTask).
-goesIn(X, pantry) :- obj(X), hasRole(X, storageContainerRole), hasRole(X, wasteRole), affordsTask(X, wasteDisposalTask).
-goesIn(X, pantry) :- obj(X), hasRole(X, utensilRole), affordsTask(X, eatingDrinkingTask), affordsTask(X, foodPreparationTask).
-goesIn(X, pantry) :- obj(X), hasRole(X, cleaningToolRole), affordsTask(X, cleaningTask).
-goesIn(X, pantry) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, wasteDisposalTask).
-goesIn(X, pantry) :- obj(X), hasRole(X, toolRole), affordsTask(X, foodPreparationTask).
-goesIn(X, pantry) :- obj(X), hasRole(X, toolRole), affordsTask(X, maintenanceTask).
-goesIn(X, pantry) :- obj(X), hasRole(X, consumableRole), affordsTask(X, gardeningTask).
-goesIn(X, pantry) :- obj(X), hasRole(X, applianceRole), affordsTask(X, storageTask).
-goesIn(X, pantry) :- obj(X), hasRole(X, utensilRole), affordsTask(X, eatingDrinkingTask).
-goesIn(X, pantry) :- obj(X), hasRole(X, beddingRole), affordsTask(X, sleepingTask).
-goesIn(X, pantry) :- obj(X), hasRole(X, toolRole), affordsTask(X, workStudyTask).
-goesIn(X, pantry) :- obj(X), hasRole(X, decorationRole), affordsTask(X, leisureTask).
-goesIn(X, pantry) :- obj(X), hasRole(X, entertainmentRole), affordsTask(X, leisureTask).
-goesIn(X, pantry) :- obj(X), hasRole(X, wasteRole), affordsTask(X, wasteDisposalTask).
-goesIn(X, pantry) :- obj(X), hasRole(X, cookwareRole), affordsTask(X, foodPreparationTask).
-goesIn(X, pantry) :- obj(X), hasRole(X, toolRole), affordsTask(X, hygieneTask).
-
-% --- hallway ---
-goesIn(X, hallway) :- obj(X), hasRole(X, beddingRole), hasRole(X, clothingRole), affordsTask(X, dressingTask), affordsTask(X, sleepingTask).
-goesIn(X, hallway) :- obj(X), hasRole(X, cleaningToolRole), affordsTask(X, cleaningTask).
-goesIn(X, hallway) :- obj(X), hasRole(X, decorationRole), affordsTask(X, leisureTask), affordsTask(X, workStudyTask).
-goesIn(X, hallway) :- obj(X), hasRole(X, lightingRole), affordsTask(X, leisureTask), affordsTask(X, workStudyTask).
-goesIn(X, hallway) :- obj(X), hasRole(X, clothingRole), affordsTask(X, dressingTask), affordsTask(X, storageTask).
-goesIn(X, hallway) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, leisureTask), affordsTask(X, storageTask).
-goesIn(X, hallway) :- obj(X), hasRole(X, decorationRole), affordsTask(X, leisureTask).
-goesIn(X, hallway) :- obj(X), hasRole(X, beddingRole), affordsTask(X, sleepingTask).
-goesIn(X, hallway) :- obj(X), hasRole(X, toolRole), affordsTask(X, maintenanceTask).
-goesIn(X, hallway) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, storageTask), not hasRole(X, furnitureRole), not hasRole(X, toolRole), not hasRole(X, cleaningToolRole), not hasRole(X, utensilRole), not hasRole(X, cookwareRole), not hasRole(X, musicalInstrumentRole).
-goesIn(X, hallway) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, cleaningTask).
-goesIn(X, hallway) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, storageTask).
-goesIn(X, hallway) :- obj(X), hasRole(X, clothingRole), affordsTask(X, dressingTask).
-goesIn(X, hallway) :- obj(X), hasRole(X, consumableRole), affordsTask(X, leisureTask).
-goesIn(X, hallway) :- obj(X), hasRole(X, beddingRole), affordsTask(X, leisureTask).
-
-% --- kitchen ---
-goesIn(X, kitchen) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, eatingDrinkingTask), affordsTask(X, foodPreparationTask), affordsTask(X, leisureTask), affordsTask(X, workStudyTask).
-goesIn(X, kitchen) :- obj(X), hasRole(X, consumableRole), affordsTask(X, foodPreparationTask).
-goesIn(X, kitchen) :- obj(X), hasRole(X, furnitureRole), hasRole(X, storageContainerRole), affordsTask(X, eatingDrinkingTask), affordsTask(X, foodPreparationTask), affordsTask(X, storageTask).
-goesIn(X, kitchen) :- obj(X), hasRole(X, consumableRole), affordsTask(X, cleaningTask).
-goesIn(X, kitchen) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, eatingDrinkingTask), affordsTask(X, hygieneTask), affordsTask(X, leisureTask).
-goesIn(X, kitchen) :- obj(X), hasRole(X, utensilRole), affordsTask(X, cleaningTask), affordsTask(X, eatingDrinkingTask), affordsTask(X, hygieneTask).
-goesIn(X, kitchen) :- obj(X), hasRole(X, utensilRole), affordsTask(X, eatingDrinkingTask), affordsTask(X, foodPreparationTask).
-goesIn(X, kitchen) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, eatingDrinkingTask), affordsTask(X, storageTask).
-goesIn(X, kitchen) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, eatingDrinkingTask), affordsTask(X, storageTask).
-goesIn(X, kitchen) :- obj(X), hasRole(X, storageContainerRole), hasRole(X, wasteRole), affordsTask(X, wasteDisposalTask).
-goesIn(X, kitchen) :- obj(X), hasRole(X, clothingRole), affordsTask(X, dressingTask), affordsTask(X, storageTask).
-goesIn(X, kitchen) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, leisureTask), affordsTask(X, storageTask).
-goesIn(X, kitchen) :- obj(X), hasRole(X, decorationRole), affordsTask(X, leisureTask).
-goesIn(X, kitchen) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
-goesIn(X, kitchen) :- obj(X), hasRole(X, clothingRole), affordsTask(X, dressingTask).
-goesIn(X, kitchen) :- obj(X), hasRole(X, utensilRole), affordsTask(X, foodPreparationTask).
-goesIn(X, kitchen) :- obj(X), hasRole(X, utensilRole), affordsTask(X, eatingDrinkingTask).
-goesIn(X, kitchen) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, storageTask).
-goesIn(X, kitchen) :- obj(X), hasRole(X, toolRole), affordsTask(X, maintenanceTask).
-goesIn(X, kitchen) :- obj(X), hasRole(X, toolRole), affordsTask(X, eatingDrinkingTask).
-goesIn(X, kitchen) :- obj(X), hasRole(X, toolRole), affordsTask(X, foodPreparationTask).
-
-% --- bed ---
-goesIn(X, bed) :- obj(X), hasRole(X, beddingRole), affordsTask(X, sleepingTask).
-goesIn(X, bed) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
-goesIn(X, bed) :- obj(X), hasRole(X, clothingRole), affordsTask(X, dressingTask).
-goesIn(X, bed) :- obj(X), hasRole(X, entertainmentRole), affordsTask(X, leisureTask).
-goesIn(X, bed) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, storageTask).
-goesIn(X, bed) :- obj(X), hasRole(X, toolRole), affordsTask(X, hygieneTask).
+goesIn(X, library) :- obj(X), hasPhysicalQuality(X, fragile), hasRole(X, furnitureRole).
+goesIn(X, library) :- obj(X), hasPhysicalQuality(X, lightweight), hasRole(X, documentRole).
+goesIn(X, library) :- obj(X), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
+goesIn(X, library) :- obj(X), hasRole(X, consumableRole), affordsTask(X, wasteDisposalTask).
 
 % --- drawer ---
-goesIn(X, drawer) :- obj(X), hasRole(X, clothingRole), affordsTask(X, dressingTask).
-goesIn(X, drawer) :- obj(X), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask), affordsTask(X, foodPreparationTask), affordsTask(X, leisureTask), affordsTask(X, workStudyTask).
-goesIn(X, drawer) :- obj(X), hasRole(X, utensilRole), affordsTask(X, eatingDrinkingTask), affordsTask(X, foodPreparationTask).
-goesIn(X, drawer) :- obj(X), hasRole(X, toolRole), affordsTask(X, leisureTask), affordsTask(X, workStudyTask).
 goesIn(X, drawer) :- obj(X), hasRole(X, documentRole), affordsTask(X, workStudyTask).
-goesIn(X, drawer) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, storageTask), not hasRole(X, clothingRole), not hasRole(X, consumableRole), not hasRole(X, furnitureRole), not hasRole(X, lightingRole), not hasRole(X, musicalInstrumentRole), not hasRole(X, safetyEquipmentRole), not hasRole(X, toolRole), not hasRole(X, utensilRole), not hasRole(X, wasteRole).
+goesIn(X, drawer) :- obj(X), hasPhysicalQuality(X, hasContainer), hasPhysicalQuality(X, lightweight), affordsTask(X, storageTask).
 goesIn(X, drawer) :- obj(X), hasRole(X, utensilRole), affordsTask(X, foodPreparationTask).
+goesIn(X, drawer) :- obj(X), hasPhysicalQuality(X, lightweight), hasPhysicalQuality(X, soft_Deformable), hasRole(X, clothingRole), affordsTask(X, dressingTask).
+goesIn(X, drawer) :- obj(X), hasPhysicalQuality(X, lightweight), hasPhysicalQuality(X, rigid), hasRole(X, toolRole), affordsTask(X, workStudyTask).
+goesIn(X, drawer) :- obj(X), hasRole(X, lightingRole).
+goesIn(X, drawer) :- obj(X), hasRole(X, documentRole).
+goesIn(X, drawer) :- obj(X), hasPhysicalQuality(X, hasContainer), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
+goesIn(X, drawer) :- obj(X), hasPhysicalQuality(X, soft_Deformable), hasPhysicalQuality(X, washable), hasRole(X, clothingRole), affordsTask(X, dressingTask).
+goesIn(X, drawer) :- obj(X), hasPhysicalQuality(X, lightweight), hasPhysicalQuality(X, rigid), hasRole(X, toolRole), affordsTask(X, maintenanceTask).
+goesIn(X, drawer) :- obj(X), hasPhysicalQuality(X, lightweight), hasRole(X, toolRole).
+goesIn(X, drawer) :- obj(X), hasRole(X, wasteRole).
+goesIn(X, drawer) :- obj(X), hasPhysicalQuality(X, flammable).
+goesIn(X, drawer) :- obj(X), hasPhysicalQuality(X, rigid), hasPhysicalQuality(X, sharp).
+goesIn(X, drawer) :- obj(X), hasPhysicalQuality(X, heavy), hasPhysicalQuality(X, rigid), hasRole(X, furnitureRole), affordsTask(X, storageTask).
+goesIn(X, drawer) :- obj(X), hasPhysicalQuality(X, rigid), hasRole(X, toolRole), affordsTask(X, maintenanceTask).
+goesIn(X, drawer) :- obj(X), hasPhysicalQuality(X, rigid), affordsTask(X, foodPreparationTask).
+goesIn(X, drawer) :- obj(X), affordsTask(X, sleepingTask).
+goesIn(X, drawer) :- obj(X), hasPhysicalQuality(X, liquid), hasRole(X, toolRole), affordsTask(X, maintenanceTask).
+goesIn(X, drawer) :- obj(X), hasPhysicalQuality(X, rigid), hasRole(X, storageContainerRole), affordsTask(X, leisureTask).
+goesIn(X, drawer) :- obj(X), hasPhysicalQuality(X, lightweight), hasRole(X, utensilRole), affordsTask(X, eatingDrinkingTask).
+goesIn(X, drawer) :- obj(X), hasPhysicalQuality(X, soft_Deformable), hasRole(X, storageContainerRole).
+goesIn(X, drawer) :- obj(X), hasPhysicalQuality(X, rigid), hasRole(X, entertainmentRole).
+goesIn(X, drawer) :- obj(X), hasPhysicalQuality(X, lightweight), hasRole(X, entertainmentRole), affordsTask(X, leisureTask).
+goesIn(X, drawer) :- obj(X), hasPhysicalQuality(X, fragile), affordsTask(X, leisureTask).
+goesIn(X, drawer) :- obj(X), hasPhysicalQuality(X, lightweight), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
 goesIn(X, drawer) :- obj(X), hasRole(X, entertainmentRole), affordsTask(X, leisureTask).
-goesIn(X, drawer) :- obj(X), hasRole(X, toolRole), affordsTask(X, maintenanceTask).
-goesIn(X, drawer) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, leisureTask).
-goesIn(X, drawer) :- obj(X), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
-goesIn(X, drawer) :- obj(X), hasRole(X, beddingRole), affordsTask(X, sleepingTask).
-goesIn(X, drawer) :- obj(X), hasRole(X, toolRole), affordsTask(X, foodPreparationTask).
-goesIn(X, drawer) :- obj(X), hasRole(X, toolRole), affordsTask(X, workStudyTask).
-goesIn(X, drawer) :- obj(X), hasRole(X, cookwareRole), affordsTask(X, foodPreparationTask).
-goesIn(X, drawer) :- obj(X), hasRole(X, utensilRole), affordsTask(X, dressingTask).
-goesIn(X, drawer) :- obj(X), hasRole(X, decorationRole), affordsTask(X, leisureTask).
-goesIn(X, drawer) :- obj(X), hasRole(X, documentRole), affordsTask(X, cleaningTask).
-goesIn(X, drawer) :- obj(X), hasRole(X, toolRole), affordsTask(X, storageTask).
-goesIn(X, drawer) :- obj(X), hasRole(X, utensilRole), affordsTask(X, eatingDrinkingTask).
-goesIn(X, drawer) :- obj(X), hasRole(X, utensilRole).
-goesIn(X, drawer) :- obj(X), hasRole(X, wasteRole), affordsTask(X, cleaningTask).
-goesIn(X, drawer) :- obj(X), hasRole(X, toolRole).
-goesIn(X, drawer) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, storageTask), not hasRole(X, clothingRole), not hasRole(X, consumableRole), not hasRole(X, toolRole), not hasRole(X, lightingRole), not hasRole(X, musicalInstrumentRole), not hasRole(X, safetyEquipmentRole), not hasRole(X, storageContainerRole), not hasRole(X, utensilRole), not hasRole(X, wasteRole).
-goesIn(X, drawer) :- obj(X), hasRole(X, lightingRole), affordsTask(X, leisureTask).
-goesIn(X, drawer) :- obj(X), hasRole(X, consumableRole), affordsTask(X, leisureTask).
+goesIn(X, drawer) :- obj(X), hasPhysicalQuality(X, lightweight), hasRole(X, decorationRole).
+goesIn(X, drawer) :- obj(X), hasPhysicalQuality(X, lightweight), hasPhysicalQuality(X, soft_Deformable).
+
+% --- home_office ---
+goesIn(X, home_office) :- obj(X), hasRole(X, applianceRole), affordsTask(X, workStudyTask).
+goesIn(X, home_office) :- obj(X), hasPhysicalQuality(X, lightweight), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
+goesIn(X, home_office) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, workStudyTask).
+goesIn(X, home_office) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, storageTask).
+goesIn(X, home_office) :- obj(X), hasPhysicalQuality(X, heavy), hasPhysicalQuality(X, rigid), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
+goesIn(X, home_office) :- obj(X), hasPhysicalQuality(X, fragile), hasRole(X, documentRole).
+goesIn(X, home_office) :- obj(X), hasPhysicalQuality(X, liquid), hasPhysicalQuality(X, toxic_Hazardous).
+goesIn(X, home_office) :- obj(X), hasRole(X, documentRole), affordsTask(X, leisureTask).
+goesIn(X, home_office) :- obj(X), hasPhysicalQuality(X, heavy), affordsTask(X, leisureTask).
+goesIn(X, home_office) :- obj(X), hasPhysicalQuality(X, flammable).
+
+% --- trash ---
+goesIn(X, trash) :- obj(X), hasPhysicalQuality(X, fragile), hasRole(X, documentRole).
+goesIn(X, trash) :- obj(X), hasPhysicalQuality(X, heavy), hasPhysicalQuality(X, rigid), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
+goesIn(X, trash) :- obj(X), hasPhysicalQuality(X, lightweight), hasPhysicalQuality(X, rigid), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
+goesIn(X, trash) :- obj(X), hasPhysicalQuality(X, fragile), hasRole(X, utensilRole).
+goesIn(X, trash) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, wasteDisposalTask).
+goesIn(X, trash) :- obj(X), hasPhysicalQuality(X, granular), hasPhysicalQuality(X, rigid).
+goesIn(X, trash) :- obj(X), hasPhysicalQuality(X, flammable).
+goesIn(X, trash) :- obj(X), hasPhysicalQuality(X, perishable), hasPhysicalQuality(X, liquid), hasRole(X, consumableRole).
+goesIn(X, trash) :- obj(X), hasPhysicalQuality(X, toxic_Hazardous), hasRole(X, consumableRole).
+goesIn(X, trash) :- obj(X), hasPhysicalQuality(X, sharp), hasRole(X, wasteRole).
+goesIn(X, trash) :- obj(X), hasPhysicalQuality(X, lightweight), hasRole(X, consumableRole).
+goesIn(X, trash) :- obj(X), hasPhysicalQuality(X, hasContainer), affordsTask(X, storageTask).
+
+% --- bedroom ---
+goesIn(X, bedroom) :- obj(X), affordsTask(X, leisureTask), affordsTask(X, workStudyTask).
+goesIn(X, bedroom) :- obj(X), hasRole(X, cookwareRole), affordsTask(X, eatingDrinkingTask).
+goesIn(X, bedroom) :- obj(X), affordsTask(X, hygieneTask).
+goesIn(X, bedroom) :- obj(X), hasRole(X, beddingRole).
+goesIn(X, bedroom) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, leisureTask).
+goesIn(X, bedroom) :- obj(X), hasPhysicalQuality(X, requiresCooling).
+goesIn(X, bedroom) :- obj(X), affordsTask(X, dressingTask).
+goesIn(X, bedroom) :- obj(X), hasRole(X, furnitureRole), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
+goesIn(X, bedroom) :- obj(X), affordsTask(X, wasteDisposalTask).
+goesIn(X, bedroom) :- obj(X), hasPhysicalQuality(X, liquid), hasPhysicalQuality(X, perishable).
+goesIn(X, bedroom) :- obj(X), hasRole(X, decorationRole).
+goesIn(X, bedroom) :- obj(X), hasPhysicalQuality(X, rigid), affordsTask(X, maintenanceTask).
+goesIn(X, bedroom) :- obj(X), hasPhysicalQuality(X, granular), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
+goesIn(X, bedroom) :- obj(X), affordsTask(X, sleepingTask).
+goesIn(X, bedroom) :- obj(X), hasRole(X, consumableRole), affordsTask(X, leisureTask).
+goesIn(X, bedroom) :- obj(X), hasPhysicalQuality(X, heavy), hasPhysicalQuality(X, rigid), hasRole(X, furnitureRole), affordsTask(X, storageTask).
+goesIn(X, bedroom) :- obj(X), hasRole(X, lightingRole).
+goesIn(X, bedroom) :- obj(X), hasRole(X, applianceRole), affordsTask(X, leisureTask).
+goesIn(X, bedroom) :- obj(X), hasPhysicalQuality(X, hasContainer), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
+goesIn(X, bedroom) :- obj(X), hasPhysicalQuality(X, hasContainer), hasPhysicalQuality(X, lightweight), hasRole(X, storageContainerRole), affordsTask(X, leisureTask).
+goesIn(X, bedroom) :- obj(X), hasPhysicalQuality(X, heavy), hasPhysicalQuality(X, rigid), hasRole(X, furnitureRole).
+goesIn(X, bedroom) :- obj(X), affordsTask(X, cleaningTask).
+goesIn(X, bedroom) :- obj(X), hasPhysicalQuality(X, soft_Deformable), affordsTask(X, storageTask).
+goesIn(X, bedroom) :- obj(X), hasPhysicalQuality(X, electronic), hasPhysicalQuality(X, lightweight), hasRole(X, toolRole), affordsTask(X, workStudyTask).
+goesIn(X, bedroom) :- obj(X), hasPhysicalQuality(X, fragile), affordsTask(X, workStudyTask).
+goesIn(X, bedroom) :- obj(X), hasPhysicalQuality(X, rigid), hasRole(X, storageContainerRole).
+goesIn(X, bedroom) :- obj(X), hasPhysicalQuality(X, lightweight), hasRole(X, toolRole), affordsTask(X, leisureTask).
+goesIn(X, bedroom) :- obj(X), hasRole(X, applianceRole), affordsTask(X, foodPreparationTask).
+goesIn(X, bedroom) :- obj(X), hasPhysicalQuality(X, heavy), hasRole(X, toolRole), affordsTask(X, maintenanceTask).
+goesIn(X, bedroom) :- obj(X), hasPhysicalQuality(X, liquid), hasRole(X, toolRole).
+goesIn(X, bedroom) :- obj(X), hasPhysicalQuality(X, rigid), affordsTask(X, eatingDrinkingTask).
+goesIn(X, bedroom) :- obj(X), hasPhysicalQuality(X, lightweight), affordsTask(X, storageTask).
+goesIn(X, bedroom) :- obj(X), hasRole(X, applianceRole), affordsTask(X, workStudyTask).
+goesIn(X, bedroom) :- obj(X), hasPhysicalQuality(X, washable), hasRole(X, documentRole).
+goesIn(X, bedroom) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, workStudyTask).
+goesIn(X, bedroom) :- obj(X), hasPhysicalQuality(X, fragile), affordsTask(X, eatingDrinkingTask).
+goesIn(X, bedroom) :- obj(X), hasPhysicalQuality(X, isFlexible).
+goesIn(X, bedroom) :- obj(X), hasPhysicalQuality(X, lightweight), hasRole(X, entertainmentRole).
+goesIn(X, bedroom) :- obj(X), hasPhysicalQuality(X, lightweight), affordsTask(X, foodPreparationTask).
+goesIn(X, bedroom) :- obj(X), hasPhysicalQuality(X, hasContainer), hasPhysicalQuality(X, lightweight), hasRole(X, storageContainerRole).
+goesIn(X, bedroom) :- obj(X), hasPhysicalQuality(X, requiresFreezing), affordsTask(X, storageTask).
+goesIn(X, bedroom) :- obj(X), hasPhysicalQuality(X, heated).
+goesIn(X, bedroom) :- obj(X), hasPhysicalQuality(X, perishable), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
+goesIn(X, bedroom) :- obj(X), hasPhysicalQuality(X, soft_Deformable), hasRole(X, consumableRole).
+goesIn(X, bedroom) :- obj(X), hasPhysicalQuality(X, electronic), hasPhysicalQuality(X, heavy), hasRole(X, applianceRole).
+goesIn(X, bedroom) :- obj(X), hasPhysicalQuality(X, hasContainer), hasRole(X, utensilRole), affordsTask(X, eatingDrinkingTask).
+goesIn(X, bedroom) :- obj(X), hasPhysicalQuality(X, granular), hasRole(X, consumableRole).
+goesIn(X, bedroom) :- obj(X), hasPhysicalQuality(X, lightweight), affordsTask(X, eatingDrinkingTask).
+goesIn(X, bedroom) :- obj(X), hasPhysicalQuality(X, electronic), hasRole(X, toolRole), affordsTask(X, maintenanceTask).
+goesIn(X, bedroom) :- obj(X), hasPhysicalQuality(X, hasContainer), hasRole(X, storageContainerRole), affordsTask(X, eatingDrinkingTask).
+goesIn(X, bedroom) :- obj(X), hasPhysicalQuality(X, liquid), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
+goesIn(X, bedroom) :- obj(X), hasPhysicalQuality(X, lightweight), hasRole(X, documentRole), affordsTask(X, leisureTask).
+goesIn(X, bedroom) :- obj(X), hasPhysicalQuality(X, fragile), hasRole(X, wasteRole).
+goesIn(X, bedroom) :- obj(X), hasPhysicalQuality(X, fragile), hasRole(X, furnitureRole).
+goesIn(X, bedroom) :- obj(X), hasPhysicalQuality(X, rigid), hasRole(X, furnitureRole).
+goesIn(X, bedroom) :- obj(X), hasPhysicalQuality(X, lightweight), hasRole(X, consumableRole).
+goesIn(X, bedroom) :- obj(X), hasPhysicalQuality(X, heavy), hasRole(X, furnitureRole).
+goesIn(X, bedroom) :- obj(X), hasRole(X, entertainmentRole), affordsTask(X, leisureTask).
+
+% --- closet ---
+goesIn(X, closet) :- obj(X), hasRole(X, beddingRole).
+goesIn(X, closet) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, leisureTask).
+goesIn(X, closet) :- obj(X), hasPhysicalQuality(X, isRotary).
+goesIn(X, closet) :- obj(X), affordsTask(X, eatingDrinkingTask), affordsTask(X, hygieneTask).
+goesIn(X, closet) :- obj(X), hasPhysicalQuality(X, heavy), hasPhysicalQuality(X, rigid), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
+goesIn(X, closet) :- obj(X), hasRole(X, consumableRole), affordsTask(X, hygieneTask).
+goesIn(X, closet) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, foodPreparationTask).
+goesIn(X, closet) :- obj(X), hasPhysicalQuality(X, lightweight), hasPhysicalQuality(X, soft_Deformable), hasRole(X, clothingRole), affordsTask(X, dressingTask).
+goesIn(X, closet) :- obj(X), hasPhysicalQuality(X, granular), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
+goesIn(X, closet) :- obj(X), hasRole(X, consumableRole), affordsTask(X, leisureTask).
+goesIn(X, closet) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, wasteDisposalTask).
+goesIn(X, closet) :- obj(X), hasPhysicalQuality(X, washable), affordsTask(X, dressingTask).
+goesIn(X, closet) :- obj(X), hasPhysicalQuality(X, liquid), hasPhysicalQuality(X, perishable), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
+goesIn(X, closet) :- obj(X), hasPhysicalQuality(X, hasContainer), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
+goesIn(X, closet) :- obj(X), hasPhysicalQuality(X, heavy), hasPhysicalQuality(X, rigid), hasRole(X, furnitureRole), affordsTask(X, storageTask).
+goesIn(X, closet) :- obj(X), hasPhysicalQuality(X, heavy), hasPhysicalQuality(X, rigid), hasRole(X, furnitureRole).
+goesIn(X, closet) :- obj(X), hasPhysicalQuality(X, fragile).
+goesIn(X, closet) :- obj(X), hasPhysicalQuality(X, soft_Deformable), affordsTask(X, storageTask).
+goesIn(X, closet) :- obj(X), hasPhysicalQuality(X, granular), hasRole(X, consumableRole).
+goesIn(X, closet) :- obj(X), hasPhysicalQuality(X, rigid), hasRole(X, toolRole), affordsTask(X, workStudyTask).
+goesIn(X, closet) :- obj(X), hasPhysicalQuality(X, perishable), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
+goesIn(X, closet) :- obj(X), hasPhysicalQuality(X, lightweight), hasPhysicalQuality(X, rigid), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
+goesIn(X, closet) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, leisureTask).
+goesIn(X, closet) :- obj(X), hasPhysicalQuality(X, isFlexible).
+goesIn(X, closet) :- obj(X), hasRole(X, documentRole), affordsTask(X, leisureTask).
+goesIn(X, closet) :- obj(X), hasPhysicalQuality(X, electronic), hasPhysicalQuality(X, lightweight), hasRole(X, toolRole), affordsTask(X, workStudyTask).
+goesIn(X, closet) :- obj(X), affordsTask(X, sleepingTask).
+goesIn(X, closet) :- obj(X), hasRole(X, applianceRole), affordsTask(X, workStudyTask).
+goesIn(X, closet) :- obj(X), affordsTask(X, cleaningTask).
+goesIn(X, closet) :- obj(X), hasPhysicalQuality(X, lightweight), hasRole(X, entertainmentRole), affordsTask(X, leisureTask).
+goesIn(X, closet) :- obj(X), hasPhysicalQuality(X, rigid), hasPhysicalQuality(X, sharp), affordsTask(X, maintenanceTask).
+goesIn(X, closet) :- obj(X), hasPhysicalQuality(X, heavy), hasRole(X, applianceRole), affordsTask(X, leisureTask).
+goesIn(X, closet) :- obj(X), hasPhysicalQuality(X, rigid), hasPhysicalQuality(X, sharp), hasRole(X, utensilRole), affordsTask(X, foodPreparationTask).
+goesIn(X, closet) :- obj(X), hasPhysicalQuality(X, lightweight), hasRole(X, furnitureRole).
+goesIn(X, closet) :- obj(X), hasPhysicalQuality(X, lightweight), hasPhysicalQuality(X, rigid), hasRole(X, toolRole), affordsTask(X, maintenanceTask).
+goesIn(X, closet) :- obj(X), hasPhysicalQuality(X, granular), hasRole(X, furnitureRole).
+goesIn(X, closet) :- obj(X), hasPhysicalQuality(X, lightweight), hasPhysicalQuality(X, soft_Deformable), hasRole(X, clothingRole).
+
+% --- fridge ---
+goesIn(X, fridge) :- obj(X), hasPhysicalQuality(X, perishable), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
+goesIn(X, fridge) :- obj(X), hasPhysicalQuality(X, granular), hasRole(X, consumableRole).
+goesIn(X, fridge) :- obj(X), hasPhysicalQuality(X, heavy), hasPhysicalQuality(X, rigid), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
+goesIn(X, fridge) :- obj(X), hasPhysicalQuality(X, electronic), hasPhysicalQuality(X, heavy), hasRole(X, applianceRole).
+goesIn(X, fridge) :- obj(X), hasRole(X, consumableRole), affordsTask(X, foodPreparationTask).
+goesIn(X, fridge) :- obj(X), hasPhysicalQuality(X, liquid), affordsTask(X, eatingDrinkingTask).
+goesIn(X, fridge) :- obj(X), hasPhysicalQuality(X, hasContainer), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
+goesIn(X, fridge) :- obj(X), hasRole(X, lightingRole).
+goesIn(X, fridge) :- obj(X), hasPhysicalQuality(X, hasContainer), hasRole(X, storageContainerRole).
+goesIn(X, fridge) :- obj(X), hasPhysicalQuality(X, rigid), hasRole(X, toolRole).
+goesIn(X, fridge) :- obj(X), hasPhysicalQuality(X, requiresCooling).
+goesIn(X, fridge) :- obj(X), hasPhysicalQuality(X, lightweight), hasRole(X, decorationRole).
+goesIn(X, fridge) :- obj(X), hasRole(X, wasteRole).
+goesIn(X, fridge) :- obj(X), hasRole(X, documentRole), affordsTask(X, workStudyTask).
+goesIn(X, fridge) :- obj(X), hasPhysicalQuality(X, flammable).
+
+% --- storage_room ---
+goesIn(X, storage_room) :- obj(X), hasRole(X, consumableRole), affordsTask(X, hygieneTask).
+goesIn(X, storage_room) :- obj(X), hasPhysicalQuality(X, soft_Deformable), affordsTask(X, cleaningTask).
+goesIn(X, storage_room) :- obj(X), hasPhysicalQuality(X, lightweight), hasPhysicalQuality(X, soft_Deformable), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
+goesIn(X, storage_room) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, eatingDrinkingTask).
+goesIn(X, storage_room) :- obj(X), hasRole(X, applianceRole), affordsTask(X, maintenanceTask).
+goesIn(X, storage_room) :- obj(X), hasPhysicalQuality(X, liquid), hasRole(X, utensilRole).
+goesIn(X, storage_room) :- obj(X), hasPhysicalQuality(X, flammable).
+goesIn(X, storage_room) :- obj(X), hasPhysicalQuality(X, fragile), hasPhysicalQuality(X, rigid), affordsTask(X, eatingDrinkingTask).
+goesIn(X, storage_room) :- obj(X), hasPhysicalQuality(X, isRotary).
+goesIn(X, storage_room) :- obj(X), hasPhysicalQuality(X, heavy), hasRole(X, cleaningToolRole).
+goesIn(X, storage_room) :- obj(X), hasPhysicalQuality(X, liquid), hasPhysicalQuality(X, perishable), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
+goesIn(X, storage_room) :- obj(X), hasPhysicalQuality(X, lightweight), hasRole(X, furnitureRole), affordsTask(X, leisureTask).
+goesIn(X, storage_room) :- obj(X), hasPhysicalQuality(X, electronic), affordsTask(X, maintenanceTask).
+goesIn(X, storage_room) :- obj(X), hasPhysicalQuality(X, lightweight), affordsTask(X, maintenanceTask).
+goesIn(X, storage_room) :- obj(X), affordsTask(X, dressingTask).
+goesIn(X, storage_room) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, maintenanceTask).
+goesIn(X, storage_room) :- obj(X), hasPhysicalQuality(X, washable), affordsTask(X, hygieneTask).
+goesIn(X, storage_room) :- obj(X), hasPhysicalQuality(X, heavy), hasPhysicalQuality(X, rigid), hasRole(X, toolRole), affordsTask(X, maintenanceTask).
+goesIn(X, storage_room) :- obj(X), hasPhysicalQuality(X, soft_Deformable), affordsTask(X, leisureTask).
+goesIn(X, storage_room) :- obj(X), hasPhysicalQuality(X, heavy), hasPhysicalQuality(X, rigid), hasRole(X, furnitureRole), affordsTask(X, storageTask).
+goesIn(X, storage_room) :- obj(X), hasPhysicalQuality(X, hasContainer), affordsTask(X, storageTask).
+goesIn(X, storage_room) :- obj(X), hasRole(X, decorationRole), affordsTask(X, leisureTask).
+goesIn(X, storage_room) :- obj(X), hasRole(X, applianceRole), affordsTask(X, leisureTask).
+goesIn(X, storage_room) :- obj(X), hasRole(X, toolRole), affordsTask(X, workStudyTask).
+goesIn(X, storage_room) :- obj(X), hasRole(X, documentRole), affordsTask(X, leisureTask).
+goesIn(X, storage_room) :- obj(X), hasPhysicalQuality(X, electronic), hasPhysicalQuality(X, heated), hasRole(X, lightingRole), affordsTask(X, leisureTask).
+goesIn(X, storage_room) :- obj(X), hasPhysicalQuality(X, lightweight), hasRole(X, lightingRole).
+goesIn(X, storage_room) :- obj(X), hasRole(X, toolRole), affordsTask(X, cleaningTask).
+goesIn(X, storage_room) :- obj(X), hasPhysicalQuality(X, fragile), hasPhysicalQuality(X, perishable), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
+goesIn(X, storage_room) :- obj(X), hasPhysicalQuality(X, heavy), hasPhysicalQuality(X, rigid), hasRole(X, furnitureRole).
+goesIn(X, storage_room) :- obj(X), hasPhysicalQuality(X, toxic_Hazardous), affordsTask(X, cleaningTask).
+goesIn(X, storage_room) :- obj(X), hasRole(X, applianceRole), affordsTask(X, workStudyTask).
+goesIn(X, storage_room) :- obj(X), hasRole(X, beddingRole).
+goesIn(X, storage_room) :- obj(X), hasPhysicalQuality(X, granular), hasPhysicalQuality(X, perishable), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
+goesIn(X, storage_room) :- obj(X), hasPhysicalQuality(X, heavy), hasPhysicalQuality(X, rigid), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
+goesIn(X, storage_room) :- obj(X), hasPhysicalQuality(X, granular), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
+goesIn(X, storage_room) :- obj(X), hasRole(X, consumableRole), affordsTask(X, maintenanceTask).
+goesIn(X, storage_room) :- obj(X), hasRole(X, documentRole), affordsTask(X, workStudyTask).
+goesIn(X, storage_room) :- obj(X), hasPhysicalQuality(X, heavy), hasRole(X, consumableRole).
+goesIn(X, storage_room) :- obj(X), hasPhysicalQuality(X, lightweight), hasRole(X, entertainmentRole).
+goesIn(X, storage_room) :- obj(X), hasPhysicalQuality(X, perishable), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
+goesIn(X, storage_room) :- obj(X), hasPhysicalQuality(X, sharp), affordsTask(X, maintenanceTask).
+goesIn(X, storage_room) :- obj(X), hasPhysicalQuality(X, lightweight), hasPhysicalQuality(X, rigid), hasRole(X, storageContainerRole).
+goesIn(X, storage_room) :- obj(X), hasPhysicalQuality(X, lightweight), hasPhysicalQuality(X, rigid), hasRole(X, utensilRole).
+goesIn(X, storage_room) :- obj(X), hasPhysicalQuality(X, perishable), hasRole(X, consumableRole), affordsTask(X, foodPreparationTask).
+goesIn(X, storage_room) :- obj(X), hasPhysicalQuality(X, toxic_Hazardous), affordsTask(X, maintenanceTask).
+goesIn(X, storage_room) :- obj(X), hasPhysicalQuality(X, hasContainer), hasPhysicalQuality(X, lightweight).
+goesIn(X, storage_room) :- obj(X), hasPhysicalQuality(X, lightweight), hasRole(X, decorationRole).
+goesIn(X, storage_room) :- obj(X), hasPhysicalQuality(X, fragile), hasRole(X, wasteRole).
+goesIn(X, storage_room) :- obj(X), hasPhysicalQuality(X, lightweight), hasRole(X, consumableRole).
+goesIn(X, storage_room) :- obj(X), hasRole(X, entertainmentRole), affordsTask(X, leisureTask).
+goesIn(X, storage_room) :- obj(X), hasPhysicalQuality(X, heavy), hasPhysicalQuality(X, soft_Deformable).
+
+% --- living_room ---
+goesIn(X, living_room) :- obj(X), hasPhysicalQuality(X, rigid), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
+goesIn(X, living_room) :- obj(X), affordsTask(X, leisureTask), affordsTask(X, workStudyTask).
+goesIn(X, living_room) :- obj(X), hasPhysicalQuality(X, soft_Deformable), affordsTask(X, leisureTask).
+goesIn(X, living_room) :- obj(X), hasRole(X, applianceRole), affordsTask(X, leisureTask).
+goesIn(X, living_room) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, sleepingTask).
+goesIn(X, living_room) :- obj(X), affordsTask(X, dressingTask).
+goesIn(X, living_room) :- obj(X), hasPhysicalQuality(X, electronic), hasRole(X, toolRole), affordsTask(X, leisureTask).
+goesIn(X, living_room) :- obj(X), hasPhysicalQuality(X, soft_Deformable), hasRole(X, furnitureRole).
+goesIn(X, living_room) :- obj(X), hasPhysicalQuality(X, lightweight), hasPhysicalQuality(X, rigid), affordsTask(X, maintenanceTask).
+goesIn(X, living_room) :- obj(X), hasPhysicalQuality(X, heavy), hasPhysicalQuality(X, rigid), hasRole(X, furnitureRole), affordsTask(X, leisureTask).
+goesIn(X, living_room) :- obj(X), hasPhysicalQuality(X, soft_Deformable), hasPhysicalQuality(X, washable), hasRole(X, beddingRole), affordsTask(X, sleepingTask).
+goesIn(X, living_room) :- obj(X), hasRole(X, furnitureRole), hasRole(X, storageContainerRole).
+goesIn(X, living_room) :- obj(X), hasPhysicalQuality(X, lightweight), hasRole(X, furnitureRole).
+goesIn(X, living_room) :- obj(X), hasPhysicalQuality(X, heavy), hasPhysicalQuality(X, rigid), hasRole(X, furnitureRole), affordsTask(X, storageTask).
+goesIn(X, living_room) :- obj(X), hasRole(X, entertainmentRole).
+goesIn(X, living_room) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, workStudyTask).
+goesIn(X, living_room) :- obj(X), hasPhysicalQuality(X, heavy), hasRole(X, toolRole), affordsTask(X, leisureTask).
+goesIn(X, living_room) :- obj(X), hasRole(X, documentRole), affordsTask(X, leisureTask).
+goesIn(X, living_room) :- obj(X), hasPhysicalQuality(X, heavy), affordsTask(X, foodPreparationTask).
+goesIn(X, living_room) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, workStudyTask).
+goesIn(X, living_room) :- obj(X), hasPhysicalQuality(X, heated), hasRole(X, cookwareRole), affordsTask(X, foodPreparationTask).
+goesIn(X, living_room) :- obj(X), hasPhysicalQuality(X, rigid), hasRole(X, toolRole), affordsTask(X, maintenanceTask).
+goesIn(X, living_room) :- obj(X), hasRole(X, decorationRole).
+goesIn(X, living_room) :- obj(X), hasPhysicalQuality(X, heavy), hasPhysicalQuality(X, rigid), hasRole(X, furnitureRole).
+goesIn(X, living_room) :- obj(X), hasRole(X, consumableRole), affordsTask(X, wasteDisposalTask).
+goesIn(X, living_room) :- obj(X), hasRole(X, applianceRole), affordsTask(X, maintenanceTask).
+goesIn(X, living_room) :- obj(X), hasPhysicalQuality(X, granular), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
+goesIn(X, living_room) :- obj(X), hasPhysicalQuality(X, electronic), affordsTask(X, maintenanceTask).
+goesIn(X, living_room) :- obj(X), hasPhysicalQuality(X, lightweight), hasPhysicalQuality(X, rigid), hasRole(X, utensilRole).
+goesIn(X, living_room) :- obj(X), hasRole(X, cleaningToolRole), affordsTask(X, cleaningTask).
+goesIn(X, living_room) :- obj(X), hasRole(X, consumableRole), hasPhysicalQuality(X, lightweight).
+goesIn(X, living_room) :- obj(X), hasPhysicalQuality(X, fragile), hasRole(X, wasteRole).
+
+% --- pantry ---
+goesIn(X, pantry) :- obj(X), hasPhysicalQuality(X, hasContainer), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
+goesIn(X, pantry) :- obj(X), hasRole(X, cleaningToolRole).
+goesIn(X, pantry) :- obj(X), hasPhysicalQuality(X, granular), affordsTask(X, eatingDrinkingTask).
+goesIn(X, pantry) :- obj(X), hasRole(X, applianceRole), affordsTask(X, storageTask).
+goesIn(X, pantry) :- obj(X), hasPhysicalQuality(X, liquid), hasPhysicalQuality(X, perishable), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
+goesIn(X, pantry) :- obj(X), hasPhysicalQuality(X, rigid), hasRole(X, cookwareRole).
+goesIn(X, pantry) :- obj(X), hasPhysicalQuality(X, rigid), hasPhysicalQuality(X, sharp), hasRole(X, toolRole), affordsTask(X, maintenanceTask).
+goesIn(X, pantry) :- obj(X), hasPhysicalQuality(X, perishable), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
+goesIn(X, pantry) :- obj(X), hasPhysicalQuality(X, soft_Deformable), affordsTask(X, eatingDrinkingTask).
+goesIn(X, pantry) :- obj(X), hasPhysicalQuality(X, rigid), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
+goesIn(X, pantry) :- obj(X), affordsTask(X, wasteDisposalTask).
+goesIn(X, pantry) :- obj(X), hasPhysicalQuality(X, heavy), hasPhysicalQuality(X, rigid), hasRole(X, furnitureRole), affordsTask(X, storageTask).
+goesIn(X, pantry) :- obj(X), hasRole(X, consumableRole), affordsTask(X, foodPreparationTask).
+goesIn(X, pantry) :- obj(X), hasPhysicalQuality(X, liquid), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
+goesIn(X, pantry) :- obj(X), hasPhysicalQuality(X, sharp), hasRole(X, toolRole), affordsTask(X, maintenanceTask).
+goesIn(X, pantry) :- obj(X), hasPhysicalQuality(X, toxic_Hazardous), affordsTask(X, maintenanceTask).
+goesIn(X, pantry) :- obj(X), hasRole(X, decorationRole).
+goesIn(X, pantry) :- obj(X), hasPhysicalQuality(X, lightweight), hasPhysicalQuality(X, rigid), hasRole(X, utensilRole).
+goesIn(X, pantry) :- obj(X), hasPhysicalQuality(X, lightweight), affordsTask(X, eatingDrinkingTask).
+goesIn(X, pantry) :- obj(X), hasPhysicalQuality(X, perishable), hasRole(X, consumableRole).
+goesIn(X, pantry) :- obj(X), hasPhysicalQuality(X, lightweight), hasRole(X, consumableRole).
+goesIn(X, pantry) :- obj(X), hasPhysicalQuality(X, granular), affordsTask(X, maintenanceTask).
+
+% --- garden ---
+goesIn(X, garden) :- obj(X), hasPhysicalQuality(X, liquid), hasRole(X, cleaningToolRole).
+goesIn(X, garden) :- obj(X), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask), affordsTask(X, foodPreparationTask).
+goesIn(X, garden) :- obj(X), affordsTask(X, leisureTask), affordsTask(X, workStudyTask).
+goesIn(X, garden) :- obj(X), hasPhysicalQuality(X, gas_Aerosol).
+goesIn(X, garden) :- obj(X), hasPhysicalQuality(X, heavy), hasPhysicalQuality(X, rigid), hasRole(X, furnitureRole), affordsTask(X, leisureTask).
+goesIn(X, garden) :- obj(X), hasPhysicalQuality(X, heavy), hasPhysicalQuality(X, rigid), hasRole(X, cookwareRole), affordsTask(X, foodPreparationTask).
+goesIn(X, garden) :- obj(X), hasPhysicalQuality(X, electronic), hasPhysicalQuality(X, lightweight), hasRole(X, lightingRole), affordsTask(X, leisureTask).
+goesIn(X, garden) :- obj(X), affordsTask(X, cleaningTask).
+goesIn(X, garden) :- obj(X), hasPhysicalQuality(X, fragile), hasPhysicalQuality(X, perishable), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
+goesIn(X, garden) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, maintenanceTask).
+goesIn(X, garden) :- obj(X), hasPhysicalQuality(X, lightweight), hasPhysicalQuality(X, soft_Deformable), hasRole(X, furnitureRole), affordsTask(X, leisureTask).
+goesIn(X, garden) :- obj(X), hasRole(X, consumableRole), affordsTask(X, leisureTask).
+goesIn(X, garden) :- obj(X), hasRole(X, documentRole), affordsTask(X, leisureTask).
+goesIn(X, garden) :- obj(X), hasPhysicalQuality(X, rigid), hasRole(X, furnitureRole), affordsTask(X, storageTask).
+goesIn(X, garden) :- obj(X), hasRole(X, utensilRole), affordsTask(X, eatingDrinkingTask).
+goesIn(X, garden) :- obj(X), hasPhysicalQuality(X, heavy), hasPhysicalQuality(X, rigid), hasRole(X, furnitureRole).
+goesIn(X, garden) :- obj(X), hasPhysicalQuality(X, liquid), hasPhysicalQuality(X, toxic_Hazardous), affordsTask(X, maintenanceTask).
+goesIn(X, garden) :- obj(X), hasRole(X, documentRole).
+goesIn(X, garden) :- obj(X), hasRole(X, entertainmentRole), affordsTask(X, leisureTask).
+goesIn(X, garden) :- obj(X), affordsTask(X, wasteDisposalTask).
+goesIn(X, garden) :- obj(X), hasPhysicalQuality(X, liquid), hasPhysicalQuality(X, toxic_Hazardous).
+goesIn(X, garden) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, workStudyTask).
+goesIn(X, garden) :- obj(X), hasPhysicalQuality(X, lightweight), hasRole(X, decorationRole).
+goesIn(X, garden) :- obj(X), hasPhysicalQuality(X, lightweight), hasRole(X, consumableRole).
+goesIn(X, garden) :- obj(X), hasPhysicalQuality(X, hasContainer), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
+goesIn(X, garden) :- obj(X), hasPhysicalQuality(X, heavy), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
+goesIn(X, garden) :- obj(X), hasPhysicalQuality(X, fragile), hasPhysicalQuality(X, soft_Deformable).
+goesIn(X, garden) :- obj(X), hasPhysicalQuality(X, lightweight), hasPhysicalQuality(X, rigid), hasRole(X, utensilRole).
+goesIn(X, garden) :- obj(X), hasPhysicalQuality(X, rigid), hasRole(X, furnitureRole).
+goesIn(X, garden) :- obj(X), hasPhysicalQuality(X, perishable), hasRole(X, consumableRole).
+
+% --- hallway ---
+goesIn(X, hallway) :- obj(X), hasPhysicalQuality(X, soft_Deformable), hasPhysicalQuality(X, washable).
+goesIn(X, hallway) :- obj(X), hasPhysicalQuality(X, heavy), hasPhysicalQuality(X, rigid), hasRole(X, furnitureRole), affordsTask(X, storageTask).
+goesIn(X, hallway) :- obj(X), hasPhysicalQuality(X, heavy), hasPhysicalQuality(X, rigid), hasRole(X, furnitureRole).
+goesIn(X, hallway) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, workStudyTask).
+goesIn(X, hallway) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, cleaningTask).
+goesIn(X, hallway) :- obj(X), hasPhysicalQuality(X, rigid), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
+goesIn(X, hallway) :- obj(X), hasRole(X, lightingRole).
+goesIn(X, hallway) :- obj(X), hasPhysicalQuality(X, heated), affordsTask(X, maintenanceTask).
+goesIn(X, hallway) :- obj(X), hasPhysicalQuality(X, lightweight), hasRole(X, furnitureRole).
+
+% --- kitchen ---
+goesIn(X, kitchen) :- obj(X), hasRole(X, cleaningToolRole), affordsTask(X, eatingDrinkingTask).
+goesIn(X, kitchen) :- obj(X), affordsTask(X, eatingDrinkingTask), affordsTask(X, foodPreparationTask).
+goesIn(X, kitchen) :- obj(X), hasRole(X, applianceRole), affordsTask(X, storageTask).
+goesIn(X, kitchen) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, eatingDrinkingTask).
+goesIn(X, kitchen) :- obj(X), hasRole(X, utensilRole), affordsTask(X, foodPreparationTask).
+goesIn(X, kitchen) :- obj(X), hasRole(X, cleaningToolRole), affordsTask(X, cleaningTask).
+goesIn(X, kitchen) :- obj(X), hasPhysicalQuality(X, rigid), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
+goesIn(X, kitchen) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, wasteDisposalTask).
+goesIn(X, kitchen) :- obj(X), hasRole(X, lightingRole).
+goesIn(X, kitchen) :- obj(X), hasRole(X, beddingRole).
+goesIn(X, kitchen) :- obj(X), hasPhysicalQuality(X, hasContainer), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
+goesIn(X, kitchen) :- obj(X), hasPhysicalQuality(X, granular).
+goesIn(X, kitchen) :- obj(X), hasPhysicalQuality(X, soft_Deformable), affordsTask(X, leisureTask).
+goesIn(X, kitchen) :- obj(X), hasPhysicalQuality(X, washable), affordsTask(X, hygieneTask).
+goesIn(X, kitchen) :- obj(X), hasPhysicalQuality(X, liquid), hasRole(X, consumableRole).
+goesIn(X, kitchen) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, foodPreparationTask).
+goesIn(X, kitchen) :- obj(X), hasPhysicalQuality(X, heavy), hasPhysicalQuality(X, rigid), hasRole(X, furnitureRole), affordsTask(X, storageTask).
+goesIn(X, kitchen) :- obj(X), hasPhysicalQuality(X, fragile), affordsTask(X, eatingDrinkingTask).
+goesIn(X, kitchen) :- obj(X), hasPhysicalQuality(X, rigid), affordsTask(X, eatingDrinkingTask).
+goesIn(X, kitchen) :- obj(X), hasPhysicalQuality(X, heavy), affordsTask(X, foodPreparationTask).
+goesIn(X, kitchen) :- obj(X), hasPhysicalQuality(X, heavy), hasPhysicalQuality(X, rigid), hasRole(X, toolRole), affordsTask(X, maintenanceTask).
+goesIn(X, kitchen) :- obj(X), hasPhysicalQuality(X, rigid), affordsTask(X, foodPreparationTask).
+goesIn(X, kitchen) :- obj(X), hasPhysicalQuality(X, sharp).
+goesIn(X, kitchen) :- obj(X), hasRole(X, applianceRole), affordsTask(X, foodPreparationTask).
+goesIn(X, kitchen) :- obj(X), hasPhysicalQuality(X, heated), affordsTask(X, maintenanceTask).
+goesIn(X, kitchen) :- obj(X), hasPhysicalQuality(X, requiresFreezing).
+goesIn(X, kitchen) :- obj(X), hasRole(X, safetyEquipmentRole).
+goesIn(X, kitchen) :- obj(X), hasPhysicalQuality(X, fragile), hasRole(X, consumableRole).
+goesIn(X, kitchen) :- obj(X), hasPhysicalQuality(X, lightweight), hasPhysicalQuality(X, soft_Deformable), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
+goesIn(X, kitchen) :- obj(X), hasPhysicalQuality(X, electronic), hasPhysicalQuality(X, heavy), hasRole(X, applianceRole), affordsTask(X, cleaningTask).
+goesIn(X, kitchen) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, workStudyTask).
+goesIn(X, kitchen) :- obj(X), hasRole(X, toolRole), affordsTask(X, hygieneTask).
+goesIn(X, kitchen) :- obj(X), hasPhysicalQuality(X, hasContainer), affordsTask(X, eatingDrinkingTask).
+goesIn(X, kitchen) :- obj(X), hasPhysicalQuality(X, soft_Deformable), hasRole(X, clothingRole).
+goesIn(X, kitchen) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, workStudyTask).
+goesIn(X, kitchen) :- obj(X), hasPhysicalQuality(X, perishable), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
+goesIn(X, kitchen) :- obj(X), hasRole(X, cleaningToolRole), affordsTask(X, maintenanceTask).
+goesIn(X, kitchen) :- obj(X), hasRole(X, consumableRole), affordsTask(X, foodPreparationTask).
+goesIn(X, kitchen) :- obj(X), hasPhysicalQuality(X, lightweight), hasPhysicalQuality(X, rigid), hasRole(X, toolRole).
+goesIn(X, kitchen) :- obj(X), hasPhysicalQuality(X, toxic_Hazardous), affordsTask(X, maintenanceTask).
+goesIn(X, kitchen) :- obj(X), hasPhysicalQuality(X, heavy), hasPhysicalQuality(X, rigid), hasRole(X, furnitureRole).
+goesIn(X, kitchen) :- obj(X), hasRole(X, wasteRole).
+goesIn(X, kitchen) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, leisureTask).
+goesIn(X, kitchen) :- obj(X), hasPhysicalQuality(X, liquid), affordsTask(X, maintenanceTask).
+goesIn(X, kitchen) :- obj(X), hasPhysicalQuality(X, rigid), hasRole(X, utensilRole).
+goesIn(X, kitchen) :- obj(X), hasPhysicalQuality(X, heated), hasRole(X, cookwareRole), affordsTask(X, foodPreparationTask).
+goesIn(X, kitchen) :- obj(X), hasPhysicalQuality(X, lightweight), hasRole(X, consumableRole).
+goesIn(X, kitchen) :- obj(X), hasPhysicalQuality(X, fragile), hasRole(X, furnitureRole).
+goesIn(X, kitchen) :- obj(X), hasPhysicalQuality(X, rigid), hasRole(X, furnitureRole).
+goesIn(X, kitchen) :- obj(X), hasRole(X, documentRole).
+goesIn(X, kitchen) :- obj(X), hasPhysicalQuality(X, liquid), hasPhysicalQuality(X, heavy), hasRole(X, utensilRole), affordsTask(X, eatingDrinkingTask).
+
+% --- bed ---
+goesIn(X, bed) :- obj(X), hasPhysicalQuality(X, soft_Deformable), hasPhysicalQuality(X, washable).
+goesIn(X, bed) :- obj(X), hasPhysicalQuality(X, lightweight), affordsTask(X, dressingTask).
+goesIn(X, bed) :- obj(X), hasPhysicalQuality(X, washable), affordsTask(X, leisureTask).
+goesIn(X, bed) :- obj(X), hasPhysicalQuality(X, rigid), hasPhysicalQuality(X, sharp), hasRole(X, utensilRole), affordsTask(X, foodPreparationTask).
+goesIn(X, bed) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, leisureTask).
+goesIn(X, bed) :- obj(X), hasRole(X, documentRole), affordsTask(X, workStudyTask).
+goesIn(X, bed) :- obj(X), hasPhysicalQuality(X, lightweight), hasRole(X, documentRole).
+goesIn(X, bed) :- obj(X), hasPhysicalQuality(X, lightweight), hasRole(X, entertainmentRole), affordsTask(X, leisureTask).
+goesIn(X, bed) :- obj(X), hasPhysicalQuality(X, fragile), affordsTask(X, leisureTask).
+goesIn(X, bed) :- obj(X), hasPhysicalQuality(X, hasContainer), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
+goesIn(X, bed) :- obj(X), hasRole(X, entertainmentRole), affordsTask(X, leisureTask).
 
 % --- shelf ---
-goesIn(X, shelf) :- obj(X), hasRole(X, utensilRole), affordsTask(X, eatingDrinkingTask), affordsTask(X, foodPreparationTask).
-goesIn(X, shelf) :- obj(X), hasRole(X, documentRole), affordsTask(X, leisureTask), affordsTask(X, workStudyTask).
-goesIn(X, shelf) :- obj(X), hasRole(X, decorationRole), affordsTask(X, storageTask).
-goesIn(X, shelf) :- obj(X), hasRole(X, documentRole), affordsTask(X, workStudyTask).
-goesIn(X, shelf) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
-goesIn(X, shelf) :- obj(X), hasRole(X, entertainmentRole), affordsTask(X, leisureTask).
-goesIn(X, shelf) :- obj(X), hasRole(X, consumableRole), affordsTask(X, foodPreparationTask).
-goesIn(X, shelf) :- obj(X), hasRole(X, applianceRole), affordsTask(X, leisureTask).
-goesIn(X, shelf) :- obj(X), hasRole(X, utensilRole), affordsTask(X, eatingDrinkingTask).
-goesIn(X, shelf) :- obj(X), hasRole(X, toolRole), affordsTask(X, workStudyTask).
-goesIn(X, shelf) :- obj(X), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
-goesIn(X, shelf) :- obj(X), hasRole(X, lightingRole), affordsTask(X, leisureTask).
-goesIn(X, shelf) :- obj(X), hasRole(X, documentRole), affordsTask(X, leisureTask).
-goesIn(X, shelf) :- obj(X), hasRole(X, wasteRole), affordsTask(X, cleaningTask).
-goesIn(X, shelf) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, storageTask).
-goesIn(X, shelf) :- obj(X), hasRole(X, toolRole), affordsTask(X, maintenanceTask).
-goesIn(X, shelf) :- obj(X), hasRole(X, consumableRole), affordsTask(X, maintenanceTask).
-goesIn(X, shelf) :- obj(X), hasRole(X, clothingRole), affordsTask(X, dressingTask).
-goesIn(X, shelf) :- obj(X), hasRole(X, decorationRole), affordsTask(X, leisureTask).
-goesIn(X, shelf) :- obj(X), hasRole(X, toolRole).
-goesIn(X, shelf) :- obj(X), hasRole(X, consumableRole), affordsTask(X, leisureTask).
 goesIn(X, shelf) :- obj(X), hasRole(X, decorationRole).
+goesIn(X, shelf) :- obj(X), hasPhysicalQuality(X, rigid), affordsTask(X, eatingDrinkingTask).
+goesIn(X, shelf) :- obj(X), hasRole(X, lightingRole).
+goesIn(X, shelf) :- obj(X), hasPhysicalQuality(X, electronic), hasRole(X, toolRole), affordsTask(X, leisureTask).
+goesIn(X, shelf) :- obj(X), hasPhysicalQuality(X, lightweight), hasPhysicalQuality(X, rigid), affordsTask(X, maintenanceTask).
+goesIn(X, shelf) :- obj(X), hasPhysicalQuality(X, liquid), hasPhysicalQuality(X, perishable), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
+goesIn(X, shelf) :- obj(X), hasPhysicalQuality(X, lightweight), hasPhysicalQuality(X, soft_Deformable), hasRole(X, clothingRole), affordsTask(X, dressingTask).
+goesIn(X, shelf) :- obj(X), hasPhysicalQuality(X, electronic), hasRole(X, toolRole), affordsTask(X, workStudyTask).
+goesIn(X, shelf) :- obj(X), hasPhysicalQuality(X, hasContainer), affordsTask(X, storageTask).
+goesIn(X, shelf) :- obj(X), hasPhysicalQuality(X, perishable), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
+goesIn(X, shelf) :- obj(X), hasRole(X, documentRole), affordsTask(X, leisureTask).
+goesIn(X, shelf) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, storageTask).
+goesIn(X, shelf) :- obj(X), hasPhysicalQuality(X, hasContainer), hasRole(X, utensilRole).
+goesIn(X, shelf) :- obj(X), hasPhysicalQuality(X, lightweight), hasPhysicalQuality(X, soft_Deformable), affordsTask(X, leisureTask).
+goesIn(X, shelf) :- obj(X), hasRole(X, documentRole), affordsTask(X, workStudyTask).
+goesIn(X, shelf) :- obj(X), hasPhysicalQuality(X, granular), hasRole(X, consumableRole), affordsTask(X, foodPreparationTask).
+goesIn(X, shelf) :- obj(X), hasPhysicalQuality(X, lightweight), hasPhysicalQuality(X, rigid), hasRole(X, toolRole).
+goesIn(X, shelf) :- obj(X), hasPhysicalQuality(X, toxic_Hazardous).
+goesIn(X, shelf) :- obj(X), hasRole(X, entertainmentRole), affordsTask(X, leisureTask).
+goesIn(X, shelf) :- obj(X), hasPhysicalQuality(X, lightweight), hasRole(X, consumableRole).
+goesIn(X, shelf) :- obj(X), hasRole(X, wasteRole).
+goesIn(X, shelf) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
+
+% --- garage ---
+goesIn(X, garage) :- obj(X), hasRole(X, cleaningToolRole), affordsTask(X, maintenanceTask).
+goesIn(X, garage) :- obj(X), hasPhysicalQuality(X, lightweight), affordsTask(X, hygieneTask).
+goesIn(X, garage) :- obj(X), hasPhysicalQuality(X, heavy), hasPhysicalQuality(X, rigid), hasRole(X, furnitureRole), affordsTask(X, leisureTask).
+goesIn(X, garage) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, wasteDisposalTask).
+goesIn(X, garage) :- obj(X), hasPhysicalQuality(X, hasContainer), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
+goesIn(X, garage) :- obj(X), hasPhysicalQuality(X, granular), hasPhysicalQuality(X, perishable), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
+goesIn(X, garage) :- obj(X), hasPhysicalQuality(X, liquid), affordsTask(X, maintenanceTask).
+goesIn(X, garage) :- obj(X), hasPhysicalQuality(X, rigid), hasRole(X, toolRole).
+goesIn(X, garage) :- obj(X), hasPhysicalQuality(X, heavy), affordsTask(X, maintenanceTask).
+goesIn(X, garage) :- obj(X), hasPhysicalQuality(X, fragile), affordsTask(X, maintenanceTask).
+goesIn(X, garage) :- obj(X), affordsTask(X, eatingDrinkingTask), affordsTask(X, hygieneTask).
+goesIn(X, garage) :- obj(X), hasPhysicalQuality(X, heavy), hasRole(X, applianceRole), affordsTask(X, storageTask).
+goesIn(X, garage) :- obj(X), hasPhysicalQuality(X, heavy), hasPhysicalQuality(X, rigid), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
+goesIn(X, garage) :- obj(X), hasRole(X, beddingRole), hasRole(X, furnitureRole).
+goesIn(X, garage) :- obj(X), hasPhysicalQuality(X, lightweight), hasPhysicalQuality(X, rigid), hasRole(X, furnitureRole), affordsTask(X, leisureTask).
+goesIn(X, garage) :- obj(X), hasPhysicalQuality(X, heavy), hasRole(X, cleaningToolRole).
+goesIn(X, garage) :- obj(X), hasRole(X, cleaningToolRole), affordsTask(X, hygieneTask).
+goesIn(X, garage) :- obj(X), hasPhysicalQuality(X, heated), affordsTask(X, leisureTask).
+goesIn(X, garage) :- obj(X), affordsTask(X, dressingTask).
+goesIn(X, garage) :- obj(X), hasRole(X, decorationRole), affordsTask(X, leisureTask).
+goesIn(X, garage) :- obj(X), hasPhysicalQuality(X, lightweight), hasRole(X, applianceRole).
+goesIn(X, garage) :- obj(X), hasPhysicalQuality(X, liquid), hasPhysicalQuality(X, perishable), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
+goesIn(X, garage) :- obj(X), hasRole(X, clothingRole).
+goesIn(X, garage) :- obj(X), hasRole(X, toolRole), affordsTask(X, cleaningTask).
+goesIn(X, garage) :- obj(X), hasRole(X, musicalInstrumentRole).
+goesIn(X, garage) :- obj(X), hasPhysicalQuality(X, electronic), hasPhysicalQuality(X, heavy), hasRole(X, applianceRole), affordsTask(X, leisureTask).
+goesIn(X, garage) :- obj(X), hasPhysicalQuality(X, fragile), hasRole(X, utensilRole).
+goesIn(X, garage) :- obj(X), affordsTask(X, gardeningTask).
+goesIn(X, garage) :- obj(X), hasPhysicalQuality(X, lightweight), hasPhysicalQuality(X, rigid), hasRole(X, furnitureRole), affordsTask(X, storageTask).
+goesIn(X, garage) :- obj(X), hasPhysicalQuality(X, heavy), hasPhysicalQuality(X, rigid), hasRole(X, furnitureRole), affordsTask(X, storageTask).
+goesIn(X, garage) :- obj(X), hasPhysicalQuality(X, lightweight), hasPhysicalQuality(X, soft_Deformable), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
+goesIn(X, garage) :- obj(X), hasPhysicalQuality(X, lightweight), hasPhysicalQuality(X, soft_Deformable), hasRole(X, furnitureRole), affordsTask(X, leisureTask).
+goesIn(X, garage) :- obj(X), hasRole(X, applianceRole), affordsTask(X, workStudyTask).
+goesIn(X, garage) :- obj(X), hasPhysicalQuality(X, lightweight), hasRole(X, storageContainerRole), affordsTask(X, workStudyTask).
+goesIn(X, garage) :- obj(X), hasPhysicalQuality(X, lightweight), hasPhysicalQuality(X, rigid), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
+goesIn(X, garage) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, maintenanceTask).
+goesIn(X, garage) :- obj(X), hasPhysicalQuality(X, fragile), affordsTask(X, leisureTask).
+goesIn(X, garage) :- obj(X), hasPhysicalQuality(X, soft_Deformable), hasRole(X, entertainmentRole).
+goesIn(X, garage) :- obj(X), hasRole(X, wasteRole).
+goesIn(X, garage) :- obj(X), hasPhysicalQuality(X, heavy), hasPhysicalQuality(X, rigid), hasRole(X, furnitureRole).
+goesIn(X, garage) :- obj(X), hasPhysicalQuality(X, granular), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
+goesIn(X, garage) :- obj(X), hasPhysicalQuality(X, perishable), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
+goesIn(X, garage) :- obj(X), hasPhysicalQuality(X, heated), hasRole(X, cookwareRole), affordsTask(X, foodPreparationTask).
+goesIn(X, garage) :- obj(X), hasPhysicalQuality(X, lightweight), hasRole(X, entertainmentRole), affordsTask(X, leisureTask).
+goesIn(X, garage) :- obj(X), hasPhysicalQuality(X, granular), hasRole(X, furnitureRole).
+goesIn(X, garage) :- obj(X), hasPhysicalQuality(X, fragile), hasPhysicalQuality(X, granular).
+goesIn(X, garage) :- obj(X), hasPhysicalQuality(X, sharp), hasRole(X, toolRole), affordsTask(X, maintenanceTask).
+goesIn(X, garage) :- obj(X), hasPhysicalQuality(X, granular), affordsTask(X, maintenanceTask).
+goesIn(X, garage) :- obj(X), hasRole(X, applianceRole), affordsTask(X, maintenanceTask).
+goesIn(X, garage) :- obj(X), hasPhysicalQuality(X, liquid), affordsTask(X, cleaningTask).
+goesIn(X, garage) :- obj(X), hasPhysicalQuality(X, hasContainer), hasPhysicalQuality(X, lightweight), hasRole(X, storageContainerRole).
+goesIn(X, garage) :- obj(X), hasPhysicalQuality(X, liquid), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
+goesIn(X, garage) :- obj(X), hasPhysicalQuality(X, requiresFreezing), hasRole(X, applianceRole), affordsTask(X, storageTask).
+goesIn(X, garage) :- obj(X), hasRole(X, documentRole), affordsTask(X, storageTask).
+goesIn(X, garage) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, maintenanceTask).
+goesIn(X, garage) :- obj(X), hasPhysicalQuality(X, electronic), affordsTask(X, maintenanceTask).
+goesIn(X, garage) :- obj(X), hasRole(X, lightingRole), affordsTask(X, leisureTask).
+goesIn(X, garage) :- obj(X), hasPhysicalQuality(X, heavy), hasRole(X, applianceRole).
 
 % --- sink ---
-goesIn(X, sink) :- obj(X), hasRole(X, toolRole), affordsTask(X, eatingDrinkingTask), affordsTask(X, hygieneTask), affordsTask(X, maintenanceTask).
-goesIn(X, sink) :- obj(X), hasRole(X, cleaningToolRole), affordsTask(X, hygieneTask).
-goesIn(X, sink) :- obj(X), hasRole(X, consumableRole), affordsTask(X, cleaningTask), affordsTask(X, eatingDrinkingTask), affordsTask(X, hygieneTask).
-goesIn(X, sink) :- obj(X), hasRole(X, toolRole), affordsTask(X, hygieneTask).
-goesIn(X, sink) :- obj(X), hasRole(X, applianceRole), affordsTask(X, eatingDrinkingTask), affordsTask(X, hygieneTask).
-goesIn(X, sink) :- obj(X), hasRole(X, cleaningToolRole), affordsTask(X, cleaningTask).
+goesIn(X, sink) :- obj(X), hasRole(X, cleaningToolRole), hasRole(X, consumableRole).
 goesIn(X, sink) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, hygieneTask).
-goesIn(X, sink) :- obj(X), hasRole(X, utensilRole), affordsTask(X, eatingDrinkingTask).
-goesIn(X, sink) :- obj(X), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
-goesIn(X, sink) :- obj(X), hasRole(X, utensilRole), affordsTask(X, foodPreparationTask).
-goesIn(X, sink) :- obj(X), hasRole(X, toolRole), affordsTask(X, maintenanceTask).
+goesIn(X, sink) :- obj(X), hasPhysicalQuality(X, hasContainer), hasRole(X, utensilRole).
+goesIn(X, sink) :- obj(X), hasPhysicalQuality(X, washable), affordsTask(X, hygieneTask).
+goesIn(X, sink) :- obj(X), hasPhysicalQuality(X, liquid), hasRole(X, cleaningToolRole), affordsTask(X, hygieneTask).
+goesIn(X, sink) :- obj(X), hasPhysicalQuality(X, rigid), hasRole(X, utensilRole).
+goesIn(X, sink) :- obj(X), hasRole(X, toolRole), affordsTask(X, hygieneTask).
+goesIn(X, sink) :- obj(X), hasPhysicalQuality(X, lightweight), hasPhysicalQuality(X, rigid), hasRole(X, toolRole), affordsTask(X, maintenanceTask).
+goesIn(X, sink) :- obj(X), hasPhysicalQuality(X, lightweight), affordsTask(X, hygieneTask).
+goesIn(X, sink) :- obj(X), hasPhysicalQuality(X, liquid), affordsTask(X, maintenanceTask).
+goesIn(X, sink) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, foodPreparationTask).
 
 % --- playroom ---
+goesIn(X, playroom) :- obj(X), hasPhysicalQuality(X, lightweight), hasRole(X, entertainmentRole), affordsTask(X, leisureTask).
 goesIn(X, playroom) :- obj(X), hasRole(X, toolRole), affordsTask(X, leisureTask).
-goesIn(X, playroom) :- obj(X), hasRole(X, entertainmentRole), affordsTask(X, leisureTask).
-
-% --- dining_room ---
-goesIn(X, dining_room) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, eatingDrinkingTask), affordsTask(X, foodPreparationTask), affordsTask(X, leisureTask), affordsTask(X, workStudyTask).
-goesIn(X, dining_room) :- obj(X), hasRole(X, furnitureRole), hasRole(X, storageContainerRole), affordsTask(X, eatingDrinkingTask), affordsTask(X, foodPreparationTask), affordsTask(X, storageTask).
-goesIn(X, dining_room) :- obj(X), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
-goesIn(X, dining_room) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, leisureTask), affordsTask(X, workStudyTask).
-goesIn(X, dining_room) :- obj(X), hasRole(X, utensilRole), affordsTask(X, eatingDrinkingTask).
-goesIn(X, dining_room) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, eatingDrinkingTask), affordsTask(X, leisureTask).
-goesIn(X, dining_room) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
+goesIn(X, playroom) :- obj(X), hasPhysicalQuality(X, rigid), hasRole(X, entertainmentRole).
 
 % --- laundry_room ---
-goesIn(X, laundry_room) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
-goesIn(X, laundry_room) :- obj(X), hasRole(X, utensilRole), affordsTask(X, cleaningTask), affordsTask(X, eatingDrinkingTask), affordsTask(X, hygieneTask).
-goesIn(X, laundry_room) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, eatingDrinkingTask), affordsTask(X, storageTask).
-goesIn(X, laundry_room) :- obj(X), hasRole(X, toolRole), affordsTask(X, foodPreparationTask).
+goesIn(X, laundry_room) :- obj(X), hasPhysicalQuality(X, hasContainer), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
+goesIn(X, laundry_room) :- obj(X), affordsTask(X, cleaningTask).
+goesIn(X, laundry_room) :- obj(X), hasPhysicalQuality(X, heated), hasRole(X, toolRole).
+goesIn(X, laundry_room) :- obj(X), hasPhysicalQuality(X, soft_Deformable), hasRole(X, storageContainerRole).
+
+% --- dining_room ---
+goesIn(X, dining_room) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, foodPreparationTask).
+goesIn(X, dining_room) :- obj(X), hasPhysicalQuality(X, rigid), hasRole(X, furnitureRole), affordsTask(X, leisureTask).
+goesIn(X, dining_room) :- obj(X), affordsTask(X, eatingDrinkingTask), affordsTask(X, hygieneTask).
+goesIn(X, dining_room) :- obj(X), hasPhysicalQuality(X, heavy), hasPhysicalQuality(X, rigid), hasRole(X, furnitureRole), affordsTask(X, storageTask).
+goesIn(X, dining_room) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, foodPreparationTask).
+goesIn(X, dining_room) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
+goesIn(X, dining_room) :- obj(X), hasPhysicalQuality(X, rigid), affordsTask(X, eatingDrinkingTask).
+goesIn(X, dining_room) :- obj(X), hasPhysicalQuality(X, requiresFreezing).
+
+% --- music_room ---
+goesIn(X, music_room) :- obj(X), hasPhysicalQuality(X, lightweight), hasPhysicalQuality(X, rigid), hasRole(X, toolRole), affordsTask(X, maintenanceTask).
+goesIn(X, music_room) :- obj(X), hasPhysicalQuality(X, rigid), hasRole(X, furnitureRole), affordsTask(X, storageTask).
+goesIn(X, music_room) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, workStudyTask).
+goesIn(X, music_room) :- obj(X), hasPhysicalQuality(X, heavy), hasRole(X, musicalInstrumentRole).
+goesIn(X, music_room) :- obj(X), hasPhysicalQuality(X, electronic), hasRole(X, musicalInstrumentRole).
+goesIn(X, music_room) :- obj(X), hasPhysicalQuality(X, electronic), hasPhysicalQuality(X, rigid), affordsTask(X, maintenanceTask).
+goesIn(X, music_room) :- obj(X), hasPhysicalQuality(X, electronic), hasPhysicalQuality(X, lightweight), hasRole(X, toolRole), affordsTask(X, workStudyTask).
 

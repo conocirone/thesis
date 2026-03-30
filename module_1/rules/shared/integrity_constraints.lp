@@ -63,6 +63,27 @@ removed_quality(X, heated) :-
     hasPhysicalQuality(X, requiresFreezing),
     hasPhysicalQuality(X, heated).
 
+% ── CONSTRAINT 7: HasBlade implies Sharp ──────────────────────
+% "If X has a blade, it must also be Sharp"
+hasPhysicalQuality(X, sharp) :-
+    hasPhysicalQuality(X, hasBlade).
+
+% ── CONSTRAINT 8: Tool-specific qualities only for tools ──────
+% "IsRotary, HasAbrasiveSurface, HasHeatElement should only appear
+%  on ToolRole or UtensilRole objects"
+removed_quality(X, isRotary) :-
+    hasPhysicalQuality(X, isRotary),
+    not hasRole(X, toolRole),
+    not hasRole(X, utensilRole).
+removed_quality(X, hasAbrasiveSurface) :-
+    hasPhysicalQuality(X, hasAbrasiveSurface),
+    not hasRole(X, toolRole),
+    not hasRole(X, utensilRole).
+removed_quality(X, hasHeatElement) :-
+    hasPhysicalQuality(X, hasHeatElement),
+    not hasRole(X, toolRole),
+    not hasRole(X, applianceRole).
+
 % ═══════════════════════════════════════════════════════════════
 % FINAL OUTPUT: apply removals
 % ═══════════════════════════════════════════════════════════════
