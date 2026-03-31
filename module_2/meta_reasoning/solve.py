@@ -109,29 +109,30 @@ if __name__ == "__main__":
     import pandas as pd
     df = pd.read_csv("../../Robo-CSK-Benchmark/meta_reasoning/meta_reasoning_data.csv")
     
-    test_row = df.iloc[0]
-    task = test_row['Task']
-    
-    robot_config = {
-        'mobile': test_row['Mobile?'],
-        'arms': test_row['Arms'],
-        'dof': test_row['DoFs'],
-        'gripper_type': map_gripper_config(test_row['Gripper Config']),
-        'rigid': test_row['Rigid Gripper?']
-    }
-    
-    print(f"=== Task: {task} ===")
-    print(f"Using Ollama model: {OLLAMA_MODEL}")
-    print("Extracting qualitative properties...")
-    
-    props = extract_task_properties(task)
-    
-    print("\n=== Resulting Semantic Properties ===")
-    for k, v in props.items():
-        print(f"  {k}: {v}")
+    for i in range(0,10):
+        test_row = df.iloc[i]
+        task = test_row['Task']
         
-    print(f"\n=== Ground Truth Hardware in CSV ===")
-    print(test_row.to_dict())
+        robot_config = {
+            'mobile': test_row['Mobile?'],
+            'arms': test_row['Arms'],
+            'dof': test_row['DoFs'],
+            'gripper_type': map_gripper_config(test_row['Gripper Config']),
+            'rigid': test_row['Rigid Gripper?']
+        }
         
-    can_execute = run_prolog_solver(props, robot_config)
-    print(f"\nCan the minimal robot execute this task? Prolog Engine output: {can_execute}")
+        print(f"=== Task: {task} ===")
+        print(f"Using Ollama model: {OLLAMA_MODEL}")
+        print("Extracting qualitative properties...")
+        
+        props = extract_task_properties(task)
+        
+        print("\n=== Resulting Semantic Properties ===")
+        for k, v in props.items():
+            print(f"  {k}: {v}")
+            
+        print(f"\n=== Ground Truth Hardware in CSV ===")
+        print(test_row.to_dict())
+            
+        can_execute = run_prolog_solver(props, robot_config)
+        print(f"\nCan the minimal robot execute this task? Prolog Engine output: {can_execute}")
