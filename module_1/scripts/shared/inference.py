@@ -17,11 +17,12 @@ Models are auto-downloaded from HuggingFace Hub on first use and cached
 globally (keyed by model ID) so the same model is never loaded twice.
 """
 
+import re
 import sys
 import time
 import torch
 from pathlib import Path
-from transformers import AutoModelForCausalLM, AutoTokenizer
+from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from shared.config import get_model
@@ -31,6 +32,15 @@ from shared.config import get_model
 # ---------------------------------------------------------------------------
 _cache: dict[str, tuple] = {}
 
+# Regex to strip <think>…</think> blocks emitted by "thinking" models
+# (e.g. Qwen3.5, DeepSeek-R1). Works across newlines.
+_THINK_RE = re.compile(r"<think>.*?</think>\s*", re.DOTALL | re.IGNORECASE)
+
+
+def _strip_thinking(text: str) -> str:
+    """Remove any <think>...</think> reasoning blocks from model output."""
+    return _THINK_RE.sub("", text).strip()
+
 
 def _get_dtype() -> torch.dtype:
     if torch.cuda.is_available() and torch.cuda.is_bf16_supported():
@@ -38,12 +48,21 @@ def _get_dtype() -> torch.dtype:
     return torch.float16
 
 
+# 4-bit NF4 quantization config (bitsandbytes)
+_bnb_config = BitsAndBytesConfig(
+    load_in_4bit=True,
+    bnb_4bit_quant_type="nf4",
+    bnb_4bit_compute_dtype=_get_dtype(),
+    bnb_4bit_use_double_quant=True,
+)
+
+
 def _load(model_id: str):
-    """Load (and cache) a HuggingFace model + tokenizer onto GPU."""
+    """Load (and cache) a HuggingFace model + tokenizer onto GPU (4-bit)."""
     if model_id in _cache:
         return _cache[model_id]
 
-    print(f"[inference] Loading {model_id} ...")
+    print(f"[inference] Loading {model_id} (4-bit NF4) ...")
     start = time.time()
 
     tokenizer = AutoTokenizer.from_pretrained(
@@ -55,7 +74,7 @@ def _load(model_id: str):
 
     model = AutoModelForCausalLM.from_pretrained(
         model_id,
-        torch_dtype=_get_dtype(),
+        quantization_config=_bnb_config,
         device_map="auto",
         trust_remote_code=True,
     )
@@ -63,7 +82,8 @@ def _load(model_id: str):
 
     elapsed = time.time() - start
     print(f"[inference] Loaded {model_id} in {elapsed:.1f}s "
-          f"(dtype={model.dtype}, device={model.device})")
+          f"(4-bit NF4, compute_dtype={_bnb_config.bnb_4bit_compute_dtype}, "
+          f"device={model.device})")
 
     _cache[model_id] = (model, tokenizer)
     return model, tokenizer
@@ -97,7 +117,7 @@ def chat(
     Returns
     -------
     str
-        The assistant's response text.
+        The assistant's response text (with any thinking blocks stripped).
     """
     model_id = get_model(role)
     model, tokenizer = _load(model_id)
@@ -109,9 +129,18 @@ def chat(
                     msg["content"] += "\nRespond with valid JSON only."
                 break
 
-    prompt = tokenizer.apply_chat_template(
-        messages, tokenize=False, add_generation_prompt=True
-    )
+    # Try to disable thinking mode for Qwen3-style models.
+    # enable_thinking=False is Qwen3's official API to suppress <think> blocks.
+    try:
+        prompt = tokenizer.apply_chat_template(
+            messages, tokenize=False, add_generation_prompt=True,
+            enable_thinking=False,
+        )
+    except TypeError:
+        # Non-Qwen models don't support enable_thinking
+        prompt = tokenizer.apply_chat_template(
+            messages, tokenize=False, add_generation_prompt=True
+        )
     inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
 
     gen_kwargs = dict(
@@ -126,7 +155,8 @@ def chat(
         output_ids = model.generate(**inputs, **gen_kwargs)
 
     new_tokens = output_ids[0, inputs["input_ids"].shape[1]:]
-    return tokenizer.decode(new_tokens, skip_special_tokens=True).strip()
+    raw = tokenizer.decode(new_tokens, skip_special_tokens=True).strip()
+    return _strip_thinking(raw)
 
 
 def generate(
@@ -174,4 +204,5 @@ def generate(
         output_ids = model.generate(**inputs, **gen_kwargs)
 
     new_tokens = output_ids[0, inputs["input_ids"].shape[1]:]
-    return tokenizer.decode(new_tokens, skip_special_tokens=True).strip()
+    raw = tokenizer.decode(new_tokens, skip_special_tokens=True).strip()
+    return _strip_thinking(raw)

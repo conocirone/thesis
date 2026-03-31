@@ -256,7 +256,7 @@ def run_clingo_inference(rules_path: Path, facts_str: str) -> list:
         f.write(facts_str)
 
     result = subprocess.run(
-        ["clingo", str(rules_path), str(facts_file), "0", "--out-ifs=\n"],
+        [sys.executable, "-m", "clingo", str(rules_path), str(facts_file), "0", "--out-ifs=\n"],
         capture_output=True, text=True
     )
 

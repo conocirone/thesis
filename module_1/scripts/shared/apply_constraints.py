@@ -24,7 +24,7 @@ OUT_FILE = RULES_DIR / "background_knowledge_validated.las"
 def run_clingo():
     """Run clingo and return the answer set as a string."""
     result = subprocess.run(
-        ["clingo", str(BK_FILE), str(IC_FILE), "0", "--out-ifs=\n"],
+        [sys.executable, "-m", "clingo", str(BK_FILE), str(IC_FILE), "0", "--out-ifs=\n"],
         capture_output=True, text=True
     )
     if result.returncode not in (10, 30):
