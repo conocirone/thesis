@@ -9,14 +9,46 @@ import pandas as pd
 from pathlib import Path
 from tqdm import tqdm
 
-# Add shared scripts directory to path to use SLURM inference backend
-SCRIPTS_ROOT = Path("../../module_1/scripts").resolve()
-sys.path.insert(0, str(SCRIPTS_ROOT))
-from shared.inference import chat as llm_chat
-from shared.config import get_model
+import torch
+from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig, pipeline
 
-EVAL_MODEL = get_model("evaluation")
+# ---------------------------------------------------------------------------
+# LLM Initialization (Hugging Face)
+# ---------------------------------------------------------------------------
+MODEL_ID = "meta-llama/Llama-3.3-70B-Instruct"
 
+print("Initializing BitsAndBytes configuration for 4-bit quantization...")
+quantization_config = BitsAndBytesConfig(
+    load_in_4bit=True,
+    bnb_4bit_compute_dtype=torch.bfloat16, 
+    bnb_4bit_use_double_quant=True,
+    bnb_4bit_quant_type="nf4",
+)
+
+print(f"Loading {MODEL_ID} across available GPUs (this may take a few minutes)...")
+tokenizer = AutoTokenizer.from_pretrained(MODEL_ID)
+
+model = AutoModelForCausalLM.from_pretrained(
+    MODEL_ID,
+    quantization_config=quantization_config,
+    device_map="auto",          # Automatically shards the model across your 2 GPUs
+    torch_dtype=torch.bfloat16,
+)
+
+# Set up the text generation pipeline
+text_generator = pipeline(
+    "text-generation",
+    model=model,
+    tokenizer=tokenizer,
+    max_new_tokens=256,
+    temperature=0.0,            # Greedy decoding for deterministic JSON output
+    do_sample=False,
+    return_full_text=False      # Only return the generated completion, not the prompt
+)
+
+# ---------------------------------------------------------------------------
+# Prompts & Parsing Logic
+# ---------------------------------------------------------------------------
 SYSTEM_PROMPT = """
 You are an expert robot motion planner.
 Your job is to analyze a natural language household task and answer 6 specific Yes/No questions about its physical requirements.
@@ -29,11 +61,20 @@ Focus strictly on the MINIMUM physical actions required:
 5. "needs_contact": Does the robot need to physically touch anything at all? (false if just observing/turning on a remote)
 6. "needs_rigid_grip": If grasping is needed, is the object heavy, resistive, or requiring a firm rigid grip (as opposed to soft cloth or delicate food)?
 
-Respond ONLY with a valid JSON dictionary matching exactly the keys above and boolean values. Do NOT add any markdown, explanation or text.
+Respond ONLY with a valid JSON dictionary matching exactly the keys above and boolean values. Do NOT add any markdown, explanation, or conversational text.
+
+Example Output:
+{
+    "needs_grasping": true,
+    "needs_precision": false,
+    "needs_mobility": true,
+    "needs_bimanual": false,
+    "needs_contact": true,
+    "needs_rigid_grip": false
+}
 """
 
 def map_gripper_config(gripper_str):
-    """Map CSV gripper string to Prolog atom."""
     if pd.isna(gripper_str) or 'No specified Gripper' in str(gripper_str):
         return 'none'
     elif '2 Fingers' in str(gripper_str):
@@ -41,10 +82,6 @@ def map_gripper_config(gripper_str):
     return 'none'
 
 def parse_multi_choice_hardware_string(config_str: str) -> dict:
-    """
-    Parse natural language multi-choice string into dict.
-    Example: 'The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.'
-    """
     config = {
         'mobile': False,
         'arms': 0,
@@ -52,44 +89,30 @@ def parse_multi_choice_hardware_string(config_str: str) -> dict:
         'gripper_type': 'none',
         'rigid': False
     }
-    
-    # 1. Arms
     arm_match = re.search(r'(\d+) arm', config_str)
-    if arm_match:
-        config['arms'] = int(arm_match.group(1))
+    if arm_match: config['arms'] = int(arm_match.group(1))
         
-    # 2. DoFs
     dof_match = re.search(r'(\d+) DoFs', config_str)
-    if dof_match:
-        config['dof'] = int(dof_match.group(1))
+    if dof_match: config['dof'] = int(dof_match.group(1))
         
-    # 3. Gripper Rigid
-    if 'rigid' in config_str:
-        config['rigid'] = True
-        
-    # 4. Gripper Type
+    if 'rigid' in config_str: config['rigid'] = True
     config['gripper_type'] = map_gripper_config(config_str)
         
-    # 5. Mobile
     if 'can walk' in config_str and 'not walk' not in config_str:
         config['mobile'] = True
         
     return config
 
 def parse_llm_json(llm_output: str) -> dict:
-    match = re.search(r'\{.*\}', llm_output, re.DOTALL)
+    match = re.search(r'\{.*\}', str(llm_output), re.DOTALL)
     if match:
         try:
             return json.loads(match.group(0))
         except Exception:
             pass
     return {
-        "needs_grasping": False,
-        "needs_precision": False,
-        "needs_mobility": False,
-        "needs_bimanual": False,
-        "needs_contact": False,
-        "needs_rigid_grip": False
+        "needs_grasping": False, "needs_precision": False, "needs_mobility": False,
+        "needs_bimanual": False, "needs_contact": False, "needs_rigid_grip": False
     }
 
 def extract_task_properties(task_str: str) -> dict:
@@ -97,12 +120,25 @@ def extract_task_properties(task_str: str) -> dict:
         {"role": "system", "content": SYSTEM_PROMPT},
         {"role": "user", "content": f"Task: {task_str}"}
     ]
-    response_text = llm_chat(messages, role="evaluation", temperature=0.0, json_mode=True)
+    
+    # Format the messages into Llama 3's required chat structure
+    prompt = tokenizer.apply_chat_template(
+        messages, 
+        tokenize=False, 
+        add_generation_prompt=True
+    )
+    
+    # Generate the output
+    outputs = text_generator(prompt)
+    response_text = outputs[0]["generated_text"].strip()
+    
     return parse_llm_json(response_text)
 
+# ---------------------------------------------------------------------------
+# Prolog Evaluation Logic
+# ---------------------------------------------------------------------------
 def run_prolog_solver(properties: dict, robot_config: dict) -> bool:
     goals = []
-    
     for key, value in properties.items():
         v_str = str(value).lower()
         goals.append(f"assertz(task_{key}({v_str}))")
@@ -132,7 +168,7 @@ def run_prolog_solver(properties: dict, robot_config: dict) -> bool:
 def evaluate_binary():
     print("=" * 60)
     print("Neuro-Symbolic Evaluation: Meta-Reasoning (Binary)")
-    print(f"Using model: {EVAL_MODEL}")
+    print(f"Using model: {MODEL_ID}")
     print("=" * 60)
 
     csv_path = "../../Robo-CSK-Benchmark/meta_reasoning/meta_reasoning_with_negatives.csv"
@@ -188,11 +224,10 @@ def evaluate_binary():
     print(f"F1 Score:    {f1:.3f}")
     print("=" * 40)
 
-
 def evaluate_multi():
     print("=" * 60)
     print("Neuro-Symbolic Evaluation: Meta-Reasoning (Multi-Choice)")
-    print(f"Using model: {EVAL_MODEL}")
+    print(f"Using model: {MODEL_ID}")
     print("=" * 60)
 
     csv_path = "../../Robo-CSK-Benchmark/meta_reasoning/meta_reasoning_multi_questions.csv"
@@ -217,7 +252,6 @@ def evaluate_multi():
             llm_cache[task] = extract_task_properties(task)
         props = llm_cache[task]
         
-        # Test all choices through Prolog
         valid_choices = []
         for choice_str in all_choices:
             robot_config = parse_multi_choice_hardware_string(choice_str)
@@ -225,8 +259,6 @@ def evaluate_multi():
                 valid_choices.append(choice_str)
                 
         if len(valid_choices) >= 1:
-            # Sort choices by "minimality" to break ties
-            # (Fewer arms, fewer DoF, none gripper is better)
             def score(cfg_str):
                 c = parse_multi_choice_hardware_string(cfg_str)
                 return c['arms'] * 10 + c['dof'] * 2 + (1 if c['gripper_type'] != 'none' else 0)
