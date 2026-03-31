@@ -5,10 +5,22 @@ import json
 import re
 import argparse
 import subprocess
+import time
 import pandas as pd
-import ollama
 from pathlib import Path
 from tqdm import tqdm
+from groq import Groq
+
+# ---------------------------------------------------------------------------
+# LLM Initialization (Groq API)
+# ---------------------------------------------------------------------------
+MODEL_ID = "llama-3.3-70b-versatile"
+
+try:
+    client = Groq()
+except Exception as e:
+    print("Error: Could not find your API key. Did you set the GROQ_API_KEY environment variable?")
+    sys.exit(1)
 
 # System prompt for task property extraction
 SYSTEM_PROMPT = """
@@ -25,10 +37,6 @@ Focus strictly on the MINIMUM physical actions required:
 
 Respond ONLY with a valid JSON dictionary matching exactly the keys above and boolean values. Do NOT add any markdown, explanation or text.
 """
-
-
-OLLAMA_MODEL = "llama3.1:latest"  
-
 
 def map_gripper_config(gripper_str):
     """Map CSV gripper string to Prolog atom."""
@@ -76,7 +84,7 @@ def parse_multi_choice_hardware_string(config_str: str) -> dict:
 
 def parse_llm_json(llm_output: str) -> dict:
     """Extract JSON from LLM output."""
-    match = re.search(r'\{.*\}', llm_output, re.DOTALL)
+    match = re.search(r'\{.*\}', str(llm_output), re.DOTALL)
     if match:
         try:
             return json.loads(match.group(0))
@@ -92,21 +100,37 @@ def parse_llm_json(llm_output: str) -> dict:
     }
 
 def extract_task_properties(task_str: str) -> dict:
-    """Use Ollama to extract task properties."""
+    """Use Groq API to extract task properties with built-in rate limit handling."""
     messages = [
         {"role": "system", "content": SYSTEM_PROMPT},
         {"role": "user", "content": f"Task: {task_str}"}
     ]
     
-    response = ollama.chat(
-        model=OLLAMA_MODEL,
-        messages=messages,
-        format='json',
-        stream=False,
-    )
-    
-    response_text = response['message']['content']
-    return parse_llm_json(response_text)
+    max_retries = 5
+    for attempt in range(max_retries):
+        try:
+            response = client.chat.completions.create(
+                model=MODEL_ID,
+                messages=messages,
+                temperature=0.0,
+                max_tokens=256,
+                response_format={"type": "json_object"} # Forces JSON
+            )
+            response_text = response.choices[0].message.content
+            return parse_llm_json(response_text)
+            
+        except Exception as e:
+            error_msg = str(e)
+            if "429" in error_msg or "rate_limit" in error_msg.lower():
+                wait_time = 15 * (attempt + 1) # Progressive backoff: 15s, 30s, 45s...
+                print(f"\n[!] Groq Rate limit hit. Pausing for {wait_time} seconds...")
+                time.sleep(wait_time)
+            else:
+                print(f"\n[!] API error during extraction: {error_msg}")
+                break
+                
+    # Fallback to default False values if it completely fails
+    return parse_llm_json("")
 
 def run_prolog_solver(properties: dict, robot_config: dict) -> bool:
     """Run the Prolog solver with extracted properties and robot configuration."""
@@ -141,7 +165,7 @@ def run_prolog_solver(properties: dict, robot_config: dict) -> bool:
 def evaluate_binary(limit=None):
     print("=" * 60)
     print("Neuro-Symbolic Evaluation: Meta-Reasoning (Binary)")
-    print(f"Using Ollama model: {OLLAMA_MODEL}")
+    print(f"Using Groq model: {MODEL_ID}")
     print("=" * 60)
 
     csv_path = "../../Robo-CSK-Benchmark/meta_reasoning/meta_reasoning_with_negatives.csv"
@@ -206,7 +230,7 @@ def evaluate_binary(limit=None):
 def evaluate_multi(limit=None):
     print("=" * 60)
     print("Neuro-Symbolic Evaluation: Meta-Reasoning (Multi-Choice)")
-    print(f"Using Ollama model: {OLLAMA_MODEL}")
+    print(f"Using Groq model: {MODEL_ID}")
     print("=" * 60)
 
     csv_path = "../../Robo-CSK-Benchmark/meta_reasoning/meta_reasoning_multi_questions.csv"
@@ -245,7 +269,6 @@ def evaluate_multi(limit=None):
                 
         if len(valid_choices) >= 1:
             # Sort choices by "minimality" to break ties
-            # (Fewer arms, fewer DoF, none gripper is better)
             def score(cfg_str):
                 c = parse_multi_choice_hardware_string(cfg_str)
                 return c['arms'] * 10 + c['dof'] * 2 + (1 if c['gripper_type'] != 'none' else 0)
@@ -266,15 +289,10 @@ def evaluate_multi(limit=None):
     print("=" * 40)
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='Run Meta-Reasoning Evaluation')
+    parser = argparse.ArgumentParser(description='Run Meta-Reasoning Evaluation via Groq')
     parser.add_argument('--mode', type=str, choices=['binary', 'multi', 'all'], default='all', help='Evaluation mode')
-    parser.add_argument('--model', type=str, default=OLLAMA_MODEL, help='Ollama model to use')
     parser.add_argument('--limit', type=int, default=None, help='Limit number of samples (for faster testing)')
     args = parser.parse_args()
-    
-    # Allow model override via command line
-    if args.model:
-        OLLAMA_MODEL = args.model
     
     if args.mode in ['binary', 'all']:
         evaluate_binary(limit=args.limit)
