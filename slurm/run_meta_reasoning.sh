@@ -1,14 +1,14 @@
 #!/bin/bash
 #SBATCH --job-name=meta_reasoning
-#SBATCH --partition=gpu
+#SBATCH --partition=study
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=4
-#SBATCH --mem=32G
-#SBATCH --gres=gpu:1
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=180G
+#SBATCH --gres=gpu:a40:2
 #SBATCH --time=08:00:00
-#SBATCH --output=slurm/logs/meta_reasoning_%j.out
-#SBATCH --error=slurm/logs/meta_reasoning_%j.err
+#SBATCH --output=logs/meta_reasoning_%j.out
+#SBATCH --error=logs/meta_reasoning_%j.err
 
 # =============================================================================
 # run_meta_reasoning.sh — Module 2 Meta-Reasoning evaluation on SLURM GPU
@@ -21,7 +21,7 @@
 
 set -euo pipefail
 
-REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+REPO_DIR="$HOME/thesis"
 VENV_DIR="$REPO_DIR/.venv_server"
 
 echo "============================================================"
@@ -48,12 +48,6 @@ echo ""
 
 # Ensure log directory exists
 mkdir -p "$REPO_DIR/slurm/logs"
-
-# Check SWI-Prolog
-if ! command -v swipl &> /dev/null; then
-    echo "[ERROR] SWI-Prolog (swipl) not found. Install with: apt install swi-prolog"
-    exit 1
-fi
 
 # Run the module 2 evaluation, passing through any CLI args (--mode, etc.)
 cd "$REPO_DIR/module_2/meta_reasoning"
