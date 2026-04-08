@@ -12,9 +12,6 @@ from tqdm import tqdm
 from google import genai
 from google.genai import types
 from mistralai.client import Mistral
-# ---------------------------------------------------------------------------
-# LLM Initialization (Google Gemini API)
-# ---------------------------------------------------------------------------
 
 api_key = os.environ.get("MISTRAL_API_KEY")
 MODEL_ID = "mistral-large-latest"
@@ -38,8 +35,8 @@ First, provide a brief 1-sentence rationale in the "reasoning" key. Then, output
 Focus strictly on the MINIMUM physical actions required. Think like a roboticist:
 1. "needs_grasping": Does this task strictly require lifting an object completely into the air? Output FALSE if the task can theoretically be accomplished by simply pushing, sweeping, or sliding the object with a blunt arm (e.g., arranging ANY items like shoes, bottles, cups, adjusting a lamp). If the task includes the word "arrange", needs_grasping is FALSE.
 2. "needs_precision": Does this task involve highly constrained, multi-axis 7-DoF rotations (like inserting a key, threading a needle, brushing teeth)? Output FALSE for general manipulation, arranging, pushing, or broad adjustments.
-3. "needs_mobility": Does the robot strictly need a mobile base to travel to a completely different location? Output FALSE for ALL arranging tasks, even for large objects like sofas. Assume the robot is always already positioned optimally within arms reach.
-4. "needs_bimanual": Does the task explicitly require using TWO distinct hands SIMULTANEOUSLY on the SAME object to physically work? (e.g. cutting food). If a task involves multiple objects, assume the robot can move them one by one. 
+3. "needs_mobility": Does the robot strictly need a mobile base? Output FALSE unless the task absolutely cannot be done from a single position. Assume the robot is ALWAYS already positioned optimally within arm's reach of ALL relevant objects, even if the task mentions different locations ("from X to Y", "go to", "move to", "bring to").
+4. "needs_bimanual": Does the task ABSOLUTELY require two arms working simultaneously where NO passive support is possible? Output FALSE for cutting, slicing, or chopping (the surface stabilizes the food — one arm with a knife suffices). Output FALSE for folding (can be done sequentially). Output FALSE for holding one object while interacting with another (the robot can act sequentially). Only output TRUE for tasks like tearing an object apart, wringing a towel, or bending a rigid rod — where two opposing forces must be applied simultaneously with no surface support.
 5. "needs_contact": Does the robot need to physically touch anything at all?
 6. "needs_rigid_grip": Is the object heavy, resistive, or requiring a firm rigid grip? Output FALSE if the task can be done by pushing (e.g., arranging a sofa).
 
@@ -73,15 +70,43 @@ Task: bring the bowl to the counter
     "reasoning": "Bringing an object only requires the arm to reach — the robot is already positioned optimally, so no mobile base is needed.",
     "needs_grasping": true,
     "needs_precision": false,
-    "needs_mobility": false,   
-    ...
+    "needs_mobility": false,
+    "needs_bimanual": false,
+    "needs_contact": true,
+    "needs_rigid_grip": false
+}
+
+Task: slice a tomato on a cutting board
+{
+    "reasoning": "The cutting board and surface stabilize the tomato passively — the robot only needs one arm to hold the knife, not two arms simultaneously.",
+    "needs_grasping": true,
+    "needs_precision": false,
+    "needs_mobility": false,
+    "needs_bimanual": false,
+    "needs_contact": true,
+    "needs_rigid_grip": true
+}
+
+Task: get the pen from the table and go turn on the floor lamp
+{
+    "reasoning": "Despite 'go', the robot is assumed to be within arm's reach of all relevant objects, so no mobile base is needed.",
+    "needs_grasping": true,
+    "needs_precision": false,
+    "needs_mobility": false,
+    "needs_bimanual": false,
+    "needs_contact": true,
+    "needs_rigid_grip": false
 }
 
 Task: wrap the gloves in the yellow towel
 {
     "reasoning": "Wrapping can be done sequentially with one arm — both hands are not required simultaneously on the same object.",
+    "needs_grasping": true,
+    "needs_precision": false,
+    "needs_mobility": false,
     "needs_bimanual": false,
-    ...
+    "needs_contact": true,
+    "needs_rigid_grip": false
 }
 
 """
@@ -173,12 +198,12 @@ def extract_task_properties(task_str: str, verbose: bool = False) -> dict:
 # ---------------------------------------------------------------------------
 # Prolog Evaluation Logic
 # ---------------------------------------------------------------------------
-def run_prolog_solver(properties: dict, robot_config: dict) -> bool:
+def run_prolog_solver(properties: dict, robot_config: dict, strict: bool = False) -> bool:
     goals = []
     
     for key, value in properties.items():
-        if key == "reasoning": 
-            continue # Skip the reasoning string so Prolog doesn't crash
+        if not key.startswith("needs_"): 
+            continue # Skip reasoning, typos, or any unexpected keys
         v_str = str(value).lower()
         goals.append(f"assertz(task_{key}({v_str}))")
         
@@ -188,7 +213,9 @@ def run_prolog_solver(properties: dict, robot_config: dict) -> bool:
     goals.append(f"assertz(robot_gripper_type({robot_config['gripper_type']}))")
     goals.append(f"assertz(robot_rigid({str(robot_config['rigid']).lower()}))")
     
-    goals.append("(can_execute -> write('true') ; write('false'))")
+    # Use strict rules for multi-choice, relaxed for binary
+    predicate = "can_execute_strict" if strict else "can_execute"
+    goals.append(f"({predicate} -> write('true') ; write('false'))")
     goals.append("halt")
     
     goal_str = ", ".join(goals)
@@ -204,7 +231,7 @@ def run_prolog_solver(properties: dict, robot_config: dict) -> bool:
         print(f"Prolog inference failed: {e}")
         return False
 
-def evaluate_binary(limit=None, verbose=False):
+def evaluate_binary(limit=None, verbose=False, output_file="results_binary.txt"):
     print("=" * 60)
     print("Neuro-Symbolic Evaluation: Meta-Reasoning (Binary Error Analysis)")
     print(f"Using Google Gemini model: {MODEL_ID}")
@@ -217,13 +244,14 @@ def evaluate_binary(limit=None, verbose=False):
 
     df = pd.read_csv(csv_path)
     if limit:
-        df = df.head(limit)
+        df = df.sample(n=limit, random_state=42)
 
     llm_cache = {}
     tp, tn, fp, fn = 0, 0, 0, 0
     
     # Open error log file
-    error_log = open("errors_2.txt", "w")
+    #error_log = open("errors_2.txt", "w")
+    error_log = open(output_file, "w")
     error_log.write("=" * 60 + "\n")
     error_log.write("ERROR LOG - Meta-Reasoning Binary Evaluation\n")
     error_log.write("=" * 60 + "\n")
@@ -288,12 +316,16 @@ def evaluate_binary(limit=None, verbose=False):
     prec = tp / (tp + fp) if (tp + fp) > 0 else 0
     rec = tp / (tp + fn) if (tp + fn) > 0 else 0
     f1 = 2 * prec * rec / (prec + rec) if (prec + rec) > 0 else 0
+    ratio = (tp + fp) / (tn + fn) if (tn + fn) > 0 else float('inf')
+    spec = tn / (tn + fp) if (tn + fp) > 0 else 0
 
     print("\n" + "=" * 40)
     print("FINAL BINARY BENCHMARK RESULTS")
     print("=" * 40)
     print(f"TP: {tp} | TN: {tn} | FP: {fp} | FN: {fn}")
     print(f"Accuracy:    {acc:.3f}")
+    print(f"Spec.:       {spec:.3f}")
+    print(f"Ratio:       {ratio:.3f}")
     print(f"F1 Score:    {f1:.3f}")
     print("=" * 40)
     
@@ -303,6 +335,8 @@ def evaluate_binary(limit=None, verbose=False):
     error_log.write("=" * 60 + "\n")
     error_log.write(f"TP: {tp} | TN: {tn} | FP: {fp} | FN: {fn}\n")
     error_log.write(f"Accuracy:    {acc:.3f}\n")
+    error_log.write(f"Spec.:       {spec:.3f}\n")
+    error_log.write(f"Ratio:       {ratio:.3f}\n")
     error_log.write(f"Precision:   {prec:.3f}\n")
     error_log.write(f"Recall:      {rec:.3f}\n")
     error_log.write(f"F1 Score:    {f1:.3f}\n")
@@ -310,7 +344,7 @@ def evaluate_binary(limit=None, verbose=False):
     error_log.close()
     print(f"\n✅ Error log written to: errors.txt")
 
-def evaluate_multi(limit=None, verbose=False):
+def evaluate_multi(limit=None, verbose=False, output_file="results_multi.txt"):
     print("=" * 60)
     print("Neuro-Symbolic Evaluation: Meta-Reasoning (Multi-Choice)")
     print(f"Using Google Gemini model: {MODEL_ID}")
@@ -325,10 +359,43 @@ def evaluate_multi(limit=None, verbose=False):
     df['Wrong_Configurations'] = df['Wrong_Configurations'].apply(ast.literal_eval)
     
     if limit:
-        df = df.head(limit)
+        df = df.sample(n=limit, random_state=42)
 
     llm_cache = {}
     correct_preds = 0
+    error_count = 0
+    no_valid_count = 0
+
+    # Open output log file
+    log = open(output_file, "w")
+    log.write("=" * 60 + "\n")
+    log.write("RESULT LOG - Meta-Reasoning Multi-Choice Evaluation\n")
+    log.write("=" * 60 + "\n")
+    log.write(f"Model: {MODEL_ID}\n")
+    log.write(f"Total questions to evaluate: {len(df)}\n")
+    log.write("=" * 60 + "\n\n")
+
+    def score(cfg_str, task_props):
+        """Score a config for multi-choice selection.
+        The correct answer in the dataset is always the MOST CAPABLE 
+        minimum-viable robot. So among configs that pass Prolog, we 
+        pick the one with the highest capability score."""
+        c = parse_multi_choice_hardware_string(cfg_str)
+        s = 0
+        
+        # Base capability score (higher = more capable)
+        s += c['arms'] * 1000
+        s += c['dof'] * 100
+        s += 50 if c['gripper_type'] != 'none' else 0
+        s += 30 if c['mobile'] else 0
+        # Only reward rigid if the task actually needs it;
+        # slightly penalize rigid when not needed (breaks ties in favor of soft)
+        if task_props.get('needs_rigid_grip'):
+            s += 10 if c['rigid'] else 0
+        else:
+            s -= 1 if c['rigid'] else 0
+        
+        return s
 
     for idx, row in tqdm(df.iterrows(), total=len(df), desc="Multi-Choice Eval"):
         task = row['Task']
@@ -341,34 +408,98 @@ def evaluate_multi(limit=None, verbose=False):
         props = llm_cache[task]
         
         valid_choices = []
+        config_results = [] 
         for choice_str in all_choices:
             robot_config = parse_multi_choice_hardware_string(choice_str)
-            if run_prolog_solver(props, robot_config):
+            passed = run_prolog_solver(props, robot_config, strict=False)
+            is_correct = (choice_str == correct_conf_str)
+            config_results.append({
+                'config': choice_str,
+                'parsed': robot_config,
+                'passed': passed,
+                'is_correct': is_correct,
+                'score': score(choice_str, props),
+            })
+            if passed:
                 valid_choices.append(choice_str)
-                
+        
+        best_choice = None
+        is_correct_pred = False
         if len(valid_choices) >= 1:
-            def score(cfg_str):
-                c = parse_multi_choice_hardware_string(cfg_str)
-                return c['arms'] * 10 + c['dof'] * 2 + (1 if c['gripper_type'] != 'none' else 0)
-            
-            valid_choices.sort(key=score)
+            # Pick the MOST capable valid config (highest score)
+            valid_choices.sort(key=lambda cfg: score(cfg, props), reverse=True)
             best_choice = valid_choices[0]
-            
             if best_choice == correct_conf_str:
                 correct_preds += 1
+                is_correct_pred = True
+            else:
+                error_count += 1
+        else:
+            no_valid_count += 1
+            error_count += 1
+
+        # Log every question (errors get a prominent label)
+        if is_correct_pred:
+            label = "CORRECT"
+        elif best_choice is None:
+            label = "WRONG (no config passed Prolog)"
+        else:
+            label = "WRONG (selected wrong config)"
+
+        log.write(f"[Q{idx+1}] [{label}]\n")
+        log.write(f"Task: {task}\n")
+        log.write(f"LLM Task Properties:\n")
+        for key, val in props.items():
+            log.write(f"  - {key}: {val}\n")
+        log.write(f"\nConfigurations:\n")
+        for cr in config_results:
+            tag = "CORRECT_ANS" if cr['is_correct'] else "WRONG_ANS"
+            status = "PASS" if cr['passed'] else "FAIL"
+            p = cr['parsed']
+            log.write(f"  [{tag}] [{status}] (score={cr['score']}) "
+                       f"arms={p['arms']}, dof={p['dof']}, "
+                       f"gripper={p['gripper_type']}, "
+                       f"mobile={p['mobile']}, rigid={p['rigid']}\n")
+            log.write(f"    Raw: {cr['config']}\n")
+        
+        if best_choice:
+            log.write(f"\nSelected: {best_choice}\n")
+            log.write(f"Correct:  {correct_conf_str}\n")
+        else:
+            log.write(f"\nSelected: NONE (no config passed strict Prolog)\n")
+            log.write(f"Correct:  {correct_conf_str}\n")
+        log.write("-" * 60 + "\n\n")
 
     acc = correct_preds / len(df) if len(df) > 0 else 0
+
+    # Write summary
+    log.write("\n" + "=" * 60 + "\n")
+    log.write("SUMMARY\n")
+    log.write("=" * 60 + "\n")
+    log.write(f"Total questions: {len(df)}\n")
+    log.write(f"Correct: {correct_preds}\n")
+    log.write(f"Wrong (picked wrong config): {error_count - no_valid_count}\n")
+    log.write(f"Wrong (no config passed): {no_valid_count}\n")
+    log.write(f"Accuracy: {acc:.3f}\n")
+    log.write("=" * 60 + "\n")
+    log.close()
+
     print("\n" + "=" * 40)
     print("FINAL MULTI-CHOICE BENCHMARK RESULTS")
     print("=" * 40)
     print(f"Accuracy: {acc:.3f}")
+    print(f"  Correct: {correct_preds}/{len(df)}")
+    print(f"  Wrong (picked wrong config): {error_count - no_valid_count}")
+    print(f"  Wrong (no config passed): {no_valid_count}")
     print("=" * 40)
+    print(f"\n✅ Result log written to: {output_file}")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Run Meta-Reasoning Evaluation via Gemini')
     parser.add_argument('--mode', type=str, choices=['binary', 'multi', 'all'], default='all', help='Evaluation mode')
     parser.add_argument('--limit', type=int, default=None, help='Limit number of samples (for faster testing)')
     parser.add_argument('--verbose', action='store_true', help='Print the LLM output for every task')
+    parser.add_argument('--output_file', type=str, default="./results/results_binary.txt", help='Output file for results')
     args = parser.parse_args()
     
     if args.mode in ['binary', 'all']:

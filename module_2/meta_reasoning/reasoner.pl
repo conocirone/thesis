@@ -97,3 +97,32 @@ check_min_capability :-
     !,
     robot_dof(D), D >= 3.
 check_min_capability.  % passes for all other cases
+
+
+% =============================================================================
+% STRICT VERIFICATION (for Multi-Choice Evaluation)
+% =============================================================================
+% Uses stricter hardware requirements to distinguish between under-powered
+% and correctly-powered robot configurations. This is needed because the
+% multi-choice benchmark expects selecting the EXACT minimum-viable config.
+
+can_execute_strict :-
+    check_mobile,
+    check_arms,
+    check_dof_strict,
+    check_gripper_strict,
+    check_rigid_strict,
+    check_min_capability.
+
+% Strict DoF: precision tasks require 7 DoF, others require 6.
+check_dof_strict :- required_arms(0), robot_dof(_).
+check_dof_strict :- \+ required_arms(0), task_needs_precision(true), robot_dof(D), D >= 7.
+check_dof_strict :- \+ required_arms(0), \+ task_needs_precision(true), robot_dof(D), D >= 6.
+
+% Strict Gripper: grasping tasks require a two_finger gripper.
+check_gripper_strict :- required_gripper(true), robot_gripper_type(two_finger).
+check_gripper_strict :- required_gripper(false).
+
+% Strict Rigid: rigid grip tasks require robot_rigid(true).
+check_rigid_strict :- required_rigid(true), robot_rigid(true).
+check_rigid_strict :- required_rigid(false).

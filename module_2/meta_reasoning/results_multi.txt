@@ -1,0 +1,2717 @@
+============================================================
+RESULT LOG - Meta-Reasoning Multi-Choice Evaluation
+============================================================
+Model: mistral-large-latest
+Total questions to evaluate: 100
+============================================================
+
+[Q562] [CORRECT]
+Task: move the backpack from the couch to the chair
+LLM Task Properties:
+  - reasoning: Moving the backpack requires lifting it completely off the couch, so grasping is necessary, but no precision, mobility, or bimanual actions are strictly required.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=749) arms=0, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [PASS] (score=1649) arms=1, dof=6, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [PASS] (score=1599) arms=1, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1749) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q894] [CORRECT]
+Task: move the peach and pink colored shirts and the green towel to the top of the box respectively
+LLM Task Properties:
+  - reasoning: Moving lightweight clothing and a towel can be done by grasping, but arranging them on top of a box could theoretically be done by sliding or pushing, so grasping is not strictly required.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=599) arms=0, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=699) arms=0, dof=7, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 7 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=749) arms=0, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1749) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q1685] [CORRECT]
+Task: pick up the red bowl from the pan and put it on the table
+LLM Task Properties:
+  - reasoning: The task requires lifting the bowl completely into the air, which necessitates grasping, but no precision beyond basic manipulation or mobility beyond optimal positioning.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [PASS] (score=1599) arms=1, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1499) arms=1, dof=5, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 5 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1699) arms=1, dof=7, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1749) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q706] [CORRECT]
+Task: move the colourless bottle towards the mirror
+LLM Task Properties:
+  - reasoning: Moving an object like a bottle can be done by pushing or sliding it with a blunt arm, without needing to lift it completely.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=749) arms=0, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [FAIL] (score=649) arms=0, dof=6, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 6 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=599) arms=0, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1749) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q1874] [CORRECT]
+Task: place a cooked tomato in a trash can
+LLM Task Properties:
+  - reasoning: Placing an object in a trash can requires lifting it completely into the air, but does not require precision, mobility, or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1599) arms=1, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1399) arms=1, dof=4, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 4 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1499) arms=1, dof=5, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 5 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1600) arms=1, dof=6, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+
+Selected: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+Correct:  The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+------------------------------------------------------------
+
+[Q4707] [CORRECT]
+Task: use the towel on the bowl to wipe the countertop then put it back
+LLM Task Properties:
+  - reasoning: Wiping the countertop and placing the towel back can be done by grasping the towel, but the task does not require rigid grip, precision, mobility, or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [PASS] (score=1499) arms=1, dof=5, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 5 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=499) arms=0, dof=5, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 5 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=399) arms=0, dof=4, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 4 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1599) arms=1, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+
+Selected: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+Correct:  The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+------------------------------------------------------------
+
+[Q3016] [CORRECT]
+Task: put the fork on the tray
+LLM Task Properties:
+  - reasoning: Placing a fork on a tray requires lifting it completely into the air, which necessitates grasping.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [PASS] (score=1399) arms=1, dof=4, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 4 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1499) arms=1, dof=5, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 5 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=599) arms=0, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1599) arms=1, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+
+Selected: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+Correct:  The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+------------------------------------------------------------
+
+[Q3735] [CORRECT]
+Task: remove the blue ring from the wooden platform
+LLM Task Properties:
+  - reasoning: Removing a ring from a platform can be done by lifting it into the air, which requires grasping, but does not demand precision, mobility, or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1699) arms=1, dof=7, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=699) arms=0, dof=7, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 7 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1599) arms=1, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1749) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q734] [CORRECT]
+Task: move the empty box from the couch to the armchair.
+LLM Task Properties:
+  - reasoning: The task involves relocating an object from one location to another, but the robot is assumed to be optimally positioned within arm's reach of both the couch and armchair, so no mobility is needed. The box can be lifted or slid, but lifting (grasping) is not strictly required if sliding is possible.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=500) arms=0, dof=5, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 0 arm(s) with 5 DoFs and soft No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1600) arms=1, dof=6, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=600) arms=0, dof=6, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 0 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1630) arms=1, dof=6, gripper=none, mobile=True, rigid=False
+    Raw: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can walk.
+
+Selected: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can walk.
+Correct:  The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can walk.
+------------------------------------------------------------
+
+[Q34] [CORRECT]
+Task: change the position of the object and put it horizontally along the table
+LLM Task Properties:
+  - reasoning: Changing the position of an object on a table can be done by pushing or sliding it, and orienting it horizontally does not require lifting or precision beyond basic manipulation.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [PASS] (score=1449) arms=1, dof=4, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 4 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [PASS] (score=1649) arms=1, dof=6, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1549) arms=1, dof=5, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 5 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1749) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q1323] [CORRECT]
+Task: pick the object and put it in the upper segment of the box
+LLM Task Properties:
+  - reasoning: Picking an object requires lifting it completely into the air, but placing it in a box segment does not require precision or two arms, and the robot is assumed to be within reach.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [PASS] (score=1699) arms=1, dof=7, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=599) arms=0, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=699) arms=0, dof=7, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 7 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1749) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q3571] [CORRECT]
+Task: put two newspapers on or under a square plate on a coffee table.
+LLM Task Properties:
+  - reasoning: The task involves placing newspapers relative to a plate, which can be done by sliding or pushing them without fully lifting the plate or newspapers, and no simultaneous two-arm action is required.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [PASS] (score=1500) arms=1, dof=5, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 1 arm(s) with 5 DoFs and soft No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=400) arms=0, dof=4, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 0 arm(s) with 4 DoFs and soft No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1400) arms=1, dof=4, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 1 arm(s) with 4 DoFs and soft No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1600) arms=1, dof=6, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+
+Selected: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+Correct:  The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+------------------------------------------------------------
+
+[Q1757] [CORRECT]
+Task: pick up the white cylindrical can and move it to the right
+LLM Task Properties:
+  - reasoning: The task requires lifting the can completely into the air, which necessitates grasping, but does not require precision, mobility, or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [PASS] (score=1549) arms=1, dof=5, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 5 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [PASS] (score=1499) arms=1, dof=5, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 5 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1649) arms=1, dof=6, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1749) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q2923] [CORRECT]
+Task: put the cell phone on the second shelf of the drawer
+LLM Task Properties:
+  - reasoning: Placing an object like a cell phone requires lifting it into the air, but the robot is already optimally positioned within arm's reach of the drawer and shelf.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=499) arms=0, dof=5, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 5 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1599) arms=1, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1499) arms=1, dof=5, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 5 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1600) arms=1, dof=6, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+
+Selected: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+Correct:  The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+------------------------------------------------------------
+
+[Q2541] [CORRECT]
+Task: put a credit card away in the drawer.
+LLM Task Properties:
+  - reasoning: Putting a credit card away requires lifting it into the air to place it in the drawer, but does not require precision beyond basic manipulation or two arms.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=499) arms=0, dof=5, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 5 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1500) arms=1, dof=5, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 1 arm(s) with 5 DoFs and soft No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1499) arms=1, dof=5, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 5 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1600) arms=1, dof=6, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+
+Selected: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+Correct:  The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+------------------------------------------------------------
+
+[Q1375] [CORRECT]
+Task: pick up a chopstick from the right side of the countertop and place it inside the glass bowl on the left
+LLM Task Properties:
+  - reasoning: The task requires lifting the chopstick completely into the air and placing it into a bowl, but does not require multi-axis precision, mobility, or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=399) arms=0, dof=4, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 4 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=599) arms=0, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=499) arms=0, dof=5, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 5 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1599) arms=1, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+
+Selected: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+Correct:  The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+------------------------------------------------------------
+
+[Q2629] [CORRECT]
+Task: put a remote in a box on the black desk.
+LLM Task Properties:
+  - reasoning: The task requires lifting the remote into the air to place it in the box, but does not require precision beyond general manipulation or a mobile base since the robot is already optimally positioned.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1499) arms=1, dof=5, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 5 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=499) arms=0, dof=5, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 5 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1500) arms=1, dof=5, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 1 arm(s) with 5 DoFs and soft No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1600) arms=1, dof=6, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+
+Selected: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+Correct:  The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+------------------------------------------------------------
+
+[Q599] [CORRECT]
+Task: move the black measuring tape to the center of the table
+LLM Task Properties:
+  - reasoning: Moving an object like measuring tape can be done by grasping it and lifting it into the air, but it does not require precision, mobility, or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [PASS] (score=1649) arms=1, dof=6, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [FAIL] (score=649) arms=0, dof=6, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 6 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=599) arms=0, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1749) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q180] [CORRECT]
+Task: drop the cloth onto the table
+LLM Task Properties:
+  - reasoning: Dropping an object can be done by releasing it from a gripper or simply pushing it off the edge of the robot's reach, without needing to fully lift or grasp it rigidly.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=599) arms=0, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1499) arms=1, dof=5, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 5 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=499) arms=0, dof=5, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 5 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1599) arms=1, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+
+Selected: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+Correct:  The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+------------------------------------------------------------
+
+[Q1262] [CORRECT]
+Task: pack the cable away
+LLM Task Properties:
+  - reasoning: Packing a cable can be done by pushing, coiling, or sliding it into place without fully lifting it into the air.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1699) arms=1, dof=7, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1599) arms=1, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=699) arms=0, dof=7, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 7 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1749) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q4260] [CORRECT]
+Task: take the markers and place them in the box
+LLM Task Properties:
+  - reasoning: Placing markers in a box requires lifting them completely into the air, so grasping is necessary, but no precision beyond basic manipulation or mobility beyond optimal positioning is required.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=549) arms=0, dof=5, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 5 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [PASS] (score=1649) arms=1, dof=6, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [FAIL] (score=649) arms=0, dof=6, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 6 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1749) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q3920] [CORRECT]
+Task: remove the scissors from the bottom shelf and put it on the table
+LLM Task Properties:
+  - reasoning: The task requires lifting the scissors completely into the air to move them, but does not require precision, mobility, or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=1110) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=560) arms=0, dof=5, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 5 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [FAIL] (score=660) arms=0, dof=6, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 6 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [PASS] (score=1660) arms=1, dof=6, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1760) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q3266] [CORRECT]
+Task: put the plush toy on the topmost shelf
+LLM Task Properties:
+  - reasoning: Placing an object on a shelf requires lifting it completely into the air, which necessitates grasping.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [PASS] (score=1649) arms=1, dof=6, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=549) arms=0, dof=5, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 5 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [PASS] (score=1549) arms=1, dof=5, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 5 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1749) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q2810] [CORRECT]
+Task: put the black screwdriver inside the topmost drawer then close the drawer
+LLM Task Properties:
+  - reasoning: The task requires lifting the screwdriver (grasping) and interacting with the drawer (contact), but no precision insertion, mobility, or simultaneous bimanual actions are strictly necessary.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [PASS] (score=1549) arms=1, dof=5, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 5 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [PASS] (score=1649) arms=1, dof=6, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=549) arms=0, dof=5, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 5 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1749) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q3424] [CORRECT]
+Task: put the towel on the green box
+LLM Task Properties:
+  - reasoning: Placing the towel on the box requires lifting it into the air, but does not require precision, mobility, or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=599) arms=0, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=399) arms=0, dof=4, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 4 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=499) arms=0, dof=5, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 5 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1599) arms=1, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+
+Selected: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+Correct:  The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+------------------------------------------------------------
+
+[Q539] [CORRECT]
+Task: move one cup from the holder to the counter
+LLM Task Properties:
+  - reasoning: Moving a cup requires lifting it completely into the air, so grasping is necessary, but no precision, mobility, or bimanual actions are strictly required.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=649) arms=0, dof=6, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 6 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [FAIL] (score=549) arms=0, dof=5, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 5 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=749) arms=0, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1749) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q1506] [CORRECT]
+Task: pick up the can of sprite and place it in the center of the cabinet above
+LLM Task Properties:
+  - reasoning: Placing an object in a cabinet requires lifting it completely into the air, but does not require multi-axis precision, mobility, or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1699) arms=1, dof=7, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1599) arms=1, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1499) arms=1, dof=5, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 5 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1749) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q4471] [CORRECT]
+Task: to put a piece of apple in the fridge to the left of the knife.
+LLM Task Properties:
+  - reasoning: The task requires lifting the apple into the air and placing it precisely next to the knife, but no simultaneous two-arm action or mobility is needed.
+  - needs_grasping: True
+  - needs_precision: True
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=529) arms=0, dof=5, gripper=none, mobile=True, rigid=True
+    Raw: The robot has 0 arm(s) with 5 DoFs and rigid No specified Gripper and it can walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1629) arms=1, dof=6, gripper=none, mobile=True, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can walk.
+  [WRONG_ANS] [FAIL] (score=1529) arms=1, dof=5, gripper=none, mobile=True, rigid=True
+    Raw: The robot has 1 arm(s) with 5 DoFs and rigid No specified Gripper and it can walk.
+  [CORRECT_ANS] [PASS] (score=1630) arms=1, dof=6, gripper=none, mobile=True, rigid=False
+    Raw: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can walk.
+
+Selected: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can walk.
+Correct:  The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can walk.
+------------------------------------------------------------
+
+[Q3484] [CORRECT]
+Task: put the white object on the white plate on top of the shelf
+LLM Task Properties:
+  - reasoning: The task requires lifting the object into the air to place it on the plate, but does not require precision beyond general manipulation, mobility, or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1599) arms=1, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=599) arms=0, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1699) arms=1, dof=7, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1749) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q832] [CORRECT]
+Task: move the marker to the orange box close to it
+LLM Task Properties:
+  - reasoning: The task involves relocating a small object, which can be done by pushing or sliding it without fully lifting it into the air.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=749) arms=0, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [PASS] (score=1699) arms=1, dof=7, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=699) arms=0, dof=7, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 7 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1749) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q80] [CORRECT]
+Task: close the cupboard door
+LLM Task Properties:
+  - reasoning: Closing a cupboard door can be done by pushing it with a blunt arm, without needing to lift or grasp it.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=699) arms=0, dof=7, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 7 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=749) arms=0, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1699) arms=1, dof=7, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1749) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q430] [CORRECT]
+Task: look at the watch by the light of a table lamp.
+LLM Task Properties:
+  - reasoning: The task only requires visual perception and does not involve any physical contact or manipulation of objects.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: False
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=500) arms=0, dof=5, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 0 arm(s) with 5 DoFs and soft No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1400) arms=1, dof=4, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 1 arm(s) with 4 DoFs and soft No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1500) arms=1, dof=5, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 1 arm(s) with 5 DoFs and soft No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1600) arms=1, dof=6, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+
+Selected: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+Correct:  The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+------------------------------------------------------------
+
+[Q2571] [CORRECT]
+Task: put a heated potato slice in the fridge.
+LLM Task Properties:
+  - reasoning: The task requires lifting the potato slice into the air to place it in the fridge, but does not require precision beyond general manipulation or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=599) arms=0, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=499) arms=0, dof=5, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 5 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1599) arms=1, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1600) arms=1, dof=6, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+
+Selected: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+Correct:  The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+------------------------------------------------------------
+
+[Q1843] [CORRECT]
+Task: place a clean fork in the drawer
+LLM Task Properties:
+  - reasoning: Placing a fork in a drawer requires lifting it into the air (grasping), but does not require precision, mobility, two arms, or a rigid grip.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [PASS] (score=1399) arms=1, dof=4, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 4 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1400) arms=1, dof=4, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 1 arm(s) with 4 DoFs and soft No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1500) arms=1, dof=5, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 1 arm(s) with 5 DoFs and soft No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1600) arms=1, dof=6, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+
+Selected: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+Correct:  The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+------------------------------------------------------------
+
+[Q3765] [CORRECT]
+Task: remove the can opener from the top of the chopping board and move it to the left side of the counter
+LLM Task Properties:
+  - reasoning: The task involves lifting the can opener (grasping) and relocating it, but no precision, mobility, or bimanual actions are strictly required.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=549) arms=0, dof=5, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 5 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [FAIL] (score=749) arms=0, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=649) arms=0, dof=6, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 6 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1749) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q766] [CORRECT]
+Task: move the green cylindrical block to the left and then move it to the right
+LLM Task Properties:
+  - reasoning: Moving a block horizontally can be done by pushing or sliding it with a blunt arm, so grasping is not strictly required.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=699) arms=0, dof=7, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 7 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1699) arms=1, dof=7, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1599) arms=1, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1749) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q1136] [CORRECT]
+Task: move two soap dispensers from the toilet to the rack of shelves
+LLM Task Properties:
+  - reasoning: Moving objects requires lifting them completely into the air, but the robot is already optimally positioned within arm's reach of both locations.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1499) arms=1, dof=5, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 5 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=499) arms=0, dof=5, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 5 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1599) arms=1, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1600) arms=1, dof=6, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+
+Selected: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+Correct:  The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+------------------------------------------------------------
+
+[Q1973] [WRONG (selected wrong config)]
+Task: place a washed towel in the middle of two sinks
+LLM Task Properties:
+  - reasoning: Placing a towel can be done by lifting it (grasping) and positioning it over the sinks, but does not require precision, mobility, or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [PASS] (score=1599) arms=1, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=499) arms=0, dof=5, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 5 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1499) arms=1, dof=5, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 5 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [FAIL] (score=599) arms=0, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+
+Selected: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+Correct:  The robot has 0 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+------------------------------------------------------------
+
+[Q1057] [CORRECT]
+Task: move the white purse to the left
+LLM Task Properties:
+  - reasoning: Moving an object like a purse can be done by sliding or pushing it with a blunt arm, without needing to lift it completely.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=599) arms=0, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1599) arms=1, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1649) arms=1, dof=6, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1749) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q1422] [CORRECT]
+Task: pick up the ball and put it in the bowl
+LLM Task Properties:
+  - reasoning: Picking up the ball requires lifting it completely into the air, but no precision beyond basic grasping is needed, and the task can be done with one arm from a single position.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [PASS] (score=1649) arms=1, dof=6, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1499) arms=1, dof=5, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 5 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1549) arms=1, dof=5, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 5 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1749) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q502] [WRONG (selected wrong config)]
+Task: move a statue from a side table to the coffee table
+LLM Task Properties:
+  - reasoning: Moving a statue requires lifting it completely into the air, as sliding or pushing may risk damage or instability, and the robot is assumed to be optimally positioned within arm's reach of both tables.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+
+Configurations:
+  [WRONG_ANS] [PASS] (score=1600) arms=1, dof=6, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=500) arms=0, dof=5, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 0 arm(s) with 5 DoFs and soft No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1110) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1500) arms=1, dof=5, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 1 arm(s) with 5 DoFs and soft No specified Gripper and it can not walk.
+  [CORRECT_ANS] [FAIL] (score=600) arms=0, dof=6, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 0 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+
+Selected: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+Correct:  The robot has 0 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+------------------------------------------------------------
+
+[Q228] [CORRECT]
+Task: examine the cellphone by the light of the tall lamp.
+LLM Task Properties:
+  - reasoning: Examining an object does not require physical contact, grasping, or mobility since the robot is already optimally positioned.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: False
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [PASS] (score=1629) arms=1, dof=6, gripper=none, mobile=True, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can walk.
+  [WRONG_ANS] [PASS] (score=599) arms=0, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1599) arms=1, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1630) arms=1, dof=6, gripper=none, mobile=True, rigid=False
+    Raw: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can walk.
+
+Selected: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can walk.
+Correct:  The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can walk.
+------------------------------------------------------------
+
+[Q2597] [CORRECT]
+Task: put a pen on the night stand
+LLM Task Properties:
+  - reasoning: Placing a small object like a pen can be done by lifting it into the air (grasping), but does not require precision, mobility, two arms, or a rigid grip.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1399) arms=1, dof=4, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 4 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1499) arms=1, dof=5, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 5 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1599) arms=1, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1600) arms=1, dof=6, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+
+Selected: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+Correct:  The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+------------------------------------------------------------
+
+[Q4693] [CORRECT]
+Task: use the spatula to stir in the bowl
+LLM Task Properties:
+  - reasoning: Stirring in a bowl requires physical contact with the spatula, but the spatula can be manipulated without full grasping (e.g., pushing or sliding), and no precision or bimanual action is strictly necessary.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=649) arms=0, dof=6, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 6 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [FAIL] (score=549) arms=0, dof=5, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 5 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [PASS] (score=1649) arms=1, dof=6, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1749) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q1552] [CORRECT]
+Task: pick up the folk from the dryer and put it in the sink
+LLM Task Properties:
+  - reasoning: The task requires lifting the fork completely into the air (grasping) and moving it to the sink, but does not require mobility since the robot is already optimally positioned.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [PASS] (score=1599) arms=1, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=599) arms=0, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1699) arms=1, dof=7, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1749) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q4246] [CORRECT]
+Task: take the lemon from the plate and put it on the pullout table
+LLM Task Properties:
+  - reasoning: The task requires lifting the lemon completely into the air to move it from one surface to another, but does not require precision, mobility, or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=599) arms=0, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1649) arms=1, dof=6, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1599) arms=1, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1749) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q1352] [CORRECT]
+Task: pick the stuffed pineapple and put it beside the oven
+LLM Task Properties:
+  - reasoning: The task requires lifting the stuffed pineapple completely into the air to move it, but no precision, mobility, or bimanual actions are strictly necessary.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [PASS] (score=1649) arms=1, dof=6, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1449) arms=1, dof=4, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 4 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [PASS] (score=1549) arms=1, dof=5, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 5 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1749) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q1145] [CORRECT]
+Task: move two watches to the table next to the chairs.
+LLM Task Properties:
+  - reasoning: Moving objects like watches can be done by lifting them (grasping), but the robot is already optimally positioned within arm's reach of all relevant objects, so no mobility is needed.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1500) arms=1, dof=5, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 1 arm(s) with 5 DoFs and soft No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=400) arms=0, dof=4, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 0 arm(s) with 4 DoFs and soft No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=500) arms=0, dof=5, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 0 arm(s) with 5 DoFs and soft No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1600) arms=1, dof=6, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+
+Selected: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+Correct:  The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+------------------------------------------------------------
+
+[Q2527] [CORRECT]
+Task: put a cold egg in the left sink basin.
+LLM Task Properties:
+  - reasoning: The task requires lifting the egg into the air to place it in the sink, but does not require high precision, mobility, two arms, or a rigid grip for a lightweight object like an egg.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1499) arms=1, dof=5, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 5 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1500) arms=1, dof=5, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 1 arm(s) with 5 DoFs and soft No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1399) arms=1, dof=4, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 4 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1600) arms=1, dof=6, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+
+Selected: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+Correct:  The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+------------------------------------------------------------
+
+[Q4184] [CORRECT]
+Task: take the blocks and put them on top of the cabinet
+LLM Task Properties:
+  - reasoning: Placing blocks on top of a cabinet requires lifting them completely into the air, which necessitates grasping.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [PASS] (score=1649) arms=1, dof=6, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [PASS] (score=1599) arms=1, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=599) arms=0, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1749) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q1974] [WRONG (selected wrong config)]
+Task: place a watch in the box and place on the table.
+LLM Task Properties:
+  - reasoning: Placing a watch in a box and then placing the box on the table requires lifting the watch and box, but the robot is already optimally positioned within arm's reach.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [PASS] (score=1500) arms=1, dof=5, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 1 arm(s) with 5 DoFs and soft No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1400) arms=1, dof=4, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 1 arm(s) with 4 DoFs and soft No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1600) arms=1, dof=6, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+  [CORRECT_ANS] [FAIL] (score=600) arms=0, dof=6, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 0 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+
+Selected: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+Correct:  The robot has 0 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+------------------------------------------------------------
+
+[Q1832] [CORRECT]
+Task: place a chilled glass on a wooden shelf.
+LLM Task Properties:
+  - reasoning: Placing an object requires lifting it completely into the air, but does not require high precision, mobility, or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+
+Configurations:
+  [WRONG_ANS] [PASS] (score=1500) arms=1, dof=5, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 1 arm(s) with 5 DoFs and soft No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1400) arms=1, dof=4, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 1 arm(s) with 4 DoFs and soft No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1110) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1410) arms=1, dof=4, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 4 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1600) arms=1, dof=6, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+
+Selected: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+Correct:  The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+------------------------------------------------------------
+
+[Q3632] [CORRECT]
+Task: putting a pan on the white table
+LLM Task Properties:
+  - reasoning: Putting a pan on a table requires lifting it completely into the air, which necessitates grasping, but no precision, mobility, or bimanual actions are strictly required.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+
+Configurations:
+  [WRONG_ANS] [PASS] (score=1410) arms=1, dof=4, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 4 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1110) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1510) arms=1, dof=5, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 5 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1500) arms=1, dof=5, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 1 arm(s) with 5 DoFs and soft No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1600) arms=1, dof=6, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+
+Selected: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+Correct:  The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+------------------------------------------------------------
+
+[Q9] [CORRECT]
+Task: arrange the black objects together
+LLM Task Properties:
+  - reasoning: Arranging objects can be done by pushing or sliding them with a blunt arm, so grasping is not strictly required.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=699) arms=0, dof=7, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 7 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=599) arms=0, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=749) arms=0, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1749) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q24] [CORRECT]
+Task: carry a laptop to turn on a lamp.
+LLM Task Properties:
+  - reasoning: The robot is assumed to be within arm's reach of both the laptop and the lamp, so no mobility is needed, but lifting the laptop requires grasping.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=1110) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1500) arms=1, dof=5, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 1 arm(s) with 5 DoFs and soft No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=500) arms=0, dof=5, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 0 arm(s) with 5 DoFs and soft No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=400) arms=0, dof=4, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 0 arm(s) with 4 DoFs and soft No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1600) arms=1, dof=6, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+
+Selected: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+Correct:  The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+------------------------------------------------------------
+
+[Q765] [CORRECT]
+Task: move the green cylinder to the right side of the table
+LLM Task Properties:
+  - reasoning: Moving an object on a table can be done by pushing or sliding it, so grasping is not strictly required, and no mobility or precision is needed beyond basic contact.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [PASS] (score=1649) arms=1, dof=6, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [FAIL] (score=649) arms=0, dof=6, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 6 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=549) arms=0, dof=5, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 5 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1749) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q3124] [CORRECT]
+Task: put the lunchbox's lid in the sink
+LLM Task Properties:
+  - reasoning: The task requires lifting the lid completely into the air to move it to the sink, but does not require precision, mobility, two arms, or a rigid grip.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1499) arms=1, dof=5, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 5 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1649) arms=1, dof=6, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [PASS] (score=1549) arms=1, dof=5, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 5 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1749) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q860] [CORRECT]
+Task: move the object to the right diagonal corner of the table
+LLM Task Properties:
+  - reasoning: Moving an object on a table can be done by pushing or sliding it with a blunt arm, so grasping is not strictly required.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [PASS] (score=1599) arms=1, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1699) arms=1, dof=7, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=599) arms=0, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1749) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q743] [CORRECT]
+Task: move the fruit by the fork to the microwave
+LLM Task Properties:
+  - reasoning: The task involves relocating an object (fruit) from one place to another, which requires lifting it into the air, but the robot is already optimally positioned within arm's reach of both the fork and microwave.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [PASS] (score=1499) arms=1, dof=5, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 5 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1399) arms=1, dof=4, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 4 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=599) arms=0, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1599) arms=1, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+
+Selected: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+Correct:  The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+------------------------------------------------------------
+
+[Q4153] [CORRECT]
+Task: take a packet out of the white box
+LLM Task Properties:
+  - reasoning: Taking an object out of a container requires lifting it completely into the air, which necessitates grasping.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=699) arms=0, dof=7, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 7 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=599) arms=0, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1699) arms=1, dof=7, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1749) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q1438] [WRONG (selected wrong config)]
+Task: pick up the black mug and place it upright on the table
+LLM Task Properties:
+  - reasoning: Picking up an object requires lifting it completely into the air, but placing it upright does not require precision beyond general manipulation.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [PASS] (score=1499) arms=1, dof=5, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 5 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=499) arms=0, dof=5, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 5 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1599) arms=1, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [FAIL] (score=599) arms=0, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+
+Selected: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+Correct:  The robot has 0 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+------------------------------------------------------------
+
+[Q4241] [CORRECT]
+Task: take the hair ribbon and put it in the purse
+LLM Task Properties:
+  - reasoning: The task requires lifting the hair ribbon into the air to place it inside the purse, but does not require high precision, mobility, or two arms working simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1649) arms=1, dof=6, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [FAIL] (score=549) arms=0, dof=5, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 5 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [PASS] (score=1549) arms=1, dof=5, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 5 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1749) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q323] [CORRECT]
+Task: get the pen from the table and go turn on the floor lamp.
+LLM Task Properties:
+  - reasoning: The robot is assumed to be within arm's reach of both the pen and the floor lamp, so no mobility is required, but grasping the pen and pressing the lamp switch both require contact and lifting.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=399) arms=0, dof=4, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 4 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=499) arms=0, dof=5, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 5 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1499) arms=1, dof=5, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 5 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1599) arms=1, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+
+Selected: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+Correct:  The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+------------------------------------------------------------
+
+[Q4639] [CORRECT]
+Task: unwind the charging cable
+LLM Task Properties:
+  - reasoning: Unwinding a cable can be done by pulling or sliding it with a single arm, without needing to lift it completely or use two hands simultaneously.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=599) arms=0, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=699) arms=0, dof=7, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 7 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1699) arms=1, dof=7, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1749) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q2900] [CORRECT]
+Task: put the brown marker inside the mug
+LLM Task Properties:
+  - reasoning: Placing a marker inside a mug requires lifting the marker completely into the air, but does not require multi-axis precision, mobility, or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [PASS] (score=1399) arms=1, dof=4, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 4 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=399) arms=0, dof=4, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 4 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1499) arms=1, dof=5, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 5 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1599) arms=1, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+
+Selected: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+Correct:  The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+------------------------------------------------------------
+
+[Q4113] [CORRECT]
+Task: stack the metal measuring cups into each other
+LLM Task Properties:
+  - reasoning: Stacking rigid metal cups requires lifting each cup into the air and aligning it precisely with the next, but does not require two arms simultaneously or a mobile base.
+  - needs_grasping: True
+  - needs_precision: True
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=660) arms=0, dof=6, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 6 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1110) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1560) arms=1, dof=5, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 5 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [PASS] (score=1660) arms=1, dof=6, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1760) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q578] [CORRECT]
+Task: move the black basket from the right to the left
+LLM Task Properties:
+  - reasoning: Moving a basket can be done by sliding or pushing it with a blunt arm, so grasping is not strictly required.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=599) arms=0, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1599) arms=1, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1699) arms=1, dof=7, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1749) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q3393] [CORRECT]
+Task: put the teabag in the mug
+LLM Task Properties:
+  - reasoning: Placing a teabag in a mug requires lifting the teabag into the air and positioning it inside the mug, but does not require high precision or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=599) arms=0, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1699) arms=1, dof=7, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1599) arms=1, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1749) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q671] [CORRECT]
+Task: move the brush to the left
+LLM Task Properties:
+  - reasoning: Moving an object like a brush can be done by sliding or pushing it, without needing to lift it completely into the air.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=699) arms=0, dof=7, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 7 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=599) arms=0, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=749) arms=0, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1749) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q1028] [CORRECT]
+Task: move the two dispensers from the toilet to the counter on the right of the tub.
+LLM Task Properties:
+  - reasoning: The task requires lifting the dispensers completely into the air to relocate them, but no mobile base is needed as the robot is assumed to be optimally positioned within arm's reach of both locations.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [PASS] (score=1599) arms=1, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=599) arms=0, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1499) arms=1, dof=5, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 5 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1600) arms=1, dof=6, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+
+Selected: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+Correct:  The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+------------------------------------------------------------
+
+[Q1523] [CORRECT]
+Task: pick up the clothes on the box and put them on the box
+LLM Task Properties:
+  - reasoning: Picking up clothes requires lifting them completely into the air,    
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [PASS] (score=1699) arms=1, dof=7, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=699) arms=0, dof=7, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 7 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=749) arms=0, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1749) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q2342] [CORRECT]
+Task: pull out the bottom drawer on the beige filing cabinet
+LLM Task Properties:
+  - reasoning: Pulling out a drawer requires physical contact and a grip to pull, but the drawer can be slid out without lifting it completely into the air.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=1110) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=610) arms=0, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1710) arms=1, dof=7, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1610) arms=1, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1760) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q1025] [CORRECT]
+Task: move the toy box closer to you
+LLM Task Properties:
+  - reasoning: Moving a toy box can be done by pushing or sliding it with a blunt arm, so grasping is not strictly required.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [PASS] (score=1649) arms=1, dof=6, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [PASS] (score=1499) arms=1, dof=5, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 5 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1599) arms=1, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1749) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q4697] [CORRECT]
+Task: use the spatula to stir the water
+LLM Task Properties:
+  - reasoning: Stirring water with a spatula requires physical contact and manipulation of the spatula, but does not require lifting the spatula completely into the air or extreme precision.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=599) arms=0, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=649) arms=0, dof=6, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 6 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [PASS] (score=1649) arms=1, dof=6, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1749) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q3991] [CORRECT]
+Task: remove the yellow ring from the wooden board
+LLM Task Properties:
+  - reasoning: Removing a ring from a board requires lifting it completely into the air, which necessitates grasping, but does not require precision, mobility, two arms, or a rigid grip.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [PASS] (score=1699) arms=1, dof=7, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1499) arms=1, dof=5, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 5 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1599) arms=1, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1749) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q1813] [CORRECT]
+Task: place a bowl with a cellphone in it down on the coffee table
+LLM Task Properties:
+  - reasoning: The task requires lifting the bowl (with the cellphone inside) completely into the air to place it on the table, so grasping is necessary, but no precision, mobility, or bimanual actions are strictly required.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=1110) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=630) arms=0, dof=6, gripper=none, mobile=True, rigid=False
+    Raw: The robot has 0 arm(s) with 6 DoFs and soft No specified Gripper and it can walk.
+  [WRONG_ANS] [FAIL] (score=530) arms=0, dof=5, gripper=none, mobile=True, rigid=False
+    Raw: The robot has 0 arm(s) with 5 DoFs and soft No specified Gripper and it can walk.
+  [WRONG_ANS] [FAIL] (score=540) arms=0, dof=5, gripper=none, mobile=True, rigid=True
+    Raw: The robot has 0 arm(s) with 5 DoFs and rigid No specified Gripper and it can walk.
+  [CORRECT_ANS] [PASS] (score=1630) arms=1, dof=6, gripper=none, mobile=True, rigid=False
+    Raw: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can walk.
+
+Selected: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can walk.
+Correct:  The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can walk.
+------------------------------------------------------------
+
+[Q965] [CORRECT]
+Task: move the seal tape
+LLM Task Properties:
+  - reasoning: Moving seal tape can be done by pushing or sliding it with a blunt arm, without needing to lift it completely into the air.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1649) arms=1, dof=6, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [FAIL] (score=649) arms=0, dof=6, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 6 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [PASS] (score=1549) arms=1, dof=5, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 5 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1749) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q1666] [CORRECT]
+Task: pick up the pink cloth and put it on the left side of the counter
+LLM Task Properties:
+  - reasoning: The task requires lifting the cloth completely into the air to move it, but does not require precision, mobility, or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [PASS] (score=1649) arms=1, dof=6, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [PASS] (score=1599) arms=1, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=599) arms=0, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1749) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q3658] [CORRECT]
+Task: putting two spray bottles on the counter near the sink
+LLM Task Properties:
+  - reasoning: Placing spray bottles on a counter can be done by lifting them (grasping) but does not require precision, mobility, or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1599) arms=1, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=499) arms=0, dof=5, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 5 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=599) arms=0, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1600) arms=1, dof=6, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+
+Selected: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+Correct:  The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+------------------------------------------------------------
+
+[Q3082] [WRONG (selected wrong config)]
+Task: put the heated glass in the kitchen cabinet
+LLM Task Properties:
+  - reasoning: The task requires lifting the glass completely into the air to place it in the cabinet, but does not require extreme precision, two arms, or mobility beyond arm's reach.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=1110) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=500) arms=0, dof=5, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 0 arm(s) with 5 DoFs and soft No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=530) arms=0, dof=5, gripper=none, mobile=True, rigid=False
+    Raw: The robot has 0 arm(s) with 5 DoFs and soft No specified Gripper and it can walk.
+  [WRONG_ANS] [PASS] (score=1500) arms=1, dof=5, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 1 arm(s) with 5 DoFs and soft No specified Gripper and it can not walk.
+  [CORRECT_ANS] [FAIL] (score=630) arms=0, dof=6, gripper=none, mobile=True, rigid=False
+    Raw: The robot has 0 arm(s) with 6 DoFs and soft No specified Gripper and it can walk.
+
+Selected: The robot has 1 arm(s) with 5 DoFs and soft No specified Gripper and it can not walk.
+Correct:  The robot has 0 arm(s) with 6 DoFs and soft No specified Gripper and it can walk.
+------------------------------------------------------------
+
+[Q4154] [CORRECT]
+Task: take a pan from the stove, cool it in the fridge, then put it back on the stove on the back burner.
+LLM Task Properties:
+  - reasoning: The task requires lifting the pan completely into the air to move it, but no extreme precision, mobility, or simultaneous two-arm action is strictly necessary.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=410) arms=0, dof=4, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 4 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=610) arms=0, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1110) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=510) arms=0, dof=5, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 5 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1610) arms=1, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+
+Selected: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+Correct:  The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+------------------------------------------------------------
+
+[Q492] [CORRECT]
+Task: move a set of keys to a chair.
+LLM Task Properties:
+  - reasoning: Moving keys can be done by grasping them, but the robot is already optimally positioned, so no mobility is needed.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=400) arms=0, dof=4, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 0 arm(s) with 4 DoFs and soft No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=500) arms=0, dof=5, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 0 arm(s) with 5 DoFs and soft No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1500) arms=1, dof=5, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 1 arm(s) with 5 DoFs and soft No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1600) arms=1, dof=6, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+
+Selected: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+Correct:  The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+------------------------------------------------------------
+
+[Q535] [CORRECT]
+Task: move ladle to bowl, place in sink
+LLM Task Properties:
+  - reasoning: The task involves lifting the ladle into the air to move it, but no precision beyond basic manipulation is required, and the robot is assumed to be within reach of all objects.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=499) arms=0, dof=5, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 5 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=399) arms=0, dof=4, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 4 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1499) arms=1, dof=5, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 5 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1599) arms=1, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+
+Selected: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+Correct:  The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+------------------------------------------------------------
+
+[Q2237] [CORRECT]
+Task: pour some contents from the transparent jar into the bowl
+LLM Task Properties:
+  - reasoning: Pouring requires lifting and tilting the jar, which necessitates grasping it fully, but does not require precision beyond basic manipulation or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=660) arms=0, dof=6, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 6 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [FAIL] (score=760) arms=0, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1110) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=560) arms=0, dof=5, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 5 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1760) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q4376] [WRONG (selected wrong config)]
+Task: to chill an egg and put it in the microwave.
+LLM Task Properties:
+  - reasoning: The task requires lifting the egg (grasping) and placing it in the microwave, but does not require mobility since the robot is assumed to be within reach of both the fridge and microwave.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [PASS] (score=1600) arms=1, dof=6, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=400) arms=0, dof=4, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 0 arm(s) with 4 DoFs and soft No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=500) arms=0, dof=5, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 0 arm(s) with 5 DoFs and soft No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [FAIL] (score=600) arms=0, dof=6, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 0 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+
+Selected: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+Correct:  The robot has 0 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+------------------------------------------------------------
+
+[Q66] [CORRECT]
+Task: clean the table
+LLM Task Properties:
+  - reasoning: Cleaning a table can be done by wiping or sweeping with a tool, which does not require lifting objects completely into the air or precision.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [PASS] (score=1649) arms=1, dof=6, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=649) arms=0, dof=6, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 6 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [FAIL] (score=599) arms=0, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1749) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q4374] [CORRECT]
+Task: to chill a pan and put it on the small table.
+LLM Task Properties:
+  - reasoning: Chilling a pan may involve moving it to a cooling surface, and placing it on a table requires lifting it completely into the air, which necessitates grasping.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=1110) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1510) arms=1, dof=5, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 5 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1410) arms=1, dof=4, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 4 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1310) arms=1, dof=3, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 3 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1610) arms=1, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+
+Selected: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+Correct:  The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+------------------------------------------------------------
+
+[Q2673] [WRONG (selected wrong config)]
+Task: put a watch on a pad in front of the tv.
+LLM Task Properties:
+  - reasoning: Placing a small object like a watch requires lifting it completely into the air, but does not require high precision, mobility, or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1500) arms=1, dof=5, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 1 arm(s) with 5 DoFs and soft No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1499) arms=1, dof=5, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 5 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1600) arms=1, dof=6, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+  [CORRECT_ANS] [FAIL] (score=600) arms=0, dof=6, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 0 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+
+Selected: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+Correct:  The robot has 0 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+------------------------------------------------------------
+
+[Q764] [CORRECT]
+Task: move the green cloth to the left
+LLM Task Properties:
+  - reasoning: Moving a cloth can be done by pushing or sliding it with a blunt arm, so grasping is not strictly required.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=599) arms=0, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1649) arms=1, dof=6, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [FAIL] (score=649) arms=0, dof=6, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 6 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1749) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q1695] [CORRECT]
+Task: pick up the sachet and place it on the dish rack
+LLM Task Properties:
+  - reasoning: Picking up an object requires lifting it completely into the air, but no precision beyond basic manipulation or bimanual coordination is needed.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=699) arms=0, dof=7, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 7 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1699) arms=1, dof=7, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=599) arms=0, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1749) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q3752] [CORRECT]
+Task: remove the box from the orange chair and place it on the black chair
+LLM Task Properties:
+  - reasoning: The task involves lifting the box completely into the air to move it between chairs, requiring grasping, but no precision, mobility, or bimanual actions are strictly necessary.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=649) arms=0, dof=6, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 6 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [FAIL] (score=549) arms=0, dof=5, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 5 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1649) arms=1, dof=6, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1749) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q4754] [CORRECT]
+Task: wash the fork.
+LLM Task Properties:
+  - reasoning: Washing a fork requires physical contact and lifting it into the air to scrub or rinse, but does not require precision, mobility, or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [PASS] (score=1500) arms=1, dof=5, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 1 arm(s) with 5 DoFs and soft No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=500) arms=0, dof=5, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 0 arm(s) with 5 DoFs and soft No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=400) arms=0, dof=4, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 0 arm(s) with 4 DoFs and soft No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1600) arms=1, dof=6, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+
+Selected: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+Correct:  The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+------------------------------------------------------------
+
+[Q4263] [CORRECT]
+Task: take the metal can out of the sink
+LLM Task Properties:
+  - reasoning: Taking an object out of a sink requires lifting it completely into the air, which necessitates grasping, but no precision, mobility, or bimanual action is strictly required.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=1110) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1610) arms=1, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1710) arms=1, dof=7, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1510) arms=1, dof=5, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 5 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1760) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q1719] [CORRECT]
+Task: pick up the straw from the table and put it in the black rack
+LLM Task Properties:
+  - reasoning: Picking up a lightweight straw requires lifting it into the air, but no precision insertion or bimanual action is needed, and the robot is already positioned optimally.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [PASS] (score=1549) arms=1, dof=5, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 5 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [PASS] (score=1649) arms=1, dof=6, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [PASS] (score=1449) arms=1, dof=4, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 4 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1749) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q200] [CORRECT]
+Task: examine a coffee mug under a lamp.
+LLM Task Properties:
+  - reasoning: Examining an object does not require physical contact, grasping, or mobility; the robot can visually inspect the mug from its current position.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: False
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [PASS] (score=1399) arms=1, dof=4, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 4 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1599) arms=1, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1499) arms=1, dof=5, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 5 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1600) arms=1, dof=6, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+
+Selected: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+Correct:  The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+------------------------------------------------------------
+
+[Q3540] [CORRECT]
+Task: put two bars of soap into a drawer
+LLM Task Properties:
+  - reasoning: The task requires lifting each bar of soap into the air to place them into the drawer, which necessitates grasping, but does not require precision, mobility, or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [PASS] (score=1499) arms=1, dof=5, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 5 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1599) arms=1, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=599) arms=0, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1600) arms=1, dof=6, gripper=none, mobile=False, rigid=False
+    Raw: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+
+Selected: The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+Correct:  The robot has 1 arm(s) with 6 DoFs and soft No specified Gripper and it can not walk.
+------------------------------------------------------------
+
+[Q1615] [CORRECT]
+Task: pick up the napkin and put it back down
+LLM Task Properties:
+  - reasoning: Picking up an object requires lifting it completely into the air, but no precision, mobility, or bimanual actions are needed.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [PASS] (score=1649) arms=1, dof=6, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [FAIL] (score=649) arms=0, dof=6, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 6 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=749) arms=0, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1749) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q2268] [CORRECT]
+Task: pour the contents of the colourless bowl into the blue bowl
+LLM Task Properties:
+  - reasoning: Pouring requires lifting and tilting the bowl to transfer contents, which necessitates grasping and controlled manipulation, but not precision beyond basic pouring or simultaneous two-arm coordination.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+
+Configurations:
+  [WRONG_ANS] [PASS] (score=1510) arms=1, dof=5, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 5 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1660) arms=1, dof=6, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [PASS] (score=1560) arms=1, dof=5, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 5 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1110) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1760) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q1611] [CORRECT]
+Task: pick up the miniature baseball bat from the table and put it inside the black mug
+LLM Task Properties:
+  - reasoning: The task requires lifting the bat completely into the air and inserting it into a constrained space, but the insertion does not demand multi-axis 7-DoF precision beyond general manipulation.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [FAIL] (score=649) arms=0, dof=6, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 6 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [FAIL] (score=549) arms=0, dof=5, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 5 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=749) arms=0, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 0 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1749) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+[Q3560] [CORRECT]
+Task: put two empty water bottles inside the white storage box
+LLM Task Properties:
+  - reasoning: Placing empty water bottles inside a box can be done by grasping each bottle individually, but the task does not require mobility, precision, or simultaneous bimanual action.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+
+Configurations:
+  [WRONG_ANS] [PASS] (score=1599) arms=1, dof=6, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 6 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [FAIL] (score=1099) arms=1, dof=1, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 1 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1699) arms=1, dof=7, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid No specified Gripper and it can not walk.
+  [WRONG_ANS] [PASS] (score=1499) arms=1, dof=5, gripper=none, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 5 DoFs and rigid No specified Gripper and it can not walk.
+  [CORRECT_ANS] [PASS] (score=1749) arms=1, dof=7, gripper=two_finger, mobile=False, rigid=True
+    Raw: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+
+Selected: The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+Correct:  The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.
+------------------------------------------------------------
+
+
+============================================================
+SUMMARY
+============================================================
+Total questions: 100
+Correct: 93
+Wrong (picked wrong config): 7
+Wrong (no config passed): 0
+Accuracy: 0.930
+============================================================
