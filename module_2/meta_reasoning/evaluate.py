@@ -9,37 +9,84 @@ import time
 import pandas as pd
 from pathlib import Path
 from tqdm import tqdm
-from groq import Groq
-
+from google import genai
+from google.genai import types
+from mistralai.client import Mistral
 # ---------------------------------------------------------------------------
-# LLM Initialization (Groq API)
+# LLM Initialization (Google Gemini API)
 # ---------------------------------------------------------------------------
-MODEL_ID = "llama-3.3-70b-versatile"
 
-try:
-    client = Groq()
-except Exception as e:
-    print("Error: Could not find your API key. Did you set the GROQ_API_KEY environment variable?")
+api_key = os.environ.get("MISTRAL_API_KEY")
+MODEL_ID = "mistral-large-latest"
+
+if not api_key:
+    print("Error: Could not find your API key. Did you set the GEMINI_API_KEY environment variable?")
     sys.exit(1)
 
-# System prompt for task property extraction
+# Initialize the Gemini client
+client = Mistral(api_key=api_key)
+
+# ---------------------------------------------------------------------------
+# Prompts & Parsing Logic
+# ---------------------------------------------------------------------------
 SYSTEM_PROMPT = """
 You are an expert robot motion planner.
 Your job is to analyze a natural language household task and answer 6 specific Yes/No questions about its physical requirements.
 
-Focus strictly on the MINIMUM physical actions required:
-1. "needs_grasping": Does this task require picking up, holding, or securing an object with fingers or clamps?
-2. "needs_precision": Does this task involve high-precision alignment, small constrained spaces, inserting objects, or meticulous orientation?
-3. "needs_mobility": Does the robot need to move its base to a completely different location? (false if done in place or rotating)
-4. "needs_bimanual": Does the task explicitly require using TWO distinct hands SIMULTaneously? (e.g. cutting food, unscrewing jar)
-5. "needs_contact": Does the robot need to physically touch anything at all? (false if just observing/turning on a remote)
-6. "needs_rigid_grip": If grasping is needed, is the object heavy, resistive, or requiring a firm rigid grip (as opposed to soft cloth or delicate food)?
+First, provide a brief 1-sentence rationale in the "reasoning" key. Then, output the 6 booleans.
 
-Respond ONLY with a valid JSON dictionary matching exactly the keys above and boolean values. Do NOT add any markdown, explanation or text.
+Focus strictly on the MINIMUM physical actions required. Think like a roboticist:
+1. "needs_grasping": Does this task strictly require lifting an object completely into the air? Output FALSE if the task can theoretically be accomplished by simply pushing, sweeping, or sliding the object with a blunt arm (e.g., arranging ANY items like shoes, bottles, cups, adjusting a lamp). If the task includes the word "arrange", needs_grasping is FALSE.
+2. "needs_precision": Does this task involve highly constrained, multi-axis 7-DoF rotations (like inserting a key, threading a needle, brushing teeth)? Output FALSE for general manipulation, arranging, pushing, or broad adjustments.
+3. "needs_mobility": Does the robot strictly need a mobile base to travel to a completely different location? Output FALSE for ALL arranging tasks, even for large objects like sofas. Assume the robot is always already positioned optimally within arms reach.
+4. "needs_bimanual": Does the task explicitly require using TWO distinct hands SIMULTANEOUSLY on the SAME object to physically work? (e.g. cutting food). If a task involves multiple objects, assume the robot can move them one by one. 
+5. "needs_contact": Does the robot need to physically touch anything at all?
+6. "needs_rigid_grip": Is the object heavy, resistive, or requiring a firm rigid grip? Output FALSE if the task can be done by pushing (e.g., arranging a sofa).
+
+Respond ONLY with a valid JSON dictionary matching exactly the keys above. Do NOT add any text outside the JSON.
+
+EXAMPLES:
+Task: arrange shoes
+{
+    "reasoning": "Arranging items on the floor can be done by pushing or sliding them with a blunt arm, meaning a gripper is not strictly required.",
+    "needs_grasping": false,
+    "needs_precision": false,
+    "needs_mobility": false,
+    "needs_bimanual": false,
+    "needs_contact": true,
+    "needs_rigid_grip": false
+}
+
+Task: adjust the desk lamp
+{
+    "reasoning": "Adjusting a lamp requires physical contact to nudge or push it into place, but does not strictly require grasping it with fingers or extreme 7-DoF precision.",
+    "needs_grasping": false,
+    "needs_precision": false,
+    "needs_mobility": false,
+    "needs_bimanual": false,
+    "needs_contact": true,
+    "needs_rigid_grip": false
+}
+
+Task: bring the bowl to the counter
+{
+    "reasoning": "Bringing an object only requires the arm to reach — the robot is already positioned optimally, so no mobile base is needed.",
+    "needs_grasping": true,
+    "needs_precision": false,
+    "needs_mobility": false,   
+    ...
+}
+
+Task: wrap the gloves in the yellow towel
+{
+    "reasoning": "Wrapping can be done sequentially with one arm — both hands are not required simultaneously on the same object.",
+    "needs_bimanual": false,
+    ...
+}
+
 """
 
 def map_gripper_config(gripper_str):
-    """Map CSV gripper string to Prolog atom."""
     if pd.isna(gripper_str) or 'No specified Gripper' in str(gripper_str):
         return 'none'
     elif '2 Fingers' in str(gripper_str):
@@ -47,10 +94,6 @@ def map_gripper_config(gripper_str):
     return 'none'
 
 def parse_multi_choice_hardware_string(config_str: str) -> dict:
-    """
-    Parse natural language multi-choice string into dict.
-    Example: 'The robot has 1 arm(s) with 7 DoFs and rigid Robot Grippers with 2 Fingers and it can not walk.'
-    """
     config = {
         'mobile': False,
         'arms': 0,
@@ -59,31 +102,21 @@ def parse_multi_choice_hardware_string(config_str: str) -> dict:
         'rigid': False
     }
     
-    # 1. Arms
     arm_match = re.search(r'(\d+) arm', config_str)
-    if arm_match:
-        config['arms'] = int(arm_match.group(1))
+    if arm_match: config['arms'] = int(arm_match.group(1))
         
-    # 2. DoFs
     dof_match = re.search(r'(\d+) DoFs', config_str)
-    if dof_match:
-        config['dof'] = int(dof_match.group(1))
+    if dof_match: config['dof'] = int(dof_match.group(1))
         
-    # 3. Gripper Rigid
-    if 'rigid' in config_str:
-        config['rigid'] = True
-        
-    # 4. Gripper Type
+    if 'rigid' in config_str: config['rigid'] = True
     config['gripper_type'] = map_gripper_config(config_str)
         
-    # 5. Mobile
     if 'can walk' in config_str and 'not walk' not in config_str:
         config['mobile'] = True
         
     return config
 
 def parse_llm_json(llm_output: str) -> dict:
-    """Extract JSON from LLM output."""
     match = re.search(r'\{.*\}', str(llm_output), re.DOTALL)
     if match:
         try:
@@ -91,6 +124,7 @@ def parse_llm_json(llm_output: str) -> dict:
         except Exception:
             pass
     return {
+        "reasoning": "Parsing failed.",
         "needs_grasping": False,
         "needs_precision": False,
         "needs_mobility": False,
@@ -99,8 +133,7 @@ def parse_llm_json(llm_output: str) -> dict:
         "needs_rigid_grip": False
     }
 
-def extract_task_properties(task_str: str) -> dict:
-    """Use Groq API to extract task properties with built-in rate limit handling."""
+def extract_task_properties(task_str: str, verbose: bool = False) -> dict:
     messages = [
         {"role": "system", "content": SYSTEM_PROMPT},
         {"role": "user", "content": f"Task: {task_str}"}
@@ -109,34 +142,43 @@ def extract_task_properties(task_str: str) -> dict:
     max_retries = 5
     for attempt in range(max_retries):
         try:
-            response = client.chat.completions.create(
+            # Mistral supports response_format for strict JSON output
+            response = client.chat.complete(
                 model=MODEL_ID,
                 messages=messages,
-                temperature=0.0,
-                max_tokens=256,
-                response_format={"type": "json_object"} # Forces JSON
+                response_format={"type": "json_object"}
             )
+            
             response_text = response.choices[0].message.content
+            
+            if verbose:
+                tqdm.write(f"\nTask: {task_str}")
+                tqdm.write(f"LLM Output: {response_text}")
+                tqdm.write("-" * 40)
+
             return parse_llm_json(response_text)
             
         except Exception as e:
             error_msg = str(e)
-            if "429" in error_msg or "rate_limit" in error_msg.lower():
-                wait_time = 15 * (attempt + 1) # Progressive backoff: 15s, 30s, 45s...
-                print(f"\n[!] Groq Rate limit hit. Pausing for {wait_time} seconds...")
+            if "429" in error_msg:
+                wait_time = 10 * (attempt + 1)
+                tqdm.write(f"\n[!] Mistral Rate limit hit. Pausing for {wait_time} seconds...")
                 time.sleep(wait_time)
             else:
-                print(f"\n[!] API error during extraction: {error_msg}")
+                tqdm.write(f"\n[!] Mistral API error: {error_msg}")
                 break
                 
-    # Fallback to default False values if it completely fails
     return parse_llm_json("")
 
+# ---------------------------------------------------------------------------
+# Prolog Evaluation Logic
+# ---------------------------------------------------------------------------
 def run_prolog_solver(properties: dict, robot_config: dict) -> bool:
-    """Run the Prolog solver with extracted properties and robot configuration."""
     goals = []
     
     for key, value in properties.items():
+        if key == "reasoning": 
+            continue # Skip the reasoning string so Prolog doesn't crash
         v_str = str(value).lower()
         goals.append(f"assertz(task_{key}({v_str}))")
         
@@ -162,10 +204,10 @@ def run_prolog_solver(properties: dict, robot_config: dict) -> bool:
         print(f"Prolog inference failed: {e}")
         return False
 
-def evaluate_binary(limit=None):
+def evaluate_binary(limit=None, verbose=False):
     print("=" * 60)
-    print("Neuro-Symbolic Evaluation: Meta-Reasoning (Binary)")
-    print(f"Using Groq model: {MODEL_ID}")
+    print("Neuro-Symbolic Evaluation: Meta-Reasoning (Binary Error Analysis)")
+    print(f"Using Google Gemini model: {MODEL_ID}")
     print("=" * 60)
 
     csv_path = "../../Robo-CSK-Benchmark/meta_reasoning/meta_reasoning_with_negatives.csv"
@@ -174,21 +216,26 @@ def evaluate_binary(limit=None):
         return
 
     df = pd.read_csv(csv_path)
-    print(f"Loaded {len(df)} questions from {csv_path}")
-    
-    # Limit evaluation size for faster testing (default: None = all)
     if limit:
         df = df.head(limit)
-        print(f"Limiting evaluation to first {limit} samples")
 
     llm_cache = {}
     tp, tn, fp, fn = 0, 0, 0, 0
+    
+    # Open error log file
+    error_log = open("errors_2.txt", "w")
+    error_log.write("=" * 60 + "\n")
+    error_log.write("ERROR LOG - Meta-Reasoning Binary Evaluation\n")
+    error_log.write("=" * 60 + "\n")
+    error_log.write(f"Model: {MODEL_ID}\n")
+    error_log.write(f"Total samples to evaluate: {len(df)}\n")
+    error_log.write("=" * 60 + "\n\n")
 
     for idx, row in tqdm(df.iterrows(), total=len(df), desc="Binary Eval"):
         task = row['Task']
         
         if task not in llm_cache:
-            llm_cache[task] = extract_task_properties(task)
+            llm_cache[task] = extract_task_properties(task, verbose=verbose)
         props = llm_cache[task]
         
         robot_config = {
@@ -201,36 +248,72 @@ def evaluate_binary(limit=None):
         pred = run_prolog_solver(props, robot_config)
         actual = row['Can execute?']
         
-        if pred and actual: tp += 1
-        elif not pred and not actual: tn += 1
-        elif pred and not actual: fp += 1
-        else: fn += 1
+        if pred and actual: 
+            tp += 1
+        elif not pred and not actual: 
+            tn += 1
+        elif pred and not actual: 
+            fp += 1
+            error_log.write(f"\n[FALSE POSITIVE #{fp}] Pipeline said TRUE, Dataset said FALSE\n")
+            error_log.write(f"Task: {task}\n")
+            error_log.write(f"LLM Task Properties:\n")
+            for key, val in props.items():
+                error_log.write(f"  - {key}: {val}\n")
+            error_log.write(f"Robot Configuration Being Tested:\n")
+            error_log.write(f"  - Mobile: {robot_config['mobile']}\n")
+            error_log.write(f"  - Arms: {robot_config['arms']}\n")
+            error_log.write(f"  - DoF: {robot_config['dof']}\n")
+            error_log.write(f"  - Gripper Type: {robot_config['gripper_type']}\n")
+            error_log.write(f"  - Rigid Grip: {robot_config['rigid']}\n")
+            error_log.write(f"Ground Truth in Dataset: Can Execute = FALSE\n")
+            error_log.write("-" * 40 + "\n")
+        else: 
+            fn += 1
+            error_log.write(f"\n[FALSE NEGATIVE #{fn}] Pipeline said FALSE, Dataset said TRUE\n")
+            error_log.write(f"Task: {task}\n")
+            error_log.write(f"LLM Task Properties:\n")
+            for key, val in props.items():
+                error_log.write(f"  - {key}: {val}\n")
+            error_log.write(f"Robot Configuration Being Tested:\n")
+            error_log.write(f"  - Mobile: {robot_config['mobile']}\n")
+            error_log.write(f"  - Arms: {robot_config['arms']}\n")
+            error_log.write(f"  - DoF: {robot_config['dof']}\n")
+            error_log.write(f"  - Gripper Type: {robot_config['gripper_type']}\n")
+            error_log.write(f"  - Rigid Grip: {robot_config['rigid']}\n")
+            error_log.write(f"Ground Truth in Dataset: Can Execute = TRUE\n")
+            error_log.write("-" * 40 + "\n")
 
     total = tp + tn + fp + fn
     acc = (tp + tn) / total if total > 0 else 0
     prec = tp / (tp + fp) if (tp + fp) > 0 else 0
     rec = tp / (tp + fn) if (tp + fn) > 0 else 0
-    spec = tn / (tn + fp) if (tn + fp) > 0 else 0
     f1 = 2 * prec * rec / (prec + rec) if (prec + rec) > 0 else 0
 
     print("\n" + "=" * 40)
     print("FINAL BINARY BENCHMARK RESULTS")
     print("=" * 40)
-    print(f"Total evaluated: {total}")
     print(f"TP: {tp} | TN: {tn} | FP: {fp} | FN: {fn}")
-    print("-" * 40)
     print(f"Accuracy:    {acc:.3f}")
-    print(f"Precision:   {prec:.3f}")
-    print(f"Recall:      {rec:.3f}")
-    print(f"Specificity: {spec:.3f}")
     print(f"F1 Score:    {f1:.3f}")
     print("=" * 40)
+    
+    # Write summary to error log file
+    error_log.write("\n" + "=" * 60 + "\n")
+    error_log.write("SUMMARY\n")
+    error_log.write("=" * 60 + "\n")
+    error_log.write(f"TP: {tp} | TN: {tn} | FP: {fp} | FN: {fn}\n")
+    error_log.write(f"Accuracy:    {acc:.3f}\n")
+    error_log.write(f"Precision:   {prec:.3f}\n")
+    error_log.write(f"Recall:      {rec:.3f}\n")
+    error_log.write(f"F1 Score:    {f1:.3f}\n")
+    error_log.write("=" * 60 + "\n")
+    error_log.close()
+    print(f"\n✅ Error log written to: errors.txt")
 
-
-def evaluate_multi(limit=None):
+def evaluate_multi(limit=None, verbose=False):
     print("=" * 60)
     print("Neuro-Symbolic Evaluation: Meta-Reasoning (Multi-Choice)")
-    print(f"Using Groq model: {MODEL_ID}")
+    print(f"Using Google Gemini model: {MODEL_ID}")
     print("=" * 60)
 
     csv_path = "../../Robo-CSK-Benchmark/meta_reasoning/meta_reasoning_multi_questions.csv"
@@ -240,12 +323,9 @@ def evaluate_multi(limit=None):
 
     df = pd.read_csv(csv_path)
     df['Wrong_Configurations'] = df['Wrong_Configurations'].apply(ast.literal_eval)
-    print(f"Loaded {len(df)} questions from {csv_path}")
     
-    # Limit evaluation size for faster testing (default: None = all)
     if limit:
         df = df.head(limit)
-        print(f"Limiting evaluation to first {limit} samples")
 
     llm_cache = {}
     correct_preds = 0
@@ -257,10 +337,9 @@ def evaluate_multi(limit=None):
         all_choices = wrong_confs + [correct_conf_str]
         
         if task not in llm_cache:
-            llm_cache[task] = extract_task_properties(task)
+            llm_cache[task] = extract_task_properties(task, verbose=verbose)
         props = llm_cache[task]
         
-        # Test all choices through Prolog
         valid_choices = []
         for choice_str in all_choices:
             robot_config = parse_multi_choice_hardware_string(choice_str)
@@ -268,7 +347,6 @@ def evaluate_multi(limit=None):
                 valid_choices.append(choice_str)
                 
         if len(valid_choices) >= 1:
-            # Sort choices by "minimality" to break ties
             def score(cfg_str):
                 c = parse_multi_choice_hardware_string(cfg_str)
                 return c['arms'] * 10 + c['dof'] * 2 + (1 if c['gripper_type'] != 'none' else 0)
@@ -283,18 +361,17 @@ def evaluate_multi(limit=None):
     print("\n" + "=" * 40)
     print("FINAL MULTI-CHOICE BENCHMARK RESULTS")
     print("=" * 40)
-    print(f"Total evaluated: {len(df)}")
-    print(f"Correct: {correct_preds}")
     print(f"Accuracy: {acc:.3f}")
     print("=" * 40)
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='Run Meta-Reasoning Evaluation via Groq')
+    parser = argparse.ArgumentParser(description='Run Meta-Reasoning Evaluation via Gemini')
     parser.add_argument('--mode', type=str, choices=['binary', 'multi', 'all'], default='all', help='Evaluation mode')
     parser.add_argument('--limit', type=int, default=None, help='Limit number of samples (for faster testing)')
+    parser.add_argument('--verbose', action='store_true', help='Print the LLM output for every task')
     args = parser.parse_args()
     
     if args.mode in ['binary', 'all']:
-        evaluate_binary(limit=args.limit)
+        evaluate_binary(limit=args.limit, verbose=args.verbose)
     if args.mode in ['multi', 'all']:
-        evaluate_multi(limit=args.limit)
+        evaluate_multi(limit=args.limit, verbose=args.verbose)

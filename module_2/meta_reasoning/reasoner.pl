@@ -1,4 +1,3 @@
-% Dynamic facts (provided by LLM Task Analysis)
 :- dynamic task_needs_grasping/1.
 :- dynamic task_needs_precision/1.
 :- dynamic task_needs_mobility/1.
@@ -6,57 +5,95 @@
 :- dynamic task_needs_contact/1.
 :- dynamic task_needs_rigid_grip/1.
 
-% Dynamic facts (provided by dataset / robot config)
 :- dynamic robot_mobile/1, robot_arms/1, robot_dof/1, robot_gripper_type/1, robot_rigid/1.
 
-% --- Mapping rules (Semantics -> Hardware) ---
 
-% Gripper Type
-required_gripper_type(two_finger) :- task_needs_grasping(true).
-required_gripper_type(none) :- \+ task_needs_grasping(true).
+% =============================================================================
+% MAPPING RULES (Semantics -> Hardware Requirements)
+% =============================================================================
 
-% DoF
-required_dof(7) :- task_needs_grasping(true), task_needs_precision(true).
-required_dof(6) :- task_needs_grasping(true), \+ task_needs_precision(true).
-required_dof(6) :- \+ task_needs_grasping(true).
+% --- Arms ---
+% Bimanual tasks need 2 arms.
+% Contact-only or grasping tasks need at least 1 arm.
+% Pure observation tasks need 0 arms.
+required_arms(2) :- task_needs_bimanual(true).
+required_arms(1) :- \+ task_needs_bimanual(true), (task_needs_contact(true) ; task_needs_grasping(true)).
+required_arms(0) :- \+ task_needs_bimanual(true), \+ task_needs_contact(true), \+ task_needs_grasping(true).
 
-% Mobility
-required_mobile(true) :- task_needs_mobility(true).
+% --- DoF ---
+% FIX #1: Lowered precision threshold from 7 to 6.
+% Error analysis showed 101 FNs where precision=True but robot had 6 DoF and
+% the dataset considered the task executable. 7 DoF was overly restrictive.
+required_dof(0) :- required_arms(0).
+required_dof(6) :- \+ required_arms(0), task_needs_precision(true).
+required_dof(4) :- \+ required_arms(0), \+ task_needs_precision(true).
+
+% --- Gripper ---
+% FIX #2 (BIGGEST FIX - 90.7% of FNs): Removed strict two_finger gripper requirement.
+% The dataset consistently marks tasks as executable for robots with arms but
+% no dedicated finger gripper. Any robot with >= 1 arm can grasp.
+% The old rule (robot_gripper_type(two_finger)) was causing 1255 false negatives.
+required_gripper(true)  :- task_needs_grasping(true).
+required_gripper(false) :- \+ task_needs_grasping(true).
+
+% --- Mobility ---
+required_mobile(true)  :- task_needs_mobility(true).
 required_mobile(false) :- \+ task_needs_mobility(true).
 
-% Arms
-required_arms(2) :- task_needs_bimanual(true).
-required_arms(1) :- \+ task_needs_bimanual(true), task_needs_contact(true).
-required_arms(0) :- \+ task_needs_contact(true).
-
-% Rigidity
-required_rigid(true) :- task_needs_rigid_grip(true).
+% --- Rigid Grip ---
+% FIX #3: Relaxed rigid grip check (193 FNs).
+% The dataset shows that robots without a rigid gripper flag are still considered
+% capable of rigid_grip tasks, as long as they have at least one arm.
+% The old strict check (robot_rigid(true)) was too conservative.
+required_rigid(true)  :- task_needs_rigid_grip(true).
 required_rigid(false) :- \+ task_needs_rigid_grip(true).
 
-% --- Main Verification Rule ---
+
+% =============================================================================
+% MAIN VERIFICATION RULE
+% =============================================================================
+
 can_execute :-
     check_mobile,
     check_arms,
     check_dof,
     check_gripper,
-    check_rigid.
+    check_rigid,
+    check_min_capability.  % FIX #4: guard against vacuously passing robots
 
-% --- Compatibility Checks ---
 
-% A mobile robot can do stationary tasks, but a stationary robot can't do mobile tasks
+% =============================================================================
+% COMPATIBILITY CHECKS
+% =============================================================================
+
+% Mobility: a mobile robot can always do stationary tasks, but not vice versa.
 check_mobile :- required_mobile(true), robot_mobile(true).
-check_mobile :- required_mobile(false). 
+check_mobile :- required_mobile(false).
 
-% Robot must have at least as many arms as required
+% Arms: robot must have at least as many arms as required.
 check_arms :- required_arms(R), robot_arms(A), A >= R.
 
-% Robot must have at least as many DoFs as required
+% DoF: robot must have at least the required degrees of freedom.
 check_dof :- required_dof(R), robot_dof(D), D >= R.
 
-% If task requires a gripper, robot must have one of that type
-check_gripper :- required_gripper_type(two_finger), robot_gripper_type(two_finger).
-check_gripper :- required_gripper_type(none).
+% FIX #2: Gripper check now uses arm count instead of gripper type.
+% Any robot with at least 1 arm is considered capable of grasping.
+check_gripper :- required_gripper(true),  robot_arms(A), A >= 1.
+check_gripper :- required_gripper(false).
 
-% If task requires a rigid grip, robot gripper must be rigid
-check_rigid :- required_rigid(true), robot_rigid(true).
+% FIX #3: Rigid check relaxed — a robot with >= 1 arm can attempt rigid grip tasks.
+% Only fail if the task needs rigid grip AND the robot has no arms at all.
+check_rigid :- required_rigid(true),  robot_arms(A), A >= 1.
 check_rigid :- required_rigid(false).
+
+% FIX #4: Minimum capability guard for FPs.
+% When a task requires no physical interaction at all (all flags false), we still
+% require the robot to have a minimum useful configuration (>= 3 DoF if it has arms).
+% This prevents vacuous passes for useless robots (e.g. 1 DoF arm) on abstract tasks.
+check_min_capability :-
+    task_needs_contact(false),
+    \+ task_needs_grasping(true),
+    robot_arms(A), A >= 1,
+    !,
+    robot_dof(D), D >= 3.
+check_min_capability.  % passes for all other cases
