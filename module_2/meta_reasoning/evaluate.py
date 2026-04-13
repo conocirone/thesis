@@ -17,15 +17,13 @@ api_key = os.environ.get("MISTRAL_API_KEY")
 MODEL_ID = "mistral-large-latest"
 
 if not api_key:
-    print("Error: Could not find your API key. Did you set the GEMINI_API_KEY environment variable?")
+    print("Error: Could not find your API key. Did you set the MISTRAL_API_KEY environment variable?")
     sys.exit(1)
 
-# Initialize the Gemini client
+
 client = Mistral(api_key=api_key)
 
-# ---------------------------------------------------------------------------
-# Prompts & Parsing Logic
-# ---------------------------------------------------------------------------
+
 SYSTEM_PROMPT = """
 You are an expert robot motion planner.
 Your job is to analyze a natural language household task and answer 6 specific Yes/No questions about its physical requirements.
@@ -167,7 +165,6 @@ def extract_task_properties(task_str: str, verbose: bool = False) -> dict:
     max_retries = 5
     for attempt in range(max_retries):
         try:
-            # Mistral supports response_format for strict JSON output
             response = client.chat.complete(
                 model=MODEL_ID,
                 messages=messages,
@@ -195,9 +192,6 @@ def extract_task_properties(task_str: str, verbose: bool = False) -> dict:
                 
     return parse_llm_json("")
 
-# ---------------------------------------------------------------------------
-# Prolog Evaluation Logic
-# ---------------------------------------------------------------------------
 def run_prolog_solver(properties: dict, robot_config: dict, strict: bool = False) -> bool:
     goals = []
     
@@ -342,7 +336,7 @@ def evaluate_binary(limit=None, verbose=False, output_file="results_binary.txt")
     error_log.write(f"F1 Score:    {f1:.3f}\n")
     error_log.write("=" * 60 + "\n")
     error_log.close()
-    print(f"\n✅ Error log written to: errors.txt")
+    print(f"\n Error log written to: errors.txt")
 
 def evaluate_multi(limit=None, verbose=False, output_file="results_multi.txt"):
     print("=" * 60)
@@ -492,7 +486,7 @@ def evaluate_multi(limit=None, verbose=False, output_file="results_multi.txt"):
     print(f"  Wrong (picked wrong config): {error_count - no_valid_count}")
     print(f"  Wrong (no config passed): {no_valid_count}")
     print("=" * 40)
-    print(f"\n✅ Result log written to: {output_file}")
+    print(f"\nResult log written to: {output_file}")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Run Meta-Reasoning Evaluation via Gemini')

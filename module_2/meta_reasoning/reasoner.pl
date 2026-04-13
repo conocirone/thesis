@@ -8,31 +8,17 @@
 :- dynamic robot_mobile/1, robot_arms/1, robot_dof/1, robot_gripper_type/1, robot_rigid/1.
 
 
-% =============================================================================
-% MAPPING RULES (Semantics -> Hardware Requirements)
-% =============================================================================
-
 % --- Arms ---
-% Bimanual tasks need 2 arms.
-% Contact-only or grasping tasks need at least 1 arm.
-% Pure observation tasks need 0 arms.
 required_arms(2) :- task_needs_bimanual(true).
 required_arms(1) :- \+ task_needs_bimanual(true), (task_needs_contact(true) ; task_needs_grasping(true)).
 required_arms(0) :- \+ task_needs_bimanual(true), \+ task_needs_contact(true), \+ task_needs_grasping(true).
 
 % --- DoF ---
-% FIX #1: Lowered precision threshold from 7 to 6.
-% Error analysis showed 101 FNs where precision=True but robot had 6 DoF and
-% the dataset considered the task executable. 7 DoF was overly restrictive.
 required_dof(0) :- required_arms(0).
 required_dof(6) :- \+ required_arms(0), task_needs_precision(true).
 required_dof(4) :- \+ required_arms(0), \+ task_needs_precision(true).
 
 % --- Gripper ---
-% FIX #2 (BIGGEST FIX - 90.7% of FNs): Removed strict two_finger gripper requirement.
-% The dataset consistently marks tasks as executable for robots with arms but
-% no dedicated finger gripper. Any robot with >= 1 arm can grasp.
-% The old rule (robot_gripper_type(two_finger)) was causing 1255 false negatives.
 required_gripper(true)  :- task_needs_grasping(true).
 required_gripper(false) :- \+ task_needs_grasping(true).
 

@@ -21,6 +21,15 @@
 :- dynamic step_a_is_final/1, step_b_is_final/1.
 :- dynamic step_a_transforms_state/1, step_b_transforms_state/1.
 :- dynamic step_a_depends_on_b/1, step_b_depends_on_a/1.
+:- dynamic step_a_belongs_to_recipe/1, step_b_belongs_to_recipe/1.
+
+% -----------------------------------------------------------
+% Gate: if a step doesn't belong to the recipe, reject ordering
+% (used to filter distractor steps from other recipes).
+% -----------------------------------------------------------
+valid_steps :-
+    step_a_belongs_to_recipe(true),
+    step_b_belongs_to_recipe(true).
 
 % -----------------------------------------------------------
 % Phase ordering hierarchy (more granular cooking phases)
@@ -44,6 +53,7 @@ phase_order(serving, 11).    % Plating, serving, presenting
 % comes first.
 % -----------------------------------------------------------
 comes_before :-
+    valid_steps,
     step_a_phase(PA), step_b_phase(PB),
     phase_order(PA, OA), phase_order(PB, OB),
     OA < OB.
@@ -54,6 +64,7 @@ comes_before :-
 % (e.g., "cook pasta" before "mix pasta with sauce")
 % -----------------------------------------------------------
 comes_before :-
+    valid_steps,
     step_b_depends_on_a(true).
 
 % -----------------------------------------------------------
@@ -68,6 +79,7 @@ comes_before :-
 % A non-final step always comes before a final step.
 % -----------------------------------------------------------
 comes_before :-
+    valid_steps,
     step_a_is_final(false), step_b_is_final(true).
 
 % -----------------------------------------------------------
@@ -76,6 +88,7 @@ comes_before :-
 % comes before one that does (e.g., prep ingredients, then cook).
 % -----------------------------------------------------------
 comes_before :-
+    valid_steps,
     step_a_phase(PA), step_b_phase(PB), PA == PB,
     step_a_requires_heat(false), step_b_requires_heat(true).
 
@@ -85,5 +98,6 @@ comes_before :-
 % comes before one that does (indicates progression).
 % -----------------------------------------------------------
 comes_before :-
+    valid_steps,
     step_a_phase(PA), step_b_phase(PB), PA == PB,
     step_a_transforms_state(false), step_b_transforms_state(true).

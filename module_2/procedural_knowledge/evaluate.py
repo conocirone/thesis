@@ -162,6 +162,7 @@ def extract_step_properties(title, step_a, step_b, verbose=False):
                     {"role": "system", "content": SYSTEM_PROMPT.strip()},
                     {"role": "user", "content": user_message},
                 ],
+                response_format={"type": "json_object"},
                 temperature=0.0,
             )
             raw = response.choices[0].message.content.strip()
@@ -201,17 +202,18 @@ def extract_step_properties(title, step_a, step_b, verbose=False):
         except Exception as e:
             if verbose:
                 print(f"  ⚠ Attempt {attempt+1} API error: {e}")
-            time.sleep(2)
+            # Basic backoff (handles occasional 429s)
+            time.sleep(2 * (attempt + 1))
 
     # Fallback: return neutral properties
     return {
         "reasoning": "Parsing failed.",
         "step_a": {"cooking_phase": "prep", "requires_heat": False,
                    "is_final_step": False, "transforms_state": False,
-                   "depends_on_other": False},
+                   "depends_on_other": False, "belongs_to_recipe": True},
         "step_b": {"cooking_phase": "cooking", "requires_heat": True,
                    "is_final_step": False, "transforms_state": True,
-                   "depends_on_other": True},
+                   "depends_on_other": True, "belongs_to_recipe": True},
     }
 
 
@@ -237,6 +239,7 @@ def run_prolog_temporal(props):
     goals.append(f"assertz(step_a_is_final({str(step_a.get('is_final_step', False)).lower()}))")
     goals.append(f"assertz(step_a_transforms_state({str(step_a.get('transforms_state', False)).lower()}))")
     goals.append(f"assertz(step_a_depends_on_b({str(step_a.get('depends_on_other', False)).lower()}))")
+    goals.append(f"assertz(step_a_belongs_to_recipe({str(step_a.get('belongs_to_recipe', True)).lower()}))")
 
     # Assert step_b properties
     goals.append(f"assertz(step_b_phase({step_b.get('cooking_phase', 'cooking')}))")
@@ -244,6 +247,7 @@ def run_prolog_temporal(props):
     goals.append(f"assertz(step_b_is_final({str(step_b.get('is_final_step', False)).lower()}))")
     goals.append(f"assertz(step_b_transforms_state({str(step_b.get('transforms_state', False)).lower()}))")
     goals.append(f"assertz(step_b_depends_on_a({str(step_b.get('depends_on_other', False)).lower()}))")
+    goals.append(f"assertz(step_b_belongs_to_recipe({str(step_b.get('belongs_to_recipe', True)).lower()}))")
 
     # Query
     goals.append("(comes_before -> write(true) ; write(false))")
@@ -505,6 +509,7 @@ def llm_select_option(title, reference_step, options, temporal="before", verbose
                     {"role": "system", "content": system.strip()},
                     {"role": "user", "content": user_msg},
                 ],
+                response_format={"type": "json_object"},
                 temperature=0.0,
             )
             raw = response.choices[0].message.content.strip()
@@ -538,7 +543,7 @@ def llm_select_option(title, reference_step, options, temporal="before", verbose
         except Exception as e:
             if verbose:
                 print(f"  ⚠ Attempt {attempt+1} error: {e}")
-            time.sleep(1)
+            time.sleep(2 * (attempt + 1))
 
     return None, "LLM selection failed"
 
