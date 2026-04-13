@@ -2,15 +2,15 @@
 RESULT LOG - Procedural Knowledge Binary Evaluation
 ============================================================
 Model: mistral-large-latest
-Total recipes: 10
-Total questions: 40
+Total recipes: 776
+Total questions: 3104
 ============================================================
 
 
 ============================================================
 SUMMARY
 ============================================================
-TP: 20 | TN: 20 | FP: 0 | FN: 0
+TP: 1552 | TN: 1552 | FP: 0 | FN: 0
 Accuracy:    1.000
 Precision:   1.000
 Recall:      1.000
