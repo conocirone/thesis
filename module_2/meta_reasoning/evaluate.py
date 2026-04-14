@@ -17,11 +17,10 @@ api_key = os.environ.get("MISTRAL_API_KEY")
 MODEL_ID = "mistral-large-latest"
 
 if not api_key:
-    print("Error: Could not find your API key. Did you set the MISTRAL_API_KEY environment variable?")
-    sys.exit(1)
-
-
-client = Mistral(api_key=api_key)
+    print("Warning: MISTRAL_API_KEY not set. Neural components will fail.")
+    client = None
+else:
+    client = Mistral(api_key=api_key)
 
 
 SYSTEM_PROMPT = """
@@ -156,9 +155,71 @@ def parse_llm_json(llm_output: str) -> dict:
         "needs_rigid_grip": False
     }
 
-def extract_task_properties(task_str: str, verbose: bool = False) -> dict:
+def keyword_extract_task_properties(task_str: str) -> dict:
+    t = task_str.lower()
+    return {
+        "reasoning": "Keyword logic mapper",
+        "needs_grasping": any(w in t for w in ["bring", "pick up", "get", "grab", "wrap", "slice"]),
+        "needs_precision": any(w in t for w in ["insert", "thread", "screw", "key"]),
+        "needs_mobility": any(w in t for w in ["go to", "move to", "navigate"]), 
+        "needs_bimanual": any(w in t for w in ["tear", "wring", "bend"]),
+        "needs_contact": any(w in t for w in ["adjust", "push", "touch", "arrange", "slice", "cut", "bring", "wrap"]),
+        "needs_rigid_grip": any(w in t for w in ["cut", "slice", "chop"])
+    }
+
+def pure_llm_binary_predict(task_str: str, robot_config: dict, verbose: bool = False) -> bool:
+    system = """You are an expert robot motion planner. 
+Given a task and a robot configuration, output a JSON {'can_execute': true} or {'can_execute': false}.
+Do not output anything else."""
+    msg = f"Task: {task_str}\nRobot Configuration: {robot_config}"
+    for attempt in range(5):
+        try:
+            response = client.chat.complete(
+                model=MODEL_ID, messages=[{"role": "system", "content": system}, {"role": "user", "content": msg}],
+                response_format={"type": "json_object"}, temperature=0.0
+            )
+            return json.loads(response.choices[0].message.content).get("can_execute", False)
+        except Exception as e:
+            if "429" in str(e): time.sleep(10 * (attempt + 1))
+            else: break
+    return False
+
+def pure_llm_multi_predict(task_str: str, configs: list, verbose: bool = False) -> str:
+    system = """You are an expert robot motion planner.
+Given a task and a list of alternative valid robot hardware configurations, you must select the MOST CAPABLE viable configuration.
+Higher DoFs, more arms, and mobility typically imply higher capability.
+Output a JSON: {'selected_config': '<exact string>'}"""
+    msg = f"Task: {task_str}\nConfigurations:\n" + "\n".join(configs)
+    for attempt in range(5):
+        try:
+            response = client.chat.complete(
+                model=MODEL_ID, messages=[{"role": "system", "content": system}, {"role": "user", "content": msg}],
+                response_format={"type": "json_object"}, temperature=0.0
+            )
+            raw = json.loads(response.choices[0].message.content).get("selected_config", "")
+            for c in configs:
+                if c.lower() == raw.lower(): return c
+            
+            # Fuzzy fallback
+            for c in configs:
+                if c.lower() in raw.lower() or raw.lower() in c.lower(): return c
+            
+            return configs[0] if configs else ""
+        except Exception as e:
+            if "429" in str(e): time.sleep(10 * (attempt + 1))
+            else: break
+    return configs[0] if configs else ""
+
+def extract_task_properties(task_str: str, verbose: bool = False, ablation: str = "none") -> dict:
+    if ablation == "pure_logic": return keyword_extract_task_properties(task_str)
+    
+    sys_prompt = SYSTEM_PROMPT.strip()
+    if ablation == "no_cot":
+        sys_prompt = sys_prompt.replace('First, provide a brief 1-sentence rationale in the "reasoning" key. Then, output the 6 booleans.\n\n', '')
+        sys_prompt = re.sub(r'\s*"reasoning":.*?,', '', sys_prompt)
+
     messages = [
-        {"role": "system", "content": SYSTEM_PROMPT},
+        {"role": "system", "content": sys_prompt},
         {"role": "user", "content": f"Task: {task_str}"}
     ]
     
@@ -225,11 +286,18 @@ def run_prolog_solver(properties: dict, robot_config: dict, strict: bool = False
         print(f"Prolog inference failed: {e}")
         return False
 
-def evaluate_binary(limit=None, verbose=False, output_file="results_binary.txt"):
+def evaluate_binary(limit=None, verbose=False, output_file="results_binary.txt", ablation="none"):
     print("=" * 60)
     print("Neuro-Symbolic Evaluation: Meta-Reasoning (Binary Error Analysis)")
     print(f"Using Google Gemini model: {MODEL_ID}")
+    print(f"Ablation Mode: {ablation}")
     print("=" * 60)
+
+    if ablation != "none":
+        name, ext = os.path.splitext(output_file)
+        if ext == '':
+            ext = '.txt'
+        output_file = f"{name}_ablation_{ablation}{ext}"
 
     csv_path = "../../Robo-CSK-Benchmark/meta_reasoning/meta_reasoning_with_negatives.csv"
     if not os.path.exists(csv_path):
@@ -256,9 +324,12 @@ def evaluate_binary(limit=None, verbose=False, output_file="results_binary.txt")
     for idx, row in tqdm(df.iterrows(), total=len(df), desc="Binary Eval"):
         task = row['Task']
         
-        if task not in llm_cache:
-            llm_cache[task] = extract_task_properties(task, verbose=verbose)
-        props = llm_cache[task]
+        if ablation == "pure_llm":
+            props = {"reasoning": "Pure LLM ablation active."}
+        else:
+            if task not in llm_cache:
+                llm_cache[task] = extract_task_properties(task, verbose=verbose, ablation=ablation)
+            props = llm_cache[task]
         
         robot_config = {
             'mobile': row['Mobile?'],
@@ -267,7 +338,10 @@ def evaluate_binary(limit=None, verbose=False, output_file="results_binary.txt")
             'gripper_type': map_gripper_config(row['Gripper Config']),
             'rigid': row['Rigid Gripper?']
         }
-        pred = run_prolog_solver(props, robot_config)
+        if ablation == "pure_llm":
+            pred = pure_llm_binary_predict(task, robot_config, verbose=verbose)
+        else:
+            pred = run_prolog_solver(props, robot_config)
         actual = row['Can execute?']
         
         if pred and actual: 
@@ -338,11 +412,18 @@ def evaluate_binary(limit=None, verbose=False, output_file="results_binary.txt")
     error_log.close()
     print(f"\n Error log written to: errors.txt")
 
-def evaluate_multi(limit=None, verbose=False, output_file="results_multi.txt"):
+def evaluate_multi(limit=None, verbose=False, output_file="results_multi.txt", ablation="none"):
     print("=" * 60)
     print("Neuro-Symbolic Evaluation: Meta-Reasoning (Multi-Choice)")
     print(f"Using Google Gemini model: {MODEL_ID}")
+    print(f"Ablation Mode: {ablation}")
     print("=" * 60)
+
+    if ablation != "none":
+        name, ext = os.path.splitext(output_file)
+        if ext == '':
+            ext = '.txt'
+        output_file = f"{name}_ablation_{ablation}{ext}"
 
     csv_path = "../../Robo-CSK-Benchmark/meta_reasoning/meta_reasoning_multi_questions.csv"
     if not os.path.exists(csv_path):
@@ -397,9 +478,12 @@ def evaluate_multi(limit=None, verbose=False, output_file="results_multi.txt"):
         wrong_confs = row['Wrong_Configurations']
         all_choices = wrong_confs + [correct_conf_str]
         
-        if task not in llm_cache:
-            llm_cache[task] = extract_task_properties(task, verbose=verbose)
-        props = llm_cache[task]
+        if ablation == "pure_llm":
+            props = {"reasoning": "Pure LLM ablation active"}
+        else:
+            if task not in llm_cache:
+                llm_cache[task] = extract_task_properties(task, verbose=verbose, ablation=ablation)
+            props = llm_cache[task]
         
         valid_choices = []
         config_results = [] 
@@ -419,7 +503,17 @@ def evaluate_multi(limit=None, verbose=False, output_file="results_multi.txt"):
         
         best_choice = None
         is_correct_pred = False
-        if len(valid_choices) >= 1:
+        
+        if ablation == "pure_llm":
+            # Just directly pipe all choices to LLM and trust it
+            best_choice = pure_llm_multi_predict(task, all_choices, verbose=verbose)
+            if best_choice == correct_conf_str:
+                correct_preds += 1
+                is_correct_pred = True
+            else:
+                error_count += 1
+                
+        elif len(valid_choices) >= 1:
             # Pick the MOST capable valid config (highest score)
             valid_choices.sort(key=lambda cfg: score(cfg, props), reverse=True)
             best_choice = valid_choices[0]
@@ -493,10 +587,11 @@ if __name__ == "__main__":
     parser.add_argument('--mode', type=str, choices=['binary', 'multi', 'all'], default='all', help='Evaluation mode')
     parser.add_argument('--limit', type=int, default=None, help='Limit number of samples (for faster testing)')
     parser.add_argument('--verbose', action='store_true', help='Print the LLM output for every task')
-    parser.add_argument('--output_file', type=str, default="./results/results_binary.txt", help='Output file for results')
+    parser.add_argument('--output_file', type=str, default="./results/results.txt", help='Output file for results')
+    parser.add_argument('--ablation', type=str, choices=['none', 'pure_llm', 'pure_logic', 'no_cot'], default='none', help='Ablation mode')
     args = parser.parse_args()
     
     if args.mode in ['binary', 'all']:
-        evaluate_binary(limit=args.limit, verbose=args.verbose)
+        evaluate_binary(limit=args.limit, verbose=args.verbose, output_file=args.output_file.replace('.txt', '_binary.txt') if 'results.txt' in args.output_file else args.output_file, ablation=args.ablation)
     if args.mode in ['multi', 'all']:
-        evaluate_multi(limit=args.limit, verbose=args.verbose)
+        evaluate_multi(limit=args.limit, verbose=args.verbose, output_file=args.output_file.replace('.txt', '_multi.txt') if 'results.txt' in args.output_file else args.output_file, ablation=args.ablation)

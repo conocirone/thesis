@@ -14,10 +14,10 @@ api_key = os.environ.get("MISTRAL_API_KEY")
 MODEL_ID = "mistral-large-latest"
 
 if not api_key:
-    print("Error: Could not find your API key. Did you set the MISTRAL_API_KEY environment variable?")
-    sys.exit(1)
-
-client = Mistral(api_key=api_key)
+    print("Warning: MISTRAL_API_KEY not set. Neural components will fail.")
+    client = None
+else:
+    client = Mistral(api_key=api_key)
 
 SYSTEM_PROMPT = """
 You are an expert chef and culinary analyst.
@@ -138,9 +138,65 @@ Meal: Meatballs With Orzo and Italian Vegetables
 }
 """
 
-def extract_meal_properties(meal_str: str, verbose: bool = False) -> dict:
+def keyword_extract_meal_properties(meal_str: str) -> dict:
+    meal = meal_str.lower()
+    return {
+        "reasoning": "Keyword matching.",
+        "is_soup_or_broth": any(k in meal for k in ["soup", "broth", "stew"]),
+        "is_handheld_food": any(k in meal for k in ["burger", "sandwich", "taco", "pizza", "wrap", "wings"]),
+        "needs_cutting": any(k in meal for k in ["steak", "chop", "breast", "roast", "pork"]),
+        "is_asian_cuisine": any(k in meal for k in ["sushi", "ramen", "udon", "pho", "pad thai", "dumpling", "stir-fry"]),
+        "is_long_noodles": any(k in meal for k in ["spaghetti", "linguine", "ramen", "noodle"]),
+        "has_sauce_or_small_pieces": any(k in meal for k in ["rice", "beans", "peas", "curry", "chili"]),
+        "is_dessert": any(k in meal for k in ["cake", "pie", "brownie", "pudding", "ice cream"]),
+        "is_skewer_food": any(k in meal for k in ["skewer", "kebab", "stick"]),
+        "is_tongs_food": any(k in meal for k in ["salad"])
+    }
+
+def pure_llm_predict_table_setting(meal_str: str, verbose: bool = False) -> tuple:
+    system = """You are an expert chef. Evaluate the given meal and directly predict the required Cutlery and Plate.
+Options for Cutlery: Hands, Tongs, Knife, Fork, Skewer, Chopsticks, Spoon.
+Options for Plate: Dinner Plate, Dessert Plate, Bowl, Coupe Plate.
+
+Important: Output a JSON dictionary with strictly these keys:
+{
+    "cutlery": ["List", "of", "cutlery"],
+    "plate": "Single plate string"
+}
+Output nothing else."""
+    
     messages = [
-        {"role": "system", "content": SYSTEM_PROMPT.strip()},
+        {"role": "system", "content": system},
+        {"role": "user", "content": f"Meal: {meal_str}"}
+    ]
+    for attempt in range(5):
+        try:
+            response = client.chat.complete(
+                model=MODEL_ID, messages=messages, response_format={"type": "json_object"}, temperature=0.0
+            )
+            raw = response.choices[0].message.content.strip()
+            res = json.loads(raw)
+            cutlery = set(c.title() for c in res.get("cutlery", []))
+            plate = str(res.get("plate", "")).title()
+            return cutlery, plate
+        except Exception as e:
+            if "429" in str(e):
+                time.sleep(10 * (attempt + 1))
+            else:
+                time.sleep(2)
+    return set(), "Dinner Plate"
+
+def extract_meal_properties(meal_str: str, verbose: bool = False, ablation: str = "none") -> dict:
+    if ablation == "pure_logic":
+        return keyword_extract_meal_properties(meal_str)
+
+    sys_prompt = SYSTEM_PROMPT.strip()
+    if ablation == "no_cot":
+        sys_prompt = sys_prompt.replace('First provide a 1-sentence "reasoning", then output the boolean constraints.\n\n', '')
+        sys_prompt = re.sub(r'\s*"reasoning":.*?,', '', sys_prompt)
+
+    messages = [
+        {"role": "system", "content": sys_prompt},
         {"role": "user", "content": f"Meal: {meal_str}"}
     ]
     
@@ -219,11 +275,16 @@ def run_prolog_solver(props: dict) -> tuple:
         print(f"Prolog inference failed: {e}")
         return set(), "Dinner Plate"
 
-def evaluate(verbose=False, output_file="results_table_setting.txt"):
+def evaluate(verbose=False, output_file="results_table_setting.txt", ablation="none"):
     print("=" * 60)
     print("Neuro-Symbolic Evaluation: Table Setting")
     print(f"Using model: {MODEL_ID}")
+    print(f"Ablation Mode: {ablation}")
     print("=" * 60)
+    
+    if ablation != "none":
+        name, ext = os.path.splitext(output_file)
+        output_file = f"{name}_ablation_{ablation}{ext}"
     
     current_dir = os.path.dirname(os.path.abspath(__file__))
     csv_path = os.path.join(current_dir, "../../Robo-CSK-Benchmark/table_setting/combined_prolific_data.csv")
@@ -265,12 +326,14 @@ def evaluate(verbose=False, output_file="results_table_setting.txt"):
         plate_votes = {p: row[p] for p in plate_options}
         gt_plate = format_name(max(plate_votes, key=plate_votes.get))
         
-        # Run Pipeline
-        if meal not in llm_cache:
-            llm_cache[meal] = extract_meal_properties(meal, verbose=verbose)
-        props = llm_cache[meal]
-        
-        pred_cutlery, pred_plate = run_prolog_solver(props)
+        if ablation == "pure_llm":
+            pred_cutlery, pred_plate = pure_llm_predict_table_setting(meal, verbose=verbose)
+            props = {"reasoning": "Pure LLM ablation active."}
+        else:
+            if meal not in llm_cache:
+                llm_cache[meal] = extract_meal_properties(meal, verbose=verbose, ablation=ablation)
+            props = llm_cache[meal]
+            pred_cutlery, pred_plate = run_prolog_solver(props)
         
         # Plate Score
         is_plate_correct = (pred_plate == gt_plate)
@@ -317,6 +380,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Run Table Setting Evaluation')
     parser.add_argument('--verbose', action='store_true', help='Print the LLM output for every task')
     parser.add_argument('--output_file', type=str, default="results_table_setting.txt", help='Output file for results')
+    parser.add_argument('--ablation', type=str, choices=['none', 'pure_llm', 'pure_logic', 'no_cot'], default='none', help='Ablation mode')
     args = parser.parse_args()
     
-    evaluate(verbose=args.verbose, output_file=args.output_file)
+    evaluate(verbose=args.verbose, output_file=args.output_file, ablation=args.ablation)

@@ -27,10 +27,6 @@ required_mobile(true)  :- task_needs_mobility(true).
 required_mobile(false) :- \+ task_needs_mobility(true).
 
 % --- Rigid Grip ---
-% FIX #3: Relaxed rigid grip check (193 FNs).
-% The dataset shows that robots without a rigid gripper flag are still considered
-% capable of rigid_grip tasks, as long as they have at least one arm.
-% The old strict check (robot_rigid(true)) was too conservative.
 required_rigid(true)  :- task_needs_rigid_grip(true).
 required_rigid(false) :- \+ task_needs_rigid_grip(true).
 
@@ -45,7 +41,7 @@ can_execute :-
     check_dof,
     check_gripper,
     check_rigid,
-    check_min_capability.  % FIX #4: guard against vacuously passing robots
+    check_min_capability.  
 
 
 % =============================================================================
@@ -62,8 +58,6 @@ check_arms :- required_arms(R), robot_arms(A), A >= R.
 % DoF: robot must have at least the required degrees of freedom.
 check_dof :- required_dof(R), robot_dof(D), D >= R.
 
-% FIX #2: Gripper check now uses arm count instead of gripper type.
-% Any robot with at least 1 arm is considered capable of grasping.
 check_gripper :- required_gripper(true),  robot_arms(A), A >= 1.
 check_gripper :- required_gripper(false).
 

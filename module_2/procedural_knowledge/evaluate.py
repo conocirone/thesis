@@ -14,10 +14,10 @@ api_key = os.environ.get("MISTRAL_API_KEY")
 MODEL_ID = "mistral-large-latest"
 
 if not api_key:
-    print("Error: Could not find your API key. Did you set the MISTRAL_API_KEY environment variable?")
-    sys.exit(1)
-
-client = Mistral(api_key=api_key)
+    print("Warning: MISTRAL_API_KEY not set. Neural components will fail.")
+    client = None
+else:
+    client = Mistral(api_key=api_key)
 
 # ---------------------------------------------------------------------------
 # Prompts & Parsing Logic
@@ -150,8 +150,52 @@ Step B: Chill for several hours
 """
 
 
-def extract_step_properties(title, step_a, step_b, verbose=False):
+def keyword_extract_step_properties(title: str, step_a: str, step_b: str) -> dict:
+    def guess(step_str):
+        s = step_str.lower()
+        if any(w in s for w in ["serve", "plate", "garnish"]):
+            phase = "serving"
+        elif any(w in s for w in ["bake", "fry", "cook", "boil", "simmer", "roast", "grill"]):
+            phase = "cooking"
+        elif any(w in s for w in ["mix", "stir", "whisk", "combine", "blend", "add"]):
+            phase = "mixing"
+        elif any(w in s for w in ["cool", "chill", "freeze", "refrigerate"]):
+            phase = "cooling"
+        else:
+            phase = "prep"
+        return {
+            "cooking_phase": phase,
+            "requires_heat": phase == "cooking",
+            "is_final_step": phase == "serving",
+            "transforms_state": phase in ["cooking", "cooling"],
+            "depends_on_other": False,
+            "belongs_to_recipe": True
+        }
+    return {"reasoning": "Keyword logic mapper", "step_a": guess(step_a), "step_b": guess(step_b)}
+
+def pure_llm_temporal_predict(title: str, step_a: str, step_b: str, verbose: bool = False) -> bool:
+    system = "You are an expert chef. Evaluate if step A strictly comes BEFORE step B in the context of the recipe. Return pure JSON: {'a_before_b': true} or {'a_before_b': false}."
+    for attempt in range(3):
+        try:
+            response = client.chat.complete(
+                model=MODEL_ID, messages=[{"role": "system", "content": system}, {"role": "user", "content": f"Recipe: {title}\nStep A: {step_a}\nStep B: {step_b}"}],
+                response_format={"type": "json_object"}, temperature=0.0
+            )
+            return json.loads(response.choices[0].message.content).get("a_before_b", False)
+        except Exception as e:
+            if "429" in str(e): time.sleep(10 * (attempt + 1))
+            else: break
+    return False
+
+def extract_step_properties(title, step_a, step_b, verbose=False, ablation="none"):
     """Call Mistral to extract semantic properties for two recipe steps."""
+    if ablation == "pure_logic": return keyword_extract_step_properties(title, step_a, step_b)
+    
+    sys_prompt = SYSTEM_PROMPT.strip()
+    if ablation == "no_cot":
+        sys_prompt = sys_prompt.replace('"reasoning": "<1-2 sentence explanation of the temporal relationship>",\n', "")
+        sys_prompt = re.sub(r'\s*"reasoning":.*?,', '', sys_prompt)
+
     user_message = f"Recipe: {title}\nStep A: {step_a}\nStep B: {step_b}"
 
     for attempt in range(3):
@@ -295,11 +339,18 @@ def run_prolog_temporal_swapped(props):
 # ---------------------------------------------------------------------------
 # Binary Evaluation
 # ---------------------------------------------------------------------------
-def evaluate_binary(limit=None, verbose=False, output_file="results/results_binary.txt"):
+def evaluate_binary(limit=None, verbose=False, output_file="results/results_binary.txt", ablation="none"):
     print("=" * 60)
     print("Neuro-Symbolic Evaluation: Procedural Knowledge (Binary)")
     print(f"Using model: {MODEL_ID}")
+    print(f"Ablation Mode: {ablation}")
     print("=" * 60)
+
+    if ablation != "none":
+        name, ext = os.path.splitext(output_file)
+        if ext == '':
+            ext = '.txt'
+        output_file = f"{name}_ablation_{ablation}{ext}"
 
     data_dir = "../../Robo-CSK-Benchmark/procedural_knowledge/data_generation/question_components_binary"
     if not os.path.exists(data_dir):
@@ -341,12 +392,15 @@ def evaluate_binary(limit=None, verbose=False, output_file="results/results_bina
 
         # Cache key: (title, step_1, step_2) — one LLM call per recipe
         cache_key = (title, step_1, step_2)
-        if cache_key not in llm_cache:
-            llm_cache[cache_key] = extract_step_properties(title, step_1, step_2, verbose=verbose)
-        props = llm_cache[cache_key]
-
-        # Prolog determines: does step_1 (=step_a) come before step_2 (=step_b)?
-        a_before_b = run_prolog_temporal(props)
+        if ablation == "pure_llm":
+            a_before_b = pure_llm_temporal_predict(title, step_1, step_2, verbose=verbose)
+            props = {"reasoning": "Pure LLM abbreviation active"}
+        else:
+            if cache_key not in llm_cache:
+                llm_cache[cache_key] = extract_step_properties(title, step_1, step_2, verbose=verbose, ablation=ablation)
+            props = llm_cache[cache_key]
+            # Prolog determines: does step_1 (=step_a) come before step_2 (=step_b)?
+            a_before_b = run_prolog_temporal(props)
 
         # Generate 4 questions from this single LLM call + Prolog query:
         # Q1: "Did step_1 occur before step_2?" -> ground_truth=Yes, prediction based on a_before_b
@@ -551,11 +605,18 @@ def llm_select_option(title, reference_step, options, temporal="before", verbose
 # ---------------------------------------------------------------------------
 # Multi-Choice Evaluation (Hybrid: LLM Direct Pick + Prolog Validation)
 # ---------------------------------------------------------------------------
-def evaluate_multi(limit=None, verbose=False, output_file="results/results_multi.txt"):
+def evaluate_multi(limit=None, verbose=False, output_file="results/results_multi.txt", ablation="none"):
     print("=" * 60)
     print("Neuro-Symbolic Evaluation: Procedural Knowledge (Multi-Choice)")
     print(f"Using model: {MODEL_ID}")
+    print(f"Ablation Mode: {ablation}")
     print("=" * 60)
+
+    if ablation != "none":
+        name, ext = os.path.splitext(output_file)
+        if ext == '':
+            ext = '.txt'
+        output_file = f"{name}_ablation_{ablation}{ext}"
 
     data_dir = "../../Robo-CSK-Benchmark/procedural_knowledge/data_generation/question_components_multi"
     if not os.path.exists(data_dir):
@@ -630,15 +691,17 @@ def evaluate_multi(limit=None, verbose=False, output_file="results/results_multi
         prolog_validated = False
         prolog_details = []
 
-        if llm_pick:
+        if llm_pick and ablation != "pure_llm":
             cache_key = (title, llm_pick, step_2)
             if cache_key not in llm_cache:
-                llm_cache[cache_key] = extract_step_properties(title, llm_pick, step_2, verbose=verbose)
+                llm_cache[cache_key] = extract_step_properties(title, llm_pick, step_2, verbose=verbose, ablation=ablation)
             pick_props = llm_cache[cache_key]
             prolog_validated = run_prolog_temporal(pick_props)
-
+        elif ablation == "pure_llm":
+            prolog_validated = True # Bypass prolog validation
+        
         # If Prolog rejects the LLM pick, fall back to Prolog-based scoring
-        if not prolog_validated:
+        if not prolog_validated and ablation != "pure_llm":
             best_fallback = None
             best_fallback_score = -1
             for opt in before_options:
@@ -646,7 +709,7 @@ def evaluate_multi(limit=None, verbose=False, output_file="results/results_multi
                     continue
                 cache_key = (title, opt, step_2)
                 if cache_key not in llm_cache:
-                    llm_cache[cache_key] = extract_step_properties(title, opt, step_2, verbose=verbose)
+                    llm_cache[cache_key] = extract_step_properties(title, opt, step_2, verbose=verbose, ablation=ablation)
                 opt_props = llm_cache[cache_key]
                 comes_before = run_prolog_temporal(opt_props)
                 if comes_before:
@@ -714,14 +777,16 @@ def evaluate_multi(limit=None, verbose=False, output_file="results/results_multi
         prolog_validated_after = False
         prolog_details_after = []
 
-        if llm_pick_after:
+        if llm_pick_after and ablation != "pure_llm":
             cache_key = (title, step_2, llm_pick_after)
             if cache_key not in llm_cache:
-                llm_cache[cache_key] = extract_step_properties(title, step_2, llm_pick_after, verbose=verbose)
+                llm_cache[cache_key] = extract_step_properties(title, step_2, llm_pick_after, verbose=verbose, ablation=ablation)
             pick_props = llm_cache[cache_key]
             prolog_validated_after = run_prolog_temporal(pick_props)
+        elif ablation == "pure_llm":
+            prolog_validated_after = True
 
-        if not prolog_validated_after:
+        if not prolog_validated_after and ablation != "pure_llm":
             best_fallback = None
             best_fallback_score = -1
             for opt in after_options:
@@ -729,7 +794,7 @@ def evaluate_multi(limit=None, verbose=False, output_file="results/results_multi
                     continue
                 cache_key = (title, step_2, opt)
                 if cache_key not in llm_cache:
-                    llm_cache[cache_key] = extract_step_properties(title, step_2, opt, verbose=verbose)
+                    llm_cache[cache_key] = extract_step_properties(title, step_2, opt, verbose=verbose, ablation=ablation)
                 opt_props = llm_cache[cache_key]
                 step2_before_opt = run_prolog_temporal(opt_props)
                 if step2_before_opt:
@@ -803,16 +868,12 @@ if __name__ == "__main__":
                         help="Evaluation mode")
     parser.add_argument("--limit", type=int, default=None,
                         help="Limit number of recipes (for faster testing)")
-    parser.add_argument("--verbose", action="store_true",
-                        help="Print LLM output for every task")
-    parser.add_argument("--output_file", type=str, default=None,
-                        help="Output file for results")
+    parser.add_argument('--verbose', action='store_true', help='Print the LLM output for every task')
+    parser.add_argument('--output_file', type=str, default="./results/results.txt", help='Output file for results')
+    parser.add_argument('--ablation', type=str, choices=['none', 'pure_llm', 'pure_logic', 'no_cot'], default='none', help='Ablation mode')
     args = parser.parse_args()
-
-    if args.mode in ["binary", "all"]:
-        out = args.output_file or "results/results_binary.txt"
-        evaluate_binary(limit=args.limit, verbose=args.verbose, output_file=out)
-
-    if args.mode in ["multi", "all"]:
-        out = args.output_file or "results/results_multi.txt"
-        evaluate_multi(limit=args.limit, verbose=args.verbose, output_file=out)
+    
+    if args.mode in ['binary', 'all']:
+        evaluate_binary(limit=args.limit, verbose=args.verbose, output_file=args.output_file.replace('.txt', '_binary.txt') if 'results.txt' in args.output_file else args.output_file, ablation=args.ablation)
+    if args.mode in ['multi', 'all']:
+        evaluate_multi(limit=args.limit, verbose=args.verbose, output_file=args.output_file.replace('.txt', '_multi.txt') if 'results.txt' in args.output_file else args.output_file, ablation=args.ablation)
