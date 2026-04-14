@@ -22,10 +22,17 @@ import json
 import re
 import subprocess
 import sys
+import os
+import time
 import random
 from pathlib import Path
 from tqdm import tqdm
 import ollama
+
+try:
+    from mistralai.client import Mistral
+except ImportError:
+    Mistral = None
 
 SCRIPT_DIR = Path(__file__).parent      # scripts/tool_usage
 SCRIPTS_ROOT = SCRIPT_DIR.parent        # scripts
@@ -184,19 +191,59 @@ Return ONLY the JSON. No explanation, no markdown, no extra text.
 """
 
 
-def query_ollama_soma(object_name: str) -> dict:
-    """Query Llama to extract SOMA features for an unseen object."""
-    response = ollama.chat(
-        model=EVAL_MODEL,
-        format='json',
-        options={"temperature": 0.0},
-        messages=[
-            {'role': 'system', 'content': SYSTEM_PROMPT},
-            {'role': 'user', 'content': f"Object: {object_name}"}
-        ]
-    )
+def query_llm_with_retry(messages: list, is_json: bool = False) -> str:
+    if "mistral" in EVAL_MODEL.lower():
+        if Mistral is None:
+            raise ImportError("mistralai is not installed")
+        api_key = os.environ.get("MISTRAL_API_KEY")
+        if not api_key:
+            raise ValueError("MISTRAL_API_KEY environment variable not set")
+        client = Mistral(api_key=api_key)
+        
+        args = {
+            "model": EVAL_MODEL,
+            "messages": messages,
+        }
+        if is_json:
+            args["response_format"] = {"type": "json_object"}
+            
+        max_retries = 5
+        for attempt in range(max_retries):
+            try:
+                response = client.chat.complete(**args)
+                return response.choices[0].message.content
+            except Exception as e:
+                error_msg = str(e)
+                if "429" in error_msg:
+                    wait_time = 10 * (attempt + 1)
+                    print(f"\n[!] Mistral Rate limit hit. Pausing for {wait_time} seconds...")
+                    time.sleep(wait_time)
+                else:
+                    print(f"\n[!] Mistral API error: {error_msg}")
+                    break
+        return ""
+    else:
+        args = {
+            "model": EVAL_MODEL,
+            "messages": messages,
+            "options": {"temperature": 0.0}
+        }
+        if is_json:
+            args["format"] = "json"
+            
+        response = ollama.chat(**args)
+        return response['message']['content']
 
-    text = response['message']['content']
+
+def query_llm_soma(object_name: str) -> dict:
+    """Query LLM to extract SOMA features for an unseen object."""
+    messages = [
+        {'role': 'system', 'content': SYSTEM_PROMPT},
+        {'role': 'user', 'content': f"Object: {object_name}"}
+    ]
+    
+    text = query_llm_with_retry(messages, is_json=True)
+
     match = re.search(r'\{.*\}', text, re.DOTALL)
     if match:
         text = match.group(0)
@@ -311,14 +358,9 @@ def predict_required_affordance(task_text: str, canonical_affordances: list[str]
         f"Task: \"{task_text}\"\n"
         "Reasoning and final answer:"
     )
-    response = ollama.chat(
-        model=EVAL_MODEL,
-        messages=[{"role": "system", "content": system},
-                  {"role": "user", "content": user}],
-        options={"temperature": 0.0},
-    )
-    
-    text = response["message"]["content"].strip()
+    messages = [{"role": "system", "content": system},
+                {"role": "user", "content": user}]
+    text = query_llm_with_retry(messages, is_json=False).strip()
     
     # Extract the affordance from the XML tags
     match = re.search(r'<affordance>\s*([^<]+?)\s*</affordance>', text, re.IGNORECASE)
@@ -379,13 +421,11 @@ def llm_fallback_tool_selection(task_text: str, tools: list[str],
         f"Tools:\n{tools_block}\n"
         "Best tool:"
     )
-    response = ollama.chat(
-        model=EVAL_MODEL,
-        messages=[{"role": "system", "content": system},
-                  {"role": "user", "content": user}],
-        options={"temperature": 0.0},
-    )
-    pred = response["message"]["content"].strip().strip("\"'`").lower()
+    messages = [{"role": "system", "content": system},
+                {"role": "user", "content": user}]
+    
+    text = query_llm_with_retry(messages, is_json=False)
+    pred = text.strip().strip("\"'`").lower()
     for t in tools:
         if t.lower() == pred:
             return t
@@ -458,9 +498,9 @@ def run_evaluation(num_tests=None):
             if obj_id[0].isdigit():
                 obj_id = "o_" + obj_id
 
-            # Step A: Neuro (Llama 3.1 SOMA Extraction) — cached
+            # Step A: Neuro (SOMA Extraction) — cached
             if tool_name not in soma_cache:
-                soma_cache[tool_name] = query_ollama_soma(tool_name)
+                soma_cache[tool_name] = query_llm_soma(tool_name)
             soma_data = soma_cache[tool_name]
 
             # Step B: Symbolic format

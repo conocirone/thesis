@@ -1,5 +1,6 @@
-obj(toothpaste).
-hasPhysicalQuality(toothpaste, liquid).
-hasPhysicalQuality(toothpaste, toxic_Hazardous).
-hasRole(toothpaste, cleaningToolRole).
-affordsTask(toothpaste, hygieneTask).
+obj(toilet_paper).
+hasPhysicalQuality(toilet_paper, soft_Deformable).
+hasPhysicalQuality(toilet_paper, lightweight).
+hasPhysicalQuality(toilet_paper, washable).
+hasRole(toilet_paper, cleaningToolRole).
+affordsTask(toilet_paper, hygieneTask).
