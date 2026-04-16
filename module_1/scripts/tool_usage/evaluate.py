@@ -443,7 +443,7 @@ def run_evaluation(num_tests=None):
     canonical_affordances = load_canonical_affordances()
     aff_task_map = load_affordance_task_map()
 
-    for case in tqdm(test_cases):
+    for case in tqdm(test_cases, mininterval=10.0):
         task_name = case["task"]
         gold_aff = case["gold_affordance"]
         correct_tool = case["correct_tool"]

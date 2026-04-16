@@ -1,0 +1,21 @@
+============================================================
+RESULT LOG - Table Setting Evaluation
+============================================================
+[Meal] Lamb and Bean Nachos With Salsa Fresca
+LLM Properties:
+  - is_soup_or_broth: False
+  - is_handheld_food: True
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Hands', 'Knife', 'Fork'}
+Predicted Cutlery:    {'Hands', 'Knife', 'Fork'} -> Jaccard: 1.000
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Dinner Plate -> Correct: True
+------------------------------------------------------------
+

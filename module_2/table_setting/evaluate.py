@@ -193,7 +193,7 @@ def extract_meal_properties(meal_str: str, verbose: bool = False, ablation: str 
     sys_prompt = SYSTEM_PROMPT.strip()
     if ablation == "no_cot":
         sys_prompt = sys_prompt.replace('First provide a 1-sentence "reasoning", then output the boolean constraints.\n\n', '')
-        sys_prompt = re.sub(r'\s*"reasoning":.*?,', '', sys_prompt)
+        sys_prompt = re.sub(r'\s*"reasoning":\s*"[^"]*",', '', sys_prompt)
 
     messages = [
         {"role": "system", "content": sys_prompt},
@@ -313,7 +313,7 @@ def evaluate(verbose=False, output_file="results_table_setting.txt", ablation="n
     
     llm_cache = {}
     
-    for idx, row in tqdm(df.iterrows(), total=len(df), desc="Eval"):
+    for idx, row in tqdm(df.iterrows(), total=len(df), desc="Eval", mininterval=10.0):
         meal = row['name']
         
         # Ground Truth Calculate

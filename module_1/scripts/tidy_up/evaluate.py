@@ -403,7 +403,7 @@ def run_evaluation(num_tests=50):
     hits = 0
     results_log = []
     
-    for case in tqdm(test_cases):
+    for case in tqdm(test_cases, mininterval=10.0):
         obj_name = case["object"]
         obj_id = re.sub(r'[^a-zA-Z0-9]', '_', obj_name).lower()
         if obj_id[0].isdigit():

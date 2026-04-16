@@ -216,7 +216,7 @@ def extract_task_properties(task_str: str, verbose: bool = False, ablation: str 
     sys_prompt = SYSTEM_PROMPT.strip()
     if ablation == "no_cot":
         sys_prompt = sys_prompt.replace('First, provide a brief 1-sentence rationale in the "reasoning" key. Then, output the 6 booleans.\n\n', '')
-        sys_prompt = re.sub(r'\s*"reasoning":.*?,', '', sys_prompt)
+        sys_prompt = re.sub(r'\s*"reasoning":\s*"[^"]*",', '', sys_prompt)
 
     messages = [
         {"role": "system", "content": sys_prompt},
@@ -245,7 +245,7 @@ def extract_task_properties(task_str: str, verbose: bool = False, ablation: str 
             error_msg = str(e)
             if "429" in error_msg:
                 wait_time = 10 * (attempt + 1)
-                tqdm.write(f"\n[!] Mistral Rate limit hit. Pausing for {wait_time} seconds...")
+                tqdm.write(f"\n[!] Mistral API rate limit exceeded. Automatically pausing for {wait_time} seconds and will auto-retry...")
                 time.sleep(wait_time)
             else:
                 tqdm.write(f"\n[!] Mistral API error: {error_msg}")
@@ -321,7 +321,7 @@ def evaluate_binary(limit=None, verbose=False, output_file="results_binary.txt",
     error_log.write(f"Total samples to evaluate: {len(df)}\n")
     error_log.write("=" * 60 + "\n\n")
 
-    for idx, row in tqdm(df.iterrows(), total=len(df), desc="Binary Eval"):
+    for idx, row in tqdm(df.iterrows(), total=len(df), desc="Binary Eval", mininterval=10.0):
         task = row['Task']
         
         if ablation == "pure_llm":
@@ -472,7 +472,7 @@ def evaluate_multi(limit=None, verbose=False, output_file="results_multi.txt", a
         
         return s
 
-    for idx, row in tqdm(df.iterrows(), total=len(df), desc="Multi-Choice Eval"):
+    for idx, row in tqdm(df.iterrows(), total=len(df), desc="Multi-Choice Eval", mininterval=10.0):
         task = row['Task']
         correct_conf_str = row['Correct_Configuration']
         wrong_confs = row['Wrong_Configurations']

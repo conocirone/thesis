@@ -194,7 +194,7 @@ def extract_step_properties(title, step_a, step_b, verbose=False, ablation="none
     sys_prompt = SYSTEM_PROMPT.strip()
     if ablation == "no_cot":
         sys_prompt = sys_prompt.replace('"reasoning": "<1-2 sentence explanation of the temporal relationship>",\n', "")
-        sys_prompt = re.sub(r'\s*"reasoning":.*?,', '', sys_prompt)
+        sys_prompt = re.sub(r'\s*"reasoning":\s*"[^"]*",', '', sys_prompt)
 
     user_message = f"Recipe: {title}\nStep A: {step_a}\nStep B: {step_b}"
 
@@ -385,7 +385,7 @@ def evaluate_binary(limit=None, verbose=False, output_file="results/results_bina
     tp, tn, fp, fn = 0, 0, 0, 0
     q_num = 0
 
-    for recipe in tqdm(all_recipes, desc="Binary Eval"):
+    for recipe in tqdm(all_recipes, desc="Binary Eval", mininterval=10.0):
         title = recipe["goal"]
         step_1 = recipe["step_1"].rstrip(". ").strip()
         step_2 = recipe["step_2"].rstrip(". ").strip()
@@ -660,7 +660,7 @@ def evaluate_multi(limit=None, verbose=False, output_file="results/results_multi
     total_questions = 0
     correct_count = 0
 
-    for recipe in tqdm(all_recipes, desc="Multi-Choice Eval"):
+    for recipe in tqdm(all_recipes, desc="Multi-Choice Eval", mininterval=10.0):
         title = recipe["goal"]
         step_1 = recipe["step_1"].rstrip(". ").strip()
         step_2 = recipe["step_2"].rstrip(". ").strip()
