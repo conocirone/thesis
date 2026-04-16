@@ -1,0 +1,5016 @@
+============================================================
+ERROR LOG - Meta-Reasoning Binary Evaluation
+============================================================
+Model: mistral-large-latest
+Total samples to evaluate: 9576
+============================================================
+
+
+[FALSE NEGATIVE #1] Pipeline said FALSE, Dataset said TRUE
+Task: arrange some of the bottle on the counter
+LLM Task Properties:
+  - reasoning: Arranging bottles on a counter can be done by pushing or sliding them with a blunt arm, so grasping is not strictly required.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #2] Pipeline said FALSE, Dataset said TRUE
+Task: bad. place the pan onto the stove.
+LLM Task Properties:
+  - reasoning: Placing a pan onto the stove requires lifting it completely into the air, which necessitates grasping.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #3] Pipeline said FALSE, Dataset said TRUE
+Task: bring two bottles to the toilet tank
+LLM Task Properties:
+  - reasoning: Bringing objects requires lifting them into the air, but the robot is already optimally positioned within arm's reach of all relevant objects, so no mobility is needed.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #4] Pipeline said FALSE, Dataset said TRUE
+Task: carry a computer to the lamp, turn the lamp off
+LLM Task Properties:
+  - reasoning: Carrying an object requires lifting it into the air, but turning off a lamp can be done by pushing or nudging without mobility since the robot is optimally positioned.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #5] Pipeline said FALSE, Dataset said TRUE
+Task: carry a watch while turning on a lamp
+LLM Task Properties:
+  - reasoning: The robot can turn on the lamp with one arm while holding the watch in the other, but since the lamp can be activated with a single arm (e.g., pushing a button), no simultaneous bimanual action is strictly required.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #6] Pipeline said FALSE, Dataset said TRUE
+Task: chill a cup and place it in the lower cupboard
+LLM Task Properties:
+  - reasoning: Chilling a cup may involve placing it in a fridge, but the task can be done by sliding or pushing the cup; placing it in the cupboard does not strictly require lifting it fully into the air.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #7] Pipeline said FALSE, Dataset said TRUE
+Task: chill the bowl and set it back on the shelves.
+LLM Task Properties:
+  - reasoning: The bowl must be lifted into the air to place it in the fridge and then back on the shelves, requiring grasping, but no precision, mobility, or bimanual actions are strictly necessary.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #8] Pipeline said FALSE, Dataset said TRUE
+Task: chill the pan and put it back on the stove.
+LLM Task Properties:
+  - reasoning: The pan must be lifted to chill it, requiring a grip, but no precision beyond basic manipulation or simultaneous two-arm action is needed.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #9] Pipeline said FALSE, Dataset said TRUE
+Task: chill the pan in the fridge and put it in the sink.
+LLM Task Properties:
+  - reasoning: The task requires lifting the pan into the air to place it in the fridge and sink, but does not require precision, mobility, two arms simultaneously, or a rigid grip for heavy resistance.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #10] Pipeline said FALSE, Dataset said TRUE
+Task: collect pencil and bowl for the desk
+LLM Task Properties:
+  - reasoning: Collecting objects like a pencil and bowl requires lifting them into the air, but no precision, mobility, or bimanual actions are strictly necessary.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #11] Pipeline said FALSE, Dataset said TRUE
+Task: cool down a plate in the fridge.
+LLM Task Properties:
+  - reasoning: Cooling a plate in the fridge requires lifting it into the air to place it inside, but does not require precision, mobility, two arms, or a rigid grip beyond basic grasping.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #12] Pipeline said FALSE, Dataset said TRUE
+Task: dismantle the vacuum head
+LLM Task Properties:
+  - reasoning: Dismantling the vacuum head likely requires lifting or separating parts, which may need grasping and possibly two hands if parts are resistive or require simultaneous opposing forces.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: True
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 1
+  - DoF: 7
+  - Gripper Type: two_finger
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #13] Pipeline said FALSE, Dataset said TRUE
+Task: drop two towels in the sink
+LLM Task Properties:
+  - reasoning: Dropping towels into the sink requires lifting them into the air (grasping), but no precision, mobility, or bimanual coordination is strictly necessary.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #14] Pipeline said FALSE, Dataset said TRUE
+Task: examine a phone with a lamp
+LLM Task Properties:
+  - reasoning: Examining an object does not require lifting it or precise manipulation, but the robot must physically touch the phone to adjust its position or angle for inspection.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #15] Pipeline said FALSE, Dataset said TRUE
+Task: examine a watch under a tall lamp
+LLM Task Properties:
+  - reasoning: Examining a watch only requires visual inspection and possibly repositioning it by sliding or nudging, but not lifting it completely or using two arms simultaneously.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #16] Pipeline said FALSE, Dataset said TRUE
+Task: fill a cup from the freezer with water, put it in the cabinet over the stove.
+LLM Task Properties:
+  - reasoning: The task requires lifting the cup (grasping), but no precision beyond basic manipulation; mobility is unnecessary as the robot is optimally positioned, and bimanual action is not strictly required.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #17] Pipeline said FALSE, Dataset said TRUE
+Task: fill the glass with water and put it in the cabinet.
+LLM Task Properties:
+  - reasoning: Filling a glass requires lifting it to the water source, and placing it in the cabinet requires grasping; mobility is not needed as the robot is optimally positioned.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: True
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #18] Pipeline said FALSE, Dataset said TRUE
+Task: get bowl from counter, put in sink and fill with water, put the bowl on the shelves
+LLM Task Properties:
+  - reasoning: The task involves moving the bowl from the counter to the sink and then to the shelves, requiring lifting it into the air, but no precision beyond basic manipulation, no mobility beyond arm's reach, no simultaneous two-arm action, and no rigid grip for a lightweight bowl.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #19] Pipeline said FALSE, Dataset said TRUE
+Task: get toilet paper
+LLM Task Properties:
+  - reasoning: The task requires lifting the toilet paper roll into the air, which necessitates grasping.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #20] Pipeline said FALSE, Dataset said TRUE
+Task: grab the phone from the blue sofa, turn on the lamp in the corner
+LLM Task Properties:
+  - reasoning: The robot must lift the phone (grasping) and physically interact with the lamp (contact), but no mobility is needed as it is already optimally positioned.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #21] Pipeline said FALSE, Dataset said TRUE
+Task: heat a plate and put it by the sink
+LLM Task Properties:
+  - reasoning: Heating a plate may require grasping to lift it into a microwave or oven, and placing it by the sink can be done by sliding or pushing if not strictly lifting, but contact is required.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #22] Pipeline said FALSE, Dataset said TRUE
+Task: move a bottle of soap from a counter to the top of a toilet.
+LLM Task Properties:
+  - reasoning: Moving a bottle requires lifting it completely into the air, but does not require precision, mobility, or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #23] Pipeline said FALSE, Dataset said TRUE
+Task: move a cd from a desk to a dresser.
+LLM Task Properties:
+  - reasoning: Moving an object like a CD requires lifting it completely into the air, but the robot is already optimally positioned within arm's reach of both locations.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #24] Pipeline said FALSE, Dataset said TRUE
+Task: move a cold tomato to the microwave.
+LLM Task Properties:
+  - reasoning: Moving an object requires lifting it completely into the air, but does not require precision, mobility, or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #25] Pipeline said FALSE, Dataset said TRUE
+Task: move a phone to a chair.
+LLM Task Properties:
+  - reasoning: Moving an object like a phone requires lifting it completely into the air, but does not require precision, mobility, two arms, or a rigid grip.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #26] Pipeline said FALSE, Dataset said TRUE
+Task: move a soap dispenser to the back of a toilet.
+LLM Task Properties:
+  - reasoning: Moving a soap dispenser can be done by grasping it and placing it in a new location, but the robot is already optimally positioned within arm's reach of both the starting and ending points.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #27] Pipeline said FALSE, Dataset said TRUE
+Task: move a statue from a side table to the coffee table
+LLM Task Properties:
+  - reasoning: Moving a statue requires lifting it completely into the air, but no precision beyond basic grasping, no mobility beyond arm's reach, and no simultaneous two-arm action is needed.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #28] Pipeline said FALSE, Dataset said TRUE
+Task: move a vase from the dresser to the safe.
+LLM Task Properties:
+  - reasoning: Moving a vase requires lifting it completely into the air, but does not require precision beyond basic manipulation, mobility beyond optimal positioning, or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #29] Pipeline said FALSE, Dataset said TRUE
+Task: move an empty box from the floor to a sofa.
+LLM Task Properties:
+  - reasoning: Moving an empty box can be done by sliding or pushing it without fully lifting it into the air, and no precision or bimanual action is required.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #30] Pipeline said FALSE, Dataset said TRUE
+Task: move both blue spray bottles to the top of the metal shelves.
+LLM Task Properties:
+  - reasoning: Moving objects requires lifting them completely into the air, but no precision insertion, mobility, or bimanual coordination is strictly necessary.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #31] Pipeline said FALSE, Dataset said TRUE
+Task: move pot to refrigerator then to counter.
+LLM Task Properties:
+  - reasoning: The robot is assumed to be optimally positioned within arm's reach of all objects, so no mobility is needed; lifting the pot requires grasping.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #32] Pipeline said FALSE, Dataset said TRUE
+Task: move the computer from the table to the chair
+LLM Task Properties:
+  - reasoning: Moving an object like a computer requires lifting it completely into the air, but the robot is already optimally positioned within arm's reach of both locations.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #33] Pipeline said FALSE, Dataset said TRUE
+Task: move the laptop to the bed.
+LLM Task Properties:
+  - reasoning: Moving the laptop requires lifting it completely into the air, but does not require precision, mobility, two arms, or a rigid grip for a lightweight object like a laptop.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #34] Pipeline said FALSE, Dataset said TRUE
+Task: move the objects from one box to the other
+LLM Task Properties:
+  - reasoning: Moving objects between boxes can be done by grasping and lifting each item, but the task does not strictly require mobility since the robot is assumed to be optimally positioned.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #35] Pipeline said FALSE, Dataset said TRUE
+Task: move the pan to the top left plate of the stove then move the cooking stick on the right counter
+LLM Task Properties:
+  - reasoning: The task involves relocating objects (pan and cooking stick) within arm's reach, requiring lifting but no mobility, precision, or simultaneous bimanual actions.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #36] Pipeline said FALSE, Dataset said TRUE
+Task: move the pens from the small desk and the large desk into the top large desk drawer.
+LLM Task Properties:
+  - reasoning: The task involves relocating objects (pens) from one location to another, requiring lifting them into the air, but no precision, mobility, or bimanual actions are strictly necessary.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #37] Pipeline said FALSE, Dataset said TRUE
+Task: move the stand to the left
+LLM Task Properties:
+  - reasoning: Moving a stand can be done by pushing or sliding it without lifting, and the robot is assumed to be within arm's reach.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #38] Pipeline said FALSE, Dataset said TRUE
+Task: move the towel from the wall to the tub
+LLM Task Properties:
+  - reasoning: Moving a towel requires lifting it completely into the air, but does not require precision, mobility, two arms, or a rigid grip.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #39] Pipeline said FALSE, Dataset said TRUE
+Task: move towel from towel rack to sink
+LLM Task Properties:
+  - reasoning: Moving a towel requires lifting it completely into the air, but does not require precision, mobility, two arms, or a rigid grip.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #40] Pipeline said FALSE, Dataset said TRUE
+Task: move two alarm clocks to the desk.
+LLM Task Properties:
+  - reasoning: Moving objects requires lifting them completely into the air, but no precision, mobility, or bimanual actions are strictly necessary.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #41] Pipeline said FALSE, Dataset said TRUE
+Task: move two bowls from the dining table to the coffee table.
+LLM Task Properties:
+  - reasoning: The robot can grasp and lift each bowl sequentially, but since it is already optimally positioned, no mobility is required beyond arm reach.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #42] Pipeline said FALSE, Dataset said TRUE
+Task: move two cell phones from the bed to the desk.
+LLM Task Properties:
+  - reasoning: Moving objects requires lifting them completely into the air, but no precision, mobility, or bimanual actions are strictly necessary.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #43] Pipeline said FALSE, Dataset said TRUE
+Task: move two credit cards from the couch to the chair on the right.
+LLM Task Properties:
+  - reasoning: Moving flat, lightweight objects like credit cards can be done by sliding or pushing them without lifting, and no mobility is needed as the robot is already optimally positioned.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #44] Pipeline said FALSE, Dataset said TRUE
+Task: move two lap tops to the desk.
+LLM Task Properties:
+  - reasoning: Moving laptops requires lifting them completely into the air, as sliding or pushing could damage them or the surface.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: True
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #45] Pipeline said FALSE, Dataset said TRUE
+Task: move two newspapers to the seat of a couch.
+LLM Task Properties:
+  - reasoning: Moving newspapers can be done by sliding or pushing them with a blunt arm, and the robot is assumed to be within arm's reach of both the newspapers and the couch seat.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #46] Pipeline said FALSE, Dataset said TRUE
+Task: move two pencils to a wooden desk.
+LLM Task Properties:
+  - reasoning: Moving pencils requires lifting them completely into the air, but no precision, mobility, or bimanual actions are strictly necessary.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #47] Pipeline said FALSE, Dataset said TRUE
+Task: move two phones to a dresser.
+LLM Task Properties:
+  - reasoning: Moving objects like phones requires lifting them completely into the air, but does not require precision, mobility, two arms simultaneously, or a rigid grip for resistive objects.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #48] Pipeline said FALSE, Dataset said TRUE
+Task: move two plates to a coffee table.
+LLM Task Properties:
+  - reasoning: Moving plates requires lifting them completely into the air, but does not require precision, mobility, two arms simultaneously, or a rigid grip for lightweight plates.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #49] Pipeline said FALSE, Dataset said TRUE
+Task: move two remotes to a chair.
+LLM Task Properties:
+  - reasoning: Moving objects like remotes can be done by grasping them individually, but the robot is already optimally positioned, so no mobility or bimanual action is required.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #50] Pipeline said FALSE, Dataset said TRUE
+Task: move two toilet paper rolls to a cupboard below the sink.
+LLM Task Properties:
+  - reasoning: Moving objects can be done by grasping them, but the robot is already optimally positioned within arm's reach of both the toilet paper rolls and the cupboard.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #51] Pipeline said FALSE, Dataset said TRUE
+Task: move two wash cloths into the tub.
+LLM Task Properties:
+  - reasoning: Moving wash cloths can be done by grasping them individually, but they are lightweight and can also be pushed or slid without lifting, so grasping is not strictly required.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #52] Pipeline said FALSE, Dataset said TRUE
+Task: moving spoons to a kitchen counter
+LLM Task Properties:
+  - reasoning: Moving spoons can be done by grasping them individually, but the task does not strictly require lifting them completely into the air if they can be slid or pushed with a blunt tool.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #53] Pipeline said FALSE, Dataset said TRUE
+Task: moving the plate to a cabinet
+LLM Task Properties:
+  - reasoning: Moving a plate requires lifting it completely into the air, but does not require precision, mobility, two arms, or a rigid grip if the plate is lightweight.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #54] Pipeline said FALSE, Dataset said TRUE
+Task: moving two clocks from the desk to a side table
+LLM Task Properties:
+  - reasoning: Moving objects requires lifting them completely into the air, but the robot is already optimally positioned within arm's reach of both locations.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #55] Pipeline said FALSE, Dataset said TRUE
+Task: open the bag
+LLM Task Properties:
+  - reasoning: Opening a bag typically requires grasping and pulling apart the opening, which cannot be done by simply pushing or sliding.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: True
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 1
+  - DoF: 7
+  - Gripper Type: two_finger
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #56] Pipeline said FALSE, Dataset said TRUE
+Task: open the lid of the kettle
+LLM Task Properties:
+  - reasoning: Opening a kettle lid requires lifting or flipping a small, lightweight object, which can be done with a simple grip or even a hook-like tool without needing a full rigid grip or two arms.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #57] Pipeline said FALSE, Dataset said TRUE
+Task: pick up a bottle, place it into the fridge, take it back to the trash
+LLM Task Properties:
+  - reasoning: The task requires lifting the bottle completely into the air (grasping), but no precision beyond basic manipulation, no mobility beyond arm's reach, no simultaneous two-arm action, and no rigid grip for a lightweight bottle.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #58] Pipeline said FALSE, Dataset said TRUE
+Task: pick up a credit card and turn a lamp on.
+LLM Task Properties:
+  - reasoning: Picking up a credit card requires grasping, but turning a lamp on can be done by pushing a switch without mobility or bimanual action.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #59] Pipeline said FALSE, Dataset said TRUE
+Task: pick up a towel and put it down onto the edge of the bathtub
+LLM Task Properties:
+  - reasoning: The task requires lifting the towel completely into the air, but does not require precision, mobility, or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: True
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #60] Pipeline said FALSE, Dataset said TRUE
+Task: pick up and put down the mug
+LLM Task Properties:
+  - reasoning: Picking up the mug requires lifting it completely into the air, which necessitates grasping.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #61] Pipeline said FALSE, Dataset said TRUE
+Task: pick up both watches and move to the end table
+LLM Task Properties:
+  - reasoning: Picking up objects requires lifting them into the air, but the task can be done sequentially with one arm and does not require mobility since the robot is optimally positioned.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #62] Pipeline said FALSE, Dataset said TRUE
+Task: pick up knife, put it in container on stove top, put the container on the white table next to tomato
+LLM Task Properties:
+  - reasoning: The task involves lifting objects (knife and container) into the air, but no simultaneous two-arm action, precision insertion, or mobility beyond arm's reach is required.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #63] Pipeline said FALSE, Dataset said TRUE
+Task: pick up the black mug and place it upright on the table
+LLM Task Properties:
+  - reasoning: Picking up an object requires lifting it completely into the air, necessitating grasping, but does not require precision beyond basic manipulation or a mobile base.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #64] Pipeline said FALSE, Dataset said TRUE
+Task: pick up the butter knife from the dish drainer and put it inside the sink
+LLM Task Properties:
+  - reasoning: The task requires lifting the knife into the air (grasping) and placing it in the sink, but does not require mobility since the robot is already optimally positioned.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #65] Pipeline said FALSE, Dataset said TRUE
+Task: pick up the cup and slightly move it to the left pick up the cup and move it forward pick up the cup and move it to the left
+LLM Task Properties:
+  - reasoning: The task requires lifting the cup completely into the air for each movement, which strictly necessitates grasping.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #66] Pipeline said FALSE, Dataset said TRUE
+Task: pick up the cup from the top of the cabinet and put it on the cabinet
+LLM Task Properties:
+  - reasoning: The task requires lifting the cup completely into the air, but no mobility is needed as the robot is assumed to be within arm's reach of both locations.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #67] Pipeline said FALSE, Dataset said TRUE
+Task: pick up the pen from the table and put it in the glass cup
+LLM Task Properties:
+  - reasoning: Picking up a pen requires lifting it into the air (grasping), and placing it in a cup involves contact but not extreme precision or bimanual action.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #68] Pipeline said FALSE, Dataset said TRUE
+Task: pick up the small glass cup and pour its contents in the white bowl put the small glass cup back on the table
+LLM Task Properties:
+  - reasoning: Pouring requires lifting the cup into the air (grasping), but no extreme precision, mobility, or two simultaneous arms are strictly required.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #69] Pipeline said FALSE, Dataset said TRUE
+Task: pick up the spoon from the table and put it in the bowl
+LLM Task Properties:
+  - reasoning: The task requires lifting the spoon completely into the air to place it in the bowl, necessitating grasping, but no precision beyond basic manipulation or mobility beyond optimal positioning.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #70] Pipeline said FALSE, Dataset said TRUE
+Task: pick up the table and put it on the table
+LLM Task Properties:
+  - reasoning: Picking up a table requires lifting it completely into the air, which necessitates grasping and a firm rigid grip due to its weight and size.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: True
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 1
+  - DoF: 7
+  - Gripper Type: two_finger
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #71] Pipeline said FALSE, Dataset said TRUE
+Task: pick up the towel and put it on the rack
+LLM Task Properties:
+  - reasoning: Picking up an object requires lifting it completely into the air, which necessitates grasping, but no precision, mobility, or bimanual actions are strictly required.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #72] Pipeline said FALSE, Dataset said TRUE
+Task: pick up toilet paper, place on toilet paper holder
+LLM Task Properties:
+  - reasoning: Placing toilet paper on a holder requires lifting it completely into the air, but does not require precision beyond general manipulation or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #73] Pipeline said FALSE, Dataset said TRUE
+Task: place a basketball on the desk.
+LLM Task Properties:
+  - reasoning: Placing a basketball requires lifting it completely into the air to position it on the desk, which necessitates grasping.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #74] Pipeline said FALSE, Dataset said TRUE
+Task: place a book on a dresser.
+LLM Task Properties:
+  - reasoning: Placing a book requires lifting it into the air, but the robot can slide or push it once positioned, so no rigid grip is strictly necessary.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #75] Pipeline said FALSE, Dataset said TRUE
+Task: place a bowl with a spoon inside the sink.
+LLM Task Properties:
+  - reasoning: Placing a bowl with a spoon inside requires lifting the bowl into the air, but the task can be done with one arm and does not require precision or mobility beyond optimal positioning.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #76] Pipeline said FALSE, Dataset said TRUE
+Task: place a box with a remote control in it on top of the computer desk
+LLM Task Properties:
+  - reasoning: The task requires lifting the box completely into the air to place it on the desk, which necessitates grasping, but no precision beyond basic manipulation or bimanual coordination is needed.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #77] Pipeline said FALSE, Dataset said TRUE
+Task: place a box with keys in it on the couch.
+LLM Task Properties:
+  - reasoning: Placing a box requires lifting it completely into the air, but does not require precision, mobility, two arms, or a rigid grip if the box is lightweight.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #78] Pipeline said FALSE, Dataset said TRUE
+Task: place a candle on a wire shelf.
+LLM Task Properties:
+  - reasoning: Placing a candle on a wire shelf requires lifting it into the air and positioning it, but does not require high-precision insertion or two simultaneous opposing forces.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #79] Pipeline said FALSE, Dataset said TRUE
+Task: place a chilled pan on the counter by the stove.
+LLM Task Properties:
+  - reasoning: Placing an object requires lifting it completely into the air, but does not require precision beyond basic manipulation or a mobile base since the robot is already optimally positioned.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #80] Pipeline said FALSE, Dataset said TRUE
+Task: place a clean pan on the kitchen counter.
+LLM Task Properties:
+  - reasoning: Placing a pan requires lifting it completely into the air, which necessitates grasping, but does not require precision, mobility, two arms, or a rigid grip for a lightweight pan.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #81] Pipeline said FALSE, Dataset said TRUE
+Task: place a clean spatula into the correct drawer.
+LLM Task Properties:
+  - reasoning: Placing an object into a drawer requires lifting it completely into the air, but does not require high precision, mobility, two arms, or a rigid grip for a lightweight spatula.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #82] Pipeline said FALSE, Dataset said TRUE
+Task: place a clean tea kettle on a shelf.
+LLM Task Properties:
+  - reasoning: Placing an object like a tea kettle requires lifting it completely into the air, which necessitates grasping, but does not require precision, mobility, or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #83] Pipeline said FALSE, Dataset said TRUE
+Task: place a cleaned ladle in a drawer.
+LLM Task Properties:
+  - reasoning: Placing an object in a drawer requires lifting it completely into the air, but does not require precision, mobility, two arms, or a rigid grip for a lightweight ladle.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #84] Pipeline said FALSE, Dataset said TRUE
+Task: place a cloth in the tub.
+LLM Task Properties:
+  - reasoning: Placing a cloth in the tub can be done by dropping or sliding it, without needing to fully lift or grasp it rigidly.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #85] Pipeline said FALSE, Dataset said TRUE
+Task: place a cold plate in the oven
+LLM Task Properties:
+  - reasoning: Placing an object in the oven requires lifting it completely into the air, but does not require high precision, mobility, two arms, or a rigid grip for a lightweight plate.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #86] Pipeline said FALSE, Dataset said TRUE
+Task: place a cooked apple in the fridge
+LLM Task Properties:
+  - reasoning: Placing an object requires lifting it into the air, but does not require high precision, mobility, or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #87] Pipeline said FALSE, Dataset said TRUE
+Task: place a cooked apple inside the waste basket.
+LLM Task Properties:
+  - reasoning: Placing an object into a container requires lifting it completely, but does not demand precision, mobility, or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #88] Pipeline said FALSE, Dataset said TRUE
+Task: place a cooled pan down on the kitchen counter corner
+LLM Task Properties:
+  - reasoning: Placing a pan requires lifting it into the air (grasping), but no precision beyond basic positioning or bimanual coordination, and the robot is assumed to be within reach of the counter.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #89] Pipeline said FALSE, Dataset said TRUE
+Task: place a cooled pan on the stove
+LLM Task Properties:
+  - reasoning: Placing a pan requires lifting it completely into the air, but does not require precision beyond general manipulation or a mobile base since the robot is optimally positioned.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #90] Pipeline said FALSE, Dataset said TRUE
+Task: place a credit card inside a box and take the box to a shelf.
+LLM Task Properties:
+  - reasoning: Placing a card inside a box requires grasping the card, and moving the box to a shelf requires lifting it, but no mobility is needed as the robot is optimally positioned.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #91] Pipeline said FALSE, Dataset said TRUE
+Task: place a credit card on a table.
+LLM Task Properties:
+  - reasoning: Placing a flat object like a credit card can be done by sliding or pushing it into position without fully lifting it into the air.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #92] Pipeline said FALSE, Dataset said TRUE
+Task: place a heated glass cup in the refrigerator
+LLM Task Properties:
+  - reasoning: Placing an object requires lifting it completely into the air, but does not require high precision, mobility, two arms, or a rigid grip for a lightweight cup.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #93] Pipeline said FALSE, Dataset said TRUE
+Task: place a hot potato in a sink.
+LLM Task Properties:
+  - reasoning: Placing an object requires lifting it completely into the air, but does not require precision, mobility, or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #94] Pipeline said FALSE, Dataset said TRUE
+Task: place a microwave mug in the right cabinet below the microwave.
+LLM Task Properties:
+  - reasoning: Placing an object requires lifting it into the air, but the task does not require high precision, mobility, or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #95] Pipeline said FALSE, Dataset said TRUE
+Task: place a microwaved cup down on the kitchen counter space
+LLM Task Properties:
+  - reasoning: Placing a cup requires lifting it into the air (grasping), but does not require precision, mobility, two arms, or a rigid grip for a lightweight cup.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #96] Pipeline said FALSE, Dataset said TRUE
+Task: place a mug with two pencils onto the desk
+LLM Task Properties:
+  - reasoning: Placing a mug with pencils can be done by lifting the mug (grasping) and moving it to the desk, but does not require precision beyond general manipulation or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #97] Pipeline said FALSE, Dataset said TRUE
+Task: place a plate with a credit card on it on the counter below the tv.
+LLM Task Properties:
+  - reasoning: The task involves moving a plate and a credit card, which can be done by sliding or pushing without lifting the plate completely into the air, and no precision or bimanual actions are strictly required.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #98] Pipeline said FALSE, Dataset said TRUE
+Task: place a plate with keys on it on top of the coffee table
+LLM Task Properties:
+  - reasoning: The task requires lifting the plate with keys into the air, which necessitates grasping, but does not require precision, mobility, bimanual actions, or a rigid grip for the plate itself.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #99] Pipeline said FALSE, Dataset said TRUE
+Task: place a red rag on the toilet tank
+LLM Task Properties:
+  - reasoning: Placing an object like a rag can be done by pushing or sliding it into position without fully lifting it into the air.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #100] Pipeline said FALSE, Dataset said TRUE
+Task: place a tray holding a wristwatch on the television stand.
+LLM Task Properties:
+  - reasoning: The tray can be slid or pushed into place without lifting it completely, and the wristwatch is already on the tray, so no precision insertion is required.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #101] Pipeline said FALSE, Dataset said TRUE
+Task: place a vase into a fridge
+LLM Task Properties:
+  - reasoning: Placing an object like a vase into a fridge requires lifting it completely into the air, but does not require high precision, mobility, two arms, or a rigid grip if the vase is lightweight.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #102] Pipeline said FALSE, Dataset said TRUE
+Task: place a vase on a counter
+LLM Task Properties:
+  - reasoning: Placing a vase requires lifting it completely into the air to position it on the counter, so grasping is necessary.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #103] Pipeline said FALSE, Dataset said TRUE
+Task: place a warm glass in the cabinet.
+LLM Task Properties:
+  - reasoning: Placing an object like a glass requires lifting it completely into the air, but does not require high precision, mobility, two arms, or a rigid grip for a lightweight object.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #104] Pipeline said FALSE, Dataset said TRUE
+Task: place a washed and cut potato slice on a table
+LLM Task Properties:
+  - reasoning: Placing a potato slice can be done by sliding or releasing it from a gripper without needing a rigid grip or precision, and only one arm is required.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #105] Pipeline said FALSE, Dataset said TRUE
+Task: place a washed egg in a microwave
+LLM Task Properties:
+  - reasoning: Placing an egg requires lifting it completely into the air, but does not require high precision, mobility, two arms, or a rigid grip for a lightweight object like an egg.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #106] Pipeline said FALSE, Dataset said TRUE
+Task: place a washed towel in the middle of two sinks
+LLM Task Properties:
+  - reasoning: Placing a towel can be done by dragging or sliding it into position without fully lifting it, and no precision or bimanual coordination is required.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #107] Pipeline said FALSE, Dataset said TRUE
+Task: place a watch in the box and place on the table.
+LLM Task Properties:
+  - reasoning: Placing a watch in a box and then placing the box on the table requires lifting the watch (grasping) but can be done sequentially with one arm and no mobility beyond optimal positioning.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #108] Pipeline said FALSE, Dataset said TRUE
+Task: place coffee mug in a coffee maker
+LLM Task Properties:
+  - reasoning: Placing a mug into a coffee maker requires lifting it completely into the air, but does not require high precision, mobility, two arms, or a rigid grip beyond basic grasping.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #109] Pipeline said FALSE, Dataset said TRUE
+Task: place one pen in a bowl.
+LLM Task Properties:
+  - reasoning: Placing a pen in a bowl requires lifting the pen completely into the air, but does not require precision, mobility, two arms, or a rigid grip.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #110] Pipeline said FALSE, Dataset said TRUE
+Task: place the chilled bowl in the sink
+LLM Task Properties:
+  - reasoning: Placing an object requires lifting it into the air, but the task does not demand high precision, mobility, or simultaneous two-arm coordination.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #111] Pipeline said FALSE, Dataset said TRUE
+Task: place the cleaned plate on the shelves.
+LLM Task Properties:
+  - reasoning: Placing a plate on a shelf requires lifting it into the air, but does not demand precision beyond general manipulation or simultaneous two-arm coordination.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #112] Pipeline said FALSE, Dataset said TRUE
+Task: place the microwaved dish on top of the counter next to the toaster.
+LLM Task Properties:
+  - reasoning: The dish must be lifted into the air to be placed on the counter, requiring grasping, but no precision, mobility, or bimanual actions are strictly necessary.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #113] Pipeline said FALSE, Dataset said TRUE
+Task: place two computers, from the bed, onto the counter.
+LLM Task Properties:
+  - reasoning: Placing computers requires lifting them completely into the air, but no precision insertion, mobility, or simultaneous two-arm coordination is strictly necessary.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #114] Pipeline said FALSE, Dataset said TRUE
+Task: place two set of keys on a desk
+LLM Task Properties:
+  - reasoning: Placing keys on a desk can be done by sliding or pushing them into position without lifting them completely into the air.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #115] Pipeline said FALSE, Dataset said TRUE
+Task: place two tissue boxes on the table.
+LLM Task Properties:
+  - reasoning: Placing objects on a table requires lifting them into the air, which necessitates grasping, but no precision, mobility, or bimanual actions are strictly required.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #116] Pipeline said FALSE, Dataset said TRUE
+Task: place two towel into the bathtub.
+LLM Task Properties:
+  - reasoning: Placing towels into a bathtub can be done by grasping and lifting them, but does not require precision, mobility, or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #117] Pipeline said FALSE, Dataset said TRUE
+Task: place two towels on top of the toilet
+LLM Task Properties:
+  - reasoning: Placing towels can be done by pushing or sliding them into position without fully lifting them into the air, and no precision or bimanual actions are required.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #118] Pipeline said FALSE, Dataset said TRUE
+Task: pour the contents in the white mug into the cup
+LLM Task Properties:
+  - reasoning: Pouring requires lifting and tilting the mug, which necessitates grasping, but does not require precision beyond basic manipulation or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #119] Pipeline said FALSE, Dataset said TRUE
+Task: put 2 phone side by side on the side of a bed with no lap top on it.
+LLM Task Properties:
+  - reasoning: Placing phones side by side can be done by sliding or nudging them into position without lifting them completely, and no precision or bimanual action is required.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #120] Pipeline said FALSE, Dataset said TRUE
+Task: put a bottle on the back of the toilet.
+LLM Task Properties:
+  - reasoning: Placing a bottle requires lifting it into the air (grasping), but does not require mobility, precision, or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #121] Pipeline said FALSE, Dataset said TRUE
+Task: put a bowl in the bottom cabinet
+LLM Task Properties:
+  - reasoning: Placing a bowl in a cabinet requires lifting it into the air, but the robot is already optimally positioned within arm's reach of the cabinet.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #122] Pipeline said FALSE, Dataset said TRUE
+Task: put a bowl with a phone in it on the desk.
+LLM Task Properties:
+  - reasoning: The task requires lifting the bowl (with the phone inside) completely into the air to place it on the desk, so grasping is necessary.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #123] Pipeline said FALSE, Dataset said TRUE
+Task: put a box with a watch it on the red chair.
+LLM Task Properties:
+  - reasoning: The task requires lifting the box completely into the air to place it on the chair, which necessitates grasping.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #124] Pipeline said FALSE, Dataset said TRUE
+Task: put a brass pot with a sponge in it on a white table.
+LLM Task Properties:
+  - reasoning: The task requires lifting the pot (with sponge inside) completely into the air to place it on the table, but does not require precision beyond basic manipulation or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #125] Pipeline said FALSE, Dataset said TRUE
+Task: put a cd on the nightstand
+LLM Task Properties:
+  - reasoning: Placing a CD on a surface requires lifting it into the air, but does not require precision, mobility, two arms, or a rigid grip.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #126] Pipeline said FALSE, Dataset said TRUE
+Task: put a chilled bowl in the right cabinet above the fridge.
+LLM Task Properties:
+  - reasoning: The task requires lifting the bowl into the air and placing it in a cabinet, but does not require multi-axis precision or simultaneous two-arm coordination. The robot is assumed to be within reach of both the bowl and the cabinet.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #127] Pipeline said FALSE, Dataset said TRUE
+Task: put a chilled bowl on the kitchen island.
+LLM Task Properties:
+  - reasoning: The task requires lifting the bowl completely into the air to place it on the island, but does not require precision beyond general manipulation or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #128] Pipeline said FALSE, Dataset said TRUE
+Task: put a chilled mug under a coffee maker on a table.
+LLM Task Properties:
+  - reasoning: The mug can be slid or nudged into position under the coffee maker without lifting it completely, and no precision or bimanual action is required.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #129] Pipeline said FALSE, Dataset said TRUE
+Task: put a chilled plate onto the wooden shelf in the kitchen
+LLM Task Properties:
+  - reasoning: The task requires lifting the plate completely into the air to place it on the shelf, but does not require precision beyond general manipulation or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: True
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #130] Pipeline said FALSE, Dataset said TRUE
+Task: put a chilled pot on a stove.
+LLM Task Properties:
+  - reasoning: The pot must be lifted completely off the surface to place it on the stove, requiring a gripper, but no extreme precision or two simultaneous arms are needed.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #131] Pipeline said FALSE, Dataset said TRUE
+Task: put a chilled potato into a garbage bin
+LLM Task Properties:
+  - reasoning: The task requires lifting the potato completely into the air to place it in the bin, but does not require precision, mobility, two arms, or a rigid grip for a lightweight object like a potato.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #132] Pipeline said FALSE, Dataset said TRUE
+Task: put a chilled slice of apple in the microwave.
+LLM Task Properties:
+  - reasoning: The task requires lifting the apple slice into the air to place it in the microwave, but does not require precision beyond basic manipulation or simultaneous two-arm coordination.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #133] Pipeline said FALSE, Dataset said TRUE
+Task: put a clean bowl of water in the fridge.
+LLM Task Properties:
+  - reasoning: The task requires lifting the bowl into the fridge, which necessitates grasping, but no precision beyond basic manipulation or simultaneous two-arm coordination is needed.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #134] Pipeline said FALSE, Dataset said TRUE
+Task: put a clean knife in the drawer.
+LLM Task Properties:
+  - reasoning: The task requires lifting the knife into the air to place it in the drawer, but does not require precision beyond general manipulation or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #135] Pipeline said FALSE, Dataset said TRUE
+Task: put a clean pan in the kitchen cabinet
+LLM Task Properties:
+  - reasoning: Putting a pan in a cabinet requires lifting it completely into the air, but does not require precision beyond general manipulation or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #136] Pipeline said FALSE, Dataset said TRUE
+Task: put a clean spatula on a kitchen table.
+LLM Task Properties:
+  - reasoning: The spatula must be lifted and placed, requiring a gripper to grasp and transport it, but no precision or bimanual actions are needed.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #137] Pipeline said FALSE, Dataset said TRUE
+Task: put a clean wash cloth on the counter.
+LLM Task Properties:
+  - reasoning: Placing a wash cloth on the counter requires lifting it into the air (grasping), but does not demand precision, mobility, two arms, or a rigid grip.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #138] Pipeline said FALSE, Dataset said TRUE
+Task: put a cleaned ladle in the cupboard under the sink
+LLM Task Properties:
+  - reasoning: The ladle must be lifted into the air to place it in the cupboard, requiring grasping, but no precision, mobility, or bimanual action is strictly necessary.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #139] Pipeline said FALSE, Dataset said TRUE
+Task: put a cleaned scoop in a cabinet.
+LLM Task Properties:
+  - reasoning: The task requires lifting the scoop into the air to place it inside the cabinet, which necessitates grasping, but does not require precision, mobility, or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #140] Pipeline said FALSE, Dataset said TRUE
+Task: put a cleaned scoop on the counter next to the toaster.
+LLM Task Properties:
+  - reasoning: The task requires lifting the scoop into the air to place it on the counter, but does not require precision, mobility, two arms, or a rigid grip beyond basic grasping.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #141] Pipeline said FALSE, Dataset said TRUE
+Task: put a clock on a desk.
+LLM Task Properties:
+  - reasoning: Putting a clock on a desk requires lifting it completely into the air, which necessitates grasping.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #142] Pipeline said FALSE, Dataset said TRUE
+Task: put a cold cup in the microwave.
+LLM Task Properties:
+  - reasoning: The task requires lifting the cup into the air to place it inside the microwave, but does not require precision beyond general manipulation or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #143] Pipeline said FALSE, Dataset said TRUE
+Task: put a computer on the ottoman.
+LLM Task Properties:
+  - reasoning: Placing a computer requires lifting it completely into the air, which necessitates grasping, but no precision beyond general manipulation or mobility beyond optimal positioning.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #144] Pipeline said FALSE, Dataset said TRUE
+Task: put a cooked egg on the small black table.
+LLM Task Properties:
+  - reasoning: The task requires lifting the egg completely into the air to place it on the table, so grasping is necessary.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #145] Pipeline said FALSE, Dataset said TRUE
+Task: put a cooked slice of tomato on kitchen counter.
+LLM Task Properties:
+  - reasoning: The task requires lifting the slice of tomato into the air to place it on the counter, which necessitates grasping.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #146] Pipeline said FALSE, Dataset said TRUE
+Task: put a cup in the sink.
+LLM Task Properties:
+  - reasoning: The cup must be lifted into the air to be placed in the sink, requiring grasping, but no precision beyond basic manipulation or mobility beyond optimal positioning.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #147] Pipeline said FALSE, Dataset said TRUE
+Task: put a cushion on an ottoman.
+LLM Task Properties:
+  - reasoning: Placing a cushion on an ottoman requires lifting it into the air, which necessitates grasping, but does not require precision, mobility, or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: True
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #148] Pipeline said FALSE, Dataset said TRUE
+Task: put a glass bowl with a sponge in it in the cabinet.
+LLM Task Properties:
+  - reasoning: The task requires lifting the bowl (with sponge inside) into the air to place it in the cabinet, but does not require precision beyond basic manipulation or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #149] Pipeline said FALSE, Dataset said TRUE
+Task: put a heated coffee mug on the counter.
+LLM Task Properties:
+  - reasoning: The task requires lifting the mug completely into the air to place it on the counter, but does not require precision beyond general manipulation or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #150] Pipeline said FALSE, Dataset said TRUE
+Task: put a heated mug in the coffee maker.
+LLM Task Properties:
+  - reasoning: The task requires lifting the mug into the air and placing it precisely into the coffee maker's designated slot, but does not require two arms simultaneously or extreme precision beyond general manipulation.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #151] Pipeline said FALSE, Dataset said TRUE
+Task: put a heated slice of bread on the table.
+LLM Task Properties:
+  - reasoning: The task requires lifting the bread slice completely into the air to place it on the table, but does not require precision, mobility, two arms, or a rigid grip.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #152] Pipeline said FALSE, Dataset said TRUE
+Task: put a knife in the sink before standing it on the counter
+LLM Task Properties:
+  - reasoning: The task involves lifting the knife into the air to place it in the sink, but standing it on the counter can be done by sliding or positioning without a rigid grip, and no simultaneous two-arm action is required.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #153] Pipeline said FALSE, Dataset said TRUE
+Task: put a laptop on table.
+LLM Task Properties:
+  - reasoning: Lifting a laptop requires grasping it completely off the surface, as sliding or pushing is not feasible for placement.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: True
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #154] Pipeline said FALSE, Dataset said TRUE
+Task: put a microwaved slice of potato in the refrigerator.
+LLM Task Properties:
+  - reasoning: The task requires lifting the potato slice into the air to place it in the refrigerator, but does not demand high precision, mobility, or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #155] Pipeline said FALSE, Dataset said TRUE
+Task: put a pan with a knife on a table.
+LLM Task Properties:
+  - reasoning: The task involves placing a pan (which may require lifting) and a knife (which can be pushed or slid), but the minimum requirement is to move the pan, which necessitates grasping.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #156] Pipeline said FALSE, Dataset said TRUE
+Task: put a pen in a bowl next to the bed on the dresser.
+LLM Task Properties:
+  - reasoning: The task requires lifting the pen into the air to place it in the bowl, but does not demand high precision, mobility, or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #157] Pipeline said FALSE, Dataset said TRUE
+Task: put a pencil on the shelf.
+LLM Task Properties:
+  - reasoning: Placing a pencil on a shelf requires lifting it into the air, which necessitates grasping, but no precision beyond basic manipulation or mobility beyond optimal reach.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #158] Pipeline said FALSE, Dataset said TRUE
+Task: put a phone in a bowl on the coffee table.
+LLM Task Properties:
+  - reasoning: The task requires lifting the phone completely into the air to place it in the bowl, but does not require precision beyond basic manipulation or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #159] Pipeline said FALSE, Dataset said TRUE
+Task: put a plate in the refrigerator back to the bottom cabinet
+LLM Task Properties:
+  - reasoning: The task involves lifting the plate into the air to place it in the refrigerator and then moving it to the cabinet, requiring grasping but no precision or bimanual actions, and mobility is unnecessary due to optimal positioning.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #160] Pipeline said FALSE, Dataset said TRUE
+Task: put a rag in the sink.
+LLM Task Properties:
+  - reasoning: Placing a rag in the sink requires lifting it into the air, but does not demand precision, mobility, or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #161] Pipeline said FALSE, Dataset said TRUE
+Task: put a rinsed bar of soap in a bathroom cabinet.
+LLM Task Properties:
+  - reasoning: The task requires lifting the soap into the air to place it in the cabinet, but does not require precision beyond general manipulation, mobility, or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #162] Pipeline said FALSE, Dataset said TRUE
+Task: put a set of keys onto a sofa
+LLM Task Properties:
+  - reasoning: Placing keys onto a sofa can be done by sliding or dropping them without fully lifting or rigidly gripping, and no precision or mobility is strictly required.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #163] Pipeline said FALSE, Dataset said TRUE
+Task: put a slice of bread in the toaster and push the toaster lever down
+LLM Task Properties:
+  - reasoning: The task requires placing bread into the toaster (grasping) and pushing the lever (contact without grasping), but no mobility, precision, or bimanual actions are strictly necessary.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #164] Pipeline said FALSE, Dataset said TRUE
+Task: put a sponge on a plate, place the plate in the cupboard under the microwave
+LLM Task Properties:
+  - reasoning: The task involves lifting both the sponge and the plate, but the robot is already optimally positioned, so no mobility is needed. No precision or bimanual actions are required.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #165] Pipeline said FALSE, Dataset said TRUE
+Task: put a table on a bowl.
+LLM Task Properties:
+  - reasoning: The task requires lifting the table completely into the air to place it on the bowl, which cannot be done by pushing or sliding alone.
+  - needs_grasping: True
+  - needs_precision: True
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #166] Pipeline said FALSE, Dataset said TRUE
+Task: put a watch on a pad in front of the tv.
+LLM Task Properties:
+  - reasoning: Placing a watch on a pad requires lifting it into the air (grasping), but does not require precision beyond general manipulation, mobility, or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #167] Pipeline said FALSE, Dataset said TRUE
+Task: put a wooden box and a clock on top of the desk
+LLM Task Properties:
+  - reasoning: Placing objects on a desk requires lifting them into the air, but does not require precision beyond basic manipulation or two arms working simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #168] Pipeline said FALSE, Dataset said TRUE
+Task: put chilled cup in cabinet
+LLM Task Properties:
+  - reasoning: The task requires lifting the cup into the air to place it inside the cabinet, which necessitates grasping, but no precision beyond basic manipulation or mobility beyond optimal positioning.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #169] Pipeline said FALSE, Dataset said TRUE
+Task: put clean cloth on toilet
+LLM Task Properties:
+  - reasoning: Placing a cloth on a surface can be done by sliding or pushing it into position without fully lifting it into the air.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #170] Pipeline said FALSE, Dataset said TRUE
+Task: put heated glass away in cabinet
+LLM Task Properties:
+  - reasoning: The task requires lifting the glass completely into the air to place it in the cabinet, but does not require precision beyond general manipulation or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #171] Pipeline said FALSE, Dataset said TRUE
+Task: put heated mug inside kitchen cabinet
+LLM Task Properties:
+  - reasoning: The task requires lifting the mug into the air to place it inside the cabinet, which necessitates grasping, but no precision beyond basic placement or bimanual coordination.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: True
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #172] Pipeline said FALSE, Dataset said TRUE
+Task: put heated tomato inside fridge
+LLM Task Properties:
+  - reasoning: The task requires lifting the heated tomato into the air to place it inside the fridge, but does not require multi-axis precision, mobility, or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #173] Pipeline said FALSE, Dataset said TRUE
+Task: put hot bread in front of the microwave.
+LLM Task Properties:
+  - reasoning: The task requires lifting the bread (a lightweight object) and placing it, but does not demand rigid grip strength or bimanual coordination, nor mobility since the robot is optimally positioned.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #174] Pipeline said FALSE, Dataset said TRUE
+Task: put the books on the desk.
+LLM Task Properties:
+  - reasoning: Putting books on a desk requires lifting them completely into the air, so grasping is necessary, but no precision, mobility, or bimanual actions are strictly required.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #175] Pipeline said FALSE, Dataset said TRUE
+Task: put the box with the keys inside onto the black chair
+LLM Task Properties:
+  - reasoning: The task requires lifting the box completely into the air to place it on the chair, so grasping is necessary, but no precision, mobility, or bimanual actions are strictly required.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #176] Pipeline said FALSE, Dataset said TRUE
+Task: put the candle in the bathroom cabinet
+LLM Task Properties:
+  - reasoning: The task requires lifting the candle into the air to place it inside the cabinet, but does not require high precision, mobility, or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #177] Pipeline said FALSE, Dataset said TRUE
+Task: put the cds away.
+LLM Task Properties:
+  - reasoning: Putting CDs away can be done by sliding or pushing them into place, without needing to fully lift them into the air.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #178] Pipeline said FALSE, Dataset said TRUE
+Task: put the coffee cup in the fridge for a bit.
+LLM Task Properties:
+  - reasoning: The task requires lifting the cup into the air to place it inside the fridge, but does not require precision, mobility, or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #179] Pipeline said FALSE, Dataset said TRUE
+Task: put the cup with knife in the counter
+LLM Task Properties:
+  - reasoning: The task involves moving a cup (requiring lifting) and placing it on the counter, but the knife can be pushed or slid without grasping.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #180] Pipeline said FALSE, Dataset said TRUE
+Task: put the egg on the kitchen counter in the fridge.
+LLM Task Properties:
+  - reasoning: The task requires lifting the egg (grasping) and moving it to the fridge, but the robot is assumed to be optimally positioned within arm's reach of both locations.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #181] Pipeline said FALSE, Dataset said TRUE
+Task: put the elastic rubber on the object that is attached to the table
+LLM Task Properties:
+  - reasoning: Stretching an elastic rubber over an object requires lifting and manipulating the rubber, which cannot be done by pushing or sliding alone.
+  - needs_grasping: True
+  - needs_precision: True
+  - needs_mobility: False
+  - needs_bimanual: True
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 1
+  - DoF: 7
+  - Gripper Type: two_finger
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #182] Pipeline said FALSE, Dataset said TRUE
+Task: put the fork into the green cup in the sink
+LLM Task Properties:
+  - reasoning: Placing a fork into a cup requires lifting the fork completely into the air, but does not require high-precision insertion or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #183] Pipeline said FALSE, Dataset said TRUE
+Task: put the glass in the sink.
+LLM Task Properties:
+  - reasoning: Placing a glass in the sink requires lifting it into the air, but does not require high precision, mobility, two arms, or a rigid grip for a lightweight object like a glass.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #184] Pipeline said FALSE, Dataset said TRUE
+Task: put the gray dish in the microwave
+LLM Task Properties:
+  - reasoning: Placing an object inside a microwave requires lifting it completely into the air, but does not require precision beyond general manipulation or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #185] Pipeline said FALSE, Dataset said TRUE
+Task: put the heated glass in the kitchen cabinet
+LLM Task Properties:
+  - reasoning: The task requires lifting the glass into the air to place it in the cabinet, which necessitates grasping, but no precision beyond general manipulation or mobility beyond optimal positioning.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: True
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #186] Pipeline said FALSE, Dataset said TRUE
+Task: put the heated glass on the shelf.
+LLM Task Properties:
+  - reasoning: The task requires lifting the glass completely into the air to place it on the shelf, but does not require high precision, mobility, two arms, or a rigid grip if the glass is lightweight.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #187] Pipeline said FALSE, Dataset said TRUE
+Task: put the item on the plate in the cup
+LLM Task Properties:
+  - reasoning: The task requires lifting the item from the plate and placing it into the cup, which necessitates grasping and physical contact, but no mobility, precision, or bimanual coordination beyond basic manipulation.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #188] Pipeline said FALSE, Dataset said TRUE
+Task: put the knife from the table inside of the coffee mug and place it inside of the sink.
+LLM Task Properties:
+  - reasoning: The task requires lifting the knife (grasping) and placing it into the mug, then moving the mug to the sink, but no precision insertion or bimanual coordination is strictly necessary.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #189] Pipeline said FALSE, Dataset said TRUE
+Task: put the mug into the bowl
+LLM Task Properties:
+  - reasoning: Placing the mug into the bowl requires lifting the mug completely into the air, so grasping is necessary.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #190] Pipeline said FALSE, Dataset said TRUE
+Task: put the mug into the plate dryer
+LLM Task Properties:
+  - reasoning: Placing a mug into a plate dryer requires lifting the mug completely into the air, so grasping is necessary.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #191] Pipeline said FALSE, Dataset said TRUE
+Task: put the pen on the desk
+LLM Task Properties:
+  - reasoning: Placing a pen on a desk can be done by sliding or pushing it into position without fully lifting it into the air.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #192] Pipeline said FALSE, Dataset said TRUE
+Task: put the plate with credit card on the lower shelf
+LLM Task Properties:
+  - reasoning: The task involves moving a plate and credit card, which can be done by sliding or pushing if the plate is stable, but the credit card may require grasping if not secured; however, the plate itself does not strictly require lifting if it can be slid.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #193] Pipeline said FALSE, Dataset said TRUE
+Task: put the spatula on the plate, put the plate in the sink
+LLM Task Properties:
+  - reasoning: The task involves moving objects (spatula and plate) from one location to another, requiring lifting and physical contact, but no precision, mobility, or bimanual actions are strictly necessary.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #194] Pipeline said FALSE, Dataset said TRUE
+Task: put the toilet paper roll on the toilet paper holder
+LLM Task Properties:
+  - reasoning: Inserting a toilet paper roll requires aligning and pushing it onto a holder, which demands grasping and some precision but not simultaneous two-arm coordination or mobility.
+  - needs_grasping: True
+  - needs_precision: True
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #195] Pipeline said FALSE, Dataset said TRUE
+Task: put the two towels on the sink
+LLM Task Properties:
+  - reasoning: Placing towels on a sink can be done by lifting each towel individually, but the task does not require precision, mobility, or simultaneous two-arm coordination.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #196] Pipeline said FALSE, Dataset said TRUE
+Task: put two bars of soap in to the bath tub
+LLM Task Properties:
+  - reasoning: Placing soap bars into the tub requires lifting them completely, but no precision insertion, mobility, or two-handed coordination is strictly necessary.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #197] Pipeline said FALSE, Dataset said TRUE
+Task: put two bars of soap into the leftmost sink basin.
+LLM Task Properties:
+  - reasoning: The task requires lifting the soap bars into the sink, which cannot be done by pushing or sliding alone, but does not require precision, mobility, or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #198] Pipeline said FALSE, Dataset said TRUE
+Task: put two cds in a desk drawer.
+LLM Task Properties:
+  - reasoning: The task requires lifting CDs into the air to place them in the drawer, but does not require high precision, mobility, two arms simultaneously, or a rigid grip for heavy objects.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #199] Pipeline said FALSE, Dataset said TRUE
+Task: put two cds in the safe.
+LLM Task Properties:
+  - reasoning: Placing CDs into a safe requires lifting them completely into the air and likely precise alignment to fit them inside, but does not require mobility, two arms simultaneously, or a rigid grip for heavy objects.
+  - needs_grasping: True
+  - needs_precision: True
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #200] Pipeline said FALSE, Dataset said TRUE
+Task: put two glasses on the counter.
+LLM Task Properties:
+  - reasoning: Placing objects on a counter requires lifting them into the air, but does not require precision, mobility, or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #201] Pipeline said FALSE, Dataset said TRUE
+Task: put two keys on a night stand.
+LLM Task Properties:
+  - reasoning: Placing small objects like keys on a surface can be done by pushing or sliding them with a blunt arm, without needing to fully grasp and lift them into the air.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #202] Pipeline said FALSE, Dataset said TRUE
+Task: put two laptops on ottoman.
+LLM Task Properties:
+  - reasoning: Lifting laptops requires grasping them completely into the air, but no precision insertion or bimanual coordination is needed, and the robot is assumed to be within reach of both the laptops and the ottoman.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #203] Pipeline said FALSE, Dataset said TRUE
+Task: put two mugs on a desk
+LLM Task Properties:
+  - reasoning: Placing mugs on a desk requires lifting them into the air, but does not require precision, mobility, or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #204] Pipeline said FALSE, Dataset said TRUE
+Task: put two red cloths in to the sink
+LLM Task Properties:
+  - reasoning: Placing cloths into a sink can be done by grasping them, but the task does not require mobility since the robot is assumed to be within reach of both the cloths and the sink.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #205] Pipeline said FALSE, Dataset said TRUE
+Task: put two sets of keys in the safe.
+LLM Task Properties:
+  - reasoning: The task requires lifting each key set into the air to place them inside the safe, but does not require multi-axis precision, mobility, or simultaneous two-arm coordination.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #206] Pipeline said FALSE, Dataset said TRUE
+Task: put two shakers in a drawer.
+LLM Task Properties:
+  - reasoning: Putting objects into a drawer requires lifting them into the air, but does not require precision beyond general manipulation or two arms working simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #207] Pipeline said FALSE, Dataset said TRUE
+Task: put two spray bottles in the garbage can.
+LLM Task Properties:
+  - reasoning: The task requires lifting each spray bottle into the air to place it in the garbage can, which necessitates grasping, but no precision, mobility, or bimanual coordination beyond sequential single-arm actions.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #208] Pipeline said FALSE, Dataset said TRUE
+Task: put two vases on the brown shelf.
+LLM Task Properties:
+  - reasoning: Placing vases on a shelf requires lifting them into the air, but does not require precision beyond general manipulation or two arms working simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #209] Pipeline said FALSE, Dataset said TRUE
+Task: put two wine bottles in cabinet
+LLM Task Properties:
+  - reasoning: Placing bottles in a cabinet requires lifting them completely off the surface, which necessitates grasping, but no precision beyond basic manipulation or mobility beyond arm's reach.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: True
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #210] Pipeline said FALSE, Dataset said TRUE
+Task: put vase in box to put on table.
+LLM Task Properties:
+  - reasoning: The task requires lifting the vase into the air to place it inside the box, but does not require high precision, mobility, or two arms working simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #211] Pipeline said FALSE, Dataset said TRUE
+Task: put washed mug full of water inside coffee maker
+LLM Task Properties:
+  - reasoning: The mug must be lifted and placed precisely into the coffee maker, requiring grasping and some precision, but no mobility or bimanual action is strictly necessary.
+  - needs_grasping: True
+  - needs_precision: True
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #212] Pipeline said FALSE, Dataset said TRUE
+Task: put washed potato inside fridge
+LLM Task Properties:
+  - reasoning: The task requires lifting the potato into the air to place it inside the fridge, but does not require precision, mobility, or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: True
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #213] Pipeline said FALSE, Dataset said TRUE
+Task: putting a clean glass in the microwave
+LLM Task Properties:
+  - reasoning: Placing a glass in the microwave requires lifting it completely into the air, but does not require precision beyond general manipulation or two arms.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #214] Pipeline said FALSE, Dataset said TRUE
+Task: putting a mug in the sink
+LLM Task Properties:
+  - reasoning: Placing a mug in the sink requires lifting it into the air, but the robot is already optimally positioned within arm's reach of both the mug and the sink.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #215] Pipeline said FALSE, Dataset said TRUE
+Task: putting a plate with a watch on it on the coffee table
+LLM Task Properties:
+  - reasoning: The task involves moving a plate with an object on it, which can be done by sliding or lifting the plate without needing to grasp the watch itself or requiring two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #216] Pipeline said FALSE, Dataset said TRUE
+Task: putting two books in a drawer on the desk
+LLM Task Properties:
+  - reasoning: Placing books in a drawer requires lifting them into the air, but the robot is already optimally positioned and no two-arm simultaneous action is needed.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #217] Pipeline said FALSE, Dataset said TRUE
+Task: putting two laptops on the desk
+LLM Task Properties:
+  - reasoning: Putting laptops on a desk requires lifting them completely into the air, so grasping is necessary, but no precision, mobility, or bimanual actions are strictly required.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #218] Pipeline said FALSE, Dataset said TRUE
+Task: putting two phones on a desk
+LLM Task Properties:
+  - reasoning: Placing objects on a desk can be done by sliding or pushing them, so grasping is not strictly required.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #219] Pipeline said FALSE, Dataset said TRUE
+Task: putting two remotes on the black sofa
+LLM Task Properties:
+  - reasoning: Placing remotes on a sofa can be done by sliding or pushing them into position without lifting them completely into the air.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #220] Pipeline said FALSE, Dataset said TRUE
+Task: putting two sets of keys on the armchair
+LLM Task Properties:
+  - reasoning: Placing keys on a surface can be done by sliding or pushing them, so grasping is not strictly required.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #221] Pipeline said FALSE, Dataset said TRUE
+Task: remove some tissue from the box
+LLM Task Properties:
+  - reasoning: Removing tissue from a box can be done by pulling or grasping a single sheet, but does not require lifting the entire box or multi-axis precision.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #222] Pipeline said FALSE, Dataset said TRUE
+Task: remove the fork from the plate and put it on the table
+LLM Task Properties:
+  - reasoning: The fork must be lifted completely off the plate, requiring a gripper to grasp and move it, but no precision beyond basic manipulation is needed.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #223] Pipeline said FALSE, Dataset said TRUE
+Task: remove the lid from the cabinet and put it on top of the microwave
+LLM Task Properties:
+  - reasoning: Removing a lid requires lifting it completely into the air, and placing it on the microwave also requires grasping, but no precision insertion or bimanual coordination is needed.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #224] Pipeline said FALSE, Dataset said TRUE
+Task: retrieve plate from cupboard, insert it into microwave, take the plate to the fridge
+LLM Task Properties:
+  - reasoning: The task involves lifting and moving a plate multiple times, requiring grasping, but no precision insertion beyond basic placement, no mobility beyond arm's reach, and no simultaneous bimanual actions.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #225] Pipeline said FALSE, Dataset said TRUE
+Task: rinse a pink rag and put it in the dresser.
+LLM Task Properties:
+  - reasoning: Rinsing a rag requires grasping to hold it under water, and placing it in the dresser may require lifting it, but no precision, mobility, or bimanual actions are strictly necessary.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #226] Pipeline said FALSE, Dataset said TRUE
+Task: set two statues on the table.
+LLM Task Properties:
+  - reasoning: Setting statues on a table requires lifting them completely into the air, which necessitates grasping, but no precision beyond basic placement or bimanual coordination.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #227] Pipeline said FALSE, Dataset said TRUE
+Task: stretch out the ends of the charger at opposite sides
+LLM Task Properties:
+  - reasoning: Stretching the charger requires pulling both ends apart simultaneously with opposing forces, which cannot be done with passive support or sequentially.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: True
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 1
+  - DoF: 7
+  - Gripper Type: two_finger
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #228] Pipeline said FALSE, Dataset said TRUE
+Task: take apple off of table, microwave, and return it to table
+LLM Task Properties:
+  - reasoning: The task requires lifting the apple (grasping), but no precision beyond basic manipulation, no mobility beyond arm's reach, no simultaneous bimanual action, and no rigid grip for the apple's weight.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #229] Pipeline said FALSE, Dataset said TRUE
+Task: take the credit card from one desk and put it on the shelf of the other.
+LLM Task Properties:
+  - reasoning: The task requires lifting the credit card into the air and placing it on a shelf, but does not require mobility since the robot is assumed to be within arm's reach of both locations.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #230] Pipeline said FALSE, Dataset said TRUE
+Task: take the lid off of the bottle and put it on the table
+LLM Task Properties:
+  - reasoning: Taking a lid off a bottle requires lifting it into the air, but does not require high precision, mobility, two arms simultaneously, or a rigid grip for the lid itself.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #231] Pipeline said FALSE, Dataset said TRUE
+Task: take the lid on the pot and put it on the tea towels
+LLM Task Properties:
+  - reasoning: The task requires lifting the lid completely into the air to move it, but does not require precision beyond general manipulation, mobility, or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #232] Pipeline said FALSE, Dataset said TRUE
+Task: take the pencil from the desk, put it on the other side of the desk
+LLM Task Properties:
+  - reasoning: The robot can slide or push the pencil across the desk without lifting it, and it is assumed to be within arm's reach of both locations.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #233] Pipeline said FALSE, Dataset said TRUE
+Task: take the red marker out of the pen holder and put it on the desk
+LLM Task Properties:
+  - reasoning: The task requires lifting the marker completely into the air to remove it from the holder and place it on the desk, but does not require precision, mobility, or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #234] Pipeline said FALSE, Dataset said TRUE
+Task: take the remote from the couch, put it on the chair
+LLM Task Properties:
+  - reasoning: The task involves moving the remote from one location to another, requiring lifting it into the air, but no precision, mobility, or bimanual actions are strictly necessary.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #235] Pipeline said FALSE, Dataset said TRUE
+Task: take the salt shaker out of the cupboard and set it on the table.
+LLM Task Properties:
+  - reasoning: The task requires lifting the salt shaker into the air to move it, but does not require multi-axis precision, mobility, or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #236] Pipeline said FALSE, Dataset said TRUE
+Task: take the vase from the fridge, put it in the cabinet
+LLM Task Properties:
+  - reasoning: The task requires lifting the vase completely into the air to move it from one location to another, but does not require mobility, precision, or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #237] Pipeline said FALSE, Dataset said TRUE
+Task: throw a cooked egg in the trash can.
+LLM Task Properties:
+  - reasoning: Throwing an egg requires lifting it completely into the air, necessitating grasping, but does not require precision, mobility, two arms, or a rigid grip for the egg itself.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #238] Pipeline said FALSE, Dataset said TRUE
+Task: tie a knot
+LLM Task Properties:
+  - reasoning: Tying a knot requires two hands working simultaneously to manipulate the rope ends in opposing directions, with no passive surface support possible.
+  - needs_grasping: True
+  - needs_precision: True
+  - needs_mobility: False
+  - needs_bimanual: True
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 1
+  - DoF: 7
+  - Gripper Type: two_finger
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #239] Pipeline said FALSE, Dataset said TRUE
+Task: tie a knot using the white rope
+LLM Task Properties:
+  - reasoning: Tying a knot requires two hands working simultaneously to manipulate the rope ends and form loops, with no passive surface support possible.
+  - needs_grasping: True
+  - needs_precision: True
+  - needs_mobility: False
+  - needs_bimanual: True
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 1
+  - DoF: 7
+  - Gripper Type: two_finger
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #240] Pipeline said FALSE, Dataset said TRUE
+Task: to chill an egg and put it in the microwave.
+LLM Task Properties:
+  - reasoning: The task requires lifting the egg into the air to place it in the fridge and microwave, but does not require precision, mobility, or two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #241] Pipeline said FALSE, Dataset said TRUE
+Task: to clean a rag and place it on the counter between the two sinks.
+LLM Task Properties:
+  - reasoning: Cleaning a rag may involve wringing, which requires two opposing forces simultaneously with no surface support, but placing it on the counter can be done with one arm after wringing.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: True
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 1
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #242] Pipeline said FALSE, Dataset said TRUE
+Task: to heat a slice of potato and place it on the kitchen table
+LLM Task Properties:
+  - reasoning: Heating a potato slice requires lifting it (grasping), but no precision beyond basic manipulation, no mobility beyond arm's reach, and no simultaneous two-arm action.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #243] Pipeline said FALSE, Dataset said TRUE
+Task: to put a pen in a bowl and put the bowl on the desk.
+LLM Task Properties:
+  - reasoning: The task involves lifting the pen and bowl into the air, but no simultaneous two-arm action, precision insertion, or mobility beyond arm's reach is strictly required.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #244] Pipeline said FALSE, Dataset said TRUE
+Task: to turn on the standing lamp in the corner.
+LLM Task Properties:
+  - reasoning: Turning on a standing lamp requires physical contact with the switch or knob, but does not require lifting the lamp or precise multi-axis manipulation.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #245] Pipeline said FALSE, Dataset said TRUE
+Task: trash  a wet soap in the bin
+LLM Task Properties:
+  - reasoning: The task requires lifting the wet soap into the air to place it in the bin, which necessitates grasping, but does not require precision, mobility, bimanual actions, or a rigid grip for heavy/resistive objects.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #246] Pipeline said FALSE, Dataset said TRUE
+Task: turn on a floor lamp with remote in hand
+LLM Task Properties:
+  - reasoning: The task requires pressing a button on the remote, which involves physical contact but not lifting the remote or the lamp, nor does it require mobility or bimanual actions.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #247] Pipeline said FALSE, Dataset said TRUE
+Task: turn on a lamp while holding a credit card.
+LLM Task Properties:
+  - reasoning: The robot can sequentially hold the credit card and then use the same arm to press or twist the lamp switch, so two arms are not strictly required simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #248] Pipeline said FALSE, Dataset said TRUE
+Task: turn on a lamp with a newspaper.
+LLM Task Properties:
+  - reasoning: Turning on a lamp with a newspaper requires physical contact to press the switch or manipulate the lamp, but does not require lifting the newspaper or precise multi-axis manipulation.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #249] Pipeline said FALSE, Dataset said TRUE
+Task: turn on a lamp with a set of keys.
+LLM Task Properties:
+  - reasoning: Turning on a lamp with keys requires inserting or manipulating the key into the switch, which demands precise multi-axis rotation and contact, but does not require lifting the keys fully into the air or two simultaneous arms.
+  - needs_grasping: True
+  - needs_precision: True
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #250] Pipeline said FALSE, Dataset said TRUE
+Task: turn on a lamp.
+LLM Task Properties:
+  - reasoning: Turning on a lamp requires physical contact with the switch or knob, but does not require lifting the lamp or precise multi-axis manipulation.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #251] Pipeline said FALSE, Dataset said TRUE
+Task: turn on table lamp with pen in hand
+LLM Task Properties:
+  - reasoning: The task requires pressing or nudging the lamp switch, which does not strictly require grasping the lamp or precision, but physical contact is necessary.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #252] Pipeline said FALSE, Dataset said TRUE
+Task: turn on the desk lamp while holding a tennis racket.
+LLM Task Properties:
+  - reasoning: The robot can sequentially hold the racket and then use the same arm to push the lamp switch, so no simultaneous bimanual action is required.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #253] Pipeline said FALSE, Dataset said TRUE
+Task: turn on the lamp in the corner while holding the laptop.
+LLM Task Properties:
+  - reasoning: The robot can sequentially interact with the lamp and laptop without needing two arms simultaneously, and mobility is not required as the robot is assumed to be within reach of both objects.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #254] Pipeline said FALSE, Dataset said TRUE
+Task: turn on the lamp on the nightstand while holding a clock.
+LLM Task Properties:
+  - reasoning: The robot must physically touch the lamp switch and hold the clock, but the clock can be held sequentially with one arm while the other interacts with the lamp, and no rigid grip is needed for the lamp switch.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #255] Pipeline said FALSE, Dataset said TRUE
+Task: turn on the lamp while carrying a box.
+LLM Task Properties:
+  - reasoning: The robot can sequentially interact with the lamp (pushing or pressing) and carry the box with one arm, without needing two arms simultaneously or mobility.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #256] Pipeline said FALSE, Dataset said TRUE
+Task: turn on the lamp while holding the bowl.
+LLM Task Properties:
+  - reasoning: The robot can sequentially interact with the lamp (push or grasp) and then hold the bowl, without needing two arms simultaneously.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #257] Pipeline said FALSE, Dataset said TRUE
+Task: twist the knob on the lamp
+LLM Task Properties:
+  - reasoning: Twisting a knob requires physical contact and a grip to rotate it, but the rotation can be done with a single arm and does not require lifting the knob into the air.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #258] Pipeline said FALSE, Dataset said TRUE
+Task: twist the two orange objects on the pot
+LLM Task Properties:
+  - reasoning: Twisting two objects on a pot (e.g., lid knobs) requires simultaneous opposing forces with no surface support, necessitating two arms working together.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: True
+  - needs_contact: True
+  - needs_rigid_grip: True
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 1
+  - DoF: 7
+  - Gripper Type: two_finger
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #259] Pipeline said FALSE, Dataset said TRUE
+Task: use the pen to stir the contents in the mug then empty the mug
+LLM Task Properties:
+  - reasoning: Stirring can be done by holding the pen with one arm, and emptying the mug requires lifting it, but no simultaneous two-arm action or mobility is needed.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #260] Pipeline said FALSE, Dataset said TRUE
+Task: warm a chilled cup from the cabinet in the microwave
+LLM Task Properties:
+  - reasoning: Warming a cup requires lifting it into the microwave, which necessitates grasping, but no precision beyond basic manipulation or mobility beyond optimal positioning.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #261] Pipeline said FALSE, Dataset said TRUE
+Task: wash an apple to put in the fridge.
+LLM Task Properties:
+  - reasoning: Washing an apple requires lifting it under water, which necessitates grasping, but no precision beyond basic manipulation or mobility beyond optimal positioning.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #262] Pipeline said FALSE, Dataset said TRUE
+Task: wash the tomato and put it back in the fridge
+LLM Task Properties:
+  - reasoning: Washing requires holding the tomato under water (grasping), but putting it back in the fridge can be done by sliding or placing without strict grasping; however, washing itself requires lifting and holding, so needs_grasping is true. No precision, mobility, or bimanual actions are strictly required.
+  - needs_grasping: True
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: False
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+[FALSE NEGATIVE #263] Pipeline said FALSE, Dataset said TRUE
+Task: wipe the pan with the sponge
+LLM Task Properties:
+  - reasoning: Wiping a pan with a sponge requires physical contact and manipulation of the sponge, but the sponge can be pushed or slid without needing a full grasp or rigid grip.
+  - needs_grasping: False
+  - needs_precision: False
+  - needs_mobility: False
+  - needs_bimanual: False
+  - needs_contact: True
+  - needs_rigid_grip: False
+Robot Configuration Being Tested:
+  - Mobile: False
+  - Arms: 0
+  - DoF: 6
+  - Gripper Type: none
+  - Rigid Grip: True
+Ground Truth in Dataset: Can Execute = TRUE
+----------------------------------------
+
+============================================================
+SUMMARY
+============================================================
+TP: 4525 | TN: 4788 | FP: 0 | FN: 263
+Accuracy:    0.973
+Spec.:       1.000
+Ratio:       0.896
+Precision:   1.000
+Recall:      0.945
+F1 Score:    0.972
+============================================================

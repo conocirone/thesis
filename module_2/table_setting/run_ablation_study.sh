@@ -16,7 +16,7 @@
 set -euo pipefail
 
 REPO_DIR="$HOME/thesis"
-VENV_DIR="$REPO_DIR/.venv_server"
+VENV_DIR="$REPO_DIR/thesis_env"
 
 echo "============================================================"
 echo "  Neuro-Symbolic Ablation Study: Table Setting (Module 2)"
@@ -36,6 +36,7 @@ echo ""
 
 # Set HuggingFace cache directory (shared across jobs)
 export HF_HOME="${HF_HOME:-$REPO_DIR/.hf_cache}"
+export MISTRAL_API_KEY="C1z2ddy0sooCNoL0XTDlOFw42pDwJgnO"
 mkdir -p "$HF_HOME"
 echo "HF_HOME:  $HF_HOME"
 echo ""

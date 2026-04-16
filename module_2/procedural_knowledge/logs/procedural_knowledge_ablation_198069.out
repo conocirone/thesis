@@ -1,0 +1,161 @@
+============================================================
+  Neuro-Symbolic Ablation Study: Procedural Knowledge (Module 2)
+============================================================
+Node:     servant-2
+Date:     Tue Apr 14 12:03:47 CEST 2026
+GPU:      No devices were found
+N/A
+Repo:     /homes/ccirone/thesis
+
+Python:   Python 3.13.2
+PyTorch:  
+CUDA:     
+
+HF_HOME:  /homes/ccirone/thesis/.hf_cache
+
+ -> Running ablation: none...
+============================================================
+Neuro-Symbolic Evaluation: Procedural Knowledge (Binary)
+Using model: mistral-large-latest
+Ablation Mode: none
+============================================================
+Loaded 776 recipes (3104 questions)
+
+========================================
+FINAL BINARY BENCHMARK RESULTS
+========================================
+TP: 1502 | TN: 1502 | FP: 50 | FN: 50
+Accuracy:    0.968
+Precision:   0.968
+Recall:      0.968
+Spec.:       0.968
+Ratio:       1.000
+F1 Score:    0.968
+========================================
+
+✅ Results written to: results/results_binary.txt
+============================================================
+Neuro-Symbolic Evaluation: Procedural Knowledge (Multi-Choice)
+Using model: mistral-large-latest
+Ablation Mode: none
+============================================================
+Loaded 800 recipes (1600 questions)
+
+========================================
+FINAL MULTI-CHOICE BENCHMARK RESULTS
+========================================
+Accuracy: 0.841
+  Correct: 1345/1600
+========================================
+
+✅ Results written to: results/results_multi.txt
+ -> Running ablation: pure_llm...
+============================================================
+Neuro-Symbolic Evaluation: Procedural Knowledge (Binary)
+Using model: mistral-large-latest
+Ablation Mode: pure_llm
+============================================================
+Loaded 776 recipes (3104 questions)
+
+========================================
+FINAL BINARY BENCHMARK RESULTS
+========================================
+TP: 1490 | TN: 1490 | FP: 62 | FN: 62
+Accuracy:    0.960
+Precision:   0.960
+Recall:      0.960
+Spec.:       0.960
+Ratio:       1.000
+F1 Score:    0.960
+========================================
+
+✅ Results written to: results/results_binary_ablation_pure_llm.txt
+============================================================
+Neuro-Symbolic Evaluation: Procedural Knowledge (Multi-Choice)
+Using model: mistral-large-latest
+Ablation Mode: pure_llm
+============================================================
+Loaded 800 recipes (1600 questions)
+
+========================================
+FINAL MULTI-CHOICE BENCHMARK RESULTS
+========================================
+Accuracy: 0.849
+  Correct: 1359/1600
+========================================
+
+✅ Results written to: results/results_multi_ablation_pure_llm.txt
+ -> Running ablation: pure_logic...
+============================================================
+Neuro-Symbolic Evaluation: Procedural Knowledge (Binary)
+Using model: mistral-large-latest
+Ablation Mode: pure_logic
+============================================================
+Loaded 776 recipes (3104 questions)
+
+========================================
+FINAL BINARY BENCHMARK RESULTS
+========================================
+TP: 746 | TN: 746 | FP: 806 | FN: 806
+Accuracy:    0.481
+Precision:   0.481
+Recall:      0.481
+Spec.:       0.481
+Ratio:       1.000
+F1 Score:    0.481
+========================================
+
+✅ Results written to: results/results_binary_ablation_pure_logic.txt
+============================================================
+Neuro-Symbolic Evaluation: Procedural Knowledge (Multi-Choice)
+Using model: mistral-large-latest
+Ablation Mode: pure_logic
+============================================================
+Loaded 800 recipes (1600 questions)
+
+========================================
+FINAL MULTI-CHOICE BENCHMARK RESULTS
+========================================
+Accuracy: 0.665
+  Correct: 1064/1600
+========================================
+
+✅ Results written to: results/results_multi_ablation_pure_logic.txt
+ -> Running ablation: no_cot...
+============================================================
+Neuro-Symbolic Evaluation: Procedural Knowledge (Binary)
+Using model: mistral-large-latest
+Ablation Mode: no_cot
+============================================================
+Loaded 776 recipes (3104 questions)
+
+========================================
+FINAL BINARY BENCHMARK RESULTS
+========================================
+TP: 1504 | TN: 1504 | FP: 48 | FN: 48
+Accuracy:    0.969
+Precision:   0.969
+Recall:      0.969
+Spec.:       0.969
+Ratio:       1.000
+F1 Score:    0.969
+========================================
+
+✅ Results written to: results/results_binary_ablation_no_cot.txt
+============================================================
+Neuro-Symbolic Evaluation: Procedural Knowledge (Multi-Choice)
+Using model: mistral-large-latest
+Ablation Mode: no_cot
+============================================================
+Loaded 800 recipes (1600 questions)
+
+========================================
+FINAL MULTI-CHOICE BENCHMARK RESULTS
+========================================
+Accuracy: 0.854
+  Correct: 1366/1600
+========================================
+
+✅ Results written to: results/results_multi_ablation_no_cot.txt
+
+Job finished at: Tue Apr 14 20:01:32 CEST 2026

@@ -16,7 +16,7 @@
 set -euo pipefail
 
 REPO_DIR="$HOME/thesis"
-VENV_DIR="$REPO_DIR/.venv_server"
+VENV_DIR="$REPO_DIR/thesis_env"
 
 echo "============================================================"
 echo "  Neuro-Symbolic Ablation Study: Meta-Reasoning (Module 2)"
