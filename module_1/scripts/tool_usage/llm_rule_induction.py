@@ -62,6 +62,8 @@ TOP_P = float(os.environ.get("MLX_TOP_P", "0.85"))
 
 NUM_RULE_CANDIDATES = int(os.environ.get("NUM_RULE_CANDIDATES", "3"))
 MIN_POS_COVERAGE = int(os.environ.get("MIN_POS_COVERAGE", "1"))
+MIN_BODY_LITERALS = int(os.environ.get("MIN_BODY_LITERALS", "2"))
+
 RULES_DIR = MODULE_DIR / "rules"
 
 INPUT_EXAMPLES_FILE = RULES_DIR / "tool_usage" / "ilasp_tool_usage.las"
@@ -324,10 +326,12 @@ It is acceptable if false positives have the SAME properties as true positives
 Do not output explanations, markdown, or meta-commentary.
 Output EXACTLY ONE rule per response.
 
-CRITICAL INSTRUCTION - MINIMAL RULES ONLY:
-- You MUST generate the SHORTEST POSSIBLE rule.
-- Use the absolute MINIMUM number of conditions necessary to distinguish the focus object from negatives.
-- DO NOT just copy all properties of the focus object. Choose 1 or 2 most important discriminative features.
+CRITICAL INSTRUCTION - SPECIFIC RULES:
+- Generate rules with AT LEAST 2 meaningful conditions (beyond obj(X)).
+- Combine conditions from DIFFERENT categories (e.g., one hasPhysicalQuality AND one hasRole,
+  or one hasRole AND one affordsTask). Rules using only ONE category are too broad.
+- Prefer conjunctions of a role + a quality, or a role + a task, to narrow down precisely.
+- Do NOT generate rules with only hasRole(X, ToolRole) — that matches everything.
 
 CRITICAL SYNTAX RULES:
 - Do NOT use semicolons (;) at the top level of the rule body.
@@ -421,6 +425,16 @@ def is_valid_rule(rule, uncovered_pos, ctx,
         return False
 
     body = rule.split(":-", 1)[1] if ":-" in rule else ""
+    body_literals = [l.strip() for l in re.split(r',\s*(?![^()]*\))', body.rstrip('.'))]
+    meaningful = [l for l in body_literals if l and not l.startswith("obj(")]
+    if len(meaningful) < MIN_BODY_LITERALS:
+        print('[validator] Not enough body literals in the generated rule')
+        return False
+    
+    if rule.count(",") < 1:
+        return False
+
+    body = rule.split(":-", 1)[1] if ":-" in rule else ""
     depth = 0
     for ch in body:
         if ch == "(":
@@ -429,6 +443,7 @@ def is_valid_rule(rule, uncovered_pos, ctx,
             depth -= 1
         elif ch == ";" and depth == 0:
             return False
+    
 
     if valid_qualities is not None:
         claimed = re.findall(r"hasPhysicalQuality\(X,\s*(\w+)\)", rule)
@@ -541,7 +556,12 @@ def prune_rule(rule: str, aff: str, data: dict, uncovered: set) -> tuple[str, li
             essential.append(lit)
         else:
             optional.append(lit)
-            
+    
+    if len(optional) <= MIN_BODY_LITERALS:
+        print(f"  [pruner] Already at minimum ({len(optional)} conditions). Skipping.")
+        covered_pos, covered_neg = evaluate_rule(rule, aff, data, uncovered)
+        return rule, covered_pos, covered_neg
+    
     best_rule = rule
     best_covered_pos, best_covered_neg = evaluate_rule(rule, aff, data, uncovered)
     
@@ -560,7 +580,7 @@ def prune_rule(rule: str, aff: str, data: dict, uncovered: set) -> tuple[str, li
             
             test_pos, test_neg = evaluate_rule(test_rule, aff, data, uncovered)
             
-            if not test_neg:
+            if not test_neg and set(test_pos) == set(best_covered_pos):
                 best_rule = test_rule
                 best_covered_pos = test_pos
                 best_covered_neg = test_neg
@@ -685,7 +705,7 @@ def learn_rules_for_affordance(aff, data, valid_qualities, valid_roles, valid_ta
             if covered_neg:
                 all_false_pos_compatible = True
                 incompatible_negs = []
-                SIMILARITY_THRESHOLD = 0.6
+                SIMILARITY_THRESHOLD = 0.85
 
                 for neg_obj in covered_neg:
                     neg_facts = data["ctx"].get(neg_obj, [])
