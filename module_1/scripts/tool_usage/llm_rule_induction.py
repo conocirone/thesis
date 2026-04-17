@@ -23,18 +23,6 @@ from pathlib import Path
 from collections import defaultdict
 
 # =============================================================================
-# MLX
-# =============================================================================
-
-try:
-    import mlx.core as mx
-    from mlx_lm import load, generate
-    from mlx_lm.sample_utils import make_sampler
-except ImportError:
-    print("[ERROR] Install MLX: pip install mlx mlx-lm")
-    sys.exit(1)
-
-# =============================================================================
 # CLINGO
 # =============================================================================
 
@@ -52,9 +40,10 @@ SCRIPT_DIR = Path(__file__).parent
 MODULE_DIR = SCRIPT_DIR.parent.parent
 
 sys.path.insert(0, str(SCRIPT_DIR.parent))
-from shared.config import get_model
+from shared.config import get_model, get_provider
 
 MODEL_NAME = os.environ.get("HF_MODEL_NAME", get_model("rule_induction"))
+PROVIDER = get_provider("rule_induction")
 
 MAX_TOKENS = int(os.environ.get("MLX_MAX_TOKENS", "2048"))
 TEMPERATURE = float(os.environ.get("MLX_TEMPERATURE", "0.7"))
@@ -69,8 +58,47 @@ RULES_DIR = MODULE_DIR / "rules"
 INPUT_EXAMPLES_FILE = RULES_DIR / "tool_usage" / "ilasp_tool_usage.las"
 OUTPUT_RULES_FILE = RULES_DIR / "tool_usage" / "learned_rules_tool_usage.txt"
 
+
+# =============================================================================
+# MLX
+# =============================================================================
+
+_mlx_available = False
+try:
+    import mlx.core as mx
+    from mlx_lm import load, generate
+    from mlx_lm.sample_utils import make_sampler
+    _mlx_available = True
+except ImportError:
+    if PROVIDER in ("mlx", "ollama"):
+        print("[ERROR] Install MLX: pip install mlx mlx-lm")
+        sys.exit(1)
+
+
+_mistral_available = False
+_mistral_client = None
+
+try:
+    from mistralai.client import Mistral
+    _mistral_available = True
+except ImportError:
+    if PROVIDER == 'mistral':
+        print("Error install mistral library")
+        sys.exit(1)
+
+def _get_mistral_client():
+    global _mistral_client
+    if _mistral_client is None:
+        api_key = os.environ.get("MISTRAL_API_KEY", "")
+        if not api_key:
+            raise RuntimeError("MISTRAL_API_KEY not set")
+        _mistral_client = Mistral(api_key=api_key)
+    return _mistral_client
+
+
 _model = None
 _tokenizer = None
+
 
 
 # =============================================================================
@@ -79,6 +107,9 @@ _tokenizer = None
 
 def load_model():
     global _model, _tokenizer
+    if PROVIDER == "mistral":
+        print(f"Using Mistral API with model: {MODEL_NAME}")
+        return None, None
     if _model is not None:
         return _model, _tokenizer
     print(f"Loading model {MODEL_NAME}...")
@@ -508,11 +539,20 @@ def extract_rules(text):
 # =============================================================================
 
 def call_llm(prompt, boost_temperature=False):
+    temp = min(TEMPERATURE * 2.0, 1.4) if boost_temperature else TEMPERATURE
+
+    if PROVIDER == "mistral":
+        return _call_mistral(prompt, temp)
+    else:
+        return _call_mlx(prompt, temp)
+    
+
+def _call_mlx(prompt, temp):
     global _model, _tokenizer
     if _model is None:
         load_model()
 
-    temp = min(TEMPERATURE * 2.0, 1.4) if boost_temperature else TEMPERATURE
+    
     sampler = make_sampler(temp=temp, top_p=TOP_P)
 
     response = generate(
@@ -526,7 +566,42 @@ def call_llm(prompt, boost_temperature=False):
 
     return response.strip()
 
+def _call_mistral(prompt, temperature, max_retries=10):
+    client = _get_mistral_client()
 
+    system_msg = ""
+    user_msg = prompt
+    if "SYSTEM:" in prompt and "USER:" in prompt:
+        parts = prompt.split("USER:", 1)
+        system_msg = parts[0].replace("SYSTEM", "").strip()
+        user_msg = parts[1].replace("USER:", "").strip()
+    
+    messages = []
+    if system_msg:
+        messages.append({"role": "system", "content": system_msg})
+    messages.append({"role": "user", "content": user_msg})
+
+    for attempt in range(max_retries):
+        try:
+            response = client.chat.complete(
+                model=MODEL_NAME,
+                messages=messages,
+                temperature=temperature,
+                max_tokens=MAX_TOKENS
+            )
+            return response.choices[0].message.content.strip()
+        except Exception as e:
+            err = str(e).lower()
+            if "rate" in err or "429" in err or "too many" in err:
+                wait = 10 * (attempt + 1)
+                print(f" Rate limited — waiting {wait}s (attempt {attempt+1}/{max_retries})...")
+                time.sleep(wait)
+            else:
+                print(f"  [Mistral API error] {e}")
+                if attempt < max_retries - 1:
+                    time.sleep(5)
+                else:
+                    raise
 # =============================================================================
 # RULE PRUNING (MINIMALIZATION)
 # =============================================================================
