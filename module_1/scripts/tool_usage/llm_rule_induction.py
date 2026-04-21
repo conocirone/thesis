@@ -42,8 +42,10 @@ MODULE_DIR = SCRIPT_DIR.parent.parent
 sys.path.insert(0, str(SCRIPT_DIR.parent))
 from shared.config import get_model, get_provider
 
-MODEL_NAME = os.environ.get("HF_MODEL_NAME", get_model("rule_induction"))
+#MODEL_NAME = os.environ.get("HF_MODEL_NAME", get_model("rule_induction"))
+MODEL_NAME = "mistral-medium-latest"
 PROVIDER = get_provider("rule_induction")
+print(PROVIDER)
 
 MAX_TOKENS = int(os.environ.get("MLX_MAX_TOKENS", "2048"))
 TEMPERATURE = float(os.environ.get("MLX_TEMPERATURE", "0.7"))
@@ -159,7 +161,6 @@ def parse_ilasp_file(filename):
 # =============================================================================
 # VALID CONSTANT PARSER
 # =============================================================================
-
 def parse_valid_constants(filename):
     """Parse valid quality, role, and task constants from the ILASP file header."""
     valid_qualities = set()
@@ -646,10 +647,12 @@ def prune_rule(rule: str, aff: str, data: dict, uncovered: set) -> tuple[str, li
     current_optional = optional.copy()
     changed = True
     
-    while changed and len(current_optional) > 1:
+    while changed and len(current_optional) > MIN_BODY_LITERALS:
         changed = False
         for lit in current_optional:
             test_optional = [l for l in current_optional if l != lit]
+            if len(test_optional) < MIN_BODY_LITERALS:
+                continue
             test_body = ", ".join(essential + test_optional)
             test_rule = f"{head.strip()} :- {test_body}."
             

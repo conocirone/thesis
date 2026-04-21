@@ -2,7 +2,7 @@
   "models": {
     "annotation": "llama3.1:latest",
     "filtering": "llama3.1:latest",
-    "rule_induction": "Qwen/Qwen2.5-Coder-7B-Instruct",
-    "evaluation": "mistral-large-latest"
+    "rule_induction": "mistral-medium-latest",
+    "evaluation": "mistral-medium-latest"
   }
 }

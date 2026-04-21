@@ -30,6 +30,8 @@ Usage:
     python run_pipeline.py --only 7     # Run only tidy_up evaluation
     python run_pipeline.py --only 10    # Run only tool_usage evaluation
     python run_pipeline.py --from 8     # Run tool_usage steps only
+    python run_pipeline.py --only 10 --model mistral-large-latest
+    python run_pipeline.py --only 10 --ablation pure_llm
 =============================================================================
 """
 
@@ -105,6 +107,7 @@ STEPS = [
         # "args": ["--num-tests", "50"],
         "description": "Execute Clingo inference on unseen objects (tidy_up)",
         "output_files": [SCRIPT_DIR / "tidy_up" / "evaluation_report.md"],
+        "extra_args_key": "eval_tidy_up",
     },
 
     # ── TOOL USAGE (Steps 8-10) ─────────────────────────────────────────
@@ -130,19 +133,28 @@ STEPS = [
         "name": "Online Evaluation — Tool Usage",
         "type": "python",
         "script": "tool_usage/evaluate.py",
-       # "args": ["--num-tests", "50"],
+        # "args": ["--num-tests", "50"],
+        # extra_args_key="eval_tool_usage" — populated dynamically from CLI
         "description": "Execute Clingo inference for tool selection (tool_usage)",
         "output_files": [SCRIPT_DIR / "tool_usage" / "evaluation_report.md"],
+        "extra_args_key": "eval_tool_usage",
     },
 ]
 
 
-def run_step(step: dict) -> bool:
-    """Execute a single pipeline step. Returns True on success."""
+def run_step(step: dict, extra_args: dict = None) -> bool:
+    """Execute a single pipeline step. Returns True on success.
+
+    Parameters
+    ----------
+    step       : step definition dict from STEPS
+    extra_args : mapping of extra_args_key -> list of additional CLI arguments
+                 (e.g. {"eval_tool_usage": ["--model", "mistral-large-latest"]})
+    """
     print(f"\n{'=' * 60}")
     print(f"  STEP {step['number']}/{len(STEPS)}: {step['name']}")
     print(f"  {step['description']}")
-    
+
     start_time = time.time()
 
     if step["type"] == "python":
@@ -150,15 +162,21 @@ def run_step(step: dict) -> bool:
         if not script_path.exists():
             print(f"  [ERROR] Script not found: {script_path}")
             return False
-            
+
         print(f"  Script: {step['script']}\n{'-' * 60}\n")
-        
-        args = [sys.executable, str(script_path)] + step.get("args", [])
-        result = subprocess.run(args, cwd=str(SCRIPT_DIR))
-        
+
+        step_args = step.get("args", [])
+        # Append any extra args registered for this step
+        key = step.get("extra_args_key")
+        if key and extra_args and key in extra_args:
+            step_args = step_args + extra_args[key]
+
+        args_cmd = [sys.executable, str(script_path)] + step_args
+        result = subprocess.run(args_cmd, cwd=str(SCRIPT_DIR))
+
     elif step["type"] == "shell":
         print(f"  Command: {' '.join(step['command'])}\n{'-' * 60}\n")
-        
+
         stdout_path = step["stdout_file"]
         with open(stdout_path, "w") as out:
             result = subprocess.run(step["command"], cwd=str(SCRIPT_DIR), stdout=out)
@@ -182,16 +200,38 @@ def run_step(step: dict) -> bool:
 
 
 def main():
-    start_from = 1
-    only_step = None
+    import argparse as _ap
 
-    args = sys.argv[1:]
-    if "--from" in args:
-        idx = args.index("--from")
-        start_from = int(args[idx + 1])
-    elif "--only" in args:
-        idx = args.index("--only")
-        only_step = int(args[idx + 1])
+    parser = _ap.ArgumentParser(description="Module 1 end-to-end pipeline")
+    parser.add_argument("--from", dest="start_from", type=int, default=1,
+                        help="Resume from this step number")
+    parser.add_argument("--only", dest="only_step", type=int, default=None,
+                        help="Run only this step number")
+    parser.add_argument("--model", type=str, default=None,
+                        help="Override evaluation model for step 10 "
+                             "(e.g. mistral-large-latest, llama3.1)")
+    parser.add_argument("--ablation", type=str, default=None,
+                        choices=["none", "pure_llm", "no_synonyms"],
+                        help="Ablation mode for step 10 evaluation")
+    parser.add_argument("--num-tests", type=int, default=None,
+                        help="Limit number of test questions for eval steps")
+    cli = parser.parse_args()
+
+    start_from = cli.start_from
+    only_step = cli.only_step
+
+    # Build extra args for the evaluation steps
+    extra_args: dict[str, list] = {}
+    eval_extra: list[str] = []
+    if cli.model:
+        eval_extra += ["--model", cli.model]
+    if cli.ablation:
+        eval_extra += ["--ablation", cli.ablation]
+    if cli.num_tests:
+        eval_extra += ["--num-tests", str(cli.num_tests)]
+    if eval_extra:
+        extra_args["eval_tool_usage"] = eval_extra
+        extra_args["eval_tidy_up"] = eval_extra
 
     print("\n" + "#" * 70)
     print("#  END-TO-END PIPELINE: Neuro-Symbolic Logic Learning")
@@ -214,7 +254,7 @@ def main():
     completed = 0
 
     for step in steps_to_run:
-        success = run_step(step)
+        success = run_step(step, extra_args=extra_args)
         if not success:
             print(f"\n  Pipeline stopped at step {step['number']}.")
             print(f"  To resume, run: python run_pipeline.py --from {step['number']}")

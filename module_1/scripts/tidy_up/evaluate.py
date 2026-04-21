@@ -1,21 +1,99 @@
 import csv
 import ast
 import json
+import os
 import re
 import subprocess
 import sys
+import time
 from pathlib import Path
 from tqdm import tqdm
-import ollama
 
 SCRIPT_DIR = Path(__file__).parent      # scripts/tidy_up
 SCRIPTS_ROOT = SCRIPT_DIR.parent      # scripts
 MODULE_DIR = SCRIPTS_ROOT.parent      # module_1
 
 sys.path.insert(0, str(SCRIPTS_ROOT))
-from shared.config import get_model
+from shared.config import get_model, get_provider
 
 EVAL_MODEL = get_model("evaluation")
+
+# ------------------------------------------------------------------------------
+# PROVIDER-AWARE LLM CLIENT
+# Supports Ollama (local) and Mistral API transparently.
+# ------------------------------------------------------------------------------
+try:
+    from mistralai.client import Mistral as _MistralClient
+    _MISTRAL_AVAILABLE = True
+except ImportError:
+    _MISTRAL_AVAILABLE = False
+    _MistralClient = None  # type: ignore
+
+try:
+    import ollama as _ollama
+    _OLLAMA_AVAILABLE = True
+except ImportError:
+    _OLLAMA_AVAILABLE = False
+
+_mistral_client_instance = None
+
+
+def _get_mistral_client():
+    global _mistral_client_instance
+    if not _MISTRAL_AVAILABLE:
+        raise ImportError(
+            "mistralai package not installed. Run: pip install mistralai"
+        )
+    if _mistral_client_instance is None:
+        api_key = os.environ.get("MISTRAL_API_KEY")
+        if not api_key:
+            raise ValueError(
+                "MISTRAL_API_KEY environment variable not set. "
+                "Export it before running: export MISTRAL_API_KEY=<your_key>"
+            )
+        _mistral_client_instance = _MistralClient(api_key=api_key)
+    return _mistral_client_instance
+
+
+def llm_chat(messages: list, temperature: float = 0.0,
+             json_format: bool = False, model: str = None) -> str:
+    """Provider-aware LLM call. Routes to Mistral API or Ollama based on model name."""
+    m = model or EVAL_MODEL
+    max_retries = 10
+    for attempt in range(max_retries):
+        try:
+            if get_provider(model=m) == "mistral":
+                client = _get_mistral_client()
+                kwargs = {
+                    "model": m,
+                    "messages": messages,
+                    "temperature": temperature,
+                }
+                if json_format:
+                    kwargs["response_format"] = {"type": "json_object"}
+                response = client.chat.complete(**kwargs)
+                return response.choices[0].message.content.strip()
+            else:
+                if not _OLLAMA_AVAILABLE:
+                    raise ImportError("ollama package not installed. Run: pip install ollama")
+                call_kwargs = {
+                    "model": m,
+                    "messages": messages,
+                    "options": {"temperature": temperature},
+                }
+                if json_format:
+                    call_kwargs["format"] = "json"
+                response = _ollama.chat(**call_kwargs)
+                return response["message"]["content"].strip()
+        except Exception as e:
+            if "429" in str(e) or "rate" in str(e).lower():
+                wait = 10 * (attempt + 1)
+                print(f"\n  ⏳ Rate limited — waiting {wait}s (attempt {attempt + 1}/{max_retries})...")
+                time.sleep(wait)
+            else:
+                raise
+    raise RuntimeError(f"Rate limit exceeded after {max_retries} retries")
+
 
 DATA_DIR = MODULE_DIR.parent / "Robo-CSK-Benchmark" / "tidy_up"
 CSV_FILE = DATA_DIR / "tidy_up_data.csv"
@@ -156,18 +234,15 @@ Return ONLY the JSON. No explanation, no markdown, no extra text.
 """
 
 def query_ollama_soma(object_name: str) -> dict:
-    """Query Llama to extract SOMA features for an unseen object."""
-    response = ollama.chat(
-        model=EVAL_MODEL,
-        format='json',
-        options={"temperature": 0.0},
+    """Query LLM to extract SOMA features for an unseen object."""
+    text = llm_chat(
         messages=[
             {'role': 'system', 'content': SYSTEM_PROMPT},
             {'role': 'user', 'content': f"Object: {object_name}"}
-        ]
+        ],
+        temperature=0.0,
+        json_format=True,
     )
-    
-    text = response['message']['content']
     # Extract JSON if markdown is present
     match = re.search(r'\{.*\}', text, re.DOTALL)
     if match:
@@ -331,13 +406,12 @@ def llm_semantic_rerank(obj_name: str, soma_data: dict, candidate_locs: list[str
         f"Candidate Locations: {', '.join(candidate_locs)}\n"
         "Ranked Locations (comma-separated):"
     )
-    response = ollama.chat(
-        model=EVAL_MODEL,
+    response = llm_chat(
         messages=[{"role": "system", "content": system},
                   {"role": "user", "content": user}],
-        options={"temperature": 0.0},
+        temperature=0.0,
     )
-    text = response["message"]["content"].strip().strip("\"'`")
+    text = response.strip().strip("\"'`")
     
     # Parse the ranked list from LLM
     ranked = []
@@ -353,12 +427,58 @@ def llm_semantic_rerank(obj_name: str, soma_data: dict, candidate_locs: list[str
             
     return ranked
 
+def llm_direct_location(obj_name: str, soma_data: dict) -> list[str]:
+    """Pure LLM baseline: ask the LLM directly where the object goes."""
+    all_locations = sorted(set(LOCATION_MAP.values()))
+    roles = ", ".join(soma_data.get("hasRole", []) if isinstance(soma_data.get("hasRole", []), list) else [soma_data.get("hasRole", "")])
+    tasks = ", ".join(soma_data.get("affordsTask", []) if isinstance(soma_data.get("affordsTask", []), list) else [soma_data.get("affordsTask", "")])
+    quals = ", ".join(soma_data.get("hasPhysicalQuality", []) if isinstance(soma_data.get("hasPhysicalQuality", []), list) else [soma_data.get("hasPhysicalQuality", "")])
+
+    system = (
+        "You are a household robot. Given an object and its properties, pick the locations "
+        "where this object should be placed, ranked from best to worst. "
+        "Output ONLY a comma-separated list of locations from the valid list, nothing else."
+    )
+    user = (
+        f"Object: {obj_name}\n"
+        f"Properties: roles=[{roles}], tasks=[{tasks}], qualities=[{quals}]\n"
+        f"Valid locations: {', '.join(all_locations)}\n"
+        "Ranked locations (comma-separated):"
+    )
+    text = llm_chat(
+        messages=[{"role": "system", "content": system},
+                  {"role": "user", "content": user}],
+        temperature=0.0,
+    )
+
+    ranked = []
+    for loc_raw in text.split(","):
+        loc = loc_raw.strip().lower().replace(" ", "_")
+        if loc in all_locations and loc not in ranked:
+            ranked.append(loc)
+    return ranked
+
+
 # ------------------------------------------------------------------------------
 # MAIN PIPELINE
 # ------------------------------------------------------------------------------
-def run_evaluation(num_tests=50):
+def run_evaluation(num_tests=50, ablation: str = "none"):
+    """Run the tidy-up evaluation.
+
+    Parameters
+    ----------
+    num_tests : int | None
+        Limit the number of test objects (None = all).
+    ablation : str
+        Ablation mode:
+          "none"       — Full neuro-symbolic pipeline (default).
+          "pure_llm"   — Skip Clingo inference; use LLM for all selections.
+          "no_rerank"  — Skip LLM semantic re-ranking of Clingo results.
+    """
     print("=" * 60)
     print("Neuro-Symbolic Evaluation: Tidy-Up Task")
+    print(f"  Model:    {EVAL_MODEL}")
+    print(f"  Ablation: {ablation}")
     print("=" * 60)
     
     # 1. Prepare Rules
@@ -409,19 +529,23 @@ def run_evaluation(num_tests=50):
         if obj_id[0].isdigit():
             obj_id = "o_" + obj_id
             
-        # Step A: Neuro (Llama 3.1 SOMA Extraction)
+        # Step A: Neuro (LLM SOMA Extraction)
         soma_data = query_ollama_soma(obj_name)
         
         # Step B: Symbolic format
         facts_str = format_soma_facts(obj_id, soma_data)
         
-        # Step C: Logical Inference (ranked)
-        deduced = rank_locations(obj_id, facts_str, rules_by_loc)
-        
-        # Step C.2: LLM Semantic Re-Ranking for ties
-        if len(deduced) > 1:
-            top_n = deduced[:5]
-            reranked_top = llm_semantic_rerank(obj_name, soma_data, top_n)
+        if ablation == "pure_llm":
+            # Pure LLM baseline: ask LLM directly for location
+            deduced = llm_direct_location(obj_name, soma_data)
+        else:
+            # Step C: Logical Inference (ranked)
+            deduced = rank_locations(obj_id, facts_str, rules_by_loc)
+            
+            # Step C.2: LLM Semantic Re-Ranking for ties
+            if ablation != "no_rerank" and len(deduced) > 1:
+                top_n = deduced[:5]
+                reranked_top = llm_semantic_rerank(obj_name, soma_data, top_n)
             deduced = reranked_top + deduced[5:]
             
         ground_truth = case["target_locations"]
@@ -467,9 +591,16 @@ def run_evaluation(num_tests=50):
     print()
     
     # Save Report
-    with open(EVAL_REPORT_PATH, "w", encoding="utf-8") as f:
-        f.write("# Online Phase Evaluation Report\n\n")
+    if ablation == "none":
+        report_path = EVAL_REPORT_PATH
+    else:
+        report_path = SCRIPT_DIR / f"evaluation_report_{ablation}.md"
+
+    with open(report_path, "w", encoding="utf-8") as f:
+        f.write("# Online Phase Evaluation Report — Tidy-Up Task\n\n")
         f.write("Evaluation of the Neuro-Symbolic pipeline against unseen objects from Robo-CSK-Benchmark.\n\n")
+        f.write(f"- **Model**: `{EVAL_MODEL}`\n")
+        f.write(f"- **Ablation mode**: `{ablation}`\n")
         f.write(f"- **Total Objects Tested**: {len(test_cases)}\n")
         f.write(f"- **Any-Hit Accuracy**: {accuracy:.2f}%\n")
         f.write(f"- **Mean Reciprocal Rank (MRR)**: {mrr:.4f}\n\n")
@@ -500,12 +631,31 @@ def run_evaluation(num_tests=50):
             f.write(f"  - Tasks: {', '.join(get_list(res['soma'], 'affordsTask'))}\n")
             f.write(f"  - Qualities: {', '.join(get_list(res['soma'], 'hasPhysicalQuality'))}\n\n")
             
-    print(f"Detailed report saved to {EVAL_REPORT_PATH}")
+    print(f"Detailed report saved to {report_path}")
 
 if __name__ == "__main__":
     import argparse
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(
+        description="Neuro-Symbolic Tidy-Up Evaluation"
+    )
     parser.add_argument("--num-tests", type=int, default=None, help="Number of objects to evaluate (default: all)")
+    parser.add_argument(
+        "--model", type=str, default=None,
+        help="Override the evaluation model (e.g. mistral-large-latest, llama3.1)"
+    )
+    parser.add_argument(
+        "--ablation", type=str, default="none",
+        choices=["none", "pure_llm", "no_rerank"],
+        help=(
+            "Ablation mode: "
+            "'none' = full pipeline (default); "
+            "'pure_llm' = skip Clingo, LLM selects location directly; "
+            "'no_rerank' = skip LLM semantic re-ranking"
+        )
+    )
     args = parser.parse_args()
-    
-    run_evaluation(num_tests=args.num_tests)
+
+    if args.model:
+        EVAL_MODEL = args.model
+
+    run_evaluation(num_tests=args.num_tests, ablation=args.ablation)

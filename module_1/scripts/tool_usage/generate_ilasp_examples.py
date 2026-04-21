@@ -1,35 +1,32 @@
 """
 generate_ilasp_examples_tool_usage.py - Generate ILASP input for hasAffordance rule learning
 =============================================================================
-Reads SOMA-annotated background knowledge and affordance data from the
-Robo-CSK-Benchmark tool_usage dataset.
+Reads SOMA-annotated background knowledge and external affordance evidence
+from ConceptNet-derived relations.
 
 Produces a complete ILASP input file with context-dependent examples:
   - Each example carries only its own object's BK (avoids grounding explosion)
-  - Positive examples from affordance_data.csv
+  - Positive examples from ConceptNet UsedFor/CapableOf
   - Negative examples via closed-world sampling
   - Mode declarations with #constant definitions
 
 Target predicate: hasAffordance(Object, Affordance)
 
-Data sources: Robo-CSK-Benchmark affordance_data.csv + SOMA BK.
+Data sources: ConceptNet-derived object properties + SOMA BK.
 
 Usage:
     python generate_ilasp_examples_tool_usage.py [--max-per-aff N] [--neg-per-obj N]
-                                                  [--ml N] [--output PATH]
+                                                  [--ml N] [--output PATH] [--full]
 
     --max-per-aff N   Max positive examples per affordance (default: 5)
     --neg-per-obj N   Negative examples per unique object (default: 2)
     --ml N            Max body literals for mode declarations (default: 2)
     --output PATH     Output file path (default: rules/ilasp_tool_usage.las)
     --full            Use ALL examples (no stratified sampling)
-    --mvp             Use minimal dataset (core affordances, max 2 examples)
-                      Designed for fast testing and online phase integration
 =============================================================================
 """
 
 import argparse
-import csv
 import json
 import re
 import random
@@ -45,16 +42,57 @@ JSONS_DIR = MODULE_DIR / "jsons"
 
 BK_FILE = RULES_DIR / "shared" / "background_knowledge_validated.las"
 BENCHMARK_DIR = MODULE_DIR.parent / "Robo-CSK-Benchmark" / "tool_usage"
-AFFORDANCE_CSV = BENCHMARK_DIR / "affordance_data.csv"
 AFFORDANCE_LIST_FILE = BENCHMARK_DIR / "affordances_after_mapping.json"
+CONCEPTNET_OBJECTS_FILE = JSONS_DIR / "conceptnet_objects_kept.json"
 DEFAULT_OUTPUT = RULES_DIR / "tool_usage" / "ilasp_tool_usage.las"
 
-# Core affordances for MVP testing (high-frequency, well-defined)
-MVP_AFFORDANCES = [
-    "cut", "clean", "hammer", "contain", "heat",
-    "wash", "illuminate", "drill", "screw", "pour",
-    "mix", "dig", "absorb", "carry", "write",
-]
+
+# Keyword -> canonical affordance mapping for ConceptNet phrases
+_CN_KEYWORD_MAP: dict[str, str] = {
+    "clean": "clean", "wash": "wash", "wipe": "wipe", "scrub": "clean",
+    "cut": "cut", "chop": "chop", "slice": "cut", "trim": "cut",
+    "drill": "drill", "bore": "bore",
+    "store": "store", "contain": "contain", "hold": "hold",
+    "heat": "heat", "cook": "heat", "warm": "heat",
+    "dig": "dig", "shovel": "dig",
+    "scoop": "scoop",
+    "light": "illuminate", "illuminate": "illuminate", "lamp": "illuminate",
+    "carry": "carry", "lift": "lift", "transport": "carry",
+    "mix": "mix", "stir": "mix", "blend": "mix",
+    "write": "write", "mark": "mark", "engrave": "engrave", "draw": "write",
+    "hammer": "hammer", "nail": "hammer", "pound": "hammer",
+    "screw": "screw", "fasten": "screw", "tighten": "screw",
+    "spread": "spread", "apply": "spread",
+    "support": "support", "grasp": "grasp",
+    "decorate": "decorate", "beautify": "beautify",
+    "entertain": "entertain", "play": "entertain",
+    "exercise": "exercise", "workout": "exercise",
+    "cool": "cool", "chill": "cool",
+    "compress": "compress", "press": "press",
+    "peel": "peel", "skin": "skin",
+    "pierce": "pierce", "poke": "poke", "puncture": "pierce",
+    "fix": "fix", "repair": "repair",
+    "display": "display",
+    "dispose": "dispose",
+    "read": "read",
+    "plug": "plug", "connect": "plug",
+    "pour": "pour",
+    "wrap": "wrap", "cover": "cover",
+    "smooth": "smoothen", "sand": "smoothen", "polish": "polish",
+    "grind": "grind", "file": "file", "rub": "rub",
+    "melt": "melt", "solder": "solder", "weld": "solder",
+    "unclog": "unclog", "unblock": "unclog",
+    "time": "time", "measure": "time",
+    "saw": "saw",
+    "absorb": "absorb", "soak": "absorb", "dry": "dry",
+    "bend": "bend", "flex": "flex",
+    "break": "break", "crack": "crack",
+    "comfort": "comfort",
+    "operate": "operate", "control": "control",
+    "stick": "stick", "glue": "stick",
+    "staple": "staple", "clip": "staple",
+    "roll": "roll",
+}
 
 
 # -- Helper functions -------------------------------------------------------
@@ -96,26 +134,52 @@ def load_background_knowledge() -> dict:
     return objects
 
 
-def load_affordance_data() -> dict:
-    """Load object-affordance pairs from the benchmark CSV.
+def _normalize_text(text: str) -> str:
+    return text.lower().replace("_", " ").replace("-", " ").strip()
+
+
+def _contains_keyword(text: str, keyword: str) -> bool:
+    if " " in keyword:
+        return keyword in text
+    return re.search(rf"\b{re.escape(keyword)}\w*\b", text) is not None
+
+
+def load_affordance_data_from_conceptnet(canonical_affordances: list) -> dict:
+    """Load object-affordance pairs from ConceptNet-derived object relations.
+
+    Uses UsedFor and CapableOf phrases from conceptnet_objects_kept.json and
+    maps relation text to canonical affordances via keyword matching.
     Returns dict: {obj_id: set of affordance_ids}
     """
+    if not CONCEPTNET_OBJECTS_FILE.exists():
+        raise FileNotFoundError(f"Missing ConceptNet file: {CONCEPTNET_OBJECTS_FILE}")
+
+    canonical_set = set(canonical_affordances)
     obj_affordances = defaultdict(set)
 
-    with open(AFFORDANCE_CSV, "r", encoding="utf-8") as f:
-        reader = csv.DictReader(f)
-        for row in reader:
-            obj_name = row["Object"].strip()
-            obj_id = clean_obj_id(obj_name)
+    with open(CONCEPTNET_OBJECTS_FILE, "r", encoding="utf-8") as f:
+        raw = json.load(f)
 
-            aff_str = row["Affordances"]
-            aff_matches = re.findall(r"\('([^']+)',\s*[0-9.]+\)", aff_str)
+    for obj_name, rel_data in raw.items():
+        obj_id = clean_obj_id(obj_name)
+        if not isinstance(rel_data, dict):
+            continue
 
-            for aff in aff_matches:
-                aff_id = clean_affordance_id(aff)
-                obj_affordances[obj_id].add(aff_id)
+        phrases = []
+        for relation in ("UsedFor", "CapableOf"):
+            vals = rel_data.get(relation, [])
+            if isinstance(vals, list):
+                phrases.extend(vals)
 
-    return dict(obj_affordances)
+        for phrase in phrases:
+            text = _normalize_text(str(phrase))
+            if not text:
+                continue
+            for keyword, mapped_aff in _CN_KEYWORD_MAP.items():
+                if mapped_aff in canonical_set and _contains_keyword(text, keyword):
+                    obj_affordances[obj_id].add(mapped_aff)
+
+    return {obj_id: affs for obj_id, affs in obj_affordances.items() if affs}
 
 
 def load_canonical_affordances() -> list:
@@ -180,10 +244,10 @@ def stratified_sample(obj_affordances: dict, kb_objects: dict,
 
     return selected
 
-
 def generate_ilasp_file(kb_objects: dict, obj_affordances: dict,
                         selected_pos: list, neg_per_obj: int, ml: int,
-                        output_path: Path, canonical_affordances: list):
+                        output_path: Path, canonical_affordances: list,
+                        source_label: str):
     """Write the complete ILASP input file with context-dependent examples."""
     all_qualities = set()
     all_roles = set()
@@ -201,7 +265,7 @@ def generate_ilasp_file(kb_objects: dict, obj_affordances: dict,
         f.write("% ==========================================================\n")
         f.write("% ILASP Input: hasAffordance(Object, Affordance) rule learning\n")
         f.write("% Context-dependent examples (each carries its own BK)\n")
-        f.write("% Generated from Robo-CSK-Benchmark + SOMA background knowledge\n")
+        f.write(f"% Generated from {source_label} + SOMA background knowledge\n")
         f.write("% ==========================================================\n\n")
         f.write("#maxv(1).\n\n")
 
@@ -286,10 +350,6 @@ def main():
         "--full", action="store_true",
         help="Use ALL examples (no stratified sampling)"
     )
-    parser.add_argument(
-        "--mvp", action="store_true",
-        help="Use minimal dataset (core affordances, max 2 examples, 1 negative) for fast testing"
-    )
     args = parser.parse_args()
 
     output_path = Path(args.output) if args.output else DEFAULT_OUTPUT
@@ -300,24 +360,19 @@ def main():
 
     canonical_affordances = load_canonical_affordances()
 
-    if args.mvp:
-        args.max_per_aff = min(args.max_per_aff, 2)
-        args.neg_per_obj = min(args.neg_per_obj, 1)
-        canonical_affordances = [a for a in canonical_affordances if a in
-                                  [clean_affordance_id(x) for x in MVP_AFFORDANCES]]
-        print("\n*** RUNNING IN MVP MODE (Minimal subset for fast testing) ***")
 
     print(f"\n[1/4] Loading background knowledge...")
     kb_objects = load_background_knowledge()
     print(f"      {len(kb_objects)} objects loaded from SOMA BK")
 
-    print("[2/4] Loading affordance data from benchmark...")
-    obj_affordances = load_affordance_data()
-    print(f"      {len(obj_affordances)} objects with affordances in benchmark")
+    print("[2/4] Loading affordance data from ConceptNet-derived relations...")
+    obj_affordances = load_affordance_data_from_conceptnet(canonical_affordances)
+    source_label = "ConceptNet object properties"
+    print(f"      {len(obj_affordances)} objects with mapped affordances from ConceptNet")
 
-    # Match objects between SOMA BK and affordance data
+
     matched_objects = set(kb_objects.keys()) & set(obj_affordances.keys())
-    print(f"      {len(matched_objects)} objects matched between BK and benchmark")
+    print(f"      {len(matched_objects)} objects matched between BK and selected source")
 
     # Filter to only matched objects
     matched_affordances = defaultdict(set)
@@ -345,7 +400,7 @@ def main():
     print("[4/4] Generating ILASP file...")
     n_pos, n_neg = generate_ilasp_file(
         kb_objects, matched_affordances, selected, args.neg_per_obj,
-        args.ml, output_path, canonical_affordances
+        args.ml, output_path, canonical_affordances, source_label
     )
     size_kb = output_path.stat().st_size / 1024
     print(f"      {n_pos} positive examples (weight 100)")

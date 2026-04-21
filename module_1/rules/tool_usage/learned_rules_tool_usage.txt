@@ -1,221 +1,748 @@
 % === PROGRESSIVE LLM RULE INDUCTION OUTPUT (TOOL USAGE) ===
 
-% --- cut ---
-hasAffordance(X, cut) :- obj(X), hasRole(X, utensilRole).
-hasAffordance(X, cut) :- obj(X), hasRole(X, toolRole).
-hasAffordance(X, cut) :- obj(X), hasRole(X, consumableRole).
-
-% --- eat ---
-hasAffordance(X, eat) :- obj(X), hasRole(X, consumableRole).
-
-% --- pick ---
-hasAffordance(X, pick) :- obj(X), affordsTask(X, foodPreparationTask).
-hasAffordance(X, pick) :- obj(X), affordsTask(X, hygieneTask).
-hasAffordance(X, pick) :- obj(X), affordsTask(X, eatingDrinkingTask).
-hasAffordance(X, pick) :- obj(X), hasPhysicalQuality(X, soft_Deformable).
-hasAffordance(X, pick) :- obj(X), affordsTask(X, workStudyTask).
-hasAffordance(X, pick) :- obj(X), affordsTask(X, leisureTask).
-hasAffordance(X, pick) :- obj(X), affordsTask(X, storageTask).
-hasAffordance(X, pick) :- obj(X), hasRole(X, decorationRole).
-hasAffordance(X, pick) :- obj(X), hasRole(X, toolRole).
-
-% --- contain ---
-hasAffordance(X, contain) :- obj(X), hasPhysicalQuality(X, hasContainer).
-hasAffordance(X, contain) :- obj(X), hasPhysicalQuality(X, soft_Deformable), hasRole(X, furnitureRole).
-hasAffordance(X, contain) :- obj(X), hasPhysicalQuality(X, heavy).
-hasAffordance(X, contain) :- obj(X), affordsTask(X, foodPreparationTask).
-hasAffordance(X, contain) :- obj(X), hasRole(X, documentRole).
-
-% --- comfort ---
-hasAffordance(X, comfort) :- obj(X), hasPhysicalQuality(X, soft_Deformable), hasRole(X, furnitureRole).
-hasAffordance(X, comfort) :- obj(X), hasPhysicalQuality(X, rigid), hasRole(X, furnitureRole).
-
-% --- increase ---
-hasAffordance(X, increase) :- obj(X), affordsTask(X, leisureTask).
-hasAffordance(X, increase) :- obj(X), hasRole(X, furnitureRole).
-
-% --- support ---
-hasAffordance(X, support) :- obj(X), hasRole(X, furnitureRole).
-hasAffordance(X, support) :- obj(X), hasRole(X, utensilRole).
-hasAffordance(X, support) :- obj(X), hasRole(X, storageContainerRole).
-
-% --- grasp ---
-hasAffordance(X, grasp) :- obj(X), hasPhysicalQuality(X, sharp).
-hasAffordance(X, grasp) :- obj(X), hasRole(X, toolRole).
-hasAffordance(X, grasp) :- obj(X), hasPhysicalQuality(X, toxic_Hazardous).
-hasAffordance(X, grasp) :- obj(X), hasRole(X, utensilRole).
-hasAffordance(X, grasp) :- obj(X), hasRole(X, storageContainerRole).
-hasAffordance(X, grasp) :- obj(X), affordsTask(X, workStudyTask).
-hasAffordance(X, grasp) :- obj(X), hasRole(X, documentRole).
-hasAffordance(X, grasp) :- obj(X), hasPhysicalQuality(X, lightweight).
-
-% --- read ---
-hasAffordance(X, read) :- obj(X), hasRole(X, documentRole).
-
-% --- break ---
-hasAffordance(X, break) :- obj(X), hasRole(X, utensilRole).
-hasAffordance(X, break) :- obj(X), hasRole(X, decorationRole).
-hasAffordance(X, break) :- obj(X), hasPhysicalQuality(X, fragile).
-hasAffordance(X, break) :- obj(X), affordsTask(X, leisureTask).
-hasAffordance(X, break) :- obj(X), hasRole(X, toolRole).
-hasAffordance(X, break) :- obj(X), hasRole(X, storageContainerRole).
-
-% --- carry ---
-hasAffordance(X, carry) :- obj(X), hasRole(X, utensilRole).
-hasAffordance(X, carry) :- obj(X), hasRole(X, cookwareRole).
-hasAffordance(X, carry) :- obj(X), hasRole(X, storageContainerRole).
-hasAffordance(X, carry) :- obj(X), hasRole(X, decorationRole).
-
-% --- be_heated ---
-hasAffordance(X, be_heated) :- obj(X), hasRole(X, cookwareRole).
-hasAffordance(X, be_heated) :- obj(X), hasRole(X, utensilRole).
-hasAffordance(X, be_heated) :- obj(X), hasRole(X, storageContainerRole).
-
-% --- wrap ---
-hasAffordance(X, wrap) :- obj(X), hasRole(X, utensilRole).
-hasAffordance(X, wrap) :- obj(X), hasRole(X, storageContainerRole).
-
-% --- store ---
-hasAffordance(X, store) :- obj(X), affordsTask(X, storageTask).
-hasAffordance(X, store) :- obj(X), affordsTask(X, workStudyTask).
-
-% --- display ---
-hasAffordance(X, display) :- obj(X), hasPhysicalQuality(X, electronic), hasPhysicalQuality(X, lightweight), hasRole(X, toolRole), affordsTask(X, workStudyTask).
-
-% --- change ---
-hasAffordance(X, change) :- obj(X), hasRole(X, utensilRole).
-hasAffordance(X, change) :- obj(X), hasRole(X, toolRole).
-hasAffordance(X, change) :- obj(X), hasRole(X, documentRole).
-
-% --- fix ---
-hasAffordance(X, fix) :- obj(X), hasRole(X, utensilRole).
-hasAffordance(X, fix) :- obj(X), hasPhysicalQuality(X, rigid), hasRole(X, toolRole).
-hasAffordance(X, fix) :- obj(X), hasPhysicalQuality(X, heavy), hasRole(X, toolRole).
-hasAffordance(X, fix) :- obj(X), hasRole(X, documentRole).
-
-% --- hold ---
-hasAffordance(X, hold) :- obj(X), hasPhysicalQuality(X, sharp).
-hasAffordance(X, hold) :- obj(X), affordsTask(X, maintenanceTask).
-hasAffordance(X, hold) :- obj(X), hasRole(X, toolRole).
-hasAffordance(X, hold) :- obj(X), affordsTask(X, storageTask).
-
-% --- repair ---
-hasAffordance(X, repair) :- obj(X), hasRole(X, utensilRole).
-hasAffordance(X, repair) :- obj(X), hasRole(X, toolRole).
-hasAffordance(X, repair) :- obj(X), hasRole(X, documentRole).
-
-% --- decorate ---
-hasAffordance(X, decorate) :- obj(X), hasRole(X, decorationRole).
-hasAffordance(X, decorate) :- obj(X), hasRole(X, furnitureRole).
-hasAffordance(X, decorate) :- obj(X), hasRole(X, lightingRole).
-
-% --- heat ---
-hasAffordance(X, heat) :- obj(X), hasRole(X, applianceRole).
-hasAffordance(X, heat) :- obj(X), hasRole(X, lightingRole).
-hasAffordance(X, heat) :- obj(X), hasRole(X, cookwareRole).
-
-% --- illuminate ---
-hasAffordance(X, illuminate) :- obj(X), affordsTask(X, leisureTask).
-
-% --- operate ---
-hasAffordance(X, operate) :- obj(X), hasPhysicalQuality(X, electronic).
-hasAffordance(X, operate) :- obj(X), hasPhysicalQuality(X, rigid).
-hasAffordance(X, operate) :- obj(X), hasRole(X, lightingRole).
-
-% --- clean ---
-hasAffordance(X, clean) :- obj(X), hasRole(X, cleaningToolRole).
-hasAffordance(X, clean) :- obj(X), hasRole(X, consumableRole).
-hasAffordance(X, clean) :- obj(X), affordsTask(X, maintenanceTask).
-hasAffordance(X, clean) :- obj(X), hasPhysicalQuality(X, washable).
-
-% --- pour ---
-hasAffordance(X, pour) :- obj(X), hasPhysicalQuality(X, liquid).
-
-% --- bore ---
-hasAffordance(X, bore) :- obj(X), hasRole(X, toolRole).
-
-% --- drill ---
-hasAffordance(X, drill) :- obj(X), hasPhysicalQuality(X, isRotary).
-
-% --- separate ---
-hasAffordance(X, separate) :- obj(X), hasRole(X, toolRole).
-hasAffordance(X, separate) :- obj(X), hasPhysicalQuality(X, sharp).
-
-% --- beautify ---
-hasAffordance(X, beautify) :- obj(X), hasRole(X, documentRole).
-
-% --- file ---
-hasAffordance(X, file) :- obj(X), affordsTask(X, storageTask).
-
-% --- polish ---
-hasAffordance(X, polish) :- obj(X), affordsTask(X, storageTask).
-
-% --- mix ---
-hasAffordance(X, mix) :- obj(X), affordsTask(X, foodPreparationTask).
-
-% --- cool ---
-hasAffordance(X, cool) :- obj(X), affordsTask(X, storageTask).
-
-% --- dispose ---
-hasAffordance(X, dispose) :- obj(X), hasRole(X, storageContainerRole).
-
 % --- control ---
-hasAffordance(X, control) :- obj(X), hasRole(X, toolRole).
-
-% --- hammer ---
-hasAffordance(X, hammer) :- obj(X), hasPhysicalQuality(X, heavy), hasPhysicalQuality(X, rigid), hasRole(X, toolRole).
-
-% --- handle ---
-hasAffordance(X, handle) :- obj(X), hasPhysicalQuality(X, heavy).
-
-% --- install ---
-hasAffordance(X, install) :- obj(X), hasRole(X, toolRole).
-
-% --- plug ---
-hasAffordance(X, plug) :- obj(X), hasPhysicalQuality(X, rigid).
-
-% --- wash ---
-hasAffordance(X, wash) :- obj(X), hasRole(X, toolRole).
+hasAffordance(X, control) :- obj(X), hasRole(X, applianceRole), affordsTask(X, leisureTask).
+hasAffordance(X, control) :- obj(X), hasPhysicalQuality(X, electronic), affordsTask(X, maintenanceTask).
+hasAffordance(X, control) :- obj(X), hasRole(X, toolRole), affordsTask(X, leisureTask).
+hasAffordance(X, control) :- obj(X), hasRole(X, toolRole), affordsTask(X, workStudyTask).
+hasAffordance(X, control) :- obj(X), hasPhysicalQuality(X, heavy), hasRole(X, furnitureRole), affordsTask(X, maintenanceTask).
+hasAffordance(X, control) :- obj(X), hasRole(X, applianceRole), affordsTask(X, workStudyTask).
+hasAffordance(X, control) :- obj(X), hasRole(X, consumableRole), affordsTask(X, hygieneTask).
+hasAffordance(X, control) :- obj(X), hasPhysicalQuality(X, liquid), hasPhysicalQuality(X, toxic_Hazardous), hasRole(X, cleaningToolRole), affordsTask(X, hygieneTask).
+hasAffordance(X, control) :- obj(X), hasPhysicalQuality(X, electronic), hasRole(X, toolRole).
+hasAffordance(X, control) :- obj(X), affordsTask(X, maintenanceTask), not hasPhysicalQuality(X, heated), not hasPhysicalQuality(X, rigid).
+hasAffordance(X, control) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, maintenanceTask).
+hasAffordance(X, control) :- obj(X), hasPhysicalQuality(X, soft_Deformable), affordsTask(X, leisureTask).
+hasAffordance(X, control) :- obj(X), hasPhysicalQuality(X, hasContainer), affordsTask(X, eatingDrinkingTask).
 
 % --- dry ---
-hasAffordance(X, dry) :- obj(X), hasPhysicalQuality(X, soft_Deformable).
-
-% --- carve ---
-hasAffordance(X, carve) :- obj(X), hasRole(X, utensilRole).
-
-% --- crack ---
-hasAffordance(X, crack) :- obj(X), hasPhysicalQuality(X, sharp).
-
-% --- cube ---
-hasAffordance(X, cube) :- obj(X), hasPhysicalQuality(X, sharp).
-
-% --- dice ---
-hasAffordance(X, dice) :- obj(X), hasRole(X, utensilRole).
-
-% --- peel ---
-hasAffordance(X, peel) :- obj(X), hasPhysicalQuality(X, sharp).
+hasAffordance(X, dry) :- obj(X), hasRole(X, storageContainerRole), hasPhysicalQuality(X, heavy).
+hasAffordance(X, dry) :- obj(X), hasPhysicalQuality(X, granular), affordsTask(X, eatingDrinkingTask).
+hasAffordance(X, dry) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, hygieneTask).
+hasAffordance(X, dry) :- obj(X), hasRole(X, cleaningToolRole), affordsTask(X, hygieneTask).
+hasAffordance(X, dry) :- obj(X), hasPhysicalQuality(X, lightweight), affordsTask(X, maintenanceTask).
+hasAffordance(X, dry) :- obj(X), hasPhysicalQuality(X, hasContainer), hasRole(X, utensilRole).
+hasAffordance(X, dry) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, hygieneTask).
+hasAffordance(X, dry) :- obj(X), hasPhysicalQuality(X, lightweight), hasPhysicalQuality(X, rigid), hasRole(X, utensilRole), affordsTask(X, foodPreparationTask).
+hasAffordance(X, dry) :- obj(X), hasRole(X, applianceRole), affordsTask(X, foodPreparationTask).
+hasAffordance(X, dry) :- obj(X), hasPhysicalQuality(X, electronic), hasRole(X, toolRole), affordsTask(X, maintenanceTask).
+hasAffordance(X, dry) :- obj(X), hasPhysicalQuality(X, washable), affordsTask(X, dressingTask).
+hasAffordance(X, dry) :- obj(X), hasPhysicalQuality(X, lightweight), hasPhysicalQuality(X, soft_Deformable), hasRole(X, clothingRole), affordsTask(X, dressingTask).
+hasAffordance(X, dry) :- obj(X), hasRole(X, applianceRole), affordsTask(X, leisureTask).
+hasAffordance(X, dry) :- obj(X), hasPhysicalQuality(X, liquid), hasRole(X, toolRole).
+hasAffordance(X, dry) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, leisureTask).
+hasAffordance(X, dry) :- obj(X), hasRole(X, applianceRole), affordsTask(X, maintenanceTask).
+hasAffordance(X, dry) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, foodPreparationTask).
+hasAffordance(X, dry) :- obj(X), hasRole(X, consumableRole), affordsTask(X, hygieneTask).
+hasAffordance(X, dry) :- obj(X), hasPhysicalQuality(X, isFlexible), hasRole(X, toolRole).
+hasAffordance(X, dry) :- obj(X), hasPhysicalQuality(X, toxic_Hazardous), affordsTask(X, maintenanceTask).
+hasAffordance(X, dry) :- obj(X), hasRole(X, applianceRole), affordsTask(X, hygieneTask).
+hasAffordance(X, dry) :- obj(X), affordsTask(X, storageTask), not hasPhysicalQuality(X, lightweight).
 
 % --- skin ---
-hasAffordance(X, skin) :- obj(X), hasPhysicalQuality(X, sharp).
+hasAffordance(X, skin) :- obj(X), hasPhysicalQuality(X, washable), hasRole(X, cleaningToolRole).
+hasAffordance(X, skin) :- obj(X), hasPhysicalQuality(X, lightweight), affordsTask(X, foodPreparationTask).
+hasAffordance(X, skin) :- obj(X), hasPhysicalQuality(X, liquid), hasRole(X, consumableRole).
+hasAffordance(X, skin) :- obj(X), hasPhysicalQuality(X, fragile), affordsTask(X, hygieneTask).
+hasAffordance(X, skin) :- obj(X), hasPhysicalQuality(X, fragile), affordsTask(X, eatingDrinkingTask).
+hasAffordance(X, skin) :- obj(X), hasRole(X, utensilRole), affordsTask(X, foodPreparationTask).
+hasAffordance(X, skin) :- obj(X), hasRole(X, clothingRole), affordsTask(X, dressingTask).
+hasAffordance(X, skin) :- obj(X), hasPhysicalQuality(X, toxic_Hazardous), hasRole(X, consumableRole).
+hasAffordance(X, skin) :- obj(X), hasPhysicalQuality(X, sharp), hasRole(X, wasteRole).
 
-% --- write ---
-hasAffordance(X, write) :- obj(X), hasRole(X, toolRole).
+% --- comfort ---
+hasAffordance(X, comfort) :- obj(X), hasRole(X, furnitureRole), hasPhysicalQuality(X, soft_Deformable), affordsTask(X, leisureTask).
+hasAffordance(X, comfort) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, leisureTask).
+hasAffordance(X, comfort) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, sleepingTask).
+hasAffordance(X, comfort) :- obj(X), hasRole(X, clothingRole), affordsTask(X, dressingTask).
+hasAffordance(X, comfort) :- obj(X), hasPhysicalQuality(X, electronic), hasPhysicalQuality(X, requiresCooling).
+hasAffordance(X, comfort) :- obj(X), hasRole(X, lightingRole), affordsTask(X, leisureTask).
+hasAffordance(X, comfort) :- obj(X), hasRole(X, beddingRole), affordsTask(X, sleepingTask).
+hasAffordance(X, comfort) :- obj(X), hasRole(X, clothingRole), hasPhysicalQuality(X, lightweight).
+hasAffordance(X, comfort) :- obj(X), hasRole(X, utensilRole), affordsTask(X, eatingDrinkingTask).
+hasAffordance(X, comfort) :- obj(X), hasRole(X, applianceRole), affordsTask(X, maintenanceTask).
+hasAffordance(X, comfort) :- obj(X), hasRole(X, applianceRole), affordsTask(X, hygieneTask).
+hasAffordance(X, comfort) :- obj(X), hasPhysicalQuality(X, soft_Deformable), affordsTask(X, leisureTask).
+hasAffordance(X, comfort) :- obj(X), hasRole(X, applianceRole), affordsTask(X, storageTask).
 
-% --- poke ---
-hasAffordance(X, poke) :- obj(X), hasRole(X, toolRole).
+% --- cool ---
+hasAffordance(X, cool) :- obj(X), hasPhysicalQuality(X, liquid), hasRole(X, consumableRole).
+hasAffordance(X, cool) :- obj(X), affordsTask(X, foodPreparationTask), hasPhysicalQuality(X, sharp).
+hasAffordance(X, cool) :- obj(X), hasPhysicalQuality(X, requiresCooling), affordsTask(X, storageTask).
+hasAffordance(X, cool) :- obj(X), hasPhysicalQuality(X, electronic), affordsTask(X, maintenanceTask).
+hasAffordance(X, cool) :- obj(X), hasRole(X, applianceRole), affordsTask(X, leisureTask).
+hasAffordance(X, cool) :- obj(X), hasPhysicalQuality(X, heavy), affordsTask(X, workStudyTask).
+hasAffordance(X, cool) :- obj(X), hasRole(X, decorationRole), affordsTask(X, leisureTask).
+hasAffordance(X, cool) :- obj(X), hasPhysicalQuality(X, hasContainer), affordsTask(X, storageTask).
+hasAffordance(X, cool) :- obj(X), hasRole(X, clothingRole), affordsTask(X, dressingTask).
+hasAffordance(X, cool) :- obj(X), hasRole(X, cookwareRole), affordsTask(X, foodPreparationTask).
+hasAffordance(X, cool) :- obj(X), hasRole(X, toolRole), affordsTask(X, gardeningTask).
+hasAffordance(X, cool) :- obj(X), hasPhysicalQuality(X, heavy), hasRole(X, applianceRole), affordsTask(X, storageTask).
+hasAffordance(X, cool) :- obj(X), hasPhysicalQuality(X, requiresCooling), hasRole(X, applianceRole).
+hasAffordance(X, cool) :- obj(X), hasRole(X, applianceRole), affordsTask(X, maintenanceTask).
+hasAffordance(X, cool) :- obj(X), hasRole(X, applianceRole), affordsTask(X, storageTask).
 
-% --- screw ---
-hasAffordance(X, screw) :- obj(X), affordsTask(X, maintenanceTask).
-
-% --- spread ---
-hasAffordance(X, spread) :- obj(X), hasRole(X, utensilRole).
-
-% --- staple ---
-hasAffordance(X, staple) :- obj(X), hasRole(X, toolRole).
+% --- heat ---
+hasAffordance(X, heat) :- obj(X), affordsTask(X, foodPreparationTask), hasPhysicalQuality(X, heavy).
+hasAffordance(X, heat) :- obj(X), hasPhysicalQuality(X, liquid), hasRole(X, cleaningToolRole).
+hasAffordance(X, heat) :- obj(X), affordsTask(X, foodPreparationTask), hasRole(X, consumableRole).
+hasAffordance(X, heat) :- obj(X), hasPhysicalQuality(X, electronic), affordsTask(X, sleepingTask).
+hasAffordance(X, heat) :- obj(X), hasPhysicalQuality(X, soft_Deformable), hasRole(X, clothingRole), affordsTask(X, dressingTask).
+hasAffordance(X, heat) :- obj(X), hasPhysicalQuality(X, rigid), hasRole(X, storageContainerRole).
+hasAffordance(X, heat) :- obj(X), hasRole(X, cookwareRole), affordsTask(X, foodPreparationTask).
+hasAffordance(X, heat) :- obj(X), hasRole(X, applianceRole), affordsTask(X, foodPreparationTask).
+hasAffordance(X, heat) :- obj(X), hasRole(X, applianceRole), affordsTask(X, maintenanceTask).
+hasAffordance(X, heat) :- obj(X), hasPhysicalQuality(X, heavy), hasRole(X, storageContainerRole).
+hasAffordance(X, heat) :- obj(X), hasRole(X, applianceRole), affordsTask(X, hygieneTask).
+hasAffordance(X, heat) :- obj(X), hasRole(X, lightingRole), affordsTask(X, leisureTask).
+hasAffordance(X, heat) :- obj(X), hasRole(X, utensilRole), affordsTask(X, foodPreparationTask), hasPhysicalQuality(X, lightweight).
+hasAffordance(X, heat) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, hygieneTask).
+hasAffordance(X, heat) :- obj(X), hasRole(X, beddingRole), affordsTask(X, sleepingTask).
+hasAffordance(X, heat) :- obj(X), hasPhysicalQuality(X, electronic), affordsTask(X, maintenanceTask).
+hasAffordance(X, heat) :- obj(X), hasRole(X, cleaningToolRole), affordsTask(X, hygieneTask).
+hasAffordance(X, heat) :- obj(X), hasRole(X, utensilRole), affordsTask(X, eatingDrinkingTask).
+hasAffordance(X, heat) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, leisureTask).
+hasAffordance(X, heat) :- obj(X), hasPhysicalQuality(X, sharp), affordsTask(X, foodPreparationTask).
+hasAffordance(X, heat) :- obj(X), hasPhysicalQuality(X, rigid), affordsTask(X, storageTask).
+hasAffordance(X, heat) :- obj(X), hasRole(X, applianceRole), affordsTask(X, leisureTask).
+hasAffordance(X, heat) :- obj(X), hasRole(X, applianceRole), affordsTask(X, workStudyTask).
+hasAffordance(X, heat) :- obj(X), hasPhysicalQuality(X, perishable), affordsTask(X, eatingDrinkingTask).
+hasAffordance(X, heat) :- obj(X), hasPhysicalQuality(X, electronic), hasPhysicalQuality(X, requiresCooling).
+hasAffordance(X, heat) :- obj(X), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
+hasAffordance(X, heat) :- obj(X), hasPhysicalQuality(X, soft_Deformable), affordsTask(X, leisureTask).
+hasAffordance(X, heat) :- obj(X), hasPhysicalQuality(X, soft_Deformable), hasRole(X, consumableRole).
+hasAffordance(X, heat) :- obj(X), hasRole(X, applianceRole), affordsTask(X, storageTask).
 
 % --- entertain ---
-hasAffordance(X, entertain) :- obj(X), affordsTask(X, leisureTask).
+hasAffordance(X, entertain) :- obj(X), hasRole(X, musicalInstrumentRole), affordsTask(X, leisureTask).
+hasAffordance(X, entertain) :- obj(X), hasRole(X, entertainmentRole), affordsTask(X, leisureTask).
+hasAffordance(X, entertain) :- obj(X), hasRole(X, furnitureRole), hasPhysicalQuality(X, heavy), affordsTask(X, leisureTask).
+hasAffordance(X, entertain) :- obj(X), hasPhysicalQuality(X, heavy), affordsTask(X, eatingDrinkingTask).
+hasAffordance(X, entertain) :- obj(X), hasPhysicalQuality(X, electronic), affordsTask(X, leisureTask).
+hasAffordance(X, entertain) :- obj(X), hasPhysicalQuality(X, hasContainer), affordsTask(X, wasteDisposalTask).
+hasAffordance(X, entertain) :- obj(X), hasRole(X, toolRole), affordsTask(X, leisureTask).
+hasAffordance(X, entertain) :- obj(X), hasPhysicalQuality(X, soft_Deformable), hasRole(X, furnitureRole), affordsTask(X, leisureTask).
+hasAffordance(X, entertain) :- obj(X), affordsTask(X, leisureTask), hasPhysicalQuality(X, lightweight).
+hasAffordance(X, entertain) :- obj(X), hasRole(X, cleaningToolRole), hasPhysicalQuality(X, liquid).
+hasAffordance(X, entertain) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, workStudyTask).
+hasAffordance(X, entertain) :- obj(X), hasRole(X, toolRole), hasPhysicalQuality(X, electronic), affordsTask(X, maintenanceTask).
+hasAffordance(X, entertain) :- obj(X), hasPhysicalQuality(X, soft_Deformable), affordsTask(X, storageTask).
+hasAffordance(X, entertain) :- obj(X), hasPhysicalQuality(X, lightweight), affordsTask(X, maintenanceTask).
+hasAffordance(X, entertain) :- obj(X), hasRole(X, toolRole), affordsTask(X, workStudyTask).
+hasAffordance(X, entertain) :- obj(X), hasPhysicalQuality(X, rigid), affordsTask(X, maintenanceTask).
+hasAffordance(X, entertain) :- obj(X), hasPhysicalQuality(X, electronic), affordsTask(X, workStudyTask).
+hasAffordance(X, entertain) :- obj(X), hasPhysicalQuality(X, heavy), affordsTask(X, storageTask).
+hasAffordance(X, entertain) :- obj(X), hasPhysicalQuality(X, granular), affordsTask(X, maintenanceTask).
+hasAffordance(X, entertain) :- obj(X), hasPhysicalQuality(X, lightweight), affordsTask(X, eatingDrinkingTask).
+hasAffordance(X, entertain) :- obj(X), hasPhysicalQuality(X, hasContainer), affordsTask(X, eatingDrinkingTask).
+hasAffordance(X, entertain) :- obj(X), hasPhysicalQuality(X, lightweight), affordsTask(X, workStudyTask).
+hasAffordance(X, entertain) :- obj(X), hasPhysicalQuality(X, hasContainer), affordsTask(X, storageTask).
+hasAffordance(X, entertain) :- obj(X), hasRole(X, toolRole), affordsTask(X, foodPreparationTask).
+hasAffordance(X, entertain) :- obj(X), hasRole(X, decorationRole), hasPhysicalQuality(X, granular).
+hasAffordance(X, entertain) :- obj(X), hasPhysicalQuality(X, soft_Deformable), affordsTask(X, leisureTask).
 
-% --- wrench ---
-hasAffordance(X, wrench) :- obj(X), hasPhysicalQuality(X, heavy).
+% --- hold ---
+hasAffordance(X, hold) :- obj(X), hasPhysicalQuality(X, rigid), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
+hasAffordance(X, hold) :- obj(X), hasPhysicalQuality(X, hasContainer), hasRole(X, storageContainerRole), affordsTask(X, foodPreparationTask).
+hasAffordance(X, hold) :- obj(X), hasPhysicalQuality(X, heavy), affordsTask(X, foodPreparationTask).
+hasAffordance(X, hold) :- obj(X), hasPhysicalQuality(X, lightweight), hasPhysicalQuality(X, rigid), affordsTask(X, foodPreparationTask).
+hasAffordance(X, hold) :- obj(X), hasPhysicalQuality(X, hasContainer), affordsTask(X, storageTask).
+hasAffordance(X, hold) :- obj(X), hasRole(X, cleaningToolRole), affordsTask(X, hygieneTask).
+hasAffordance(X, hold) :- obj(X), hasPhysicalQuality(X, heavy), affordsTask(X, workStudyTask).
+hasAffordance(X, hold) :- obj(X), hasPhysicalQuality(X, lightweight), hasPhysicalQuality(X, rigid), affordsTask(X, maintenanceTask).
+hasAffordance(X, hold) :- obj(X), hasPhysicalQuality(X, rigid), affordsTask(X, maintenanceTask), not hasPhysicalQuality(X, electronic).
+hasAffordance(X, hold) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, leisureTask).
+hasAffordance(X, hold) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, eatingDrinkingTask).
+hasAffordance(X, hold) :- obj(X), hasPhysicalQuality(X, heavy), hasRole(X, storageContainerRole), affordsTask(X, wasteDisposalTask).
+hasAffordance(X, hold) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, hygieneTask).
+hasAffordance(X, hold) :- obj(X), hasPhysicalQuality(X, lightweight), hasPhysicalQuality(X, sharp).
+hasAffordance(X, hold) :- obj(X), hasPhysicalQuality(X, rigid), hasRole(X, utensilRole), affordsTask(X, foodPreparationTask).
+hasAffordance(X, hold) :- obj(X), hasPhysicalQuality(X, hasContainer), affordsTask(X, foodPreparationTask).
+hasAffordance(X, hold) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, storageTask).
+hasAffordance(X, hold) :- obj(X), hasPhysicalQuality(X, lightweight), affordsTask(X, dressingTask).
+hasAffordance(X, hold) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, leisureTask).
+hasAffordance(X, hold) :- obj(X), hasPhysicalQuality(X, lightweight), hasPhysicalQuality(X, rigid), affordsTask(X, eatingDrinkingTask).
+hasAffordance(X, hold) :- obj(X), hasRole(X, utensilRole), affordsTask(X, foodPreparationTask).
+hasAffordance(X, hold) :- obj(X), hasPhysicalQuality(X, soft_Deformable), affordsTask(X, storageTask).
+hasAffordance(X, hold) :- obj(X), hasPhysicalQuality(X, rigid), affordsTask(X, eatingDrinkingTask).
+hasAffordance(X, hold) :- obj(X), hasRole(X, beddingRole), affordsTask(X, sleepingTask).
+hasAffordance(X, hold) :- obj(X), hasPhysicalQuality(X, rigid), hasRole(X, toolRole), affordsTask(X, workStudyTask).
+hasAffordance(X, hold) :- obj(X), hasPhysicalQuality(X, rigid), hasRole(X, documentRole).
+hasAffordance(X, hold) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, workStudyTask).
+hasAffordance(X, hold) :- obj(X), hasPhysicalQuality(X, hasContainer), affordsTask(X, eatingDrinkingTask).
+hasAffordance(X, hold) :- obj(X), hasRole(X, musicalInstrumentRole), affordsTask(X, leisureTask).
+hasAffordance(X, hold) :- obj(X), hasPhysicalQuality(X, liquid), affordsTask(X, maintenanceTask).
+hasAffordance(X, hold) :- obj(X), hasPhysicalQuality(X, rigid), hasRole(X, cookwareRole), affordsTask(X, foodPreparationTask).
+hasAffordance(X, hold) :- obj(X), hasPhysicalQuality(X, rigid), affordsTask(X, workStudyTask).
+hasAffordance(X, hold) :- obj(X), hasRole(X, clothingRole), affordsTask(X, dressingTask).
+hasAffordance(X, hold) :- obj(X), hasPhysicalQuality(X, electronic), hasRole(X, storageContainerRole).
+hasAffordance(X, hold) :- obj(X), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
+hasAffordance(X, hold) :- obj(X), hasRole(X, documentRole), affordsTask(X, workStudyTask).
+hasAffordance(X, hold) :- obj(X), hasRole(X, documentRole), affordsTask(X, leisureTask).
+hasAffordance(X, hold) :- obj(X), hasPhysicalQuality(X, heavy), affordsTask(X, eatingDrinkingTask).
+hasAffordance(X, hold) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, workStudyTask).
+hasAffordance(X, hold) :- obj(X), hasPhysicalQuality(X, rigid), hasRole(X, decorationRole).
+hasAffordance(X, hold) :- obj(X), hasRole(X, utensilRole), affordsTask(X, eatingDrinkingTask).
+hasAffordance(X, hold) :- obj(X), hasPhysicalQuality(X, fragile), affordsTask(X, eatingDrinkingTask).
+hasAffordance(X, hold) :- obj(X), hasRole(X, applianceRole), affordsTask(X, wasteDisposalTask).
+hasAffordance(X, hold) :- obj(X), affordsTask(X, foodPreparationTask), not hasPhysicalQuality(X, rigid).
+hasAffordance(X, hold) :- obj(X), hasPhysicalQuality(X, sharp), affordsTask(X, maintenanceTask).
+hasAffordance(X, hold) :- obj(X), hasPhysicalQuality(X, lightweight), hasRole(X, storageContainerRole).
+hasAffordance(X, hold) :- obj(X), hasPhysicalQuality(X, granular), affordsTask(X, maintenanceTask).
+hasAffordance(X, hold) :- obj(X), hasPhysicalQuality(X, rigid), hasRole(X, toolRole), not affordsTask(X, maintenanceTask).
+hasAffordance(X, hold) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, wasteDisposalTask).
+hasAffordance(X, hold) :- obj(X), hasRole(X, documentRole), affordsTask(X, storageTask).
+hasAffordance(X, hold) :- obj(X), hasPhysicalQuality(X, heavy), hasRole(X, furnitureRole).
+hasAffordance(X, hold) :- obj(X), hasPhysicalQuality(X, lightweight), affordsTask(X, maintenanceTask).
+hasAffordance(X, hold) :- obj(X), affordsTask(X, maintenanceTask), not hasPhysicalQuality(X, rigid).
+hasAffordance(X, hold) :- obj(X), hasPhysicalQuality(X, rigid), hasRole(X, furnitureRole).
+hasAffordance(X, hold) :- obj(X), affordsTask(X, storageTask), not hasPhysicalQuality(X, heavy).
+hasAffordance(X, hold) :- obj(X), hasPhysicalQuality(X, perishable), hasRole(X, consumableRole).
+hasAffordance(X, hold) :- obj(X), hasRole(X, documentRole), not hasPhysicalQuality(X, heavy).
+
+% --- stick ---
+hasAffordance(X, stick) :- obj(X), hasPhysicalQuality(X, soft_Deformable), affordsTask(X, maintenanceTask).
+hasAffordance(X, stick) :- obj(X), hasPhysicalQuality(X, liquid), affordsTask(X, maintenanceTask).
+hasAffordance(X, stick) :- obj(X), hasRole(X, entertainmentRole), affordsTask(X, leisureTask).
+hasAffordance(X, stick) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, leisureTask).
+hasAffordance(X, stick) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, wasteDisposalTask).
+hasAffordance(X, stick) :- obj(X), hasPhysicalQuality(X, isFlexible), affordsTask(X, maintenanceTask).
+hasAffordance(X, stick) :- obj(X), hasRole(X, cleaningToolRole), affordsTask(X, hygieneTask).
+hasAffordance(X, stick) :- obj(X), hasPhysicalQuality(X, sharp), affordsTask(X, foodPreparationTask).
+hasAffordance(X, stick) :- obj(X), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
+hasAffordance(X, stick) :- obj(X), hasRole(X, consumableRole), affordsTask(X, foodPreparationTask).
+hasAffordance(X, stick) :- obj(X), hasPhysicalQuality(X, sharp), affordsTask(X, maintenanceTask).
+hasAffordance(X, stick) :- obj(X), hasPhysicalQuality(X, soft_Deformable), affordsTask(X, leisureTask).
+hasAffordance(X, stick) :- obj(X), hasRole(X, documentRole), affordsTask(X, leisureTask).
+
+% --- store ---
+hasAffordance(X, store) :- obj(X), affordsTask(X, storageTask), hasPhysicalQuality(X, hasContainer).
+hasAffordance(X, store) :- obj(X), hasPhysicalQuality(X, requiresCooling), affordsTask(X, storageTask).
+hasAffordance(X, store) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, eatingDrinkingTask).
+hasAffordance(X, store) :- obj(X), hasRole(X, storageContainerRole), hasPhysicalQuality(X, rigid), affordsTask(X, storageTask).
+hasAffordance(X, store) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, leisureTask).
+hasAffordance(X, store) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, wasteDisposalTask).
+hasAffordance(X, store) :- obj(X), hasPhysicalQuality(X, rigid), affordsTask(X, hygieneTask).
+hasAffordance(X, store) :- obj(X), hasPhysicalQuality(X, heavy), affordsTask(X, maintenanceTask).
+hasAffordance(X, store) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, workStudyTask).
+hasAffordance(X, store) :- obj(X), hasRole(X, toolRole), hasPhysicalQuality(X, lightweight), affordsTask(X, maintenanceTask).
+hasAffordance(X, store) :- obj(X), hasPhysicalQuality(X, rigid), affordsTask(X, storageTask).
+hasAffordance(X, store) :- obj(X), hasRole(X, beddingRole), hasPhysicalQuality(X, soft_Deformable), hasPhysicalQuality(X, washable), affordsTask(X, sleepingTask), not hasPhysicalQuality(X, electronic).
+hasAffordance(X, store) :- obj(X), hasPhysicalQuality(X, soft_Deformable), affordsTask(X, storageTask).
+hasAffordance(X, store) :- obj(X), hasRole(X, cookwareRole), affordsTask(X, foodPreparationTask).
+hasAffordance(X, store) :- obj(X), hasRole(X, documentRole), affordsTask(X, workStudyTask).
+hasAffordance(X, store) :- obj(X), hasPhysicalQuality(X, electronic), affordsTask(X, storageTask).
+hasAffordance(X, store) :- obj(X), hasPhysicalQuality(X, hasContainer), affordsTask(X, eatingDrinkingTask).
+hasAffordance(X, store) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, workStudyTask).
+hasAffordance(X, store) :- obj(X), hasPhysicalQuality(X, heavy), affordsTask(X, workStudyTask).
+hasAffordance(X, store) :- obj(X), affordsTask(X, storageTask), hasPhysicalQuality(X, lightweight).
+hasAffordance(X, store) :- obj(X), hasPhysicalQuality(X, heavy), affordsTask(X, wasteDisposalTask).
+hasAffordance(X, store) :- obj(X), hasPhysicalQuality(X, requiresFreezing), affordsTask(X, storageTask).
+hasAffordance(X, store) :- obj(X), hasPhysicalQuality(X, fragile), affordsTask(X, leisureTask).
+hasAffordance(X, store) :- obj(X), hasPhysicalQuality(X, lightweight), affordsTask(X, leisureTask).
+hasAffordance(X, store) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
+
+% --- clean ---
+hasAffordance(X, clean) :- obj(X), hasPhysicalQuality(X, liquid), affordsTask(X, hygieneTask).
+hasAffordance(X, clean) :- obj(X), hasPhysicalQuality(X, hasContainer), affordsTask(X, cleaningTask).
+hasAffordance(X, clean) :- obj(X), hasRole(X, applianceRole), affordsTask(X, cleaningTask).
+hasAffordance(X, clean) :- obj(X), hasPhysicalQuality(X, washable), hasRole(X, cleaningToolRole).
+hasAffordance(X, clean) :- obj(X), hasPhysicalQuality(X, soft_Deformable), hasRole(X, cleaningToolRole).
+hasAffordance(X, clean) :- obj(X), hasPhysicalQuality(X, electronic), affordsTask(X, cleaningTask).
+hasAffordance(X, clean) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, eatingDrinkingTask).
+hasAffordance(X, clean) :- obj(X), hasRole(X, consumableRole), affordsTask(X, hygieneTask).
+hasAffordance(X, clean) :- obj(X), hasPhysicalQuality(X, lightweight), hasRole(X, cleaningToolRole), affordsTask(X, cleaningTask).
+hasAffordance(X, clean) :- obj(X), hasRole(X, decorationRole), affordsTask(X, leisureTask).
+hasAffordance(X, clean) :- obj(X), hasPhysicalQuality(X, soft_Deformable), hasRole(X, toolRole), affordsTask(X, cleaningTask).
+hasAffordance(X, clean) :- obj(X), hasPhysicalQuality(X, soft_Deformable), hasPhysicalQuality(X, washable), hasRole(X, beddingRole).
+hasAffordance(X, clean) :- obj(X), hasPhysicalQuality(X, heavy), hasPhysicalQuality(X, rigid), hasRole(X, toolRole), affordsTask(X, maintenanceTask).
+hasAffordance(X, clean) :- obj(X), hasPhysicalQuality(X, lightweight), hasPhysicalQuality(X, rigid), affordsTask(X, maintenanceTask).
+hasAffordance(X, clean) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, cleaningTask).
+hasAffordance(X, clean) :- obj(X), hasRole(X, cleaningToolRole), affordsTask(X, cleaningTask).
+hasAffordance(X, clean) :- obj(X), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
+hasAffordance(X, clean) :- obj(X), hasRole(X, clothingRole), affordsTask(X, leisureTask).
+hasAffordance(X, clean) :- obj(X), hasPhysicalQuality(X, liquid), hasRole(X, utensilRole).
+hasAffordance(X, clean) :- obj(X), hasPhysicalQuality(X, lightweight), hasRole(X, furnitureRole).
+hasAffordance(X, clean) :- obj(X), hasPhysicalQuality(X, electronic), hasRole(X, toolRole), affordsTask(X, maintenanceTask).
+hasAffordance(X, clean) :- obj(X), hasRole(X, toolRole), affordsTask(X, cleaningTask).
+hasAffordance(X, clean) :- obj(X), affordsTask(X, storageTask), hasPhysicalQuality(X, lightweight).
+hasAffordance(X, clean) :- obj(X), hasPhysicalQuality(X, lightweight), hasRole(X, toolRole).
+hasAffordance(X, clean) :- obj(X), hasPhysicalQuality(X, fragile), hasRole(X, cleaningToolRole).
+hasAffordance(X, clean) :- obj(X), hasPhysicalQuality(X, rigid), affordsTask(X, storageTask).
+hasAffordance(X, clean) :- obj(X), hasPhysicalQuality(X, washable), hasRole(X, clothingRole).
+hasAffordance(X, clean) :- obj(X), hasRole(X, cleaningToolRole), affordsTask(X, hygieneTask).
+hasAffordance(X, clean) :- obj(X), hasPhysicalQuality(X, fragile), affordsTask(X, hygieneTask).
+hasAffordance(X, clean) :- obj(X), hasPhysicalQuality(X, soft_Deformable), affordsTask(X, hygieneTask).
+hasAffordance(X, clean) :- obj(X), hasPhysicalQuality(X, fragile), hasRole(X, furnitureRole).
+hasAffordance(X, clean) :- obj(X), hasPhysicalQuality(X, flammable), hasRole(X, consumableRole).
+
+% --- time ---
+hasAffordance(X, time) :- obj(X), hasPhysicalQuality(X, electronic), affordsTask(X, storageTask).
+hasAffordance(X, time) :- obj(X), hasRole(X, toolRole), affordsTask(X, maintenanceTask), hasPhysicalQuality(X, rigid).
+hasAffordance(X, time) :- obj(X), hasRole(X, documentRole), affordsTask(X, workStudyTask).
+hasAffordance(X, time) :- obj(X), hasRole(X, documentRole), affordsTask(X, leisureTask).
+hasAffordance(X, time) :- obj(X), hasPhysicalQuality(X, perishable), affordsTask(X, eatingDrinkingTask).
+hasAffordance(X, time) :- obj(X), hasPhysicalQuality(X, granular), affordsTask(X, foodPreparationTask).
+hasAffordance(X, time) :- obj(X), hasRole(X, toolRole), hasPhysicalQuality(X, electronic), affordsTask(X, maintenanceTask).
+hasAffordance(X, time) :- obj(X), hasPhysicalQuality(X, electronic), affordsTask(X, workStudyTask).
+hasAffordance(X, time) :- obj(X), hasPhysicalQuality(X, hasContainer), affordsTask(X, storageTask).
+hasAffordance(X, time) :- obj(X), hasRole(X, furnitureRole), hasPhysicalQuality(X, soft_Deformable).
+hasAffordance(X, time) :- obj(X), hasPhysicalQuality(X, heavy), affordsTask(X, foodPreparationTask).
+hasAffordance(X, time) :- obj(X), hasRole(X, furnitureRole), hasPhysicalQuality(X, rigid).
+hasAffordance(X, time) :- obj(X), hasRole(X, toolRole), affordsTask(X, leisureTask).
+hasAffordance(X, time) :- obj(X), hasRole(X, decorationRole), hasPhysicalQuality(X, rigid).
+
+% --- support ---
+hasAffordance(X, support) :- obj(X), hasPhysicalQuality(X, heavy), hasRole(X, furnitureRole).
+hasAffordance(X, support) :- obj(X), hasRole(X, utensilRole), affordsTask(X, eatingDrinkingTask).
+hasAffordance(X, support) :- obj(X), hasPhysicalQuality(X, heavy), hasPhysicalQuality(X, rigid), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
+hasAffordance(X, support) :- obj(X), hasPhysicalQuality(X, heavy), hasPhysicalQuality(X, rigid), affordsTask(X, maintenanceTask).
+hasAffordance(X, support) :- obj(X), hasRole(X, consumableRole), affordsTask(X, foodPreparationTask).
+hasAffordance(X, support) :- obj(X), hasPhysicalQuality(X, electronic), affordsTask(X, maintenanceTask), not hasPhysicalQuality(X, heavy).
+hasAffordance(X, support) :- obj(X), hasPhysicalQuality(X, rigid), hasRole(X, furnitureRole).
+hasAffordance(X, support) :- obj(X), hasRole(X, documentRole), affordsTask(X, leisureTask).
+
+% --- read ---
+hasAffordance(X, read) :- obj(X), hasRole(X, documentRole), affordsTask(X, leisureTask).
+hasAffordance(X, read) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, workStudyTask).
+hasAffordance(X, read) :- obj(X), affordsTask(X, leisureTask), hasPhysicalQuality(X, electronic).
+hasAffordance(X, read) :- obj(X), hasRole(X, documentRole), affordsTask(X, workStudyTask).
+hasAffordance(X, read) :- obj(X), affordsTask(X, leisureTask), hasPhysicalQuality(X, rigid).
+hasAffordance(X, read) :- obj(X), affordsTask(X, eatingDrinkingTask), hasPhysicalQuality(X, rigid).
+hasAffordance(X, read) :- obj(X), affordsTask(X, maintenanceTask), hasPhysicalQuality(X, rigid).
+hasAffordance(X, read) :- obj(X), hasPhysicalQuality(X, fragile), affordsTask(X, eatingDrinkingTask).
+hasAffordance(X, read) :- obj(X), hasPhysicalQuality(X, heavy), affordsTask(X, sleepingTask).
+hasAffordance(X, read) :- obj(X), hasPhysicalQuality(X, electronic), affordsTask(X, maintenanceTask).
+hasAffordance(X, read) :- obj(X), hasPhysicalQuality(X, heavy), affordsTask(X, leisureTask).
+hasAffordance(X, read) :- obj(X), affordsTask(X, leisureTask), hasPhysicalQuality(X, flammable).
+hasAffordance(X, read) :- obj(X), hasPhysicalQuality(X, fragile), affordsTask(X, sleepingTask).
+hasAffordance(X, read) :- obj(X), hasRole(X, cookwareRole), affordsTask(X, foodPreparationTask).
+hasAffordance(X, read) :- obj(X), hasPhysicalQuality(X, rigid), affordsTask(X, storageTask).
+hasAffordance(X, read) :- obj(X), hasPhysicalQuality(X, lightweight), affordsTask(X, foodPreparationTask).
+
+% --- smoothen ---
+hasAffordance(X, smoothen) :- obj(X), hasRole(X, toolRole), affordsTask(X, hygieneTask).
+hasAffordance(X, smoothen) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, foodPreparationTask).
+hasAffordance(X, smoothen) :- obj(X), hasRole(X, clothingRole), affordsTask(X, dressingTask).
+hasAffordance(X, smoothen) :- obj(X), hasRole(X, consumableRole), affordsTask(X, foodPreparationTask).
+hasAffordance(X, smoothen) :- obj(X), hasPhysicalQuality(X, rigid), hasRole(X, toolRole), affordsTask(X, maintenanceTask).
+hasAffordance(X, smoothen) :- obj(X), hasPhysicalQuality(X, electronic), affordsTask(X, maintenanceTask).
+hasAffordance(X, smoothen) :- obj(X), hasPhysicalQuality(X, hasContainer), affordsTask(X, storageTask).
+hasAffordance(X, smoothen) :- obj(X), hasRole(X, documentRole), affordsTask(X, storageTask).
+hasAffordance(X, smoothen) :- obj(X), hasPhysicalQuality(X, fragile), affordsTask(X, leisureTask).
+hasAffordance(X, smoothen) :- obj(X), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
+
+% --- carry ---
+hasAffordance(X, carry) :- obj(X), hasRole(X, utensilRole), affordsTask(X, foodPreparationTask).
+hasAffordance(X, carry) :- obj(X), hasPhysicalQuality(X, hasContainer), affordsTask(X, storageTask), hasPhysicalQuality(X, lightweight).
+hasAffordance(X, carry) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, foodPreparationTask).
+hasAffordance(X, carry) :- obj(X), hasPhysicalQuality(X, lightweight), affordsTask(X, maintenanceTask).
+hasAffordance(X, carry) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, leisureTask).
+hasAffordance(X, carry) :- obj(X), hasRole(X, clothingRole), affordsTask(X, storageTask).
+hasAffordance(X, carry) :- obj(X), hasPhysicalQuality(X, lightweight), affordsTask(X, dressingTask).
+hasAffordance(X, carry) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, foodPreparationTask).
+hasAffordance(X, carry) :- obj(X), hasPhysicalQuality(X, soft_Deformable), affordsTask(X, storageTask).
+hasAffordance(X, carry) :- obj(X), hasPhysicalQuality(X, heavy), affordsTask(X, maintenanceTask).
+hasAffordance(X, carry) :- obj(X), hasRole(X, documentRole), affordsTask(X, workStudyTask).
+hasAffordance(X, carry) :- obj(X), hasRole(X, lightingRole), affordsTask(X, leisureTask).
+hasAffordance(X, carry) :- obj(X), hasRole(X, cookwareRole), affordsTask(X, foodPreparationTask).
+hasAffordance(X, carry) :- obj(X), hasRole(X, toolRole), affordsTask(X, cleaningTask).
+hasAffordance(X, carry) :- obj(X), hasPhysicalQuality(X, hasContainer), hasRole(X, utensilRole), affordsTask(X, eatingDrinkingTask).
+hasAffordance(X, carry) :- obj(X), hasPhysicalQuality(X, rigid), affordsTask(X, storageTask).
+hasAffordance(X, carry) :- obj(X), hasRole(X, documentRole), affordsTask(X, leisureTask).
+hasAffordance(X, carry) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, leisureTask).
+hasAffordance(X, carry) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, workStudyTask).
+hasAffordance(X, carry) :- obj(X), affordsTask(X, storageTask), not hasPhysicalQuality(X, heavy).
+hasAffordance(X, carry) :- obj(X), hasPhysicalQuality(X, lightweight), hasRole(X, storageContainerRole), hasPhysicalQuality(X, rigid).
+hasAffordance(X, carry) :- obj(X), hasRole(X, toolRole), affordsTask(X, maintenanceTask).
+hasAffordance(X, carry) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, eatingDrinkingTask).
+
+% --- contain ---
+hasAffordance(X, contain) :- obj(X), hasRole(X, storageContainerRole), hasPhysicalQuality(X, rigid).
+hasAffordance(X, contain) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, eatingDrinkingTask).
+hasAffordance(X, contain) :- obj(X), hasPhysicalQuality(X, hasContainer), affordsTask(X, wasteDisposalTask).
+hasAffordance(X, contain) :- obj(X), hasPhysicalQuality(X, lightweight), affordsTask(X, storageTask).
+hasAffordance(X, contain) :- obj(X), hasRole(X, storageContainerRole), hasPhysicalQuality(X, hasContainer), affordsTask(X, storageTask).
+hasAffordance(X, contain) :- obj(X), hasPhysicalQuality(X, fragile), affordsTask(X, workStudyTask).
+hasAffordance(X, contain) :- obj(X), hasPhysicalQuality(X, rigid), affordsTask(X, storageTask).
+hasAffordance(X, contain) :- obj(X), hasPhysicalQuality(X, hasContainer), affordsTask(X, foodPreparationTask).
+hasAffordance(X, contain) :- obj(X), hasPhysicalQuality(X, hasContainer), affordsTask(X, eatingDrinkingTask).
+hasAffordance(X, contain) :- obj(X), hasPhysicalQuality(X, electronic), affordsTask(X, maintenanceTask).
+hasAffordance(X, contain) :- obj(X), hasPhysicalQuality(X, granular), affordsTask(X, eatingDrinkingTask).
+hasAffordance(X, contain) :- obj(X), hasPhysicalQuality(X, granular), affordsTask(X, maintenanceTask).
+hasAffordance(X, contain) :- obj(X), affordsTask(X, eatingDrinkingTask), hasPhysicalQuality(X, perishable).
+hasAffordance(X, contain) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, wasteDisposalTask).
+hasAffordance(X, contain) :- obj(X), hasPhysicalQuality(X, rigid), hasRole(X, furnitureRole).
+
+% --- hammer ---
+hasAffordance(X, hammer) :- obj(X), hasPhysicalQuality(X, rigid), hasPhysicalQuality(X, heavy), affordsTask(X, maintenanceTask).
+hasAffordance(X, hammer) :- obj(X), hasRole(X, toolRole), affordsTask(X, hygieneTask).
+hasAffordance(X, hammer) :- obj(X), hasPhysicalQuality(X, heavy), affordsTask(X, maintenanceTask).
+hasAffordance(X, hammer) :- obj(X), hasPhysicalQuality(X, soft_Deformable), affordsTask(X, leisureTask).
+hasAffordance(X, hammer) :- obj(X), hasRole(X, applianceRole), affordsTask(X, leisureTask).
+hasAffordance(X, hammer) :- obj(X), hasRole(X, toolRole), hasRole(X, consumableRole).
+hasAffordance(X, hammer) :- obj(X), hasPhysicalQuality(X, hasContainer), affordsTask(X, storageTask).
+
+% --- mark ---
+hasAffordance(X, mark) :- obj(X), hasRole(X, toolRole), affordsTask(X, workStudyTask).
+hasAffordance(X, mark) :- obj(X), affordsTask(X, workStudyTask), hasPhysicalQuality(X, lightweight).
+hasAffordance(X, mark) :- obj(X), hasPhysicalQuality(X, lightweight), affordsTask(X, maintenanceTask).
+hasAffordance(X, mark) :- obj(X), hasRole(X, clothingRole), affordsTask(X, dressingTask).
+hasAffordance(X, mark) :- obj(X), hasRole(X, applianceRole), affordsTask(X, leisureTask).
+hasAffordance(X, mark) :- obj(X), hasPhysicalQuality(X, sharp), hasPhysicalQuality(X, rigid), hasRole(X, utensilRole), affordsTask(X, foodPreparationTask), not affordsTask(X, eatingDrinkingTask), not hasRole(X, cleaningToolRole), not hasRole(X, safetyEquipmentRole), not hasPhysicalQuality(X, hasContainer), not hasRole(X, musicalInstrumentRole), not hasPhysicalQuality(X, lightweight).
+hasAffordance(X, mark) :- obj(X), hasRole(X, utensilRole), affordsTask(X, foodPreparationTask), not hasPhysicalQuality(X, sharp).
+hasAffordance(X, mark) :- obj(X), hasPhysicalQuality(X, rigid), affordsTask(X, maintenanceTask).
+hasAffordance(X, mark) :- obj(X), hasPhysicalQuality(X, rigid), affordsTask(X, workStudyTask).
+hasAffordance(X, mark) :- obj(X), hasPhysicalQuality(X, rigid), hasRole(X, toolRole).
+hasAffordance(X, mark) :- obj(X), hasRole(X, toolRole), hasPhysicalQuality(X, lightweight).
+hasAffordance(X, mark) :- obj(X), hasPhysicalQuality(X, fragile), not hasRole(X, entertainmentRole).
+hasAffordance(X, mark) :- obj(X), hasRole(X, toolRole), affordsTask(X, maintenanceTask).
+hasAffordance(X, mark) :- obj(X), hasPhysicalQuality(X, liquid), hasPhysicalQuality(X, toxic_Hazardous).
+hasAffordance(X, mark) :- obj(X), affordsTask(X, workStudyTask), not hasPhysicalQuality(X, electronic).
+hasAffordance(X, mark) :- obj(X), hasRole(X, furnitureRole), not hasPhysicalQuality(X, heavy).
+
+% --- write ---
+hasAffordance(X, write) :- obj(X), hasRole(X, toolRole), affordsTask(X, workStudyTask).
+hasAffordance(X, write) :- obj(X), hasPhysicalQuality(X, lightweight), hasPhysicalQuality(X, rigid), affordsTask(X, maintenanceTask).
+hasAffordance(X, write) :- obj(X), hasPhysicalQuality(X, lightweight), affordsTask(X, maintenanceTask).
+hasAffordance(X, write) :- obj(X), hasRole(X, toolRole), affordsTask(X, foodPreparationTask).
+hasAffordance(X, write) :- obj(X), hasPhysicalQuality(X, electronic), affordsTask(X, workStudyTask).
+hasAffordance(X, write) :- obj(X), hasRole(X, toolRole), hasPhysicalQuality(X, soft_Deformable).
+hasAffordance(X, write) :- obj(X), hasPhysicalQuality(X, lightweight), affordsTask(X, workStudyTask).
+hasAffordance(X, write) :- obj(X), hasRole(X, toolRole), hasPhysicalQuality(X, lightweight), hasPhysicalQuality(X, rigid).
+hasAffordance(X, write) :- obj(X), hasPhysicalQuality(X, lightweight), affordsTask(X, storageTask).
+hasAffordance(X, write) :- obj(X), hasPhysicalQuality(X, lightweight), affordsTask(X, eatingDrinkingTask).
+hasAffordance(X, write) :- obj(X), hasPhysicalQuality(X, electronic), affordsTask(X, maintenanceTask).
+hasAffordance(X, write) :- obj(X), hasPhysicalQuality(X, lightweight), hasPhysicalQuality(X, soft_Deformable).
+hasAffordance(X, write) :- obj(X), hasRole(X, toolRole), hasPhysicalQuality(X, liquid).
+hasAffordance(X, write) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, storageTask).
+hasAffordance(X, write) :- obj(X), affordsTask(X, leisureTask), hasPhysicalQuality(X, washable).
+hasAffordance(X, write) :- obj(X), affordsTask(X, eatingDrinkingTask), hasPhysicalQuality(X, liquid).
+hasAffordance(X, write) :- obj(X), hasPhysicalQuality(X, rigid), affordsTask(X, storageTask).
+hasAffordance(X, write) :- obj(X), hasPhysicalQuality(X, liquid), hasPhysicalQuality(X, toxic_Hazardous).
+
+% --- cover ---
+hasAffordance(X, cover) :- obj(X), hasRole(X, beddingRole), affordsTask(X, sleepingTask).
+hasAffordance(X, cover) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, leisureTask).
+hasAffordance(X, cover) :- obj(X), hasRole(X, cleaningToolRole), affordsTask(X, hygieneTask).
+hasAffordance(X, cover) :- obj(X), hasPhysicalQuality(X, soft_Deformable), hasRole(X, decorationRole).
+hasAffordance(X, cover) :- obj(X), hasRole(X, clothingRole), affordsTask(X, dressingTask).
+hasAffordance(X, cover) :- obj(X), hasRole(X, decorationRole), affordsTask(X, leisureTask).
+hasAffordance(X, cover) :- obj(X), hasPhysicalQuality(X, soft_Deformable), hasRole(X, storageContainerRole).
+hasAffordance(X, cover) :- obj(X), hasPhysicalQuality(X, soft_Deformable), hasRole(X, beddingRole).
+hasAffordance(X, cover) :- obj(X), hasRole(X, documentRole), affordsTask(X, leisureTask).
+hasAffordance(X, cover) :- obj(X), hasRole(X, safetyEquipmentRole), affordsTask(X, hygieneTask).
+hasAffordance(X, cover) :- obj(X), hasRole(X, clothingRole), affordsTask(X, leisureTask).
+hasAffordance(X, cover) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, sleepingTask).
+hasAffordance(X, cover) :- obj(X), hasPhysicalQuality(X, rigid), hasRole(X, furnitureRole).
+hasAffordance(X, cover) :- obj(X), hasPhysicalQuality(X, granular), hasRole(X, consumableRole).
+hasAffordance(X, cover) :- obj(X), hasPhysicalQuality(X, fragile), hasRole(X, furnitureRole).
+
+% --- roll ---
+hasAffordance(X, roll) :- obj(X), hasPhysicalQuality(X, lightweight), hasRole(X, toolRole).
+hasAffordance(X, roll) :- obj(X), hasRole(X, consumableRole), affordsTask(X, foodPreparationTask).
+hasAffordance(X, roll) :- obj(X), hasPhysicalQuality(X, rigid), affordsTask(X, leisureTask).
+hasAffordance(X, roll) :- obj(X), hasRole(X, cookwareRole), affordsTask(X, foodPreparationTask).
+hasAffordance(X, roll) :- obj(X), hasPhysicalQuality(X, lightweight), hasPhysicalQuality(X, rigid).
+hasAffordance(X, roll) :- obj(X), hasPhysicalQuality(X, fragile), affordsTask(X, leisureTask).
+hasAffordance(X, roll) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, wasteDisposalTask).
+
+% --- illuminate ---
+hasAffordance(X, illuminate) :- obj(X), hasRole(X, decorationRole), hasPhysicalQuality(X, lightweight).
+hasAffordance(X, illuminate) :- obj(X), affordsTask(X, leisureTask), hasPhysicalQuality(X, rigid).
+hasAffordance(X, illuminate) :- obj(X), hasRole(X, lightingRole), hasPhysicalQuality(X, electronic).
+hasAffordance(X, illuminate) :- obj(X), hasPhysicalQuality(X, rigid), affordsTask(X, storageTask).
+hasAffordance(X, illuminate) :- obj(X), affordsTask(X, maintenanceTask), hasPhysicalQuality(X, electronic).
+hasAffordance(X, illuminate) :- obj(X), affordsTask(X, maintenanceTask), hasPhysicalQuality(X, heavy).
+hasAffordance(X, illuminate) :- obj(X), hasPhysicalQuality(X, flammable), affordsTask(X, leisureTask).
+hasAffordance(X, illuminate) :- obj(X), hasPhysicalQuality(X, electronic), affordsTask(X, leisureTask).
+hasAffordance(X, illuminate) :- obj(X), hasPhysicalQuality(X, heated), affordsTask(X, maintenanceTask).
+hasAffordance(X, illuminate) :- obj(X), hasRole(X, lightingRole), affordsTask(X, leisureTask).
+hasAffordance(X, illuminate) :- obj(X), hasPhysicalQuality(X, lightweight), affordsTask(X, leisureTask).
+hasAffordance(X, illuminate) :- obj(X), hasPhysicalQuality(X, electronic), affordsTask(X, workStudyTask).
+hasAffordance(X, illuminate) :- obj(X), hasPhysicalQuality(X, electronic), hasPhysicalQuality(X, rigid).
+hasAffordance(X, illuminate) :- obj(X), hasPhysicalQuality(X, electronic), hasPhysicalQuality(X, heavy).
+hasAffordance(X, illuminate) :- obj(X), hasPhysicalQuality(X, rigid), hasPhysicalQuality(X, heavy).
+
+% --- wash ---
+hasAffordance(X, wash) :- obj(X), hasPhysicalQuality(X, liquid), hasRole(X, cleaningToolRole), affordsTask(X, hygieneTask).
+hasAffordance(X, wash) :- obj(X), hasRole(X, cleaningToolRole), affordsTask(X, hygieneTask).
+hasAffordance(X, wash) :- obj(X), affordsTask(X, cleaningTask), hasPhysicalQuality(X, electronic).
+hasAffordance(X, wash) :- obj(X), hasPhysicalQuality(X, hasContainer), affordsTask(X, eatingDrinkingTask).
+hasAffordance(X, wash) :- obj(X), hasPhysicalQuality(X, rigid), affordsTask(X, hygieneTask).
+hasAffordance(X, wash) :- obj(X), hasPhysicalQuality(X, rigid), affordsTask(X, storageTask).
+hasAffordance(X, wash) :- obj(X), hasPhysicalQuality(X, liquid), affordsTask(X, maintenanceTask).
+hasAffordance(X, wash) :- obj(X), hasPhysicalQuality(X, lightweight), affordsTask(X, foodPreparationTask).
+hasAffordance(X, wash) :- obj(X), hasPhysicalQuality(X, electronic), affordsTask(X, maintenanceTask).
+hasAffordance(X, wash) :- obj(X), hasRole(X, clothingRole), hasPhysicalQuality(X, washable), affordsTask(X, dressingTask).
+hasAffordance(X, wash) :- obj(X), hasPhysicalQuality(X, heated), affordsTask(X, foodPreparationTask).
+hasAffordance(X, wash) :- obj(X), hasRole(X, toolRole), affordsTask(X, cleaningTask).
+hasAffordance(X, wash) :- obj(X), hasPhysicalQuality(X, liquid), affordsTask(X, hygieneTask).
+hasAffordance(X, wash) :- obj(X), hasRole(X, cleaningToolRole), affordsTask(X, cleaningTask).
+hasAffordance(X, wash) :- obj(X), hasPhysicalQuality(X, rigid), affordsTask(X, foodPreparationTask).
+hasAffordance(X, wash) :- obj(X), affordsTask(X, leisureTask), hasPhysicalQuality(X, soft_Deformable).
+hasAffordance(X, wash) :- obj(X), hasPhysicalQuality(X, hasContainer), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
+
+% --- absorb ---
+hasAffordance(X, absorb) :- obj(X), hasPhysicalQuality(X, hasContainer), affordsTask(X, hygieneTask).
+hasAffordance(X, absorb) :- obj(X), hasPhysicalQuality(X, hasContainer), affordsTask(X, eatingDrinkingTask).
+hasAffordance(X, absorb) :- obj(X), hasRole(X, cleaningToolRole), affordsTask(X, hygieneTask).
+hasAffordance(X, absorb) :- obj(X), hasPhysicalQuality(X, washable), hasRole(X, consumableRole).
+hasAffordance(X, absorb) :- obj(X), hasPhysicalQuality(X, soft_Deformable), hasRole(X, clothingRole), affordsTask(X, dressingTask).
+hasAffordance(X, absorb) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, cleaningTask).
+hasAffordance(X, absorb) :- obj(X), hasRole(X, documentRole), affordsTask(X, leisureTask).
+
+% --- file ---
+hasAffordance(X, file) :- obj(X), hasRole(X, toolRole), affordsTask(X, workStudyTask), hasPhysicalQuality(X, heavy).
+hasAffordance(X, file) :- obj(X), hasPhysicalQuality(X, lightweight), affordsTask(X, storageTask).
+hasAffordance(X, file) :- obj(X), hasPhysicalQuality(X, rigid), affordsTask(X, maintenanceTask).
+hasAffordance(X, file) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, workStudyTask).
+hasAffordance(X, file) :- obj(X), hasRole(X, toolRole), affordsTask(X, workStudyTask).
+hasAffordance(X, file) :- obj(X), hasPhysicalQuality(X, hasContainer), hasPhysicalQuality(X, heavy), affordsTask(X, storageTask).
+hasAffordance(X, file) :- obj(X), hasPhysicalQuality(X, electronic), affordsTask(X, workStudyTask).
+
+% --- spread ---
+hasAffordance(X, spread) :- obj(X), hasRole(X, beddingRole), hasRole(X, furnitureRole).
+hasAffordance(X, spread) :- obj(X), hasPhysicalQuality(X, granular), affordsTask(X, eatingDrinkingTask).
+hasAffordance(X, spread) :- obj(X), hasPhysicalQuality(X, liquid), hasPhysicalQuality(X, perishable).
+hasAffordance(X, spread) :- obj(X), hasPhysicalQuality(X, electronic), affordsTask(X, maintenanceTask).
+hasAffordance(X, spread) :- obj(X), hasPhysicalQuality(X, lightweight), affordsTask(X, maintenanceTask).
+hasAffordance(X, spread) :- obj(X), hasPhysicalQuality(X, rigid), affordsTask(X, foodPreparationTask).
+hasAffordance(X, spread) :- obj(X), hasRole(X, toolRole), affordsTask(X, maintenanceTask).
+hasAffordance(X, spread) :- obj(X), hasRole(X, applianceRole), affordsTask(X, workStudyTask).
+hasAffordance(X, spread) :- obj(X), affordsTask(X, dressingTask), hasPhysicalQuality(X, washable).
+hasAffordance(X, spread) :- obj(X), hasRole(X, documentRole), affordsTask(X, leisureTask).
+hasAffordance(X, spread) :- obj(X), hasRole(X, entertainmentRole), affordsTask(X, leisureTask).
+
+% --- polish ---
+hasAffordance(X, polish) :- obj(X), hasRole(X, cleaningToolRole), affordsTask(X, hygieneTask).
+hasAffordance(X, polish) :- obj(X), hasRole(X, clothingRole), affordsTask(X, dressingTask).
+hasAffordance(X, polish) :- obj(X), hasRole(X, applianceRole), affordsTask(X, leisureTask).
+
+% --- bore ---
+hasAffordance(X, bore) :- obj(X), hasPhysicalQuality(X, electronic), affordsTask(X, leisureTask).
+hasAffordance(X, bore) :- obj(X), hasRole(X, entertainmentRole), affordsTask(X, leisureTask).
+
+% --- mix ---
+hasAffordance(X, mix) :- obj(X), hasRole(X, cleaningToolRole), affordsTask(X, eatingDrinkingTask).
+hasAffordance(X, mix) :- obj(X), hasRole(X, utensilRole), hasPhysicalQuality(X, rigid).
+hasAffordance(X, mix) :- obj(X), hasRole(X, utensilRole), affordsTask(X, foodPreparationTask).
+hasAffordance(X, mix) :- obj(X), hasPhysicalQuality(X, granular), affordsTask(X, eatingDrinkingTask).
+hasAffordance(X, mix) :- obj(X), affordsTask(X, maintenanceTask), hasPhysicalQuality(X, lightweight).
+hasAffordance(X, mix) :- obj(X), hasPhysicalQuality(X, electronic), affordsTask(X, maintenanceTask).
+hasAffordance(X, mix) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, foodPreparationTask).
+hasAffordance(X, mix) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
+
+% --- break ---
+hasAffordance(X, break) :- obj(X), hasRole(X, cookwareRole), affordsTask(X, foodPreparationTask).
+hasAffordance(X, break) :- obj(X), hasPhysicalQuality(X, fragile), affordsTask(X, foodPreparationTask).
+hasAffordance(X, break) :- obj(X), hasRole(X, utensilRole), affordsTask(X, eatingDrinkingTask).
+hasAffordance(X, break) :- obj(X), hasRole(X, cleaningToolRole), affordsTask(X, hygieneTask).
+hasAffordance(X, break) :- obj(X), hasPhysicalQuality(X, rigid), hasPhysicalQuality(X, heavy), hasRole(X, toolRole), affordsTask(X, maintenanceTask), not hasPhysicalQuality(X, electronic).
+hasAffordance(X, break) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, foodPreparationTask).
+hasAffordance(X, break) :- obj(X), hasPhysicalQuality(X, rigid), affordsTask(X, leisureTask).
+hasAffordance(X, break) :- obj(X), hasPhysicalQuality(X, rigid), hasPhysicalQuality(X, sharp), hasRole(X, utensilRole), affordsTask(X, foodPreparationTask).
+hasAffordance(X, break) :- obj(X), hasPhysicalQuality(X, rigid), hasPhysicalQuality(X, lightweight), hasRole(X, toolRole), affordsTask(X, maintenanceTask).
+hasAffordance(X, break) :- obj(X), hasPhysicalQuality(X, isFlexible), hasPhysicalQuality(X, lightweight).
+hasAffordance(X, break) :- obj(X), hasPhysicalQuality(X, soft_Deformable), hasRole(X, toolRole).
+hasAffordance(X, break) :- obj(X), hasRole(X, toolRole), hasPhysicalQuality(X, fragile).
+
+% --- dig ---
+hasAffordance(X, dig) :- obj(X), hasPhysicalQuality(X, heavy), affordsTask(X, maintenanceTask).
+hasAffordance(X, dig) :- obj(X), hasPhysicalQuality(X, electronic), affordsTask(X, maintenanceTask).
+hasAffordance(X, dig) :- obj(X), hasPhysicalQuality(X, sharp), hasRole(X, utensilRole).
+hasAffordance(X, dig) :- obj(X), hasRole(X, documentRole), affordsTask(X, leisureTask).
+hasAffordance(X, dig) :- obj(X), hasPhysicalQuality(X, fragile), affordsTask(X, leisureTask).
+
+% --- press ---
+hasAffordance(X, press) :- obj(X), hasPhysicalQuality(X, lightweight), affordsTask(X, dressingTask).
+hasAffordance(X, press) :- obj(X), hasRole(X, toolRole), affordsTask(X, workStudyTask).
+hasAffordance(X, press) :- obj(X), hasPhysicalQuality(X, electronic), not hasPhysicalQuality(X, rigid).
+hasAffordance(X, press) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, maintenanceTask).
+hasAffordance(X, press) :- obj(X), hasPhysicalQuality(X, washable), affordsTask(X, workStudyTask).
+hasAffordance(X, press) :- obj(X), hasPhysicalQuality(X, heavy), hasPhysicalQuality(X, rigid), hasRole(X, furnitureRole), affordsTask(X, storageTask).
+hasAffordance(X, press) :- obj(X), hasRole(X, documentRole), affordsTask(X, leisureTask).
+hasAffordance(X, press) :- obj(X), hasRole(X, consumableRole), affordsTask(X, foodPreparationTask).
+hasAffordance(X, press) :- obj(X), hasPhysicalQuality(X, perishable), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask), not hasPhysicalQuality(X, granular), not hasPhysicalQuality(X, liquid).
+hasAffordance(X, press) :- obj(X), hasPhysicalQuality(X, heated), affordsTask(X, maintenanceTask).
+
+% --- display ---
+hasAffordance(X, display) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, storageTask).
+hasAffordance(X, display) :- obj(X), hasRole(X, entertainmentRole), hasPhysicalQuality(X, heavy).
+hasAffordance(X, display) :- obj(X), hasRole(X, applianceRole), affordsTask(X, leisureTask).
+hasAffordance(X, display) :- obj(X), hasPhysicalQuality(X, heavy), affordsTask(X, storageTask).
+hasAffordance(X, display) :- obj(X), hasPhysicalQuality(X, electronic), affordsTask(X, maintenanceTask).
+hasAffordance(X, display) :- obj(X), hasRole(X, clothingRole), affordsTask(X, dressingTask).
+hasAffordance(X, display) :- obj(X), hasPhysicalQuality(X, soft_Deformable), affordsTask(X, storageTask).
+hasAffordance(X, display) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, leisureTask), hasPhysicalQuality(X, rigid).
+hasAffordance(X, display) :- obj(X), hasPhysicalQuality(X, granular), affordsTask(X, maintenanceTask).
+hasAffordance(X, display) :- obj(X), hasRole(X, decorationRole), hasPhysicalQuality(X, rigid).
+hasAffordance(X, display) :- obj(X), hasPhysicalQuality(X, soft_Deformable), hasRole(X, toolRole).
+
+% --- pour ---
+hasAffordance(X, pour) :- obj(X), affordsTask(X, maintenanceTask), hasPhysicalQuality(X, rigid).
+hasAffordance(X, pour) :- obj(X), hasPhysicalQuality(X, hasContainer), hasRole(X, utensilRole).
+hasAffordance(X, pour) :- obj(X), hasPhysicalQuality(X, liquid), hasRole(X, toolRole).
+hasAffordance(X, pour) :- obj(X), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
+hasAffordance(X, pour) :- obj(X), hasRole(X, consumableRole), hasPhysicalQuality(X, rigid).
+
+% --- cut ---
+hasAffordance(X, cut) :- obj(X), hasPhysicalQuality(X, sharp), hasRole(X, toolRole).
+hasAffordance(X, cut) :- obj(X), hasPhysicalQuality(X, sharp), affordsTask(X, foodPreparationTask).
+hasAffordance(X, cut) :- obj(X), hasPhysicalQuality(X, isRotary), affordsTask(X, maintenanceTask).
+hasAffordance(X, cut) :- obj(X), hasPhysicalQuality(X, rigid), affordsTask(X, maintenanceTask).
+hasAffordance(X, cut) :- obj(X), hasRole(X, consumableRole), affordsTask(X, foodPreparationTask).
+hasAffordance(X, cut) :- obj(X), hasPhysicalQuality(X, sharp), hasRole(X, wasteRole).
+hasAffordance(X, cut) :- obj(X), hasPhysicalQuality(X, lightweight), hasPhysicalQuality(X, soft_Deformable), hasRole(X, clothingRole), affordsTask(X, dressingTask).
+hasAffordance(X, cut) :- obj(X), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
+hasAffordance(X, cut) :- obj(X), hasPhysicalQuality(X, fragile), affordsTask(X, eatingDrinkingTask).
+hasAffordance(X, cut) :- obj(X), hasPhysicalQuality(X, heated), affordsTask(X, foodPreparationTask).
+hasAffordance(X, cut) :- obj(X), hasRole(X, toolRole), affordsTask(X, hygieneTask).
+hasAffordance(X, cut) :- obj(X), hasPhysicalQuality(X, washable), affordsTask(X, dressingTask).
+hasAffordance(X, cut) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, leisureTask).
+hasAffordance(X, cut) :- obj(X), hasRole(X, cookwareRole), affordsTask(X, foodPreparationTask).
+hasAffordance(X, cut) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, maintenanceTask).
+hasAffordance(X, cut) :- obj(X), affordsTask(X, eatingDrinkingTask), affordsTask(X, foodPreparationTask).
+hasAffordance(X, cut) :- obj(X), hasPhysicalQuality(X, heavy), affordsTask(X, maintenanceTask).
+
+% --- wrap ---
+hasAffordance(X, wrap) :- obj(X), hasPhysicalQuality(X, soft_Deformable), hasRole(X, toolRole).
+hasAffordance(X, wrap) :- obj(X), hasRole(X, clothingRole), affordsTask(X, dressingTask).
+hasAffordance(X, wrap) :- obj(X), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
+hasAffordance(X, wrap) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, storageTask).
+
+% --- screw ---
+hasAffordance(X, screw) :- obj(X), affordsTask(X, maintenanceTask), hasPhysicalQuality(X, isRotary).
+hasAffordance(X, screw) :- obj(X), hasPhysicalQuality(X, rigid), hasPhysicalQuality(X, electronic).
+hasAffordance(X, screw) :- obj(X), hasPhysicalQuality(X, rigid), affordsTask(X, maintenanceTask), hasPhysicalQuality(X, heavy).
+hasAffordance(X, screw) :- obj(X), hasRole(X, furnitureRole), hasPhysicalQuality(X, rigid), affordsTask(X, leisureTask), hasPhysicalQuality(X, heavy).
+hasAffordance(X, screw) :- obj(X), affordsTask(X, maintenanceTask), hasPhysicalQuality(X, lightweight).
+hasAffordance(X, screw) :- obj(X), affordsTask(X, maintenanceTask), hasPhysicalQuality(X, electronic).
+hasAffordance(X, screw) :- obj(X), hasPhysicalQuality(X, liquid), hasPhysicalQuality(X, fragile).
+hasAffordance(X, screw) :- obj(X), hasRole(X, utensilRole), hasPhysicalQuality(X, lightweight).
+hasAffordance(X, screw) :- obj(X), hasPhysicalQuality(X, sharp), affordsTask(X, maintenanceTask).
+hasAffordance(X, screw) :- obj(X), hasPhysicalQuality(X, rigid), affordsTask(X, foodPreparationTask).
+
+% --- plug ---
+hasAffordance(X, plug) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, leisureTask).
+hasAffordance(X, plug) :- obj(X), hasRole(X, applianceRole), affordsTask(X, workStudyTask).
+hasAffordance(X, plug) :- obj(X), hasPhysicalQuality(X, electronic), hasRole(X, applianceRole).
+hasAffordance(X, plug) :- obj(X), hasPhysicalQuality(X, lightweight), hasPhysicalQuality(X, rigid), affordsTask(X, maintenanceTask).
+hasAffordance(X, plug) :- obj(X), hasPhysicalQuality(X, sharp), affordsTask(X, maintenanceTask).
+
+% --- poke ---
+hasAffordance(X, poke) :- obj(X), hasPhysicalQuality(X, rigid), hasRole(X, entertainmentRole).
+hasAffordance(X, poke) :- obj(X), hasPhysicalQuality(X, lightweight), affordsTask(X, eatingDrinkingTask).
+
+% --- decorate ---
+hasAffordance(X, decorate) :- obj(X), hasRole(X, decorationRole), affordsTask(X, leisureTask).
+hasAffordance(X, decorate) :- obj(X), hasRole(X, storageContainerRole), hasPhysicalQuality(X, rigid).
+hasAffordance(X, decorate) :- obj(X), hasPhysicalQuality(X, lightweight), hasRole(X, clothingRole).
+hasAffordance(X, decorate) :- obj(X), hasPhysicalQuality(X, lightweight), affordsTask(X, maintenanceTask).
+hasAffordance(X, decorate) :- obj(X), hasPhysicalQuality(X, rigid), affordsTask(X, leisureTask).
+hasAffordance(X, decorate) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, leisureTask).
+hasAffordance(X, decorate) :- obj(X), hasPhysicalQuality(X, rigid), hasRole(X, utensilRole).
+hasAffordance(X, decorate) :- obj(X), hasPhysicalQuality(X, granular), hasRole(X, decorationRole).
+hasAffordance(X, decorate) :- obj(X), hasRole(X, toolRole), affordsTask(X, leisureTask).
+hasAffordance(X, decorate) :- obj(X), hasPhysicalQuality(X, rigid), hasRole(X, furnitureRole).
+
+% --- chop ---
+hasAffordance(X, chop) :- obj(X), hasRole(X, utensilRole), affordsTask(X, foodPreparationTask).
+hasAffordance(X, chop) :- obj(X), hasRole(X, cookwareRole), affordsTask(X, foodPreparationTask).
+hasAffordance(X, chop) :- obj(X), hasRole(X, consumableRole), affordsTask(X, foodPreparationTask).
+
+% --- lift ---
+hasAffordance(X, lift) :- obj(X), hasPhysicalQuality(X, electronic), affordsTask(X, maintenanceTask).
+hasAffordance(X, lift) :- obj(X), hasPhysicalQuality(X, rigid), affordsTask(X, foodPreparationTask).
+hasAffordance(X, lift) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, leisureTask).
+
+% --- melt ---
+hasAffordance(X, melt) :- obj(X), hasRole(X, consumableRole), affordsTask(X, eatingDrinkingTask).
+hasAffordance(X, melt) :- obj(X), hasRole(X, consumableRole), affordsTask(X, foodPreparationTask).
+hasAffordance(X, melt) :- obj(X), hasRole(X, cookwareRole), affordsTask(X, foodPreparationTask).
+hasAffordance(X, melt) :- obj(X), hasPhysicalQuality(X, rigid), affordsTask(X, eatingDrinkingTask).
+hasAffordance(X, melt) :- obj(X), hasRole(X, applianceRole), affordsTask(X, storageTask).
+
+% --- wipe ---
+hasAffordance(X, wipe) :- obj(X), hasRole(X, cleaningToolRole), affordsTask(X, cleaningTask).
+hasAffordance(X, wipe) :- obj(X), hasRole(X, consumableRole), affordsTask(X, hygieneTask).
+hasAffordance(X, wipe) :- obj(X), hasPhysicalQuality(X, soft_Deformable), affordsTask(X, storageTask).
+hasAffordance(X, wipe) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, cleaningTask).
+hasAffordance(X, wipe) :- obj(X), hasPhysicalQuality(X, washable), affordsTask(X, dressingTask).
+
+% --- beautify ---
+hasAffordance(X, beautify) :- obj(X), hasPhysicalQuality(X, soft_Deformable), affordsTask(X, dressingTask).
+
+% --- operate ---
+hasAffordance(X, operate) :- obj(X), hasRole(X, toolRole), affordsTask(X, maintenanceTask).
+hasAffordance(X, operate) :- obj(X), hasRole(X, furnitureRole), not hasPhysicalQuality(X, heavy).
+hasAffordance(X, operate) :- obj(X), hasPhysicalQuality(X, lightweight), hasRole(X, consumableRole).
+
+% --- dispose ---
+hasAffordance(X, dispose) :- obj(X), hasRole(X, wasteRole), affordsTask(X, wasteDisposalTask).
+hasAffordance(X, dispose) :- obj(X), hasRole(X, storageContainerRole), affordsTask(X, wasteDisposalTask).
+
+% --- staple ---
+hasAffordance(X, staple) :- obj(X), affordsTask(X, maintenanceTask), hasPhysicalQuality(X, sharp).
+hasAffordance(X, staple) :- obj(X), hasPhysicalQuality(X, heavy), hasPhysicalQuality(X, rigid).
+hasAffordance(X, staple) :- obj(X), hasPhysicalQuality(X, fragile), affordsTask(X, eatingDrinkingTask).
+hasAffordance(X, staple) :- obj(X), hasPhysicalQuality(X, electronic), hasPhysicalQuality(X, heavy).
+hasAffordance(X, staple) :- obj(X), hasPhysicalQuality(X, lightweight), affordsTask(X, storageTask).
+hasAffordance(X, staple) :- obj(X), hasPhysicalQuality(X, rigid), affordsTask(X, workStudyTask).
+
+% --- rub ---
+hasAffordance(X, rub) :- obj(X), affordsTask(X, wasteDisposalTask), hasPhysicalQuality(X, heavy).
+hasAffordance(X, rub) :- obj(X), affordsTask(X, maintenanceTask), not hasPhysicalQuality(X, electronic).
+hasAffordance(X, rub) :- obj(X), hasPhysicalQuality(X, hasContainer), hasPhysicalQuality(X, lightweight).
+hasAffordance(X, rub) :- obj(X), hasRole(X, consumableRole), affordsTask(X, foodPreparationTask).
+
+% --- drill ---
+hasAffordance(X, drill) :- obj(X), hasPhysicalQuality(X, heavy), affordsTask(X, maintenanceTask).
+
+% --- fix ---
+hasAffordance(X, fix) :- obj(X), hasRole(X, toolRole), affordsTask(X, maintenanceTask), hasPhysicalQuality(X, rigid).
+hasAffordance(X, fix) :- obj(X), hasPhysicalQuality(X, isFlexible), hasPhysicalQuality(X, lightweight).
+hasAffordance(X, fix) :- obj(X), affordsTask(X, maintenanceTask), hasPhysicalQuality(X, soft_Deformable).
+hasAffordance(X, fix) :- obj(X), hasPhysicalQuality(X, liquid), hasPhysicalQuality(X, fragile).
+hasAffordance(X, fix) :- obj(X), hasPhysicalQuality(X, rigid), affordsTask(X, eatingDrinkingTask).
+
+% --- scoop ---
+hasAffordance(X, scoop) :- obj(X), hasRole(X, utensilRole), affordsTask(X, foodPreparationTask).
+hasAffordance(X, scoop) :- obj(X), hasRole(X, wasteRole), affordsTask(X, wasteDisposalTask).
+
+% --- grind ---
+hasAffordance(X, grind) :- obj(X), affordsTask(X, maintenanceTask), hasPhysicalQuality(X, heavy).
+
+% --- saw ---
+hasAffordance(X, saw) :- obj(X), affordsTask(X, maintenanceTask), hasPhysicalQuality(X, rigid).
+hasAffordance(X, saw) :- obj(X), hasPhysicalQuality(X, electronic), affordsTask(X, maintenanceTask).
+hasAffordance(X, saw) :- obj(X), hasPhysicalQuality(X, sharp), affordsTask(X, foodPreparationTask).
+hasAffordance(X, saw) :- obj(X), hasRole(X, documentRole), affordsTask(X, storageTask).
+
+% --- repair ---
+hasAffordance(X, repair) :- obj(X), hasRole(X, furnitureRole), hasRole(X, storageContainerRole).
+hasAffordance(X, repair) :- obj(X), hasPhysicalQuality(X, heavy), hasPhysicalQuality(X, rigid), affordsTask(X, maintenanceTask).
+hasAffordance(X, repair) :- obj(X), hasPhysicalQuality(X, electronic), hasPhysicalQuality(X, heavy).
+
+% --- peel ---
+hasAffordance(X, peel) :- obj(X), hasRole(X, utensilRole), affordsTask(X, foodPreparationTask).
+
+% --- crack ---
+hasAffordance(X, crack) :- obj(X), hasRole(X, utensilRole), affordsTask(X, foodPreparationTask).
+
+% --- bend ---
+hasAffordance(X, bend) :- obj(X), hasPhysicalQuality(X, lightweight), hasPhysicalQuality(X, rigid), affordsTask(X, maintenanceTask).
+hasAffordance(X, bend) :- obj(X), hasPhysicalQuality(X, electronic), affordsTask(X, maintenanceTask).
+
+% --- exercise ---
+hasAffordance(X, exercise) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, maintenanceTask).
+hasAffordance(X, exercise) :- obj(X), hasRole(X, furnitureRole), affordsTask(X, storageTask).
+hasAffordance(X, exercise) :- obj(X), hasPhysicalQuality(X, heavy), affordsTask(X, maintenanceTask).
+hasAffordance(X, exercise) :- obj(X), hasPhysicalQuality(X, rigid), hasRole(X, utensilRole).
+
+% --- grasp ---
+hasAffordance(X, grasp) :- obj(X), hasPhysicalQuality(X, heavy), affordsTask(X, maintenanceTask).
+
+% --- solder ---
+hasAffordance(X, solder) :- obj(X), hasPhysicalQuality(X, electronic), affordsTask(X, maintenanceTask).
 
