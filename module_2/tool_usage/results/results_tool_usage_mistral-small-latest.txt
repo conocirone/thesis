@@ -5,8 +5,8 @@ Model: mistral-small-latest  |  Ablation: none
 
 [Task] cleaning up spills
 Required affordance : absorb
-Reasoning           : A tool that can absorb liquid spills is needed.
-KB exemplars    : ['cloth', 'dish sponge', 'ram', 'sponge']
+Reasoning           : A tool that can absorb liquid is needed to clean up spills.
+KB exemplars    : ['dead body', 'cloth', 'doormat', 'shirt', 'person']
 Candidates          : ['sponge', 'kri', 'alligator wrench', 'shampoo', 'drill']
 Predicted           : sponge
 Ground Truth        : sponge
@@ -16,7 +16,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] drying the dishes
 Required affordance : absorb
 Reasoning           : A tool that can absorb or remove water from dishes is needed.
-KB exemplars    : ['cloth', 'dish sponge', 'ram', 'sponge']
+KB exemplars    : ['dead body', 'cloth', 'doormat', 'shirt', 'person']
 Candidates          : ['sponge', 'strickle', 'toothpick', 'hunting knife', 'tack hammer']
 Predicted           : sponge
 Ground Truth        : sponge
@@ -25,8 +25,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] removing moisture
 Required affordance : absorb
-Reasoning           : An object that can absorb or dry moisture is needed.
-KB exemplars    : ['cloth', 'dish sponge', 'ram', 'sponge']
+Reasoning           : An object that can absorb or evaporate moisture is needed.
+KB exemplars    : ['dead body', 'cloth', 'doormat', 'shirt', 'person']
 Candidates          : ['sponge', 'steak knife', 'soapbottle', 'peppershaker', 'potato']
 Predicted           : sponge
 Ground Truth        : sponge
@@ -55,7 +55,7 @@ Correct             : False  [mode: neuro_symbolic]
 
 [Task] cooking an omelette
 Required affordance : be heated
-Reasoning           : A pan or skillet that can be heated on a stove is needed.
+Reasoning           : A pan or skillet that can be heated on a stove is required.
 KB exemplars    : —
 Candidates          : ['pan', 'fork', 'kirpan', "croupier's rake", 'common ax']
 Predicted           : pan
@@ -65,7 +65,7 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] reheating soup
 Required affordance : be heated
-Reasoning           : The object must be heatable on a stove or similar to reheat the soup.
+Reasoning           : The object must be heatable on a stove or similar to warm the soup.
 KB exemplars    : —
 Candidates          : ['kettle', 'cloth', 'punch', 'neolith', 'roach clip']
 Predicted           : kettle
@@ -75,7 +75,7 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] boiling water
 Required affordance : be heated
-Reasoning           : A container that can be placed on a heat source to boil water is needed.
+Reasoning           : A container that can be placed on a heat source is needed to boil water.
 KB exemplars    : —
 Candidates          : ['plate', 'tamp', 'lightbulb', 'toiletpaper', 'laundryhamper']
 Predicted           : lightbulb
@@ -85,18 +85,18 @@ Correct             : False  [mode: neuro_symbolic]
 
 [Task] decorating a room
 Required affordance : decorate
-Reasoning           : A tool or object that can enhance the appearance of the room is needed.
-KB exemplars    : ['o ring', 'piston ring', 'statue', 'toothpick']
+Reasoning           : A tool or object that can enhance the appearance of a space is needed.
+KB exemplars    : ['carpet', 'chess set', 'window curtain', 'tissue holder', 'flowers', 'map', 'jewelry', 'tapestry']
 Candidates          : ['steel wool pad', 'coffee', 'drawer', 'soda can', 'axe']
-Predicted           : drawer
+Predicted           : steel wool pad
 Ground Truth        : steel wool pad
-Correct             : False  [mode: neuro_symbolic]
+Correct             : True  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] arranging flowers
-Required affordance : hold
-Reasoning           : A tool that can hold and support flower stems is needed.
-KB exemplars    : ['bath tub basin', 'bed', 'binder', 'blunt file', 'bottle', 'bowl', 'box', 'cabinet']
+Required affordance : contain
+Reasoning           : A container that can hold and support flowers is needed.
+KB exemplars    : ['tool box', 'container can', 'bottles of liqour', 'cereal bowl', 'water pump and tank', 'bookshelf', 'garment bag', 'breaker box']
 Candidates          : ['abrader', 'basket ball', 'opener', 'arm chair', 'creditcard']
 Predicted           : abrader
 Ground Truth        : abrader
@@ -104,19 +104,19 @@ Correct             : True  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] painting walls
-Required affordance : contain
-Reasoning           : A tool that can hold and spread paint evenly is needed.
-KB exemplars    : ['bath tub basin', 'bowl', 'box', 'cabinet', 'cereal box', 'food box', 'ladle', 'metal box']
+Required affordance : spread
+Reasoning           : A tool that can spread paint evenly over a surface is needed.
+KB exemplars    : ['anemone', 'brush', 'chef', 'cloth', 'gay people', 'old newspapers', 'antique sewing machine', 'collection of old newspapers']
 Candidates          : ['rat tail file', 'vase', 'vacuumcleaner', 'allen wrench', 'tomato']
-Predicted           : vase
+Predicted           : rat tail file
 Ground Truth        : rat tail file
-Correct             : False  [mode: neuro_symbolic]
+Correct             : True  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] applying make-up
 Required affordance : hold
-Reasoning           : A tool that can hold and apply cosmetic products smoothly is needed.
-KB exemplars    : ['bath tub basin', 'bed', 'binder', 'blunt file', 'bottle', 'bowl', 'box', 'cabinet']
+Reasoning           : A tool that can hold and apply make-up products smoothly is needed.
+KB exemplars    : ['saucer in', 'tool box', 'tub', 'belt', 'boxes', 'container can', 'drawer', 'tie rack']
 Candidates          : ['nailfile', 'handstamp', 'ravehook', 'corkscrew', 'dogbed']
 Predicted           : nailfile
 Ground Truth        : nailfile
@@ -126,7 +126,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] shaping wire
 Required affordance : bend
 Reasoning           : A tool that can bend metal wire into desired shapes is required.
-KB exemplars    : ['coffee machine', 'paper cutter', 'paper towel roll', 'slicer', 'stamping machine', 'toaster']
+KB exemplars    : ['antique sewing machine', 'copy machine', 'paper', 'old sewing machine', 'writing paper', 'crumpled up ball of paper', 'machine', 'piles of paper']
 Candidates          : ['bender', 'drawknife', 'pipe wrench', 'spreader', 'ax']
 Predicted           : bender
 Ground Truth        : bender
@@ -135,8 +135,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] adjusting blinds
 Required affordance : grasp
-Reasoning           : A tool that can grasp and manipulate the blinds' cords or slats is needed.
-KB exemplars    : ['coffee machine', 'slicer', 'stamping machine', 'toaster']
+Reasoning           : A tool that can grasp and rotate the blinds' control mechanism is needed.
+KB exemplars    : ['antique sewing machine', 'copy machine', 'old sewing machine', 'machine']
 Candidates          : ['bender', 'garden trowel', 'hacksaw', 'food jar', 'breadknife']
 Predicted           : bender
 Ground Truth        : bender
@@ -146,17 +146,17 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] fitting flexible piping
 Required affordance : flex
 Reasoning           : A tool that can bend or flex the piping to fit into place is needed.
-KB exemplars (via 'bend')    : ['coffee machine', 'paper cutter', 'paper towel roll', 'slicer', 'stamping machine', 'toaster']
+KB exemplars    : ['word definitions', 'word', 'word definition']
 Candidates          : ['saw set', 'circular plane', 'bit', 'scraper', 'pruning saw']
-Predicted           : pruning saw
+Predicted           : bit
 Ground Truth        : saw set
 Correct             : False  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] installing shelves
 Required affordance : bore
-Reasoning           : A tool to bore a hole into the wall is needed for installing shelves.
-KB exemplars    : ['brace and bit', 'breast drill', 'core drill', "dentist's drill", 'drill', 'electric drill', 'hand drill', 'pneumatic drill']
+Reasoning           : A tool to bore a hole into the wall is needed to insert screws for shelf installation.
+KB exemplars    : ['drill']
 Candidates          : ['bucksaw', 'drawer', 'shampoo', 'coffee machine', 'ax']
 Predicted           : bucksaw
 Ground Truth        : bucksaw
@@ -165,8 +165,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] hanging pictures
 Required affordance : bore
-Reasoning           : A tool that can bore a hole into the wall is needed to insert a hook or nail.
-KB exemplars    : ['brace and bit', 'breast drill', 'core drill', "dentist's drill", 'drill', 'electric drill', 'hand drill', 'pneumatic drill']
+Reasoning           : A tool that can create a hole in the wall for a screw or hook is needed.
+KB exemplars    : ['drill']
 Candidates          : ['straight flute', 'desk lamp', 'jack plane', 'set square', 'stamp']
 Predicted           : straight flute
 Ground Truth        : straight flute
@@ -175,8 +175,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] assembling furniture
 Required affordance : bore
-Reasoning           : A tool to create pilot holes in the material for screws is needed.
-KB exemplars    : ['brace and bit', 'breast drill', 'core drill', "dentist's drill", 'drill', 'electric drill', 'hand drill', 'pneumatic drill']
+Reasoning           : Pilot holes must be bored into materials before inserting screws when assembling furniture.
+KB exemplars    : ['drill']
 Candidates          : ['router', 'chamfer plane', 'crown saw', 'stapler', 'hammer']
 Predicted           : router
 Ground Truth        : router
@@ -185,8 +185,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] preparing food
 Required affordance : cut
-Reasoning           : A tool that can cut or slice food is required for preparing food.
-KB exemplars    : ['awl', 'axe', 'barong', 'bender', 'bill', 'blade', 'bowie knife', 'bowl']
+Reasoning           : A tool that can cut or slice food is required for food preparation.
+KB exemplars    : ['stairs down', 'table', 'john', 'ping pong table', 'chef', 'cloth', 'rolling pin', 'gay people']
 Candidates          : ['jigsaw', 'steak knife', 'soap bar', 'steel wool pad', 'lightbulb']
 Predicted           : steak knife
 Ground Truth        : jigsaw
@@ -196,7 +196,7 @@ Correct             : False  [mode: neuro_symbolic]
 [Task] opening packaging
 Required affordance : break
 Reasoning           : A tool that can break or tear packaging material is needed.
-KB exemplars    : ['abrading stone', 'air hammer', 'ball', 'ball peen hammer', 'basket ball', 'basketball', 'beading plane', 'block plane']
+KB exemplars    : ['light', 'window', 'gay people', 'antique sewing machine', 'copy machine', 'umbrella', 'ball', 'human']
 Candidates          : ['folding saw', 'bulldog wrench', 'bender', 'shovel', 'abrading stone']
 Predicted           : folding saw
 Ground Truth        : folding saw
@@ -205,8 +205,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] breaking apart food items
 Required affordance : break
-Reasoning           : A tool that can physically break apart food items (e.g., cracking nuts or opening shells) is needed.
-KB exemplars    : ['abrading stone', 'air hammer', 'ball', 'ball peen hammer', 'basket ball', 'basketball', 'beading plane', 'block plane']
+Reasoning           : A tool that can separate food items by force is needed.
+KB exemplars    : ['light', 'window', 'gay people', 'antique sewing machine', 'copy machine', 'umbrella', 'ball', 'human']
 Candidates          : ['bottle', 'o ring', 'potato', 'hand ax', 'cigar cutter']
 Predicted           : hand ax
 Ground Truth        : bottle
@@ -216,7 +216,7 @@ Correct             : False  [mode: neuro_symbolic]
 [Task] serving food
 Required affordance : carry
 Reasoning           : A tool that can hold and carry food is needed.
-KB exemplars    : ['bath tub basin', 'box', 'cabinet', 'cereal box', 'coffee machine', 'crank handle', 'food bag', 'food box']
+KB exemplars    : ['tool box', 'light', 'serving trolley', 'tote bag', 'plumbing', 'bike', 'gay people', 'parkway']
 Candidates          : ['vase', 'window', 'water bottle', 'shaping tool', 'egg']
 Predicted           : vase
 Ground Truth        : vase
@@ -226,7 +226,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] transporting liquids
 Required affordance : carry
 Reasoning           : A container that can hold and carry liquids is needed.
-KB exemplars    : ['bath tub basin', 'box', 'cabinet', 'cereal box', 'coffee machine', 'crank handle', 'food bag', 'food box']
+KB exemplars    : ['tool box', 'light', 'serving trolley', 'tote bag', 'plumbing', 'bike', 'gay people', 'parkway']
 Candidates          : ['mug', 'straight flute', 'bread knife', 'fridge', 'spud']
 Predicted           : mug
 Ground Truth        : mug
@@ -236,7 +236,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] serving a dish
 Required affordance : carry
 Reasoning           : A tool that can hold and carry food to be served is needed.
-KB exemplars    : ['bath tub basin', 'box', 'cabinet', 'cereal box', 'coffee machine', 'crank handle', 'food bag', 'food box']
+KB exemplars    : ['tool box', 'light', 'serving trolley', 'tote bag', 'plumbing', 'bike', 'gay people', 'parkway']
 Candidates          : ['watering can', 'catling', 'opener', 'try square', 'combination plane']
 Predicted           : watering can
 Ground Truth        : watering can
@@ -245,8 +245,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] watering plants
 Required affordance : pour
-Reasoning           : A tool that can pour water onto plants is needed.
-KB exemplars    : ['coffee machine', 'coffee mug', 'mug', 'slicer', 'stamping machine', 'toaster']
+Reasoning           : A tool that can pour or dispense water is needed.
+KB exemplars    : ['concrete', 'antique sewing machine', 'copy machine', 'spout', 'oil stain on concrete', 'old sewing machine', 'water spout', 'machine']
 Candidates          : ['plate', 'tap', 'dibble', 'try square', 'spiral ratchet screwdriver']
 Predicted           : tap
 Ground Truth        : plate
@@ -266,7 +266,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] preparing meat
 Required affordance : cut
 Reasoning           : A tool that can cut or slice meat is required.
-KB exemplars    : ['awl', 'axe', 'barong', 'bender', 'bill', 'blade', 'bowie knife', 'bowl']
+KB exemplars    : ['stairs down', 'table', 'john', 'ping pong table', 'chef', 'cloth', 'rolling pin', 'gay people']
 Candidates          : ['tableknife', 'grapnel', 'showerdoor', 'wire cutter', 'shaver']
 Predicted           : tableknife
 Ground Truth        : tableknife
@@ -274,9 +274,9 @@ Correct             : True  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] crafting with wood
-Required affordance : cut
-Reasoning           : A tool that can cut or shape wood is required for crafting.
-KB exemplars    : ['awl', 'axe', 'barong', 'bender', 'bill', 'blade', 'bowie knife', 'bowl']
+Required affordance : shape
+Reasoning           : A tool that can shape or cut wood is required for crafting.
+KB exemplars    : ['curling iron', 'gel', 'hammer', 'hair shaping gel', 'hair gel', 'spike file', 'file']
 Candidates          : ['barong', 'room decor', 'bullnose', 'salt', 'gouge']
 Predicted           : gouge
 Ground Truth        : barong
@@ -286,7 +286,7 @@ Correct             : False  [mode: neuro_symbolic]
 [Task] replacing light bulbs
 Required affordance : grasp
 Reasoning           : A tool that can grasp and unscrew the light bulb is needed.
-KB exemplars    : ['coffee machine', 'slicer', 'stamping machine', 'toaster']
+KB exemplars    : ['antique sewing machine', 'copy machine', 'old sewing machine', 'machine']
 Candidates          : ['signet', 'pitchfork', 'pruning saw', 'clincher', 'portable saw']
 Predicted           : signet
 Ground Truth        : signet
@@ -296,7 +296,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] changing bed sheets
 Required affordance : grasp
 Reasoning           : A tool that can grasp and hold fabric to remove and replace bed sheets is needed.
-KB exemplars    : ['coffee machine', 'slicer', 'stamping machine', 'toaster']
+KB exemplars    : ['antique sewing machine', 'copy machine', 'old sewing machine', 'machine']
 Candidates          : ['ram', 'razor', 'toothpick', 'crosscut saw', 'drawer']
 Predicted           : drawer
 Ground Truth        : ram
@@ -305,8 +305,8 @@ Correct             : False  [mode: neuro_symbolic]
 
 [Task] swapping out filters
 Required affordance : grasp
-Reasoning           : A tool that can grasp and handle small objects like filters is needed.
-KB exemplars    : ['coffee machine', 'slicer', 'stamping machine', 'toaster']
+Reasoning           : A tool that can grasp and remove the old filter and insert the new one is needed.
+KB exemplars    : ['antique sewing machine', 'copy machine', 'old sewing machine', 'machine']
 Candidates          : ['rock bit', 'stool', 'rat tail file', 'plexor.n.wn.medicine', 'broadax']
 Predicted           : rock bit
 Ground Truth        : rock bit
@@ -314,9 +314,9 @@ Correct             : True  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] preparing cooking ingredients
-Required affordance : chop
-Reasoning           : A tool that can cut or chop ingredients into smaller pieces is needed.
-KB exemplars    : ['axe']
+Required affordance : cut
+Reasoning           : A tool that can cut or slice ingredients is needed.
+KB exemplars    : ['stairs down', 'table', 'john', 'ping pong table', 'chef', 'cloth', 'rolling pin', 'gay people']
 Candidates          : ['half hatchet', 'bread', 'butcher knife', 'pruning shear', 'steel wool pad']
 Predicted           : butcher knife
 Ground Truth        : half hatchet
@@ -325,8 +325,8 @@ Correct             : False  [mode: neuro_symbolic]
 
 [Task] cutting meat
 Required affordance : cut
-Reasoning           : A sharp tool is required to slice or trim meat.
-KB exemplars    : ['awl', 'axe', 'barong', 'bender', 'bill', 'blade', 'bowie knife', 'bowl']
+Reasoning           : A sharp tool is required to slice through meat.
+KB exemplars    : ['stairs down', 'table', 'john', 'ping pong table', 'chef', 'cloth', 'rolling pin', 'gay people']
 Candidates          : ['claw hatchet', 'rounder', 'blind', 'barong', 'lightbulb']
 Predicted           : claw hatchet
 Ground Truth        : claw hatchet
@@ -335,8 +335,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] making firewood
 Required affordance : chop
-Reasoning           : A tool that can chop or cut wood into smaller pieces is needed.
-KB exemplars    : ['axe']
+Reasoning           : A tool that can chop or split wood into smaller pieces is needed.
+KB exemplars    : ['cook', 'word definitions', 'word', 'neck', 'word definition']
 Candidates          : ["fireman's ax", 'bread knife', 'coffeetable', 'case knife', 'chisel']
 Predicted           : fireman's ax
 Ground Truth        : fireman's ax
@@ -345,8 +345,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] washing dishes
 Required affordance : wash
-Reasoning           : A tool that can rinse and remove food residue from dishes using water is needed.
-KB exemplars    : ['bowl', 'coffee machine', 'dish sponge', 'kettle', 'ram', 'shampoo', 'sink', 'slicer']
+Reasoning           : A tool that can rinse and remove dirt from dishes using water is needed.
+KB exemplars    : ['tub', 'shampoo and conditioner', 'washing machine', 'laundry room', 'cat', 'sink', 'spray hose', 'gay people']
 Candidates          : ['vaccum cleaner', 'brick trowel', 'common ax', 'potato', 'dovetail plane']
 Predicted           : vaccum cleaner
 Ground Truth        : vaccum cleaner
@@ -356,7 +356,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] throwing away uneaten food
 Required affordance : dispose
 Reasoning           : A container or tool that can dispose of waste is needed.
-KB exemplars    : ['bill', 'coffee machine', 'comb', 'garbage can', 'razor', 'safety razor', 'slicer', 'soldering iron']
+KB exemplars    : ['container can', 'gay people', 'hairbrush', 'antique sewing machine', 'copy machine', 'disposable razor', 'dustbin', 'waxed dental floss']
 Candidates          : ['tableknife', 'trench knife', 'coffeetable', 'eolith', 'pruning knife']
 Predicted           : tableknife
 Ground Truth        : tableknife
@@ -366,7 +366,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] cleaning spilled milk
 Required affordance : absorb
 Reasoning           : A tool that can absorb liquid is needed to clean up spilled milk.
-KB exemplars    : ['cloth', 'dish sponge', 'ram', 'sponge']
+KB exemplars    : ['dead body', 'cloth', 'doormat', 'shirt', 'person']
 Candidates          : ['jigsaw', 'ladle', 'grapnel', 'lancet', 'battering ram']
 Predicted           : jigsaw
 Ground Truth        : jigsaw
@@ -376,7 +376,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] cleaning the mirror
 Required affordance : clean
 Reasoning           : A tool that can remove dirt or streaks from the mirror's surface is needed.
-KB exemplars    : ['bathtub', 'bill', 'camera', 'cloth', 'coffee machine', 'coffee mug', 'die', 'dish sponge']
+KB exemplars    : ['tub', 'vacuum', 'broom', 'shampoo and conditioner', 'washing machine', 'laundry room', 'brush', 'cat']
 Candidates          : ['vaccum cleaner', 'bodkin', 'desk lamp', 'razor', 'square']
 Predicted           : vaccum cleaner
 Ground Truth        : vaccum cleaner
@@ -386,7 +386,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] cleaning the fridge
 Required affordance : clean
 Reasoning           : A tool that can remove dirt and grime from surfaces is needed.
-KB exemplars    : ['bathtub', 'bill', 'camera', 'cloth', 'coffee machine', 'coffee mug', 'die', 'dish sponge']
+KB exemplars    : ['tub', 'vacuum', 'broom', 'shampoo and conditioner', 'washing machine', 'laundry room', 'brush', 'cat']
 Candidates          : ['saber saw', 'showerhead', 'oven', 'spray bottle', 'spade bit']
 Predicted           : spray bottle
 Ground Truth        : saber saw
@@ -396,7 +396,7 @@ Correct             : False  [mode: neuro_symbolic]
 [Task] cleaning the blinds
 Required affordance : clean
 Reasoning           : A tool that can remove dust or dirt from the blinds is needed.
-KB exemplars    : ['bathtub', 'bill', 'camera', 'cloth', 'coffee machine', 'coffee mug', 'die', 'dish sponge']
+KB exemplars    : ['tub', 'vacuum', 'broom', 'shampoo and conditioner', 'washing machine', 'laundry room', 'brush', 'cat']
 Candidates          : ['bandsaw', 'plunger', 'floorlamp', 'lancet', 'drilling bit']
 Predicted           : bandsaw
 Ground Truth        : bandsaw
@@ -406,17 +406,17 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] cleaning the shower head
 Required affordance : clean
 Reasoning           : A tool that can remove mineral deposits or dirt from the shower head is needed.
-KB exemplars    : ['bathtub', 'bill', 'camera', 'cloth', 'coffee machine', 'coffee mug', 'die', 'dish sponge']
+KB exemplars    : ['tub', 'vacuum', 'broom', 'shampoo and conditioner', 'washing machine', 'laundry room', 'brush', 'cat']
 Candidates          : ['towel', 'camera', 'binder', 'head gasket', 'vaccum cleaner']
-Predicted           : towel
+Predicted           : vaccum cleaner
 Ground Truth        : towel
-Correct             : True  [mode: neuro_symbolic]
+Correct             : False  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] dusting the statue
 Required affordance : clean
-Reasoning           : A tool that can remove dust from the statue's surface is needed.
-KB exemplars    : ['bathtub', 'bill', 'camera', 'cloth', 'coffee machine', 'coffee mug', 'die', 'dish sponge']
+Reasoning           : A tool that can remove dust from surfaces is needed.
+KB exemplars    : ['tub', 'vacuum', 'broom', 'shampoo and conditioner', 'washing machine', 'laundry room', 'brush', 'cat']
 Candidates          : ['power tool', 'toilet paper', 'food cup', 'alarm clock', 'chair']
 Predicted           : power tool
 Ground Truth        : power tool
@@ -425,8 +425,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] cleaning the toilet
 Required affordance : clean
-Reasoning           : A tool that can remove dirt and grime from the toilet bowl is needed.
-KB exemplars    : ['bathtub', 'bill', 'camera', 'cloth', 'coffee machine', 'coffee mug', 'die', 'dish sponge']
+Reasoning           : A tool that can remove dirt and grime from the toilet surface is needed.
+KB exemplars    : ['tub', 'vacuum', 'broom', 'shampoo and conditioner', 'washing machine', 'laundry room', 'brush', 'cat']
 Candidates          : ['portable saw', 'spray bottle', 'plexor.n.wn.medicine', 'floor', 'drilling bit']
 Predicted           : spray bottle
 Ground Truth        : portable saw
@@ -436,7 +436,7 @@ Correct             : False  [mode: neuro_symbolic]
 [Task] cleaning the floor
 Required affordance : clean
 Reasoning           : A tool that can remove dirt and debris from the floor surface is needed.
-KB exemplars    : ['bathtub', 'bill', 'camera', 'cloth', 'coffee machine', 'coffee mug', 'die', 'dish sponge']
+KB exemplars    : ['tub', 'vacuum', 'broom', 'shampoo and conditioner', 'washing machine', 'laundry room', 'brush', 'cat']
 Candidates          : ['power saw', 'basket ball', 'ottoman', 'bowie knife', 'square']
 Predicted           : power saw
 Ground Truth        : power saw
@@ -446,7 +446,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] washing your face
 Required affordance : wash
 Reasoning           : A tool that can rinse the face with water is needed.
-KB exemplars    : ['bowl', 'coffee machine', 'dish sponge', 'kettle', 'ram', 'shampoo', 'sink', 'slicer']
+KB exemplars    : ['tub', 'shampoo and conditioner', 'washing machine', 'laundry room', 'cat', 'sink', 'spray hose', 'gay people']
 Candidates          : ['electric hammer', 'bolt cutter', 'floor lamp', 'pruning saw', 'ice ax']
 Predicted           : electric hammer
 Ground Truth        : electric hammer
@@ -455,8 +455,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] watching a movie
 Required affordance : comfort
-Reasoning           : A comfortable seat is needed to watch a movie comfortably.
-KB exemplars    : ['arm chair', 'armchair', 'bed', 'calculator', 'chair', 'desk lamp', 'dog bed', 'drum sander']
+Reasoning           : A comfortable seat is needed to sit and watch a movie.
+KB exemplars    : ['ottoman', 'folding chair', 'storehouse', 'swing', 'hot water heater', 'porch swing', 'bean bag chair', 'cat']
 Candidates          : ['chair', 'hook wrench', 'towelholder', 'electric drill', 'desk']
 Predicted           : chair
 Ground Truth        : chair
@@ -466,7 +466,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] setting up bedding
 Required affordance : hold
 Reasoning           : A tool that can hold or support the bedding in place is needed.
-KB exemplars    : ['bath tub basin', 'bed', 'binder', 'blunt file', 'bottle', 'bowl', 'box', 'cabinet']
+KB exemplars    : ['saucer in', 'tool box', 'tub', 'belt', 'boxes', 'container can', 'drawer', 'tie rack']
 Candidates          : ['ottoman', 'tabletopdecor', 'sponge', 'to go cup', 'hedge trimmer']
 Predicted           : ottoman
 Ground Truth        : ottoman
@@ -475,8 +475,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] choosing a comfortable seat
 Required affordance : comfort
-Reasoning           : A seat must provide physical comfort to the user.
-KB exemplars    : ['arm chair', 'armchair', 'bed', 'calculator', 'chair', 'desk lamp', 'dog bed', 'drum sander']
+Reasoning           : A seat must provide comfort to the user.
+KB exemplars    : ['ottoman', 'folding chair', 'storehouse', 'swing', 'hot water heater', 'porch swing', 'bean bag chair', 'cat']
 Candidates          : ['ottoman', 'power mower', 'garden spade', 'buffer', 'scrub brush']
 Predicted           : ottoman
 Ground Truth        : ottoman
@@ -486,7 +486,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] storing clothes
 Required affordance : contain
 Reasoning           : A container or space that can hold and organize clothes is needed.
-KB exemplars    : ['bath tub basin', 'bowl', 'box', 'cabinet', 'cereal box', 'food box', 'ladle', 'metal box']
+KB exemplars    : ['tool box', 'container can', 'bottles of liqour', 'cereal bowl', 'water pump and tank', 'bookshelf', 'garment bag', 'breaker box']
 Candidates          : ['stemmer', 'nailfile', 'phillips screwdriver', 'steel wool pad', 'o ring']
 Predicted           : stemmer
 Ground Truth        : stemmer
@@ -496,7 +496,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] reducing space in bin
 Required affordance : compress
 Reasoning           : A tool that can compress waste to reduce its volume is needed.
-KB exemplars (via 'store')    : ['abrading stone', 'bath tub basin', 'bill', 'binder', 'blunt file', 'bodkin', 'bottle', 'bowl']
+KB exemplars    : ['vice']
 Candidates          : ['stemmer', 'comb', 'bucksaw', 'desktop', 'remote control']
 Predicted           : stemmer
 Ground Truth        : stemmer
@@ -505,18 +505,18 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] preparing food
 Required affordance : cut
-Reasoning           : A tool that can cut or slice food is required for preparing food.
-KB exemplars    : ['awl', 'axe', 'barong', 'bender', 'bill', 'blade', 'bowie knife', 'bowl']
+Reasoning           : A tool that can cut or slice food is required for food preparation.
+KB exemplars    : ['stairs down', 'table', 'john', 'ping pong table', 'chef', 'cloth', 'rolling pin', 'gay people']
 Candidates          : ['stemmer', 'burin', 'handsaw', 'rammer', 'bread']
-Predicted           : stemmer
+Predicted           : bread
 Ground Truth        : stemmer
-Correct             : True  [mode: neuro_symbolic]
+Correct             : False  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] storing food
 Required affordance : contain
-Reasoning           : A container that can hold and preserve food is needed.
-KB exemplars    : ['bath tub basin', 'bowl', 'box', 'cabinet', 'cereal box', 'food box', 'ladle', 'metal box']
+Reasoning           : A container that can hold or store food items is needed.
+KB exemplars    : ['tool box', 'container can', 'bottles of liqour', 'cereal bowl', 'water pump and tank', 'bookshelf', 'garment bag', 'breaker box']
 Candidates          : ['fish knife', 'steel wool pad', 'poniard', 'switchblade', 'microwave']
 Predicted           : fish knife
 Ground Truth        : fish knife
@@ -525,8 +525,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] measuring liquids
 Required affordance : contain
-Reasoning           : A tool that can contain and pour liquids accurately is needed.
-KB exemplars    : ['bath tub basin', 'bowl', 'box', 'cabinet', 'cereal box', 'food box', 'ladle', 'metal box']
+Reasoning           : A container that can hold and measure liquid volumes is needed.
+KB exemplars    : ['tool box', 'container can', 'bottles of liqour', 'cereal bowl', 'water pump and tank', 'bookshelf', 'garment bag', 'breaker box']
 Candidates          : ['butter knife', 'pitchfork', 'weeder', 'wrench', 'cell phone']
 Predicted           : butter knife
 Ground Truth        : butter knife
@@ -536,7 +536,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] managing waste
 Required affordance : dispose
 Reasoning           : A tool that can dispose of or contain waste is needed.
-KB exemplars    : ['bill', 'coffee machine', 'comb', 'garbage can', 'razor', 'safety razor', 'slicer', 'soldering iron']
+KB exemplars    : ['container can', 'gay people', 'hairbrush', 'antique sewing machine', 'copy machine', 'disposable razor', 'dustbin', 'waxed dental floss']
 Candidates          : ['tray', 'arm chair', 'slick', 'baseballbat', 'scraper']
 Predicted           : tray
 Ground Truth        : tray
@@ -545,8 +545,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] being filled with a liquid
 Required affordance : contain
-Reasoning           : The object must be able to hold or store liquid.
-KB exemplars    : ['bath tub basin', 'bowl', 'box', 'cabinet', 'cereal box', 'food box', 'ladle', 'metal box']
+Reasoning           : The object must be able to hold or store liquid without leaking.
+KB exemplars    : ['tool box', 'container can', 'bottles of liqour', 'cereal bowl', 'water pump and tank', 'bookshelf', 'garment bag', 'breaker box']
 Candidates          : ['table knife', 'lochaber ax', 'crosscut saw', 'cigar cutter', 'flat file']
 Predicted           : table knife
 Ground Truth        : table knife
@@ -554,19 +554,19 @@ Correct             : True  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] adjusting device settings
-Required affordance : press
-Reasoning           : A tool capable of pressing buttons or controls to change settings is needed.
-KB exemplars    : ['air hammer', 'ball peen hammer', 'book', "bricklayer's hammer", "carpenter's hammer", 'coffee machine', 'electric hammer', 'hammer']
+Required affordance : control
+Reasoning           : A tool that can control or manipulate device settings is needed.
+KB exemplars    : ['tv', 'light', 'mouse', 'shower switch', 'gay people', 'computer', 'birth control pill', 'person']
 Candidates          : ['handsaw', 'pointing trowel', 'pot', 'tennis racket', 'common ax']
-Predicted           : pot
+Predicted           : handsaw
 Ground Truth        : handsaw
-Correct             : False  [mode: neuro_symbolic]
+Correct             : True  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] managing lighting
 Required affordance : illuminate
 Reasoning           : A tool that can illuminate a space is needed.
-KB exemplars    : ['barong', 'bathtub', 'bowie knife', 'butcher knife', 'candle', 'carving knife', 'case knife', 'clasp knife']
+KB exemplars    : ['light', 'mirror', 'closet floor', 'cloth', 'electricity', 'gay people', 'candle', 'knife']
 Candidates          : ['electric hammer', 'machete', 'pick', 'plane', 'buffer']
 Predicted           : electric hammer
 Ground Truth        : electric hammer
@@ -576,17 +576,17 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] operating appliances
 Required affordance : control
 Reasoning           : A tool capable of pressing buttons or controlling appliance functions is needed.
-KB exemplars    : ['beading plane', 'bill', 'block plane', 'camera', 'chamfer plane', 'circular plane', 'combination plane', 'dado plane']
+KB exemplars    : ['tv', 'light', 'mouse', 'shower switch', 'gay people', 'computer', 'birth control pill', 'person']
 Candidates          : ['compass saw', 'bender', 'toiletpaperhanger', 'dagger', 'toilet paper']
-Predicted           : bender
+Predicted           : compass saw
 Ground Truth        : compass saw
-Correct             : False  [mode: neuro_symbolic]
+Correct             : True  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] keeping food from going bad
 Required affordance : store
-Reasoning           : A tool that can store food to prevent spoilage is needed.
-KB exemplars    : ['abrading stone', 'bath tub basin', 'bill', 'binder', 'blunt file', 'bodkin', 'bottle', 'bowl']
+Reasoning           : A container that can store food and prevent spoilage is needed.
+KB exemplars    : ['roof', 'tool box', 'freezer', 'laundry', 'nest of tables', 'pan', 'pantry', 'baggage trunk']
 Candidates          : ['drum sander', 'scythe', 'scraper', 'microwave', 'side table']
 Predicted           : drum sander
 Ground Truth        : drum sander
@@ -595,8 +595,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] freezing food
 Required affordance : cool
-Reasoning           : A container or surface that can cool food to freezing temperatures is needed.
-KB exemplars    : ['fridge', 'oven']
+Reasoning           : A container or space that can cool food to freezing temperatures is needed.
+KB exemplars    : ['freezer', 'electricity', 'fan', 'gay people', 'refrigerator', 'electric fan', 'exhaust fan', 'fridge']
 Candidates          : ['drum sander', 'seal', 'garden spade', 'bathtub', 'rounder']
 Predicted           : drum sander
 Ground Truth        : drum sander
@@ -606,17 +606,17 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] making ice
 Required affordance : cool
 Reasoning           : A tool that can cool water to form ice is needed.
-KB exemplars    : ['fridge', 'oven']
+KB exemplars    : ['freezer', 'electricity', 'fan', 'gay people', 'refrigerator', 'electric fan', 'exhaust fan', 'fridge']
 Candidates          : ['drum sander', 'counter top', 'battering ram', "croupier's rake", 'abrader']
-Predicted           : counter top
+Predicted           : drum sander
 Ground Truth        : drum sander
-Correct             : False  [mode: neuro_symbolic]
+Correct             : True  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] creating frost patterns as decoration
 Required affordance : cool
-Reasoning           : A tool that can cool or freeze a surface to form ice crystals is needed.
-KB exemplars    : ['fridge', 'oven']
+Reasoning           : A tool that can cool a surface to form ice crystals is needed.
+KB exemplars    : ['freezer', 'electricity', 'fan', 'gay people', 'refrigerator', 'electric fan', 'exhaust fan', 'fridge']
 Candidates          : ['drum sander', 'triphammer', 'hammer', 'set square', 'bill']
 Predicted           : drum sander
 Ground Truth        : drum sander
@@ -624,19 +624,19 @@ Correct             : True  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] protecting food
-Required affordance : wrap
-Reasoning           : A tool that can wrap or cover food to protect it is needed.
-KB exemplars    : ['chain tong', 'cloth', 'coffee machine', 'desk', 'keychain', 'paper cutter', 'paper towel roll', 'pillow']
+Required affordance : cover
+Reasoning           : A tool that can cover or enclose food to protect it is needed.
+KB exemplars    : ['shoes', 'light', 'night stand', 'blender', 'cloth linen', 'clothes hangers', 'dirt', 'swing']
 Candidates          : ['drum sander', 'keyboard', 'buffer', 'gasket', 'laundry hamper']
-Predicted           : drum sander
+Predicted           : gasket
 Ground Truth        : drum sander
-Correct             : True  [mode: neuro_symbolic]
+Correct             : False  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] shielding surfaces
 Required affordance : cover
 Reasoning           : A tool or material that can cover and protect surfaces is needed.
-KB exemplars    : ['barong', 'bed', 'bill', 'book', 'boot', 'cloth', 'cup', 'curtain']
+KB exemplars    : ['shoes', 'light', 'night stand', 'blender', 'cloth linen', 'clothes hangers', 'dirt', 'swing']
 Candidates          : ['drum sander', 'star drill', 'set square', 'power tool', 'auger']
 Predicted           : drum sander
 Ground Truth        : drum sander
@@ -644,9 +644,9 @@ Correct             : True  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] securing items
-Required affordance : hold
-Reasoning           : A tool that can hold or fasten items together is needed.
-KB exemplars    : ['bath tub basin', 'bed', 'binder', 'blunt file', 'bottle', 'bowl', 'box', 'cabinet']
+Required affordance : grasp
+Reasoning           : A tool that can grasp or hold items firmly is needed.
+KB exemplars    : ['antique sewing machine', 'copy machine', 'old sewing machine', 'machine']
 Candidates          : ['drum sander', 'snuffer', 'die', 'buffer', 'buffer']
 Predicted           : drum sander
 Ground Truth        : drum sander
@@ -656,17 +656,17 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] opening a nut
 Required affordance : crack
 Reasoning           : A tool that can crack open a hard shell is needed.
-KB exemplars (via 'break')    : ['abrading stone', 'air hammer', 'ball', 'ball peen hammer', 'basket ball', 'basketball', 'beading plane', 'block plane']
+KB exemplars (via 'break')    : ['light', 'window', 'gay people', 'antique sewing machine', 'copy machine', 'umbrella', 'ball', 'human']
 Candidates          : ['stiletto', 'food cup', 'compass saw', 'to go cup', 'toothpaste']
-Predicted           : stiletto
+Predicted           : compass saw
 Ground Truth        : stiletto
-Correct             : True  [mode: neuro_symbolic]
+Correct             : False  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] breaking an egg
 Required affordance : crack
 Reasoning           : A tool that can crack open an egg shell is needed.
-KB exemplars (via 'break')    : ['abrading stone', 'air hammer', 'ball', 'ball peen hammer', 'basket ball', 'basketball', 'beading plane', 'block plane']
+KB exemplars (via 'break')    : ['light', 'window', 'gay people', 'antique sewing machine', 'copy machine', 'umbrella', 'ball', 'human']
 Candidates          : ['bowie knife', 'tamp', 'icepick', 'plane', 'dogbed']
 Predicted           : bowie knife
 Ground Truth        : bowie knife
@@ -675,8 +675,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] opening packages
 Required affordance : break
-Reasoning           : A tool that can break or tear open packaging material is needed.
-KB exemplars    : ['abrading stone', 'air hammer', 'ball', 'ball peen hammer', 'basket ball', 'basketball', 'beading plane', 'block plane']
+Reasoning           : A tool that can break or tear open sealed packages is needed.
+KB exemplars    : ['light', 'window', 'gay people', 'antique sewing machine', 'copy machine', 'umbrella', 'ball', 'human']
 Candidates          : ['parer', 'slip joint plier', 'gutter', 'handtowelholder', 'glue stick']
 Predicted           : parer
 Ground Truth        : parer
@@ -694,9 +694,9 @@ Correct             : False  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] preparing toppings
-Required affordance : chop
+Required affordance : cut
 Reasoning           : A tool that can cut or slice ingredients into smaller pieces is needed.
-KB exemplars    : ['axe']
+KB exemplars    : ['stairs down', 'table', 'john', 'ping pong table', 'chef', 'cloth', 'rolling pin', 'gay people']
 Candidates          : ['battering ram', 'c d', 'ripping chisel', 'sponge', 'handtowelholder']
 Predicted           : battering ram
 Ground Truth        : battering ram
@@ -706,7 +706,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] making breadcrumbs
 Required affordance : crumble
 Reasoning           : A tool that can crumble bread into fine pieces is needed.
-KB exemplars    : —
+KB exemplars    : ['cookie']
 Candidates          : ['battering ram', 'adz', 'dumbbell', 'tack hammer', 'stiletto']
 Predicted           : tack hammer
 Ground Truth        : battering ram
@@ -716,7 +716,7 @@ Correct             : False  [mode: neuro_symbolic]
 [Task] preparing snacks
 Required affordance : cut
 Reasoning           : A tool that can cut or slice food into smaller pieces is needed.
-KB exemplars    : ['awl', 'axe', 'barong', 'bender', 'bill', 'blade', 'bowie knife', 'bowl']
+KB exemplars    : ['stairs down', 'table', 'john', 'ping pong table', 'chef', 'cloth', 'rolling pin', 'gay people']
 Candidates          : ['pestle', 'flat file', 'cigar cutter', 'hayfork', 'egg']
 Predicted           : pestle
 Ground Truth        : pestle
@@ -726,7 +726,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] making toppings
 Required affordance : chop
 Reasoning           : A tool that can chop or dice ingredients into small pieces is needed.
-KB exemplars    : ['axe']
+KB exemplars    : ['cook', 'word definitions', 'word', 'neck', 'word definition']
 Candidates          : ['pestle', 'bowie knife', 'battle ax', 'garden trowel', 'saw set']
 Predicted           : bowie knife
 Ground Truth        : pestle
@@ -734,9 +734,9 @@ Correct             : False  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] crushing ice
-Required affordance : break
+Required affordance : crunch
 Reasoning           : A tool that can break ice into small pieces is needed.
-KB exemplars    : ['abrading stone', 'air hammer', 'ball', 'ball peen hammer', 'basket ball', 'basketball', 'beading plane', 'block plane']
+KB exemplars    : —
 Candidates          : ['pestle', 'bender', 'gang', 'common ax', 'bolt cutter']
 Predicted           : pestle
 Ground Truth        : pestle
@@ -746,7 +746,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] making ice cubes
 Required affordance : cool
 Reasoning           : A tool that can cool water to form ice cubes is needed.
-KB exemplars    : ['fridge', 'oven']
+KB exemplars    : ['freezer', 'electricity', 'fan', 'gay people', 'refrigerator', 'electric fan', 'exhaust fan', 'fridge']
 Candidates          : ['steak knife', 'bolo', 'drawknife', 'locking plier', 'wine bottle']
 Predicted           : steak knife
 Ground Truth        : steak knife
@@ -755,8 +755,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] preparing fruits and vegetables
 Required affordance : cut
-Reasoning           : A tool that can cut or slice fruits and vegetables is needed.
-KB exemplars    : ['awl', 'axe', 'barong', 'bender', 'bill', 'blade', 'bowie knife', 'bowl']
+Reasoning           : A tool that can cut or slice food items is needed.
+KB exemplars    : ['stairs down', 'table', 'john', 'ping pong table', 'chef', 'cloth', 'rolling pin', 'gay people']
 Candidates          : ['table knife', 'allen wrench', 'remotecontrol', 'lightswitch', 'handtowel']
 Predicted           : table knife
 Ground Truth        : table knife
@@ -766,7 +766,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] preparing meats
 Required affordance : cut
 Reasoning           : A tool that can cut or slice meat is required.
-KB exemplars    : ['awl', 'axe', 'barong', 'bender', 'bill', 'blade', 'bowie knife', 'bowl']
+KB exemplars    : ['stairs down', 'table', 'john', 'ping pong table', 'chef', 'cloth', 'rolling pin', 'gay people']
 Candidates          : ['scalpel', 'cap opener', 'posthole digger', "plumber's snake", 'keyhole saw']
 Predicted           : scalpel
 Ground Truth        : scalpel
@@ -775,8 +775,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] preparing a sliced apple
 Required affordance : cut
-Reasoning           : A tool that can slice the apple into thin pieces is needed.
-KB exemplars    : ['awl', 'axe', 'barong', 'bender', 'bill', 'blade', 'bowie knife', 'bowl']
+Reasoning           : A tool that can slice or cut the apple into thin pieces is needed.
+KB exemplars    : ['stairs down', 'table', 'john', 'ping pong table', 'chef', 'cloth', 'rolling pin', 'gay people']
 Candidates          : ['compass saw', 'dogbed', 'tap', 'basketball', 'dogbed']
 Predicted           : compass saw
 Ground Truth        : compass saw
@@ -785,8 +785,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] cutting an apple
 Required affordance : cut
-Reasoning           : A sharp tool is required to slice the apple into pieces.
-KB exemplars    : ['awl', 'axe', 'barong', 'bender', 'bill', 'blade', 'bowie knife', 'bowl']
+Reasoning           : A sharp tool is required to slice or trim the apple.
+KB exemplars    : ['stairs down', 'table', 'john', 'ping pong table', 'chef', 'cloth', 'rolling pin', 'gay people']
 Candidates          : ['switchblade', 'electric hammer', 'steel wool pad', 'ottoman', 'hatchel']
 Predicted           : switchblade
 Ground Truth        : switchblade
@@ -794,9 +794,9 @@ Correct             : True  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] opening an envelope
-Required affordance : pierce
-Reasoning           : A tool that can pierce or cut the envelope's seal is needed.
-KB exemplars    : ['barong', 'bowie knife', 'butcher knife', 'carving knife', 'case knife', 'clasp knife', 'dagger', 'fish knife']
+Required affordance : slit
+Reasoning           : A tool that can slit or cut the envelope's seal is needed.
+KB exemplars    : —
 Candidates          : ['blade', 'keychain', 'diningtable', 'cup', 'bottle opener']
 Predicted           : blade
 Ground Truth        : blade
@@ -806,7 +806,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] applying butter
 Required affordance : spread
 Reasoning           : A tool that can spread butter evenly is needed.
-KB exemplars    : ['barong', 'bowie knife', 'brick trowel', 'butcher knife', 'butter knife', 'carving knife', 'case knife', 'clasp knife']
+KB exemplars    : ['anemone', 'brush', 'chef', 'cloth', 'gay people', 'old newspapers', 'antique sewing machine', 'collection of old newspapers']
 Candidates          : ['twist bit', 'bolt cutter', 'surgical knife', "fireman's ax", 'shelvingunit']
 Predicted           : twist bit
 Ground Truth        : twist bit
@@ -816,7 +816,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] serving cake
 Required affordance : carry
 Reasoning           : A tool that can hold and carry slices of cake is needed.
-KB exemplars    : ['bath tub basin', 'box', 'cabinet', 'cereal box', 'coffee machine', 'crank handle', 'food bag', 'food box']
+KB exemplars    : ['tool box', 'light', 'serving trolley', 'tote bag', 'plumbing', 'bike', 'gay people', 'parkway']
 Candidates          : ['cutter', 'cellphone', 'kitchen knife', 'candle', 'locking plier']
 Predicted           : cutter
 Ground Truth        : cutter
@@ -826,7 +826,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] decorating table
 Required affordance : decorate
 Reasoning           : A tool or object that can enhance the appearance of the table is needed.
-KB exemplars    : ['o ring', 'piston ring', 'statue', 'toothpick']
+KB exemplars    : ['carpet', 'chess set', 'window curtain', 'tissue holder', 'flowers', 'map', 'jewelry', 'tapestry']
 Candidates          : ['curtain', 'tap wrench', 'bender', 'showerglas', 'spoon']
 Predicted           : curtain
 Ground Truth        : curtain
@@ -836,7 +836,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] decorating bed
 Required affordance : beautify
 Reasoning           : A tool or object that can beautify or enhance the appearance of the bed is needed.
-KB exemplars (via 'decorate')    : ['o ring', 'piston ring', 'statue', 'toothpick']
+KB exemplars (via 'decorate')    : ['carpet', 'chess set', 'window curtain', 'tissue holder', 'flowers', 'map', 'jewelry', 'tapestry']
 Candidates          : ['room decor', "carpenter's square", 'sparkplug wrench', 'dry battery', 'razorblade']
 Predicted           : room decor
 Ground Truth        : room decor
@@ -846,7 +846,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] decorating wall
 Required affordance : beautify
 Reasoning           : A tool or object that can beautify or enhance the appearance of the wall is needed.
-KB exemplars (via 'decorate')    : ['o ring', 'piston ring', 'statue', 'toothpick']
+KB exemplars (via 'decorate')    : ['carpet', 'chess set', 'window curtain', 'tissue holder', 'flowers', 'map', 'jewelry', 'tapestry']
 Candidates          : ['teddy bear', 'wood chisel', 'pointing trowel', 'cap opener', 'scoop']
 Predicted           : teddy bear
 Ground Truth        : teddy bear
@@ -856,7 +856,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] decorating lobby
 Required affordance : decorate
 Reasoning           : A tool or object that can enhance the appearance of the lobby is needed.
-KB exemplars    : ['o ring', 'piston ring', 'statue', 'toothpick']
+KB exemplars    : ['carpet', 'chess set', 'window curtain', 'tissue holder', 'flowers', 'map', 'jewelry', 'tapestry']
 Candidates          : ['statue', 'dovetail plane', 'butterknife', 'pen', 'coping saw']
 Predicted           : statue
 Ground Truth        : statue
@@ -865,8 +865,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] increasing beauty of the room
 Required affordance : beautify
-Reasoning           : The task requires an object that can enhance or beautify the appearance of the room.
-KB exemplars (via 'decorate')    : ['o ring', 'piston ring', 'statue', 'toothpick']
+Reasoning           : An object that enhances the visual appeal of the room is needed.
+KB exemplars (via 'decorate')    : ['carpet', 'chess set', 'window curtain', 'tissue holder', 'flowers', 'map', 'jewelry', 'tapestry']
 Candidates          : ['poster', 'plow', 'crown saw', 'spiral ratchet screwdriver', 'pitcher']
 Predicted           : poster
 Ground Truth        : poster
@@ -875,18 +875,18 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] preparing vegetables
 Required affordance : chop
-Reasoning           : A tool that can cut or chop vegetables into pieces is needed.
-KB exemplars    : ['axe']
+Reasoning           : A tool that can cut vegetables into smaller pieces is needed.
+KB exemplars    : ['cook', 'word definitions', 'word', 'neck', 'word definition']
 Candidates          : ['dirk', 'spraybottle', 'dining table', 'razor', 'compass saw']
-Predicted           : razor
+Predicted           : dirk
 Ground Truth        : dirk
-Correct             : False  [mode: neuro_symbolic]
+Correct             : True  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] creating garnishes
 Required affordance : cut
 Reasoning           : A tool that can cut or shape food into small decorative pieces is needed.
-KB exemplars    : ['awl', 'axe', 'barong', 'bender', 'bill', 'blade', 'bowie knife', 'bowl']
+KB exemplars    : ['stairs down', 'table', 'john', 'ping pong table', 'chef', 'cloth', 'rolling pin', 'gay people']
 Candidates          : ['steak knife', 'rubber eraser', "carpenter's square", 'faucet', 'coffee']
 Predicted           : steak knife
 Ground Truth        : steak knife
@@ -896,7 +896,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] making salsa
 Required affordance : chop
 Reasoning           : A tool that can chop or dice vegetables and other ingredients is needed.
-KB exemplars    : ['axe']
+KB exemplars    : ['cook', 'word definitions', 'word', 'neck', 'word definition']
 Candidates          : ['machete', 'lug wrench', 'kitchenknife', 'knife', 'bandsaw']
 Predicted           : kitchenknife
 Ground Truth        : machete
@@ -906,7 +906,7 @@ Correct             : False  [mode: neuro_symbolic]
 [Task] measuring ingredients
 Required affordance : contain
 Reasoning           : A tool that can contain and measure specific volumes or weights of ingredients is needed.
-KB exemplars    : ['bath tub basin', 'bowl', 'box', 'cabinet', 'cereal box', 'food box', 'ladle', 'metal box']
+KB exemplars    : ['tool box', 'container can', 'bottles of liqour', 'cereal bowl', 'water pump and tank', 'bookshelf', 'garment bag', 'breaker box']
 Candidates          : ['dagger', 'pipe cutter', 'metal box', 'parang', 'graver']
 Predicted           : metal box
 Ground Truth        : dagger
@@ -915,8 +915,8 @@ Correct             : False  [mode: neuro_symbolic]
 
 [Task] gardening
 Required affordance : dig
-Reasoning           : A tool that can dig into soil to plant or remove weeds is needed.
-KB exemplars    : ['coal shovel', 'coffee machine', 'gutter', 'hand shovel', 'shovel', 'slicer', 'stamping machine', 'stemmer']
+Reasoning           : A tool that can dig into soil to plant or remove plants is needed.
+KB exemplars    : ['antique sewing machine', 'copy machine', 'small dog', 'lazy dog', 'dog', 'old sewing machine', 'hound dog', 'worker']
 Candidates          : ['ditch spade', 'pot', 'power drill', 'floor', 'kitchenknife']
 Predicted           : ditch spade
 Ground Truth        : ditch spade
@@ -926,17 +926,17 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] preparing soil
 Required affordance : break
 Reasoning           : A tool that can break up and aerate soil is needed.
-KB exemplars    : ['abrading stone', 'air hammer', 'ball', 'ball peen hammer', 'basket ball', 'basketball', 'beading plane', 'block plane']
+KB exemplars    : ['light', 'window', 'gay people', 'antique sewing machine', 'copy machine', 'umbrella', 'ball', 'human']
 Candidates          : ['garden spade', 'latchstring', 'desklamp', 'binder', 'scauper']
-Predicted           : scauper
+Predicted           : garden spade
 Ground Truth        : garden spade
-Correct             : False  [mode: neuro_symbolic]
+Correct             : True  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] finding buried treasures
 Required affordance : dig
 Reasoning           : A tool that can dig into the ground to uncover buried objects is needed.
-KB exemplars    : ['coal shovel', 'coffee machine', 'gutter', 'hand shovel', 'shovel', 'slicer', 'stamping machine', 'stemmer']
+KB exemplars    : ['antique sewing machine', 'copy machine', 'small dog', 'lazy dog', 'dog', 'old sewing machine', 'hound dog', 'worker']
 Candidates          : ['shovel', 'file', 'bumper jack', 'pitcher', 'chain saw']
 Predicted           : shovel
 Ground Truth        : shovel
@@ -945,8 +945,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] showcasing decorations
 Required affordance : display
-Reasoning           : An object that can display or show decorations prominently is needed.
-KB exemplars    : ['cap', 'coffee table', 'hob', 'painting', 'ram', 'roach clip', 'shelf', 'statue']
+Reasoning           : A surface or object that can display decorations prominently is needed.
+KB exemplars    : ['tv', 'night stand', 'old photographs', 'acoustic guitar', 'john', 'jeans', 'equipment', 'television']
 Candidates          : ['calculator', 'roach clip', 'power tool', 'set square', 'parang']
 Predicted           : calculator
 Ground Truth        : calculator
@@ -955,8 +955,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] organizing collectibles
 Required affordance : contain
-Reasoning           : A tool that can store and hold items neatly is needed.
-KB exemplars    : ['bath tub basin', 'bowl', 'box', 'cabinet', 'cereal box', 'food box', 'ladle', 'metal box']
+Reasoning           : A tool or container that can hold and store items securely is needed.
+KB exemplars    : ['tool box', 'container can', 'bottles of liqour', 'cereal bowl', 'water pump and tank', 'bookshelf', 'garment bag', 'breaker box']
 Candidates          : ['cell phone', 'ax', 'faucet', 'houseplant', 'circular saw']
 Predicted           : cell phone
 Ground Truth        : cell phone
@@ -965,8 +965,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] presenting information
 Required affordance : display
-Reasoning           : An object that can display or show information is needed.
-KB exemplars    : ['cap', 'coffee table', 'hob', 'painting', 'ram', 'roach clip', 'shelf', 'statue']
+Reasoning           : An object that can display or show information visually is needed.
+KB exemplars    : ['tv', 'night stand', 'old photographs', 'acoustic guitar', 'john', 'jeans', 'equipment', 'television']
 Candidates          : ['calculator', 'flat tip screwdriver', 'linoleum knife', 'knife blade', 'toaster']
 Predicted           : calculator
 Ground Truth        : calculator
@@ -976,7 +976,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] throwing away uneaten food
 Required affordance : dispose
 Reasoning           : A container or tool that can dispose of waste is needed.
-KB exemplars    : ['bill', 'coffee machine', 'comb', 'garbage can', 'razor', 'safety razor', 'slicer', 'soldering iron']
+KB exemplars    : ['container can', 'gay people', 'hairbrush', 'antique sewing machine', 'copy machine', 'disposable razor', 'dustbin', 'waxed dental floss']
 Candidates          : ['sink basin', 'safe', 'plate', 'cutting implement', 'case knife']
 Predicted           : sink basin
 Ground Truth        : sink basin
@@ -986,7 +986,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] cleaning spilled milk
 Required affordance : absorb
 Reasoning           : A tool that can absorb liquid is needed to clean up spilled milk.
-KB exemplars    : ['cloth', 'dish sponge', 'ram', 'sponge']
+KB exemplars    : ['dead body', 'cloth', 'doormat', 'shirt', 'person']
 Candidates          : ['sink basin', 'curtain', 'round file', 'compass saw', 'wateringcan']
 Predicted           : sink basin
 Ground Truth        : sink basin
@@ -995,8 +995,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] throwing away used soap bottle
 Required affordance : dispose
-Reasoning           : The object must be able to dispose of the soap bottle by placing it in a trash container.
-KB exemplars    : ['bill', 'coffee machine', 'comb', 'garbage can', 'razor', 'safety razor', 'slicer', 'soldering iron']
+Reasoning           : A tool that can dispose of or contain waste is needed.
+KB exemplars    : ['container can', 'gay people', 'hairbrush', 'antique sewing machine', 'copy machine', 'disposable razor', 'dustbin', 'waxed dental floss']
 Candidates          : ['sink basin', 'steak knife', 'square', 'houseplant', 'mallet']
 Predicted           : sink basin
 Ground Truth        : sink basin
@@ -1005,8 +1005,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] throwing away toilet paper
 Required affordance : dispose
-Reasoning           : A tool that can dispose of waste material is needed.
-KB exemplars    : ['bill', 'coffee machine', 'comb', 'garbage can', 'razor', 'safety razor', 'slicer', 'soldering iron']
+Reasoning           : A tool that can dispose of waste materials is needed.
+KB exemplars    : ['container can', 'gay people', 'hairbrush', 'antique sewing machine', 'copy machine', 'disposable razor', 'dustbin', 'waxed dental floss']
 Candidates          : ['garbage can', 'bur', 'awl', 'backsaw', 'pitcher']
 Predicted           : garbage can
 Ground Truth        : garbage can
@@ -1015,8 +1015,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] hanging items on a wall
 Required affordance : bore
-Reasoning           : A tool that can bore a hole into the wall for mounting hardware is needed.
-KB exemplars    : ['brace and bit', 'breast drill', 'core drill', "dentist's drill", 'drill', 'electric drill', 'hand drill', 'pneumatic drill']
+Reasoning           : A tool that can create a hole in the wall for a hook or nail is needed.
+KB exemplars    : ['drill']
 Candidates          : ['drill', 'spatula', 'toothbrush', 'tap wrench', 'scauper']
 Predicted           : drill
 Ground Truth        : drill
@@ -1025,8 +1025,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] assembling furniture
 Required affordance : bore
-Reasoning           : A tool to create pilot holes in the material for screws is needed.
-KB exemplars    : ['brace and bit', 'breast drill', 'core drill', "dentist's drill", 'drill', 'electric drill', 'hand drill', 'pneumatic drill']
+Reasoning           : Pilot holes must be bored into materials before inserting screws when assembling furniture.
+KB exemplars    : ['drill']
 Candidates          : ['star drill', 'chamfer bit', 'cellphone', 'bandsaw', 'garden spade']
 Predicted           : star drill
 Ground Truth        : star drill
@@ -1036,7 +1036,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] installing fixtures
 Required affordance : bore
 Reasoning           : A tool that can bore a hole into the wall or surface is needed to install fixtures.
-KB exemplars    : ['brace and bit', 'breast drill', 'core drill', "dentist's drill", 'drill', 'electric drill', 'hand drill', 'pneumatic drill']
+KB exemplars    : ['drill']
 Candidates          : ['router', 'candle', 'compass saw', 'plexor.n.wn.medicine', 'scrub plane']
 Predicted           : router
 Ground Truth        : router
@@ -1046,7 +1046,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] drying washed dishes
 Required affordance : absorb
 Reasoning           : A tool that can absorb water from the dishes is needed.
-KB exemplars    : ['cloth', 'dish sponge', 'ram', 'sponge']
+KB exemplars    : ['dead body', 'cloth', 'doormat', 'shirt', 'person']
 Candidates          : ['hand towel', 'cross bit', 'hunting knife', 'lettuce', 'power mower']
 Predicted           : hand towel
 Ground Truth        : hand towel
@@ -1055,18 +1055,18 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] hanging cleaned laundry
 Required affordance : grasp
-Reasoning           : A tool that can grasp and hold the laundry to place it on a line is needed.
-KB exemplars    : ['coffee machine', 'slicer', 'stamping machine', 'toaster']
+Reasoning           : A tool that can grasp and hold laundry items while placing them on a line is needed.
+KB exemplars    : ['antique sewing machine', 'copy machine', 'old sewing machine', 'machine']
 Candidates          : ['hand towel', 'gutter', 'catling', 'saw set', 'screwdriver']
-Predicted           : gutter
+Predicted           : hand towel
 Ground Truth        : hand towel
-Correct             : False  [mode: neuro_symbolic]
+Correct             : True  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] drying up spilled liquids
 Required affordance : absorb
-Reasoning           : An object that can absorb liquid is needed to dry up spills.
-KB exemplars    : ['cloth', 'dish sponge', 'ram', 'sponge']
+Reasoning           : A tool that can absorb liquid spills is needed.
+KB exemplars    : ['dead body', 'cloth', 'doormat', 'shirt', 'person']
 Candidates          : ['kleenex', 'moldboard plow', 'pruner', 'butter knife', 'tennisracket']
 Predicted           : kleenex
 Ground Truth        : kleenex
@@ -1074,9 +1074,9 @@ Correct             : True  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] having a meal
-Required affordance : hold
+Required affordance : contain
 Reasoning           : A tool that can hold food for consumption is needed.
-KB exemplars    : ['bath tub basin', 'bed', 'binder', 'blunt file', 'bottle', 'bowl', 'box', 'cabinet']
+KB exemplars    : ['tool box', 'container can', 'bottles of liqour', 'cereal bowl', 'water pump and tank', 'bookshelf', 'garment bag', 'breaker box']
 Candidates          : ['salt', 'combination plane', 'router', 'alligator wrench', 'laptop']
 Predicted           : salt
 Ground Truth        : salt
@@ -1085,8 +1085,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] preparing food
 Required affordance : cut
-Reasoning           : A tool that can cut or slice food is required for preparing food.
-KB exemplars    : ['awl', 'axe', 'barong', 'bender', 'bill', 'blade', 'bowie knife', 'bowl']
+Reasoning           : A tool that can cut or slice food is required for food preparation.
+KB exemplars    : ['stairs down', 'table', 'john', 'ping pong table', 'chef', 'cloth', 'rolling pin', 'gay people']
 Candidates          : ['potato', 'crank', 'creditcard', 'dumbbell', 'nailfile']
 Predicted           : potato
 Ground Truth        : potato
@@ -1125,8 +1125,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] labelling belongings
 Required affordance : write
-Reasoning           : A tool that can mark or write on objects is needed.
-KB exemplars    : ['coffee machine', 'desk', 'desktop', 'hand mower', 'marker', 'notebook', 'paper cutter', 'paper towel roll']
+Reasoning           : A tool that can write or mark labels is needed.
+KB exemplars    : ['stairs down', 'poet', "children's book section", 'gay people', 'poster', 'antique sewing machine', 'computer', 'copy machine']
 Candidates          : ['scauper', 'drilling bit', 'spraybottle', 'houseplant', 'pestle']
 Predicted           : scauper
 Ground Truth        : scauper
@@ -1135,8 +1135,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] watching a movie
 Required affordance : comfort
-Reasoning           : A comfortable seat is needed to watch a movie comfortably.
-KB exemplars    : ['arm chair', 'armchair', 'bed', 'calculator', 'chair', 'desk lamp', 'dog bed', 'drum sander']
+Reasoning           : A comfortable seat is needed to sit and watch a movie.
+KB exemplars    : ['ottoman', 'folding chair', 'storehouse', 'swing', 'hot water heater', 'porch swing', 'bean bag chair', 'cat']
 Candidates          : ['cell phone', 'clasp knife', 'kirpan', 'camera', 'room decor']
 Predicted           : cell phone
 Ground Truth        : cell phone
@@ -1146,7 +1146,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] listening to a song
 Required affordance : entertain
 Reasoning           : A device that can play audio is needed.
-KB exemplars    : ['ball', 'base ball bat', 'basket ball', 'basketball', 'book', 'coffee machine', 'desktop', 'dining table']
+KB exemplars    : ['tv', 'bicycle', 'sexual activity', 'musical instrument', 'cook book', 'antique sewing machine', 'computer', 'copy machine']
 Candidates          : ['cell phone', 'fore plane', 'screw key', 'clincher', 'pillow']
 Predicted           : cell phone
 Ground Truth        : cell phone
@@ -1156,7 +1156,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] surfing the internet
 Required affordance : display
 Reasoning           : A device that can display and interact with digital content is needed.
-KB exemplars    : ['cap', 'coffee table', 'hob', 'painting', 'ram', 'roach clip', 'shelf', 'statue']
+KB exemplars    : ['tv', 'night stand', 'old photographs', 'acoustic guitar', 'john', 'jeans', 'equipment', 'television']
 Candidates          : ['c d', 'cigar cutter', 'aluminumfoil', 'dogbed', 'coffee table']
 Predicted           : coffee table
 Ground Truth        : c d
@@ -1165,8 +1165,8 @@ Correct             : False  [mode: neuro_symbolic]
 
 [Task] playing active games
 Required affordance : exercise
-Reasoning           : A tool or surface that allows for physical movement and exercise is needed.
-KB exemplars    : ['coffee machine', 'ram', 'slicer', 'stamping machine', 'toaster']
+Reasoning           : A tool or object that allows for physical movement and exercise is needed.
+KB exemplars    : ['gay people', 'antique sewing machine', 'copy machine', 'mat', 'person', 'staircase', 'welcome mat', 'weights']
 Candidates          : ['basket ball', 'pin wrench', 'twist bit', 'bread', 'shovel']
 Predicted           : basket ball
 Ground Truth        : basket ball
@@ -1174,9 +1174,9 @@ Correct             : True  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] exercising
-Required affordance : support
-Reasoning           : A tool or surface that provides support and resistance for physical activity is needed.
-KB exemplars    : ['book', 'crank handle', 'hob', 'house plant', 'shelf', 'soap bar', 'stool']
+Required affordance : exercise
+Reasoning           : A tool or surface that allows for physical movement and exertion is needed.
+KB exemplars    : ['gay people', 'antique sewing machine', 'copy machine', 'mat', 'person', 'staircase', 'welcome mat', 'weights']
 Candidates          : ['tennis racket', 'television', 'peppershaker', 'safe', 'adz']
 Predicted           : tennis racket
 Ground Truth        : tennis racket
@@ -1186,17 +1186,17 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] cleaning as a home workout
 Required affordance : exercise
 Reasoning           : A tool that allows for physical movement and exertion to clean surfaces is needed.
-KB exemplars    : ['coffee machine', 'ram', 'slicer', 'stamping machine', 'toaster']
+KB exemplars    : ['gay people', 'antique sewing machine', 'copy machine', 'mat', 'person', 'staircase', 'welcome mat', 'weights']
 Candidates          : ['basket ball', 'scrub brush', "dentist's drill", 'box', 'clincher']
-Predicted           : scrub brush
+Predicted           : basket ball
 Ground Truth        : basket ball
-Correct             : False  [mode: neuro_symbolic]
+Correct             : True  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] organizing documents
 Required affordance : contain
-Reasoning           : A tool that can hold or store papers is needed.
-KB exemplars    : ['bath tub basin', 'bowl', 'box', 'cabinet', 'cereal box', 'food box', 'ladle', 'metal box']
+Reasoning           : A tool that can hold or store papers in an orderly manner is needed.
+KB exemplars    : ['tool box', 'container can', 'bottles of liqour', 'cereal bowl', 'water pump and tank', 'bookshelf', 'garment bag', 'breaker box']
 Candidates          : ['taper file', 'spray bottle', 'coffee mug', 'safe', 'hunting knife']
 Predicted           : safe
 Ground Truth        : taper file
@@ -1204,9 +1204,9 @@ Correct             : False  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] cleaning fingernails
-Required affordance : clean
+Required affordance : scrub
 Reasoning           : A tool that can scrape or remove dirt from under fingernails is needed.
-KB exemplars    : ['bathtub', 'bill', 'camera', 'cloth', 'coffee machine', 'coffee mug', 'die', 'dish sponge']
+KB exemplars    : —
 Candidates          : ['blunt file', 'bur', 'power saw', 'hack', 'winebottle']
 Predicted           : blunt file
 Ground Truth        : blunt file
@@ -1216,7 +1216,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] smoothing surfaces
 Required affordance : smoothen
 Reasoning           : A tool that can smoothen rough surfaces is required.
-KB exemplars    : ['air hammer', 'ball peen hammer', 'blunt file', "bricklayer's hammer", "carpenter's hammer", 'coffee machine', 'electric hammer', 'file']
+KB exemplars    : ['antique sewing machine', 'copy machine', 'skin care article', 'hammer', 'pillowcase', 'old sewing machine', 'spike file', 'file']
 Candidates          : ['taper file', 'base ball bat', 'broadax', 'food jar', 'lawn mower']
 Predicted           : taper file
 Ground Truth        : taper file
@@ -1226,7 +1226,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] repairing appliances
 Required affordance : fix
 Reasoning           : A tool that can fix or mend broken parts is needed.
-KB exemplars    : ['abrading stone', 'air hammer', 'awl', 'ball peen hammer', 'bender', 'bill', 'book', 'brace and bit']
+KB exemplars    : ['cook book', 'gay people', 'level', 'fireplace', 'tool', 'chess king', 'glue', 'mechanic']
 Candidates          : ['crampon', 'openside plane', 'bore bit', 'o ring', 'rounder']
 Predicted           : crampon
 Ground Truth        : crampon
@@ -1234,19 +1234,19 @@ Correct             : True  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] mending clothes
-Required affordance : pierce
-Reasoning           : A tool that can pierce fabric to pass thread through is needed.
-KB exemplars    : ['barong', 'bowie knife', 'butcher knife', 'carving knife', 'case knife', 'clasp knife', 'dagger', 'fish knife']
+Required affordance : fix
+Reasoning           : A tool that can repair or fix fabric tears is needed.
+KB exemplars    : ['cook book', 'gay people', 'level', 'fireplace', 'tool', 'chess king', 'glue', 'mechanic']
 Candidates          : ['razor', 'fork', 'lancet', 'counterbore', 'pruner']
-Predicted           : lancet
+Predicted           : razor
 Ground Truth        : razor
-Correct             : False  [mode: neuro_symbolic]
+Correct             : True  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] patching walls
 Required affordance : smoothen
 Reasoning           : A tool that can smoothen or compress the patching material into the wall surface is needed.
-KB exemplars    : ['air hammer', 'ball peen hammer', 'blunt file', "bricklayer's hammer", "carpenter's hammer", 'coffee machine', 'electric hammer', 'file']
+KB exemplars    : ['antique sewing machine', 'copy machine', 'skin care article', 'hammer', 'pillowcase', 'old sewing machine', 'spike file', 'file']
 Candidates          : ['stamp', 'room decor', 'bumper jack', 'buffer', 'ripsaw']
 Predicted           : buffer
 Ground Truth        : stamp
@@ -1256,17 +1256,17 @@ Correct             : False  [mode: neuro_symbolic]
 [Task] adjusting cables
 Required affordance : grasp
 Reasoning           : A tool that can grasp and manipulate small objects like cables is needed.
-KB exemplars    : ['coffee machine', 'slicer', 'stamping machine', 'toaster']
+KB exemplars    : ['antique sewing machine', 'copy machine', 'old sewing machine', 'machine']
 Candidates          : ['bender', 'crown saw', 'coffee mug', 'crosscut saw', 'window']
-Predicted           : coffee mug
+Predicted           : bender
 Ground Truth        : bender
-Correct             : False  [mode: neuro_symbolic]
+Correct             : True  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] bending pipes
 Required affordance : bend
-Reasoning           : A tool that can bend metal or plastic pipes is required.
-KB exemplars    : ['coffee machine', 'paper cutter', 'paper towel roll', 'slicer', 'stamping machine', 'toaster']
+Reasoning           : A tool that can physically bend metal or plastic pipes is required.
+KB exemplars    : ['antique sewing machine', 'copy machine', 'paper', 'old sewing machine', 'writing paper', 'crumpled up ball of paper', 'machine', 'piles of paper']
 Candidates          : ['bender', 'toothpaste', 'tile cutter', 'bodkin', 'glass cutter']
 Predicted           : bender
 Ground Truth        : bender
@@ -1274,11 +1274,11 @@ Correct             : True  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] grinding surfaces
-Required affordance : smoothen
-Reasoning           : A tool that can smooth or abrade surfaces by rubbing or scraping is needed.
-KB exemplars    : ['air hammer', 'ball peen hammer', 'blunt file', "bricklayer's hammer", "carpenter's hammer", 'coffee machine', 'electric hammer', 'file']
+Required affordance : rub
+Reasoning           : A tool that can smooth or abrade surfaces by rubbing is needed.
+KB exemplars    : ['container of salt', 'salt', 'salt and pepper shakers']
 Candidates          : ['bender', 'spiral ratchet screwdriver', 'dovetail plane', 'wine bottle', 'designedspade']
-Predicted           : dovetail plane
+Predicted           : wine bottle
 Ground Truth        : bender
 Correct             : False  [mode: neuro_symbolic]
 ------------------------------------------------------------
@@ -1286,27 +1286,27 @@ Correct             : False  [mode: neuro_symbolic]
 [Task] picking-up objects
 Required affordance : grasp
 Reasoning           : A tool that can grasp or grip small items is needed.
-KB exemplars    : ['coffee machine', 'slicer', 'stamping machine', 'toaster']
+KB exemplars    : ['antique sewing machine', 'copy machine', 'old sewing machine', 'machine']
 Candidates          : ["carpenter's mallet", 'gang', 'diningtable', 'ravehook', 'wire cutter']
-Predicted           : gang
+Predicted           : carpenter's mallet
 Ground Truth        : carpenter's mallet
-Correct             : False  [mode: neuro_symbolic]
+Correct             : True  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] opening jars
 Required affordance : grasp
 Reasoning           : A tool that can grip and twist the jar lid is needed.
-KB exemplars    : ['coffee machine', 'slicer', 'stamping machine', 'toaster']
+KB exemplars    : ['antique sewing machine', 'copy machine', 'old sewing machine', 'machine']
 Candidates          : ['scauper', 'bolt cutter', 'potato', 'core drill', 'hatchet']
-Predicted           : potato
+Predicted           : scauper
 Ground Truth        : scauper
-Correct             : False  [mode: neuro_symbolic]
+Correct             : True  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] carrying items
 Required affordance : carry
 Reasoning           : An object must be able to hold and transport items from one place to another.
-KB exemplars    : ['bath tub basin', 'box', 'cabinet', 'cereal box', 'coffee machine', 'crank handle', 'food bag', 'food box']
+KB exemplars    : ['tool box', 'light', 'serving trolley', 'tote bag', 'plumbing', 'bike', 'gay people', 'parkway']
 Candidates          : ['soldering iron', 'rock bit', 'ripping chisel', 'basketball', 'surgical knife']
 Predicted           : soldering iron
 Ground Truth        : soldering iron
@@ -1315,8 +1315,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] placing objects down
 Required affordance : support
-Reasoning           : A tool that can support and hold objects in place is needed.
-KB exemplars    : ['book', 'crank handle', 'hob', 'house plant', 'shelf', 'soap bar', 'stool']
+Reasoning           : An object that can stably support and hold items in place is needed.
+KB exemplars    : ['trunk', 'back issues of national geographic', 'cook book', 'wooden rod', 'kitchen table', 'shelf', 'trunk of old clothings', 'handle']
 Candidates          : ['sandblaster', 'scriber', 'saber saw', 'maul', 'burr']
 Predicted           : sandblaster
 Ground Truth        : sandblaster
@@ -1324,9 +1324,9 @@ Correct             : True  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] preparing spices
-Required affordance : break
-Reasoning           : A tool that can crush or break spices into smaller pieces is needed.
-KB exemplars    : ['abrading stone', 'air hammer', 'ball', 'ball peen hammer', 'basket ball', 'basketball', 'beading plane', 'block plane']
+Required affordance : grind
+Reasoning           : A tool that can crush or grind spices into smaller pieces is needed.
+KB exemplars    : ['antique sewing machine', 'copy machine', 'electric pencil sharpener', 'old sewing machine', 'machine']
 Candidates          : ['pestle', 'laundryhamper', 'pipe cutter', 'kitchen knife', 'cap opener']
 Predicted           : pestle
 Ground Truth        : pestle
@@ -1336,7 +1336,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] making coffee powder
 Required affordance : grind
 Reasoning           : A tool that can grind coffee beans into powder is needed.
-KB exemplars    : ['coffee machine', 'sawmill', 'slicer', 'stamping machine', 'toaster']
+KB exemplars    : ['antique sewing machine', 'copy machine', 'electric pencil sharpener', 'old sewing machine', 'machine']
 Candidates          : ['pestle', 'signet', 'pincer', 'moldboard plow', 'instant noodle']
 Predicted           : pestle
 Ground Truth        : pestle
@@ -1345,8 +1345,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] processing grains
 Required affordance : grind
-Reasoning           : A tool that can grind grains into smaller pieces is needed.
-KB exemplars    : ['coffee machine', 'sawmill', 'slicer', 'stamping machine', 'toaster']
+Reasoning           : A tool that can grind grains into smaller particles is needed.
+KB exemplars    : ['antique sewing machine', 'copy machine', 'electric pencil sharpener', 'old sewing machine', 'machine']
 Candidates          : ['pestle', 'coffeemachine', 'cigar cutter', 'steel wool pad', 'vase']
 Predicted           : pestle
 Ground Truth        : pestle
@@ -1356,17 +1356,17 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] hanging a picture on a wall
 Required affordance : bore
 Reasoning           : A tool that can create a hole in the wall for a screw or nail is needed.
-KB exemplars    : ['brace and bit', 'breast drill', 'core drill', "dentist's drill", 'drill', 'electric drill', 'hand drill', 'pneumatic drill']
+KB exemplars    : ['drill']
 Candidates          : ['tack hammer', 'torque wrench', 'butterknife', 'burin', 'power tool']
-Predicted           : tack hammer
+Predicted           : power tool
 Ground Truth        : tack hammer
-Correct             : True  [mode: neuro_symbolic]
+Correct             : False  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] assembling furniture
 Required affordance : bore
-Reasoning           : A tool to create pilot holes in the material for screws is needed.
-KB exemplars    : ['brace and bit', 'breast drill', 'core drill', "dentist's drill", 'drill', 'electric drill', 'hand drill', 'pneumatic drill']
+Reasoning           : Pilot holes must be bored into materials before inserting screws when assembling furniture.
+KB exemplars    : ['drill']
 Candidates          : ['triphammer', 'bore bit', 'desk', 'pitchfork', 'corkscrew']
 Predicted           : bore bit
 Ground Truth        : triphammer
@@ -1376,9 +1376,9 @@ Correct             : False  [mode: neuro_symbolic]
 [Task] removing old fixtures
 Required affordance : separate
 Reasoning           : A tool that can separate or detach fixtures from surfaces is needed.
-KB exemplars    : ['coffee machine', 'ram', 'slicer', 'soap bar', 'stamping machine', 'toaster']
+KB exemplars    : ['antique sewing machine', 'copy machine', 'cook', 'divider', 'person', 'cardboard box', 'door', 'old sewing machine']
 Candidates          : ['scythe', 'sponge', 'ram', 'bread knife', 'chisel']
-Predicted           : ram
+Predicted           : chisel
 Ground Truth        : scythe
 Correct             : False  [mode: neuro_symbolic]
 ------------------------------------------------------------
@@ -1386,7 +1386,7 @@ Correct             : False  [mode: neuro_symbolic]
 [Task] repairing items
 Required affordance : fix
 Reasoning           : A tool that can fix or mend broken items is required.
-KB exemplars    : ['abrading stone', 'air hammer', 'awl', 'ball peen hammer', 'bender', 'bill', 'book', 'brace and bit']
+KB exemplars    : ['cook book', 'gay people', 'level', 'fireplace', 'tool', 'chess king', 'glue', 'mechanic']
 Candidates          : ["carpenter's hammer", 'tennisracket', 'firmer chisel', 'tissuebox', 'dresser']
 Predicted           : carpenter's hammer
 Ground Truth        : carpenter's hammer
@@ -1396,7 +1396,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] hammering nails
 Required affordance : hammer
 Reasoning           : A tool that can strike nails to drive them into surfaces is needed.
-KB exemplars    : ['air hammer', 'ball peen hammer', "bricklayer's hammer", "carpenter's hammer", 'coffee machine', 'electric hammer', 'gutter', 'hammer']
+KB exemplars    : ['gay people', 'parkway', 'antique sewing machine', 'copy machine', 'phillips screwdriver', 'human', 'bus', 'person']
 Candidates          : ["carpenter's hammer", 'chain wrench', 'scrubbrush', 'statue', 'buffer']
 Predicted           : carpenter's hammer
 Ground Truth        : carpenter's hammer
@@ -1406,17 +1406,17 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] opening doors and cabinets
 Required affordance : grasp
 Reasoning           : A tool that can grasp and pull handles to open doors and cabinets is needed.
-KB exemplars    : ['coffee machine', 'slicer', 'stamping machine', 'toaster']
+KB exemplars    : ['antique sewing machine', 'copy machine', 'old sewing machine', 'machine']
 Candidates          : ['two handed saw', 'rock bit', 'tire iron', 'roach clip', 'hand ax']
-Predicted           : roach clip
+Predicted           : two handed saw
 Ground Truth        : two handed saw
-Correct             : False  [mode: neuro_symbolic]
+Correct             : True  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] carrying containers
 Required affordance : carry
 Reasoning           : A tool that can grip and transport containers is needed.
-KB exemplars    : ['bath tub basin', 'box', 'cabinet', 'cereal box', 'coffee machine', 'crank handle', 'food bag', 'food box']
+KB exemplars    : ['tool box', 'light', 'serving trolley', 'tote bag', 'plumbing', 'bike', 'gay people', 'parkway']
 Candidates          : ['router', 'alligator wrench', 'roomdecor', 'punch', 'dogbed']
 Predicted           : router
 Ground Truth        : router
@@ -1424,9 +1424,9 @@ Correct             : True  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] using appliances
-Required affordance : operate
-Reasoning           : A tool capable of operating appliances via controls is needed.
-KB exemplars    : —
+Required affordance : press
+Reasoning           : A tool capable of operating appliances via buttons or controls is needed.
+KB exemplars    : ['cook book', 'antique sewing machine', 'copy machine', 'many books', 'overdue books', 'reference books', 'iron', 'old books']
 Candidates          : ['drum sander', 'lawn mower', 'toiletpaperhanger', 'paper box', 'bath tub basin']
 Predicted           : drum sander
 Ground Truth        : drum sander
@@ -1445,7 +1445,7 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] cooking food
 Required affordance : be heated
-Reasoning           : A container or surface that can be heated to cook food is needed.
+Reasoning           : A container or surface that can be placed on heat is needed for cooking food.
 KB exemplars    : —
 Candidates          : ['stoveburner', 'dibble', 'apple', 'egg', "plumber's snake"]
 Predicted           : stoveburner
@@ -1455,7 +1455,7 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] reheating soup
 Required affordance : be heated
-Reasoning           : The object must be heatable on a stove or similar to reheat the soup.
+Reasoning           : The object must be heatable on a stove or similar to warm the soup.
 KB exemplars    : —
 Candidates          : ['microwave', 'paper towel roll', 'die', 'bread', 'watch']
 Predicted           : microwave
@@ -1465,7 +1465,7 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] boiling water
 Required affordance : be heated
-Reasoning           : A container that can be placed on a heat source to boil water is needed.
+Reasoning           : A container that can be placed on a heat source is needed to boil water.
 KB exemplars    : —
 Candidates          : ['coffee machine', 'drawknife', 'water bottle', 'head gasket', 'toiletpaperhanger']
 Predicted           : water bottle
@@ -1476,7 +1476,7 @@ Correct             : False  [mode: neuro_symbolic]
 [Task] melting envelope wax
 Required affordance : heat
 Reasoning           : A heat source that provides heat to melt the wax is needed.
-KB exemplars    : ['candle', 'coffee', 'coffee machine', 'desktop', 'kettle', 'microwave', 'oven', 'ram']
+KB exemplars    : ['furnace', 'towel rack', 'hot water heater', 'milk', 'electricity', 'microwave oven', 'antique sewing machine', 'blanket']
 Candidates          : ['coffee machine', 'shampoo', 'spade', 'lancet', 'sidetable']
 Predicted           : coffee machine
 Ground Truth        : coffee machine
@@ -1486,7 +1486,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] melting butter
 Required affordance : heat
 Reasoning           : A heat source that provides heat to melt the butter is needed.
-KB exemplars    : ['candle', 'coffee', 'coffee machine', 'desktop', 'kettle', 'microwave', 'oven', 'ram']
+KB exemplars    : ['furnace', 'towel rack', 'hot water heater', 'milk', 'electricity', 'microwave oven', 'antique sewing machine', 'blanket']
 Candidates          : ['toaster', 'stemmer', 'palette knife', 'hook wrench', 'shear']
 Predicted           : toaster
 Ground Truth        : toaster
@@ -1496,27 +1496,27 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] carrying items
 Required affordance : carry
 Reasoning           : An object must be able to hold and transport items from one place to another.
-KB exemplars    : ['bath tub basin', 'box', 'cabinet', 'cereal box', 'coffee machine', 'crank handle', 'food bag', 'food box']
+KB exemplars    : ['tool box', 'light', 'serving trolley', 'tote bag', 'plumbing', 'bike', 'gay people', 'parkway']
 Candidates          : ['clipper', "carpenter's hammer", 'food box', 'icepick', 'ottoman']
-Predicted           : food box
+Predicted           : clipper
 Ground Truth        : clipper
-Correct             : False  [mode: neuro_symbolic]
+Correct             : True  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] using tools
 Required affordance : operate
-Reasoning           : Tools are typically used to perform specific physical actions like cutting, drilling, or hammering.
-KB exemplars    : —
+Reasoning           : Tools are typically used to perform specific physical actions like cutting, drilling, or hammering, requiring a capability to operate or manipulate them.
+KB exemplars    : ['mouse', 'one person chair', 'keys', 'white keys', 'black keys']
 Candidates          : ['seal', 'breast drill', 'core drill', 'box wrench', 'penknife']
-Predicted           : breast drill
+Predicted           : seal
 Ground Truth        : seal
-Correct             : False  [mode: neuro_symbolic]
+Correct             : True  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] stabilising objects
 Required affordance : support
-Reasoning           : An object that can support or hold items in place to prevent movement is needed.
-KB exemplars    : ['book', 'crank handle', 'hob', 'house plant', 'shelf', 'soap bar', 'stool']
+Reasoning           : A tool that can support or hold objects in place to prevent movement is needed.
+KB exemplars    : ['trunk', 'back issues of national geographic', 'cook book', 'wooden rod', 'kitchen table', 'shelf', 'trunk of old clothings', 'handle']
 Candidates          : ['rib joint plier', 'abrading stone', 'food cup', 'hatchel', 'bolo']
 Predicted           : rib joint plier
 Ground Truth        : rib joint plier
@@ -1526,7 +1526,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] increasing brightness of the room
 Required affordance : illuminate
 Reasoning           : A tool that can illuminate the room is needed.
-KB exemplars    : ['barong', 'bathtub', 'bowie knife', 'butcher knife', 'candle', 'carving knife', 'case knife', 'clasp knife']
+KB exemplars    : ['light', 'mirror', 'closet floor', 'cloth', 'electricity', 'gay people', 'candle', 'knife']
 Candidates          : ['lightbulb', 'hoe', 'plexor.n.wn.medicine', 'palette knife', 'coffee']
 Predicted           : lightbulb
 Ground Truth        : lightbulb
@@ -1535,8 +1535,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] lighting up a room
 Required affordance : illuminate
-Reasoning           : A tool that can illuminate the space is needed.
-KB exemplars    : ['barong', 'bathtub', 'bowie knife', 'butcher knife', 'candle', 'carving knife', 'case knife', 'clasp knife']
+Reasoning           : An object that emits light is needed to illuminate the room.
+KB exemplars    : ['light', 'mirror', 'closet floor', 'cloth', 'electricity', 'gay people', 'candle', 'knife']
 Candidates          : ['lightbulb', 'winebottle', 'posthole digger', 'ripping chisel', 'edger']
 Predicted           : lightbulb
 Ground Truth        : lightbulb
@@ -1546,7 +1546,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] decreasing darkness
 Required affordance : illuminate
 Reasoning           : A tool that can illuminate or provide light is needed to decrease darkness.
-KB exemplars    : ['barong', 'bathtub', 'bowie knife', 'butcher knife', 'candle', 'carving knife', 'case knife', 'clasp knife']
+KB exemplars    : ['light', 'mirror', 'closet floor', 'cloth', 'electricity', 'gay people', 'candle', 'knife']
 Candidates          : ['curtain', 'portable saw', 'float', 'bed', 'cap opener']
 Predicted           : curtain
 Ground Truth        : curtain
@@ -1555,8 +1555,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] hanging poster
 Required affordance : bore
-Reasoning           : A tool that can bore a hole into the wall for a screw or nail is needed.
-KB exemplars    : ['brace and bit', 'breast drill', 'core drill', "dentist's drill", 'drill', 'electric drill', 'hand drill', 'pneumatic drill']
+Reasoning           : A tool that can bore a hole into the wall is needed to insert a hook or nail.
+KB exemplars    : ['drill']
 Candidates          : ['side table', 'slicer', 'curtain', 'lawn mower', 'pipe wrench']
 Predicted           : side table
 Ground Truth        : side table
@@ -1565,18 +1565,18 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] hanging painting
 Required affordance : bore
-Reasoning           : A tool to bore a hole into the wall for a hook or nail is needed.
-KB exemplars    : ['brace and bit', 'breast drill', 'core drill', "dentist's drill", 'drill', 'electric drill', 'hand drill', 'pneumatic drill']
+Reasoning           : A tool that can bore a hole into the wall for a hook or nail is needed.
+KB exemplars    : ['drill']
 Candidates          : ['counter top', 'tennis racket', 'bill', 'lightswitch', "dentist's drill"]
-Predicted           : counter top
+Predicted           : dentist's drill
 Ground Truth        : counter top
-Correct             : True  [mode: neuro_symbolic]
+Correct             : False  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] cleaning shower head
 Required affordance : clean
 Reasoning           : A tool that can remove mineral deposits or dirt from the shower head is needed.
-KB exemplars    : ['bathtub', 'bill', 'camera', 'cloth', 'coffee machine', 'coffee mug', 'die', 'dish sponge']
+KB exemplars    : ['tub', 'vacuum', 'broom', 'shampoo and conditioner', 'washing machine', 'laundry room', 'brush', 'cat']
 Candidates          : ['ottoman', 'snip', 'punch', 'butterknife', 'food can']
 Predicted           : ottoman
 Ground Truth        : ottoman
@@ -1586,7 +1586,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] getting a book from a high shelf
 Required affordance : lift
 Reasoning           : A tool that can lift or reach up to retrieve an object from a high shelf is needed.
-KB exemplars    : ['bumper jack', 'coffee machine', 'crank handle', 'fork', 'hayfork', 'jack', 'ram', 'slicer']
+KB exemplars    : ['cat', 'antique sewing machine', 'copy machine', 'eiffel tower', 'person', 'handle', 'two story building', 'fork']
 Candidates          : ['arm chair', 'chisel', 'egg', 'soapbar', 'reamer']
 Predicted           : arm chair
 Ground Truth        : arm chair
@@ -1594,9 +1594,9 @@ Correct             : True  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] placing a very delicate artifact on a shelf
-Required affordance : support
-Reasoning           : A tool that can gently support and hold the artifact without causing damage is needed.
-KB exemplars    : ['book', 'crank handle', 'hob', 'house plant', 'shelf', 'soap bar', 'stool']
+Required affordance : grasp
+Reasoning           : A tool that can gently grasp and support the artifact without causing damage is needed.
+KB exemplars    : ['antique sewing machine', 'copy machine', 'old sewing machine', 'machine']
 Candidates          : ['stool', 'bullnose', 'edger', 'compass saw', 'slip joint plier']
 Predicted           : stool
 Ground Truth        : stool
@@ -1604,9 +1604,9 @@ Correct             : True  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] fixing light bulb outside your house
-Required affordance : screw
-Reasoning           : A tool that can grip and screw/unscrew the light bulb is needed.
-KB exemplars    : ['bolt cutter', 'coffee machine', 'flat tip screwdriver', 'phillips screwdriver', 'screwdriver', 'slicer', 'spiral ratchet screwdriver', 'stamping machine']
+Required affordance : grasp
+Reasoning           : A tool that can grip and rotate the light bulb is needed.
+KB exemplars    : ['antique sewing machine', 'copy machine', 'old sewing machine', 'machine']
 Candidates          : ['sofa', 'hob', 'spiral ratchet screwdriver', 'pencil', 'pitsaw']
 Predicted           : spiral ratchet screwdriver
 Ground Truth        : sofa
@@ -1616,7 +1616,7 @@ Correct             : False  [mode: neuro_symbolic]
 [Task] putting objects on high shelf
 Required affordance : lift
 Reasoning           : A tool that can lift and elevate objects to a high shelf is needed.
-KB exemplars    : ['bumper jack', 'coffee machine', 'crank handle', 'fork', 'hayfork', 'jack', 'ram', 'slicer']
+KB exemplars    : ['cat', 'antique sewing machine', 'copy machine', 'eiffel tower', 'person', 'handle', 'two story building', 'fork']
 Candidates          : ['desk', 'kitchen knife', 'chisel', 'circular saw', 'linoleum knife']
 Predicted           : desk
 Ground Truth        : desk
@@ -1626,7 +1626,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] mounting fixtures
 Required affordance : bore
 Reasoning           : A tool that can bore a hole into the wall for screws is needed.
-KB exemplars    : ['brace and bit', 'breast drill', 'core drill', "dentist's drill", 'drill', 'electric drill', 'hand drill', 'pneumatic drill']
+KB exemplars    : ['drill']
 Candidates          : ['pruner', 'book', 'moldboard plow', 'basket ball', 'parang']
 Predicted           : pruner
 Ground Truth        : pruner
@@ -1636,7 +1636,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] setting up appliances
 Required affordance : plug
 Reasoning           : A tool that can plug into an electrical outlet to power the appliance is needed.
-KB exemplars    : —
+KB exemplars    : ['electric socket']
 Candidates          : ['two handed saw', 'broad hatchet', 'rammer', 'floorlamp', 'cap']
 Predicted           : floorlamp
 Ground Truth        : two handed saw
@@ -1645,18 +1645,18 @@ Correct             : False  [mode: neuro_symbolic]
 
 [Task] assembling furniture
 Required affordance : bore
-Reasoning           : A tool to create pilot holes in the material for screws is needed.
-KB exemplars    : ['brace and bit', 'breast drill', 'core drill', "dentist's drill", 'drill', 'electric drill', 'hand drill', 'pneumatic drill']
+Reasoning           : Pilot holes must be bored into materials before inserting screws when assembling furniture.
+KB exemplars    : ['drill']
 Candidates          : ['coping saw', 'tissuebox', 'gouge', 'electric hammer', 'wine bottle']
-Predicted           : electric hammer
+Predicted           : coping saw
 Ground Truth        : coping saw
-Correct             : False  [mode: neuro_symbolic]
+Correct             : True  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] moving furniture
 Required affordance : lift
 Reasoning           : A tool that can lift and transport heavy objects is needed.
-KB exemplars    : ['bumper jack', 'coffee machine', 'crank handle', 'fork', 'hayfork', 'jack', 'ram', 'slicer']
+KB exemplars    : ['cat', 'antique sewing machine', 'copy machine', 'eiffel tower', 'person', 'handle', 'two story building', 'fork']
 Candidates          : ['pitchfork', 'cd', 'pipe wrench', 'laundry hamper', 'shelving unit']
 Predicted           : pitchfork
 Ground Truth        : pitchfork
@@ -1665,8 +1665,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] carrying objects
 Required affordance : carry
-Reasoning           : An object that can hold and transport items is needed.
-KB exemplars    : ['bath tub basin', 'box', 'cabinet', 'cereal box', 'coffee machine', 'crank handle', 'food bag', 'food box']
+Reasoning           : A tool or container that can hold and transport items is needed.
+KB exemplars    : ['tool box', 'light', 'serving trolley', 'tote bag', 'plumbing', 'bike', 'gay people', 'parkway']
 Candidates          : ['hayfork', 'rammer', 'designedspade', 'kettle', 'camera']
 Predicted           : hayfork
 Ground Truth        : hayfork
@@ -1676,7 +1676,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] accessing high shelves
 Required affordance : lift
 Reasoning           : A tool that can lift the user or an object to reach high shelves is needed.
-KB exemplars    : ['bumper jack', 'coffee machine', 'crank handle', 'fork', 'hayfork', 'jack', 'ram', 'slicer']
+KB exemplars    : ['cat', 'antique sewing machine', 'copy machine', 'eiffel tower', 'person', 'handle', 'two story building', 'fork']
 Candidates          : ['hayfork', 'scissors', 'axe', 'moldboard plow', 'towelholder']
 Predicted           : hayfork
 Ground Truth        : hayfork
@@ -1686,7 +1686,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] labeling items
 Required affordance : write
 Reasoning           : A tool that can mark or write on items is needed.
-KB exemplars    : ['coffee machine', 'desk', 'desktop', 'hand mower', 'marker', 'notebook', 'paper cutter', 'paper towel roll']
+KB exemplars    : ['stairs down', 'poet', "children's book section", 'gay people', 'poster', 'antique sewing machine', 'computer', 'copy machine']
 Candidates          : ['o ring', 'lightbulb', 'folding saw', 'spray bottle', 'shaping tool']
 Predicted           : o ring
 Ground Truth        : o ring
@@ -1696,7 +1696,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] measuring distances
 Required affordance : mark
 Reasoning           : A tool that can mark or indicate measurements is needed.
-KB exemplars    : ['apple', 'marker', 'pen', 'pencil']
+KB exemplars    : ['small dog', 'lazy dog', 'dog', 'hound dog', 'ferret', 'telephone book', 'pen', 'apple']
 Candidates          : ['signet', 'hayfork', 'stemmer', 'sofa', 'shelvingunit']
 Predicted           : signet
 Ground Truth        : signet
@@ -1706,7 +1706,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] tracking events
 Required affordance : time
 Reasoning           : A tool that can record or mark time is needed.
-KB exemplars    : ['alarm clock', 'ram', 'watch']
+KB exemplars    : ['person', 'table cloth clock', 'runner bean chutney', 'clock', 'metronome']
 Candidates          : ['bradawl', 'twist bit', 'pipe wrench', 'cuttingtool', 'ball peen hammer']
 Predicted           : bradawl
 Ground Truth        : bradawl
@@ -1716,7 +1716,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] melting butter
 Required affordance : heat
 Reasoning           : A heat source that provides heat to melt the butter is needed.
-KB exemplars    : ['candle', 'coffee', 'coffee machine', 'desktop', 'kettle', 'microwave', 'oven', 'ram']
+KB exemplars    : ['furnace', 'towel rack', 'hot water heater', 'milk', 'electricity', 'microwave oven', 'antique sewing machine', 'blanket']
 Candidates          : ['soldering iron', 'catling', 'cold chisel', 'bull tongue', 'circular saw']
 Predicted           : soldering iron
 Ground Truth        : soldering iron
@@ -1726,7 +1726,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] removing adhesives
 Required affordance : separate
 Reasoning           : A tool that can separate adhesive from surfaces is needed.
-KB exemplars    : ['coffee machine', 'ram', 'slicer', 'soap bar', 'stamping machine', 'toaster']
+KB exemplars    : ['antique sewing machine', 'copy machine', 'cook', 'divider', 'person', 'cardboard box', 'door', 'old sewing machine']
 Candidates          : ['soldering iron', 'dirk', 'bolo', 'broadax', 'maul']
 Predicted           : soldering iron
 Ground Truth        : soldering iron
@@ -1736,7 +1736,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] defrosting frozen food
 Required affordance : heat
 Reasoning           : A tool that can provide heat to melt ice crystals in frozen food is needed.
-KB exemplars    : ['candle', 'coffee', 'coffee machine', 'desktop', 'kettle', 'microwave', 'oven', 'ram']
+KB exemplars    : ['furnace', 'towel rack', 'hot water heater', 'milk', 'electricity', 'microwave oven', 'antique sewing machine', 'blanket']
 Candidates          : ['soldering iron', 'dresser', 'abrader', 'graver', 'handstamp']
 Predicted           : soldering iron
 Ground Truth        : soldering iron
@@ -1746,7 +1746,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] mixing ingredients
 Required affordance : mix
 Reasoning           : A tool that can combine or stir ingredients is needed.
-KB exemplars    : ['bowl', 'camera', 'coffee machine', 'die', 'flat tip screwdriver', 'hoe', 'instant noodle', 'ladle']
+KB exemplars    : ['cereal bowl', 'rolling pin', 'teaspoon', 'antique sewing machine', 'copy machine', 'ramen noodles', 'canned food', 'food and utensils to eat']
 Candidates          : ['butter knife', 'binder', 'awl', 'dresser', 'guitar pick']
 Predicted           : butter knife
 Ground Truth        : butter knife
@@ -1756,7 +1756,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] preparing drinks
 Required affordance : mix
 Reasoning           : A tool that can blend or stir drink ingredients is needed.
-KB exemplars    : ['bowl', 'camera', 'coffee machine', 'die', 'flat tip screwdriver', 'hoe', 'instant noodle', 'ladle']
+KB exemplars    : ['cereal bowl', 'rolling pin', 'teaspoon', 'antique sewing machine', 'copy machine', 'ramen noodles', 'canned food', 'food and utensils to eat']
 Candidates          : ['spoon', 'garden trowel', 'fridge', 'scriber', 'power saw']
 Predicted           : spoon
 Ground Truth        : spoon
@@ -1766,17 +1766,17 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] combining cleaning solutions
 Required affordance : mix
 Reasoning           : A tool that can mix liquids together is needed.
-KB exemplars    : ['bowl', 'camera', 'coffee machine', 'die', 'flat tip screwdriver', 'hoe', 'instant noodle', 'ladle']
+KB exemplars    : ['cereal bowl', 'rolling pin', 'teaspoon', 'antique sewing machine', 'copy machine', 'ramen noodles', 'canned food', 'food and utensils to eat']
 Candidates          : ['pestle', 'hoe', 'soapbottle', 'armchair', 'water bottle']
-Predicted           : pestle
+Predicted           : soapbottle
 Ground Truth        : pestle
-Correct             : True  [mode: neuro_symbolic]
+Correct             : False  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] using appliances
-Required affordance : operate
-Reasoning           : A tool capable of operating appliances via controls is needed.
-KB exemplars    : —
+Required affordance : press
+Reasoning           : A tool capable of operating appliances via buttons or controls is needed.
+KB exemplars    : ['cook book', 'antique sewing machine', 'copy machine', 'many books', 'overdue books', 'reference books', 'iron', 'old books']
 Candidates          : ['floorlamp', 'shelving unit', 'comb', 'ram', 'head gasket']
 Predicted           : floorlamp
 Ground Truth        : floorlamp
@@ -1785,28 +1785,28 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] controlling devices
 Required affordance : control
-Reasoning           : A tool that can operate or manage devices via buttons or controls is needed.
-KB exemplars    : ['beading plane', 'bill', 'block plane', 'camera', 'chamfer plane', 'circular plane', 'combination plane', 'dado plane']
+Reasoning           : A tool that can operate or manipulate controls on devices is needed.
+KB exemplars    : ['tv', 'light', 'mouse', 'shower switch', 'gay people', 'computer', 'birth control pill', 'person']
 Candidates          : ['handsaw', 'tap wrench', 'jointer', 'paper cutter', 'stiletto']
-Predicted           : tap wrench
+Predicted           : handsaw
 Ground Truth        : handsaw
-Correct             : False  [mode: neuro_symbolic]
+Correct             : True  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] handling tools
 Required affordance : grasp
-Reasoning           : A tool that can grip and manipulate other tools is required.
-KB exemplars    : ['coffee machine', 'slicer', 'stamping machine', 'toaster']
+Reasoning           : A tool that can grip or hold other tools is required.
+KB exemplars    : ['antique sewing machine', 'copy machine', 'old sewing machine', 'machine']
 Candidates          : ['compass saw', 'ram', 'riding mower', 'circular plane', 'rake']
-Predicted           : ram
+Predicted           : compass saw
 Ground Truth        : compass saw
-Correct             : False  [mode: neuro_symbolic]
+Correct             : True  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] removing skin from fruits and vegetables
-Required affordance : skin
+Required affordance : peel
 Reasoning           : A tool that can separate the skin from the flesh of produce is needed.
-KB exemplars    : ['potato']
+KB exemplars    : ['knives', 'banana', 'banana chutney', 'banana peels']
 Candidates          : ['parer', 'seal', 'plate', 'handstamp', 'towelholder']
 Predicted           : parer
 Ground Truth        : parer
@@ -1816,7 +1816,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] creating compost
 Required affordance : contain
 Reasoning           : A container or tool that can hold and mix organic waste to facilitate decomposition is needed.
-KB exemplars    : ['bath tub basin', 'bowl', 'box', 'cabinet', 'cereal box', 'food box', 'ladle', 'metal box']
+KB exemplars    : ['tool box', 'container can', 'bottles of liqour', 'cereal bowl', 'water pump and tank', 'bookshelf', 'garment bag', 'breaker box']
 Candidates          : ['dirk', 'drill', 'folding saw', 'c d', 'base ball bat']
 Predicted           : dirk
 Ground Truth        : dirk
@@ -1825,8 +1825,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] making garnishes
 Required affordance : cut
-Reasoning           : A tool that can cut or shape garnishes into small, decorative pieces is needed.
-KB exemplars    : ['awl', 'axe', 'barong', 'bender', 'bill', 'blade', 'bowie knife', 'bowl']
+Reasoning           : A tool that can cut or shape small pieces of food is needed.
+KB exemplars    : ['stairs down', 'table', 'john', 'ping pong table', 'chef', 'cloth', 'rolling pin', 'gay people']
 Candidates          : ['linoleum knife', 'screw wrench', 'food bag', 'trowel', 'dog bed']
 Predicted           : linoleum knife
 Ground Truth        : linoleum knife
@@ -1834,19 +1834,19 @@ Correct             : True  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] harvesting produce
-Required affordance : cut
-Reasoning           : A tool that can cut or separate produce from plants is needed.
-KB exemplars    : ['awl', 'axe', 'barong', 'bender', 'bill', 'blade', 'bowie knife', 'bowl']
+Required affordance : separate
+Reasoning           : A tool that can separate produce from plants is needed.
+KB exemplars    : ['antique sewing machine', 'copy machine', 'cook', 'divider', 'person', 'cardboard box', 'door', 'old sewing machine']
 Candidates          : ['garden rake', 'gangsaw', 'moldboard plow', 'pot', 'wrench']
-Predicted           : garden rake
+Predicted           : moldboard plow
 Ground Truth        : garden rake
-Correct             : True  [mode: neuro_symbolic]
+Correct             : False  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] sorting items
-Required affordance : separate
-Reasoning           : A tool that can separate or organize items is needed.
-KB exemplars    : ['coffee machine', 'ram', 'slicer', 'soap bar', 'stamping machine', 'toaster']
+Required affordance : grasp
+Reasoning           : A tool that can grasp or pick up individual items is needed.
+KB exemplars    : ['antique sewing machine', 'copy machine', 'old sewing machine', 'machine']
 Candidates          : ['bottle', 'coffee', 'notebook', 'cold chisel', 'watering can']
 Predicted           : bottle
 Ground Truth        : bottle
@@ -1855,18 +1855,18 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] picking up items
 Required affordance : grasp
-Reasoning           : A tool that can grasp or grip small items is needed.
-KB exemplars    : ['coffee machine', 'slicer', 'stamping machine', 'toaster']
+Reasoning           : A tool that can grasp or pick up small items is needed.
+KB exemplars    : ['antique sewing machine', 'copy machine', 'old sewing machine', 'machine']
 Candidates          : ['baseballbat', 'clipper', 'seal', 'saw', 'desklamp']
-Predicted           : clipper
+Predicted           : baseballbat
 Ground Truth        : baseballbat
-Correct             : False  [mode: neuro_symbolic]
+Correct             : True  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] creating a drainage
 Required affordance : pierce
 Reasoning           : A tool that can pierce or puncture material to create drainage holes is needed.
-KB exemplars    : ['barong', 'bowie knife', 'butcher knife', 'carving knife', 'case knife', 'clasp knife', 'dagger', 'fish knife']
+KB exemplars    : ['knife', 'kitchen knife', 'toothpick']
 Candidates          : ['punch', 'hand drill', 'butcher knife', 'broad hatchet', 'hook wrench']
 Predicted           : punch
 Ground Truth        : punch
@@ -1875,8 +1875,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] opening packages
 Required affordance : break
-Reasoning           : A tool that can break or tear open packaging material is needed.
-KB exemplars    : ['abrading stone', 'air hammer', 'ball', 'ball peen hammer', 'basket ball', 'basketball', 'beading plane', 'block plane']
+Reasoning           : A tool that can break or tear open sealed packages is needed.
+KB exemplars    : ['light', 'window', 'gay people', 'antique sewing machine', 'copy machine', 'umbrella', 'ball', 'human']
 Candidates          : ['bradawl', 'stillson wrench', 'yataghan', 'spud', 'broad hatchet']
 Predicted           : broad hatchet
 Ground Truth        : bradawl
@@ -1886,7 +1886,7 @@ Correct             : False  [mode: neuro_symbolic]
 [Task] making a small hole
 Required affordance : bore
 Reasoning           : A tool that can create a small hole in material is needed.
-KB exemplars    : ['brace and bit', 'breast drill', 'core drill', "dentist's drill", 'drill', 'electric drill', 'hand drill', 'pneumatic drill']
+KB exemplars    : ['drill']
 Candidates          : ['bradawl', 'handtowel', 'rounder', 'bulldog wrench', 'keychain']
 Predicted           : bradawl
 Ground Truth        : bradawl
@@ -1895,8 +1895,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] preparing food
 Required affordance : cut
-Reasoning           : A tool that can cut or slice food is required for preparing food.
-KB exemplars    : ['awl', 'axe', 'barong', 'bender', 'bill', 'blade', 'bowie knife', 'bowl']
+Reasoning           : A tool that can cut or slice food is required for food preparation.
+KB exemplars    : ['stairs down', 'table', 'john', 'ping pong table', 'chef', 'cloth', 'rolling pin', 'gay people']
 Candidates          : ['punch plier', 'desk', 'tray', 'battle ax', 'cd']
 Predicted           : punch plier
 Ground Truth        : punch plier
@@ -1906,7 +1906,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] clearing snow
 Required affordance : lift
 Reasoning           : A tool that can lift and move snow is needed.
-KB exemplars    : ['bumper jack', 'coffee machine', 'crank handle', 'fork', 'hayfork', 'jack', 'ram', 'slicer']
+KB exemplars    : ['cat', 'antique sewing machine', 'copy machine', 'eiffel tower', 'person', 'handle', 'two story building', 'fork']
 Candidates          : ['lister', 'dado plane', 'beading plane', 'table knife', 'gangsaw']
 Predicted           : lister
 Ground Truth        : lister
@@ -1916,7 +1916,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] tilling soil
 Required affordance : dig
 Reasoning           : A tool that can dig into and break up soil is needed.
-KB exemplars    : ['coal shovel', 'coffee machine', 'gutter', 'hand shovel', 'shovel', 'slicer', 'stamping machine', 'stemmer']
+KB exemplars    : ['antique sewing machine', 'copy machine', 'small dog', 'lazy dog', 'dog', 'old sewing machine', 'hound dog', 'worker']
 Candidates          : ['bull tongue', 'folding saw', 'openside plane', 'drill', 'dining table']
 Predicted           : bull tongue
 Ground Truth        : bull tongue
@@ -1926,7 +1926,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] breaking up compacted soil
 Required affordance : break
 Reasoning           : A tool that can break apart hard, compacted soil is needed.
-KB exemplars    : ['abrading stone', 'air hammer', 'ball', 'ball peen hammer', 'basket ball', 'basketball', 'beading plane', 'block plane']
+KB exemplars    : ['light', 'window', 'gay people', 'antique sewing machine', 'copy machine', 'umbrella', 'ball', 'human']
 Candidates          : ['bull tongue', 'scauper', 'graver', 'pincer', 'can opener']
 Predicted           : bull tongue
 Ground Truth        : bull tongue
@@ -1935,8 +1935,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] connecting appliances
 Required affordance : plug
-Reasoning           : A tool that can plug into an outlet to connect appliances is needed.
-KB exemplars    : —
+Reasoning           : A tool that can plug into an outlet to supply power is needed.
+KB exemplars    : ['electric socket']
 Candidates          : ['pneumatic drill', 'spreader', 'stillson wrench', 'floorlamp', 'stemmer']
 Predicted           : floorlamp
 Ground Truth        : pneumatic drill
@@ -1946,7 +1946,7 @@ Correct             : False  [mode: neuro_symbolic]
 [Task] charging devices
 Required affordance : plug
 Reasoning           : A tool that can plug into an electrical outlet to supply power is needed.
-KB exemplars    : —
+KB exemplars    : ['electric socket']
 Candidates          : ['pneumatic drill', 'keychain', 'box', 'alarm clock', 'dagger']
 Predicted           : alarm clock
 Ground Truth        : pneumatic drill
@@ -1955,8 +1955,8 @@ Correct             : False  [mode: neuro_symbolic]
 
 [Task] plugging devices in
 Required affordance : plug
-Reasoning           : A tool that can connect to an electrical outlet is needed.
-KB exemplars    : —
+Reasoning           : A tool that can insert a plug into an electrical outlet is needed.
+KB exemplars    : ['electric socket']
 Candidates          : ['bandsaw', 'portable saw', 'corkscrew', 'beading plane', 'light switch']
 Predicted           : light switch
 Ground Truth        : bandsaw
@@ -1964,39 +1964,39 @@ Correct             : False  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] checking the readiness of food
-Required affordance : be heated
-Reasoning           : A tool that can sense or indicate temperature changes is needed to check food readiness.
-KB exemplars    : —
+Required affordance : heat
+Reasoning           : A tool that can sense or indicate temperature or doneness is needed.
+KB exemplars    : ['furnace', 'towel rack', 'hot water heater', 'milk', 'electricity', 'microwave oven', 'antique sewing machine', 'blanket']
 Candidates          : ['screwdriver', 'cigar cutter', 'pipe cutter', 'dogbed', 'soapbottle']
-Predicted           : soapbottle
+Predicted           : screwdriver
 Ground Truth        : screwdriver
-Correct             : False  [mode: neuro_symbolic]
+Correct             : True  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] creating a drainage
 Required affordance : pierce
 Reasoning           : A tool that can pierce or puncture material to create drainage holes is needed.
-KB exemplars    : ['barong', 'bowie knife', 'butcher knife', 'carving knife', 'case knife', 'clasp knife', 'dagger', 'fish knife']
+KB exemplars    : ['knife', 'kitchen knife', 'toothpick']
 Candidates          : ['screwdriver', 'air hammer', 'desktop', 'toilet', 'apple']
-Predicted           : air hammer
+Predicted           : screwdriver
 Ground Truth        : screwdriver
-Correct             : False  [mode: neuro_symbolic]
+Correct             : True  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] pinning items on a wall
 Required affordance : pierce
 Reasoning           : A tool that can pierce or create a hole in the wall to insert a pin is needed.
-KB exemplars    : ['barong', 'bowie knife', 'butcher knife', 'carving knife', 'case knife', 'clasp knife', 'dagger', 'fish knife']
+KB exemplars    : ['knife', 'kitchen knife', 'toothpick']
 Candidates          : ['phillips screwdriver', 'pitsaw', 'pitsaw', 'box wrench', 'chain saw']
-Predicted           : box wrench
+Predicted           : phillips screwdriver
 Ground Truth        : phillips screwdriver
-Correct             : False  [mode: neuro_symbolic]
+Correct             : True  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] polishing metal objects
 Required affordance : smoothen
 Reasoning           : A tool that can smoothen and shine metal surfaces is needed.
-KB exemplars    : ['air hammer', 'ball peen hammer', 'blunt file', "bricklayer's hammer", "carpenter's hammer", 'coffee machine', 'electric hammer', 'file']
+KB exemplars    : ['antique sewing machine', 'copy machine', 'skin care article', 'hammer', 'pillowcase', 'old sewing machine', 'spike file', 'file']
 Candidates          : ['sandblaster', 'monkey wrench', 'pitcher', 'bolt cutter', 'tap wrench']
 Predicted           : sandblaster
 Ground Truth        : sandblaster
@@ -2006,7 +2006,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] cleaning surfaces
 Required affordance : clean
 Reasoning           : A tool that can remove dirt or dust from surfaces is needed.
-KB exemplars    : ['bathtub', 'bill', 'camera', 'cloth', 'coffee machine', 'coffee mug', 'die', 'dish sponge']
+KB exemplars    : ['tub', 'vacuum', 'broom', 'shampoo and conditioner', 'washing machine', 'laundry room', 'brush', 'cat']
 Candidates          : ['abrading stone', 'power saw', 'shear', 'yataghan', 'glue stick']
 Predicted           : abrading stone
 Ground Truth        : abrading stone
@@ -2015,8 +2015,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] enhancing glass surfaces
 Required affordance : smoothen
-Reasoning           : A tool that can polish or smoothen glass to enhance its appearance is needed.
-KB exemplars    : ['air hammer', 'ball peen hammer', 'blunt file', "bricklayer's hammer", "carpenter's hammer", 'coffee machine', 'electric hammer', 'file']
+Reasoning           : A tool that can polish or smoothen glass surfaces is needed.
+KB exemplars    : ['antique sewing machine', 'copy machine', 'skin care article', 'hammer', 'pillowcase', 'old sewing machine', 'spike file', 'file']
 Candidates          : ['flat file', 'stamp', 'dresser', 'mug', 'folding saw']
 Predicted           : flat file
 Ground Truth        : flat file
@@ -2026,7 +2026,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] maintaining floors
 Required affordance : clean
 Reasoning           : A tool that can clean or remove dirt from floors is needed.
-KB exemplars    : ['bathtub', 'bill', 'camera', 'cloth', 'coffee machine', 'coffee mug', 'die', 'dish sponge']
+KB exemplars    : ['tub', 'vacuum', 'broom', 'shampoo and conditioner', 'washing machine', 'laundry room', 'brush', 'cat']
 Candidates          : ['rasp', 'upset', 'rake', 'jackscrew', 'flashlight']
 Predicted           : rake
 Ground Truth        : rasp
@@ -2035,8 +2035,8 @@ Correct             : False  [mode: neuro_symbolic]
 
 [Task] pouring liquids
 Required affordance : pour
-Reasoning           : A container with a spout or opening to release liquid is needed.
-KB exemplars    : ['coffee machine', 'coffee mug', 'mug', 'slicer', 'stamping machine', 'toaster']
+Reasoning           : A container with an opening that allows liquid to flow out is needed.
+KB exemplars    : ['concrete', 'antique sewing machine', 'copy machine', 'spout', 'oil stain on concrete', 'old sewing machine', 'water spout', 'machine']
 Candidates          : ['pitcher', 'float', 'buffer', 'spiral ratchet screwdriver', 'flat tip screwdriver']
 Predicted           : pitcher
 Ground Truth        : pitcher
@@ -2046,7 +2046,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] preparing drinks
 Required affordance : mix
 Reasoning           : A tool that can blend or stir drink ingredients is needed.
-KB exemplars    : ['bowl', 'camera', 'coffee machine', 'die', 'flat tip screwdriver', 'hoe', 'instant noodle', 'ladle']
+KB exemplars    : ['cereal bowl', 'rolling pin', 'teaspoon', 'antique sewing machine', 'copy machine', 'ramen noodles', 'canned food', 'food and utensils to eat']
 Candidates          : ['pitcher', 'phillips screwdriver', 'punch plier', 'watering can', 'vacuumcleaner']
 Predicted           : pitcher
 Ground Truth        : pitcher
@@ -2056,7 +2056,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] preparing cleaning solutions
 Required affordance : contain
 Reasoning           : A container that can hold and mix liquids is needed.
-KB exemplars    : ['bath tub basin', 'bowl', 'box', 'cabinet', 'cereal box', 'food box', 'ladle', 'metal box']
+KB exemplars    : ['tool box', 'container can', 'bottles of liqour', 'cereal bowl', 'water pump and tank', 'bookshelf', 'garment bag', 'breaker box']
 Candidates          : ['pitcher', 'poniard', 'poleax', 'jack', 'fore plane']
 Predicted           : pitcher
 Ground Truth        : pitcher
@@ -2066,7 +2066,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] using appliances with a button
 Required affordance : press
 Reasoning           : A tool capable of pressing buttons to operate the appliance is needed.
-KB exemplars    : ['air hammer', 'ball peen hammer', 'book', "bricklayer's hammer", "carpenter's hammer", 'coffee machine', 'electric hammer', 'hammer']
+KB exemplars    : ['cook book', 'antique sewing machine', 'copy machine', 'many books', 'overdue books', 'reference books', 'iron', 'old books']
 Candidates          : ['tamp', 'scrub brush', 'edger', 'knife blade', 'pillow']
 Predicted           : tamp
 Ground Truth        : tamp
@@ -2074,39 +2074,39 @@ Correct             : True  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] ironing clothes
-Required affordance : smoothen
-Reasoning           : An object that can heat and smoothen fabric is needed.
-KB exemplars    : ['air hammer', 'ball peen hammer', 'blunt file', "bricklayer's hammer", "carpenter's hammer", 'coffee machine', 'electric hammer', 'file']
+Required affordance : heat
+Reasoning           : An object that can heat up and smoothen fabric is needed.
+KB exemplars    : ['furnace', 'towel rack', 'hot water heater', 'milk', 'electricity', 'microwave oven', 'antique sewing machine', 'blanket']
 Candidates          : ['stemmer', 'cloth', 'soapbottle', 'bumper jack', 'toiletpaperhanger']
-Predicted           : cloth
+Predicted           : stemmer
 Ground Truth        : stemmer
-Correct             : False  [mode: neuro_symbolic]
+Correct             : True  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] operating gadgets
 Required affordance : press
 Reasoning           : A tool capable of pressing buttons or controlling gadgets is needed.
-KB exemplars    : ['air hammer', 'ball peen hammer', 'book', "bricklayer's hammer", "carpenter's hammer", 'coffee machine', 'electric hammer', 'hammer']
+KB exemplars    : ['cook book', 'antique sewing machine', 'copy machine', 'many books', 'overdue books', 'reference books', 'iron', 'old books']
 Candidates          : ['tamp', 'roomdecor', 'smooth plane', 'cutter', 'breadknife']
-Predicted           : cutter
+Predicted           : tamp
 Ground Truth        : tamp
-Correct             : False  [mode: neuro_symbolic]
-------------------------------------------------------------
-
-[Task] reading a good night story
-Required affordance : read
-Reasoning           : A tool that can display text for reading is needed.
-KB exemplars    : ['book', 'box', 'cabinet', 'candle', 'cereal box', 'food box', 'house plant', 'marker']
-Candidates          : ['desktop', 'wateringcan', 'pruning knife', 'dining table', 'armchair']
-Predicted           : desktop
-Ground Truth        : desktop
 Correct             : True  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
-[Task] reading instructions
+[Task] reading a good night story
 Required affordance : display
+Reasoning           : A tool that can display or hold a book for reading is needed.
+KB exemplars    : ['tv', 'night stand', 'old photographs', 'acoustic guitar', 'john', 'jeans', 'equipment', 'television']
+Candidates          : ['desktop', 'wateringcan', 'pruning knife', 'dining table', 'armchair']
+Predicted           : armchair
+Ground Truth        : desktop
+Correct             : False  [mode: neuro_symbolic]
+------------------------------------------------------------
+
+[Task] reading instructions
+Required affordance : read
 Reasoning           : A tool that can display or present written information is needed.
-KB exemplars    : ['cap', 'coffee table', 'hob', 'painting', 'ram', 'roach clip', 'shelf', 'statue']
+KB exemplars    : ['tool box', 'table', 'light source', 'ping pong table', 'cook book', 'stall', 'text', 'tire']
 Candidates          : ['cell phone', 'electric drill', 'hedge trimmer', 'garden spade', 'rock bit']
 Predicted           : cell phone
 Ground Truth        : cell phone
@@ -2115,8 +2115,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] keeping up to date
 Required affordance : display
-Reasoning           : A device that can display or provide information is needed.
-KB exemplars    : ['cap', 'coffee table', 'hob', 'painting', 'ram', 'roach clip', 'shelf', 'statue']
+Reasoning           : A device that can display or show information is needed.
+KB exemplars    : ['tv', 'night stand', 'old photographs', 'acoustic guitar', 'john', 'jeans', 'equipment', 'television']
 Candidates          : ['laptop', 'latchstring', 'watering can', 'openside plane', 't square']
 Predicted           : laptop
 Ground Truth        : laptop
@@ -2126,7 +2126,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] enjoying leisure time
 Required affordance : comfort
 Reasoning           : A comfortable object is needed to relax or rest during leisure time.
-KB exemplars    : ['arm chair', 'armchair', 'bed', 'calculator', 'chair', 'desk lamp', 'dog bed', 'drum sander']
+KB exemplars    : ['ottoman', 'folding chair', 'storehouse', 'swing', 'hot water heater', 'porch swing', 'bean bag chair', 'cat']
 Candidates          : ['desktop', 'handtowel', 'spokeshave', 'food box', 'fork']
 Predicted           : desktop
 Ground Truth        : desktop
@@ -2135,8 +2135,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] fixing broken appliances
 Required affordance : repair
-Reasoning           : A tool that can repair or restore functionality to broken appliances is needed.
-KB exemplars    : ['air hammer', 'awl', 'ball peen hammer', 'bender', "bricklayer's hammer", "carpenter's hammer", 'chisel', 'clincher']
+Reasoning           : A tool that can repair or restore function to broken appliances is needed.
+KB exemplars    : ['shop', 'antique sewing machine', 'copy machine', 'tool', 'mechanic', 'hammer', 'old sewing machine', 'pencil sharpener']
 Candidates          : ['chamfer plane', 'palette knife', 'tap wrench', 'adz', 'rasp']
 Predicted           : chamfer plane
 Ground Truth        : chamfer plane
@@ -2155,7 +2155,7 @@ Correct             : False  [mode: neuro_symbolic]
 
 [Task] maintaining plumbing
 Required affordance : unclog
-Reasoning           : A tool that can unclog or clear blockages in pipes is needed.
+Reasoning           : A tool that can clear blockages in pipes is needed.
 KB exemplars    : —
 Candidates          : ['buffer', "fireman's ax", 'apple', 'rubber eraser', 'wateringcan']
 Predicted           : wateringcan
@@ -2166,7 +2166,7 @@ Correct             : False  [mode: neuro_symbolic]
 [Task] rolling out dough
 Required affordance : roll
 Reasoning           : A tool that can flatten and shape dough by rolling is needed.
-KB exemplars    : ['ball', 'basket ball', 'basketball', 'blind', 'pillow', 'pincer', 'ram', 'riding mower']
+KB exemplars    : ['soft pillow', 'gay people', 'ball', 'cook', 'person', 'gate', 'classic car', 'small dog']
 Candidates          : ['flashlight', 'beading plane', 'hedge trimmer', 'rasp', 'slouse']
 Predicted           : beading plane
 Ground Truth        : flashlight
@@ -2174,29 +2174,29 @@ Correct             : False  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] painting walls
-Required affordance : contain
-Reasoning           : A tool that can hold and spread paint evenly is needed.
-KB exemplars    : ['bath tub basin', 'bowl', 'box', 'cabinet', 'cereal box', 'food box', 'ladle', 'metal box']
+Required affordance : spread
+Reasoning           : A tool that can spread paint evenly over a surface is needed.
+KB exemplars    : ['anemone', 'brush', 'chef', 'cloth', 'gay people', 'old newspapers', 'antique sewing machine', 'collection of old newspapers']
 Candidates          : ['food jar', 'mirror', 'spray bottle', 'counter top', 'curtain']
-Predicted           : spray bottle
+Predicted           : food jar
 Ground Truth        : food jar
-Correct             : False  [mode: neuro_symbolic]
+Correct             : True  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] cleaning surfaces
 Required affordance : clean
 Reasoning           : A tool that can remove dirt or dust from surfaces is needed.
-KB exemplars    : ['bathtub', 'bill', 'camera', 'cloth', 'coffee machine', 'coffee mug', 'die', 'dish sponge']
+KB exemplars    : ['tub', 'vacuum', 'broom', 'shampoo and conditioner', 'washing machine', 'laundry room', 'brush', 'cat']
 Candidates          : ['table knife', 'pin wrench', 'kitchenknife', 'linoleum knife', 'chain saw']
-Predicted           : table knife
+Predicted           : kitchenknife
 Ground Truth        : table knife
-Correct             : True  [mode: neuro_symbolic]
+Correct             : False  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] polishing furniture
 Required affordance : smoothen
 Reasoning           : A tool that can smoothen and shine wooden surfaces is needed.
-KB exemplars    : ['air hammer', 'ball peen hammer', 'blunt file', "bricklayer's hammer", "carpenter's hammer", 'coffee machine', 'electric hammer', 'file']
+KB exemplars    : ['antique sewing machine', 'copy machine', 'skin care article', 'hammer', 'pillowcase', 'old sewing machine', 'spike file', 'file']
 Candidates          : ['fish knife', 'pruning knife', 'drilling bit', 'room decor', 'pot']
 Predicted           : room decor
 Ground Truth        : fish knife
@@ -2206,7 +2206,7 @@ Correct             : False  [mode: neuro_symbolic]
 [Task] removing stains
 Required affordance : clean
 Reasoning           : A tool that can clean or absorb stains from surfaces is needed.
-KB exemplars    : ['bathtub', 'bill', 'camera', 'cloth', 'coffee machine', 'coffee mug', 'die', 'dish sponge']
+KB exemplars    : ['tub', 'vacuum', 'broom', 'shampoo and conditioner', 'washing machine', 'laundry room', 'brush', 'cat']
 Candidates          : ['tableknife', 'keyhole saw', 'electric drill', 'food can', 'hack']
 Predicted           : tableknife
 Ground Truth        : tableknife
@@ -2216,7 +2216,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] cutting wood
 Required affordance : cut
 Reasoning           : A tool that can slice through wood is required.
-KB exemplars    : ['awl', 'axe', 'barong', 'bender', 'bill', 'blade', 'bowie knife', 'bowl']
+KB exemplars    : ['stairs down', 'table', 'john', 'ping pong table', 'chef', 'cloth', 'rolling pin', 'gay people']
 Candidates          : ['pruning saw', 'scraper', 'creditcard', 'hammer', 'socket wrench']
 Predicted           : pruning saw
 Ground Truth        : pruning saw
@@ -2225,8 +2225,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] trimming branches
 Required affordance : cut
-Reasoning           : A tool that can cut through woody material is required.
-KB exemplars    : ['awl', 'axe', 'barong', 'bender', 'bill', 'blade', 'bowie knife', 'bowl']
+Reasoning           : A tool that can cut through woody material is needed.
+KB exemplars    : ['stairs down', 'table', 'john', 'ping pong table', 'chef', 'cloth', 'rolling pin', 'gay people']
 Candidates          : ['folding saw', 'crosscut saw', 'sink', 'window', 'gutter']
 Predicted           : folding saw
 Ground Truth        : folding saw
@@ -2235,8 +2235,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] sawing flooring planks
 Required affordance : saw
-Reasoning           : A tool that can cut through wood planks is required.
-KB exemplars    : ['barong', 'bowie knife', 'butcher knife', 'carving knife', 'case knife', 'clasp knife', 'coffee machine', 'dagger']
+Reasoning           : A tool that can cut through wood planks is needed.
+KB exemplars    : ['antique sewing machine', 'copy machine', 'knife', 'person', 'old sewing machine', 'machine', 'kitchen knife']
 Candidates          : ['pitsaw', 'dry battery', 'showerglas', 'folding saw', 'arm chair']
 Predicted           : folding saw
 Ground Truth        : pitsaw
@@ -2246,7 +2246,7 @@ Correct             : False  [mode: neuro_symbolic]
 [Task] serving ice cream
 Required affordance : scoop
 Reasoning           : A tool that can scoop and hold the ice cream is needed.
-KB exemplars    : ['desk', 'ladle', 'spoon']
+KB exemplars    : ['teaspoon', 'desk', 'reference desk', "hot'n spicy butter marinade", 'spoon', 'apple butter', 'butter', 'tea spoon']
 Candidates          : ['garden trowel', 'lightswitch', 'bath tub basin', 'toaster', 'wateringcan']
 Predicted           : garden trowel
 Ground Truth        : garden trowel
@@ -2256,7 +2256,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] measuring ingredients
 Required affordance : contain
 Reasoning           : A tool that can contain and measure specific volumes or weights of ingredients is needed.
-KB exemplars    : ['bath tub basin', 'bowl', 'box', 'cabinet', 'cereal box', 'food box', 'ladle', 'metal box']
+KB exemplars    : ['tool box', 'container can', 'bottles of liqour', 'cereal bowl', 'water pump and tank', 'bookshelf', 'garment bag', 'breaker box']
 Candidates          : ['slick', 'lancet', 'hob', 'scriber', 'jigsaw']
 Predicted           : slick
 Ground Truth        : slick
@@ -2266,7 +2266,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] cleaning a litter box
 Required affordance : scoop
 Reasoning           : A tool that can scoop solid waste from the litter box is needed.
-KB exemplars    : ['desk', 'ladle', 'spoon']
+KB exemplars    : ['teaspoon', 'desk', 'reference desk', "hot'n spicy butter marinade", 'spoon', 'apple butter', 'butter', 'tea spoon']
 Candidates          : ['trowel', 'slick', 'pointing trowel', 'sinkbasin', 'spud']
 Predicted           : trowel
 Ground Truth        : trowel
@@ -2275,8 +2275,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] assembling furniture
 Required affordance : bore
-Reasoning           : A tool to create pilot holes in the material for screws is needed.
-KB exemplars    : ['brace and bit', 'breast drill', 'core drill', "dentist's drill", 'drill', 'electric drill', 'hand drill', 'pneumatic drill']
+Reasoning           : Pilot holes must be bored into materials before inserting screws when assembling furniture.
+KB exemplars    : ['drill']
 Candidates          : ['screwdriver', 'plastic box', 'secateur', 'arm chair', 'garbage can']
 Predicted           : screwdriver
 Ground Truth        : screwdriver
@@ -2285,8 +2285,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] mounting hardware
 Required affordance : bore
-Reasoning           : A tool that can create a hole for screws or bolts is needed.
-KB exemplars    : ['brace and bit', 'breast drill', 'core drill', "dentist's drill", 'drill', 'electric drill', 'hand drill', 'pneumatic drill']
+Reasoning           : A tool that can create a hole for screws or anchors is needed.
+KB exemplars    : ['drill']
 Candidates          : ['spiral ratchet screwdriver', 'stemmer', 'chisel', 'straightedge', 'poster']
 Predicted           : spiral ratchet screwdriver
 Ground Truth        : spiral ratchet screwdriver
@@ -2296,7 +2296,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] screwing in screws
 Required affordance : screw
 Reasoning           : A tool that can drive or tighten screws is needed.
-KB exemplars    : ['bolt cutter', 'coffee machine', 'flat tip screwdriver', 'phillips screwdriver', 'screwdriver', 'slicer', 'spiral ratchet screwdriver', 'stamping machine']
+KB exemplars    : ['laundry room', 'ratchet screwdriver', 'antique sewing machine', 'copy machine', 'phillips screwdriver', 'old sewing machine', 'phillips head screwdriver', 'machine']
 Candidates          : ['phillips screwdriver', 'drill', 'guitar pick', 'cap opener', 'shaver']
 Predicted           : phillips screwdriver
 Ground Truth        : phillips screwdriver
@@ -2306,7 +2306,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] repairing appliances
 Required affordance : fix
 Reasoning           : A tool that can fix or mend broken parts is needed.
-KB exemplars    : ['abrading stone', 'air hammer', 'awl', 'ball peen hammer', 'bender', 'bill', 'book', 'brace and bit']
+KB exemplars    : ['cook book', 'gay people', 'level', 'fireplace', 'tool', 'chess king', 'glue', 'mechanic']
 Candidates          : ['spiral ratchet screwdriver', 'handtowelholder', 'book', 'tennisracket', 'coffee machine']
 Predicted           : spiral ratchet screwdriver
 Ground Truth        : spiral ratchet screwdriver
@@ -2316,7 +2316,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] dividing food into portions
 Required affordance : separate
 Reasoning           : A tool that can separate food into smaller pieces or portions is needed.
-KB exemplars    : ['coffee machine', 'ram', 'slicer', 'soap bar', 'stamping machine', 'toaster']
+KB exemplars    : ['antique sewing machine', 'copy machine', 'cook', 'divider', 'person', 'cardboard box', 'door', 'old sewing machine']
 Candidates          : ['broad hatchet', 'desklamp', 'garden trowel', 'basketball', 'c d']
 Predicted           : broad hatchet
 Ground Truth        : broad hatchet
@@ -2325,18 +2325,18 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] cutting items in halve
 Required affordance : cut
-Reasoning           : A tool that can split items into two equal parts is required.
-KB exemplars    : ['awl', 'axe', 'barong', 'bender', 'bill', 'blade', 'bowie knife', 'bowl']
+Reasoning           : A tool that can split or divide items into two parts is needed.
+KB exemplars    : ['stairs down', 'table', 'john', 'ping pong table', 'chef', 'cloth', 'rolling pin', 'gay people']
 Candidates          : ['stiletto', 'tack hammer', 'gouge', 'eolith', 'desk']
-Predicted           : stiletto
+Predicted           : gouge
 Ground Truth        : stiletto
-Correct             : True  [mode: neuro_symbolic]
+Correct             : False  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] changing an objects shape
 Required affordance : shape
-Reasoning           : A tool that can alter the physical form of an object is required.
-KB exemplars    : ['air hammer', 'ball peen hammer', 'blunt file', "bricklayer's hammer", "carpenter's hammer", 'electric hammer', 'file', 'flat file']
+Reasoning           : A tool that can physically alter the form of an object is required.
+KB exemplars    : ['curling iron', 'gel', 'hammer', 'hair shaping gel', 'hair gel', 'spike file', 'file']
 Candidates          : ['shaping tool', 'scauper', 'graver', 'fridge', "bricklayer's hammer"]
 Predicted           : shaping tool
 Ground Truth        : shaping tool
@@ -2345,20 +2345,20 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] removing skin from meat
 Required affordance : skin
-Reasoning           : A tool that can separate the skin from the meat is needed.
-KB exemplars    : ['potato']
+Reasoning           : A tool that can separate the skin from the meat is required.
+KB exemplars    : ['cat', 'potato', 'potato masher', 'banana', 'banana chutney', 'nostril', 'begging dog or cat', 'sleeping cat']
 Candidates          : ['lochaber ax', 'garden spade', 'teddybear', 'c d', 'coping saw']
-Predicted           : coping saw
+Predicted           : lochaber ax
 Ground Truth        : lochaber ax
-Correct             : False  [mode: neuro_symbolic]
+Correct             : True  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] removing the peel from fruits and vegetables
 Required affordance : peel
-Reasoning           : A tool that can separate the skin from the flesh of produce is needed.
-KB exemplars    : —
+Reasoning           : A tool that can separate the peel from the fruit or vegetable is needed.
+KB exemplars    : ['knives', 'banana', 'banana chutney', 'banana peels']
 Candidates          : ['adz', 'reamer', 'die', 'sofa', 'plunger']
-Predicted           : reamer
+Predicted           : plunger
 Ground Truth        : adz
 Correct             : False  [mode: neuro_symbolic]
 ------------------------------------------------------------
@@ -2366,7 +2366,7 @@ Correct             : False  [mode: neuro_symbolic]
 [Task] removing unhealthy plant parts
 Required affordance : cut
 Reasoning           : A tool that can cut or separate plant parts is needed.
-KB exemplars    : ['awl', 'axe', 'barong', 'bender', 'bill', 'blade', 'bowie knife', 'bowl']
+KB exemplars    : ['stairs down', 'table', 'john', 'ping pong table', 'chef', 'cloth', 'rolling pin', 'gay people']
 Candidates          : ['kitchen knife', 'saw set', 'food bag', 'pallet', 'bore bit']
 Predicted           : kitchen knife
 Ground Truth        : kitchen knife
@@ -2375,28 +2375,28 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] opening packages
 Required affordance : break
-Reasoning           : A tool that can break or tear open packaging material is needed.
-KB exemplars    : ['abrading stone', 'air hammer', 'ball', 'ball peen hammer', 'basket ball', 'basketball', 'beading plane', 'block plane']
+Reasoning           : A tool that can break or tear open sealed packages is needed.
+KB exemplars    : ['light', 'window', 'gay people', 'antique sewing machine', 'copy machine', 'umbrella', 'ball', 'human']
 Candidates          : ['blade', 'star drill', 'power tool', 'hack', 'putty knife']
-Predicted           : hack
+Predicted           : blade
 Ground Truth        : blade
-Correct             : False  [mode: neuro_symbolic]
+Correct             : True  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] creating ventilation
 Required affordance : bore
-Reasoning           : A tool that can bore or drill holes is needed to create ventilation pathways.
-KB exemplars    : ['brace and bit', 'breast drill', 'core drill', "dentist's drill", 'drill', 'electric drill', 'hand drill', 'pneumatic drill']
+Reasoning           : A tool that can bore or drill a hole to create ventilation is needed.
+KB exemplars    : ['drill']
 Candidates          : ['knife blade', 'trowel', 'barong', 'electric hammer', 'countertop']
-Predicted           : knife blade
+Predicted           : electric hammer
 Ground Truth        : knife blade
-Correct             : True  [mode: neuro_symbolic]
+Correct             : False  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] cutting open food objects
 Required affordance : cut
 Reasoning           : A tool that can slice or trim food objects is needed.
-KB exemplars    : ['awl', 'axe', 'barong', 'bender', 'bill', 'blade', 'bowie knife', 'bowl']
+KB exemplars    : ['stairs down', 'table', 'john', 'ping pong table', 'chef', 'cloth', 'rolling pin', 'gay people']
 Candidates          : ['blade', 'pen', 'alarmclock', 'armchair', 'broadax']
 Predicted           : blade
 Ground Truth        : blade
@@ -2405,8 +2405,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] sanding surfaces
 Required affordance : smoothen
-Reasoning           : A tool that smoothens or rubs down surfaces is needed.
-KB exemplars    : ['air hammer', 'ball peen hammer', 'blunt file', "bricklayer's hammer", "carpenter's hammer", 'coffee machine', 'electric hammer', 'file']
+Reasoning           : A tool that can smoothen or rub down surfaces is needed.
+KB exemplars    : ['antique sewing machine', 'copy machine', 'skin care article', 'hammer', 'pillowcase', 'old sewing machine', 'spike file', 'file']
 Candidates          : ['steel wool pad', 'screw wrench', 'lochaber ax', 'thinning shear', 'pot']
 Predicted           : steel wool pad
 Ground Truth        : steel wool pad
@@ -2414,9 +2414,9 @@ Correct             : True  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] ironing clothes
-Required affordance : smoothen
-Reasoning           : An object that can heat and smoothen fabric is needed.
-KB exemplars    : ['air hammer', 'ball peen hammer', 'blunt file', "bricklayer's hammer", "carpenter's hammer", 'coffee machine', 'electric hammer', 'file']
+Required affordance : heat
+Reasoning           : An object that can heat up and smoothen fabric is needed.
+KB exemplars    : ['furnace', 'towel rack', 'hot water heater', 'milk', 'electricity', 'microwave oven', 'antique sewing machine', 'blanket']
 Candidates          : ['abrading stone', 'dogbed', 'coal shovel', 'wood chisel', 'twist bit']
 Predicted           : abrading stone
 Ground Truth        : abrading stone
@@ -2426,17 +2426,17 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] polishing furniture
 Required affordance : smoothen
 Reasoning           : A tool that can smoothen and shine wooden surfaces is needed.
-KB exemplars    : ['air hammer', 'ball peen hammer', 'blunt file', "bricklayer's hammer", "carpenter's hammer", 'coffee machine', 'electric hammer', 'file']
+KB exemplars    : ['antique sewing machine', 'copy machine', 'skin care article', 'hammer', 'pillowcase', 'old sewing machine', 'spike file', 'file']
 Candidates          : ['abrader', 'bur', 'chain tong', 'blunt file', 'book']
-Predicted           : blunt file
+Predicted           : abrader
 Ground Truth        : abrader
-Correct             : False  [mode: neuro_symbolic]
+Correct             : True  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] repairing electronics
 Required affordance : fix
-Reasoning           : A tool that can fix or adjust small components in electronics is needed.
-KB exemplars    : ['abrading stone', 'air hammer', 'awl', 'ball peen hammer', 'bender', 'bill', 'book', 'brace and bit']
+Reasoning           : A tool that can fix or adjust small components is needed.
+KB exemplars    : ['cook book', 'gay people', 'level', 'fireplace', 'tool', 'chess king', 'glue', 'mechanic']
 Candidates          : ['soldering iron', 'rasp', 'keyboard', 'instant noodle', 'spokeshave']
 Predicted           : soldering iron
 Ground Truth        : soldering iron
@@ -2446,7 +2446,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] making jewelery
 Required affordance : shape
 Reasoning           : A tool that can shape or manipulate metal or other materials is needed.
-KB exemplars    : ['air hammer', 'ball peen hammer', 'blunt file', "bricklayer's hammer", "carpenter's hammer", 'electric hammer', 'file', 'flat file']
+KB exemplars    : ['curling iron', 'gel', 'hammer', 'hair shaping gel', 'hair gel', 'spike file', 'file']
 Candidates          : ['soldering iron', 'instant noodle', 'kitchen knife', 'bath tub basin', 'crosscut saw']
 Predicted           : soldering iron
 Ground Truth        : soldering iron
@@ -2456,7 +2456,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] fixing plumbing
 Required affordance : wrench
 Reasoning           : A tool that can grip and turn pipes or fittings is needed.
-KB exemplars    : ['adjustable wrench', 'allen wrench', 'alligator wrench', 'battering ram', 'box wrench', 'brace wrench', 'bread', 'bulldog wrench']
+KB exemplars    : ['light', 'stairs down', 'shower switch', 'gay people', 'mechanic', 'phillips screwdriver', 'human', 'microwave']
 Candidates          : ['soldering iron', 'spray bottle', 'bread knife', 'garden tool', 'spade bit']
 Predicted           : soldering iron
 Ground Truth        : soldering iron
@@ -2466,7 +2466,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] applying spreads on bread
 Required affordance : spread
 Reasoning           : A tool that can spread soft substances like butter or jam is needed.
-KB exemplars    : ['barong', 'bowie knife', 'brick trowel', 'butcher knife', 'butter knife', 'carving knife', 'case knife', 'clasp knife']
+KB exemplars    : ['anemone', 'brush', 'chef', 'cloth', 'gay people', 'old newspapers', 'antique sewing machine', 'collection of old newspapers']
 Candidates          : ['palette knife', 'hunting knife', 'chain saw', 'abrader', 'counterbore']
 Predicted           : palette knife
 Ground Truth        : palette knife
@@ -2476,7 +2476,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] spreading icing on a cake
 Required affordance : spread
 Reasoning           : A tool that can spread a soft substance evenly over a surface is needed.
-KB exemplars    : ['barong', 'bowie knife', 'brick trowel', 'butcher knife', 'butter knife', 'carving knife', 'case knife', 'clasp knife']
+KB exemplars    : ['anemone', 'brush', 'chef', 'cloth', 'gay people', 'old newspapers', 'antique sewing machine', 'collection of old newspapers']
 Candidates          : ['pointing trowel', 'pestle', 'stamp', 'break seal', "plumber's snake"]
 Predicted           : pointing trowel
 Ground Truth        : pointing trowel
@@ -2485,18 +2485,18 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] distributing cleaning products
 Required affordance : spread
-Reasoning           : A tool that can spread or dispense liquid cleaning products evenly is needed.
-KB exemplars    : ['barong', 'bowie knife', 'brick trowel', 'butcher knife', 'butter knife', 'carving knife', 'case knife', 'clasp knife']
+Reasoning           : A tool that can spread or dispense liquid cleaning products is needed.
+KB exemplars    : ['anemone', 'brush', 'chef', 'cloth', 'gay people', 'old newspapers', 'antique sewing machine', 'collection of old newspapers']
 Candidates          : ['tableknife', 'laptop', 'hook wrench', 'fork', 'pump type plier']
-Predicted           : fork
+Predicted           : tableknife
 Ground Truth        : tableknife
-Correct             : False  [mode: neuro_symbolic]
+Correct             : True  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] organizing documents
 Required affordance : contain
-Reasoning           : A tool that can hold or store papers is needed.
-KB exemplars    : ['bath tub basin', 'bowl', 'box', 'cabinet', 'cereal box', 'food box', 'ladle', 'metal box']
+Reasoning           : A tool that can hold or store papers in an orderly manner is needed.
+KB exemplars    : ['tool box', 'container can', 'bottles of liqour', 'cereal bowl', 'water pump and tank', 'bookshelf', 'garment bag', 'breaker box']
 Candidates          : ['stapler', 'khukurus', 'dado plane', 'crank', 'gouge']
 Predicted           : stapler
 Ground Truth        : stapler
@@ -2506,7 +2506,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] repairing books
 Required affordance : fix
 Reasoning           : A tool that can fix or mend torn pages or covers is needed.
-KB exemplars    : ['abrading stone', 'air hammer', 'awl', 'ball peen hammer', 'bender', 'bill', 'book', 'brace and bit']
+KB exemplars    : ['cook book', 'gay people', 'level', 'fireplace', 'tool', 'chess king', 'glue', 'mechanic']
 Candidates          : ['stapler', 'carriage wrench', 'lancet', 'glue stick', 'scauper']
 Predicted           : glue stick
 Ground Truth        : stapler
@@ -2516,7 +2516,7 @@ Correct             : False  [mode: neuro_symbolic]
 [Task] removing dirt from your teeth
 Required affordance : clean
 Reasoning           : A tool that can clean debris from tight spaces like teeth is needed.
-KB exemplars    : ['bathtub', 'bill', 'camera', 'cloth', 'coffee machine', 'coffee mug', 'die', 'dish sponge']
+KB exemplars    : ['tub', 'vacuum', 'broom', 'shampoo and conditioner', 'washing machine', 'laundry room', 'brush', 'cat']
 Candidates          : ['toothpick', 'power tool', 'pencil', 'hand shovel', 'showerdoor']
 Predicted           : toothpick
 Ground Truth        : toothpick
@@ -2526,7 +2526,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] storing fruits and vegetables
 Required affordance : contain
 Reasoning           : A container that can hold and preserve fruits and vegetables is needed.
-KB exemplars    : ['bath tub basin', 'bowl', 'box', 'cabinet', 'cereal box', 'food box', 'ladle', 'metal box']
+KB exemplars    : ['tool box', 'container can', 'bottles of liqour', 'cereal bowl', 'water pump and tank', 'bookshelf', 'garment bag', 'breaker box']
 Candidates          : ['box', 'razorblade', 'metal box', 'spreader', 'winebottle']
 Predicted           : box
 Ground Truth        : box
@@ -2536,7 +2536,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] storing clean utensils
 Required affordance : contain
 Reasoning           : A container that can hold and organize utensils is needed.
-KB exemplars    : ['bath tub basin', 'bowl', 'box', 'cabinet', 'cereal box', 'food box', 'ladle', 'metal box']
+KB exemplars    : ['tool box', 'container can', 'bottles of liqour', 'cereal bowl', 'water pump and tank', 'bookshelf', 'garment bag', 'breaker box']
 Candidates          : ['desk', 'paper cutter', "croupier's rake", 'dumbell', 'palette knife']
 Predicted           : desk
 Ground Truth        : desk
@@ -2546,7 +2546,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] packing books for house shifting
 Required affordance : contain
 Reasoning           : A tool that can contain and hold books securely during transport is needed.
-KB exemplars    : ['bath tub basin', 'bowl', 'box', 'cabinet', 'cereal box', 'food box', 'ladle', 'metal box']
+KB exemplars    : ['tool box', 'container can', 'bottles of liqour', 'cereal bowl', 'water pump and tank', 'bookshelf', 'garment bag', 'breaker box']
 Candidates          : ['dresser', 'handstamp', 'thinning shear', 'claw hatchet', 'axe']
 Predicted           : dresser
 Ground Truth        : dresser
@@ -2554,9 +2554,9 @@ Correct             : True  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] keeping sporting equipment
-Required affordance : store
-Reasoning           : A tool that can store or hold sporting equipment is needed.
-KB exemplars    : ['abrading stone', 'bath tub basin', 'bill', 'binder', 'blunt file', 'bodkin', 'bottle', 'bowl']
+Required affordance : contain
+Reasoning           : A tool that can store or hold items is needed.
+KB exemplars    : ['tool box', 'container can', 'bottles of liqour', 'cereal bowl', 'water pump and tank', 'bookshelf', 'garment bag', 'breaker box']
 Candidates          : ['box', 'straight razor', 'showercurtain', 'circular saw', 'ottoman']
 Predicted           : box
 Ground Truth        : box
@@ -2566,17 +2566,17 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] storing important documents
 Required affordance : contain
 Reasoning           : A container that can securely hold and protect documents is needed.
-KB exemplars    : ['bath tub basin', 'bowl', 'box', 'cabinet', 'cereal box', 'food box', 'ladle', 'metal box']
+KB exemplars    : ['tool box', 'container can', 'bottles of liqour', 'cereal bowl', 'water pump and tank', 'bookshelf', 'garment bag', 'breaker box']
 Candidates          : ['dresser', 'ottoman', 'clasp knife', 'trench knife', 'book']
-Predicted           : ottoman
+Predicted           : book
 Ground Truth        : dresser
 Correct             : False  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] storing cereal box
 Required affordance : contain
-Reasoning           : A container that can hold and keep cereal dry and organized is needed.
-KB exemplars    : ['bath tub basin', 'bowl', 'box', 'cabinet', 'cereal box', 'food box', 'ladle', 'metal box']
+Reasoning           : A container that can hold and keep the cereal box is needed.
+KB exemplars    : ['tool box', 'container can', 'bottles of liqour', 'cereal bowl', 'water pump and tank', 'bookshelf', 'garment bag', 'breaker box']
 Candidates          : ['box', 'food cup', 'toiletpaperhanger', 'dumbbell', 'die']
 Predicted           : box
 Ground Truth        : box
@@ -2585,8 +2585,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] keeping dirty clothes
 Required affordance : contain
-Reasoning           : A container that can hold and store dirty clothes is needed.
-KB exemplars    : ['bath tub basin', 'bowl', 'box', 'cabinet', 'cereal box', 'food box', 'ladle', 'metal box']
+Reasoning           : A container that can hold dirty clothes is needed.
+KB exemplars    : ['tool box', 'container can', 'bottles of liqour', 'cereal bowl', 'water pump and tank', 'bookshelf', 'garment bag', 'breaker box']
 Candidates          : ['dresser', "bricklayer's hammer", 'hand tool', 'cap', 'shovel']
 Predicted           : dresser
 Ground Truth        : dresser
@@ -2596,7 +2596,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] storing dog treats
 Required affordance : contain
 Reasoning           : A container that can hold and keep dog treats safe and organized is needed.
-KB exemplars    : ['bath tub basin', 'bowl', 'box', 'cabinet', 'cereal box', 'food box', 'ladle', 'metal box']
+KB exemplars    : ['tool box', 'container can', 'bottles of liqour', 'cereal bowl', 'water pump and tank', 'bookshelf', 'garment bag', 'breaker box']
 Candidates          : ['desk', 'clipper', 'tennisracket', 'hand drill', 'sidetable']
 Predicted           : desk
 Ground Truth        : desk
@@ -2606,7 +2606,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] organizing items
 Required affordance : contain
 Reasoning           : A tool that can hold or store items is needed.
-KB exemplars    : ['bath tub basin', 'bowl', 'box', 'cabinet', 'cereal box', 'food box', 'ladle', 'metal box']
+KB exemplars    : ['tool box', 'container can', 'bottles of liqour', 'cereal bowl', 'water pump and tank', 'bookshelf', 'garment bag', 'breaker box']
 Candidates          : ['shelving unit', 'portable saw', 'dirk', 'soapbar', 'backsaw']
 Predicted           : shelving unit
 Ground Truth        : shelving unit
@@ -2616,7 +2616,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] removing isolation from wires
 Required affordance : strip
 Reasoning           : A tool that can strip the protective coating from wires is needed.
-KB exemplars    : ['cap', 'garden rake', 'window', 'wood chisel']
+KB exemplars    : ['window', 'parkway', 'coat hangers', 'winter coat', 'coat', 'sand', 'gravel', 'video tape']
 Candidates          : ['wire stripper', 'pruning saw', 'garden tool', 'food bag', 'alligator wrench']
 Predicted           : wire stripper
 Ground Truth        : wire stripper
@@ -2625,8 +2625,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] supporting a laptop
 Required affordance : support
-Reasoning           : A tool that can hold and stabilize a laptop at a comfortable height is needed.
-KB exemplars    : ['book', 'crank handle', 'hob', 'house plant', 'shelf', 'soap bar', 'stool']
+Reasoning           : A surface or object that can hold and stabilize the laptop is needed.
+KB exemplars    : ['trunk', 'back issues of national geographic', 'cook book', 'wooden rod', 'kitchen table', 'shelf', 'trunk of old clothings', 'handle']
 Candidates          : ['footstool', 'round file', 'die', 'socket wrench', 'neolith']
 Predicted           : footstool
 Ground Truth        : footstool
@@ -2636,7 +2636,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] displaying a statue
 Required affordance : support
 Reasoning           : A surface or structure that can support and showcase the statue is needed.
-KB exemplars    : ['book', 'crank handle', 'hob', 'house plant', 'shelf', 'soap bar', 'stool']
+KB exemplars    : ['trunk', 'back issues of national geographic', 'cook book', 'wooden rod', 'kitchen table', 'shelf', 'trunk of old clothings', 'handle']
 Candidates          : ['side table', 'painting', 'bayonet', 'battle ax', 'wateringcan']
 Predicted           : side table
 Ground Truth        : side table
@@ -2646,7 +2646,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] eating dinner
 Required affordance : carry
 Reasoning           : A utensil that can carry food to the mouth is needed.
-KB exemplars    : ['bath tub basin', 'box', 'cabinet', 'cereal box', 'coffee machine', 'crank handle', 'food bag', 'food box']
+KB exemplars    : ['tool box', 'light', 'serving trolley', 'tote bag', 'plumbing', 'bike', 'gay people', 'parkway']
 Candidates          : ['stool', 'jigsaw', 'compass saw', 'spade bit', 'bed']
 Predicted           : stool
 Ground Truth        : stool
@@ -2656,17 +2656,17 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] packing soil
 Required affordance : scoop
 Reasoning           : A tool that can scoop and hold soil is needed.
-KB exemplars    : ['desk', 'ladle', 'spoon']
+KB exemplars    : ['teaspoon', 'desk', 'reference desk', "hot'n spicy butter marinade", 'spoon', 'apple butter', 'butter', 'tea spoon']
 Candidates          : ['stemmer', 'scrubbrush', 'creditcard', 'countertop', 'scraper']
-Predicted           : scraper
+Predicted           : stemmer
 Ground Truth        : stemmer
-Correct             : False  [mode: neuro_symbolic]
+Correct             : True  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] preparing coffee in a filter
 Required affordance : contain
-Reasoning           : A tool that can hold and contain the coffee grounds while allowing water to pass through is needed.
-KB exemplars    : ['bath tub basin', 'bowl', 'box', 'cabinet', 'cereal box', 'food box', 'ladle', 'metal box']
+Reasoning           : A tool that can hold and contain the coffee grounds while allowing liquid to pass through is needed.
+KB exemplars    : ['tool box', 'container can', 'bottles of liqour', 'cereal bowl', 'water pump and tank', 'bookshelf', 'garment bag', 'breaker box']
 Candidates          : ['tamp', 'rat tail file', 'pincer', 'remote control', 'circular saw']
 Predicted           : tamp
 Ground Truth        : tamp
@@ -2675,18 +2675,18 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] setting tiles
 Required affordance : press
-Reasoning           : A tool that can press and flatten tiles into adhesive is needed.
-KB exemplars    : ['air hammer', 'ball peen hammer', 'book', "bricklayer's hammer", "carpenter's hammer", 'coffee machine', 'electric hammer', 'hammer']
+Reasoning           : A tool that can press and smooth tiles into adhesive is needed.
+KB exemplars    : ['cook book', 'antique sewing machine', 'copy machine', 'many books', 'overdue books', 'reference books', 'iron', 'old books']
 Candidates          : ['stemmer', 'crank handle', 'bolt cutter', 'adjustable wrench', 'crosscut saw']
-Predicted           : stemmer
+Predicted           : crank handle
 Ground Truth        : stemmer
-Correct             : True  [mode: neuro_symbolic]
+Correct             : False  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] telling the time
-Required affordance : time
-Reasoning           : A tool that can display or indicate the current time is needed.
-KB exemplars    : ['alarm clock', 'ram', 'watch']
+Required affordance : display
+Reasoning           : A device that can display or indicate the current time is needed.
+KB exemplars    : ['tv', 'night stand', 'old photographs', 'acoustic guitar', 'john', 'jeans', 'equipment', 'television']
 Candidates          : ['cell phone', 'plastic box', 'die', 'bevel', 'stiletto']
 Predicted           : cell phone
 Ground Truth        : cell phone
@@ -2696,7 +2696,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] managing schedules
 Required affordance : time
 Reasoning           : A tool that can display or track time is needed.
-KB exemplars    : ['alarm clock', 'ram', 'watch']
+KB exemplars    : ['person', 'table cloth clock', 'runner bean chutney', 'clock', 'metronome']
 Candidates          : ['watch', 'tennisracket', 'egg', 'dumbbell', 'portable saw']
 Predicted           : watch
 Ground Truth        : watch
@@ -2716,7 +2716,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] fixing a toilet
 Required affordance : wrench
 Reasoning           : A tool that can tighten or loosen bolts and nuts is needed.
-KB exemplars    : ['adjustable wrench', 'allen wrench', 'alligator wrench', 'battering ram', 'box wrench', 'brace wrench', 'bread', 'bulldog wrench']
+KB exemplars    : ['light', 'stairs down', 'shower switch', 'gay people', 'mechanic', 'phillips screwdriver', 'human', 'microwave']
 Candidates          : ['trap and drain auger', 'folding saw', 'spraybottle', 'burr', 'expansion bit']
 Predicted           : trap and drain auger
 Ground Truth        : trap and drain auger
@@ -2735,8 +2735,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] washing dishes
 Required affordance : wash
-Reasoning           : A tool that can rinse and remove food residue from dishes using water is needed.
-KB exemplars    : ['bowl', 'coffee machine', 'dish sponge', 'kettle', 'ram', 'shampoo', 'sink', 'slicer']
+Reasoning           : A tool that can rinse and remove dirt from dishes using water is needed.
+KB exemplars    : ['tub', 'shampoo and conditioner', 'washing machine', 'laundry room', 'cat', 'sink', 'spray hose', 'gay people']
 Candidates          : ['keyhole saw', 'bit', 'shaver', 'side table', 'dumbell']
 Predicted           : keyhole saw
 Ground Truth        : keyhole saw
@@ -2746,7 +2746,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] washing a fruit before cutting
 Required affordance : wash
 Reasoning           : A tool that can rinse and clean the fruit under water is needed.
-KB exemplars    : ['bowl', 'coffee machine', 'dish sponge', 'kettle', 'ram', 'shampoo', 'sink', 'slicer']
+KB exemplars    : ['tub', 'shampoo and conditioner', 'washing machine', 'laundry room', 'cat', 'sink', 'spray hose', 'gay people']
 Candidates          : ['bandsaw', 'hammer', 'sparkplug wrench', 'posthole digger', 'shiv']
 Predicted           : bandsaw
 Ground Truth        : bandsaw
@@ -2756,7 +2756,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] washing your face
 Required affordance : wash
 Reasoning           : A tool that can rinse the face with water is needed.
-KB exemplars    : ['bowl', 'coffee machine', 'dish sponge', 'kettle', 'ram', 'shampoo', 'sink', 'slicer']
+KB exemplars    : ['tub', 'shampoo and conditioner', 'washing machine', 'laundry room', 'cat', 'sink', 'spray hose', 'gay people']
 Candidates          : ['compass saw', 'parang', 'paper cutter', 'firmer chisel', 'circular saw']
 Predicted           : compass saw
 Ground Truth        : compass saw
@@ -2765,8 +2765,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] doing laundry
 Required affordance : clean
-Reasoning           : A tool that can clean fabric by removing dirt and stains is needed.
-KB exemplars    : ['bathtub', 'bill', 'camera', 'cloth', 'coffee machine', 'coffee mug', 'die', 'dish sponge']
+Reasoning           : A tool that can clean and remove dirt from clothes is needed.
+KB exemplars    : ['tub', 'vacuum', 'broom', 'shampoo and conditioner', 'washing machine', 'laundry room', 'brush', 'cat']
 Candidates          : ['compass saw', 'burin', 'showercurtain', 'monkey wrench', 'pin wrench']
 Predicted           : compass saw
 Ground Truth        : compass saw
@@ -2776,7 +2776,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] cleaning dishes
 Required affordance : clean
 Reasoning           : A tool that can remove food residue and grime from dishes is needed.
-KB exemplars    : ['bathtub', 'bill', 'camera', 'cloth', 'coffee machine', 'coffee mug', 'die', 'dish sponge']
+KB exemplars    : ['tub', 'vacuum', 'broom', 'shampoo and conditioner', 'washing machine', 'laundry room', 'brush', 'cat']
 Candidates          : ['stamping machine', 'footstool', 'ball', 'jack', 'plexor.n.wn.medicine']
 Predicted           : stamping machine
 Ground Truth        : stamping machine
@@ -2786,7 +2786,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] cleaning a surface
 Required affordance : clean
 Reasoning           : A tool that can remove dirt or debris from a surface is needed.
-KB exemplars    : ['bathtub', 'bill', 'camera', 'cloth', 'coffee machine', 'coffee mug', 'die', 'dish sponge']
+KB exemplars    : ['tub', 'vacuum', 'broom', 'shampoo and conditioner', 'washing machine', 'laundry room', 'brush', 'cat']
 Candidates          : ['butter knife', 'stoveburner', 'nailfile', 'sofa', 'dog bed']
 Predicted           : butter knife
 Ground Truth        : butter knife
@@ -2796,7 +2796,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] removing stains
 Required affordance : clean
 Reasoning           : A tool that can clean or absorb stains from surfaces is needed.
-KB exemplars    : ['bathtub', 'bill', 'camera', 'cloth', 'coffee machine', 'coffee mug', 'die', 'dish sponge']
+KB exemplars    : ['tub', 'vacuum', 'broom', 'shampoo and conditioner', 'washing machine', 'laundry room', 'brush', 'cat']
 Candidates          : ['butter knife', 'bradawl', 'slouse', 'hatchet', 'stool']
 Predicted           : butter knife
 Ground Truth        : butter knife
@@ -2806,7 +2806,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] wiping a surface clean
 Required affordance : wipe
 Reasoning           : A tool that can remove liquid spills or residue from a surface is needed.
-KB exemplars    : ['cloth', 'kleenex', 'toilet paper']
+KB exemplars    : ['cloth', 'mat', 'doormat', 'toilet paper', 'welcome mat', 'paper towels', 'welcone mat', 'fire']
 Candidates          : ['case knife', 'sandblaster', 'trowel', 'shelvingunit', 'jackscrew']
 Predicted           : case knife
 Ground Truth        : case knife
@@ -2815,8 +2815,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] storing food
 Required affordance : contain
-Reasoning           : A container that can hold and preserve food is needed.
-KB exemplars    : ['bath tub basin', 'bowl', 'box', 'cabinet', 'cereal box', 'food box', 'ladle', 'metal box']
+Reasoning           : A container that can hold or store food items is needed.
+KB exemplars    : ['tool box', 'container can', 'bottles of liqour', 'cereal bowl', 'water pump and tank', 'bookshelf', 'garment bag', 'breaker box']
 Candidates          : ['ball', 'dry battery', 'parer', 'pallet', 'awl']
 Predicted           : ball
 Ground Truth        : ball
@@ -2825,8 +2825,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] protecting items
 Required affordance : wrap
-Reasoning           : A tool that can wrap or cover items to protect them is needed.
-KB exemplars    : ['chain tong', 'cloth', 'coffee machine', 'desk', 'keychain', 'paper cutter', 'paper towel roll', 'pillow']
+Reasoning           : A tool or material that can wrap or cover items to protect them is needed.
+KB exemplars    : ['belt', 'soft pillow', 'cloth', 'tire', 'gay people', 'hide bed', 'antique sewing machine', 'copy machine']
 Candidates          : ['water bottle', 'garbagecan', 'two handed saw', 'stillson wrench', 'trepan']
 Predicted           : water bottle
 Ground Truth        : water bottle
@@ -2835,8 +2835,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] tightening bolts
 Required affordance : wrench
-Reasoning           : A tool that can apply rotational force to turn bolts is needed.
-KB exemplars    : ['adjustable wrench', 'allen wrench', 'alligator wrench', 'battering ram', 'box wrench', 'brace wrench', 'bread', 'bulldog wrench']
+Reasoning           : A tool that can apply rotational force to drive or tighten bolts is needed.
+KB exemplars    : ['light', 'stairs down', 'shower switch', 'gay people', 'mechanic', 'phillips screwdriver', 'human', 'microwave']
 Candidates          : ['alligator wrench', 'beading plane', 'burr', 'wire stripper', 'hand mower']
 Predicted           : alligator wrench
 Ground Truth        : alligator wrench
@@ -2846,7 +2846,7 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] loosening bolts
 Required affordance : wrench
 Reasoning           : A tool that can apply rotational force to turn and loosen bolts is needed.
-KB exemplars    : ['adjustable wrench', 'allen wrench', 'alligator wrench', 'battering ram', 'box wrench', 'brace wrench', 'bread', 'bulldog wrench']
+KB exemplars    : ['light', 'stairs down', 'shower switch', 'gay people', 'mechanic', 'phillips screwdriver', 'human', 'microwave']
 Candidates          : ['brace wrench', 'crank', 'spade bit', 'circular saw', 'television']
 Predicted           : brace wrench
 Ground Truth        : brace wrench
@@ -2856,17 +2856,17 @@ Correct             : True  [mode: neuro_symbolic]
 [Task] adjusting fixtures
 Required affordance : grasp
 Reasoning           : A tool that can grip and turn fixtures like screws or bolts is needed.
-KB exemplars    : ['coffee machine', 'slicer', 'stamping machine', 'toaster']
+KB exemplars    : ['antique sewing machine', 'copy machine', 'old sewing machine', 'machine']
 Candidates          : ['monkey wrench', 'stiletto', 'surgical knife', 'box wrench', 'bathtubbasin']
-Predicted           : box wrench
+Predicted           : monkey wrench
 Ground Truth        : monkey wrench
-Correct             : False  [mode: neuro_symbolic]
+Correct             : True  [mode: neuro_symbolic]
 ------------------------------------------------------------
 
 [Task] changing bicycle components
 Required affordance : grasp
 Reasoning           : A tool that can grip and manipulate small parts like bolts and nuts is needed.
-KB exemplars    : ['coffee machine', 'slicer', 'stamping machine', 'toaster']
+KB exemplars    : ['antique sewing machine', 'copy machine', 'old sewing machine', 'machine']
 Candidates          : ['box wrench', 'palette knife', 'paper box', 'glass cutter', 'pin wrench']
 Predicted           : pin wrench
 Ground Truth        : box wrench
@@ -2875,8 +2875,8 @@ Correct             : False  [mode: neuro_symbolic]
 
 [Task] making a shopping list
 Required affordance : write
-Reasoning           : A tool that can write or mark down items is needed.
-KB exemplars    : ['coffee machine', 'desk', 'desktop', 'hand mower', 'marker', 'notebook', 'paper cutter', 'paper towel roll']
+Reasoning           : A tool that can write or record information is needed.
+KB exemplars    : ['stairs down', 'poet', "children's book section", 'gay people', 'poster', 'antique sewing machine', 'computer', 'copy machine']
 Candidates          : ['desktop', 'spud', 'alarmclock', 'candle', 'dog wrench']
 Predicted           : desktop
 Ground Truth        : desktop
@@ -2885,8 +2885,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] keeping a journal
 Required affordance : write
-Reasoning           : A tool that can write or record thoughts is needed.
-KB exemplars    : ['coffee machine', 'desk', 'desktop', 'hand mower', 'marker', 'notebook', 'paper cutter', 'paper towel roll']
+Reasoning           : A tool that can write or record information is needed.
+KB exemplars    : ['stairs down', 'poet', "children's book section", 'gay people', 'poster', 'antique sewing machine', 'computer', 'copy machine']
 Candidates          : ['pencil', 'cross bit', 'scoop', 'pipe wrench', 'saltshaker']
 Predicted           : pencil
 Ground Truth        : pencil
@@ -2895,8 +2895,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] labelling items
 Required affordance : write
-Reasoning           : A tool that can mark or write on items is needed.
-KB exemplars    : ['coffee machine', 'desk', 'desktop', 'hand mower', 'marker', 'notebook', 'paper cutter', 'paper towel roll']
+Reasoning           : A tool that can write or mark labels is needed.
+KB exemplars    : ['stairs down', 'poet', "children's book section", 'gay people', 'poster', 'antique sewing machine', 'computer', 'copy machine']
 Candidates          : ['pencil', 'garden tool', "carpenter's mallet", 'garbagebag', 'coffee machine']
 Predicted           : pencil
 Ground Truth        : pencil
@@ -2905,8 +2905,8 @@ Correct             : True  [mode: neuro_symbolic]
 
 [Task] writing a letter
 Required affordance : write
-Reasoning           : A tool that can mark or leave a trace on paper is needed.
-KB exemplars    : ['coffee machine', 'desk', 'desktop', 'hand mower', 'marker', 'notebook', 'paper cutter', 'paper towel roll']
+Reasoning           : A tool that can mark or inscribe text on paper is needed.
+KB exemplars    : ['stairs down', 'poet', "children's book section", 'gay people', 'poster', 'antique sewing machine', 'computer', 'copy machine']
 Candidates          : ['laptop', 'toilet paper', 'spade', 'can opener', 'soda can']
 Predicted           : laptop
 Ground Truth        : laptop
@@ -2918,9 +2918,9 @@ Correct             : True  [mode: neuro_symbolic]
 SUMMARY
 ============================================================
 Total questions : 291
-Correct         : 219
-Accuracy        : 0.7526
+Correct         : 238
+Accuracy        : 0.8179
 
 Decision breakdown:
-  neuro_symbolic: 219/291 (0.7526)
+  neuro_symbolic: 238/291 (0.8179)
 ============================================================
