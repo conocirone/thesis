@@ -16,6 +16,7 @@ module_2/temp_logic.pl
 
 # Large data files
 module_1/ConceptNet/assertions.csv
+module_1/CSKG/cskg.tsv
 
 # ILASP temporary test files
 module_1/scripts/rules/ilasp_test_*.las

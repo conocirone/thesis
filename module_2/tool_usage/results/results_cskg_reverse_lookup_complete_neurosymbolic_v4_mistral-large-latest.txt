@@ -1,0 +1,17 @@
+============================================================
+RESULT LOG — Tool Usage Evaluation v2 (Symbolic Pre-filtering)
+Model: mistral-large-latest  |  Ablation: none
+============================================================
+
+[Task] cleaning up spills
+Required affordance : absorb
+Reasoning           : The object must absorb liquid to clean up the spill.
+Matched affordance  : absorb
+Prolog filtered     : ∅
+KB exemplars        : ['dead body', 'cloth', 'doormat', 'shirt', 'person']
+Candidates          : ['alligator wrench', 'kri', 'sponge', 'drill', 'shampoo']
+Predicted           : sponge
+Ground Truth        : sponge
+Correct             : True  [mode: exemplar_llm]
+------------------------------------------------------------
+

@@ -47,11 +47,14 @@ mkdir -p "$REPO_DIR/module_2/table_setting/logs"
 cd "$REPO_DIR/module_2/table_setting"
 mkdir -p results
 
-ABLATIONS=("none" "pure_llm" "pure_logic" "no_cot")
+ABLATIONS=("none" "pure_llm" "pure_logic")
+MODELS=("mistral-large-latest" "mistral-medium-latest" "mistral-small-latest") 
 
 for ablation in "${ABLATIONS[@]}"; do
-    echo " -> Running ablation: $ablation..."
-    python3 evaluate.py --ablation "$ablation" --output_file "results/results.txt" "$@"
+    for model in "${MODELS[@]}"; do
+        echo " -> Running ablation: $ablation with model: $model..."
+        python3 evaluate.py --ablation "$ablation" --output_file "results/results.txt" --model "$model" "$@"
+    done
 done
 
 echo ""

@@ -346,10 +346,15 @@ def evaluate_binary(limit=None, verbose=False, output_file="results/results_bina
     print(f"Ablation Mode: {ablation}")
     print("=" * 60)
 
+    # Add model name to output file
+    name, ext = os.path.splitext(output_file)
+    if ext == '':
+        ext = '.txt'
+    output_file = f"{name}_{MODEL_ID}{ext}"
+    
+    # Add ablation suffix if applicable
     if ablation != "none":
         name, ext = os.path.splitext(output_file)
-        if ext == '':
-            ext = '.txt'
         output_file = f"{name}_ablation_{ablation}{ext}"
 
     data_dir = "../../Robo-CSK-Benchmark/procedural_knowledge/data_generation/question_components_binary"
@@ -612,10 +617,15 @@ def evaluate_multi(limit=None, verbose=False, output_file="results/results_multi
     print(f"Ablation Mode: {ablation}")
     print("=" * 60)
 
+    # Add model name to output file
+    name, ext = os.path.splitext(output_file)
+    if ext == '':
+        ext = '.txt'
+    output_file = f"{name}_{MODEL_ID}{ext}"
+    
+    # Add ablation suffix if applicable
     if ablation != "none":
         name, ext = os.path.splitext(output_file)
-        if ext == '':
-            ext = '.txt'
         output_file = f"{name}_ablation_{ablation}{ext}"
 
     data_dir = "../../Robo-CSK-Benchmark/procedural_knowledge/data_generation/question_components_multi"
@@ -871,7 +881,10 @@ if __name__ == "__main__":
     parser.add_argument('--verbose', action='store_true', help='Print the LLM output for every task')
     parser.add_argument('--output_file', type=str, default="./results/results.txt", help='Output file for results')
     parser.add_argument('--ablation', type=str, choices=['none', 'pure_llm', 'pure_logic', 'no_cot'], default='none', help='Ablation mode')
+    parser.add_argument('--model', type=str, choices=['mistral-large-latest', 'mistral-medium-latest', 'mistral-small-latest'], default='mistral-large-latest', help='Model choice')
     args = parser.parse_args()
+    
+    MODEL_ID = args.model
     
     if args.mode in ['binary', 'all']:
         evaluate_binary(limit=args.limit, verbose=args.verbose, output_file=args.output_file.replace('.txt', '_binary.txt') if 'results.txt' in args.output_file else args.output_file, ablation=args.ablation)

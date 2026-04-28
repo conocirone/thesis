@@ -1,0 +1,5 @@
+============================================================
+RESULT LOG — Tool Usage Evaluation v2 (Symbolic Pre-filtering)
+Model: mistral-large-latest  |  Ablation: pure_llm
+============================================================
+

@@ -2,13 +2,14 @@
 # =============================================================================
 # run_ablation_study.sh — Module 1 Ablation Study
 # =============================================================================
-# Runs all ablation modes for both tidy_up and tool_usage evaluation tasks.
+# Runs ablations for tidy_up and evaluation for tool_usage_new.
 #
 # Usage:
 #     bash run_ablation_study.sh                     # Run all ablations
-#     bash run_ablation_study.sh --task tool_usage    # Tool usage only
+#     bash run_ablation_study.sh --task tool_usage    # Tool usage evaluation only
 #     bash run_ablation_study.sh --task tidy_up       # Tidy up only
-#     bash run_ablation_study.sh --num-tests 20       # Quick test (20 items)
+#     bash run_ablation_study.sh --num-tests 20       # Quick tidy_up test
+#     bash run_ablation_study.sh --k-folds 5          # Tool usage k-fold eval
 # =============================================================================
 
 set -euo pipefail
@@ -19,6 +20,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 TASK="all"
 EXTRA_ARGS=""
 MODEL=""
+K_FOLDS="0"
 while [[ $# -gt 0 ]]; do
     case "$1" in
         --task)
@@ -27,6 +29,10 @@ while [[ $# -gt 0 ]]; do
             ;;
         --model)
             MODEL="$2"
+            shift 2
+            ;;
+        --k-folds)
+            K_FOLDS="$2"
             shift 2
             ;;
         *)
@@ -53,15 +59,17 @@ echo ""
 # ── TOOL USAGE ───────────────────────────────────────────────────────────────
 if [[ "$TASK" == "all" || "$TASK" == "tool_usage" ]]; then
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-    echo "  TOOL USAGE"
+    echo "  TOOL USAGE (tool_usage_new)"
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 
-    TOOL_ABLATIONS=("none" "pure_llm" "no_synonyms")
-    for ablation in "${TOOL_ABLATIONS[@]}"; do
-        echo ""
-        echo " -> Running tool_usage ablation: $ablation..."
-        python3 "$SCRIPT_DIR/tool_usage/evaluate.py" --ablation "$ablation" $MODEL_ARGS $EXTRA_ARGS
-    done
+    TOOL_ARGS=""
+    if [[ "$K_FOLDS" -gt 1 ]]; then
+        TOOL_ARGS="$TOOL_ARGS --k-folds $K_FOLDS"
+    fi
+
+    echo ""
+    echo " -> Running tool_usage_new evaluation..."
+    python3 "$SCRIPT_DIR/tool_usage_new/evaluate_pipeline.py" --output evaluation_report $TOOL_ARGS
 fi
 
 # ── TIDY UP ──────────────────────────────────────────────────────────────────

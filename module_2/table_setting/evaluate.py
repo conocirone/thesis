@@ -282,6 +282,13 @@ def evaluate(verbose=False, output_file="results_table_setting.txt", ablation="n
     print(f"Ablation Mode: {ablation}")
     print("=" * 60)
     
+    # Add model name to output file
+    name, ext = os.path.splitext(output_file)
+    if ext == '':
+        ext = '.txt'
+    output_file = f"{name}_{MODEL_ID}{ext}"
+    
+    # Add ablation suffix if applicable
     if ablation != "none":
         name, ext = os.path.splitext(output_file)
         output_file = f"{name}_ablation_{ablation}{ext}"
@@ -381,6 +388,9 @@ if __name__ == "__main__":
     parser.add_argument('--verbose', action='store_true', help='Print the LLM output for every task')
     parser.add_argument('--output_file', type=str, default="results_table_setting.txt", help='Output file for results')
     parser.add_argument('--ablation', type=str, choices=['none', 'pure_llm', 'pure_logic', 'no_cot'], default='none', help='Ablation mode')
+    parser.add_argument('--model', type=str, choices=['mistral-large-latest', 'mistral-medium-latest', 'mistral-small-latest'], default='mistral-large-latest', help='Model choice')
     args = parser.parse_args()
+    
+    MODEL_ID = args.model
     
     evaluate(verbose=args.verbose, output_file=args.output_file, ablation=args.ablation)

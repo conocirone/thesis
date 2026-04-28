@@ -34,9 +34,7 @@ module_1/
 │   ├── tidy_up/                              # Tidy Up ILASP & learned rules
 │   │   ├── ilasp_tidy_up.las
 │   │   └── learned_rules_*.txt
-│   └── tool_usage/                           # Tool Usage ILASP & learned rules
-│       ├── ilasp_tool_usage.las
-│       └── learned_rules_tool_usage.txt
+│   └── tool_usage_new/                       # (Optional) task-specific exports
 ├── scripts/
 │   ├── run_pipeline.py                       # Pipeline orchestrator (all 10 steps)
 │   ├── shared/                               # Steps 1-4: Task-agnostic preprocessing
@@ -50,12 +48,11 @@ module_1/
 │   │   ├── evaluate_rules.py                 # Offline rule evaluation
 │   │   ├── evaluate.py                       # Step 7: Online evaluation
 │   │   └── run_llm_rule_induction.sh         # SLURM script for Step 6
-│   └── tool_usage/                           # Steps 8-10: Tool Usage task
-│       ├── generate_ilasp_examples.py        # Step 8: ILASP example generation
-│       ├── llm_rule_induction.py             # Step 9: LLM rule induction
-│       ├── evaluate_rules.py                 # Offline rule evaluation
-│       ├── evaluate.py                       # Step 10: Online evaluation
-│       └── run_llm_rule_induction.sh         # SLURM script for Step 9
+│   └── tool_usage_new/                       # Steps 8-10: Tool Usage task
+│       ├── annotation_pipeline.py            # SOMA-style object annotation pipeline
+│       ├── generate_examples.py              # Step 8: ILASP example generation
+│       ├── learn_rules.py                    # Step 9: Rule induction
+│       └── evaluate_pipeline.py              # Step 10: Evaluation report generation
 └── docs/
     ├── module1_development_report.md
     ├── quality_analysis.md
@@ -201,27 +198,26 @@ location is deduced by Clingo. Metrics: P@k, R@k, MAP, MRR.
 
 Target predicate: `hasAffordance(Object, Affordance)`
 
-**Step 8: ILASP Example Generation** (`tool_usage/generate_ilasp_examples.py`)
+**Step 8: ILASP Example Generation** (`tool_usage_new/generate_examples.py`)
 
-Matches objects from the Robo-CSK-Benchmark `affordance_data.csv` with
-SOMA-annotated objects. Generates positive and negative examples.
+Generates ILASP positives/negatives for `hasAffordance` using ConceptNet as
+the primary supervision source and shared validated SOMA BK.
 
-- **Output**: `rules/tool_usage/ilasp_tool_usage.las`
+- **Output**: `scripts/tool_usage_new/ilasp_examples/ilasp_tool_usage.las`
 
-**Step 9: LLM Rule Learning** (`tool_usage/llm_rule_induction.py`)
+**Step 9: LLM Rule Learning** (`tool_usage_new/learn_rules.py`)
 
-Same LLM + Clingo strategy as Step 6 but targets `hasAffordance` rules.
-Includes physical qualities in mode declarations (e.g., Sharp → cut).
+Learns `hasAffordance` rules from generated ILASP examples with rule quality
+controls and pruning.
 
-- **Output**: `rules/tool_usage/learned_rules_tool_usage.txt`
+- **Output**: `scripts/tool_usage_new/learned_rules.txt`
 
-**Step 10: Online Evaluation** (`tool_usage/evaluate.py`)
+**Step 10: Evaluation** (`tool_usage_new/evaluate_pipeline.py`)
 
-For each multi-choice question (task + 5 candidate tools), extracts SOMA
-features, runs Clingo inference, and selects the tool with the required
-affordance. Metric: accuracy.
+Evaluates learned rules on generated ILASP examples and reports per-affordance,
+macro, and micro metrics (with optional k-fold evaluation).
 
-- **Output**: `scripts/tool_usage/evaluation_report.md`
+- **Output**: `scripts/tool_usage_new/reports/evaluation_report.md`
 
 ## Output Format
 

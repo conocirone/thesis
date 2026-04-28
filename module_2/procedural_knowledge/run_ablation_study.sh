@@ -48,10 +48,13 @@ cd "$REPO_DIR/module_2/procedural_knowledge"
 mkdir -p results
 
 ABLATIONS=("none" "pure_llm" "pure_logic" "no_cot")
+MODELS=("mistral-large-latest" "mistral-medium-latest" "mistral-small-latest") 
 
 for ablation in "${ABLATIONS[@]}"; do
-    echo " -> Running ablation: $ablation..."
-    python3 evaluate.py --ablation "$ablation" --output_file "results/results.txt" "$@"
+    for model in "${MODELS[@]}"; do
+        echo " -> Running ablation: $ablation with model: $model..."
+        python3 evaluate.py --ablation "$ablation" --output_file "results/results.txt" --model "$model" "$@"
+    done
 done
 
 echo ""

@@ -1,8 +1,7 @@
 """
 run_pipeline.py - Full End-to-End Pipeline Orchestrator
 =============================================================================
-Deploys the entire neuro-symbolic logic pipeline spanning Phase 1 & 2
-for both the 'goesIn' (tidy_up) and 'hasAffordance' (tool_usage) tasks.
+Deploys the neuro-symbolic logic pipeline for the 'goesIn' (tidy_up) task.
 
 SHARED OFFLINE PHASE (Steps 1-4):
   Step 1: ConceptNet extraction     (shared/concept_net_extractor.py)
@@ -17,21 +16,10 @@ TIDY UP — OFFLINE (Steps 5-6):
 TIDY UP — ONLINE (Step 7):
   Step 7: Real-world inference eval (tidy_up/evaluate.py)
 
-TOOL USAGE — OFFLINE (Steps 8-9):
-  Step 8: ILASP example generation  (tool_usage/generate_ilasp_examples.py)
-  Step 9: Logical Rule Learning     (tool_usage/llm_rule_induction.py)
-
-TOOL USAGE — ONLINE (Step 10):
-  Step 10: Tool usage inference eval(tool_usage/evaluate.py)
-
 Usage:
     python run_pipeline.py              # Run all steps continuously
     python run_pipeline.py --from 5     # Resume from step 5
     python run_pipeline.py --only 7     # Run only tidy_up evaluation
-    python run_pipeline.py --only 10    # Run only tool_usage evaluation
-    python run_pipeline.py --from 8     # Run tool_usage steps only
-    python run_pipeline.py --only 10 --model mistral-large-latest
-    python run_pipeline.py --only 10 --ablation pure_llm
 =============================================================================
 """
 
@@ -109,36 +97,6 @@ STEPS = [
         "output_files": [SCRIPT_DIR / "tidy_up" / "evaluation_report.md"],
         "extra_args_key": "eval_tidy_up",
     },
-
-    # ── TOOL USAGE (Steps 8-10) ─────────────────────────────────────────
-    {
-        "number": 8,
-        "name": "Generate ILASP Examples — Tool Usage",
-        "type": "python",
-        "script": "tool_usage/generate_ilasp_examples.py",
-        "args": ["--ml", "2", "--full"],
-        "description": "Construct ILASP input for hasAffordance rule learning",
-        "output_files": [RULES_DIR / "tool_usage" / "ilasp_tool_usage.las"],
-    },
-    {
-        "number": 9,
-        "name": "LLM Rule Learning — Tool Usage",
-        "type": "python",
-        "script": "tool_usage/llm_rule_induction.py",
-        "description": "Use LLM generator and Clingo verifier to induce hasAffordance rules",
-        "output_files": [RULES_DIR / "tool_usage" / "learned_rules_tool_usage.txt"],
-    },
-    {
-        "number": 10,
-        "name": "Online Evaluation — Tool Usage",
-        "type": "python",
-        "script": "tool_usage/evaluate.py",
-        # "args": ["--num-tests", "50"],
-        # extra_args_key="eval_tool_usage" — populated dynamically from CLI
-        "description": "Execute Clingo inference for tool selection (tool_usage)",
-        "output_files": [SCRIPT_DIR / "tool_usage" / "evaluation_report.md"],
-        "extra_args_key": "eval_tool_usage",
-    },
 ]
 
 
@@ -208,19 +166,18 @@ def main():
     parser.add_argument("--only", dest="only_step", type=int, default=None,
                         help="Run only this step number")
     parser.add_argument("--model", type=str, default=None,
-                        help="Override evaluation model for step 10 "
-                             "(e.g. mistral-large-latest, llama3.1)")
+                        help="Override evaluation model for tidy_up evaluation")
     parser.add_argument("--ablation", type=str, default=None,
                         choices=["none", "pure_llm", "no_synonyms"],
-                        help="Ablation mode for step 10 evaluation")
+                        help="Ablation mode for tidy_up evaluation")
     parser.add_argument("--num-tests", type=int, default=None,
-                        help="Limit number of test questions for eval steps")
+                        help="Limit number of test questions for tidy_up evaluation")
     cli = parser.parse_args()
 
     start_from = cli.start_from
     only_step = cli.only_step
 
-    # Build extra args for the evaluation steps
+    # Build extra args for tidy_up evaluation
     extra_args: dict[str, list] = {}
     eval_extra: list[str] = []
     if cli.model:
@@ -230,12 +187,11 @@ def main():
     if cli.num_tests:
         eval_extra += ["--num-tests", str(cli.num_tests)]
     if eval_extra:
-        extra_args["eval_tool_usage"] = eval_extra
         extra_args["eval_tidy_up"] = eval_extra
 
     print("\n" + "#" * 70)
     print("#  END-TO-END PIPELINE: Neuro-Symbolic Logic Learning")
-    print("#  Tasks: goesIn (tidy_up) + hasAffordance (tool_usage)")
+    print("#  Task: goesIn (tidy_up)")
     print("#" * 70)
 
     if only_step:

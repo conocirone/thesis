@@ -14,7 +14,6 @@ from google.genai import types
 from mistralai.client import Mistral
 
 api_key = os.environ.get("MISTRAL_API_KEY")
-MODEL_ID = "mistral-large-latest"
 
 if not api_key:
     print("Warning: MISTRAL_API_KEY not set. Neural components will fail.")
@@ -289,14 +288,19 @@ def run_prolog_solver(properties: dict, robot_config: dict, strict: bool = False
 def evaluate_binary(limit=None, verbose=False, output_file="results_binary.txt", ablation="none"):
     print("=" * 60)
     print("Neuro-Symbolic Evaluation: Meta-Reasoning (Binary Error Analysis)")
-    print(f"Using Google Gemini model: {MODEL_ID}")
+    print(f"Using Mistral model: {MODEL_ID}")
     print(f"Ablation Mode: {ablation}")
     print("=" * 60)
 
+    # Add model name to output file
+    name, ext = os.path.splitext(output_file)
+    if ext == '':
+        ext = '.txt'
+    output_file = f"{name}_{MODEL_ID}{ext}"
+    
+    # Add ablation suffix if applicable
     if ablation != "none":
         name, ext = os.path.splitext(output_file)
-        if ext == '':
-            ext = '.txt'
         output_file = f"{name}_ablation_{ablation}{ext}"
 
     csv_path = "../../Robo-CSK-Benchmark/meta_reasoning/meta_reasoning_with_negatives.csv"
@@ -415,14 +419,19 @@ def evaluate_binary(limit=None, verbose=False, output_file="results_binary.txt",
 def evaluate_multi(limit=None, verbose=False, output_file="results_multi.txt", ablation="none"):
     print("=" * 60)
     print("Neuro-Symbolic Evaluation: Meta-Reasoning (Multi-Choice)")
-    print(f"Using Google Gemini model: {MODEL_ID}")
+    print(f"Using Mistral model: {MODEL_ID}")
     print(f"Ablation Mode: {ablation}")
     print("=" * 60)
 
+    # Add model name to output file
+    name, ext = os.path.splitext(output_file)
+    if ext == '':
+        ext = '.txt'
+    output_file = f"{name}_{MODEL_ID}{ext}"
+    
+    # Add ablation suffix if applicable
     if ablation != "none":
         name, ext = os.path.splitext(output_file)
-        if ext == '':
-            ext = '.txt'
         output_file = f"{name}_ablation_{ablation}{ext}"
 
     csv_path = "../../Robo-CSK-Benchmark/meta_reasoning/meta_reasoning_multi_questions.csv"
@@ -583,14 +592,16 @@ def evaluate_multi(limit=None, verbose=False, output_file="results_multi.txt", a
     print(f"\nResult log written to: {output_file}")
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='Run Meta-Reasoning Evaluation via Gemini')
+    parser = argparse.ArgumentParser(description='Run Meta-Reasoning Evaluation via Mistral')
     parser.add_argument('--mode', type=str, choices=['binary', 'multi', 'all'], default='all', help='Evaluation mode')
     parser.add_argument('--limit', type=int, default=None, help='Limit number of samples (for faster testing)')
     parser.add_argument('--verbose', action='store_true', help='Print the LLM output for every task')
     parser.add_argument('--output_file', type=str, default="./results/results.txt", help='Output file for results')
     parser.add_argument('--ablation', type=str, choices=['none', 'pure_llm', 'pure_logic', 'no_cot'], default='none', help='Ablation mode')
+    parser.add_argument('--model', type=str, choices=['mistral-large-latest', 'mistral-medium-latest', 'mistral-small-latest'], default='mistral-large-latest', help='Model choice')
     args = parser.parse_args()
     
+    MODEL_ID = args.model
     if args.mode in ['binary', 'all']:
         evaluate_binary(limit=args.limit, verbose=args.verbose, output_file=args.output_file.replace('.txt', '_binary.txt') if 'results.txt' in args.output_file else args.output_file, ablation=args.ablation)
     if args.mode in ['multi', 'all']:
