@@ -36,7 +36,6 @@ echo ""
 
 # Set HuggingFace cache directory (shared across jobs)
 export HF_HOME="${HF_HOME:-$REPO_DIR/.hf_cache}"
-export MISTRAL_API_KEY="JlmPrktbOmc9MzZQZX4j7zsFWbS4GqDi"
 mkdir -p "$HF_HOME"
 echo "HF_HOME:  $HF_HOME"
 echo ""
