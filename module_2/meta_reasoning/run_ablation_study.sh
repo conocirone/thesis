@@ -30,12 +30,13 @@ echo ""
 # Activate environment
 source "$VENV_DIR/bin/activate"
 echo "Python:   $(python3 --version)"
-echo "PyTorch:  $(python3 -c 'import torch; print(torch.__version__)')"
-echo "CUDA:     $(python3 -c 'import torch; print(torch.cuda.is_available())')"
+echo "PyTorch:  $(python3 -c 'import torch; print(torch.__version__)' 2>/dev/null || echo 'Not installed')"
+echo "CUDA:     $(python3 -c 'import torch; print(torch.cuda.is_available())' 2>/dev/null || echo 'Not installed')"
 echo ""
 
 # Set HuggingFace cache directory (shared across jobs)
 export HF_HOME="${HF_HOME:-$REPO_DIR/.hf_cache}"
+export MISTRAL_API_KEY="JlmPrktbOmc9MzZQZX4j7zsFWbS4GqDi"
 mkdir -p "$HF_HOME"
 echo "HF_HOME:  $HF_HOME"
 echo ""
@@ -48,10 +49,12 @@ cd "$REPO_DIR/module_2/meta_reasoning"
 mkdir -p results
 
 ABLATIONS=("none" "pure_llm" "pure_logic" "no_cot")
+ABLATION_TO_DO=("none" "pure_llm")
 MODELS=("mistral-large-latest" "mistral-medium-latest" "mistral-small-latest") 
+MODELS_TO_USE=("mistral-medium-latest" "mistral-small-latest")
 
-for ablation in "${ABLATIONS[@]}"; do
-    for model in "${MODELS[@]}"; do
+for ablation in "${ABLATIONS_TO_DO[@]}"; do
+    for model in "${MODELS_TO_USE[@]}"; do
         echo " -> Running ablation: $ablation with model: $model..."
         python3 evaluate.py --ablation "$ablation" --output_file "results/results.txt" --model "$model" "$@"
     done

@@ -3,7 +3,7 @@ build_tool_kb.py - Build the final tool KB from CSKG (+ optional ablations)
 ==================================================================================
 Creates tool_affordances_full.json used by module_2/tool_usage/evaluate.py.
 
-DEFAULT (CSKG, leakage-safe):
+DEFAULT (CSKG):
   Uses tool_affordances_cskg.json as the primary source.
   CSKG combines ConceptNet + Visual Genome UsedFor/CapableOf, with IsA
   inheritance for obscure tools. No benchmark labels — fully leakage-safe.
@@ -13,8 +13,7 @@ ABLATION (--source cn):
   Useful for measuring the contribution of the CSKG enrichment.
 
 ABLATION (--include-csv):
-  Supplements the primary source with affordance_data.csv labels.  Use only
-  to measure the ceiling effect of benchmark labels — introduces data leakage.
+  Supplements the primary source with affordance_data.csv labels. 
 
 Output format:
   {
@@ -53,7 +52,6 @@ CN_KB_JSON        = MODULE_DIR / "jsons" / "tool_affordances_cn.json"
 FULL_KB_JSON      = MODULE_DIR / "jsons" / "tool_affordances_full.json"
 TASK_AFF_MAP_JSON = BENCHMARK_DIR / "affordance_task_map.json"
 
-# Canonical vocabulary (same as in extract_tool_affordances.py)
 CANONICAL_AFFORDANCES = {
     "absorb", "be heated", "beautify", "bend", "bore", "break", "carry",
     "carve", "change", "chop", "clean", "comfort", "compress", "contain",
@@ -146,7 +144,6 @@ def build_full_kb(
     aff_map = load_affordance_map() if include_csv else {}
 
     # When --include-csv is active, load the benchmark CSV for supplemental labels.
-    # NOTE: this introduces data leakage and must only be used as an ablation.
     csv_affordances: dict[str, list[tuple[str, float]]] = {}
     if include_csv:
         df = pd.read_csv(AFFORDANCE_CSV)
