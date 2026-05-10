@@ -3,7 +3,7 @@
 % All facts are asserted dynamically by Python:
 %   candidate(tool_name)                   — a candidate tool in the current question
 %   has_affordance(tool_name, affordance)  — tool's affordance from the KB
-%   cn_confirmed(tool_name, affordance)    — affordance is ConceptNet-confirmed (not CSV-only)
+%   cn_confirmed(tool_name, affordance)    — affordance is ConceptNet-confirmed
 %   required_affordance(affordance)        — the affordance needed for the task
 
 :- dynamic candidate/1.
@@ -14,7 +14,7 @@
 % --- Selection rules ---------------------------------------------------------
 %
 % Priority 1: A candidate that has the required affordance AND it is CN-confirmed.
-% Priority 2: A candidate that has the required affordance (CSV-only fallback).
+% Priority 2: A candidate that has the required affordance.
 % If neither applies, we output nothing (Python falls back to LLM).
 
 % Collect all candidates with the required affordance into a list.

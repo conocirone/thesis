@@ -9,15 +9,40 @@ import pandas as pd
 from pathlib import Path
 from tqdm import tqdm
 from mistralai.client import Mistral
+import ollama as ollama_lib
 
 api_key = os.environ.get("MISTRAL_API_KEY")
 MODEL_ID = "mistral-large-latest"
 
 if not api_key:
-    print("Warning: MISTRAL_API_KEY not set. Neural components will fail.")
+    print("Warning: MISTRAL_API_KEY not set. Mistral backend will not be available.")
     client = None
 else:
     client = Mistral(api_key=api_key)
+
+
+def _is_ollama_model(model_id: str) -> bool:
+    return not model_id.startswith("mistral")
+
+
+def _call_llm_once(messages: list) -> str:
+    """Single LLM call. Returns content string. Raises on error."""
+    if _is_ollama_model(MODEL_ID):
+        response = ollama_lib.chat(
+            model=MODEL_ID,
+            messages=messages,
+            format='json',
+            options={"temperature": 0}
+        )
+        return response.message.content
+    else:
+        response = client.chat.complete(
+            model=MODEL_ID,
+            messages=messages,
+            response_format={"type": "json_object"},
+            temperature=0.0
+        )
+        return response.choices[0].message.content
 
 SYSTEM_PROMPT = """
 You are an expert chef and culinary analyst.
@@ -171,10 +196,7 @@ Output nothing else."""
     ]
     for attempt in range(5):
         try:
-            response = client.chat.complete(
-                model=MODEL_ID, messages=messages, response_format={"type": "json_object"}, temperature=0.0
-            )
-            raw = response.choices[0].message.content.strip()
+            raw = _call_llm_once(messages).strip()
             res = json.loads(raw)
             cutlery = set(c.title() for c in res.get("cutlery", []))
             plate = str(res.get("plate", "")).title()
@@ -202,13 +224,7 @@ def extract_meal_properties(meal_str: str, verbose: bool = False, ablation: str 
     
     for attempt in range(5):
         try:
-            response = client.chat.complete(
-                model=MODEL_ID,
-                messages=messages,
-                response_format={"type": "json_object"},
-                temperature=0.0
-            )
-            raw = response.choices[0].message.content.strip()
+            raw = _call_llm_once(messages).strip()
             if verbose:
                 tqdm.write(f"\nMeal: {meal_str}")
                 tqdm.write(f"LLM Output: {raw}")
@@ -220,7 +236,6 @@ def extract_meal_properties(meal_str: str, verbose: bool = False, ablation: str 
                 time.sleep(10 * (attempt + 1))
             else:
                 time.sleep(2)
-                
     return {
         "reasoning": "Failed to parse",
         "is_soup_or_broth": False,
@@ -388,7 +403,7 @@ if __name__ == "__main__":
     parser.add_argument('--verbose', action='store_true', help='Print the LLM output for every task')
     parser.add_argument('--output_file', type=str, default="results_table_setting.txt", help='Output file for results')
     parser.add_argument('--ablation', type=str, choices=['none', 'pure_llm', 'pure_logic', 'no_cot'], default='none', help='Ablation mode')
-    parser.add_argument('--model', type=str, choices=['mistral-large-latest', 'mistral-medium-latest', 'mistral-small-latest'], default='mistral-large-latest', help='Model choice')
+    parser.add_argument('--model', type=str, choices=['mistral-large-latest', 'mistral-medium-latest', 'mistral-small-latest', 'llama3.1', 'llama3.2:3b'], default='mistral-large-latest', help='Model choice (use llama3.1 for local Ollama inference)')
     args = parser.parse_args()
     
     MODEL_ID = args.model

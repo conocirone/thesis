@@ -9,15 +9,40 @@ import time
 from pathlib import Path
 from tqdm import tqdm
 from mistralai.client import Mistral
+import ollama as ollama_lib
 
 api_key = os.environ.get("MISTRAL_API_KEY")
 MODEL_ID = "mistral-large-latest"
 
 if not api_key:
-    print("Warning: MISTRAL_API_KEY not set. Neural components will fail.")
+    print("Warning: MISTRAL_API_KEY not set. Mistral backend will not be available.")
     client = None
 else:
     client = Mistral(api_key=api_key)
+
+
+def _is_ollama_model(model_id: str) -> bool:
+    return not model_id.startswith("mistral")
+
+
+def _call_llm_once(messages: list) -> str:
+    """Single LLM call. Returns content string. Raises on error."""
+    if _is_ollama_model(MODEL_ID):
+        response = ollama_lib.chat(
+            model=MODEL_ID,
+            messages=messages,
+            format='json',
+            options={"temperature": 0}
+        )
+        return response.message.content
+    else:
+        response = client.chat.complete(
+            model=MODEL_ID,
+            messages=messages,
+            response_format={"type": "json_object"},
+            temperature=0.0
+        )
+        return response.choices[0].message.content
 
 # ---------------------------------------------------------------------------
 # Prompts & Parsing Logic
@@ -175,16 +200,13 @@ def keyword_extract_step_properties(title: str, step_a: str, step_b: str) -> dic
 
 def pure_llm_temporal_predict(title: str, step_a: str, step_b: str, verbose: bool = False) -> bool:
     system = "You are an expert chef. Evaluate if step A strictly comes BEFORE step B in the context of the recipe. Return pure JSON: {'a_before_b': true} or {'a_before_b': false}."
+    messages = [{"role": "system", "content": system}, {"role": "user", "content": f"Recipe: {title}\nStep A: {step_a}\nStep B: {step_b}"}]
     for attempt in range(3):
         try:
-            response = client.chat.complete(
-                model=MODEL_ID, messages=[{"role": "system", "content": system}, {"role": "user", "content": f"Recipe: {title}\nStep A: {step_a}\nStep B: {step_b}"}],
-                response_format={"type": "json_object"}, temperature=0.0
-            )
-            return json.loads(response.choices[0].message.content).get("a_before_b", False)
+            return json.loads(_call_llm_once(messages)).get("a_before_b", False)
         except Exception as e:
             if "429" in str(e): time.sleep(10 * (attempt + 1))
-            else: break
+            else: time.sleep(2 * (attempt + 1))
     return False
 
 def extract_step_properties(title, step_a, step_b, verbose=False, ablation="none"):
@@ -200,16 +222,10 @@ def extract_step_properties(title, step_a, step_b, verbose=False, ablation="none
 
     for attempt in range(3):
         try:
-            response = client.chat.complete(
-                model=MODEL_ID,
-                messages=[
-                    {"role": "system", "content": SYSTEM_PROMPT.strip()},
-                    {"role": "user", "content": user_message},
-                ],
-                response_format={"type": "json_object"},
-                temperature=0.0,
-            )
-            raw = response.choices[0].message.content.strip()
+            raw = _call_llm_once([
+                {"role": "system", "content": SYSTEM_PROMPT.strip()},
+                {"role": "user", "content": user_message},
+            ])
 
             if verbose:
                 print(f"\n--- LLM Response for '{title}' ---")
@@ -246,7 +262,6 @@ def extract_step_properties(title, step_a, step_b, verbose=False, ablation="none
         except Exception as e:
             if verbose:
                 print(f"  ⚠ Attempt {attempt+1} API error: {e}")
-            # Basic backoff (handles occasional 429s)
             time.sleep(2 * (attempt + 1))
 
     # Fallback: return neutral properties
@@ -560,18 +575,13 @@ def llm_select_option(title, reference_step, options, temporal="before", verbose
         f"Options:\n{options_text}"
     )
 
+    messages = [
+        {"role": "system", "content": system.strip()},
+        {"role": "user", "content": user_msg},
+    ]
     for attempt in range(3):
         try:
-            response = client.chat.complete(
-                model=MODEL_ID,
-                messages=[
-                    {"role": "system", "content": system.strip()},
-                    {"role": "user", "content": user_msg},
-                ],
-                response_format={"type": "json_object"},
-                temperature=0.0,
-            )
-            raw = response.choices[0].message.content.strip()
+            raw = _call_llm_once(messages)
             if verbose:
                 print(f"\n--- Multi LLM pick for '{title}' ({temporal}) ---")
                 print(raw)
@@ -881,7 +891,7 @@ if __name__ == "__main__":
     parser.add_argument('--verbose', action='store_true', help='Print the LLM output for every task')
     parser.add_argument('--output_file', type=str, default="./results/results.txt", help='Output file for results')
     parser.add_argument('--ablation', type=str, choices=['none', 'pure_llm', 'pure_logic', 'no_cot'], default='none', help='Ablation mode')
-    parser.add_argument('--model', type=str, choices=['mistral-large-latest', 'mistral-medium-latest', 'mistral-small-latest'], default='mistral-large-latest', help='Model choice')
+    parser.add_argument('--model', type=str, choices=['mistral-large-latest', 'mistral-medium-latest', 'mistral-small-latest', 'llama3.1', 'llama3.2:3b'], default='mistral-large-latest', help='Model choice (use llama3.1 for local Ollama inference)')
     args = parser.parse_args()
     
     MODEL_ID = args.model

@@ -52,13 +52,15 @@ def get_model(role: str) -> str:
     return config.get("models", {}).get(role, DEFAULTS.get(role, "llama3.1"))
 
 
-def get_provider(role: str = None) -> str:
+def get_provider(role: str = None, model: str = None) -> str:
     """Return the inference provider ('mistral' or 'ollama') for a given role or model name.
 
     Detection is based on the model name:
       - Model names containing 'mistral' → 'mistral' provider (Mistral API)
       - All other names → 'ollama' provider (local Ollama server)
     """
-    if "mistral" in DEFAULTS.get(role, " "):
+    if model and "mistral" in model:
+        return "mistral"
+    if role and "mistral" in DEFAULTS.get(role, " "):
         return "mistral"
     return "ollama"

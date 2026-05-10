@@ -12,14 +12,39 @@ from tqdm import tqdm
 from google import genai
 from google.genai import types
 from mistralai.client import Mistral
+import ollama as ollama_lib
 
 api_key = os.environ.get("MISTRAL_API_KEY")
 
 if not api_key:
-    print("Warning: MISTRAL_API_KEY not set. Neural components will fail.")
+    print("Warning: MISTRAL_API_KEY not set. Mistral backend will not be available.")
     client = None
 else:
     client = Mistral(api_key=api_key)
+
+
+def _is_ollama_model(model_id: str) -> bool:
+    return not model_id.startswith("mistral")
+
+
+def _call_llm_once(messages: list) -> str:
+    """Single LLM call. Returns content string. Raises on error."""
+    if _is_ollama_model(MODEL_ID):
+        response = ollama_lib.chat(
+            model=MODEL_ID,
+            messages=messages,
+            format='json',
+            options={"temperature": 0}
+        )
+        return response.message.content
+    else:
+        response = client.chat.complete(
+            model=MODEL_ID,
+            messages=messages,
+            response_format={"type": "json_object"},
+            temperature=0.0
+        )
+        return response.choices[0].message.content
 
 
 SYSTEM_PROMPT = """
@@ -171,16 +196,13 @@ def pure_llm_binary_predict(task_str: str, robot_config: dict, verbose: bool = F
 Given a task and a robot configuration, output a JSON {'can_execute': true} or {'can_execute': false}.
 Do not output anything else."""
     msg = f"Task: {task_str}\nRobot Configuration: {robot_config}"
+    messages = [{"role": "system", "content": system}, {"role": "user", "content": msg}]
     for attempt in range(5):
         try:
-            response = client.chat.complete(
-                model=MODEL_ID, messages=[{"role": "system", "content": system}, {"role": "user", "content": msg}],
-                response_format={"type": "json_object"}, temperature=0.0
-            )
-            return json.loads(response.choices[0].message.content).get("can_execute", False)
+            return json.loads(_call_llm_once(messages)).get("can_execute", False)
         except Exception as e:
             if "429" in str(e): time.sleep(10 * (attempt + 1))
-            else: break
+            else: time.sleep(2 * (attempt + 1))
     return False
 
 def pure_llm_multi_predict(task_str: str, configs: list, verbose: bool = False) -> str:
@@ -189,13 +211,10 @@ Given a task and a list of alternative valid robot hardware configurations, you 
 Higher DoFs, more arms, and mobility typically imply higher capability.
 Output a JSON: {'selected_config': '<exact string>'}"""
     msg = f"Task: {task_str}\nConfigurations:\n" + "\n".join(configs)
+    messages = [{"role": "system", "content": system}, {"role": "user", "content": msg}]
     for attempt in range(5):
         try:
-            response = client.chat.complete(
-                model=MODEL_ID, messages=[{"role": "system", "content": system}, {"role": "user", "content": msg}],
-                response_format={"type": "json_object"}, temperature=0.0
-            )
-            raw = json.loads(response.choices[0].message.content).get("selected_config", "")
+            raw = json.loads(_call_llm_once(messages)).get("selected_config", "")
             for c in configs:
                 if c.lower() == raw.lower(): return c
             
@@ -206,7 +225,7 @@ Output a JSON: {'selected_config': '<exact string>'}"""
             return configs[0] if configs else ""
         except Exception as e:
             if "429" in str(e): time.sleep(10 * (attempt + 1))
-            else: break
+            else: time.sleep(2 * (attempt + 1))
     return configs[0] if configs else ""
 
 def extract_task_properties(task_str: str, verbose: bool = False, ablation: str = "none") -> dict:
@@ -225,13 +244,7 @@ def extract_task_properties(task_str: str, verbose: bool = False, ablation: str 
     max_retries = 5
     for attempt in range(max_retries):
         try:
-            response = client.chat.complete(
-                model=MODEL_ID,
-                messages=messages,
-                response_format={"type": "json_object"}
-            )
-            
-            response_text = response.choices[0].message.content
+            response_text = _call_llm_once(messages)
             
             if verbose:
                 tqdm.write(f"\nTask: {task_str}")
@@ -288,7 +301,7 @@ def run_prolog_solver(properties: dict, robot_config: dict, strict: bool = False
 def evaluate_binary(limit=None, verbose=False, output_file="results_binary.txt", ablation="none"):
     print("=" * 60)
     print("Neuro-Symbolic Evaluation: Meta-Reasoning (Binary Error Analysis)")
-    print(f"Using Mistral model: {MODEL_ID}")
+    print(f"Using model: {MODEL_ID}")
     print(f"Ablation Mode: {ablation}")
     print("=" * 60)
 
@@ -419,7 +432,7 @@ def evaluate_binary(limit=None, verbose=False, output_file="results_binary.txt",
 def evaluate_multi(limit=None, verbose=False, output_file="results_multi.txt", ablation="none"):
     print("=" * 60)
     print("Neuro-Symbolic Evaluation: Meta-Reasoning (Multi-Choice)")
-    print(f"Using Mistral model: {MODEL_ID}")
+    print(f"Using model: {MODEL_ID}")
     print(f"Ablation Mode: {ablation}")
     print("=" * 60)
 
@@ -598,7 +611,7 @@ if __name__ == "__main__":
     parser.add_argument('--verbose', action='store_true', help='Print the LLM output for every task')
     parser.add_argument('--output_file', type=str, default="./results/results.txt", help='Output file for results')
     parser.add_argument('--ablation', type=str, choices=['none', 'pure_llm', 'pure_logic'], default='none', help='Ablation mode')
-    parser.add_argument('--model', type=str, choices=['mistral-large-latest', 'mistral-medium-latest', 'mistral-small-latest'], default='mistral-large-latest', help='Model choice')
+    parser.add_argument('--model', type=str, choices=['mistral-large-latest', 'mistral-medium-latest', 'mistral-small-latest', 'llama3.1'], default='mistral-large-latest', help='Model choice (use llama3.1 for local Ollama inference)')
     args = parser.parse_args()
     
     MODEL_ID = args.model

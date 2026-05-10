@@ -1,41 +1,3 @@
-"""
-evaluate.py — Neuro-Symbolic Evaluation: Tool Usage
-=====================================================
-Pipeline
---------
-1. Load the ConceptNet + affordance_data KB
-   (module_1/jsons/tool_affordances_full.json)
-
-2. For each benchmark question (task, 5 candidates):
-   a. [NEURAL] Use LLM to extract the required affordance from the task text.
-      Ablation "pure_logic" uses keyword matching instead.
-   b. [SYMBOLIC] Assert KB facts + required affordance into Prolog.
-      Prolog returns:
-        SELECTED=<tool>     if exactly one candidate matches (or CN-unique)
-        SELECTED=ambiguous  if multiple candidates match (with lists for tiebreak)
-        SELECTED=none       if no candidate matches
-   c. Tiebreaker (for "ambiguous" or "none"):
-      "pure_llm" ablation: LLM picks directly from all 5 candidates.
-      Default: LLM picks from the ambiguous_set (ambiguous) or all 5 (none).
-   d. Record prediction and ground-truth accuracy.
-
-3. Output results to results/ and a summary table.
-
-Usage
------
-    python evaluate.py [options]
-
-    --ablation {none,pure_llm,pure_logic,no_cot}
-        none       — full neuro-symbolic pipeline (default)
-        pure_llm   — LLM selects directly, no KB or Prolog
-        pure_logic — keyword affordance extractor + KB/Prolog, no LLM
-        no_cot     — LLM affordance extraction without chain-of-thought
-
-    --model mistral-large-latest | mistral-medium-latest | ...
-    --verbose     print LLM outputs per question
-    --output_file name of result file (placed in results/)
-"""
-
 import argparse
 import ast
 import json
@@ -310,13 +272,18 @@ def llm_chat(messages: list, temperature: float = 0.0, json_format: bool = False
             response = client.chat.complete(**kwargs)
             return response.choices[0].message.content.strip()
         except Exception as e:
-            if "429" in str(e) or "rate" in str(e).lower():
+            err = str(e).lower()
+            if "429" in str(e) or "rate" in err:
                 wait = 10 * (attempt + 1)
                 tqdm.write(f"  Rate limited — waiting {wait}s...")
                 time.sleep(wait)
+            elif "timeout" in err or "timed out" in err:
+                wait = 5 * (attempt + 1)
+                tqdm.write(f"  Timeout — retrying in {wait}s (attempt {attempt+1}/{max_retries})...")
+                time.sleep(wait)
             else:
                 raise
-    raise RuntimeError("Rate limit exceeded after retries")
+    raise RuntimeError("LLM call failed after retries")
 
 
 def extract_affordance_llm(task: str, ablation: str = "none") -> dict:
@@ -537,12 +504,16 @@ def evaluate(
     print(f"Ablation    : {ablation}")
     print("=" * 60)
 
-    # Compose result filename
+    # Add model name to output file
     name, ext = os.path.splitext(output_file)
-    ext = ext or ".txt"
-    out_path = RESULTS_DIR / f"{name}_{MODEL_ID}{ext}"
+    if ext == '':
+        ext = '.txt'
+    output_file = f"{name}_{MODEL_ID}{ext}"
+
+    # Add ablation suffix if applicable
     if ablation != "none":
-        out_path = RESULTS_DIR / f"{name}_{MODEL_ID}_ablation_{ablation}{ext}"
+        name, ext = os.path.splitext(output_file)
+        output_file = f"{name}_ablation_{ablation}{ext}"
 
     # Load benchmark
     csv_path = BENCHMARK_DIR / "tool_usage_multichoice_questions.csv"
@@ -568,7 +539,7 @@ def evaluate(
         "pure_logic":     {"correct": 0, "total": 0},
     }
 
-    log = open(out_path, "w", encoding="utf-8")
+    log = open(output_file, "w", encoding="utf-8")
     log.write("=" * 60 + "\n")
     log.write(f"RESULT LOG — Tool Usage Evaluation\n")
     log.write(f"Model: {MODEL_ID}  |  Ablation: {ablation}\n")
@@ -721,7 +692,7 @@ def evaluate(
             log.write(f"  {mode_name}: {counts['correct']}/{counts['total']} ({acc:.4f})\n")
     log.write("=" * 60 + "\n")
     log.close()
-    print(f"\nResults saved to {out_path}")
+    print(f"\nResults saved to {output_file}")
 
 
 def _write_log_entry(log, entry: dict, verbose: bool) -> None:
@@ -756,8 +727,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run Tool Usage Neuro-Symbolic Evaluation")
     parser.add_argument("--verbose", action="store_true",
                         help="Print LLM output for every question")
-    parser.add_argument("--output_file", type=str, default="results_tool_usage.txt",
-                        help="Output file name (placed in results/)")
+    parser.add_argument("--output_file", type=str, default="./results/results.txt",
+                        help="Output file for results")
     parser.add_argument("--ablation", type=str,
                         choices=["none", "pure_llm", "pure_logic", "no_cot"],
                         default="none",
