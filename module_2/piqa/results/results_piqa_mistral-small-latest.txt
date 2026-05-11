@@ -1,0 +1,519 @@
+============================================================
+RESULT LOG — PIQA Evaluation
+Model: mistral-small-latest  |  Ablation: none
+============================================================
+
+[Q 0] Goal: slow cooker
+  Affordance: be heated (matched: heat)
+  Reasoning: A slow cooker requires an external heat source to maintain a low cooking temperature over time.
+  Exemplars: ['furnace', 'towel rack', 'hot water heater', 'milk', 'electricity', 'microwave oven', 'antique sewing machine', 'blanket']
+  Sol1 (0 KB hits): can melt butter
+  Sol2 (0 KB hits): can melt copper
+  KB context provided: Yes (with exemplars)
+  Predicted: sol2 | GT: sol1 | Correct: False
+------------------------------------------------------------
+
+[Q 1] Goal: how to make coconut-almond truffles
+  Affordance: mix (matched: mix)
+  Reasoning: The goal involves combining and shaping ingredients into a cohesive mixture.
+  Exemplars: ['cereal bowl', 'rolling pin', 'teaspoon', 'antique sewing machine', 'copy machine', 'ramen noodles', 'canned food', 'food and utensils to eat']
+  Sol1 (1 KB hits): Combine 3/4 cup almond butter, 1/2 cup each confectioners’ sugar and unsweetened shredded coconut, 3 tablespoons cocoa powder and 1/2 teaspoon vanilla; work into a dough. Roll into balls, then roll in shredded coconut. Chill.
+  Sol2 (1 KB hits): Combine 3/4 cup almond marzipan paste , 1/2 cup each confectioners’ sugar and unsweetened shredded coconut, 3 tablespoons cocoa powder and 1/2 teaspoon vanilla; work into a dough. Roll into balls, then roll in shredded coconut. Chill.
+  KB context provided: Yes (with exemplars)
+  Predicted: sol1 | GT: sol1 | Correct: True
+------------------------------------------------------------
+
+[Q 2] Goal: Cut out pages from a book
+  Affordance: cut (matched: cut)
+  Reasoning: A tool to separate pages by slicing through the binding is required.
+  Exemplars: ['stairs down', 'table', 'john', 'ping pong table', 'chef', 'cloth', 'rolling pin', 'gay people']
+  Sol1 (0 KB hits): Using an x-acto knife open the book and cut along the page near the binding.
+  Sol2 (0 KB hits): Using a plastic knife open the book and cut along the page near the binding.
+  KB context provided: Yes (with exemplars)
+  Predicted: sol1 | GT: sol1 | Correct: True
+------------------------------------------------------------
+
+[Q 3] Goal: How do you make maracas?
+  Affordance: contain (matched: contain)
+  Reasoning: The goal requires filling a container with small objects to create sound when shaken.
+  Exemplars: ['tool box', 'container can', 'bottles of liqour', 'cereal bowl', 'water pump and tank', 'bookshelf', 'garment bag', 'breaker box']
+  Sol1 (0 KB hits): Wash the water bottle and remove the label with Goo Gone.     Fill the bottle with a handful of marbles and beads.     Glue the lid on the bottle with plastic adhesive to make sure those little bits don't ever get out.
+  Sol2 (0 KB hits): Wash the water bottle and remove the label with Goo Gone.    Fill the bottle with a spoonful of marbles and beads.     Glue the lid on the bottle with plastic adhesive to make sure those little bits don't ever get out.
+  KB context provided: Yes (with exemplars)
+  Predicted: sol1 | GT: sol1 | Correct: True
+------------------------------------------------------------
+
+[Q 4] Goal: To make a chalkboard out of wooden pallet planks.
+  Affordance: cover (matched: cover)
+  Reasoning: The goal requires applying a smooth, writable surface to the planks, which involves covering them with a suitable material.
+  Exemplars: ['shoes', 'light', 'night stand', 'blender', 'cloth linen', 'clothes hangers', 'dirt', 'swing']
+  Sol1 (0 KB hits): Use chalk paint on the wood.
+  Sol2 (0 KB hits): Use chalkboard paint on the wood.
+  KB context provided: Yes (with exemplars)
+  Predicted: sol2 | GT: sol2 | Correct: True
+------------------------------------------------------------
+
+[Q 5] Goal: crayon
+  Affordance: mark (matched: mark)
+  Reasoning: The goal requires marking a surface with a crayon, which involves applying pressure to leave a colored trace.
+  Exemplars: ['small dog', 'lazy dog', 'dog', 'hound dog', 'ferret', 'telephone book', 'pen', 'apple']
+  Sol1 (0 KB hits): can color  the walls nicely
+  Sol2 (0 KB hits): can color  the paper nicely
+  KB context provided: Yes (with exemplars)
+  Predicted: sol2 | GT: sol2 | Correct: True
+------------------------------------------------------------
+
+[Q 6] Goal: How to get water out of coconut.
+  Affordance: pierce (matched: pierce)
+  Reasoning: The goal requires creating an opening to access the liquid inside the coconut.
+  Exemplars: ['knife', 'kitchen knife', 'toothpick']
+  Sol1 (0 KB hits): Use a hammer and a nail to pierce a few holes in the top of the coconut. Pour into cup.
+  Sol2 (0 KB hits): Use a hammer and a nail to pierce a few holes in the top of the coconut. Pour into colander.
+  KB context provided: Yes (with exemplars)
+  Predicted: sol1 | GT: sol1 | Correct: True
+------------------------------------------------------------
+
+[Q 7] Goal: What is the best way to apply nail polish to a professional result?
+  Affordance: spread (matched: spread)
+  Reasoning: Applying nail polish smoothly requires a tool to spread the liquid evenly.
+  Exemplars: ['anemone', 'brush', 'chef', 'cloth', 'gay people', 'old newspapers', 'antique sewing machine', 'collection of old newspapers']
+  Sol1 (1 KB hits): A quick way to apply the nail polish is to use a fairly big brush, and then use flesh-colored nail polish to cover up any places that turned out messy.
+  Sol2 (0 KB hits): Tape the cuticles with any kind of tape that has been cut to fit snugly around the nail. Then go ahead and paint the nails. Remove the tape and if you still got nail polish on your cuticle or fingers, dip a q-tip in nail polish remover and wipe the excess away.
+  KB context provided: Yes (with exemplars)
+  Predicted: sol1 | GT: sol2 | Correct: False
+------------------------------------------------------------
+
+[Q 8] Goal: How can I get a stain out of my new hooded sweatshirt?
+  Affordance: clean (matched: clean)
+  Reasoning: The goal requires removing a stain, which involves cleaning the fabric.
+  Exemplars: ['tub', 'vacuum', 'broom', 'shampoo and conditioner', 'washing machine', 'laundry room', 'brush', 'cat']
+  Sol1 (0 KB hits): Dab it with a rag and a some cold water. Then, apply stain remover and launder the clothes.
+  Sol2 (0 KB hits): Dab it with a rag and a some hot water. Then, apply stain remover and launder the clothes.
+  KB context provided: Yes (with exemplars)
+  Predicted: sol1 | GT: sol1 | Correct: True
+------------------------------------------------------------
+
+[Q 9] Goal: fridge
+  Affordance: contain (matched: contain)
+  Reasoning: A fridge is designed to contain and store food at low temperatures.
+  Exemplars: ['tool box', 'container can', 'bottles of liqour', 'cereal bowl', 'water pump and tank', 'bookshelf', 'garment bag', 'breaker box']
+  Sol1 (0 KB hits): prevents meat from spoiling
+  Sol2 (0 KB hits): prevents live plants from spoiling
+  KB context provided: Yes (with exemplars)
+  Predicted: sol2 | GT: sol1 | Correct: False
+------------------------------------------------------------
+
+[Q 10] Goal: To melt chocolate, you can
+  Affordance: heat (matched: heat)
+  Reasoning: The goal requires applying heat to the chocolate to change its state from solid to liquid.
+  Exemplars: ['furnace', 'towel rack', 'hot water heater', 'milk', 'electricity', 'microwave oven', 'antique sewing machine', 'blanket']
+  Sol1 (0 KB hits): Place in a metal pot over the stove
+  Sol2 (0 KB hits): Place in a metal pot in the microwave
+  KB context provided: Yes (with exemplars)
+  Predicted: sol1 | GT: sol1 | Correct: True
+------------------------------------------------------------
+
+[Q 11] Goal: One wants to watch free public broadcasts.
+  Affordance: display (matched: display)
+  Reasoning: The goal requires a device to display the broadcasts.
+  Exemplars: ['tv', 'night stand', 'old photographs', 'acoustic guitar', 'john', 'jeans', 'equipment', 'television']
+  Sol1 (0 KB hits): One should set up an antenna.
+  Sol2 (0 KB hits): One should set up a cable box.
+  KB context provided: Yes (with exemplars)
+  Predicted: sol1 | GT: sol1 | Correct: True
+------------------------------------------------------------
+
+[Q 12] Goal: Establish a health history for new puppy.
+  Affordance: write (matched: write)
+  Reasoning: The goal requires gathering and recording information about the puppy's past health conditions and treatments.
+  Exemplars: ['stairs down', 'poet', "children's book section", 'gay people', 'poster', 'antique sewing machine', 'computer', 'copy machine']
+  Sol1 (0 KB hits): Take to the vet right away.
+  Sol2 (0 KB hits): Take to the vet after a few months.
+  KB context provided: Yes (with exemplars)
+  Predicted: sol1 | GT: sol1 | Correct: True
+------------------------------------------------------------
+
+[Q 13] Goal: How do you remove mortar from a brick to recycle it (the brick)?
+  Affordance: chop (matched: chop)
+  Reasoning: The goal requires separating hardened mortar from the brick surface.
+  Exemplars: ['cook', 'word definitions', 'word', 'neck', 'word definition']
+  Sol1 (0 KB hits): While holding the brick in one hand, hold a hammer in your other hand and gently tap the mortar to un-stick it from the brick.
+  Sol2 (0 KB hits): While holding the brick in one hand, hold a second brick in your other hand and forcefully hit the two bricks together.
+  KB context provided: Yes (with exemplars)
+  Predicted: sol2 | GT: sol1 | Correct: False
+------------------------------------------------------------
+
+[Q 14] Goal: To allow yourself to make edits, while writing by hand.
+  Affordance: erase (matched: erase)
+  Reasoning: The goal requires a tool to remove or alter existing markings on a surface.
+  Exemplars: []
+  Sol1 (0 KB hits): Use a pencil, instead of a pen, so you can erase any mistakes.
+  Sol2 (0 KB hits): Use a pen, instead of a pencil, so you can erase any mistakes.
+  KB context provided: No (soft hint)
+  Predicted: sol1 | GT: sol1 | Correct: True
+------------------------------------------------------------
+
+[Q 15] Goal: How can I clean my toenails of debris?
+  Affordance: pick (matched: pick)
+  Reasoning: The goal requires removing dirt or debris from a small, hard-to-reach area.
+  Exemplars: ['dustbin', 'person', 'dirty dish', 'handle', 'store shelf', 'dish', 'food dish', 'returned mail']
+  Sol1 (0 KB hits): Take a pencil tip and work under your nails with it to get the junk out from under them.
+  Sol2 (0 KB hits): Take a pencil eraser and work under your nails with it to get the junk out from under them.
+  KB context provided: Yes (with exemplars)
+  Predicted: sol1 | GT: sol1 | Correct: True
+------------------------------------------------------------
+
+[Q 16] Goal: hot pad
+  Affordance: absorb (matched: absorb)
+  Reasoning: A hot pad is used to protect surfaces from heat, requiring it to absorb and contain heat.
+  Exemplars: ['dead body', 'cloth', 'doormat', 'shirt', 'person']
+  Sol1 (0 KB hits): can take away nausea quickly
+  Sol2 (0 KB hits): can take away stomach ache quickly
+  KB context provided: Yes (with exemplars)
+  Predicted: sol2 | GT: sol2 | Correct: True
+------------------------------------------------------------
+
+[Q 17] Goal: Remove smell from camping gear.
+  Affordance: clean (matched: clean)
+  Reasoning: The goal requires eliminating odors, which typically involves cleaning or airing out the material.
+  Exemplars: ['tub', 'vacuum', 'broom', 'shampoo and conditioner', 'washing machine', 'laundry room', 'brush', 'cat']
+  Sol1 (1 KB hits): Throw in sock filled with cat litter.
+  Sol2 (1 KB hits): Throw in sock filled with cat food.
+  KB context provided: Yes (with exemplars)
+  Predicted: sol1 | GT: sol1 | Correct: True
+------------------------------------------------------------
+
+[Q 18] Goal: Get a babysitting job.
+  Affordance: display (matched: display)
+  Reasoning: The goal requires presenting oneself in a way that is appealing and trustworthy to potential employers.
+  Exemplars: ['tv', 'night stand', 'old photographs', 'acoustic guitar', 'john', 'jeans', 'equipment', 'television']
+  Sol1 (0 KB hits): Not old enough to work? You can babysit. Let your parents know and ask them to tell their friends.Make sure to charge enough and have fun with the kids.
+  Sol2 (0 KB hits): Not old enough to work? You can babysit. Let your parents know and ask them to tell their friends.Make sure to charge enough and have fun with the cows.
+  KB context provided: Yes (with exemplars)
+  Predicted: sol1 | GT: sol1 | Correct: True
+------------------------------------------------------------
+
+[Q 19] Goal: How do you prepare paper for papier mache pulp?
+  Affordance: crumble (matched: crumble)
+  Reasoning: The goal requires breaking down paper into a soft, workable pulp.
+  Exemplars: ['cookie']
+  Sol1 (0 KB hits): Find old cardboard boxes and make them flat. Cut them with scissors until you have a full bucket of tiny paper pieces.
+  Sol2 (0 KB hits): Find old newspaper or tissue paper from Christmas. Cut them with scissors until you have a full bucket of tiny paper pieces.
+  KB context provided: Yes (with exemplars)
+  Predicted: sol2 | GT: sol2 | Correct: True
+------------------------------------------------------------
+
+[Q 20] Goal: To prepare the cream for baking,
+  Affordance: be heated (matched: heat)
+  Reasoning: The goal requires softening or warming the cream to a workable consistency.
+  Exemplars: ['furnace', 'towel rack', 'hot water heater', 'milk', 'electricity', 'microwave oven', 'antique sewing machine', 'blanket']
+  Sol1 (0 KB hits): measure 2 cups of heavy cream with a measuring cup and pour into an 8" square baking dish.
+  Sol2 (0 KB hits): measure 2 cups of heavy cream with a measuring cup and pour into an 8" round colander.
+  KB context provided: Yes (with exemplars)
+  Predicted: sol2 | GT: sol1 | Correct: False
+------------------------------------------------------------
+
+[Q 21] Goal: Eat a well balanced diet
+  Affordance: eat (matched: eat)
+  Reasoning: The goal requires consuming food, which involves the act of eating.
+  Exemplars: ['table', 'mouse', 'ping pong table', 'cat', 'cereal bowl', 'gay people', 'hanging plants', 'tool']
+  Sol1 (0 KB hits): Fruit helps to satisfy your sweet tooth thanks to its natural sugars
+  Sol2 (1 KB hits): Vegetables helps to satisfy your sweet tooth thanks to its natural sugars
+  KB context provided: Yes (with exemplars)
+  Predicted: sol2 | GT: sol1 | Correct: False
+------------------------------------------------------------
+
+[Q 22] Goal: Cut the sleeves off the shirt
+  Affordance: cut (matched: cut)
+  Reasoning: A tool to separate fabric by slicing is required.
+  Exemplars: ['stairs down', 'table', 'john', 'ping pong table', 'chef', 'cloth', 'rolling pin', 'gay people']
+  Sol1 (0 KB hits): use scissors and cut along the seam that attaches the sleeves to the shirt
+  Sol2 (0 KB hits): Use scissors and cut along the seam at the bottom of the sleeve
+  KB context provided: Yes (with exemplars)
+  Predicted: sol1 | GT: sol1 | Correct: True
+------------------------------------------------------------
+
+[Q 23] Goal: straw
+  Affordance: contain (matched: contain)
+  Reasoning: A straw requires the ability to contain liquid for drinking.
+  Exemplars: ['tool box', 'container can', 'bottles of liqour', 'cereal bowl', 'water pump and tank', 'bookshelf', 'garment bag', 'breaker box']
+  Sol1 (0 KB hits): can be lit for fire to stay warm
+  Sol2 (0 KB hits): can be lit for water to stay warm
+  KB context provided: Yes (with exemplars)
+  Predicted: sol2 | GT: sol1 | Correct: False
+------------------------------------------------------------
+
+[Q 24] Goal: To charge a phone while out in public with only the charger,
+  Affordance: plug (matched: plug)
+  Reasoning: The goal requires a power source to provide electricity to the phone.
+  Exemplars: ['electric socket']
+  Sol1 (0 KB hits): ask a friendly looking stranger on the street to charge it.
+  Sol2 (0 KB hits): take the phone into a coffee shop and use the free power.
+  KB context provided: Yes (with exemplars)
+  Predicted: sol2 | GT: sol2 | Correct: True
+------------------------------------------------------------
+
+[Q 25] Goal: to store cast iron pans so they stay dry
+  Affordance: contain (matched: contain)
+  Reasoning: The goal requires a method to keep the pans dry and protected from moisture.
+  Exemplars: ['tool box', 'container can', 'bottles of liqour', 'cereal bowl', 'water pump and tank', 'bookshelf', 'garment bag', 'breaker box']
+  Sol1 (0 KB hits): store with old rags or beach towels between them
+  Sol2 (0 KB hits): store with old rags or paper towel between them
+  KB context provided: Yes (with exemplars)
+  Predicted: sol2 | GT: sol2 | Correct: True
+------------------------------------------------------------
+
+[Q 26] Goal: What do you need to make homemade "Blackhead Pore Strips"?
+  Affordance: stick (matched: stick)
+  Reasoning: The primary action involves adhering a strip to the skin to extract blackheads.
+  Exemplars: ['vacuum', 'light', 'pants', 'bicycle', 'broom', 'window', 'gay people', 'computer']
+  Sol1 (0 KB hits): You will need: 1) water 2) unflavored gelatin 3)  activated charcoal 4) wash cloth 5) paint brush 6) microwave and 7) something to stir with
+  Sol2 (0 KB hits): You will need: 1) water 2) unflavored gelatin 3)  granulated sugar 4) wash cloth 5) paint brush 6) microwave and 7) something to stir with
+  KB context provided: Yes (with exemplars)
+  Predicted: sol1 | GT: sol1 | Correct: True
+------------------------------------------------------------
+
+[Q 27] Goal: How can I tell if my apples are genetically grown (or altered)
+  Affordance: separate (matched: separate)
+  Reasoning: Identifying genetic alterations in apples typically requires a method to analyze or detect changes in their structure or composition.
+  Exemplars: ['antique sewing machine', 'copy machine', 'cook', 'divider', 'person', 'cardboard box', 'door', 'old sewing machine']
+  Sol1 (0 KB hits): The 5 numbers on the label will begin with the number 8.
+  Sol2 (0 KB hits): The 5 Web addresses on the label will begin with the number 911.
+  KB context provided: Yes (with exemplars)
+  Predicted: sol1 | GT: sol1 | Correct: True
+------------------------------------------------------------
+
+[Q 28] Goal: To thicken a mixture
+  Affordance: dry (matched: dry)
+  Reasoning: The goal requires reducing the liquid content or increasing density, which involves removing water or evaporating moisture.
+  Exemplars: ['clothes hangers', 'towel rack', 'cloth', 'washing maching and dryer', 'hair dryer', 'acne medication', 'antique sewing machine', 'cans of spray paint']
+  Sol1 (0 KB hits): Add corn starch
+  Sol2 (0 KB hits): Add corn syrup
+  KB context provided: Yes (with exemplars)
+  Predicted: sol1 | GT: sol1 | Correct: True
+------------------------------------------------------------
+
+[Q 29] Goal: Remove an ant colony.
+  Affordance: break (matched: break)
+  Reasoning: The goal requires eliminating the ants, which involves breaking their structure or killing them.
+  Exemplars: ['light', 'window', 'gay people', 'antique sewing machine', 'copy machine', 'umbrella', 'ball', 'human']
+  Sol1 (0 KB hits): Spray a mix of 3/4 water and 1/4 salt on ants.
+  Sol2 (0 KB hits): Spray a mix of 1/4 water and 3/4 salt on ants.
+  KB context provided: Yes (with exemplars)
+  Predicted: sol2 | GT: sol1 | Correct: False
+------------------------------------------------------------
+
+[Q 30] Goal: serrated knife
+  Affordance: cut (matched: cut)
+  Reasoning: A serrated knife is designed to cut through tough or fibrous materials with a sawing action.
+  Exemplars: ['stairs down', 'table', 'john', 'ping pong table', 'chef', 'cloth', 'rolling pin', 'gay people']
+  Sol1 (0 KB hits): can cut glass
+  Sol2 (0 KB hits): can cut a can
+  KB context provided: Yes (with exemplars)
+  Predicted: sol2 | GT: sol2 | Correct: True
+------------------------------------------------------------
+
+[Q 31] Goal: How to quickly dry a towel?
+  Affordance: be heated (matched: heat)
+  Reasoning: The goal requires removing moisture from the towel, which is achieved by applying heat or airflow.
+  Exemplars: ['furnace', 'towel rack', 'hot water heater', 'milk', 'electricity', 'microwave oven', 'antique sewing machine', 'blanket']
+  Sol1 (0 KB hits): Once the towel is washed, twist and strain it in the bathtub then dry in the dryer and hang outside afterward
+  Sol2 (0 KB hits): Before the towel is washed, twist and strain it in the bathtub then dry in the dryer and hang outside afterward
+  KB context provided: Yes (with exemplars)
+  Predicted: sol1 | GT: sol1 | Correct: True
+------------------------------------------------------------
+
+[Q 32] Goal: Write a children's book
+  Affordance: write (matched: write)
+  Reasoning: The primary action for creating a children's book is to produce written content.
+  Exemplars: ['stairs down', 'poet', "children's book section", 'gay people', 'poster', 'antique sewing machine', 'computer', 'copy machine']
+  Sol1 (0 KB hits): Go to the library and find a very popular children's book, if you don't know which are which, ask the librarian to help you to get the one that the majority of kids in the target age group tend to check out of the library.     Now check it out and take it home and try to copy it but change a word here and there so that you won't be sued for plagiarism .. find an . illustrator, self publish
+  Sol2 (0 KB hits): Research what may be needed now in society, concerning children's books. find an illustrator, make a practice book and then sharpen it until it's honed to perfetion, ask for some critique, apply or don't. And publish
+  KB context provided: Yes (with exemplars)
+  Predicted: sol2 | GT: sol2 | Correct: True
+------------------------------------------------------------
+
+[Q 33] Goal: Deodorize an item.
+  Affordance: absorb (matched: absorb)
+  Reasoning: The goal requires removing or neutralizing odors, which typically involves absorbing or containing the odor molecules.
+  Exemplars: ['dead body', 'cloth', 'doormat', 'shirt', 'person']
+  Sol1 (0 KB hits): Keep item in a trash bag full of kitty litter for a few hours.
+  Sol2 (0 KB hits): Keep item in a trash bag full of kitty litter for a few weeks.
+  KB context provided: Yes (with exemplars)
+  Predicted: sol1 | GT: sol1 | Correct: True
+------------------------------------------------------------
+
+[Q 34] Goal: To attach strips of cardboard to a larger piece of cardboard, you can
+  Affordance: stick (matched: stick)
+  Reasoning: The goal requires joining two pieces of cardboard together, which typically involves applying adhesive or pressure.
+  Exemplars: ['vacuum', 'light', 'pants', 'bicycle', 'broom', 'window', 'gay people', 'computer']
+  Sol1 (0 KB hits): Use a sanding belt to hold the strips of cardboard in place
+  Sol2 (0 KB hits): Use a hot glue gun to hold the strips of cardboard in place
+  KB context provided: Yes (with exemplars)
+  Predicted: sol2 | GT: sol2 | Correct: True
+------------------------------------------------------------
+
+[Q 35] Goal: How do you leach acorns via cold process?
+  Affordance: soak (matched: soak)
+  Reasoning: The goal requires soaking acorns in water to remove tannins without heat.
+  Exemplars: []
+  Sol1 (0 KB hits): Place the acorns in a jar and pour in just enough water to completely cover the acorns. Let it soak for a day, and then pour out and replace the water with fresh water. Repeat this for one week.
+  Sol2 (0 KB hits): Place the acorns in a jar and pour in just enough water to completely cover the acorns. Let it soak for a month, and then pour out and replace the water with fresh water. Repeat this for one year.
+  KB context provided: No (soft hint)
+  Predicted: sol1 | GT: sol1 | Correct: True
+------------------------------------------------------------
+
+[Q 36] Goal: Prevent soggy microwave pizza.
+  Affordance: absorb (matched: absorb)
+  Reasoning: The goal requires preventing moisture from softening the pizza, which involves removing or blocking water absorption.
+  Exemplars: ['dead body', 'cloth', 'doormat', 'shirt', 'person']
+  Sol1 (0 KB hits): Add a cup of milk next to pizza in microwave.
+  Sol2 (0 KB hits): Add a cup of water next to pizza in microwave.
+  KB context provided: Yes (with exemplars)
+  Predicted: sol2 | GT: sol2 | Correct: True
+------------------------------------------------------------
+
+[Q 37] Goal: how to make deviled eggs
+  Affordance: separate (matched: separate)
+  Reasoning: The primary action involves separating the yolk from the white and mixing the yolk with other ingredients.
+  Exemplars: ['antique sewing machine', 'copy machine', 'cook', 'divider', 'person', 'cardboard box', 'door', 'old sewing machine']
+  Sol1 (0 KB hits): Start with fresh cooled eggs. Slice the eggs in half lengthwise, removing yolks to a medium bowl, and placing the whites on a serving platter. Mash the yolks into a fine crumble using a fork. Add mayonnaise, vinegar, mustard, salt, and pepper, and mix well. Evenly disperse heaping teaspoons of the yolk mixture into the egg whites
+  Sol2 (0 KB hits): start with hard boiled, cooled eggs. Slice the eggs in half lengthwise, removing yolks to a medium bowl, and placing the whites on a serving platter. Mash the yolks into a fine crumble using a fork. Add mayonnaise, vinegar, mustard, salt, and pepper, and mix well. Evenly disperse heaping teaspoons of the yolk mixture into the egg whites
+  KB context provided: Yes (with exemplars)
+  Predicted: sol2 | GT: sol2 | Correct: True
+------------------------------------------------------------
+
+[Q 38] Goal: How do you prepare mashed yams to be cooked?
+  Affordance: peel (matched: peel)
+  Reasoning: The goal requires removing the outer layer of the yams before cooking.
+  Exemplars: ['knives', 'banana', 'banana chutney', 'banana peels']
+  Sol1 (0 KB hits): Wash, peel, and trim the yams. Place the yams onto a cutting board and use a sharp knife to cut them into large, uniform chunks that are all approximately the same size.
+  Sol2 (0 KB hits): Wash, peel, and trim the yams. Place the yams onto a cutting board and use a sharp knife to cut them into small, irregular chunks that are all varying  same size.
+  KB context provided: Yes (with exemplars)
+  Predicted: sol1 | GT: sol1 | Correct: True
+------------------------------------------------------------
+
+[Q 39] Goal: To dust your ceiling fan
+  Affordance: wipe (matched: wipe)
+  Reasoning: A tool or method to remove dust from the fan blades is required.
+  Exemplars: ['cloth', 'mat', 'doormat', 'toilet paper', 'welcome mat', 'paper towels', 'welcone mat', 'fire']
+  Sol1 (0 KB hits): Use a pillow case, and put it over each blade individually, and pull towards you to keep the dust inside of the pillow case.
+  Sol2 (0 KB hits): Use a leaf blower, point it towards each blade individually, and turn it on to spray the dust around the room.
+  KB context provided: Yes (with exemplars)
+  Predicted: sol1 | GT: sol1 | Correct: True
+------------------------------------------------------------
+
+[Q 40] Goal: how to grill boneless chicken?
+  Affordance: be heated (matched: heat)
+  Reasoning: Grilling requires direct heat application to cook the chicken thoroughly.
+  Exemplars: ['furnace', 'towel rack', 'hot water heater', 'milk', 'electricity', 'microwave oven', 'antique sewing machine', 'blanket']
+  Sol1 (0 KB hits): low and slow for at least six hours.
+  Sol2 (0 KB hits): quickly over direct heat
+  KB context provided: Yes (with exemplars)
+  Predicted: sol2 | GT: sol2 | Correct: True
+------------------------------------------------------------
+
+[Q 41] Goal: how do you open a wrapped present?
+  Affordance: unwrap (matched: unwrap)
+  Reasoning: The goal requires removing the wrapping material to access the present.
+  Exemplars: []
+  Sol1 (0 KB hits): tear off all the wrapping.
+  Sol2 (0 KB hits): cut off the wrapping paper.
+  KB context provided: No (soft hint)
+  Predicted: sol2 | GT: sol1 | Correct: False
+------------------------------------------------------------
+
+[Q 42] Goal: Scrub tough grime off kitchen counter tops.
+  Affordance: scrub (matched: scrub)
+  Reasoning: The goal requires mechanical action to remove grime from a surface.
+  Exemplars: []
+  Sol1 (0 KB hits): Use a vegetable mesh bag to clean.
+  Sol2 (0 KB hits): Use a vegetable plastic bag to clean.
+  KB context provided: No (soft hint)
+  Predicted: sol2 | GT: sol1 | Correct: False
+------------------------------------------------------------
+
+[Q 43] Goal: Roughen up the smooth surface of a hanger
+  Affordance: roughen (matched: roughen)
+  Reasoning: The goal requires altering the surface texture to increase friction or grip.
+  Exemplars: []
+  Sol1 (0 KB hits): Slide a piece of fine grade sand paper over the edges of the hanger, until the hanger surface is no longer smooth
+  Sol2 (0 KB hits): Slide a piece of fine grade sand paper over the entire hanger, until the hanger surface is no longer smooth
+  KB context provided: No (soft hint)
+  Predicted: sol2 | GT: sol2 | Correct: True
+------------------------------------------------------------
+
+[Q 44] Goal: how do you get a dog to fetch?
+  Affordance: carry (matched: carry)
+  Reasoning: The goal requires an action to motivate the dog to retrieve and return an object.
+  Exemplars: ['tool box', 'light', 'serving trolley', 'tote bag', 'plumbing', 'bike', 'gay people', 'parkway']
+  Sol1 (0 KB hits): throw a ball away from the dog and yell "fetch"
+  Sol2 (0 KB hits): pick an object away from the dog and yell "fetch"
+  KB context provided: Yes (with exemplars)
+  Predicted: sol1 | GT: sol1 | Correct: True
+------------------------------------------------------------
+
+[Q 45] Goal: To make a photocopy of a page in a book,
+  Affordance: press (matched: press)
+  Reasoning: A flat surface to press the book against is needed for clear copying.
+  Exemplars: ['cook book', 'antique sewing machine', 'copy machine', 'many books', 'overdue books', 'reference books', 'iron', 'old books']
+  Sol1 (0 KB hits): find the page in the book, place it onto the glass of the photocopier with the page facing up, then press the copy button.
+  Sol2 (0 KB hits): find the page in the book, place it onto the glass of the photocopier with the page facing down, then press the copy button.
+  KB context provided: Yes (with exemplars)
+  Predicted: sol1 | GT: sol2 | Correct: False
+------------------------------------------------------------
+
+[Q 46] Goal: protractor
+  Affordance: mark (matched: mark)
+  Reasoning: A protractor is a measuring tool that requires marking angles, which involves drawing or marking lines.
+  Exemplars: ['small dog', 'lazy dog', 'dog', 'hound dog', 'ferret', 'telephone book', 'pen', 'apple']
+  Sol1 (0 KB hits): can stab pill bug
+  Sol2 (0 KB hits): can stab leopard
+  KB context provided: Yes (with exemplars)
+  Predicted: sol2 | GT: sol1 | Correct: False
+------------------------------------------------------------
+
+[Q 47] Goal: How do you separate the yolk from the egg white?
+  Affordance: separate (matched: separate)
+  Reasoning: The goal requires a method to physically divide the yolk from the white, typically by transferring one to the other container.
+  Exemplars: ['antique sewing machine', 'copy machine', 'cook', 'divider', 'person', 'cardboard box', 'door', 'old sewing machine']
+  Sol1 (0 KB hits): Crack the egg and split the shell in quarters.  Gently pass the yolk back and forth between the shell quarters until the egg white is removed.
+  Sol2 (0 KB hits): Crack the egg and split the shell in half.  Gently pass the yolk back and forth between the shell halves until the egg white is removed.
+  KB context provided: Yes (with exemplars)
+  Predicted: sol2 | GT: sol2 | Correct: True
+------------------------------------------------------------
+
+[Q 48] Goal: What is the best material to be used for the solar air heating box?
+  Affordance: absorb (matched: absorb)
+  Reasoning: The goal requires a material that can effectively absorb solar radiation to heat air.
+  Exemplars: ['dead body', 'cloth', 'doormat', 'shirt', 'person']
+  Sol1 (0 KB hits): Use a wooden box of required size and punch holes on the for allowing air passage.
+  Sol2 (0 KB hits): Choose a metallic box of required size, with holes punched on them for air passage.
+  KB context provided: Yes (with exemplars)
+  Predicted: sol2 | GT: sol2 | Correct: True
+------------------------------------------------------------
+
+[Q 49] Goal: To cut circles out of dough without a cookie cutter.
+  Affordance: cut (matched: cut)
+  Reasoning: A tool to shape the dough into circular forms is required.
+  Exemplars: ['stairs down', 'table', 'john', 'ping pong table', 'chef', 'cloth', 'rolling pin', 'gay people']
+  Sol1 (0 KB hits): Use a shot glass by turning it upside down and using the rim.
+  Sol2 (0 KB hits): Use a glass by turning it upside down and using the rim.
+  KB context provided: Yes (with exemplars)
+  Predicted: sol1 | GT: sol2 | Correct: False
+------------------------------------------------------------
+
+
+============================================================
+SUMMARY
+============================================================
+Total questions : 50
+Correct         : 37
+Accuracy        : 0.7400
+
+KB Stats:
+  KB hit          : 45
+  KB miss         : 5
+  Synonym hit     : 4
+  Sol has KB obj  : 4
+============================================================

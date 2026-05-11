@@ -1,0 +1,35 @@
+============================================================
+RESULT LOG — PIQA Evaluation
+Model: mistral-small-latest  |  Ablation: pure_logic
+============================================================
+
+[Q 0] Goal: slow cooker
+  Affordance: be heated (matched: heat)
+  Exemplars: ['furnace', 'towel rack', 'hot water heater', 'milk', 'electricity', 'microwave oven', 'antique sewing machine', 'blanket']
+  Sol1 (0 KB hits): can melt butter
+  Sol2 (0 KB hits): can melt copper
+  Predicted: sol2 | GT: sol1 | Correct: False
+------------------------------------------------------------
+
+[Q 1] Goal: how to make coconut-almond truffles
+  Affordance: hold (matched: hold)
+  Exemplars: ['saucer in', 'tool box', 'tub', 'belt', 'boxes', 'container can', 'drawer', 'tie rack']
+  Sol1 (0 KB hits): Combine 3/4 cup almond butter, 1/2 cup each confectioners’ sugar and unsweetened shredded coconut, 3 tablespoons cocoa powder and 1/2 teaspoon vanilla; work into a dough. Roll into balls, then roll in shredded coconut. Chill.
+  Sol2 (0 KB hits): Combine 3/4 cup almond marzipan paste , 1/2 cup each confectioners’ sugar and unsweetened shredded coconut, 3 tablespoons cocoa powder and 1/2 teaspoon vanilla; work into a dough. Roll into balls, then roll in shredded coconut. Chill.
+  Predicted: sol2 | GT: sol1 | Correct: False
+------------------------------------------------------------
+
+
+============================================================
+SUMMARY
+============================================================
+Total questions : 2
+Correct         : 0
+Accuracy        : 0.0000
+
+KB Stats:
+  KB hit          : 2
+  KB miss         : 0
+  Synonym hit     : 1
+  Sol has KB obj  : 0
+============================================================
