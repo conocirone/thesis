@@ -1,0 +1,3962 @@
+============================================================
+RESULT LOG — Tidy-Up Evaluation (module_2)
+Model: mistral-medium-latest  |  Ablation: pure_logic
+============================================================
+
+[Object] action figure
+Canonical location  : playroom
+Reasoning           : Keyword match.
+Candidates          : ['childs room', 'basement', 'bar', 'dumpster', 'freezer']
+Prolog selected     : childs room  [kb_unique]
+Predicted           : childs room
+Ground Truth        : childs room
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] adjustable wrench
+Canonical location  : garage
+Reasoning           : Keyword match.
+Candidates          : ['childs room', 'box', 'room', 'house', 'bar']
+Prolog selected     : none  [no_match]
+Predicted           : house
+Ground Truth        : childs room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] alarmclock
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bedroom', 'freezer', 'cellar', 'trap', 'television room']
+Prolog selected     : television room  [kb_unique]
+Predicted           : television room
+Ground Truth        : bedroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] aluminumfoil
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['kitchen', 'television room', 'living room', 'basement', 'attic']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['television room', 'living room']
+  KB confirmed      : ['television room', 'living room']
+Predicted           : television room
+Ground Truth        : kitchen
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] android figure
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['exercise room', 'basement', 'oven', 'dumpster', 'jar']
+Prolog selected     : none  [no_match]
+Predicted           : basement
+Ground Truth        : exercise room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] anti slip tape
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bedroom', 'oven', 'can', 'oven', 'can']
+Prolog selected     : none  [no_match]
+Predicted           : bedroom
+Ground Truth        : bedroom
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] antidepressant
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['playroom', 'room', 'jar', 'bar', 'family room']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['room', 'family room']
+  KB confirmed      : ['room', 'family room']
+Predicted           : bar
+Ground Truth        : playroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] apple
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['kitchen', 'oven', 'oven', 'room', 'family room']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['room', 'family room']
+  KB confirmed      : ['room', 'family room']
+Predicted           : kitchen
+Ground Truth        : kitchen
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] armchair
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['living room', 'lobby', 'can', 'freezer', 'freezer']
+Prolog selected     : living room  [kb_unique]
+Predicted           : living room
+Ground Truth        : living room
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] backpack
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['storage room', 'trap', 'family room', 'oven', 'box']
+Prolog selected     : family room  [kb_unique]
+Predicted           : family room
+Ground Truth        : storage room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] balancing cactus
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['dining room', 'bar', 'dumpster', 'freezer', 'house']
+Prolog selected     : house  [kb_unique]
+Predicted           : house
+Ground Truth        : dining room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] banana
+Canonical location  : pantry
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['pantry room', 'family room', 'attic', 'dumpster', 'bar']
+Prolog selected     : pantry room  [kb_unique]
+Predicted           : pantry room
+Ground Truth        : pantry room
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] baseball
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bedroom', 'freezer', 'freezer', 'box', 'room']
+Prolog selected     : room  [kb_unique]
+Predicted           : room
+Ground Truth        : bedroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] baseballbat
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bedroom', 'box', 'jar', 'house', 'bathroom']
+Prolog selected     : house  [kb_unique]
+Predicted           : house
+Ground Truth        : bedroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] basketball
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bedroom', 'freezer', 'attic', 'trap', 'jar']
+Prolog selected     : none  [no_match]
+Predicted           : bedroom
+Ground Truth        : bedroom
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] bat
+Canonical location  : storage_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['attic', 'box', 'family room', 'freezer', 'home office']
+Prolog selected     : attic  [kb_unique]
+Predicted           : attic
+Ground Truth        : attic
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] bath sheet
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['dining room', 'cellar', 'dumpster', 'jar', 'room']
+Prolog selected     : room  [kb_unique]
+Predicted           : room
+Ground Truth        : dining room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] bathtub
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bathroom', 'exercise room', 'living room', 'family room', 'attic']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['living room', 'family room']
+  KB confirmed      : ['living room', 'family room']
+Predicted           : exercise room
+Ground Truth        : bathroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] bathtubbasin
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bathroom', 'can', 'living room', 'room', 'garage']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['living room', 'room']
+  KB confirmed      : ['living room', 'room']
+Predicted           : room
+Ground Truth        : bathroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] batter
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['box', 'garage', 'dumpster', 'dining room', 'childs room']
+Prolog selected     : none  [no_match]
+Predicted           : garage
+Ground Truth        : box
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] battery
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['storage room', 'can', 'house', 'oven', 'family room']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['house', 'family room']
+  KB confirmed      : ['house', 'family room']
+Predicted           : house
+Ground Truth        : storage room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] beard color gel
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['playroom', 'trap', 'trap', 'bar', 'oven']
+Prolog selected     : none  [no_match]
+Predicted           : trap
+Ground Truth        : playroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] beauty pack
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['utility room', 'can', 'jar', 'family room', 'oven']
+Prolog selected     : family room  [kb_unique]
+Predicted           : family room
+Ground Truth        : utility room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] bed
+Canonical location  : storage_room
+Reasoning           : Keyword match.
+Candidates          : ['bedroom', 'childs room', 'bathroom', 'home office', 'living room']
+Prolog selected     : none  [no_match]
+Predicted           : childs room
+Ground Truth        : bedroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] bleach cleanser
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['kitchen', 'oven', 'room', 'family room', 'attic']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['room', 'family room']
+  KB confirmed      : ['room', 'family room']
+Predicted           : kitchen
+Ground Truth        : kitchen
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] blender jar
+Canonical location  : pantry
+Reasoning           : Keyword match.
+Candidates          : ['dining room', 'family room', 'bar', 'jar', 'attic']
+Prolog selected     : jar  [kb_unique]
+Predicted           : jar
+Ground Truth        : dining room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] blind
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['kitchen', 'playroom', 'trap', 'basement', 'attic']
+Prolog selected     : none  [no_match]
+Predicted           : playroom
+Ground Truth        : kitchen
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] board game
+Canonical location  : cabinet
+Reasoning           : Keyword match.
+Candidates          : ['lobby', 'jar', 'trap', 'freezer', 'dumpster']
+Prolog selected     : none  [no_match]
+Predicted           : jar
+Ground Truth        : lobby
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] book
+Canonical location  : bed
+Reasoning           : Keyword match.
+Candidates          : ['bedroom', 'attic', 'box', 'house', 'oven']
+Prolog selected     : none  [no_match]
+Predicted           : bedroom
+Ground Truth        : bedroom
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] bookend
+Canonical location  : library
+Reasoning           : Keyword match.
+Candidates          : ['playroom', 'family room', 'attic', 'bar', 'freezer']
+Prolog selected     : none  [no_match]
+Predicted           : family room
+Ground Truth        : playroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] boot
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bedroom', 'closet', 'house', 'corridor', 'kitchen']
+Prolog selected     : house  [kb_unique]
+Predicted           : house
+Ground Truth        : bedroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] bottle
+Canonical location  : playroom
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['kitchen', 'childs room', 'dumpster', 'closet', 'house']
+Prolog selected     : childs room  [kb_unique]
+Predicted           : childs room
+Ground Truth        : kitchen
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] bowl
+Canonical location  : dining_room
+Reasoning           : Keyword match.
+Candidates          : ['kitchen', 'can', 'house', 'box', 'bar']
+Prolog selected     : none  [no_match]
+Predicted           : kitchen
+Ground Truth        : kitchen
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] box
+Canonical location  : storage_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['living room', 'house', 'bar', 'oven', 'trap']
+Prolog selected     : none  [no_match]
+Predicted           : bar
+Ground Truth        : living room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] bread
+Canonical location  : kitchen
+Reasoning           : Keyword match.
+Candidates          : ['kitchen', 'childs room', 'utility room', 'dumpster', 'corridor']
+Prolog selected     : kitchen  [kb_unique]
+Predicted           : kitchen
+Ground Truth        : kitchen
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] bundt pan
+Canonical location  : kitchen
+Reasoning           : Keyword match.
+Candidates          : ['corridor', 'trap', 'attic', 'room', 'jar']
+Prolog selected     : none  [no_match]
+Predicted           : jar
+Ground Truth        : corridor
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] butter dish
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['dining room', 'attic', 'freezer', 'trap', 'bar']
+Prolog selected     : none  [no_match]
+Predicted           : trap
+Ground Truth        : dining room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] butterknife
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['kitchen', 'bathroom', 'childs room', 'family room', 'bedroom']
+Prolog selected     : family room  [kb_unique]
+Predicted           : family room
+Ground Truth        : kitchen
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] cabinet
+Canonical location  : trash
+Reasoning           : Keyword match.
+Candidates          : ['kitchen', 'childs room', 'pantry room', 'closet', 'trap']
+Prolog selected     : none  [no_match]
+Predicted           : kitchen
+Ground Truth        : kitchen
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] cake mix
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['exercise room', 'can', 'room', 'can', 'trap']
+Prolog selected     : room  [kb_unique]
+Predicted           : room
+Ground Truth        : exercise room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] cake pan
+Canonical location  : kitchen
+Reasoning           : Keyword match.
+Candidates          : ['storage room', 'bar', 'freezer', 'jar', 'box']
+Prolog selected     : none  [no_match]
+Predicted           : jar
+Ground Truth        : storage room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] camera
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bedroom', 'family room', 'bar', 'bar', 'house']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['family room', 'house']
+  KB confirmed      : ['family room', 'house']
+Predicted           : bedroom
+Ground Truth        : bedroom
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] can opener
+Canonical location  : kitchen
+Reasoning           : Keyword match.
+Candidates          : ['garage', 'trap', 'cellar', 'dumpster', 'dumpster']
+Prolog selected     : none  [no_match]
+Predicted           : garage
+Ground Truth        : garage
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] candle
+Canonical location  : bedroom
+Reasoning           : Keyword match.
+Candidates          : ['bathroom', 'bedroom', 'childs room', 'bedroom', 'bar']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['bedroom', 'bedroom', 'bedroom', 'bedroom']
+  KB confirmed      : ['bedroom', 'bedroom', 'bedroom', 'bedroom', 'bedroom', 'bedroom', 'bedroom', 'bedroom']
+Predicted           : bathroom
+Ground Truth        : bathroom
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] candle holder
+Canonical location  : pantry
+Reasoning           : Keyword match.
+Candidates          : ['bathroom', 'cellar', 'family room', 'attic', 'can']
+Prolog selected     : can  [kb_unique]
+Predicted           : can
+Ground Truth        : bathroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] candy
+Canonical location  : pantry
+Reasoning           : Keyword match.
+Candidates          : ['bedroom', 'box', 'oven', 'cellar', 'box']
+Prolog selected     : none  [no_match]
+Predicted           : oven
+Ground Truth        : bedroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] candy bar
+Canonical location  : pantry
+Reasoning           : Keyword match.
+Candidates          : ['playroom', 'oven', 'cellar', 'cellar', 'basement']
+Prolog selected     : none  [no_match]
+Predicted           : oven
+Ground Truth        : playroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] canister
+Canonical location  : pantry
+Reasoning           : Keyword match.
+Candidates          : ['dining room', 'cellar', 'trap', 'jar', 'dumpster']
+Prolog selected     : jar  [kb_unique]
+Predicted           : jar
+Ground Truth        : dining room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] card game
+Canonical location  : playroom
+Reasoning           : Keyword match.
+Candidates          : ['dining room', 'dumpster', 'basement', 'bar', 'jar']
+Prolog selected     : none  [no_match]
+Predicted           : basement
+Ground Truth        : dining room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] carrying case
+Canonical location  : garage
+Reasoning           : Keyword match.
+Candidates          : ['childs room', 'trap', 'box', 'oven', 'freezer']
+Prolog selected     : none  [no_match]
+Predicted           : childs room
+Ground Truth        : childs room
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] casserole dish
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['home office', 'trap', 'basement', 'box', 'oven']
+Prolog selected     : none  [no_match]
+Predicted           : home office
+Ground Truth        : home office
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] cd
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bedroom', 'house', 'kitchen', 'lobby', 'box']
+Prolog selected     : house  [kb_unique]
+Predicted           : house
+Ground Truth        : bedroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] cellphone
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['living room', 'room', 'trap', 'bathroom', 'exercise room']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['living room', 'room']
+  KB confirmed      : ['living room', 'room']
+Predicted           : living room
+Ground Truth        : living room
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] cereal
+Canonical location  : cabinet
+Reasoning           : Keyword match.
+Candidates          : ['exercise room', 'jar', 'bar', 'cellar', 'basement']
+Prolog selected     : none  [no_match]
+Predicted           : jar
+Ground Truth        : exercise room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] chain
+Canonical location  : garage
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['playroom', 'family room', 'bar', 'bar', 'cellar']
+Prolog selected     : none  [no_match]
+Predicted           : cellar
+Ground Truth        : playroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] chair
+Canonical location  : bedroom
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bedroom', 'dining room', 'home office', 'exercise room', 'cellar']
+Prolog selected     : bedroom  [kb_unique]
+Predicted           : bedroom
+Ground Truth        : bedroom
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] chocolate
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['exercise room', 'freezer', 'trap', 'can', 'family room']
+Prolog selected     : family room  [kb_unique]
+Predicted           : family room
+Ground Truth        : exercise room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] chocolate box
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['exercise room', 'trap', 'attic', 'jar', 'cellar']
+Prolog selected     : none  [no_match]
+Predicted           : exercise room
+Ground Truth        : exercise room
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] chocolate milk pods
+Canonical location  : fridge
+Reasoning           : Keyword match.
+Candidates          : ['television room', 'freezer', 'attic', 'freezer', 'room']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['freezer', 'freezer', 'freezer', 'freezer']
+  KB confirmed      : ['freezer', 'freezer', 'freezer', 'freezer', 'freezer', 'freezer', 'freezer', 'freezer']
+Predicted           : television room
+Ground Truth        : television room
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] chocolate powder
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['television room', 'house', 'freezer', 'dumpster', 'bar']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['television room', 'house']
+  KB confirmed      : ['television room', 'house']
+Predicted           : house
+Ground Truth        : television room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] chopping board
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['dining room', 'basement', 'freezer', 'can', 'room']
+Prolog selected     : room  [kb_unique]
+Predicted           : room
+Ground Truth        : dining room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] clamp
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['childs room', 'jar', 'trap', 'attic', 'attic']
+Prolog selected     : none  [no_match]
+Predicted           : attic
+Ground Truth        : childs room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] clay
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bathroom', 'family room', 'freezer', 'bar', 'freezer']
+Prolog selected     : family room  [kb_unique]
+Predicted           : family room
+Ground Truth        : bathroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] clock
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['home office', 'room', 'house', 'trap', 'dumpster']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['room', 'house']
+  KB confirmed      : ['room', 'house']
+Predicted           : home office
+Ground Truth        : home office
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] cloth
+Canonical location  : bathroom
+Reasoning           : Keyword match.
+Candidates          : ['bathroom', 'dumpster', 'box', 'family room', 'freezer']
+Prolog selected     : bathroom  [kb_unique]
+Predicted           : bathroom
+Ground Truth        : bathroom
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] coffee beans
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['closet', 'attic', 'box', 'trap', 'oven']
+Prolog selected     : none  [no_match]
+Predicted           : attic
+Ground Truth        : closet
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] coffee pods
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['playroom', 'freezer', 'jar', 'cellar', 'basement']
+Prolog selected     : none  [no_match]
+Predicted           : jar
+Ground Truth        : playroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] coffeemachine
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['kitchen', 'pantry room', 'lobby', 'childs room', 'jar']
+Prolog selected     : none  [no_match]
+Predicted           : kitchen
+Ground Truth        : kitchen
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] coffeemaker
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bathroom', 'freezer', 'freezer', 'bar', 'room']
+Prolog selected     : room  [kb_unique]
+Predicted           : room
+Ground Truth        : bathroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] coffeetable
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['living room', 'kitchen', 'corridor', 'utility room', 'house']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['living room', 'house']
+  KB confirmed      : ['living room', 'house']
+Predicted           : living room
+Ground Truth        : living room
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] colored wood blocks
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bathroom', 'attic', 'family room', 'cellar', 'box']
+Prolog selected     : family room  [kb_unique]
+Predicted           : family room
+Ground Truth        : bathroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] condiment
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['home office', 'dumpster', 'room', 'trap', 'family room']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['room', 'family room']
+  KB confirmed      : ['room', 'family room']
+Predicted           : home office
+Ground Truth        : home office
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] countertop
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bedroom', 'oven', 'corridor', 'utility room', 'oven']
+Prolog selected     : none  [no_match]
+Predicted           : bedroom
+Ground Truth        : bedroom
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] cracker box
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bathroom', 'room', 'can', 'trap', 'attic']
+Prolog selected     : room  [kb_unique]
+Predicted           : room
+Ground Truth        : bathroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] crayon
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['exercise room', 'freezer', 'room', 'trap', 'house']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['room', 'house']
+  KB confirmed      : ['room', 'house']
+Predicted           : exercise room
+Ground Truth        : exercise room
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] creditcard
+Canonical location  : garage
+Reasoning           : Keyword match.
+Candidates          : ['bedroom', 'pantry room', 'lobby', 'bathroom', 'house']
+Prolog selected     : none  [no_match]
+Predicted           : bedroom
+Ground Truth        : bedroom
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] cube storage box
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['lobby', 'cellar', 'bar', 'freezer', 'basement']
+Prolog selected     : none  [no_match]
+Predicted           : basement
+Ground Truth        : lobby
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] cup
+Canonical location  : cabinet
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['kitchen', 'trap', 'can', 'trap', 'family room']
+Prolog selected     : none  [no_match]
+Predicted           : kitchen
+Ground Truth        : kitchen
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] curtain
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bedroom', 'house', 'pantry room', 'bar', 'dining room']
+Prolog selected     : house  [kb_unique]
+Predicted           : house
+Ground Truth        : bedroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] cushion
+Canonical location  : living_room
+Reasoning           : Keyword match.
+Candidates          : ['television room', 'house', 'attic', 'room', 'room']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['television room', 'house', 'room', 'room', 'room', 'room']
+  KB confirmed      : ['television room', 'house', 'room', 'room', 'room', 'room', 'room', 'room', 'room', 'room']
+Predicted           : house
+Ground Truth        : television room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] desk
+Canonical location  : bedroom
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['living room', 'childs room', 'house', 'attic', 'jar']
+Prolog selected     : none  [no_match]
+Predicted           : living room
+Ground Truth        : living room
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] desk caddy
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['childs room', 'attic', 'family room', 'box', 'jar']
+Prolog selected     : family room  [kb_unique]
+Predicted           : family room
+Ground Truth        : childs room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] desklamp
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['living room', 'jar', 'playroom', 'dining room', 'utility room']
+Prolog selected     : living room  [kb_unique]
+Predicted           : living room
+Ground Truth        : living room
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] desktop
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bedroom', 'cellar', 'dumpster', 'corridor', 'bar']
+Prolog selected     : none  [no_match]
+Predicted           : bedroom
+Ground Truth        : bedroom
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] diaper pack
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['home office', 'attic', 'can', 'trap', 'can']
+Prolog selected     : none  [no_match]
+Predicted           : home office
+Ground Truth        : home office
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] dietary supplement
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['storage room', 'cellar', 'jar', 'cellar', 'basement']
+Prolog selected     : none  [no_match]
+Predicted           : cellar
+Ground Truth        : storage room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] diningtable
+Canonical location  : dining_room
+Reasoning           : Keyword match.
+Candidates          : ['kitchen', 'pantry room', 'corridor', 'closet', 'freezer']
+Prolog selected     : none  [no_match]
+Predicted           : kitchen
+Ground Truth        : kitchen
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] dish drainer
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['exercise room', 'cellar', 'freezer', 'trap', 'family room']
+Prolog selected     : family room  [kb_unique]
+Predicted           : family room
+Ground Truth        : exercise room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] dishsponge
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bathroom', 'house', 'lobby', 'house', 'box']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['house', 'house', 'house', 'house']
+  KB confirmed      : ['house', 'house', 'house', 'house', 'house', 'house', 'house', 'house']
+Predicted           : house
+Ground Truth        : bathroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] dishtowel
+Canonical location  : bathroom
+Reasoning           : Keyword match.
+Candidates          : ['lobby', 'cellar', 'oven', 'dumpster', 'cellar']
+Prolog selected     : none  [no_match]
+Predicted           : cellar
+Ground Truth        : lobby
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] dishwasher
+Canonical location  : kitchen
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['kitchen', 'playroom', 'childs room', 'playroom', 'dining room']
+Prolog selected     : kitchen  [kb_unique]
+Predicted           : kitchen
+Ground Truth        : kitchen
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] dispensing closure
+Canonical location  : home_office
+Reasoning           : Keyword match.
+Candidates          : ['television room', 'cellar', 'basement', 'bar', 'dumpster']
+Prolog selected     : none  [no_match]
+Predicted           : television room
+Ground Truth        : television room
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] dog bowl
+Canonical location  : dining_room
+Reasoning           : Keyword match.
+Candidates          : ['garage', 'oven', 'freezer', 'attic', 'trap']
+Prolog selected     : none  [no_match]
+Predicted           : oven
+Ground Truth        : garage
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] dog chew toy
+Canonical location  : playroom
+Reasoning           : Keyword match.
+Candidates          : ['corridor', 'attic', 'basement', 'room', 'attic']
+Prolog selected     : none  [no_match]
+Predicted           : room
+Ground Truth        : corridor
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] dogbed
+Canonical location  : bedroom
+Reasoning           : Keyword match.
+Candidates          : ['bedroom', 'storage room', 'exercise room', 'pantry room', 'garage']
+Prolog selected     : bedroom  [kb_unique]
+Predicted           : bedroom
+Ground Truth        : bedroom
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] dollhouse toy
+Canonical location  : playroom
+Reasoning           : Keyword match.
+Candidates          : ['bathroom', 'jar', 'family room', 'freezer', 'jar']
+Prolog selected     : none  [no_match]
+Predicted           : family room
+Ground Truth        : bathroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] donut
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['television room', 'can', 'cellar', 'jar', 'dumpster']
+Prolog selected     : television room  [kb_unique]
+Predicted           : television room
+Ground Truth        : television room
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] drawer
+Canonical location  : cabinet
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['kitchen', 'room', 'basement', 'trap', 'storage room']
+Prolog selected     : none  [no_match]
+Predicted           : kitchen
+Ground Truth        : kitchen
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] dresser
+Canonical location  : bedroom
+Reasoning           : Keyword match.
+Candidates          : ['bedroom', 'house', 'oven', 'utility room', 'utility room']
+Prolog selected     : bedroom  [kb_unique]
+Predicted           : bedroom
+Ground Truth        : bedroom
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] drink
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['can', 'house', 'home office', 'family room', 'closet']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['house', 'family room']
+  KB confirmed      : ['house', 'family room']
+Predicted           : home office
+Ground Truth        : can
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] drink coaster
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['playroom', 'house', 'jar', 'room', 'cellar']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['house', 'room']
+  KB confirmed      : ['house', 'room']
+Predicted           : cellar
+Ground Truth        : playroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] dryer
+Canonical location  : storage_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['basement', 'television room', 'playroom', 'closet', 'living room']
+Prolog selected     : basement  [kb_unique]
+Predicted           : basement
+Ground Truth        : basement
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] duct tape
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['dining room', 'room', 'room', 'trap', 'dumpster']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['room', 'room', 'room', 'room']
+  KB confirmed      : ['room', 'room', 'room', 'room', 'room', 'room', 'room', 'room']
+Predicted           : room
+Ground Truth        : dining room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] dumbbell
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bedroom', 'basement', 'freezer', 'oven', 'attic']
+Prolog selected     : none  [no_match]
+Predicted           : bedroom
+Ground Truth        : bedroom
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] dumbbell rack
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['living room', 'can', 'room', 'can', 'room']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['living room', 'room', 'room', 'room', 'room']
+  KB confirmed      : ['living room', 'room', 'room', 'room', 'room', 'room', 'room', 'room', 'room']
+Predicted           : can
+Ground Truth        : living room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] dustpan and brush
+Canonical location  : kitchen
+Reasoning           : Keyword match.
+Candidates          : ['television room', 'can', 'can', 'freezer', 'house']
+Prolog selected     : none  [no_match]
+Predicted           : can
+Ground Truth        : television room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] dutch oven
+Canonical location  : kitchen
+Reasoning           : Keyword match.
+Candidates          : ['kitchen', 'box', 'freezer', 'family room', 'house']
+Prolog selected     : kitchen  [kb_unique]
+Predicted           : kitchen
+Ground Truth        : kitchen
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] easter basket
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bedroom', 'jar', 'attic', 'family room', 'dumpster']
+Prolog selected     : family room  [kb_unique]
+Predicted           : family room
+Ground Truth        : bedroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] egg
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['kitchen', 'television room', 'oven', 'oven', 'house']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['television room', 'house']
+  KB confirmed      : ['television room', 'house']
+Predicted           : television room
+Ground Truth        : kitchen
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] electric heater
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['pantry room', 'oven', 'family room', 'room', 'trap']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['family room', 'room']
+  KB confirmed      : ['family room', 'room']
+Predicted           : family room
+Ground Truth        : pantry room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] electric toothbrush
+Canonical location  : bathroom
+Reasoning           : Keyword match.
+Candidates          : ['closet', 'house', 'cellar', 'bar', 'freezer']
+Prolog selected     : none  [no_match]
+Predicted           : closet
+Ground Truth        : closet
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] electronic adapter
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['kitchen', 'dumpster', 'oven', 'trap', 'can']
+Prolog selected     : none  [no_match]
+Predicted           : trap
+Ground Truth        : kitchen
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] electronic cable
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['living room', 'oven', 'can', 'bar', 'can']
+Prolog selected     : living room  [kb_unique]
+Predicted           : living room
+Ground Truth        : living room
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] face moisturizer
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['television room', 'freezer', 'oven', 'family room', 'can']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['television room', 'family room']
+  KB confirmed      : ['television room', 'family room']
+Predicted           : oven
+Ground Truth        : television room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] faucet
+Canonical location  : bathroom
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bathroom', 'dining room', 'bar', 'attic', 'room']
+Prolog selected     : bathroom  [kb_unique]
+Predicted           : bathroom
+Ground Truth        : bathroom
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] file sorter
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['living room', 'house', 'house', 'house', 'freezer']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['living room', 'house', 'house', 'house', 'house', 'house', 'house', 'house', 'house', 'house']
+  KB confirmed      : ['living room', 'house', 'house', 'house', 'house', 'house', 'house', 'house', 'house', 'house', 'house', 'house', 'house', 'house', 'house', 'house', 'house', 'house', 'house', 'house', 'house', 'house', 'house', 'house', 'house', 'house', 'house', 'house']
+Predicted           : freezer
+Ground Truth        : living room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] fingerpaint
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['kitchen', 'house', 'attic', 'freezer', 'trap']
+Prolog selected     : house  [kb_unique]
+Predicted           : house
+Ground Truth        : kitchen
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] fitness tracker wristband
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['utility room', 'basement', 'house', 'can', 'basement']
+Prolog selected     : house  [kb_unique]
+Predicted           : house
+Ground Truth        : utility room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] flashlight
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['childs room', 'house', 'jar', 'dumpster', 'dumpster']
+Prolog selected     : house  [kb_unique]
+Predicted           : house
+Ground Truth        : childs room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] flat screwdriver
+Canonical location  : garage
+Reasoning           : Keyword match.
+Candidates          : ['exercise room', 'trap', 'basement', 'oven', 'box']
+Prolog selected     : none  [no_match]
+Predicted           : exercise room
+Ground Truth        : exercise room
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] floor
+Canonical location  : bed
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['living room', 'television room', 'exercise room', 'basement', 'dumpster']
+Prolog selected     : none  [no_match]
+Predicted           : dumpster
+Ground Truth        : living room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] floorlamp
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['living room', 'attic', 'lobby', 'trap', 'box']
+Prolog selected     : living room  [kb_unique]
+Predicted           : living room
+Ground Truth        : living room
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] foam brick
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['television room', 'bar', 'can', 'can', 'trap']
+Prolog selected     : television room  [kb_unique]
+Predicted           : television room
+Ground Truth        : television room
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] folder
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['corridor', 'family room', 'box', 'basement', 'dumpster']
+Prolog selected     : family room  [kb_unique]
+Predicted           : family room
+Ground Truth        : corridor
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] fondant
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['playroom', 'family room', 'trap', 'box', 'basement']
+Prolog selected     : family room  [kb_unique]
+Predicted           : family room
+Ground Truth        : playroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] footstool
+Canonical location  : table
+Reasoning           : Keyword match.
+Candidates          : ['bathroom', 'storage room', 'cellar', 'basement', 'dining room']
+Prolog selected     : none  [no_match]
+Predicted           : dining room
+Ground Truth        : bathroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] fork
+Canonical location  : drawer
+Reasoning           : Keyword match.
+Candidates          : ['kitchen', 'basement', 'box', 'house', 'house']
+Prolog selected     : none  [no_match]
+Predicted           : box
+Ground Truth        : kitchen
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] fridge
+Canonical location  : kitchen
+Reasoning           : Keyword match.
+Candidates          : ['kitchen', 'bathroom', 'basement', 'home office', 'basement']
+Prolog selected     : kitchen  [kb_unique]
+Predicted           : kitchen
+Ground Truth        : kitchen
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] fruit snack
+Canonical location  : kitchen
+Reasoning           : Keyword match.
+Candidates          : ['utility room', 'family room', 'can', 'cellar', 'jar']
+Prolog selected     : none  [no_match]
+Predicted           : can
+Ground Truth        : utility room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] furnace
+Canonical location  : storage_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['basement', 'box', 'jar', 'bathroom', 'living room']
+Prolog selected     : basement  [kb_unique]
+Predicted           : basement
+Ground Truth        : basement
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] garbage
+Canonical location  : trash
+Reasoning           : Keyword match.
+Candidates          : ['dumpster', 'can', 'living room', 'box', 'basement']
+Prolog selected     : none  [no_match]
+Predicted           : box
+Ground Truth        : dumpster
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] garbagebag
+Canonical location  : trash
+Reasoning           : Keyword match.
+Candidates          : ['kitchen', 'dining room', 'dumpster', 'attic', 'utility room']
+Prolog selected     : none  [no_match]
+Predicted           : kitchen
+Ground Truth        : kitchen
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] garbagecan
+Canonical location  : pantry
+Reasoning           : Keyword match.
+Candidates          : ['kitchen', 'room', 'room', 'exercise room', 'garage']
+Prolog selected     : none  [no_match]
+Predicted           : kitchen
+Ground Truth        : kitchen
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] gelatin box
+Canonical location  : pantry
+Reasoning           : Keyword match.
+Candidates          : ['closet', 'bar', 'dumpster', 'freezer', 'house']
+Prolog selected     : none  [no_match]
+Predicted           : dumpster
+Ground Truth        : closet
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] glove
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['childs room', 'attic', 'jar', 'attic', 'dumpster']
+Prolog selected     : none  [no_match]
+Predicted           : dumpster
+Ground Truth        : childs room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] golf ball
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['living room', 'freezer', 'trap', 'family room', 'oven']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['living room', 'family room']
+  KB confirmed      : ['living room', 'family room']
+Predicted           : freezer
+Ground Truth        : living room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] graphics card
+Canonical location  : garage
+Reasoning           : Keyword match.
+Candidates          : ['living room', 'family room', 'house', 'cellar', 'oven']
+Prolog selected     : none  [no_match]
+Predicted           : cellar
+Ground Truth        : living room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] hair color
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['playroom', 'cellar', 'freezer', 'trap', 'box']
+Prolog selected     : none  [no_match]
+Predicted           : freezer
+Ground Truth        : playroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] hair conditioner
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['dining room', 'cellar', 'house', 'dumpster', 'attic']
+Prolog selected     : house  [kb_unique]
+Predicted           : house
+Ground Truth        : dining room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] hair dryer
+Canonical location  : bathroom
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bathroom', 'family room', 'family room', 'trap', 'can']
+Prolog selected     : bathroom  [kb_unique]
+Predicted           : bathroom
+Ground Truth        : bathroom
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] hair straightener
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['exercise room', 'oven', 'box', 'basement', 'can']
+Prolog selected     : none  [no_match]
+Predicted           : basement
+Ground Truth        : exercise room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] hammer
+Canonical location  : garage
+Reasoning           : Keyword match.
+Candidates          : ['home office', 'oven', 'dumpster', 'family room', 'cellar']
+Prolog selected     : none  [no_match]
+Predicted           : cellar
+Ground Truth        : home office
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] hand bell
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['dining room', 'trap', 'can', 'cellar', 'room']
+Prolog selected     : room  [kb_unique]
+Predicted           : room
+Ground Truth        : dining room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] handbag
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['exercise room', 'family room', 'jar', 'attic', 'box']
+Prolog selected     : family room  [kb_unique]
+Predicted           : family room
+Ground Truth        : exercise room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] handtowel
+Canonical location  : bathroom
+Reasoning           : Keyword match.
+Candidates          : ['bathroom', 'can', 'utility room', 'house', 'bar']
+Prolog selected     : bathroom  [kb_unique]
+Predicted           : bathroom
+Ground Truth        : bathroom
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] handtowelholder
+Canonical location  : bathroom
+Reasoning           : Keyword match.
+Candidates          : ['bathroom', 'living room', 'dumpster', 'childs room', 'trap']
+Prolog selected     : bathroom  [kb_unique]
+Predicted           : bathroom
+Ground Truth        : bathroom
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] hard drive
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bedroom', 'bar', 'can', 'jar', 'freezer']
+Prolog selected     : none  [no_match]
+Predicted           : bedroom
+Ground Truth        : bedroom
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] hard drive case
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['living room', 'trap', 'jar', 'freezer', 'dumpster']
+Prolog selected     : living room  [kb_unique]
+Predicted           : living room
+Ground Truth        : living room
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] hat
+Canonical location  : cabinet
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['closet', 'room', 'trap', 'house', 'room']
+Prolog selected     : none  [no_match]
+Predicted           : closet
+Ground Truth        : closet
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] headphone
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['playroom', 'can', 'basement', 'jar', 'box']
+Prolog selected     : none  [no_match]
+Predicted           : box
+Ground Truth        : playroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] heavy duty gloves
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['lobby', 'room', 'can', 'can', 'dumpster']
+Prolog selected     : room  [kb_unique]
+Predicted           : room
+Ground Truth        : lobby
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] heavy master chef can
+Canonical location  : pantry
+Reasoning           : Keyword match.
+Candidates          : ['corridor', 'house', 'attic', 'house', 'can']
+Prolog selected     : can  [kb_unique]
+Predicted           : can
+Ground Truth        : corridor
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] helmet
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['childs room', 'cellar', 'family room', 'room', 'dumpster']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['family room', 'room']
+  KB confirmed      : ['family room', 'room']
+Predicted           : dumpster
+Ground Truth        : childs room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] herring fillets
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bedroom', 'can', 'can', 'room', 'basement']
+Prolog selected     : room  [kb_unique]
+Predicted           : room
+Ground Truth        : bedroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] honey dipper
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bedroom', 'oven', 'cellar', 'bar', 'trap']
+Prolog selected     : none  [no_match]
+Predicted           : bedroom
+Ground Truth        : bedroom
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] houseplant
+Canonical location  : garden
+Reasoning           : Keyword match.
+Candidates          : ['living room', 'lobby', 'house', 'corridor', 'pantry room']
+Prolog selected     : none  [no_match]
+Predicted           : lobby
+Ground Truth        : living room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] incontinence pads
+Canonical location  : pantry
+Reasoning           : Keyword match.
+Candidates          : ['garage', 'can', 'room', 'oven', 'dumpster']
+Prolog selected     : can  [kb_unique]
+Predicted           : can
+Ground Truth        : garage
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] ink cartridge
+Canonical location  : garage
+Reasoning           : Keyword match.
+Candidates          : ['childs room', 'oven', 'oven', 'house', 'dumpster']
+Prolog selected     : none  [no_match]
+Predicted           : oven
+Ground Truth        : childs room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] instant camera
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['television room', 'basement', 'family room', 'trap', 'trap']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['television room', 'family room']
+  KB confirmed      : ['television room', 'family room']
+Predicted           : family room
+Ground Truth        : television room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] invitation card
+Canonical location  : garage
+Reasoning           : Keyword match.
+Candidates          : ['lobby', 'family room', 'cellar', 'jar', 'box']
+Prolog selected     : none  [no_match]
+Predicted           : cellar
+Ground Truth        : lobby
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] jar
+Canonical location  : cabinet
+Reasoning           : Keyword match.
+Candidates          : ['closet', 'jar', 'freezer', 'oven', 'cellar']
+Prolog selected     : none  [no_match]
+Predicted           : oven
+Ground Truth        : closet
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] jenga
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['playroom', 'room', 'house', 'room', 'cellar']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['room', 'room', 'house', 'room', 'room']
+  KB confirmed      : ['room', 'room', 'room', 'room', 'house', 'room', 'room', 'room', 'room']
+Predicted           : room
+Ground Truth        : playroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] jewelry box
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['exercise room', 'box', 'can', 'freezer', 'attic']
+Prolog selected     : none  [no_match]
+Predicted           : can
+Ground Truth        : exercise room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] kettle
+Canonical location  : kitchen
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['kitchen', 'house', 'home office', 'corridor', 'attic']
+Prolog selected     : kitchen  [kb_unique]
+Predicted           : kitchen
+Ground Truth        : kitchen
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] keyboard
+Canonical location  : home_office
+Reasoning           : Keyword match.
+Candidates          : ['home office', 'can', 'room', 'family room', 'can']
+Prolog selected     : home office  [kb_unique]
+Predicted           : home office
+Ground Truth        : home office
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] keychain
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['living room', 'exercise room', 'house', 'television room', 'garage']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['living room', 'house', 'television room']
+  KB confirmed      : ['living room', 'house', 'television room']
+Predicted           : exercise room
+Ground Truth        : living room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] knife
+Canonical location  : drawer
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['kitchen', 'can', 'bar', 'oven', 'dumpster']
+Prolog selected     : none  [no_match]
+Predicted           : dumpster
+Ground Truth        : kitchen
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] knife block
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bedroom', 'cellar', 'basement', 'oven', 'family room']
+Prolog selected     : family room  [kb_unique]
+Predicted           : family room
+Ground Truth        : bedroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] labeling tape
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bedroom', 'can', 'family room', 'oven', 'cellar']
+Prolog selected     : family room  [kb_unique]
+Predicted           : family room
+Ground Truth        : bedroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] ladle
+Canonical location  : drawer
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['kitchen', 'home office', 'jar', 'garage', 'dining room']
+Prolog selected     : none  [no_match]
+Predicted           : dining room
+Ground Truth        : kitchen
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] lamp
+Canonical location  : bedroom
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bedroom', 'cellar', 'basement', 'attic', 'bar']
+Prolog selected     : bedroom  [kb_unique]
+Predicted           : bedroom
+Ground Truth        : bedroom
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] lantern
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bathroom', 'can', 'house', 'jar', 'house']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['house', 'house', 'house', 'house']
+  KB confirmed      : ['house', 'house', 'house', 'house', 'house', 'house', 'house', 'house']
+Predicted           : jar
+Ground Truth        : bathroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] laptop
+Canonical location  : home_office
+Reasoning           : Keyword match.
+Candidates          : ['bedroom', 'jar', 'jar', 'attic', 'trap']
+Prolog selected     : none  [no_match]
+Predicted           : jar
+Ground Truth        : bedroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] laptop cover
+Canonical location  : home_office
+Reasoning           : Keyword match.
+Candidates          : ['childs room', 'cellar', 'oven', 'dumpster', 'box']
+Prolog selected     : none  [no_match]
+Predicted           : childs room
+Ground Truth        : childs room
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] laptop stand
+Canonical location  : home_office
+Reasoning           : Keyword match.
+Candidates          : ['childs room', 'trap', 'trap', 'trap', 'freezer']
+Prolog selected     : none  [no_match]
+Predicted           : trap
+Ground Truth        : childs room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] large marker
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['dining room', 'trap', 'can', 'box', 'bar']
+Prolog selected     : none  [no_match]
+Predicted           : bar
+Ground Truth        : dining room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] laundry box
+Canonical location  : laundry_room
+Reasoning           : Keyword match.
+Candidates          : ['home office', 'house', 'jar', 'box', 'house']
+Prolog selected     : none  [no_match]
+Predicted           : box
+Ground Truth        : home office
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] laundryhamper
+Canonical location  : laundry_room
+Reasoning           : Keyword match.
+Candidates          : ['bedroom', 'attic', 'exercise room', 'garage', 'kitchen']
+Prolog selected     : none  [no_match]
+Predicted           : kitchen
+Ground Truth        : bedroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] laxative
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['dining room', 'box', 'can', 'trap', 'box']
+Prolog selected     : none  [no_match]
+Predicted           : box
+Ground Truth        : dining room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] lego duplo
+Canonical location  : playroom
+Reasoning           : Keyword match.
+Candidates          : ['dining room', 'cellar', 'house', 'can', 'bar']
+Prolog selected     : none  [no_match]
+Predicted           : house
+Ground Truth        : dining room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] lemon
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['exercise room', 'family room', 'bar', 'bar', 'room']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['family room', 'room']
+  KB confirmed      : ['family room', 'room']
+Predicted           : exercise room
+Ground Truth        : exercise room
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] letter holder
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['storage room', 'box', 'oven', 'cellar', 'basement']
+Prolog selected     : none  [no_match]
+Predicted           : box
+Ground Truth        : storage room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] lettuce
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['kitchen', 'lobby', 'basement', 'can', 'oven']
+Prolog selected     : none  [no_match]
+Predicted           : can
+Ground Truth        : kitchen
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] light bulb
+Canonical location  : storage_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bedroom', 'basement', 'trap', 'freezer', 'can']
+Prolog selected     : basement  [kb_unique]
+Predicted           : basement
+Ground Truth        : bedroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] lightswitch
+Canonical location  : closet
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['living room', 'family room', 'garage', 'home office', 'dining room']
+Prolog selected     : none  [no_match]
+Predicted           : living room
+Ground Truth        : living room
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] lime squeezer
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['storage room', 'oven', 'jar', 'trap', 'attic']
+Prolog selected     : none  [no_match]
+Predicted           : attic
+Ground Truth        : storage room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] lipstick
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['home office', 'attic', 'house', 'bar', 'trap']
+Prolog selected     : house  [kb_unique]
+Predicted           : house
+Ground Truth        : home office
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] lunch bag
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['storage room', 'oven', 'bar', 'bar', 'jar']
+Prolog selected     : none  [no_match]
+Predicted           : storage room
+Ground Truth        : storage room
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] lunch box
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['dining room', 'can', 'jar', 'cellar', 'basement']
+Prolog selected     : none  [no_match]
+Predicted           : basement
+Ground Truth        : dining room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] magnifying glass
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['utility room', 'room', 'room', 'room', 'family room']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['room', 'room', 'room', 'room', 'room', 'room', 'room', 'room', 'room', 'family room']
+  KB confirmed      : ['room', 'room', 'room', 'room', 'room', 'room', 'room', 'room', 'room', 'room', 'room', 'room', 'room', 'room', 'room', 'room', 'room', 'room', 'room', 'room', 'room', 'room', 'room', 'room', 'room', 'room', 'room', 'family room']
+Predicted           : family room
+Ground Truth        : utility room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] mascara
+Canonical location  : garage
+Reasoning           : Keyword match.
+Candidates          : ['lobby', 'trap', 'bar', 'room', 'dumpster']
+Prolog selected     : none  [no_match]
+Predicted           : room
+Ground Truth        : lobby
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] master chef can
+Canonical location  : pantry
+Reasoning           : Keyword match.
+Candidates          : ['television room', 'freezer', 'room', 'attic', 'attic']
+Prolog selected     : none  [no_match]
+Predicted           : attic
+Ground Truth        : television room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] measuring tape
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['playroom', 'basement', 'cellar', 'trap', 'jar']
+Prolog selected     : none  [no_match]
+Predicted           : playroom
+Ground Truth        : playroom
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] medicine
+Canonical location  : bathroom
+Reasoning           : Keyword match.
+Candidates          : ['home office', 'dumpster', 'trap', 'jar', 'family room']
+Prolog selected     : none  [no_match]
+Predicted           : jar
+Ground Truth        : home office
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] microwave
+Canonical location  : kitchen
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['kitchen', 'bedroom', 'exercise room', 'family room', 'oven']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['kitchen', 'oven']
+  KB confirmed      : ['kitchen', 'oven']
+Predicted           : family room
+Ground Truth        : kitchen
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] milk fror
+Canonical location  : fridge
+Reasoning           : Keyword match.
+Candidates          : ['kitchen', 'family room', 'freezer', 'dumpster', 'can']
+Prolog selected     : freezer  [kb_unique]
+Predicted           : freezer
+Ground Truth        : kitchen
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] mini soccer ball
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['garage', 'jar', 'box', 'dumpster', 'basement']
+Prolog selected     : none  [no_match]
+Predicted           : box
+Ground Truth        : garage
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] mirror
+Canonical location  : bedroom
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['living room', 'family room', 'basement', 'oven', 'cellar']
+Prolog selected     : none  [no_match]
+Predicted           : living room
+Ground Truth        : living room
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] morboard
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['closet', 'house', 'oven', 'attic', 'family room']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['house', 'family room']
+  KB confirmed      : ['house', 'family room']
+Predicted           : oven
+Ground Truth        : closet
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] mouse
+Canonical location  : storage_room
+Reasoning           : Keyword match.
+Candidates          : ['living room', 'room', 'freezer', 'jar', 'jar']
+Prolog selected     : none  [no_match]
+Predicted           : jar
+Ground Truth        : living room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] mouse pad
+Canonical location  : home_office
+Reasoning           : Keyword match.
+Candidates          : ['living room', 'trap', 'family room', 'trap', 'basement']
+Prolog selected     : none  [no_match]
+Predicted           : living room
+Ground Truth        : living room
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] movie dvd
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['playroom', 'bar', 'jar', 'oven', 'oven']
+Prolog selected     : none  [no_match]
+Predicted           : bar
+Ground Truth        : playroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] mug
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['kitchen', 'house', 'room', 'cellar', 'basement']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['house', 'room']
+  KB confirmed      : ['house', 'room']
+Predicted           : cellar
+Ground Truth        : kitchen
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] multiport hub
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['corridor', 'dumpster', 'room', 'house', 'dumpster']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['room', 'house']
+  KB confirmed      : ['room', 'house']
+Predicted           : house
+Ground Truth        : corridor
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] mustard bottle
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['lobby', 'cellar', 'bar', 'oven', 'bar']
+Prolog selected     : none  [no_match]
+Predicted           : oven
+Ground Truth        : lobby
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] neck rest
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['living room', 'oven', 'box', 'house', 'can']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['living room', 'house']
+  KB confirmed      : ['living room', 'house']
+Predicted           : living room
+Ground Truth        : living room
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] newspaper
+Canonical location  : library
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['living room', 'box', 'basement', 'home office', 'dining room']
+Prolog selected     : none  [no_match]
+Predicted           : home office
+Ground Truth        : living room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] nine hole peg test
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bedroom', 'box', 'family room', 'bar', 'dumpster']
+Prolog selected     : family room  [kb_unique]
+Predicted           : family room
+Ground Truth        : bedroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] nintendo switch
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['television room', 'jar', 'room', 'trap', 'house']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['television room', 'room', 'house']
+  KB confirmed      : ['television room', 'room', 'house']
+Predicted           : trap
+Ground Truth        : television room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] orange
+Canonical location  : kitchen
+Reasoning           : Keyword match.
+Candidates          : ['pantry room', 'can', 'family room', 'room', 'oven']
+Prolog selected     : oven  [kb_unique]
+Predicted           : oven
+Ground Truth        : pantry room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] ottoman
+Canonical location  : storage_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['living room', 'exercise room', 'bar', 'childs room', 'bedroom']
+Prolog selected     : exercise room  [kb_unique]
+Predicted           : exercise room
+Ground Truth        : living room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] padlock
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['lobby', 'bar', 'cellar', 'jar', 'cellar']
+Prolog selected     : none  [no_match]
+Predicted           : lobby
+Ground Truth        : lobby
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] paint bottle set
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['playroom', 'basement', 'freezer', 'jar', 'room']
+Prolog selected     : room  [kb_unique]
+Predicted           : room
+Ground Truth        : playroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] paint maker
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['utility room', 'basement', 'cellar', 'family room', 'basement']
+Prolog selected     : family room  [kb_unique]
+Predicted           : family room
+Ground Truth        : utility room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] painting
+Canonical location  : storage_room
+Reasoning           : Keyword match.
+Candidates          : ['living room', 'closet', 'bar', 'dumpster', 'exercise room']
+Prolog selected     : exercise room  [kb_unique]
+Predicted           : exercise room
+Ground Truth        : living room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] pan
+Canonical location  : cabinet
+Reasoning           : Keyword match.
+Candidates          : ['kitchen', 'room', 'house', 'room', 'jar']
+Prolog selected     : none  [no_match]
+Predicted           : kitchen
+Ground Truth        : kitchen
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] paper bag
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['garage', 'family room', 'house', 'oven', 'box']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['family room', 'house']
+  KB confirmed      : ['family room', 'house']
+Predicted           : oven
+Ground Truth        : garage
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] papertowelroll
+Canonical location  : bathroom
+Reasoning           : Keyword match.
+Candidates          : ['bathroom', 'pantry room', 'closet', 'utility room', 'jar']
+Prolog selected     : bathroom  [kb_unique]
+Predicted           : bathroom
+Ground Truth        : bathroom
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] parchment sheet
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['dining room', 'oven', 'room', 'freezer', 'attic']
+Prolog selected     : room  [kb_unique]
+Predicted           : room
+Ground Truth        : dining room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] peach
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['television room', 'family room', 'trap', 'jar', 'room']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['television room', 'family room', 'room']
+  KB confirmed      : ['television room', 'family room', 'room']
+Predicted           : television room
+Ground Truth        : television room
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] pear
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['utility room', 'oven', 'oven', 'house', 'family room']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['house', 'family room']
+  KB confirmed      : ['house', 'family room']
+Predicted           : oven
+Ground Truth        : utility room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] peg and hammer toy
+Canonical location  : playroom
+Reasoning           : Keyword match.
+Candidates          : ['playroom', 'freezer', 'freezer', 'can', 'jar']
+Prolog selected     : playroom  [kb_unique]
+Predicted           : playroom
+Ground Truth        : playroom
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] pen
+Canonical location  : home_office
+Reasoning           : Keyword match.
+Candidates          : ['bedroom', 'exercise room', 'cellar', 'box', 'house']
+Prolog selected     : none  [no_match]
+Predicted           : house
+Ground Truth        : bedroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] pencil
+Canonical location  : home_office
+Reasoning           : Keyword match.
+Candidates          : ['bedroom', 'childs room', 'room', 'bathroom', 'can']
+Prolog selected     : none  [no_match]
+Predicted           : room
+Ground Truth        : bedroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] pencil case
+Canonical location  : home_office
+Reasoning           : Keyword match.
+Candidates          : ['television room', 'box', 'jar', 'dumpster', 'can']
+Prolog selected     : none  [no_match]
+Predicted           : television room
+Ground Truth        : television room
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] peppermint
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['pantry room', 'freezer', 'jar', 'box', 'oven']
+Prolog selected     : none  [no_match]
+Predicted           : freezer
+Ground Truth        : pantry room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] peppershaker
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['kitchen', 'family room', 'living room', 'room', 'childs room']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['family room', 'living room', 'room']
+  KB confirmed      : ['family room', 'living room', 'room']
+Predicted           : family room
+Ground Truth        : kitchen
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] pepsi can pack
+Canonical location  : pantry
+Reasoning           : Keyword match.
+Candidates          : ['garage', 'dumpster', 'jar', 'family room', 'freezer']
+Prolog selected     : jar  [kb_unique]
+Predicted           : jar
+Ground Truth        : garage
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] pet food supplement
+Canonical location  : kitchen
+Reasoning           : Keyword match.
+Candidates          : ['pantry room', 'jar', 'cellar', 'family room', 'cellar']
+Prolog selected     : none  [no_match]
+Predicted           : pantry room
+Ground Truth        : pantry room
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] phillips screwdriver
+Canonical location  : garage
+Reasoning           : Keyword match.
+Candidates          : ['exercise room', 'can', 'family room', 'room', 'room']
+Prolog selected     : none  [no_match]
+Predicted           : exercise room
+Ground Truth        : exercise room
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] phone armband case
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['pantry room', 'dumpster', 'room', 'freezer', 'basement']
+Prolog selected     : room  [kb_unique]
+Predicted           : room
+Ground Truth        : pantry room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] phone stand
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['home office', 'freezer', 'cellar', 'room', 'family room']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['room', 'family room']
+  KB confirmed      : ['room', 'family room']
+Predicted           : home office
+Ground Truth        : home office
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] picture frame
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['utility room', 'dumpster', 'freezer', 'cellar', 'bar']
+Prolog selected     : none  [no_match]
+Predicted           : utility room
+Ground Truth        : utility room
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] pie
+Canonical location  : fridge
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['oven', 'bedroom', 'living room', 'dining room', 'storage room']
+Prolog selected     : none  [no_match]
+Predicted           : oven
+Ground Truth        : oven
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] pillow
+Canonical location  : bedroom
+Reasoning           : Keyword match.
+Candidates          : ['bedroom', 'attic', 'box', 'bar', 'house']
+Prolog selected     : bedroom  [kb_unique]
+Predicted           : bedroom
+Ground Truth        : bedroom
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] pitcher base
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['home office', 'jar', 'house', 'bar', 'cellar']
+Prolog selected     : house  [kb_unique]
+Predicted           : house
+Ground Truth        : home office
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] plant
+Canonical location  : garden
+Reasoning           : Keyword match.
+Candidates          : ['living room', 'cellar', 'oven', 'freezer', 'can']
+Prolog selected     : none  [no_match]
+Predicted           : oven
+Ground Truth        : living room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] plant container
+Canonical location  : garden
+Reasoning           : Keyword match.
+Candidates          : ['garage', 'house', 'family room', 'attic', 'bar']
+Prolog selected     : none  [no_match]
+Predicted           : garage
+Ground Truth        : garage
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] plant saucer
+Canonical location  : garden
+Reasoning           : Keyword match.
+Candidates          : ['living room', 'dumpster', 'box', 'dumpster', 'freezer']
+Prolog selected     : none  [no_match]
+Predicted           : freezer
+Ground Truth        : living room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] plate
+Canonical location  : cabinet
+Reasoning           : Keyword match.
+Candidates          : ['living room', 'family room', 'oven', 'bar', 'box']
+Prolog selected     : box  [kb_unique]
+Predicted           : box
+Ground Truth        : living room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] plum
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['pantry room', 'box', 'trap', 'cellar', 'cellar']
+Prolog selected     : none  [no_match]
+Predicted           : cellar
+Ground Truth        : pantry room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] plunger
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bathroom', 'basement', 'trap', 'house', 'dining room']
+Prolog selected     : house  [kb_unique]
+Predicted           : house
+Ground Truth        : bathroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] portable speaker
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['playroom', 'oven', 'oven', 'house', 'attic']
+Prolog selected     : house  [kb_unique]
+Predicted           : house
+Ground Truth        : playroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] poster
+Canonical location  : bedroom
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bedroom', 'family room', 'corridor', 'dining room', 'freezer']
+Prolog selected     : bedroom  [kb_unique]
+Predicted           : bedroom
+Ground Truth        : bedroom
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] pot
+Canonical location  : cabinet
+Reasoning           : Keyword match.
+Candidates          : ['kitchen', 'freezer', 'bathroom', 'room', 'storage room']
+Prolog selected     : none  [no_match]
+Predicted           : kitchen
+Ground Truth        : kitchen
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] potato
+Canonical location  : trash
+Reasoning           : Keyword match.
+Candidates          : ['kitchen', 'living room', 'childs room', 'playroom', 'exercise room']
+Prolog selected     : none  [no_match]
+Predicted           : kitchen
+Ground Truth        : kitchen
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] potted meat can
+Canonical location  : kitchen
+Reasoning           : Keyword match.
+Candidates          : ['corridor', 'freezer', 'jar', 'box', 'can']
+Prolog selected     : none  [no_match]
+Predicted           : jar
+Ground Truth        : corridor
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] power drill
+Canonical location  : garage
+Reasoning           : Keyword match.
+Candidates          : ['kitchen', 'room', 'jar', 'house', 'can']
+Prolog selected     : none  [no_match]
+Predicted           : house
+Ground Truth        : kitchen
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] pressure cooker
+Canonical location  : kitchen
+Reasoning           : Keyword match.
+Candidates          : ['home office', 'trap', 'can', 'family room', 'dumpster']
+Prolog selected     : none  [no_match]
+Predicted           : can
+Ground Truth        : home office
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] pudding box
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['utility room', 'box', 'freezer', 'attic', 'oven']
+Prolog selected     : none  [no_match]
+Predicted           : freezer
+Ground Truth        : utility room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] puzzle game
+Canonical location  : playroom
+Reasoning           : Keyword match.
+Candidates          : ['utility room', 'freezer', 'jar', 'dumpster', 'freezer']
+Prolog selected     : none  [no_match]
+Predicted           : utility room
+Ground Truth        : utility room
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] racquetball
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['playroom', 'house', 'family room', 'basement', 'freezer']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['house', 'family room']
+  KB confirmed      : ['house', 'family room']
+Predicted           : freezer
+Ground Truth        : playroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] ramekin
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['playroom', 'cellar', 'bar', 'can', 'trap']
+Prolog selected     : none  [no_match]
+Predicted           : cellar
+Ground Truth        : playroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] remote control
+Canonical location  : living_room
+Reasoning           : Keyword match.
+Candidates          : ['exercise room', 'bar', 'family room', 'jar', 'jar']
+Prolog selected     : family room  [kb_unique]
+Predicted           : family room
+Ground Truth        : exercise room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] remotecontrol
+Canonical location  : living_room
+Reasoning           : Keyword match.
+Candidates          : ['bedroom', 'family room', 'basement', 'childs room', 'dining room']
+Prolog selected     : family room  [kb_unique]
+Predicted           : family room
+Ground Truth        : bedroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] rmal laminator
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['living room', 'bar', 'can', 'can', 'freezer']
+Prolog selected     : living room  [kb_unique]
+Predicted           : living room
+Ground Truth        : living room
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] roast
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['oven', 'bathroom', 'childs room', 'trap', 'closet']
+Prolog selected     : none  [no_match]
+Predicted           : trap
+Ground Truth        : oven
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] roomdecor
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['living room', 'pantry room', 'cellar', 'box', 'dumpster']
+Prolog selected     : living room  [kb_unique]
+Predicted           : living room
+Ground Truth        : living room
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] router
+Canonical location  : library
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bedroom', 'dumpster', 'house', 'family room', 'basement']
+Prolog selected     : none  [no_match]
+Predicted           : house
+Ground Truth        : bedroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] rubiks cube
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['home office', 'basement', 'cellar', 'bar', 'can']
+Prolog selected     : none  [no_match]
+Predicted           : home office
+Ground Truth        : home office
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] safe
+Canonical location  : cabinet
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['living room', 'attic', 'box', 'jar', 'attic']
+Prolog selected     : box  [kb_unique]
+Predicted           : box
+Ground Truth        : living room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] salt shaker
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bathroom', 'dumpster', 'box', 'family room', 'trap']
+Prolog selected     : family room  [kb_unique]
+Predicted           : family room
+Ground Truth        : bathroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] saltshaker
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['kitchen', 'house', 'dining room', 'freezer', 'lobby']
+Prolog selected     : house  [kb_unique]
+Predicted           : house
+Ground Truth        : kitchen
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] sanitary pads
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bedroom', 'trap', 'jar', 'can', 'trap']
+Prolog selected     : none  [no_match]
+Predicted           : bedroom
+Ground Truth        : bedroom
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] saucer
+Canonical location  : cabinet
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['kitchen', 'dumpster', 'oven', 'dumpster', 'freezer']
+Prolog selected     : none  [no_match]
+Predicted           : kitchen
+Ground Truth        : kitchen
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] saute pan
+Canonical location  : kitchen
+Reasoning           : Keyword match.
+Candidates          : ['kitchen', 'box', 'freezer', 'room', 'dumpster']
+Prolog selected     : kitchen  [kb_unique]
+Predicted           : kitchen
+Ground Truth        : kitchen
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] scissors
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['exercise room', 'freezer', 'dumpster', 'house', 'cellar']
+Prolog selected     : house  [kb_unique]
+Predicted           : house
+Ground Truth        : exercise room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] scrubbrush
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bathroom', 'basement', 'television room', 'storage room', 'room']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['television room', 'room']
+  KB confirmed      : ['television room', 'room']
+Predicted           : television room
+Ground Truth        : bathroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] set-top box
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bathroom', 'trap', 'house', 'trap', 'oven']
+Prolog selected     : house  [kb_unique]
+Predicted           : house
+Ground Truth        : bathroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] shelf
+Canonical location  : bathroom
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bedroom', 'television room', 'basement', 'basement', 'trap']
+Prolog selected     : none  [no_match]
+Predicted           : bedroom
+Ground Truth        : bedroom
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] shelvingunit
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bedroom', 'playroom', 'attic', 'television room', 'bar']
+Prolog selected     : television room  [kb_unique]
+Predicted           : television room
+Ground Truth        : bedroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] shoe
+Canonical location  : closet
+Reasoning           : Keyword match.
+Candidates          : ['closet', 'oven', 'bar', 'cellar', 'cellar']
+Prolog selected     : closet  [kb_unique]
+Predicted           : closet
+Ground Truth        : closet
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] shoe box
+Canonical location  : closet
+Reasoning           : Keyword match.
+Candidates          : ['corridor', 'can', 'freezer', 'oven', 'bar']
+Prolog selected     : none  [no_match]
+Predicted           : freezer
+Ground Truth        : corridor
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] showercurtain
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bathroom', 'room', 'pantry room', 'storage room', 'cellar']
+Prolog selected     : room  [kb_unique]
+Predicted           : room
+Ground Truth        : bathroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] showerdoor
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bathroom', 'kitchen', 'kitchen', 'television room', 'corridor']
+Prolog selected     : television room  [kb_unique]
+Predicted           : television room
+Ground Truth        : bathroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] showerglass
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bathroom', 'dining room', 'dining room', 'attic', 'basement']
+Prolog selected     : none  [no_match]
+Predicted           : bathroom
+Ground Truth        : bathroom
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] showerhead
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bathroom', 'cellar', 'dining room', 'exercise room', 'bar']
+Prolog selected     : none  [no_match]
+Predicted           : dining room
+Ground Truth        : bathroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] shredder
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['pantry room', 'trap', 'freezer', 'room', 'can']
+Prolog selected     : room  [kb_unique]
+Predicted           : room
+Ground Truth        : pantry room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] sidetable
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['living room', 'family room', 'oven', 'corridor', 'closet']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['living room', 'family room']
+  KB confirmed      : ['living room', 'family room']
+Predicted           : corridor
+Ground Truth        : living room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] sidewalk chalk
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['living room', 'can', 'dumpster', 'family room', 'oven']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['living room', 'family room']
+  KB confirmed      : ['living room', 'family room']
+Predicted           : living room
+Ground Truth        : living room
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] sink
+Canonical location  : kitchen
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['kitchen', 'television room', 'childs room', 'attic', 'closet']
+Prolog selected     : kitchen  [kb_unique]
+Predicted           : kitchen
+Ground Truth        : kitchen
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] sinkbasin
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bathroom', 'garage', 'lobby', 'freezer', 'family room']
+Prolog selected     : family room  [kb_unique]
+Predicted           : family room
+Ground Truth        : bathroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] skillet
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['exercise room', 'trap', 'box', 'trap', 'house']
+Prolog selected     : house  [kb_unique]
+Predicted           : house
+Ground Truth        : exercise room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] skillet lid
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['closet', 'attic', 'room', 'can', 'box']
+Prolog selected     : room  [kb_unique]
+Predicted           : room
+Ground Truth        : closet
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] skin care product
+Canonical location  : garage
+Reasoning           : Keyword match.
+Candidates          : ['corridor', 'freezer', 'bar', 'cellar', 'trap']
+Prolog selected     : none  [no_match]
+Predicted           : cellar
+Ground Truth        : corridor
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] skin moisturizer
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bathroom', 'attic', 'box', 'house', 'house']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['house', 'house', 'house', 'house']
+  KB confirmed      : ['house', 'house', 'house', 'house', 'house', 'house', 'house', 'house']
+Predicted           : attic
+Ground Truth        : bathroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] snack cake
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['lobby', 'oven', 'box', 'trap', 'room']
+Prolog selected     : room  [kb_unique]
+Predicted           : room
+Ground Truth        : lobby
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] snack dispenser
+Canonical location  : home_office
+Reasoning           : Keyword match.
+Candidates          : ['utility room', 'house', 'basement', 'trap', 'freezer']
+Prolog selected     : none  [no_match]
+Predicted           : house
+Ground Truth        : utility room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] soap dish
+Canonical location  : bathroom
+Reasoning           : Keyword match.
+Candidates          : ['childs room', 'basement', 'box', 'house', 'can']
+Prolog selected     : none  [no_match]
+Predicted           : can
+Ground Truth        : childs room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] soap dispenser
+Canonical location  : home_office
+Reasoning           : Keyword match.
+Candidates          : ['kitchen', 'cellar', 'box', 'trap', 'attic']
+Prolog selected     : none  [no_match]
+Predicted           : cellar
+Ground Truth        : kitchen
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] soapbar
+Canonical location  : bathroom
+Reasoning           : Keyword match.
+Candidates          : ['bathroom', 'television room', 'closet', 'closet', 'dining room']
+Prolog selected     : bathroom  [kb_unique]
+Predicted           : bathroom
+Ground Truth        : bathroom
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] soapbottle
+Canonical location  : bathroom
+Reasoning           : Keyword match.
+Candidates          : ['bathroom', 'childs room', 'basement', 'pantry room', 'freezer']
+Prolog selected     : bathroom  [kb_unique]
+Predicted           : bathroom
+Ground Truth        : bathroom
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] sofa
+Canonical location  : living_room
+Reasoning           : Keyword match.
+Candidates          : ['living room', 'utility room', 'bathroom', 'basement', 'basement']
+Prolog selected     : living room  [kb_unique]
+Predicted           : living room
+Ground Truth        : living room
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] softball
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bedroom', 'family room', 'freezer', 'freezer', 'oven']
+Prolog selected     : family room  [kb_unique]
+Predicted           : family room
+Ground Truth        : bedroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] software cd
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['dining room', 'jar', 'attic', 'bar', 'bar']
+Prolog selected     : none  [no_match]
+Predicted           : bar
+Ground Truth        : dining room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] sorting toy
+Canonical location  : pantry
+Reasoning           : Keyword match.
+Candidates          : ['playroom', 'dumpster', 'freezer', 'house', 'bar']
+Prolog selected     : none  [no_match]
+Predicted           : playroom
+Ground Truth        : playroom
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] sparkling water
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['garage', 'jar', 'jar', 'freezer', 'cellar']
+Prolog selected     : none  [no_match]
+Predicted           : jar
+Ground Truth        : garage
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] spatula
+Canonical location  : drawer
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['kitchen', 'cellar', 'family room', 'house', 'house']
+Prolog selected     : none  [no_match]
+Predicted           : house
+Ground Truth        : kitchen
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] spider
+Canonical location  : storage_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['cellar', 'pantry room', 'bedroom', 'bedroom', 'television room']
+Prolog selected     : cellar  [kb_unique]
+Predicted           : cellar
+Ground Truth        : cellar
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] sponge
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['utility room', 'family room', 'basement', 'attic', 'box']
+Prolog selected     : family room  [kb_unique]
+Predicted           : family room
+Ground Truth        : utility room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] sponge dish
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['pantry room', 'trap', 'can', 'basement', 'bar']
+Prolog selected     : none  [no_match]
+Predicted           : basement
+Ground Truth        : pantry room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] spoon
+Canonical location  : dining_room
+Reasoning           : Keyword match.
+Candidates          : ['kitchen', 'bar', 'can', 'room', 'attic']
+Prolog selected     : none  [no_match]
+Predicted           : kitchen
+Ground Truth        : kitchen
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] spoon rest
+Canonical location  : dining_room
+Reasoning           : Keyword match.
+Candidates          : ['bathroom', 'dumpster', 'family room', 'attic', 'oven']
+Prolog selected     : none  [no_match]
+Predicted           : oven
+Ground Truth        : bathroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] spraybottle
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bathroom', 'dumpster', 'jar', 'jar', 'freezer']
+Prolog selected     : none  [no_match]
+Predicted           : bathroom
+Ground Truth        : bathroom
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] stacking cups
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['closet', 'room', 'basement', 'trap', 'family room']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['room', 'family room']
+  KB confirmed      : ['room', 'family room']
+Predicted           : room
+Ground Truth        : closet
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] stand mixer
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['pantry room', 'family room', 'attic', 'bar', 'bar']
+Prolog selected     : family room  [kb_unique]
+Predicted           : family room
+Ground Truth        : pantry room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] statue
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['kitchen', 'dining room', 'can', 'can', 'house']
+Prolog selected     : house  [kb_unique]
+Predicted           : house
+Ground Truth        : kitchen
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] steak
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['freezer', 'exercise room', 'family room', 'childs room', 'television room']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['family room', 'television room']
+  KB confirmed      : ['family room', 'television room']
+Predicted           : family room
+Ground Truth        : freezer
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] stool
+Canonical location  : garage
+Reasoning           : Keyword match.
+Candidates          : ['kitchen', 'childs room', 'corridor', 'house', 'trap']
+Prolog selected     : none  [no_match]
+Predicted           : kitchen
+Ground Truth        : kitchen
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] storage bin
+Canonical location  : trash
+Reasoning           : Keyword match.
+Candidates          : ['closet', 'trap', 'basement', 'basement', 'cellar']
+Prolog selected     : none  [no_match]
+Predicted           : closet
+Ground Truth        : closet
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] stoveburner
+Canonical location  : kitchen
+Reasoning           : Keyword match.
+Candidates          : ['kitchen', 'freezer', 'closet', 'box', 'bar']
+Prolog selected     : kitchen  [kb_unique]
+Predicted           : kitchen
+Ground Truth        : kitchen
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] stoveknob
+Canonical location  : kitchen
+Reasoning           : Keyword match.
+Candidates          : ['kitchen', 'pantry room', 'bathroom', 'pantry room', 'garage']
+Prolog selected     : kitchen  [kb_unique]
+Predicted           : kitchen
+Ground Truth        : kitchen
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] strawberry
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['storage room', 'can', 'freezer', 'oven', 'freezer']
+Prolog selected     : none  [no_match]
+Predicted           : can
+Ground Truth        : storage room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] string lights
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bedroom', 'freezer', 'dumpster', 'oven', 'dumpster']
+Prolog selected     : none  [no_match]
+Predicted           : bedroom
+Ground Truth        : bedroom
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] stuffed toy
+Canonical location  : playroom
+Reasoning           : Keyword match.
+Candidates          : ['kitchen', 'house', 'house', 'cellar', 'family room']
+Prolog selected     : none  [no_match]
+Predicted           : house
+Ground Truth        : kitchen
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] sugar box
+Canonical location  : pantry
+Reasoning           : Keyword match.
+Candidates          : ['utility room', 'room', 'basement', 'family room', 'freezer']
+Prolog selected     : none  [no_match]
+Predicted           : basement
+Ground Truth        : utility room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] sugar sprinkles
+Canonical location  : pantry
+Reasoning           : Keyword match.
+Candidates          : ['dining room', 'room', 'oven', 'bar', 'family room']
+Prolog selected     : none  [no_match]
+Predicted           : oven
+Ground Truth        : dining room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] surface saver ring
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['exercise room', 'basement', 'bar', 'trap', 'oven']
+Prolog selected     : none  [no_match]
+Predicted           : trap
+Ground Truth        : exercise room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] sushi mat
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['exercise room', 'trap', 'room', 'jar', 'attic']
+Prolog selected     : room  [kb_unique]
+Predicted           : room
+Ground Truth        : exercise room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] table
+Canonical location  : storage_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bedroom', 'jar', 'home office', 'playroom', 'pantry room']
+Prolog selected     : none  [no_match]
+Predicted           : jar
+Ground Truth        : bedroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] table lamp
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['dining room', 'box', 'jar', 'attic', 'dumpster']
+Prolog selected     : none  [no_match]
+Predicted           : box
+Ground Truth        : dining room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] tablet
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['pantry room', 'freezer', 'house', 'box', 'freezer']
+Prolog selected     : house  [kb_unique]
+Predicted           : house
+Ground Truth        : pantry room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] tablet holder
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['dining room', 'can', 'house', 'jar', 'jar']
+Prolog selected     : house  [kb_unique]
+Predicted           : house
+Ground Truth        : dining room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] tablet stand
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['playroom', 'freezer', 'freezer', 'dumpster', 'jar']
+Prolog selected     : none  [no_match]
+Predicted           : jar
+Ground Truth        : playroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] tabletopdecor
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bedroom', 'exercise room', 'bar', 'exercise room', 'dumpster']
+Prolog selected     : none  [no_match]
+Predicted           : bedroom
+Ground Truth        : bedroom
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] tampon
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['childs room', 'attic', 'can', 'can', 'house']
+Prolog selected     : house  [kb_unique]
+Predicted           : house
+Ground Truth        : childs room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] tea can pack
+Canonical location  : pantry
+Reasoning           : Keyword match.
+Candidates          : ['kitchen', 'attic', 'box', 'house', 'basement']
+Prolog selected     : none  [no_match]
+Predicted           : kitchen
+Ground Truth        : kitchen
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] tea pods
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['lobby', 'attic', 'can', 'basement', 'jar']
+Prolog selected     : none  [no_match]
+Predicted           : attic
+Ground Truth        : lobby
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] teapot
+Canonical location  : kitchen
+Reasoning           : Keyword match.
+Candidates          : ['storage room', 'oven', 'basement', 'trap', 'box']
+Prolog selected     : oven  [kb_unique]
+Predicted           : oven
+Ground Truth        : storage room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] teddybear
+Canonical location  : playroom
+Reasoning           : Keyword match.
+Candidates          : ['bedroom', 'childs room', 'house', 'television room', 'oven']
+Prolog selected     : childs room  [kb_unique]
+Predicted           : childs room
+Ground Truth        : bedroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] television
+Canonical location  : bedroom
+Reasoning           : Keyword match.
+Candidates          : ['bedroom', 'childs room', 'jar', 'freezer', 'utility room']
+Prolog selected     : bedroom  [kb_unique]
+Predicted           : bedroom
+Ground Truth        : bedroom
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] tennis ball
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['storage room', 'attic', 'oven', 'house', 'oven']
+Prolog selected     : house  [kb_unique]
+Predicted           : house
+Ground Truth        : storage room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] tennisracket
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bedroom', 'box', 'closet', 'oven', 'television room']
+Prolog selected     : television room  [kb_unique]
+Predicted           : television room
+Ground Truth        : bedroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] tissuebox
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['living room', 'childs room', 'can', 'home office', 'room']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['living room', 'room']
+  KB confirmed      : ['living room', 'room']
+Predicted           : home office
+Ground Truth        : living room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] toaster
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['kitchen', 'attic', 'trap', 'box', 'basement']
+Prolog selected     : none  [no_match]
+Predicted           : box
+Ground Truth        : kitchen
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] toilet
+Canonical location  : bathroom
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bathroom', 'bar', 'storage room', 'attic', 'utility room']
+Prolog selected     : bathroom  [kb_unique]
+Predicted           : bathroom
+Ground Truth        : bathroom
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] toiletpaper
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bathroom', 'oven', 'garage', 'basement', 'lobby']
+Prolog selected     : none  [no_match]
+Predicted           : bathroom
+Ground Truth        : bathroom
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] toiletpaperhanger
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bathroom', 'exercise room', 'bedroom', 'box', 'television room']
+Prolog selected     : television room  [kb_unique]
+Predicted           : television room
+Ground Truth        : bathroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] tomato
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['kitchen', 'cellar', 'freezer', 'attic', 'closet']
+Prolog selected     : none  [no_match]
+Predicted           : attic
+Ground Truth        : kitchen
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] tomato soup can
+Canonical location  : pantry
+Reasoning           : Keyword match.
+Candidates          : ['childs room', 'cellar', 'bar', 'attic', 'bar']
+Prolog selected     : none  [no_match]
+Predicted           : childs room
+Ground Truth        : childs room
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] toothbrush holder
+Canonical location  : bathroom
+Reasoning           : Keyword match.
+Candidates          : ['kitchen', 'basement', 'bar', 'jar', 'room']
+Prolog selected     : none  [no_match]
+Predicted           : jar
+Ground Truth        : kitchen
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] toothbrush pack
+Canonical location  : bathroom
+Reasoning           : Keyword match.
+Candidates          : ['utility room', 'can', 'box', 'trap', 'attic']
+Prolog selected     : none  [no_match]
+Predicted           : box
+Ground Truth        : utility room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] towel
+Canonical location  : closet
+Reasoning           : Keyword match.
+Candidates          : ['bathroom', 'freezer', 'box', 'bar', 'bar']
+Prolog selected     : none  [no_match]
+Predicted           : bathroom
+Ground Truth        : bathroom
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] towelholder
+Canonical location  : bathroom
+Reasoning           : Keyword match.
+Candidates          : ['bathroom', 'television room', 'cellar', 'childs room', 'bedroom']
+Prolog selected     : bathroom  [kb_unique]
+Predicted           : bathroom
+Ground Truth        : bathroom
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] toy
+Canonical location  : playroom
+Reasoning           : Keyword match.
+Candidates          : ['box', 'utility room', 'basement', 'freezer', 'house']
+Prolog selected     : none  [no_match]
+Predicted           : house
+Ground Truth        : box
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] toy airplane
+Canonical location  : playroom
+Reasoning           : Keyword match.
+Candidates          : ['bedroom', 'cellar', 'box', 'oven', 'attic']
+Prolog selected     : none  [no_match]
+Predicted           : bedroom
+Ground Truth        : bedroom
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] toy animal
+Canonical location  : playroom
+Reasoning           : Keyword match.
+Candidates          : ['corridor', 'family room', 'box', 'family room', 'can']
+Prolog selected     : none  [no_match]
+Predicted           : family room
+Ground Truth        : corridor
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] toy basketball
+Canonical location  : playroom
+Reasoning           : Keyword match.
+Candidates          : ['bedroom', 'basement', 'jar', 'room', 'can']
+Prolog selected     : none  [no_match]
+Predicted           : bedroom
+Ground Truth        : bedroom
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] toy bowling set
+Canonical location  : playroom
+Reasoning           : Keyword match.
+Candidates          : ['pantry room', 'can', 'cellar', 'can', 'freezer']
+Prolog selected     : none  [no_match]
+Predicted           : cellar
+Ground Truth        : pantry room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] toy construction set
+Canonical location  : playroom
+Reasoning           : Keyword match.
+Candidates          : ['pantry room', 'jar', 'trap', 'house', 'can']
+Prolog selected     : none  [no_match]
+Predicted           : house
+Ground Truth        : pantry room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] toy fishing
+Canonical location  : playroom
+Reasoning           : Keyword match.
+Candidates          : ['bedroom', 'oven', 'cellar', 'freezer', 'oven']
+Prolog selected     : none  [no_match]
+Predicted           : bedroom
+Ground Truth        : bedroom
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] toy food
+Canonical location  : kitchen
+Reasoning           : Keyword match.
+Candidates          : ['garage', 'freezer', 'cellar', 'cellar', 'attic']
+Prolog selected     : none  [no_match]
+Predicted           : freezer
+Ground Truth        : garage
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] toy furniture set
+Canonical location  : playroom
+Reasoning           : Keyword match.
+Candidates          : ['utility room', 'family room', 'house', 'cellar', 'freezer']
+Prolog selected     : none  [no_match]
+Predicted           : family room
+Ground Truth        : utility room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] toy instrument
+Canonical location  : playroom
+Reasoning           : Keyword match.
+Candidates          : ['utility room', 'box', 'jar', 'house', 'oven']
+Prolog selected     : none  [no_match]
+Predicted           : house
+Ground Truth        : utility room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] toy kitchen set
+Canonical location  : playroom
+Reasoning           : Keyword match.
+Candidates          : ['utility room', 'family room', 'can', 'oven', 'dumpster']
+Prolog selected     : none  [no_match]
+Predicted           : family room
+Ground Truth        : utility room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] toy tool kit
+Canonical location  : playroom
+Reasoning           : Keyword match.
+Candidates          : ['utility room', 'can', 'jar', 'house', 'oven']
+Prolog selected     : none  [no_match]
+Predicted           : house
+Ground Truth        : utility room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] toy vehicle
+Canonical location  : playroom
+Reasoning           : Keyword match.
+Candidates          : ['bathroom', 'can', 'bar', 'attic', 'house']
+Prolog selected     : none  [no_match]
+Predicted           : house
+Ground Truth        : bathroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] tray
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['living room', 'bar', 'house', 'house', 'attic']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['living room', 'house', 'house', 'house', 'house']
+  KB confirmed      : ['living room', 'house', 'house', 'house', 'house', 'house', 'house', 'house', 'house']
+Predicted           : attic
+Ground Truth        : living room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] tumbler
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['garage', 'bar', 'box', 'family room', 'oven']
+Prolog selected     : family room  [kb_unique]
+Predicted           : family room
+Ground Truth        : garage
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] tv
+Canonical location  : bedroom
+Reasoning           : Keyword match.
+Candidates          : ['family room', 'living room', 'room', 'jar', 'television room']
+Prolog selected     : none  [no_match]
+Predicted           : family room
+Ground Truth        : family room
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] tvstand
+Canonical location  : living_room
+Reasoning           : Keyword match.
+Candidates          : ['living room', 'childs room', 'room', 'storage room', 'room']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['living room', 'room', 'room', 'room', 'room']
+  KB confirmed      : ['living room', 'room', 'room', 'room', 'room', 'room', 'room', 'room', 'room']
+Predicted           : storage room
+Ground Truth        : living room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] umbrella
+Canonical location  : closet
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['home office', 'house', 'basement', 'house', 'room']
+Prolog selected     : none  [no_match]
+Predicted           : basement
+Ground Truth        : home office
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] usb drive
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['television room', 'basement', 'oven', 'family room', 'trap']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['television room', 'family room']
+  KB confirmed      : ['television room', 'family room']
+Predicted           : oven
+Ground Truth        : television room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] utensil holder
+Canonical location  : kitchen
+Reasoning           : Keyword match.
+Candidates          : ['home office', 'box', 'house', 'attic', 'dumpster']
+Prolog selected     : none  [no_match]
+Predicted           : box
+Ground Truth        : home office
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] vacuumcleaner
+Canonical location  : laundry_room
+Reasoning           : Keyword match.
+Candidates          : ['bedroom', 'oven', 'dumpster', 'corridor', 'garage']
+Prolog selected     : none  [no_match]
+Predicted           : oven
+Ground Truth        : bedroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] vase
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bedroom', 'box', 'basement', 'cellar', 'can']
+Prolog selected     : none  [no_match]
+Predicted           : bedroom
+Ground Truth        : bedroom
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] video game
+Canonical location  : playroom
+Reasoning           : Keyword match.
+Candidates          : ['lobby', 'box', 'trap', 'jar', 'can']
+Prolog selected     : none  [no_match]
+Predicted           : jar
+Ground Truth        : lobby
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] vinyl tape
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bathroom', 'trap', 'room', 'bar', 'can']
+Prolog selected     : room  [kb_unique]
+Predicted           : room
+Ground Truth        : bathroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] virtual reality viewer
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['utility room', 'trap', 'can', 'oven', 'box']
+Prolog selected     : none  [no_match]
+Predicted           : can
+Ground Truth        : utility room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] wardrobe
+Canonical location  : bedroom
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['room', 'trap', 'freezer', 'jar', 'dining room']
+Prolog selected     : none  [no_match]
+Predicted           : room
+Ground Truth        : room
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] washcloth
+Canonical location  : closet
+Reasoning           : Keyword match.
+Candidates          : ['exercise room', 'bar', 'room', 'can', 'cellar']
+Prolog selected     : none  [no_match]
+Predicted           : exercise room
+Ground Truth        : exercise room
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] waste basket
+Canonical location  : trash
+Reasoning           : Keyword match.
+Candidates          : ['playroom', 'bar', 'basement', 'trap', 'basement']
+Prolog selected     : none  [no_match]
+Predicted           : playroom
+Ground Truth        : playroom
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] watch
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bedroom', 'can', 'family room', 'basement', 'storage room']
+Prolog selected     : family room  [kb_unique]
+Predicted           : family room
+Ground Truth        : bedroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] water bottle
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bathroom', 'oven', 'can', 'oven', 'cellar']
+Prolog selected     : none  [no_match]
+Predicted           : oven
+Ground Truth        : bathroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] wateringcan
+Canonical location  : pantry
+Reasoning           : Keyword match.
+Candidates          : ['living room', 'childs room', 'dumpster', 'trap', 'can']
+Prolog selected     : can  [kb_unique]
+Predicted           : can
+Ground Truth        : living room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] weight loss guide
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['childs room', 'house', 'attic', 'box', 'basement']
+Prolog selected     : house  [kb_unique]
+Predicted           : house
+Ground Truth        : childs room
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] whale whistle
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bedroom', 'jar', 'attic', 'bar', 'jar']
+Prolog selected     : none  [no_match]
+Predicted           : bedroom
+Ground Truth        : bedroom
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] window
+Canonical location  : storage_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['bathroom', 'family room', 'closet', 'jar', 'lobby']
+Prolog selected     : none  [no_match]
+Predicted           : closet
+Ground Truth        : bathroom
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] wine glass
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['kitchen', 'living room', 'house', 'pantry room', 'oven']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['living room', 'house']
+  KB confirmed      : ['living room', 'house']
+Predicted           : house
+Ground Truth        : kitchen
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] winebottle
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['kitchen', 'jar', 'oven', 'playroom', 'family room']
+Prolog selected     : family room  [kb_unique]
+Predicted           : family room
+Ground Truth        : kitchen
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] wipe warmer
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['closet', 'oven', 'box', 'dumpster', 'box']
+Prolog selected     : none  [no_match]
+Predicted           : dumpster
+Ground Truth        : closet
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] wireless accessory
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['television room', 'can', 'attic', 'bar', 'basement']
+Prolog selected     : television room  [kb_unique]
+Predicted           : television room
+Ground Truth        : television room
+Correct             : True  [mode: pure_logic]
+------------------------------------------------------------
+
+[Object] xylitol sweetener
+Canonical location  : living_room
+Reasoning           : No keyword match, defaulting.
+Candidates          : ['garage', 'house', 'cellar', 'box', 'family room']
+Prolog selected     : ambiguous  [ambiguous]
+  Ambiguous set     : ['house', 'family room']
+  KB confirmed      : ['house', 'family room']
+Predicted           : house
+Ground Truth        : garage
+Correct             : False  [mode: pure_logic]
+------------------------------------------------------------
+
+
+============================================================
+SUMMARY
+============================================================
+Total     : 383
+Correct   : 130
+Accuracy  : 0.3394  (33.94%)
+
+Decision breakdown:
+  pure_logic: 130/383 (0.3394)
+============================================================

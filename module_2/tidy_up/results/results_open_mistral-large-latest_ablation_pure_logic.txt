@@ -1,0 +1,2316 @@
+============================================================
+RESULT LOG — Tidy-Up OPEN task (module_2)
+Model: mistral-large-latest  |  Ablation: pure_logic
+============================================================
+
+[Object] action figure
+Gold standard : ['television room', 'playroom', 'dining room', 'exercise room', 'storage room', 'home office', 'pantry', 'living room', 'closet', 'lobby', 'utility room', 'corridor', 'kitchen', 'garage', 'bathroom', 'childs room', 'bedroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] adjustable wrench
+Gold standard : ['television room', 'utility room', 'kitchen', 'exercise room', 'living room', 'lobby', 'bathroom', 'closet', 'storage room', 'corridor', 'home office', 'playroom', 'childs room', 'bedroom', 'pantry', 'dining room', 'garage']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] alarmclock
+Gold standard : ['bedroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] aluminumfoil
+Gold standard : ['kitchen']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] android figure
+Gold standard : ['dining room', 'lobby', 'garage', 'exercise room', 'corridor', 'bedroom', 'pantry', 'home office', 'kitchen', 'utility room', 'playroom', 'storage room', 'television room', 'bathroom', 'childs room', 'closet', 'living room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] anti slip tape
+Gold standard : ['bathroom', 'storage room', 'lobby', 'childs room', 'pantry', 'exercise room', 'home office', 'dining room', 'playroom', 'living room', 'corridor', 'bedroom', 'utility room', 'closet', 'kitchen', 'garage', 'television room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] antidepressant
+Gold standard : ['kitchen', 'closet', 'childs room', 'utility room', 'exercise room', 'corridor', 'lobby', 'home office', 'garage', 'bedroom', 'television room', 'bathroom', 'storage room', 'pantry', 'living room', 'dining room', 'playroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] apple
+Gold standard : ['kitchen', 'storage room', 'living room', 'home office', 'bathroom', 'bedroom', 'garage', 'utility room', 'corridor', 'playroom', 'lobby', 'childs room', 'pantry', 'dining room', 'television room', 'exercise room', 'closet']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] armchair
+Gold standard : ['living room', 'bedroom']
+CSKG locs     : ['living room', 'study']
+Predicted     : ['living room', 'study'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] backpack
+Gold standard : ['lobby', 'utility room', 'dining room', 'bedroom', 'closet', 'bathroom', 'living room', 'pantry', 'storage room', 'kitchen', 'playroom', 'childs room', 'garage', 'corridor', 'exercise room', 'television room', 'home office']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] balancing cactus
+Gold standard : ['exercise room', 'bathroom', 'television room', 'storage room', 'living room', 'pantry', 'dining room', 'closet', 'corridor', 'playroom', 'childs room', 'lobby', 'bedroom', 'garage', 'home office', 'utility room', 'kitchen']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] banana
+Gold standard : ['exercise room', 'childs room', 'storage room', 'corridor', 'playroom', 'bedroom', 'television room', 'living room', 'home office', 'lobby', 'garage', 'closet', 'pantry', 'utility room', 'kitchen', 'dining room', 'bathroom']
+CSKG locs     : ['pantry']
+Predicted     : ['pantry'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] baseball
+Gold standard : ['pantry', 'dining room', 'living room', 'playroom', 'lobby', 'utility room', 'television room', 'kitchen', 'exercise room', 'childs room', 'bathroom', 'corridor', 'bedroom', 'closet', 'garage', 'home office', 'storage room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] baseballbat
+Gold standard : ['bedroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] basketball
+Gold standard : ['bedroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] bat
+Gold standard : ['storage room']
+CSKG locs     : ['attic']
+Predicted     : ['attic'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] bath sheet
+Gold standard : ['utility room', 'playroom', 'childs room', 'closet', 'living room', 'storage room', 'bathroom', 'lobby', 'television room', 'dining room', 'exercise room', 'bedroom', 'garage', 'corridor', 'pantry', 'home office', 'kitchen']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] bathtub
+Gold standard : ['bathroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] bathtubbasin
+Gold standard : ['bathroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] batter
+Gold standard : ['box']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] battery
+Gold standard : ['dining room', 'garage', 'pantry', 'living room', 'corridor', 'television room', 'bedroom', 'playroom', 'exercise room', 'utility room', 'closet', 'storage room', 'lobby', 'home office', 'childs room', 'kitchen', 'bathroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] beard color gel
+Gold standard : ['pantry', 'home office', 'corridor', 'kitchen', 'bathroom', 'dining room', 'childs room', 'playroom', 'television room', 'utility room', 'garage', 'closet', 'bedroom', 'living room', 'storage room', 'exercise room', 'lobby']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] beauty pack
+Gold standard : ['bedroom', 'childs room', 'storage room', 'living room', 'utility room', 'lobby', 'home office', 'playroom', 'pantry', 'corridor', 'kitchen', 'exercise room', 'television room', 'bathroom', 'dining room', 'garage', 'closet']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] bed
+Gold standard : ['bedroom']
+CSKG locs     : ['attic', 'basement']
+Predicted     : ['attic', 'basement'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] bleach cleanser
+Gold standard : ['utility room', 'kitchen', 'closet', 'home office', 'playroom', 'pantry', 'exercise room', 'bathroom', 'television room', 'bedroom', 'childs room', 'lobby', 'dining room', 'garage', 'corridor', 'living room', 'storage room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] blender jar
+Gold standard : ['exercise room', 'pantry', 'playroom', 'bathroom', 'living room', 'garage', 'home office', 'dining room', 'corridor', 'kitchen', 'utility room', 'television room', 'lobby', 'bedroom', 'storage room', 'childs room', 'closet']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] blind
+Gold standard : ['kitchen', 'living room', 'bedroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] board game
+Gold standard : ['closet', 'childs room', 'storage room', 'home office', 'utility room', 'lobby', 'exercise room', 'bedroom', 'bathroom', 'pantry', 'corridor', 'garage', 'dining room', 'kitchen', 'playroom', 'television room', 'living room']
+CSKG locs     : ['cupboard', 'den', 'shelf']
+Predicted     : ['cupboard', 'den', 'shelf'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] book
+Gold standard : ['kitchen', 'living room', 'bedroom', 'playroom', 'bathroom', 'pantry', 'garage', 'television room', 'lobby', 'closet', 'utility room', 'exercise room', 'corridor', 'dining room', 'home office', 'childs room', 'storage room']
+CSKG locs     : ['bed', 'bedroom', 'closet', 'desk', 'drawer', 'floor', 'library', 'shelf', 'table']
+Predicted     : ['bed', 'bedroom', 'closet', 'desk', 'drawer', 'floor', 'library', 'shelf', 'table'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] bookend
+Gold standard : ['playroom', 'exercise room', 'utility room', 'bedroom', 'television room', 'bathroom', 'closet', 'pantry', 'corridor', 'garage', 'living room', 'dining room', 'home office', 'childs room', 'kitchen', 'storage room', 'lobby']
+CSKG locs     : ['library', 'shelf']
+Predicted     : ['library', 'shelf'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] boot
+Gold standard : ['living room', 'bedroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] bottle
+Gold standard : ['kitchen']
+CSKG locs     : ['nursery', 'refrigerator']
+Predicted     : ['nursery', 'refrigerator'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] bowl
+Gold standard : ['kitchen', 'living room', 'bedroom', 'corridor', 'storage room', 'dining room', 'childs room', 'closet', 'television room', 'lobby', 'home office', 'pantry', 'exercise room', 'utility room', 'bathroom', 'garage', 'playroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] box
+Gold standard : ['living room', 'bedroom', 'home office', 'closet', 'storage room', 'exercise room', 'childs room', 'lobby', 'kitchen', 'utility room', 'pantry', 'dining room', 'corridor', 'bathroom', 'television room', 'garage', 'playroom']
+CSKG locs     : ['attic', 'basement', 'cellar', 'closet', 'garage']
+Predicted     : ['attic', 'basement', 'cellar', 'closet', 'garage'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] bread
+Gold standard : ['kitchen']
+CSKG locs     : ['oven', 'pantry', 'refrigerator']
+Predicted     : ['oven', 'pantry', 'refrigerator'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] bundt pan
+Gold standard : ['home office', 'bedroom', 'pantry', 'exercise room', 'garage', 'storage room', 'living room', 'kitchen', 'dining room', 'closet', 'television room', 'corridor', 'lobby', 'playroom', 'childs room', 'utility room', 'bathroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] butter dish
+Gold standard : ['childs room', 'playroom', 'garage', 'corridor', 'exercise room', 'closet', 'storage room', 'lobby', 'bathroom', 'pantry', 'living room', 'television room', 'utility room', 'bedroom', 'home office', 'dining room', 'kitchen']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] butterknife
+Gold standard : ['kitchen']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] cabinet
+Gold standard : ['kitchen', 'living room', 'bedroom', 'bathroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] cake mix
+Gold standard : ['pantry', 'home office', 'corridor', 'kitchen', 'bathroom', 'dining room', 'childs room', 'playroom', 'television room', 'utility room', 'garage', 'closet', 'bedroom', 'living room', 'storage room', 'exercise room', 'lobby']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] cake pan
+Gold standard : ['storage room', 'childs room', 'utility room', 'corridor', 'bedroom', 'exercise room', 'pantry', 'kitchen', 'dining room', 'playroom', 'garage', 'living room', 'bathroom', 'television room', 'closet', 'lobby', 'home office']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] camera
+Gold standard : ['storage room', 'corridor', 'bedroom', 'home office', 'garage', 'utility room', 'living room', 'dining room', 'pantry', 'closet', 'bathroom', 'exercise room', 'television room', 'childs room', 'playroom', 'lobby', 'kitchen']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] can opener
+Gold standard : ['childs room', 'utility room', 'dining room', 'playroom', 'living room', 'kitchen', 'corridor', 'garage', 'exercise room', 'lobby', 'home office', 'bedroom', 'pantry', 'bathroom', 'storage room', 'closet', 'television room']
+CSKG locs     : ['kitchen']
+Predicted     : ['kitchen'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] candle
+Gold standard : ['living room', 'bathroom']
+CSKG locs     : ['bedroom', 'cabinet', 'drawer', 'kitchen', 'shelf', 'table']
+Predicted     : ['bedroom', 'cabinet', 'drawer', 'kitchen', 'shelf', 'table'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] candle holder
+Gold standard : ['kitchen', 'utility room', 'bedroom', 'garage', 'home office', 'storage room', 'lobby', 'exercise room', 'bathroom', 'closet', 'pantry', 'childs room', 'playroom', 'television room', 'living room', 'corridor', 'dining room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] candy
+Gold standard : ['jar', 'closet', 'exercise room', 'bathroom', 'playroom', 'utility room', 'home office', 'pantry', 'kitchen', 'garage', 'living room', 'television room', 'bedroom', 'lobby', 'corridor', 'storage room', 'dining room', 'childs room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] candy bar
+Gold standard : ['childs room', 'pantry', 'bathroom', 'exercise room', 'utility room', 'bedroom', 'living room', 'playroom', 'television room', 'lobby', 'storage room', 'corridor', 'closet', 'kitchen', 'dining room', 'garage', 'home office']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] canister
+Gold standard : ['bedroom', 'corridor', 'playroom', 'closet', 'kitchen', 'childs room', 'home office', 'dining room', 'storage room', 'garage', 'pantry', 'television room', 'utility room', 'living room', 'exercise room', 'lobby', 'bathroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] card game
+Gold standard : ['closet', 'garage', 'utility room', 'corridor', 'storage room', 'exercise room', 'bathroom', 'childs room', 'living room', 'lobby', 'playroom', 'pantry', 'home office', 'dining room', 'bedroom', 'television room', 'kitchen']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] carrying case
+Gold standard : ['home office', 'utility room', 'storage room', 'living room', 'pantry', 'bedroom', 'childs room', 'corridor', 'kitchen', 'dining room', 'garage', 'bathroom', 'exercise room', 'closet', 'playroom', 'lobby', 'television room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] casserole dish
+Gold standard : ['television room', 'bathroom', 'home office', 'storage room', 'childs room', 'bedroom', 'pantry', 'kitchen', 'lobby', 'exercise room', 'garage', 'closet', 'dining room', 'living room', 'playroom', 'utility room', 'corridor']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] cd
+Gold standard : ['bedroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] cellphone
+Gold standard : ['kitchen', 'living room', 'bedroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] cereal
+Gold standard : ['utility room', 'television room', 'bedroom', 'home office', 'kitchen', 'storage room', 'playroom', 'childs room', 'living room', 'lobby', 'corridor', 'bathroom', 'garage', 'pantry', 'dining room', 'exercise room', 'closet']
+CSKG locs     : ['box', 'cabinet', 'cupboard', 'pantry', 'refrigerator', 'shelf']
+Predicted     : ['box', 'cabinet', 'cupboard', 'pantry', 'refrigerator', 'shelf'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] chain
+Gold standard : ['utility room', 'television room', 'kitchen', 'corridor', 'pantry', 'playroom', 'closet', 'bathroom', 'home office', 'garage', 'bedroom', 'dining room', 'lobby', 'storage room', 'exercise room', 'living room', 'childs room']
+CSKG locs     : ['garage', 'shed']
+Predicted     : ['garage', 'shed'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] chair
+Gold standard : ['kitchen', 'living room', 'bedroom']
+CSKG locs     : ['bedroom', 'desk', 'floor', 'home office', 'kitchen', 'living room', 'lobby', 'porch']
+Predicted     : ['bedroom', 'desk', 'floor', 'home office', 'kitchen', 'living room', 'lobby', 'porch'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] chocolate
+Gold standard : ['storage room', 'dining room', 'exercise room', 'corridor', 'bathroom', 'kitchen', 'pantry', 'home office', 'childs room', 'playroom', 'bedroom', 'closet', 'living room', 'lobby', 'garage', 'utility room', 'television room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] chocolate box
+Gold standard : ['lobby', 'exercise room', 'kitchen', 'dining room', 'television room', 'corridor', 'garage', 'bedroom', 'childs room', 'home office', 'storage room', 'living room', 'playroom', 'bathroom', 'utility room', 'closet', 'pantry']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] chocolate milk pods
+Gold standard : ['lobby', 'exercise room', 'kitchen', 'dining room', 'television room', 'corridor', 'garage', 'bedroom', 'childs room', 'home office', 'storage room', 'living room', 'playroom', 'bathroom', 'utility room', 'closet', 'pantry']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] chocolate powder
+Gold standard : ['closet', 'corridor', 'playroom', 'storage room', 'lobby', 'dining room', 'bathroom', 'garage', 'bedroom', 'exercise room', 'utility room', 'pantry', 'childs room', 'living room', 'kitchen', 'television room', 'home office']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] chopping board
+Gold standard : ['utility room', 'pantry', 'kitchen', 'bedroom', 'childs room', 'living room', 'closet', 'garage', 'television room', 'corridor', 'exercise room', 'dining room', 'playroom', 'storage room', 'home office', 'bathroom', 'lobby']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] clamp
+Gold standard : ['playroom', 'garage', 'corridor', 'bedroom', 'pantry', 'bathroom', 'exercise room', 'home office', 'utility room', 'dining room', 'television room', 'living room', 'storage room', 'kitchen', 'childs room', 'lobby', 'closet']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] clay
+Gold standard : ['kitchen', 'living room', 'television room', 'garage', 'bedroom', 'dining room', 'utility room', 'exercise room', 'home office', 'corridor', 'bathroom', 'playroom', 'childs room', 'pantry', 'storage room', 'lobby', 'closet']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] clock
+Gold standard : ['dining room', 'garage', 'pantry', 'living room', 'corridor', 'television room', 'bedroom', 'playroom', 'exercise room', 'utility room', 'closet', 'storage room', 'lobby', 'home office', 'childs room', 'kitchen', 'bathroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] cloth
+Gold standard : ['bedroom', 'bathroom', 'storage room', 'corridor', 'childs room', 'playroom', 'dining room', 'garage', 'closet', 'lobby', 'home office', 'kitchen', 'exercise room', 'pantry', 'utility room', 'living room', 'television room']
+CSKG locs     : ['bathroom', 'bedroom', 'closet', 'kitchen', 'table']
+Predicted     : ['bathroom', 'bedroom', 'closet', 'kitchen', 'table'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] coffee beans
+Gold standard : ['television room', 'closet', 'childs room', 'lobby', 'home office', 'storage room', 'bathroom', 'bedroom', 'kitchen', 'living room', 'playroom', 'exercise room', 'corridor', 'garage', 'dining room', 'pantry', 'utility room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] coffee pods
+Gold standard : ['exercise room', 'dining room', 'playroom', 'bedroom', 'home office', 'lobby', 'corridor', 'kitchen', 'living room', 'garage', 'pantry', 'bathroom', 'television room', 'utility room', 'storage room', 'closet', 'childs room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] coffeemachine
+Gold standard : ['kitchen']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] coffeemaker
+Gold standard : ['pantry', 'lobby', 'dining room', 'storage room', 'utility room', 'garage', 'bathroom', 'television room', 'playroom', 'home office', 'closet', 'living room', 'exercise room', 'bedroom', 'kitchen', 'childs room', 'corridor']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] coffeetable
+Gold standard : ['living room', 'bedroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] colored wood blocks
+Gold standard : ['closet', 'living room', 'playroom', 'childs room', 'bedroom', 'bathroom', 'dining room', 'pantry', 'corridor', 'home office', 'exercise room', 'lobby', 'utility room', 'storage room', 'kitchen', 'garage', 'television room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] condiment
+Gold standard : ['bedroom', 'home office', 'childs room', 'pantry', 'lobby', 'living room', 'storage room', 'utility room', 'exercise room', 'dining room', 'kitchen', 'garage', 'bathroom', 'television room', 'corridor', 'closet', 'playroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] countertop
+Gold standard : ['kitchen', 'bedroom', 'bathroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] cracker box
+Gold standard : ['corridor', 'living room', 'storage room', 'dining room', 'childs room', 'closet', 'television room', 'lobby', 'kitchen', 'home office', 'pantry', 'exercise room', 'utility room', 'bathroom', 'garage', 'playroom', 'bedroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] crayon
+Gold standard : ['home office', 'utility room', 'lobby', 'garage', 'playroom', 'storage room', 'bathroom', 'corridor', 'television room', 'kitchen', 'closet', 'pantry', 'bedroom', 'dining room', 'living room', 'exercise room', 'childs room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] creditcard
+Gold standard : ['kitchen', 'living room', 'bedroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] cube storage box
+Gold standard : ['utility room', 'bedroom', 'childs room', 'kitchen', 'home office', 'lobby', 'garage', 'exercise room', 'storage room', 'closet', 'dining room', 'pantry', 'playroom', 'living room', 'television room', 'corridor', 'bathroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] cup
+Gold standard : ['kitchen', 'closet', 'storage room', 'living room', 'home office', 'bathroom', 'bedroom', 'garage', 'utility room', 'corridor', 'playroom', 'lobby', 'childs room', 'pantry', 'dining room', 'television room', 'exercise room']
+CSKG locs     : ['cabinet', 'closet', 'counter', 'dishwasher', 'kitchen', 'shelf', 'table']
+Predicted     : ['cabinet', 'closet', 'counter', 'dishwasher', 'kitchen', 'shelf', 'table'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] curtain
+Gold standard : ['kitchen', 'living room', 'bedroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] cushion
+Gold standard : ['kitchen', 'bedroom', 'closet', 'storage room', 'garage', 'home office', 'bathroom', 'dining room', 'lobby', 'living room', 'exercise room', 'corridor', 'childs room', 'utility room', 'pantry', 'playroom', 'television room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] desk
+Gold standard : ['living room', 'bedroom']
+CSKG locs     : ['bedroom', 'den', 'library', 'study']
+Predicted     : ['bedroom', 'den', 'library', 'study'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] desk caddy
+Gold standard : ['garage', 'playroom', 'pantry', 'storage room', 'home office', 'bedroom', 'childs room', 'dining room', 'exercise room', 'television room', 'kitchen', 'utility room', 'living room', 'closet', 'bathroom', 'corridor', 'lobby']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] desklamp
+Gold standard : ['living room', 'bedroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] desktop
+Gold standard : ['bedroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] diaper pack
+Gold standard : ['playroom', 'exercise room', 'utility room', 'bedroom', 'television room', 'bathroom', 'closet', 'pantry', 'corridor', 'garage', 'living room', 'dining room', 'home office', 'childs room', 'kitchen', 'storage room', 'lobby']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] dietary supplement
+Gold standard : ['childs room', 'living room', 'closet', 'bedroom', 'kitchen', 'playroom', 'exercise room', 'pantry', 'television room', 'home office', 'garage', 'lobby', 'corridor', 'bathroom', 'utility room', 'storage room', 'dining room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] diningtable
+Gold standard : ['kitchen', 'living room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] dish drainer
+Gold standard : ['dining room', 'bedroom', 'kitchen', 'closet', 'playroom', 'utility room', 'storage room', 'living room', 'television room', 'home office', 'bathroom', 'pantry', 'exercise room', 'garage', 'corridor', 'childs room', 'lobby']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] dishsponge
+Gold standard : ['kitchen', 'bathroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] dishtowel
+Gold standard : ['utility room', 'childs room', 'pantry', 'living room', 'corridor', 'exercise room', 'garage', 'dining room', 'storage room', 'television room', 'playroom', 'closet', 'bathroom', 'bedroom', 'home office', 'lobby', 'kitchen']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] dishwasher
+Gold standard : ['kitchen']
+CSKG locs     : ['kitchen']
+Predicted     : ['kitchen'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] dispensing closure
+Gold standard : ['home office', 'utility room', 'storage room', 'living room', 'pantry', 'bedroom', 'childs room', 'corridor', 'kitchen', 'dining room', 'garage', 'bathroom', 'exercise room', 'closet', 'playroom', 'lobby', 'television room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] dog bowl
+Gold standard : ['dining room', 'exercise room', 'bedroom', 'bathroom', 'television room', 'storage room', 'childs room', 'pantry', 'corridor', 'living room', 'utility room', 'playroom', 'lobby', 'kitchen', 'closet', 'home office', 'garage']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] dog chew toy
+Gold standard : ['playroom', 'utility room', 'childs room', 'television room', 'home office', 'kitchen', 'bathroom', 'closet', 'exercise room', 'dining room', 'pantry', 'bedroom', 'corridor', 'living room', 'garage', 'storage room', 'lobby']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] dogbed
+Gold standard : ['living room', 'bedroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] dollhouse toy
+Gold standard : ['utility room', 'bedroom', 'corridor', 'garage', 'home office', 'dining room', 'playroom', 'kitchen', 'television room', 'lobby', 'exercise room', 'bathroom', 'living room', 'childs room', 'pantry', 'closet', 'storage room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] donut
+Gold standard : ['corridor', 'home office', 'television room', 'playroom', 'lobby', 'storage room', 'garage', 'living room', 'pantry', 'utility room', 'closet', 'dining room', 'bedroom', 'kitchen', 'bathroom', 'childs room', 'exercise room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] drawer
+Gold standard : ['kitchen', 'living room', 'bedroom', 'bathroom']
+CSKG locs     : ['cabinet', 'den', 'dresser', 'kitchen']
+Predicted     : ['cabinet', 'den', 'dresser', 'kitchen'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] dresser
+Gold standard : ['bedroom', 'living room', 'bathroom']
+CSKG locs     : ['bedroom', 'drawer']
+Predicted     : ['bedroom', 'drawer'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] drink
+Gold standard : ['can', 'bar']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] drink coaster
+Gold standard : ['dining room', 'utility room', 'home office', 'closet', 'bathroom', 'pantry', 'corridor', 'lobby', 'childs room', 'exercise room', 'playroom', 'bedroom', 'television room', 'living room', 'garage', 'storage room', 'kitchen']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] dryer
+Gold standard : ['storage room']
+CSKG locs     : ['basement']
+Predicted     : ['basement'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] duct tape
+Gold standard : ['pantry', 'playroom', 'closet', 'garage', 'corridor', 'bathroom', 'dining room', 'home office', 'storage room', 'lobby', 'bedroom', 'exercise room', 'television room', 'childs room', 'living room', 'kitchen', 'utility room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] dumbbell
+Gold standard : ['bedroom', 'living room', 'utility room', 'exercise room', 'storage room', 'lobby', 'garage', 'kitchen', 'corridor', 'dining room', 'home office', 'pantry', 'television room', 'bathroom', 'childs room', 'closet', 'playroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] dumbbell rack
+Gold standard : ['exercise room', 'childs room', 'storage room', 'corridor', 'playroom', 'bedroom', 'television room', 'living room', 'home office', 'lobby', 'garage', 'closet', 'pantry', 'utility room', 'kitchen', 'dining room', 'bathroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] dustpan and brush
+Gold standard : ['childs room', 'dining room', 'bathroom', 'home office', 'utility room', 'playroom', 'lobby', 'pantry', 'storage room', 'kitchen', 'closet', 'living room', 'exercise room', 'bedroom', 'garage', 'television room', 'corridor']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] dutch oven
+Gold standard : ['playroom', 'bedroom', 'exercise room', 'closet', 'corridor', 'garage', 'bathroom', 'storage room', 'kitchen', 'television room', 'childs room', 'dining room', 'living room', 'lobby', 'utility room', 'pantry', 'home office']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] easter basket
+Gold standard : ['utility room', 'television room', 'bedroom', 'home office', 'kitchen', 'storage room', 'playroom', 'childs room', 'living room', 'lobby', 'corridor', 'bathroom', 'garage', 'pantry', 'dining room', 'exercise room', 'closet']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] egg
+Gold standard : ['kitchen']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] electric heater
+Gold standard : ['storage room', 'corridor', 'bedroom', 'home office', 'garage', 'utility room', 'living room', 'dining room', 'pantry', 'closet', 'bathroom', 'exercise room', 'television room', 'childs room', 'playroom', 'lobby', 'kitchen']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] electric toothbrush
+Gold standard : ['garage', 'playroom', 'pantry', 'storage room', 'home office', 'bedroom', 'childs room', 'dining room', 'exercise room', 'television room', 'kitchen', 'utility room', 'living room', 'closet', 'bathroom', 'corridor', 'lobby']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] electronic adapter
+Gold standard : ['dining room', 'kitchen', 'closet', 'bedroom', 'utility room', 'exercise room', 'bathroom', 'lobby', 'garage', 'living room', 'pantry', 'storage room', 'home office', 'playroom', 'television room', 'childs room', 'corridor']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] electronic cable
+Gold standard : ['garage', 'playroom', 'television room', 'storage room', 'kitchen', 'home office', 'living room', 'pantry', 'bedroom', 'closet', 'bathroom', 'dining room', 'corridor', 'exercise room', 'utility room', 'childs room', 'lobby']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] face moisturizer
+Gold standard : ['television room', 'childs room', 'living room', 'home office', 'playroom', 'bedroom', 'kitchen', 'bathroom', 'corridor', 'pantry', 'dining room', 'utility room', 'storage room', 'garage', 'lobby', 'exercise room', 'closet']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] faucet
+Gold standard : ['bathroom', 'kitchen']
+CSKG locs     : ['bathroom']
+Predicted     : ['bathroom'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] file sorter
+Gold standard : ['exercise room', 'pantry', 'playroom', 'bathroom', 'living room', 'garage', 'home office', 'dining room', 'corridor', 'kitchen', 'utility room', 'television room', 'lobby', 'bedroom', 'storage room', 'childs room', 'closet']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] fingerpaint
+Gold standard : ['exercise room', 'television room', 'kitchen', 'lobby', 'utility room', 'closet', 'living room', 'storage room', 'childs room', 'playroom', 'pantry', 'corridor', 'home office', 'bedroom', 'garage', 'bathroom', 'dining room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] fitness tracker wristband
+Gold standard : ['storage room', 'bathroom', 'home office', 'utility room', 'exercise room', 'closet', 'dining room', 'television room', 'playroom', 'corridor', 'garage', 'pantry', 'lobby', 'bedroom', 'childs room', 'kitchen', 'living room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] flashlight
+Gold standard : ['pantry', 'living room', 'playroom', 'childs room', 'lobby', 'television room', 'corridor', 'dining room', 'home office', 'closet', 'exercise room', 'utility room', 'bathroom', 'kitchen', 'bedroom', 'garage', 'storage room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] flat screwdriver
+Gold standard : ['kitchen', 'utility room', 'bedroom', 'garage', 'home office', 'storage room', 'lobby', 'exercise room', 'bathroom', 'closet', 'pantry', 'childs room', 'playroom', 'television room', 'living room', 'corridor', 'dining room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] floor
+Gold standard : ['kitchen', 'living room', 'bedroom', 'bathroom']
+CSKG locs     : ['bed', 'closet', 'desk', 'library', 'table']
+Predicted     : ['bed', 'closet', 'desk', 'library', 'table'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] floorlamp
+Gold standard : ['living room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] foam brick
+Gold standard : ['dining room', 'bathroom', 'bedroom', 'television room', 'lobby', 'playroom', 'storage room', 'utility room', 'exercise room', 'corridor', 'kitchen', 'pantry', 'home office', 'childs room', 'garage', 'closet', 'living room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] folder
+Gold standard : ['playroom', 'bathroom', 'pantry', 'bedroom', 'garage', 'television room', 'kitchen', 'lobby', 'living room', 'closet', 'utility room', 'exercise room', 'corridor', 'dining room', 'home office', 'childs room', 'storage room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] fondant
+Gold standard : ['television room', 'storage room', 'living room', 'exercise room', 'home office', 'kitchen', 'dining room', 'closet', 'bedroom', 'corridor', 'pantry', 'playroom', 'utility room', 'garage', 'lobby', 'bathroom', 'childs room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] footstool
+Gold standard : ['bedroom', 'bathroom']
+CSKG locs     : ['desk', 'family room', 'living room', 'workshop']
+Predicted     : ['desk', 'family room', 'living room', 'workshop'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] fork
+Gold standard : ['kitchen', 'corridor', 'pantry', 'storage room', 'garage', 'exercise room', 'playroom', 'bathroom', 'utility room', 'closet', 'bedroom', 'childs room', 'dining room', 'home office', 'living room', 'television room', 'lobby']
+CSKG locs     : ['drawer', 'kitchen', 'table']
+Predicted     : ['drawer', 'kitchen', 'table'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] fridge
+Gold standard : ['kitchen']
+CSKG locs     : ['kitchen']
+Predicted     : ['kitchen'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] fruit snack
+Gold standard : ['playroom', 'kitchen', 'television room', 'corridor', 'dining room', 'closet', 'bathroom', 'bedroom', 'storage room', 'pantry', 'lobby', 'living room', 'garage', 'exercise room', 'utility room', 'childs room', 'home office']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] furnace
+Gold standard : ['storage room']
+CSKG locs     : ['basement', 'cellar']
+Predicted     : ['basement', 'cellar'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] garbage
+Gold standard : ['dumpster']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] garbagebag
+Gold standard : ['kitchen', 'bedroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] garbagecan
+Gold standard : ['kitchen', 'living room', 'bedroom', 'bathroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] gelatin box
+Gold standard : ['garage', 'childs room', 'home office', 'corridor', 'playroom', 'closet', 'dining room', 'kitchen', 'television room', 'lobby', 'pantry', 'bathroom', 'utility room', 'storage room', 'living room', 'exercise room', 'bedroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] glove
+Gold standard : ['exercise room', 'bathroom', 'garage', 'playroom', 'storage room', 'utility room', 'home office', 'lobby', 'living room', 'pantry', 'bedroom', 'childs room', 'closet', 'television room', 'dining room', 'corridor', 'kitchen']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] golf ball
+Gold standard : ['kitchen', 'exercise room', 'pantry', 'dining room', 'bedroom', 'storage room', 'living room', 'home office', 'television room', 'childs room', 'closet', 'bathroom', 'garage', 'playroom', 'lobby', 'corridor', 'utility room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] graphics card
+Gold standard : ['storage room', 'dining room', 'exercise room', 'corridor', 'bathroom', 'kitchen', 'pantry', 'home office', 'childs room', 'playroom', 'bedroom', 'closet', 'living room', 'lobby', 'garage', 'utility room', 'television room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] hair color
+Gold standard : ['closet', 'childs room', 'television room', 'kitchen', 'lobby', 'exercise room', 'living room', 'corridor', 'pantry', 'bathroom', 'playroom', 'home office', 'dining room', 'storage room', 'utility room', 'bedroom', 'garage']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] hair conditioner
+Gold standard : ['home office', 'bedroom', 'exercise room', 'lobby', 'closet', 'pantry', 'bathroom', 'garage', 'storage room', 'childs room', 'living room', 'kitchen', 'dining room', 'playroom', 'corridor', 'utility room', 'television room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] hair dryer
+Gold standard : ['dining room', 'bedroom', 'utility room', 'playroom', 'exercise room', 'lobby', 'childs room', 'storage room', 'pantry', 'television room', 'garage', 'kitchen', 'living room', 'bathroom', 'home office', 'corridor', 'closet']
+CSKG locs     : ['bathroom', 'box']
+Predicted     : ['bathroom', 'box'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] hair straightener
+Gold standard : ['exercise room', 'dining room', 'kitchen', 'bathroom', 'playroom', 'storage room', 'garage', 'pantry', 'bedroom', 'childs room', 'corridor', 'lobby', 'living room', 'utility room', 'closet', 'home office', 'television room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] hammer
+Gold standard : ['closet', 'pantry', 'television room', 'dining room', 'bedroom', 'exercise room', 'home office', 'bathroom', 'lobby', 'garage', 'utility room', 'storage room', 'childs room', 'playroom', 'kitchen', 'living room', 'corridor']
+CSKG locs     : ['garage']
+Predicted     : ['garage'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] hand bell
+Gold standard : ['corridor', 'childs room', 'television room', 'closet', 'bathroom', 'dining room', 'lobby', 'home office', 'living room', 'storage room', 'kitchen', 'exercise room', 'playroom', 'pantry', 'bedroom', 'garage', 'utility room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] handbag
+Gold standard : ['storage room', 'bathroom', 'corridor', 'childs room', 'playroom', 'dining room', 'garage', 'closet', 'lobby', 'home office', 'kitchen', 'exercise room', 'bedroom', 'pantry', 'utility room', 'living room', 'television room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] handtowel
+Gold standard : ['bathroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] handtowelholder
+Gold standard : ['bathroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] hard drive
+Gold standard : ['television room', 'utility room', 'living room', 'dining room', 'pantry', 'closet', 'lobby', 'exercise room', 'playroom', 'garage', 'home office', 'storage room', 'childs room', 'kitchen', 'corridor', 'bedroom', 'bathroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] hard drive case
+Gold standard : ['dining room', 'bathroom', 'bedroom', 'television room', 'lobby', 'playroom', 'storage room', 'utility room', 'exercise room', 'corridor', 'kitchen', 'pantry', 'home office', 'childs room', 'garage', 'closet', 'living room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] hat
+Gold standard : ['closet', 'corridor', 'lobby', 'television room', 'home office', 'bathroom', 'living room', 'garage', 'playroom', 'bedroom', 'utility room', 'storage room', 'kitchen', 'dining room', 'childs room', 'exercise room', 'pantry']
+CSKG locs     : ['box', 'closet', 'shelf']
+Predicted     : ['box', 'closet', 'shelf'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] headphone
+Gold standard : ['utility room', 'storage room', 'bedroom', 'living room', 'childs room', 'closet', 'dining room', 'kitchen', 'lobby', 'pantry', 'exercise room', 'garage', 'television room', 'playroom', 'home office', 'corridor', 'bathroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] heavy duty gloves
+Gold standard : ['garage', 'bedroom', 'home office', 'closet', 'utility room', 'television room', 'playroom', 'living room', 'exercise room', 'kitchen', 'storage room', 'corridor', 'childs room', 'pantry', 'lobby', 'dining room', 'bathroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] heavy master chef can
+Gold standard : ['lobby', 'storage room', 'corridor', 'bedroom', 'dining room', 'garage', 'childs room', 'television room', 'bathroom', 'exercise room', 'utility room', 'pantry', 'closet', 'kitchen', 'living room', 'playroom', 'home office']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] helmet
+Gold standard : ['exercise room', 'bathroom', 'television room', 'storage room', 'living room', 'pantry', 'dining room', 'closet', 'corridor', 'playroom', 'childs room', 'lobby', 'bedroom', 'garage', 'home office', 'utility room', 'kitchen']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] herring fillets
+Gold standard : ['childs room', 'closet', 'storage room', 'kitchen', 'living room', 'garage', 'pantry', 'exercise room', 'utility room', 'playroom', 'television room', 'corridor', 'lobby', 'bedroom', 'home office', 'dining room', 'bathroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] honey dipper
+Gold standard : ['television room', 'living room', 'lobby', 'dining room', 'childs room', 'garage', 'bathroom', 'kitchen', 'storage room', 'utility room', 'corridor', 'exercise room', 'bedroom', 'playroom', 'closet', 'home office', 'pantry']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] houseplant
+Gold standard : ['kitchen', 'living room', 'bedroom', 'bathroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] incontinence pads
+Gold standard : ['childs room', 'playroom', 'garage', 'corridor', 'exercise room', 'closet', 'storage room', 'lobby', 'bathroom', 'pantry', 'living room', 'television room', 'utility room', 'bedroom', 'home office', 'dining room', 'kitchen']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] ink cartridge
+Gold standard : ['dining room', 'storage room', 'living room', 'television room', 'corridor', 'bathroom', 'childs room', 'playroom', 'home office', 'kitchen', 'lobby', 'garage', 'bedroom', 'pantry', 'utility room', 'closet', 'exercise room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] instant camera
+Gold standard : ['kitchen', 'living room', 'television room', 'garage', 'bedroom', 'dining room', 'utility room', 'exercise room', 'home office', 'corridor', 'bathroom', 'playroom', 'childs room', 'pantry', 'storage room', 'lobby', 'closet']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] invitation card
+Gold standard : ['childs room', 'corridor', 'lobby', 'garage', 'dining room', 'pantry', 'kitchen', 'closet', 'utility room', 'exercise room', 'home office', 'living room', 'playroom', 'television room', 'storage room', 'bedroom', 'bathroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] jar
+Gold standard : ['garage', 'bedroom', 'home office', 'pantry', 'childs room', 'lobby', 'utility room', 'storage room', 'television room', 'kitchen', 'bathroom', 'living room', 'dining room', 'corridor', 'playroom', 'closet', 'exercise room']
+CSKG locs     : ['cabinet', 'cupboard', 'pantry', 'refrigerator', 'shelf']
+Predicted     : ['cabinet', 'cupboard', 'pantry', 'refrigerator', 'shelf'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] jenga
+Gold standard : ['dining room', 'bedroom', 'television room', 'garage', 'kitchen', 'childs room', 'storage room', 'home office', 'closet', 'playroom', 'living room', 'lobby', 'exercise room', 'corridor', 'bathroom', 'pantry', 'utility room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] jewelry box
+Gold standard : ['garage', 'bedroom', 'home office', 'pantry', 'childs room', 'lobby', 'utility room', 'storage room', 'television room', 'kitchen', 'bathroom', 'living room', 'dining room', 'corridor', 'playroom', 'closet', 'exercise room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] kettle
+Gold standard : ['kitchen']
+CSKG locs     : ['kitchen']
+Predicted     : ['kitchen'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] keyboard
+Gold standard : ['pantry', 'kitchen', 'utility room', 'playroom', 'bathroom', 'exercise room', 'closet', 'bedroom', 'home office', 'lobby', 'television room', 'dining room', 'garage', 'childs room', 'living room', 'storage room', 'corridor']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] keychain
+Gold standard : ['living room', 'bedroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] knife
+Gold standard : ['kitchen', 'utility room', 'television room', 'corridor', 'pantry', 'playroom', 'closet', 'bathroom', 'home office', 'garage', 'bedroom', 'dining room', 'lobby', 'storage room', 'exercise room', 'living room', 'childs room']
+CSKG locs     : ['drawer', 'kitchen', 'table']
+Predicted     : ['drawer', 'kitchen', 'table'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] knife block
+Gold standard : ['garage', 'bathroom', 'living room', 'dining room', 'television room', 'bedroom', 'playroom', 'closet', 'lobby', 'storage room', 'corridor', 'utility room', 'home office', 'pantry', 'childs room', 'kitchen', 'exercise room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] labeling tape
+Gold standard : ['utility room', 'storage room', 'garage', 'childs room', 'pantry', 'dining room', 'playroom', 'living room', 'exercise room', 'home office', 'bedroom', 'lobby', 'closet', 'corridor', 'kitchen', 'bathroom', 'television room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] ladle
+Gold standard : ['kitchen']
+CSKG locs     : ['drawer', 'kitchen']
+Predicted     : ['drawer', 'kitchen'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] lamp
+Gold standard : ['bedroom', 'living room', 'bathroom', 'closet', 'garage', 'corridor', 'utility room', 'kitchen', 'television room', 'dining room', 'playroom', 'exercise room', 'storage room', 'home office', 'lobby', 'childs room', 'pantry']
+CSKG locs     : ['bedroom', 'desk', 'home office', 'shelf', 'table']
+Predicted     : ['bedroom', 'desk', 'home office', 'shelf', 'table'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] lantern
+Gold standard : ['kitchen', 'corridor', 'pantry', 'storage room', 'garage', 'exercise room', 'playroom', 'bathroom', 'utility room', 'closet', 'bedroom', 'childs room', 'dining room', 'home office', 'living room', 'television room', 'lobby']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] laptop
+Gold standard : ['living room', 'bedroom', 'lobby', 'garage', 'corridor', 'television room', 'closet', 'pantry', 'utility room', 'kitchen', 'home office', 'dining room', 'storage room', 'playroom', 'bathroom', 'childs room', 'exercise room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] laptop cover
+Gold standard : ['corridor', 'childs room', 'bedroom', 'pantry', 'living room', 'kitchen', 'garage', 'home office', 'exercise room', 'dining room', 'bathroom', 'lobby', 'playroom', 'closet', 'television room', 'utility room', 'storage room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] laptop stand
+Gold standard : ['home office', 'closet', 'storage room', 'exercise room', 'childs room', 'lobby', 'kitchen', 'utility room', 'pantry', 'dining room', 'living room', 'bedroom', 'corridor', 'bathroom', 'television room', 'garage', 'playroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] large marker
+Gold standard : ['utility room', 'childs room', 'pantry', 'playroom', 'television room', 'kitchen', 'dining room', 'corridor', 'bathroom', 'home office', 'bedroom', 'lobby', 'closet', 'exercise room', 'garage', 'storage room', 'living room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] laundry box
+Gold standard : ['television room', 'home office', 'dining room', 'exercise room', 'bathroom', 'storage room', 'kitchen', 'garage', 'lobby', 'pantry', 'living room', 'corridor', 'utility room', 'playroom', 'closet', 'bedroom', 'childs room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] laundryhamper
+Gold standard : ['bedroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] laxative
+Gold standard : ['childs room', 'closet', 'bathroom', 'bedroom', 'utility room', 'kitchen', 'exercise room', 'home office', 'corridor', 'playroom', 'living room', 'pantry', 'garage', 'dining room', 'storage room', 'lobby', 'television room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] lego duplo
+Gold standard : ['utility room', 'living room', 'corridor', 'dining room', 'exercise room', 'playroom', 'television room', 'home office', 'bedroom', 'garage', 'storage room', 'pantry', 'closet', 'childs room', 'lobby', 'kitchen', 'bathroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] lemon
+Gold standard : ['kitchen', 'pantry', 'bathroom', 'corridor', 'playroom', 'lobby', 'closet', 'bedroom', 'utility room', 'storage room', 'exercise room', 'garage', 'dining room', 'childs room', 'home office', 'living room', 'television room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] letter holder
+Gold standard : ['television room', 'storage room', 'living room', 'exercise room', 'home office', 'kitchen', 'dining room', 'closet', 'bedroom', 'corridor', 'pantry', 'playroom', 'utility room', 'garage', 'lobby', 'bathroom', 'childs room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] lettuce
+Gold standard : ['kitchen']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] light bulb
+Gold standard : ['living room', 'kitchen', 'television room', 'playroom', 'pantry', 'closet', 'utility room', 'corridor', 'bedroom', 'garage', 'exercise room', 'dining room', 'storage room', 'lobby', 'childs room', 'bathroom', 'home office']
+CSKG locs     : ['basement']
+Predicted     : ['basement'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] lightswitch
+Gold standard : ['kitchen', 'living room', 'bedroom', 'bathroom']
+CSKG locs     : ['closet']
+Predicted     : ['closet'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] lime squeezer
+Gold standard : ['childs room', 'closet', 'bathroom', 'bedroom', 'utility room', 'kitchen', 'exercise room', 'home office', 'corridor', 'playroom', 'living room', 'pantry', 'garage', 'dining room', 'storage room', 'lobby', 'television room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] lipstick
+Gold standard : ['playroom', 'utility room', 'childs room', 'exercise room', 'storage room', 'lobby', 'kitchen', 'television room', 'closet', 'bathroom', 'garage', 'dining room', 'corridor', 'bedroom', 'home office', 'living room', 'pantry']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] lunch bag
+Gold standard : ['playroom', 'bathroom', 'living room', 'kitchen', 'corridor', 'television room', 'lobby', 'bedroom', 'utility room', 'storage room', 'pantry', 'closet', 'dining room', 'home office', 'exercise room', 'childs room', 'garage']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] lunch box
+Gold standard : ['bathroom', 'dining room', 'kitchen', 'exercise room', 'playroom', 'lobby', 'childs room', 'living room', 'utility room', 'corridor', 'television room', 'bedroom', 'garage', 'pantry', 'home office', 'closet', 'storage room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] magnifying glass
+Gold standard : ['dining room', 'storage room', 'living room', 'television room', 'corridor', 'bathroom', 'childs room', 'playroom', 'home office', 'kitchen', 'lobby', 'garage', 'bedroom', 'pantry', 'utility room', 'closet', 'exercise room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] mascara
+Gold standard : ['childs room', 'bathroom', 'living room', 'lobby', 'kitchen', 'corridor', 'exercise room', 'bedroom', 'garage', 'pantry', 'television room', 'storage room', 'home office', 'dining room', 'playroom', 'utility room', 'closet']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] master chef can
+Gold standard : ['closet', 'living room', 'playroom', 'childs room', 'bedroom', 'bathroom', 'dining room', 'pantry', 'corridor', 'home office', 'exercise room', 'lobby', 'utility room', 'storage room', 'kitchen', 'garage', 'television room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] measuring tape
+Gold standard : ['living room', 'kitchen', 'television room', 'utility room', 'corridor', 'bedroom', 'lobby', 'exercise room', 'playroom', 'home office', 'childs room', 'closet', 'bathroom', 'pantry', 'dining room', 'garage', 'storage room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] medicine
+Gold standard : ['childs room', 'closet', 'television room', 'corridor', 'bathroom', 'garage', 'bedroom', 'playroom', 'exercise room', 'storage room', 'kitchen', 'living room', 'home office', 'utility room', 'dining room', 'pantry', 'lobby']
+CSKG locs     : ['bathroom', 'cabinet']
+Predicted     : ['bathroom', 'cabinet'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] microwave
+Gold standard : ['kitchen']
+CSKG locs     : ['kitchen']
+Predicted     : ['kitchen'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] milk fror
+Gold standard : ['playroom', 'pantry', 'storage room', 'television room', 'bedroom', 'garage', 'closet', 'bathroom', 'exercise room', 'home office', 'childs room', 'living room', 'utility room', 'kitchen', 'corridor', 'dining room', 'lobby']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] mini soccer ball
+Gold standard : ['corridor', 'home office', 'television room', 'playroom', 'lobby', 'storage room', 'garage', 'living room', 'pantry', 'utility room', 'closet', 'dining room', 'bedroom', 'kitchen', 'bathroom', 'childs room', 'exercise room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] mirror
+Gold standard : ['kitchen', 'living room', 'bedroom', 'bathroom']
+CSKG locs     : ['bedroom', 'closet', 'dressing room', 'wall']
+Predicted     : ['bedroom', 'closet', 'dressing room', 'wall'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] morboard
+Gold standard : ['television room', 'utility room', 'living room', 'dining room', 'pantry', 'closet', 'lobby', 'exercise room', 'playroom', 'garage', 'home office', 'storage room', 'childs room', 'kitchen', 'corridor', 'bedroom', 'bathroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] mouse
+Gold standard : ['kitchen', 'living room', 'storage room', 'trap', 'childs room', 'utility room', 'corridor', 'bedroom', 'exercise room', 'pantry', 'dining room', 'playroom', 'garage', 'bathroom', 'television room', 'closet', 'lobby', 'home office']
+CSKG locs     : ['attic', 'box', 'cellar', 'cupboard', 'desk', 'garage', 'garden', 'home office', 'kitchen', 'living room', 'pantry', 'shelf']
+Predicted     : ['attic', 'box', 'cellar', 'cupboard', 'desk', 'garage', 'garden', 'home office', 'kitchen', 'living room', 'pantry', 'shelf'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] mouse pad
+Gold standard : ['home office', 'pantry', 'lobby', 'utility room', 'playroom', 'closet', 'bedroom', 'bathroom', 'television room', 'corridor', 'exercise room', 'storage room', 'kitchen', 'living room', 'garage', 'childs room', 'dining room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] movie dvd
+Gold standard : ['home office', 'bedroom', 'pantry', 'exercise room', 'garage', 'storage room', 'living room', 'kitchen', 'dining room', 'closet', 'television room', 'corridor', 'lobby', 'playroom', 'childs room', 'utility room', 'bathroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] mug
+Gold standard : ['kitchen', 'bedroom', 'childs room', 'exercise room', 'bathroom', 'utility room', 'living room', 'playroom', 'television room', 'storage room', 'lobby', 'garage', 'home office', 'pantry', 'closet', 'dining room', 'corridor']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] multiport hub
+Gold standard : ['living room', 'bathroom', 'closet', 'garage', 'corridor', 'utility room', 'kitchen', 'television room', 'dining room', 'bedroom', 'playroom', 'exercise room', 'storage room', 'home office', 'lobby', 'childs room', 'pantry']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] mustard bottle
+Gold standard : ['home office', 'pantry', 'lobby', 'utility room', 'playroom', 'closet', 'bedroom', 'bathroom', 'television room', 'corridor', 'exercise room', 'storage room', 'kitchen', 'living room', 'garage', 'childs room', 'dining room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] neck rest
+Gold standard : ['living room', 'kitchen', 'television room', 'playroom', 'pantry', 'closet', 'utility room', 'corridor', 'bedroom', 'garage', 'exercise room', 'dining room', 'storage room', 'lobby', 'childs room', 'bathroom', 'home office']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] newspaper
+Gold standard : ['living room']
+CSKG locs     : ['floor', 'library', 'porch']
+Predicted     : ['floor', 'library', 'porch'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] nine hole peg test
+Gold standard : ['garage', 'playroom', 'television room', 'storage room', 'kitchen', 'home office', 'living room', 'pantry', 'bedroom', 'closet', 'bathroom', 'dining room', 'corridor', 'exercise room', 'utility room', 'childs room', 'lobby']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] nintendo switch
+Gold standard : ['television room', 'bathroom', 'exercise room', 'storage room', 'kitchen', 'lobby', 'dining room', 'home office', 'garage', 'pantry', 'playroom', 'corridor', 'closet', 'childs room', 'living room', 'utility room', 'bedroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] orange
+Gold standard : ['lobby', 'home office', 'kitchen', 'garage', 'playroom', 'bedroom', 'television room', 'corridor', 'living room', 'utility room', 'childs room', 'exercise room', 'dining room', 'bathroom', 'closet', 'pantry', 'storage room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] ottoman
+Gold standard : ['living room']
+CSKG locs     : ['basement', 'den', 'living room']
+Predicted     : ['basement', 'den', 'living room'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] padlock
+Gold standard : ['television room', 'home office', 'garage', 'pantry', 'storage room', 'bathroom', 'exercise room', 'kitchen', 'playroom', 'corridor', 'lobby', 'closet', 'living room', 'childs room', 'utility room', 'bedroom', 'dining room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] paint bottle set
+Gold standard : ['bathroom', 'storage room', 'lobby', 'childs room', 'pantry', 'exercise room', 'home office', 'dining room', 'playroom', 'living room', 'corridor', 'bedroom', 'utility room', 'closet', 'kitchen', 'garage', 'television room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] paint maker
+Gold standard : ['television room', 'storage room', 'garage', 'lobby', 'utility room', 'childs room', 'playroom', 'living room', 'home office', 'exercise room', 'bathroom', 'corridor', 'closet', 'dining room', 'kitchen', 'pantry', 'bedroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] painting
+Gold standard : ['living room', 'bedroom', 'bathroom']
+CSKG locs     : ['attic']
+Predicted     : ['attic'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] pan
+Gold standard : ['kitchen', 'pantry', 'bathroom', 'corridor', 'playroom', 'lobby', 'closet', 'bedroom', 'utility room', 'storage room', 'exercise room', 'garage', 'dining room', 'childs room', 'home office', 'living room', 'television room']
+CSKG locs     : ['cabinet', 'kitchen', 'oven', 'pantry']
+Predicted     : ['cabinet', 'kitchen', 'oven', 'pantry'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] paper bag
+Gold standard : ['pantry', 'childs room', 'television room', 'kitchen', 'storage room', 'bathroom', 'dining room', 'playroom', 'closet', 'bedroom', 'corridor', 'living room', 'garage', 'utility room', 'home office', 'exercise room', 'lobby']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] papertowelroll
+Gold standard : ['kitchen', 'bathroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] parchment sheet
+Gold standard : ['lobby', 'living room', 'closet', 'pantry', 'corridor', 'dining room', 'bedroom', 'utility room', 'kitchen', 'bathroom', 'home office', 'childs room', 'playroom', 'exercise room', 'storage room', 'television room', 'garage']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] peach
+Gold standard : ['living room', 'playroom', 'storage room', 'garage', 'bedroom', 'home office', 'closet', 'bathroom', 'lobby', 'television room', 'corridor', 'dining room', 'pantry', 'childs room', 'kitchen', 'exercise room', 'utility room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] pear
+Gold standard : ['bathroom', 'utility room', 'closet', 'bedroom', 'childs room', 'corridor', 'playroom', 'storage room', 'lobby', 'dining room', 'home office', 'garage', 'pantry', 'kitchen', 'exercise room', 'living room', 'television room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] peg and hammer toy
+Gold standard : ['utility room', 'bedroom', 'corridor', 'garage', 'home office', 'dining room', 'playroom', 'kitchen', 'television room', 'lobby', 'exercise room', 'bathroom', 'living room', 'childs room', 'pantry', 'closet', 'storage room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] pen
+Gold standard : ['kitchen', 'living room', 'bedroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] pencil
+Gold standard : ['kitchen', 'living room', 'bedroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] pencil case
+Gold standard : ['closet', 'lobby', 'pantry', 'childs room', 'exercise room', 'corridor', 'bathroom', 'utility room', 'bedroom', 'playroom', 'storage room', 'kitchen', 'dining room', 'living room', 'home office', 'television room', 'garage']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] peppermint
+Gold standard : ['home office', 'utility room', 'kitchen', 'lobby', 'television room', 'dining room', 'storage room', 'childs room', 'closet', 'exercise room', 'corridor', 'bedroom', 'pantry', 'playroom', 'living room', 'bathroom', 'garage']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] peppershaker
+Gold standard : ['kitchen']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] pepsi can pack
+Gold standard : ['playroom', 'exercise room', 'pantry', 'corridor', 'lobby', 'kitchen', 'bathroom', 'storage room', 'utility room', 'television room', 'dining room', 'childs room', 'bedroom', 'closet', 'garage', 'home office', 'living room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] pet food supplement
+Gold standard : ['corridor', 'childs room', 'home office', 'storage room', 'television room', 'exercise room', 'pantry', 'lobby', 'dining room', 'kitchen', 'bedroom', 'utility room', 'closet', 'playroom', 'living room', 'bathroom', 'garage']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] phillips screwdriver
+Gold standard : ['dining room', 'kitchen', 'closet', 'bedroom', 'utility room', 'exercise room', 'bathroom', 'lobby', 'garage', 'living room', 'pantry', 'storage room', 'home office', 'playroom', 'television room', 'childs room', 'corridor']
+CSKG locs     : ['garage', 'workshop']
+Predicted     : ['garage', 'workshop'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] phone armband case
+Gold standard : ['living room', 'kitchen', 'television room', 'utility room', 'corridor', 'bedroom', 'lobby', 'exercise room', 'playroom', 'home office', 'childs room', 'closet', 'bathroom', 'pantry', 'dining room', 'garage', 'storage room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] phone stand
+Gold standard : ['exercise room', 'bathroom', 'playroom', 'garage', 'pantry', 'kitchen', 'television room', 'childs room', 'utility room', 'storage room', 'bedroom', 'corridor', 'dining room', 'living room', 'lobby', 'home office', 'closet']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] picture frame
+Gold standard : ['living room', 'utility room', 'exercise room', 'storage room', 'bedroom', 'lobby', 'garage', 'kitchen', 'corridor', 'dining room', 'home office', 'pantry', 'television room', 'bathroom', 'childs room', 'closet', 'playroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] pie
+Gold standard : ['oven']
+CSKG locs     : ['freezer', 'kitchen', 'oven', 'refrigerator']
+Predicted     : ['freezer', 'kitchen', 'oven', 'refrigerator'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] pillow
+Gold standard : ['bedroom', 'living room', 'corridor', 'childs room', 'pantry', 'kitchen', 'garage', 'home office', 'exercise room', 'dining room', 'bathroom', 'lobby', 'playroom', 'closet', 'television room', 'utility room', 'storage room']
+CSKG locs     : ['bedroom']
+Predicted     : ['bedroom'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] pitcher base
+Gold standard : ['television room', 'living room', 'garage', 'lobby', 'exercise room', 'utility room', 'bathroom', 'childs room', 'home office', 'pantry', 'corridor', 'closet', 'bedroom', 'storage room', 'playroom', 'dining room', 'kitchen']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] plant
+Gold standard : ['garage', 'childs room', 'home office', 'corridor', 'playroom', 'closet', 'dining room', 'kitchen', 'television room', 'lobby', 'pantry', 'bathroom', 'utility room', 'storage room', 'living room', 'exercise room', 'bedroom']
+CSKG locs     : ['garden', 'porch', 'shelf', 'table']
+Predicted     : ['garden', 'porch', 'shelf', 'table'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] plant container
+Gold standard : ['utility room', 'storage room', 'garage', 'childs room', 'pantry', 'dining room', 'playroom', 'living room', 'exercise room', 'home office', 'bedroom', 'lobby', 'closet', 'corridor', 'kitchen', 'bathroom', 'television room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] plant saucer
+Gold standard : ['television room', 'storage room', 'garage', 'lobby', 'utility room', 'childs room', 'playroom', 'living room', 'home office', 'exercise room', 'bathroom', 'corridor', 'closet', 'dining room', 'kitchen', 'pantry', 'bedroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] plate
+Gold standard : ['kitchen', 'living room', 'garage', 'bathroom', 'dining room', 'television room', 'bedroom', 'playroom', 'closet', 'lobby', 'storage room', 'corridor', 'utility room', 'home office', 'pantry', 'childs room', 'exercise room']
+CSKG locs     : ['cabinet', 'cupboard', 'dishwasher', 'kitchen', 'table']
+Predicted     : ['cabinet', 'cupboard', 'dishwasher', 'kitchen', 'table'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] plum
+Gold standard : ['living room', 'dining room', 'bedroom', 'storage room', 'home office', 'pantry', 'childs room', 'utility room', 'lobby', 'exercise room', 'closet', 'bathroom', 'corridor', 'television room', 'kitchen', 'garage', 'playroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] plunger
+Gold standard : ['bathroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] portable speaker
+Gold standard : ['television room', 'closet', 'garage', 'childs room', 'living room', 'dining room', 'playroom', 'exercise room', 'corridor', 'utility room', 'bathroom', 'pantry', 'lobby', 'bedroom', 'storage room', 'kitchen', 'home office']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] poster
+Gold standard : ['bedroom']
+CSKG locs     : ['bedroom']
+Predicted     : ['bedroom'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] pot
+Gold standard : ['kitchen']
+CSKG locs     : ['cupboard', 'drawer', 'greenhouse', 'kitchen', 'porch']
+Predicted     : ['cupboard', 'drawer', 'greenhouse', 'kitchen', 'porch'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] potato
+Gold standard : ['kitchen']
+CSKG locs     : ['bin', 'cabinet', 'cellar', 'kitchen', 'pantry']
+Predicted     : ['bin', 'cabinet', 'cellar', 'kitchen', 'pantry'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] potted meat can
+Gold standard : ['television room', 'bedroom', 'playroom', 'childs room', 'dining room', 'corridor', 'utility room', 'lobby', 'storage room', 'kitchen', 'exercise room', 'home office', 'pantry', 'garage', 'living room', 'closet', 'bathroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] power drill
+Gold standard : ['pantry', 'dining room', 'living room', 'playroom', 'lobby', 'utility room', 'television room', 'kitchen', 'exercise room', 'childs room', 'bathroom', 'corridor', 'bedroom', 'closet', 'garage', 'home office', 'storage room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] pressure cooker
+Gold standard : ['lobby', 'exercise room', 'utility room', 'closet', 'storage room', 'playroom', 'bathroom', 'pantry', 'kitchen', 'corridor', 'childs room', 'television room', 'garage', 'dining room', 'bedroom', 'living room', 'home office']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] pudding box
+Gold standard : ['utility room', 'kitchen', 'closet', 'home office', 'playroom', 'pantry', 'exercise room', 'bathroom', 'television room', 'bedroom', 'childs room', 'lobby', 'dining room', 'garage', 'corridor', 'living room', 'storage room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] puzzle game
+Gold standard : ['utility room', 'pantry', 'home office', 'bathroom', 'garage', 'television room', 'storage room', 'dining room', 'corridor', 'bedroom', 'closet', 'kitchen', 'living room', 'childs room', 'exercise room', 'playroom', 'lobby']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] racquetball
+Gold standard : ['bedroom', 'childs room', 'exercise room', 'bathroom', 'utility room', 'living room', 'playroom', 'television room', 'storage room', 'lobby', 'kitchen', 'garage', 'home office', 'pantry', 'closet', 'dining room', 'corridor']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] ramekin
+Gold standard : ['lobby', 'closet', 'television room', 'pantry', 'bedroom', 'exercise room', 'dining room', 'kitchen', 'storage room', 'living room', 'utility room', 'bathroom', 'playroom', 'home office', 'childs room', 'corridor', 'garage']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] remote control
+Gold standard : ['pantry', 'bathroom', 'dining room', 'childs room', 'bedroom', 'exercise room', 'home office', 'storage room', 'kitchen', 'closet', 'television room', 'garage', 'living room', 'corridor', 'playroom', 'lobby', 'utility room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] remotecontrol
+Gold standard : ['living room', 'bedroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] rmal laminator
+Gold standard : ['bedroom', 'corridor', 'playroom', 'closet', 'kitchen', 'childs room', 'home office', 'dining room', 'storage room', 'garage', 'pantry', 'television room', 'utility room', 'living room', 'exercise room', 'lobby', 'bathroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] roast
+Gold standard : ['oven']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] roomdecor
+Gold standard : ['living room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] router
+Gold standard : ['dining room', 'lobby', 'garage', 'exercise room', 'corridor', 'bedroom', 'pantry', 'home office', 'kitchen', 'utility room', 'playroom', 'storage room', 'television room', 'bathroom', 'childs room', 'closet', 'living room']
+CSKG locs     : ['library']
+Predicted     : ['library'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] rubiks cube
+Gold standard : ['living room', 'dining room', 'bedroom', 'storage room', 'home office', 'pantry', 'childs room', 'utility room', 'lobby', 'exercise room', 'closet', 'bathroom', 'corridor', 'television room', 'kitchen', 'garage', 'playroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] safe
+Gold standard : ['kitchen', 'living room', 'bedroom']
+CSKG locs     : ['cabinet', 'closet']
+Predicted     : ['cabinet', 'closet'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] salt shaker
+Gold standard : ['bathroom', 'living room', 'garage', 'closet', 'playroom', 'pantry', 'childs room', 'bedroom', 'corridor', 'kitchen', 'television room', 'storage room', 'utility room', 'exercise room', 'dining room', 'home office', 'lobby']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] saltshaker
+Gold standard : ['kitchen']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] sanitary pads
+Gold standard : ['home office', 'exercise room', 'childs room', 'closet', 'lobby', 'dining room', 'garage', 'pantry', 'playroom', 'bedroom', 'television room', 'storage room', 'utility room', 'living room', 'bathroom', 'kitchen', 'corridor']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] saucer
+Gold standard : ['kitchen', 'pantry', 'living room', 'bedroom', 'garage', 'television room', 'utility room', 'childs room', 'storage room', 'closet', 'home office', 'lobby', 'bathroom', 'dining room', 'playroom', 'corridor', 'exercise room']
+CSKG locs     : ['cabinet', 'kitchen']
+Predicted     : ['cabinet', 'kitchen'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] saute pan
+Gold standard : ['garage', 'playroom', 'kitchen', 'dining room', 'childs room', 'pantry', 'exercise room', 'bathroom', 'lobby', 'living room', 'utility room', 'corridor', 'bedroom', 'television room', 'home office', 'closet', 'storage room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] scissors
+Gold standard : ['utility room', 'pantry', 'kitchen', 'bedroom', 'childs room', 'living room', 'closet', 'garage', 'television room', 'corridor', 'exercise room', 'dining room', 'playroom', 'storage room', 'home office', 'bathroom', 'lobby']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] scrubbrush
+Gold standard : ['bathroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] set-top box
+Gold standard : ['television room', 'bedroom', 'playroom', 'childs room', 'dining room', 'corridor', 'utility room', 'lobby', 'storage room', 'kitchen', 'exercise room', 'home office', 'pantry', 'garage', 'living room', 'closet', 'bathroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] shelf
+Gold standard : ['bedroom', 'bathroom', 'kitchen', 'living room']
+CSKG locs     : ['bathroom', 'bedroom', 'cabinet', 'closet', 'cupboard', 'garage', 'refrigerator', 'wall']
+Predicted     : ['bathroom', 'bedroom', 'cabinet', 'closet', 'cupboard', 'garage', 'refrigerator', 'wall'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] shelvingunit
+Gold standard : ['kitchen', 'living room', 'bedroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] shoe
+Gold standard : ['closet', 'bathroom', 'utility room', 'bedroom', 'childs room', 'corridor', 'playroom', 'storage room', 'lobby', 'dining room', 'home office', 'garage', 'pantry', 'kitchen', 'exercise room', 'living room', 'television room']
+CSKG locs     : ['closet']
+Predicted     : ['closet'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] shoe box
+Gold standard : ['television room', 'home office', 'dining room', 'exercise room', 'bathroom', 'storage room', 'kitchen', 'garage', 'lobby', 'pantry', 'living room', 'corridor', 'utility room', 'playroom', 'closet', 'bedroom', 'childs room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] showercurtain
+Gold standard : ['bathroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] showerdoor
+Gold standard : ['bathroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] showerglass
+Gold standard : ['bathroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] showerhead
+Gold standard : ['bathroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] shredder
+Gold standard : ['kitchen', 'exercise room', 'pantry', 'dining room', 'bedroom', 'storage room', 'living room', 'home office', 'television room', 'childs room', 'closet', 'bathroom', 'garage', 'playroom', 'lobby', 'corridor', 'utility room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] sidetable
+Gold standard : ['kitchen', 'living room', 'bedroom', 'bathroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] sidewalk chalk
+Gold standard : ['television room', 'bathroom', 'home office', 'storage room', 'childs room', 'bedroom', 'pantry', 'kitchen', 'lobby', 'exercise room', 'garage', 'closet', 'dining room', 'living room', 'playroom', 'utility room', 'corridor']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] sink
+Gold standard : ['kitchen', 'bathroom']
+CSKG locs     : ['kitchen', 'laundry room']
+Predicted     : ['kitchen', 'laundry room'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] sinkbasin
+Gold standard : ['kitchen', 'bathroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] skillet
+Gold standard : ['lobby', 'home office', 'kitchen', 'garage', 'playroom', 'bedroom', 'television room', 'corridor', 'living room', 'utility room', 'childs room', 'exercise room', 'dining room', 'bathroom', 'closet', 'pantry', 'storage room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] skillet lid
+Gold standard : ['television room', 'exercise room', 'pantry', 'garage', 'utility room', 'closet', 'childs room', 'dining room', 'bathroom', 'living room', 'home office', 'storage room', 'lobby', 'bedroom', 'playroom', 'kitchen', 'corridor']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] skin care product
+Gold standard : ['closet', 'lobby', 'pantry', 'childs room', 'exercise room', 'corridor', 'bathroom', 'utility room', 'bedroom', 'playroom', 'storage room', 'kitchen', 'dining room', 'living room', 'home office', 'television room', 'garage']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] skin moisturizer
+Gold standard : ['childs room', 'garage', 'utility room', 'lobby', 'bedroom', 'pantry', 'closet', 'corridor', 'bathroom', 'home office', 'playroom', 'kitchen', 'television room', 'exercise room', 'dining room', 'living room', 'storage room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] snack cake
+Gold standard : ['utility room', 'pantry', 'home office', 'bathroom', 'garage', 'television room', 'storage room', 'dining room', 'corridor', 'bedroom', 'closet', 'kitchen', 'living room', 'childs room', 'exercise room', 'playroom', 'lobby']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] snack dispenser
+Gold standard : ['bathroom', 'playroom', 'storage room', 'kitchen', 'television room', 'dining room', 'childs room', 'corridor', 'garage', 'living room', 'utility room', 'bedroom', 'home office', 'exercise room', 'lobby', 'pantry', 'closet']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] soap dish
+Gold standard : ['closet', 'corridor', 'playroom', 'storage room', 'lobby', 'dining room', 'bathroom', 'garage', 'bedroom', 'exercise room', 'utility room', 'pantry', 'childs room', 'living room', 'kitchen', 'television room', 'home office']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] soap dispenser
+Gold standard : ['exercise room', 'dining room', 'storage room', 'lobby', 'closet', 'playroom', 'childs room', 'television room', 'bedroom', 'utility room', 'living room', 'home office', 'corridor', 'kitchen', 'pantry', 'bathroom', 'garage']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] soapbar
+Gold standard : ['bathroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] soapbottle
+Gold standard : ['kitchen', 'bathroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] sofa
+Gold standard : ['living room', 'bedroom']
+CSKG locs     : ['living room']
+Predicted     : ['living room'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] softball
+Gold standard : ['television room', 'exercise room', 'pantry', 'garage', 'utility room', 'closet', 'childs room', 'dining room', 'bathroom', 'living room', 'home office', 'storage room', 'lobby', 'bedroom', 'playroom', 'kitchen', 'corridor']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] software cd
+Gold standard : ['childs room', 'bathroom', 'living room', 'lobby', 'kitchen', 'corridor', 'exercise room', 'bedroom', 'garage', 'pantry', 'television room', 'storage room', 'home office', 'dining room', 'playroom', 'utility room', 'closet']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] sorting toy
+Gold standard : ['childs room', 'garage', 'utility room', 'lobby', 'bedroom', 'pantry', 'closet', 'corridor', 'bathroom', 'home office', 'playroom', 'kitchen', 'television room', 'exercise room', 'dining room', 'living room', 'storage room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] sparkling water
+Gold standard : ['childs room', 'corridor', 'lobby', 'garage', 'dining room', 'pantry', 'kitchen', 'closet', 'utility room', 'exercise room', 'home office', 'living room', 'playroom', 'television room', 'storage room', 'bedroom', 'bathroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] spatula
+Gold standard : ['kitchen', 'closet', 'playroom', 'corridor', 'dining room', 'television room', 'home office', 'living room', 'bedroom', 'pantry', 'utility room', 'bathroom', 'garage', 'storage room', 'childs room', 'lobby', 'exercise room']
+CSKG locs     : ['drawer', 'kitchen']
+Predicted     : ['drawer', 'kitchen'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] spider
+Gold standard : ['storage room', 'closet']
+CSKG locs     : ['basement', 'cellar', 'floor']
+Predicted     : ['basement', 'cellar', 'floor'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] sponge
+Gold standard : ['utility room', 'bedroom', 'childs room', 'kitchen', 'home office', 'lobby', 'garage', 'exercise room', 'storage room', 'closet', 'dining room', 'pantry', 'playroom', 'living room', 'television room', 'corridor', 'bathroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] sponge dish
+Gold standard : ['exercise room', 'dining room', 'storage room', 'lobby', 'closet', 'playroom', 'childs room', 'television room', 'bedroom', 'utility room', 'living room', 'home office', 'corridor', 'kitchen', 'pantry', 'bathroom', 'garage']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] spoon
+Gold standard : ['kitchen', 'lobby', 'storage room', 'corridor', 'bedroom', 'dining room', 'garage', 'childs room', 'television room', 'bathroom', 'exercise room', 'utility room', 'pantry', 'closet', 'living room', 'playroom', 'home office']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] spoon rest
+Gold standard : ['childs room', 'utility room', 'pantry', 'playroom', 'home office', 'kitchen', 'television room', 'exercise room', 'closet', 'corridor', 'living room', 'bedroom', 'dining room', 'garage', 'lobby', 'bathroom', 'storage room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] spraybottle
+Gold standard : ['kitchen', 'bathroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] stacking cups
+Gold standard : ['closet', 'exercise room', 'bathroom', 'playroom', 'utility room', 'home office', 'pantry', 'kitchen', 'garage', 'living room', 'television room', 'bedroom', 'lobby', 'corridor', 'storage room', 'dining room', 'childs room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] stand mixer
+Gold standard : ['bathroom', 'playroom', 'bedroom', 'garage', 'living room', 'storage room', 'utility room', 'television room', 'kitchen', 'pantry', 'home office', 'exercise room', 'lobby', 'closet', 'childs room', 'corridor', 'dining room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] statue
+Gold standard : ['kitchen', 'living room', 'bedroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] steak
+Gold standard : ['oven', 'fridge']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] stool
+Gold standard : ['kitchen', 'living room', 'bedroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] storage bin
+Gold standard : ['storage room', 'bathroom', 'home office', 'utility room', 'exercise room', 'closet', 'dining room', 'television room', 'playroom', 'corridor', 'garage', 'pantry', 'lobby', 'bedroom', 'childs room', 'kitchen', 'living room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] stoveburner
+Gold standard : ['kitchen']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] stoveknob
+Gold standard : ['kitchen']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] strawberry
+Gold standard : ['kitchen', 'lobby', 'bedroom', 'utility room', 'bathroom', 'playroom', 'home office', 'living room', 'childs room', 'corridor', 'closet', 'television room', 'storage room', 'dining room', 'pantry', 'garage', 'exercise room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] string lights
+Gold standard : ['corridor', 'childs room', 'television room', 'closet', 'bathroom', 'dining room', 'lobby', 'home office', 'living room', 'storage room', 'kitchen', 'exercise room', 'playroom', 'pantry', 'bedroom', 'garage', 'utility room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] stuffed toy
+Gold standard : ['childs room', 'garage', 'exercise room', 'utility room', 'dining room', 'bathroom', 'living room', 'corridor', 'closet', 'kitchen', 'bedroom', 'pantry', 'storage room', 'television room', 'home office', 'lobby', 'playroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] sugar box
+Gold standard : ['playroom', 'garage', 'corridor', 'bedroom', 'pantry', 'bathroom', 'exercise room', 'home office', 'utility room', 'dining room', 'television room', 'living room', 'storage room', 'kitchen', 'childs room', 'lobby', 'closet']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] sugar sprinkles
+Gold standard : ['playroom', 'bathroom', 'living room', 'kitchen', 'corridor', 'television room', 'lobby', 'bedroom', 'utility room', 'storage room', 'pantry', 'closet', 'dining room', 'home office', 'exercise room', 'childs room', 'garage']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] surface saver ring
+Gold standard : ['television room', 'living room', 'lobby', 'dining room', 'childs room', 'garage', 'bathroom', 'kitchen', 'storage room', 'utility room', 'corridor', 'exercise room', 'bedroom', 'playroom', 'closet', 'home office', 'pantry']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] sushi mat
+Gold standard : ['home office', 'exercise room', 'bathroom', 'closet', 'corridor', 'storage room', 'pantry', 'lobby', 'childs room', 'utility room', 'playroom', 'television room', 'living room', 'kitchen', 'dining room', 'bedroom', 'garage']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] table
+Gold standard : ['kitchen', 'bedroom', 'room']
+CSKG locs     : ['attic', 'bedroom', 'dining room', 'floor', 'kitchen', 'library']
+Predicted     : ['attic', 'bedroom', 'dining room', 'floor', 'kitchen', 'library'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] table lamp
+Gold standard : ['television room', 'bedroom', 'lobby', 'bathroom', 'closet', 'pantry', 'exercise room', 'utility room', 'dining room', 'home office', 'garage', 'living room', 'corridor', 'kitchen', 'storage room', 'childs room', 'playroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] tablet
+Gold standard : ['storage room', 'garage', 'television room', 'closet', 'utility room', 'bedroom', 'playroom', 'living room', 'exercise room', 'dining room', 'home office', 'childs room', 'kitchen', 'corridor', 'pantry', 'bathroom', 'lobby']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] tablet holder
+Gold standard : ['childs room', 'closet', 'storage room', 'kitchen', 'living room', 'garage', 'pantry', 'exercise room', 'utility room', 'playroom', 'television room', 'corridor', 'lobby', 'bedroom', 'home office', 'dining room', 'bathroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] tablet stand
+Gold standard : ['corridor', 'childs room', 'home office', 'storage room', 'television room', 'exercise room', 'pantry', 'lobby', 'dining room', 'kitchen', 'bedroom', 'utility room', 'closet', 'playroom', 'living room', 'bathroom', 'garage']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] tabletopdecor
+Gold standard : ['bedroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] tampon
+Gold standard : ['bedroom', 'childs room', 'storage room', 'living room', 'utility room', 'lobby', 'home office', 'playroom', 'pantry', 'corridor', 'kitchen', 'exercise room', 'television room', 'bathroom', 'dining room', 'garage', 'closet']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] tea can pack
+Gold standard : ['closet', 'garage', 'utility room', 'corridor', 'storage room', 'exercise room', 'bathroom', 'childs room', 'living room', 'lobby', 'playroom', 'pantry', 'home office', 'dining room', 'bedroom', 'television room', 'kitchen']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] tea pods
+Gold standard : ['closet', 'pantry', 'television room', 'living room', 'lobby', 'exercise room', 'playroom', 'bathroom', 'bedroom', 'dining room', 'kitchen', 'storage room', 'home office', 'childs room', 'utility room', 'garage', 'corridor']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] teapot
+Gold standard : ['dining room', 'bedroom', 'kitchen', 'closet', 'playroom', 'utility room', 'storage room', 'living room', 'television room', 'home office', 'bathroom', 'pantry', 'exercise room', 'garage', 'corridor', 'childs room', 'lobby']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] teddybear
+Gold standard : ['bedroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] television
+Gold standard : ['living room', 'bedroom']
+CSKG locs     : ['bedroom', 'cabinet', 'living room']
+Predicted     : ['bedroom', 'cabinet', 'living room'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] tennis ball
+Gold standard : ['closet', 'playroom', 'corridor', 'dining room', 'television room', 'home office', 'kitchen', 'living room', 'bedroom', 'pantry', 'utility room', 'bathroom', 'garage', 'storage room', 'childs room', 'lobby', 'exercise room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] tennisracket
+Gold standard : ['bedroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] tissuebox
+Gold standard : ['living room', 'bedroom', 'bathroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] toaster
+Gold standard : ['kitchen', 'lobby', 'garage', 'closet', 'bedroom', 'pantry', 'bathroom', 'corridor', 'playroom', 'home office', 'television room', 'utility room', 'exercise room', 'storage room', 'childs room', 'dining room', 'living room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] toilet
+Gold standard : ['bathroom']
+CSKG locs     : ['bathroom']
+Predicted     : ['bathroom'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] toiletpaper
+Gold standard : ['bathroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] toiletpaperhanger
+Gold standard : ['bathroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] tomato
+Gold standard : ['kitchen']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] tomato soup can
+Gold standard : ['television room', 'utility room', 'kitchen', 'exercise room', 'living room', 'lobby', 'bathroom', 'closet', 'storage room', 'corridor', 'home office', 'playroom', 'childs room', 'bedroom', 'pantry', 'dining room', 'garage']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] toothbrush holder
+Gold standard : ['pantry', 'childs room', 'television room', 'kitchen', 'storage room', 'bathroom', 'dining room', 'playroom', 'closet', 'bedroom', 'corridor', 'living room', 'garage', 'utility room', 'home office', 'exercise room', 'lobby']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] toothbrush pack
+Gold standard : ['playroom', 'kitchen', 'television room', 'corridor', 'dining room', 'closet', 'bathroom', 'bedroom', 'storage room', 'pantry', 'lobby', 'living room', 'garage', 'exercise room', 'utility room', 'childs room', 'home office']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] towel
+Gold standard : ['bathroom', 'television room', 'living room', 'garage', 'lobby', 'exercise room', 'utility room', 'childs room', 'home office', 'pantry', 'corridor', 'closet', 'bedroom', 'storage room', 'playroom', 'dining room', 'kitchen']
+CSKG locs     : ['closet', 'cupboard']
+Predicted     : ['closet', 'cupboard'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] towelholder
+Gold standard : ['bathroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] toy
+Gold standard : ['box']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] toy airplane
+Gold standard : ['dining room', 'bedroom', 'television room', 'bathroom', 'lobby', 'living room', 'kitchen', 'exercise room', 'playroom', 'home office', 'utility room', 'closet', 'storage room', 'childs room', 'pantry', 'garage', 'corridor']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] toy animal
+Gold standard : ['kitchen', 'living room', 'utility room', 'playroom', 'home office', 'bedroom', 'television room', 'storage room', 'bathroom', 'garage', 'corridor', 'exercise room', 'lobby', 'childs room', 'dining room', 'pantry', 'closet']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] toy basketball
+Gold standard : ['childs room', 'utility room', 'pantry', 'playroom', 'home office', 'kitchen', 'television room', 'exercise room', 'closet', 'corridor', 'living room', 'bedroom', 'dining room', 'garage', 'lobby', 'bathroom', 'storage room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] toy bowling set
+Gold standard : ['playroom', 'pantry', 'storage room', 'television room', 'bedroom', 'garage', 'closet', 'bathroom', 'exercise room', 'home office', 'childs room', 'living room', 'utility room', 'kitchen', 'corridor', 'dining room', 'lobby']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] toy construction set
+Gold standard : ['closet', 'pantry', 'television room', 'living room', 'lobby', 'exercise room', 'playroom', 'bathroom', 'bedroom', 'dining room', 'kitchen', 'storage room', 'home office', 'childs room', 'utility room', 'garage', 'corridor']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] toy fishing
+Gold standard : ['home office', 'exercise room', 'childs room', 'closet', 'lobby', 'dining room', 'garage', 'pantry', 'playroom', 'bedroom', 'television room', 'storage room', 'utility room', 'living room', 'bathroom', 'kitchen', 'corridor']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] toy food
+Gold standard : ['home office', 'exercise room', 'bathroom', 'closet', 'corridor', 'storage room', 'pantry', 'lobby', 'childs room', 'utility room', 'playroom', 'television room', 'living room', 'kitchen', 'dining room', 'bedroom', 'garage']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] toy furniture set
+Gold standard : ['lobby', 'garage', 'closet', 'kitchen', 'bedroom', 'pantry', 'bathroom', 'corridor', 'playroom', 'home office', 'television room', 'utility room', 'exercise room', 'storage room', 'childs room', 'dining room', 'living room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] toy instrument
+Gold standard : ['playroom', 'utility room', 'childs room', 'television room', 'home office', 'kitchen', 'bathroom', 'closet', 'exercise room', 'dining room', 'pantry', 'bedroom', 'corridor', 'living room', 'garage', 'storage room', 'lobby']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] toy kitchen set
+Gold standard : ['living room', 'utility room', 'home office', 'exercise room', 'television room', 'garage', 'pantry', 'corridor', 'kitchen', 'childs room', 'storage room', 'closet', 'lobby', 'bathroom', 'bedroom', 'dining room', 'playroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] toy tool kit
+Gold standard : ['playroom', 'television room', 'closet', 'lobby', 'utility room', 'home office', 'kitchen', 'childs room', 'storage room', 'dining room', 'corridor', 'exercise room', 'living room', 'garage', 'pantry', 'bedroom', 'bathroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] toy vehicle
+Gold standard : ['exercise room', 'television room', 'kitchen', 'lobby', 'utility room', 'closet', 'living room', 'storage room', 'childs room', 'playroom', 'pantry', 'corridor', 'home office', 'bedroom', 'garage', 'bathroom', 'dining room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] tray
+Gold standard : ['exercise room', 'bathroom', 'playroom', 'garage', 'pantry', 'kitchen', 'television room', 'childs room', 'utility room', 'storage room', 'bedroom', 'corridor', 'dining room', 'living room', 'lobby', 'home office', 'closet']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] tumbler
+Gold standard : ['bathroom', 'playroom', 'bedroom', 'garage', 'living room', 'storage room', 'utility room', 'television room', 'kitchen', 'pantry', 'home office', 'exercise room', 'lobby', 'closet', 'childs room', 'corridor', 'dining room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] tv
+Gold standard : ['bedroom', 'house', 'living room']
+CSKG locs     : ['bedroom', 'family room']
+Predicted     : ['bedroom', 'family room'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] tvstand
+Gold standard : ['living room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] umbrella
+Gold standard : ['dining room', 'utility room', 'home office', 'closet', 'bathroom', 'pantry', 'corridor', 'lobby', 'childs room', 'exercise room', 'playroom', 'bedroom', 'television room', 'living room', 'garage', 'storage room', 'kitchen']
+CSKG locs     : ['closet']
+Predicted     : ['closet'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] usb drive
+Gold standard : ['pantry', 'kitchen', 'bedroom', 'bathroom', 'corridor', 'dining room', 'storage room', 'garage', 'television room', 'exercise room', 'lobby', 'childs room', 'closet', 'utility room', 'home office', 'playroom', 'living room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] utensil holder
+Gold standard : ['lobby', 'living room', 'closet', 'pantry', 'corridor', 'dining room', 'bedroom', 'utility room', 'kitchen', 'bathroom', 'home office', 'childs room', 'playroom', 'exercise room', 'storage room', 'television room', 'garage']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] vacuumcleaner
+Gold standard : ['bedroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] vase
+Gold standard : ['kitchen', 'living room', 'bedroom', 'television room', 'home office', 'garage', 'pantry', 'storage room', 'bathroom', 'exercise room', 'playroom', 'corridor', 'lobby', 'closet', 'childs room', 'utility room', 'dining room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] video game
+Gold standard : ['exercise room', 'utility room', 'childs room', 'television room', 'pantry', 'lobby', 'storage room', 'living room', 'bathroom', 'playroom', 'kitchen', 'home office', 'bedroom', 'garage', 'closet', 'corridor', 'dining room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] vinyl tape
+Gold standard : ['playroom', 'television room', 'closet', 'lobby', 'utility room', 'home office', 'kitchen', 'childs room', 'storage room', 'dining room', 'corridor', 'exercise room', 'living room', 'garage', 'pantry', 'bedroom', 'bathroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] virtual reality viewer
+Gold standard : ['lobby', 'exercise room', 'utility room', 'closet', 'storage room', 'playroom', 'bathroom', 'pantry', 'kitchen', 'corridor', 'childs room', 'television room', 'garage', 'dining room', 'bedroom', 'living room', 'home office']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] wardrobe
+Gold standard : ['room']
+CSKG locs     : ['bedroom', 'closet']
+Predicted     : ['bedroom', 'closet'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] washcloth
+Gold standard : ['bathroom', 'playroom', 'storage room', 'kitchen', 'television room', 'dining room', 'childs room', 'corridor', 'garage', 'living room', 'utility room', 'bedroom', 'home office', 'exercise room', 'lobby', 'pantry', 'closet']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] waste basket
+Gold standard : ['living room', 'utility room', 'home office', 'exercise room', 'television room', 'garage', 'pantry', 'corridor', 'kitchen', 'childs room', 'storage room', 'closet', 'lobby', 'bathroom', 'bedroom', 'dining room', 'playroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] watch
+Gold standard : ['living room', 'bedroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] water bottle
+Gold standard : ['television room', 'bedroom', 'lobby', 'bathroom', 'closet', 'pantry', 'exercise room', 'utility room', 'dining room', 'home office', 'garage', 'living room', 'corridor', 'kitchen', 'storage room', 'childs room', 'playroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] wateringcan
+Gold standard : ['living room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] weight loss guide
+Gold standard : ['television room', 'closet', 'childs room', 'lobby', 'home office', 'storage room', 'bathroom', 'bedroom', 'kitchen', 'living room', 'playroom', 'exercise room', 'corridor', 'garage', 'dining room', 'pantry', 'utility room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] whale whistle
+Gold standard : ['dining room', 'exercise room', 'bedroom', 'bathroom', 'television room', 'storage room', 'childs room', 'pantry', 'corridor', 'living room', 'utility room', 'playroom', 'lobby', 'kitchen', 'closet', 'home office', 'garage']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] window
+Gold standard : ['kitchen', 'living room', 'bedroom', 'bathroom']
+CSKG locs     : ['attic', 'bedroom', 'garage', 'home office', 'wall']
+Predicted     : ['attic', 'bedroom', 'garage', 'home office', 'wall'] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] wine glass
+Gold standard : ['kitchen']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] winebottle
+Gold standard : ['kitchen']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] wipe warmer
+Gold standard : ['corridor', 'home office', 'playroom', 'childs room', 'pantry', 'bedroom', 'dining room', 'bathroom', 'lobby', 'garage', 'television room', 'kitchen', 'closet', 'exercise room', 'storage room', 'utility room', 'living room']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] wireless accessory
+Gold standard : ['bathroom', 'living room', 'garage', 'closet', 'playroom', 'pantry', 'childs room', 'bedroom', 'corridor', 'kitchen', 'television room', 'storage room', 'utility room', 'exercise room', 'dining room', 'home office', 'lobby']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+[Object] xylitol sweetener
+Gold standard : ['garage', 'bedroom', 'home office', 'closet', 'utility room', 'television room', 'playroom', 'living room', 'exercise room', 'kitchen', 'storage room', 'corridor', 'childs room', 'pantry', 'lobby', 'dining room', 'bathroom']
+CSKG locs     : []
+Predicted     : [] [pure_logic=CSKG direct]
+------------------------------------------------------------
+
+
+============================================================
+SUMMARY
+============================================================
+N objects : 383
+MRR       : 0.0997
+MAP@1     : 0.0783
+MAP@3     : 0.0946
+MAP@5     : 0.0977
+MAR@1     : 0.0294
+MAR@3     : 0.0336
+MAR@5     : 0.0353
+============================================================

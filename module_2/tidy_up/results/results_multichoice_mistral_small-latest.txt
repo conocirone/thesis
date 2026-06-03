@@ -1,0 +1,5 @@
+============================================================
+RESULT LOG — Tidy-Up Evaluation (module_2)
+Model: mistral_small-latest  |  Ablation: none
+============================================================
+
