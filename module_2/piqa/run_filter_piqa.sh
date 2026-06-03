@@ -17,6 +17,6 @@ source "$VENV_DIR/bin/activate"
 
 # Create logs directory if it doesn't exist
 mkdir -p "$SCRIPT_DIR/logs"
-export MISTRAL_API_KEY="C1z2ddy0sooCNoL0XTDlOFw42pDwJgnO"
+export MISTRAL_API_KEY=f"{MISTRAL_API_KEY}"
 # Run the script
 python3 "$SCRIPT_DIR/filter_piqa.py"
