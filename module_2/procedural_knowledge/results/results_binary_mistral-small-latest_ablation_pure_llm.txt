@@ -1,0 +1,540 @@
+============================================================
+RESULT LOG - Procedural Knowledge Binary Evaluation
+============================================================
+Model: mistral-small-latest
+Total recipes: 776
+Total questions: 3104
+============================================================
+
+[Q201] [FN]
+Question: In the recipe 'Chirashi (Scattered) Sushi', did 'Add fish on top' occur before 'Scatter scallions and seeds'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Pure LLM abbreviation active
+  Step 1 (step_a):
+  Step 2 (step_b):
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q202] [FP]
+Question: In the recipe 'Chirashi (Scattered) Sushi', did 'Scatter scallions and seeds' occur before 'Add fish on top'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Pure LLM abbreviation active
+  Step 1 (step_a):
+  Step 2 (step_b):
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q203] [FN]
+Question: In the recipe 'Chirashi (Scattered) Sushi', did 'Scatter scallions and seeds' occur after 'Add fish on top'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Pure LLM abbreviation active
+  Step 1 (step_a):
+  Step 2 (step_b):
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q204] [FP]
+Question: In the recipe 'Chirashi (Scattered) Sushi', did 'Add fish on top' occur after 'Scatter scallions and seeds'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Pure LLM abbreviation active
+  Step 1 (step_a):
+  Step 2 (step_b):
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q441] [FN]
+Question: In the recipe 'Joe's Pasta E Fagiolo', did 'Add remaining ingredients, simmer' occur before 'Drain pasta, add to soup'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Pure LLM abbreviation active
+  Step 1 (step_a):
+  Step 2 (step_b):
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q442] [FP]
+Question: In the recipe 'Joe's Pasta E Fagiolo', did 'Drain pasta, add to soup' occur before 'Add remaining ingredients, simmer'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Pure LLM abbreviation active
+  Step 1 (step_a):
+  Step 2 (step_b):
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q443] [FN]
+Question: In the recipe 'Joe's Pasta E Fagiolo', did 'Drain pasta, add to soup' occur after 'Add remaining ingredients, simmer'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Pure LLM abbreviation active
+  Step 1 (step_a):
+  Step 2 (step_b):
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q444] [FP]
+Question: In the recipe 'Joe's Pasta E Fagiolo', did 'Add remaining ingredients, simmer' occur after 'Drain pasta, add to soup'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Pure LLM abbreviation active
+  Step 1 (step_a):
+  Step 2 (step_b):
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q641] [FN]
+Question: In the recipe 'Pork Omelette', did 'Fry until golden brown' occur before 'Serve with white rice'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Pure LLM abbreviation active
+  Step 1 (step_a):
+  Step 2 (step_b):
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q642] [FP]
+Question: In the recipe 'Pork Omelette', did 'Serve with white rice' occur before 'Fry until golden brown'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Pure LLM abbreviation active
+  Step 1 (step_a):
+  Step 2 (step_b):
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q643] [FN]
+Question: In the recipe 'Pork Omelette', did 'Serve with white rice' occur after 'Fry until golden brown'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Pure LLM abbreviation active
+  Step 1 (step_a):
+  Step 2 (step_b):
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q644] [FP]
+Question: In the recipe 'Pork Omelette', did 'Fry until golden brown' occur after 'Serve with white rice'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Pure LLM abbreviation active
+  Step 1 (step_a):
+  Step 2 (step_b):
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q705] [FN]
+Question: In the recipe 'Broccoli Chicken Casserole Recipe', did 'Bake at 350 degrees' occur before 'Sprinkle with additional cheese'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Pure LLM abbreviation active
+  Step 1 (step_a):
+  Step 2 (step_b):
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q706] [FP]
+Question: In the recipe 'Broccoli Chicken Casserole Recipe', did 'Sprinkle with additional cheese' occur before 'Bake at 350 degrees'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Pure LLM abbreviation active
+  Step 1 (step_a):
+  Step 2 (step_b):
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q707] [FN]
+Question: In the recipe 'Broccoli Chicken Casserole Recipe', did 'Sprinkle with additional cheese' occur after 'Bake at 350 degrees'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Pure LLM abbreviation active
+  Step 1 (step_a):
+  Step 2 (step_b):
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q708] [FP]
+Question: In the recipe 'Broccoli Chicken Casserole Recipe', did 'Bake at 350 degrees' occur after 'Sprinkle with additional cheese'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Pure LLM abbreviation active
+  Step 1 (step_a):
+  Step 2 (step_b):
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q729] [FN]
+Question: In the recipe 'Rob and Lisa's Island-Escape Salad', did 'Grill fruit until browned' occur before 'Cut fruit into sticks'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Pure LLM abbreviation active
+  Step 1 (step_a):
+  Step 2 (step_b):
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q730] [FP]
+Question: In the recipe 'Rob and Lisa's Island-Escape Salad', did 'Cut fruit into sticks' occur before 'Grill fruit until browned'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Pure LLM abbreviation active
+  Step 1 (step_a):
+  Step 2 (step_b):
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q731] [FN]
+Question: In the recipe 'Rob and Lisa's Island-Escape Salad', did 'Cut fruit into sticks' occur after 'Grill fruit until browned'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Pure LLM abbreviation active
+  Step 1 (step_a):
+  Step 2 (step_b):
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q732] [FP]
+Question: In the recipe 'Rob and Lisa's Island-Escape Salad', did 'Grill fruit until browned' occur after 'Cut fruit into sticks'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Pure LLM abbreviation active
+  Step 1 (step_a):
+  Step 2 (step_b):
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q889] [FN]
+Question: In the recipe 'Onion Bhaji', did 'Mix onions into batter' occur before 'Fry onions until brown'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Pure LLM abbreviation active
+  Step 1 (step_a):
+  Step 2 (step_b):
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q890] [FP]
+Question: In the recipe 'Onion Bhaji', did 'Fry onions until brown' occur before 'Mix onions into batter'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Pure LLM abbreviation active
+  Step 1 (step_a):
+  Step 2 (step_b):
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q891] [FN]
+Question: In the recipe 'Onion Bhaji', did 'Fry onions until brown' occur after 'Mix onions into batter'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Pure LLM abbreviation active
+  Step 1 (step_a):
+  Step 2 (step_b):
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q892] [FP]
+Question: In the recipe 'Onion Bhaji', did 'Mix onions into batter' occur after 'Fry onions until brown'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Pure LLM abbreviation active
+  Step 1 (step_a):
+  Step 2 (step_b):
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1033] [FN]
+Question: In the recipe 'Orange Harvard Beets', did 'Combine and cook mixture' occur before 'Add beets and heat'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Pure LLM abbreviation active
+  Step 1 (step_a):
+  Step 2 (step_b):
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1034] [FP]
+Question: In the recipe 'Orange Harvard Beets', did 'Add beets and heat' occur before 'Combine and cook mixture'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Pure LLM abbreviation active
+  Step 1 (step_a):
+  Step 2 (step_b):
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1035] [FN]
+Question: In the recipe 'Orange Harvard Beets', did 'Add beets and heat' occur after 'Combine and cook mixture'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Pure LLM abbreviation active
+  Step 1 (step_a):
+  Step 2 (step_b):
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1036] [FP]
+Question: In the recipe 'Orange Harvard Beets', did 'Combine and cook mixture' occur after 'Add beets and heat'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Pure LLM abbreviation active
+  Step 1 (step_a):
+  Step 2 (step_b):
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1197] [FN]
+Question: In the recipe 'Raspberry Meltaways', did 'Bake until edges browned' occur before 'Spread filling on cookie'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Pure LLM abbreviation active
+  Step 1 (step_a):
+  Step 2 (step_b):
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1198] [FP]
+Question: In the recipe 'Raspberry Meltaways', did 'Spread filling on cookie' occur before 'Bake until edges browned'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Pure LLM abbreviation active
+  Step 1 (step_a):
+  Step 2 (step_b):
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1199] [FN]
+Question: In the recipe 'Raspberry Meltaways', did 'Spread filling on cookie' occur after 'Bake until edges browned'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Pure LLM abbreviation active
+  Step 1 (step_a):
+  Step 2 (step_b):
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1200] [FP]
+Question: In the recipe 'Raspberry Meltaways', did 'Bake until edges browned' occur after 'Spread filling on cookie'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Pure LLM abbreviation active
+  Step 1 (step_a):
+  Step 2 (step_b):
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1229] [FN]
+Question: In the recipe 'Brandied Berry Compote Recipe', did 'Pour mixture over fruit' occur before 'Sprinkle with powdered sugar'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Pure LLM abbreviation active
+  Step 1 (step_a):
+  Step 2 (step_b):
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1230] [FP]
+Question: In the recipe 'Brandied Berry Compote Recipe', did 'Sprinkle with powdered sugar' occur before 'Pour mixture over fruit'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Pure LLM abbreviation active
+  Step 1 (step_a):
+  Step 2 (step_b):
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1231] [FN]
+Question: In the recipe 'Brandied Berry Compote Recipe', did 'Sprinkle with powdered sugar' occur after 'Pour mixture over fruit'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Pure LLM abbreviation active
+  Step 1 (step_a):
+  Step 2 (step_b):
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1232] [FP]
+Question: In the recipe 'Brandied Berry Compote Recipe', did 'Pour mixture over fruit' occur after 'Sprinkle with powdered sugar'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Pure LLM abbreviation active
+  Step 1 (step_a):
+  Step 2 (step_b):
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1365] [FN]
+Question: In the recipe 'Cheesy Chicken Tostadas', did 'Bake tostadas with toppings' occur before 'Top tostadas with remaining ingredients'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Pure LLM abbreviation active
+  Step 1 (step_a):
+  Step 2 (step_b):
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1366] [FP]
+Question: In the recipe 'Cheesy Chicken Tostadas', did 'Top tostadas with remaining ingredients' occur before 'Bake tostadas with toppings'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Pure LLM abbreviation active
+  Step 1 (step_a):
+  Step 2 (step_b):
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1367] [FN]
+Question: In the recipe 'Cheesy Chicken Tostadas', did 'Top tostadas with remaining ingredients' occur after 'Bake tostadas with toppings'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Pure LLM abbreviation active
+  Step 1 (step_a):
+  Step 2 (step_b):
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1368] [FP]
+Question: In the recipe 'Cheesy Chicken Tostadas', did 'Bake tostadas with toppings' occur after 'Top tostadas with remaining ingredients'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Pure LLM abbreviation active
+  Step 1 (step_a):
+  Step 2 (step_b):
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1465] [FN]
+Question: In the recipe 'Pistachio Baklava With Orange-Cardamom Syrup', did 'Drizzle syrup over baklava' occur before 'Cool in pan on rack'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Pure LLM abbreviation active
+  Step 1 (step_a):
+  Step 2 (step_b):
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1466] [FP]
+Question: In the recipe 'Pistachio Baklava With Orange-Cardamom Syrup', did 'Cool in pan on rack' occur before 'Drizzle syrup over baklava'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Pure LLM abbreviation active
+  Step 1 (step_a):
+  Step 2 (step_b):
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1467] [FN]
+Question: In the recipe 'Pistachio Baklava With Orange-Cardamom Syrup', did 'Cool in pan on rack' occur after 'Drizzle syrup over baklava'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Pure LLM abbreviation active
+  Step 1 (step_a):
+  Step 2 (step_b):
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1468] [FP]
+Question: In the recipe 'Pistachio Baklava With Orange-Cardamom Syrup', did 'Drizzle syrup over baklava' occur after 'Cool in pan on rack'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Pure LLM abbreviation active
+  Step 1 (step_a):
+  Step 2 (step_b):
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1869] [FN]
+Question: In the recipe 'Cream Cheese Grapes With Nuts', did 'Coat grapes with nuts' occur before 'Chill grapes on cookie sheet'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Pure LLM abbreviation active
+  Step 1 (step_a):
+  Step 2 (step_b):
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1870] [FP]
+Question: In the recipe 'Cream Cheese Grapes With Nuts', did 'Chill grapes on cookie sheet' occur before 'Coat grapes with nuts'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Pure LLM abbreviation active
+  Step 1 (step_a):
+  Step 2 (step_b):
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1871] [FN]
+Question: In the recipe 'Cream Cheese Grapes With Nuts', did 'Chill grapes on cookie sheet' occur after 'Coat grapes with nuts'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Pure LLM abbreviation active
+  Step 1 (step_a):
+  Step 2 (step_b):
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1872] [FP]
+Question: In the recipe 'Cream Cheese Grapes With Nuts', did 'Coat grapes with nuts' occur after 'Chill grapes on cookie sheet'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Pure LLM abbreviation active
+  Step 1 (step_a):
+  Step 2 (step_b):
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2537] [FN]
+Question: In the recipe 'Vegetable Fritters With Yoghurt Dip', did 'Deep fry until golden' occur before 'Mix cumin seeds with ingredients'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Pure LLM abbreviation active
+  Step 1 (step_a):
+  Step 2 (step_b):
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2538] [FP]
+Question: In the recipe 'Vegetable Fritters With Yoghurt Dip', did 'Mix cumin seeds with ingredients' occur before 'Deep fry until golden'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Pure LLM abbreviation active
+  Step 1 (step_a):
+  Step 2 (step_b):
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2539] [FN]
+Question: In the recipe 'Vegetable Fritters With Yoghurt Dip', did 'Mix cumin seeds with ingredients' occur after 'Deep fry until golden'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Pure LLM abbreviation active
+  Step 1 (step_a):
+  Step 2 (step_b):
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2540] [FP]
+Question: In the recipe 'Vegetable Fritters With Yoghurt Dip', did 'Deep fry until golden' occur after 'Mix cumin seeds with ingredients'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Pure LLM abbreviation active
+  Step 1 (step_a):
+  Step 2 (step_b):
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+
+============================================================
+SUMMARY
+============================================================
+TP: 1526 | TN: 1526 | FP: 26 | FN: 26
+Accuracy:    0.983
+Precision:   0.983
+Recall:      0.983
+Spec.:       0.983
+Ratio:       1.000
+F1 Score:    0.983
+============================================================

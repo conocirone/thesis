@@ -1,0 +1,6 @@
+object,correct_location,predicted_location,location_choices,correct_prediction,decision_mode
+action figure,pantry room,suitcase,"['pantry room', 'palace', 'laundry room', 'suitcase', 'car']",False,clingo_direct
+adjustable wrench,bedroom,bedroom,"['bedroom', 'loft', 'cat', 'glass', 'press']",True,clingo_direct
+alarmclock,bedroom,bedroom,"['bedroom', 'different room', ""child's room"", 'larder', 'attic']",True,clingo_direct
+aluminumfoil,kitchen,kitchen,"['kitchen', ""prostitute's bedroom"", 'exercise room', 'lamp', 'bathroom cabinet']",True,clingo_direct
+android figure,corridor,chest,"['corridor', 'teapot', 'chest', 'separate room', 'castle']",False,clingo_direct

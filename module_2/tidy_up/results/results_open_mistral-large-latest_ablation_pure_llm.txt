@@ -1,0 +1,2316 @@
+============================================================
+RESULT LOG — Tidy-Up OPEN task (module_2)
+Model: mistral-large-latest  |  Ablation: pure_llm
+============================================================
+
+[Object] action figure
+Gold standard : ['television room', 'playroom', 'dining room', 'exercise room', 'storage room', 'home office', 'pantry', 'living room', 'closet', 'lobby', 'utility room', 'corridor', 'kitchen', 'garage', 'bathroom', 'childs room', 'bedroom']
+Predicted     : ['childs room', 'playroom', 'bedroom', 'living room', 'shelf', 'drawer', 'closet', 'desk', 'box', 'backpack', 'suitcase', 'television room', 'storage room', 'cabinet', 'table']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] adjustable wrench
+Gold standard : ['television room', 'utility room', 'kitchen', 'exercise room', 'living room', 'lobby', 'bathroom', 'closet', 'storage room', 'corridor', 'home office', 'playroom', 'childs room', 'bedroom', 'pantry', 'dining room', 'garage']
+Predicted     : ['garage', 'toolbox', 'utility room', 'kitchen', 'storage room', 'workshop', 'home office', 'laundry room', 'closet', 'garden', 'backpack', 'suitcase']
+RR=1.000  AP@1=1.000  AP@3=0.833  AP@5=0.804
+------------------------------------------------------------
+
+[Object] alarmclock
+Gold standard : ['bedroom']
+Predicted     : ['bedroom', 'bedside table', 'living room', 'shelf', 'desk', 'home office', 'kitchen', 'dining room', 'utility room', 'closet', 'storage room', 'childs room', 'drawer', 'cabinet', 'suitcase']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] aluminumfoil
+Gold standard : ['kitchen']
+Predicted     : ['kitchen', 'pantry', 'fridge', 'utility room', 'storage room', 'dining room', 'garage', 'closet', 'childs room', 'home office', 'playroom', 'laundry room']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] android figure
+Gold standard : ['dining room', 'lobby', 'garage', 'exercise room', 'corridor', 'bedroom', 'pantry', 'home office', 'kitchen', 'utility room', 'playroom', 'storage room', 'television room', 'bathroom', 'childs room', 'closet', 'living room']
+Predicted     : ['childs room', 'playroom', 'bedroom', 'shelf', 'desk', 'closet', 'drawer', 'cabinet', 'home office', 'living room', 'television room', 'box', 'backpack', 'suitcase']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] anti slip tape
+Gold standard : ['bathroom', 'storage room', 'lobby', 'childs room', 'pantry', 'exercise room', 'home office', 'dining room', 'playroom', 'living room', 'corridor', 'bedroom', 'utility room', 'closet', 'kitchen', 'garage', 'television room']
+Predicted     : ['garage', 'bathroom', 'kitchen', 'staircase', 'utility room', 'laundry room', 'exercise room', 'garden', 'corridor', 'pantry', 'storage room', 'closet', 'childs room', 'playroom', 'drawer', 'shelf', 'box']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.950
+------------------------------------------------------------
+
+[Object] antidepressant
+Gold standard : ['kitchen', 'closet', 'childs room', 'utility room', 'exercise room', 'corridor', 'lobby', 'home office', 'garage', 'bedroom', 'television room', 'bathroom', 'storage room', 'pantry', 'living room', 'dining room', 'playroom']
+Predicted     : ['bathroom', 'bedroom', 'kitchen', 'home office', 'living room', 'bedside table', 'storage room', 'pantry', 'closet', 'fridge (if refrigeration required)', 'dining room', "child's room drawer (if applicable)", 'exercise room shelf', 'laundry room']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] apple
+Gold standard : ['kitchen', 'storage room', 'living room', 'home office', 'bathroom', 'bedroom', 'garage', 'utility room', 'corridor', 'playroom', 'lobby', 'childs room', 'pantry', 'dining room', 'television room', 'exercise room', 'closet']
+Predicted     : ['kitchen', 'fridge', 'fruit bowl', 'dining room', 'countertop', 'pantry', 'lunchbox', 'backpack', 'childs room', 'living room', 'home office', 'garden', 'storage room', 'drawer', 'shelf']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.750
+------------------------------------------------------------
+
+[Object] armchair
+Gold standard : ['living room', 'bedroom']
+Predicted     : ['living room', 'bedroom', 'home office', 'television room', 'library', 'childs room', 'playroom', 'garden', 'lobby', 'corridor', 'closet', 'storage room']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] backpack
+Gold standard : ['lobby', 'utility room', 'dining room', 'bedroom', 'closet', 'bathroom', 'living room', 'pantry', 'storage room', 'kitchen', 'playroom', 'childs room', 'garage', 'corridor', 'exercise room', 'television room', 'home office']
+Predicted     : ['bedroom', 'closet', 'corridor', 'living room', 'home office', 'childs room', 'playroom', 'dining room', 'kitchen', 'garage', 'lobby', 'utility room', 'storage room', 'chair', 'coat rack', 'floor', 'car', 'under bed', 'shelf']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] balancing cactus
+Gold standard : ['exercise room', 'bathroom', 'television room', 'storage room', 'living room', 'pantry', 'dining room', 'closet', 'corridor', 'playroom', 'childs room', 'lobby', 'bedroom', 'garage', 'home office', 'utility room', 'kitchen']
+Predicted     : ['living room', 'home office', "child's room shelf", "child's room desk", 'playroom', 'television room shelf', 'bedroom', 'dining room', 'kitchen', 'bathroom']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.867
+------------------------------------------------------------
+
+[Object] banana
+Gold standard : ['exercise room', 'childs room', 'storage room', 'corridor', 'playroom', 'bedroom', 'television room', 'living room', 'home office', 'lobby', 'garage', 'closet', 'pantry', 'utility room', 'kitchen', 'dining room', 'bathroom']
+Predicted     : ['kitchen', 'fridge', 'fruit bowl', 'countertop', 'pantry', 'lunchbox', 'backpack', 'dining room', 'childs room', 'home office', 'living room', 'bowl', 'shelf', 'storage room', 'garden']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.700
+------------------------------------------------------------
+
+[Object] baseball
+Gold standard : ['pantry', 'dining room', 'living room', 'playroom', 'lobby', 'utility room', 'television room', 'kitchen', 'exercise room', 'childs room', 'bathroom', 'corridor', 'bedroom', 'closet', 'garage', 'home office', 'storage room']
+Predicted     : ['childs room', 'playroom', 'garage', 'closet', 'storage room', 'living room', 'garden', 'drawer', 'shelf', 'box', 'suitcase', 'backpack', 'sports bag', 'utility room', 'exercise room']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] baseballbat
+Gold standard : ['bedroom']
+Predicted     : ['garage', 'childs room', 'closet', 'storage room', 'playroom', 'bedroom', 'living room', 'garden', 'utility room', 'sports bag', 'suitcase', 'box']
+RR=0.167  AP@1=0.000  AP@3=0.000  AP@5=0.000
+------------------------------------------------------------
+
+[Object] basketball
+Gold standard : ['bedroom']
+Predicted     : ['childs room', 'garage', 'living room', 'playroom', 'closet', 'storage room', 'garden', 'exercise room', 'corridor', 'box', 'backpack', 'shelf']
+RR=0.000  AP@1=0.000  AP@3=0.000  AP@5=0.000
+------------------------------------------------------------
+
+[Object] bat
+Gold standard : ['storage room']
+Predicted     : ['garage', 'closet', 'storage room', 'childs room', 'playroom', 'bedroom', 'utility room', 'garden', 'corridor', 'box', 'suitcase', 'backpack']
+RR=0.333  AP@1=0.000  AP@3=0.333  AP@5=0.333
+------------------------------------------------------------
+
+[Object] bath sheet
+Gold standard : ['utility room', 'playroom', 'childs room', 'closet', 'living room', 'storage room', 'bathroom', 'lobby', 'television room', 'dining room', 'exercise room', 'bedroom', 'garage', 'corridor', 'pantry', 'home office', 'kitchen']
+Predicted     : ['bathroom', 'closet', 'bedroom', 'laundry room', 'utility room', 'childs room', 'pool area', 'garden', 'storage room', 'suitcase', 'box', 'shelf', 'cabinet']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.950
+------------------------------------------------------------
+
+[Object] bathtub
+Gold standard : ['bathroom']
+Predicted     : ['bathroom', 'bedroom', 'garden', 'utility room', 'storage room', 'garage', 'playroom', 'childs room', 'exercise room', 'closet']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] bathtubbasin
+Gold standard : ['bathroom']
+Predicted     : ['bathroom', 'storage room', 'utility room', 'garage', 'garden', 'closet', 'childs room', 'playroom', 'laundry room', 'pantry', 'corridor']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] batter
+Gold standard : ['box']
+Predicted     : ['kitchen', 'fridge', 'pantry', 'cabinet', 'shelf', 'utility room', 'storage room', 'garage', 'childs room', 'playroom', 'drawer', 'box', 'jar']
+RR=0.083  AP@1=0.000  AP@3=0.000  AP@5=0.000
+------------------------------------------------------------
+
+[Object] battery
+Gold standard : ['dining room', 'garage', 'pantry', 'living room', 'corridor', 'television room', 'bedroom', 'playroom', 'exercise room', 'utility room', 'closet', 'storage room', 'lobby', 'home office', 'childs room', 'kitchen', 'bathroom']
+Predicted     : ['drawer', 'kitchen', 'home office', 'utility room', 'garage', 'living room', 'childs room', 'playroom', 'bedside table', 'television room', 'backpack', 'storage room', 'closet', 'exercise room', 'desk', 'toolbox', 'toy box', 'junk drawer', 'laundry room', 'pantry']
+RR=0.500  AP@1=0.000  AP@3=0.583  AP@5=0.679
+------------------------------------------------------------
+
+[Object] beard color gel
+Gold standard : ['pantry', 'home office', 'corridor', 'kitchen', 'bathroom', 'dining room', 'childs room', 'playroom', 'television room', 'utility room', 'garage', 'closet', 'bedroom', 'living room', 'storage room', 'exercise room', 'lobby']
+Predicted     : ['bathroom', 'bedroom', 'closet', 'storage room', 'suitcase', 'backpack', 'travel bag', 'toiletry bag', 'home office', 'utility room', 'laundry room']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] beauty pack
+Gold standard : ['bedroom', 'childs room', 'storage room', 'living room', 'utility room', 'lobby', 'home office', 'playroom', 'pantry', 'corridor', 'kitchen', 'exercise room', 'television room', 'bathroom', 'dining room', 'garage', 'closet']
+Predicted     : ['bathroom', 'bedroom', 'vanity table', 'closet', 'storage room', 'pantry', 'fridge (if refrigerated)', 'utility room', 'laundry room', "child's room drawer", 'home office', 'playroom', 'suitcase (if traveling)']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.887
+------------------------------------------------------------
+
+[Object] bed
+Gold standard : ['bedroom']
+Predicted     : ['bedroom', 'childs room', 'guest room', 'playroom', 'living room', 'storage room', 'garage', 'garden', 'utility room', 'closet']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] bleach cleanser
+Gold standard : ['utility room', 'kitchen', 'closet', 'home office', 'playroom', 'pantry', 'exercise room', 'bathroom', 'television room', 'bedroom', 'childs room', 'lobby', 'dining room', 'garage', 'corridor', 'living room', 'storage room']
+Predicted     : ['bathroom', 'kitchen', 'utility room', 'laundry room', 'garage', 'storage room', 'closet', 'pantry']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.950
+------------------------------------------------------------
+
+[Object] blender jar
+Gold standard : ['exercise room', 'pantry', 'playroom', 'bathroom', 'living room', 'garage', 'home office', 'dining room', 'corridor', 'kitchen', 'utility room', 'television room', 'lobby', 'bedroom', 'storage room', 'childs room', 'closet']
+Predicted     : ['kitchen', 'pantry', 'storage room', 'utility room', 'dining room', 'dishwasher', 'sink', 'fridge (if storing contents)', 'garage', 'closet', 'box', 'suitcase (if traveling)', "child's room (for smoothies)"]
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] blind
+Gold standard : ['kitchen', 'living room', 'bedroom']
+Predicted     : ['window', 'bedroom', 'living room', 'dining room', 'home office', 'childs room', 'kitchen', 'bathroom', 'television room', 'garage', 'closet', 'storage room', 'utility room', 'corridor', 'lobby']
+RR=0.500  AP@1=0.000  AP@3=0.583  AP@5=0.583
+------------------------------------------------------------
+
+[Object] board game
+Gold standard : ['closet', 'childs room', 'storage room', 'home office', 'utility room', 'lobby', 'exercise room', 'bedroom', 'bathroom', 'pantry', 'corridor', 'garage', 'dining room', 'kitchen', 'playroom', 'television room', 'living room']
+Predicted     : ['living room', 'childs room', 'playroom', 'closet', 'shelf', 'cabinet', 'storage room', 'home office', 'television room', 'dining room', 'drawer', 'table', 'box', 'under bed', 'backpack']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] book
+Gold standard : ['kitchen', 'living room', 'bedroom', 'playroom', 'bathroom', 'pantry', 'garage', 'television room', 'lobby', 'closet', 'utility room', 'exercise room', 'corridor', 'dining room', 'home office', 'childs room', 'storage room']
+Predicted     : ['living room', 'bedroom', 'home office', 'library', 'bedside table', 'bathroom', 'playroom', "child's room shelf", 'backpack', 'suitcase', 'drawer', 'storage room', 'sofa side table', 'dining room']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] bookend
+Gold standard : ['playroom', 'exercise room', 'utility room', 'bedroom', 'television room', 'bathroom', 'closet', 'pantry', 'corridor', 'garage', 'living room', 'dining room', 'home office', 'childs room', 'kitchen', 'storage room', 'lobby']
+Predicted     : ['bookshelf', 'home office', 'living room', 'library', 'bedroom', 'childs room', 'desk', 'shelf', 'cabinet', 'playroom', 'storage room', 'closet', 'television room', 'dining room']
+RR=0.500  AP@1=0.000  AP@3=0.583  AP@5=0.589
+------------------------------------------------------------
+
+[Object] boot
+Gold standard : ['living room', 'bedroom']
+Predicted     : ['closet', 'entryway', 'bedroom', 'garage', 'storage room', 'utility room', 'laundry room', 'childs room', 'under bed', 'shoe rack', 'suitcase', 'backpack', 'box', 'corridor', 'garden']
+RR=0.333  AP@1=0.000  AP@3=0.333  AP@5=0.333
+------------------------------------------------------------
+
+[Object] bottle
+Gold standard : ['kitchen']
+Predicted     : ['kitchen', 'fridge', 'pantry', 'bathroom', 'bedroom', 'living room', 'dining room', 'garage', 'storage room', 'utility room', 'laundry room', 'childs room', 'playroom', 'garden', 'cabinet', 'shelf', 'drawer', 'table', 'backpack', 'suitcase']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] bowl
+Gold standard : ['kitchen', 'living room', 'bedroom', 'corridor', 'storage room', 'dining room', 'childs room', 'closet', 'television room', 'lobby', 'home office', 'pantry', 'exercise room', 'utility room', 'bathroom', 'garage', 'playroom']
+Predicted     : ['kitchen', 'dining room', 'cabinet', 'shelf', 'dishwasher', 'sink', 'table', 'living room', 'bedroom', 'bathroom', 'playroom', 'childs room', 'pantry', 'fridge', 'storage room', 'laundry room', 'garden', 'utility room', 'box']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] box
+Gold standard : ['living room', 'bedroom', 'home office', 'closet', 'storage room', 'exercise room', 'childs room', 'lobby', 'kitchen', 'utility room', 'pantry', 'dining room', 'corridor', 'bathroom', 'television room', 'garage', 'playroom']
+Predicted     : ['closet', 'storage room', 'garage', 'bedroom', 'living room', 'home office', 'playroom', 'childs room', 'utility room', 'under bed', 'shelf', 'cabinet', 'pantry', 'corridor', 'dining room', 'laundry room', 'garden', 'box room']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] bread
+Gold standard : ['kitchen']
+Predicted     : ['kitchen', 'pantry', 'fridge', 'bread box', 'countertop', 'dining room', 'cabinet', 'drawer', 'storage room', 'living room', 'utility room', 'childs room', 'playroom']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] bundt pan
+Gold standard : ['home office', 'bedroom', 'pantry', 'exercise room', 'garage', 'storage room', 'living room', 'kitchen', 'dining room', 'closet', 'television room', 'corridor', 'lobby', 'playroom', 'childs room', 'utility room', 'bathroom']
+Predicted     : ['kitchen', 'pantry', 'storage room', 'utility room', 'closet', 'garage', 'drawer', 'box', 'suitcase']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] butter dish
+Gold standard : ['childs room', 'playroom', 'garage', 'corridor', 'exercise room', 'closet', 'storage room', 'lobby', 'bathroom', 'pantry', 'living room', 'television room', 'utility room', 'bedroom', 'home office', 'dining room', 'kitchen']
+Predicted     : ['kitchen', 'fridge', 'dining room', 'pantry', 'shelf', 'cabinet', 'refrigerator door shelf', 'breakfast nook', 'countertop', 'utility room', 'storage room', 'picnic basket']
+RR=1.000  AP@1=1.000  AP@3=0.833  AP@5=0.806
+------------------------------------------------------------
+
+[Object] butterknife
+Gold standard : ['kitchen']
+Predicted     : ['kitchen', 'dining room', 'dishwasher', 'sink', 'utensil holder', 'cutlery tray', 'picnic basket', 'backpack', 'living room', 'home office', "drawer in child's room", 'playroom', 'bedroom', 'bathroom', 'utility room', 'pantry', 'corridor', 'storage room']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] cabinet
+Gold standard : ['kitchen', 'living room', 'bedroom', 'bathroom']
+Predicted     : ['kitchen', 'bathroom', 'living room', 'bedroom', 'dining room', 'home office', 'garage', 'storage room', 'utility room', 'corridor', 'playroom', 'childs room', 'television room', 'library', 'laundry room']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] cake mix
+Gold standard : ['pantry', 'home office', 'corridor', 'kitchen', 'bathroom', 'dining room', 'childs room', 'playroom', 'television room', 'utility room', 'garage', 'closet', 'bedroom', 'living room', 'storage room', 'exercise room', 'lobby']
+Predicted     : ['pantry', 'kitchen', 'storage room', 'utility room', 'closet', 'fridge', 'dining room', 'home office', 'playroom', 'laundry room', 'suitcase (if recently moved)', 'backpack (if being transported)', 'jar (if repackaged)']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] cake pan
+Gold standard : ['storage room', 'childs room', 'utility room', 'corridor', 'bedroom', 'exercise room', 'pantry', 'kitchen', 'dining room', 'playroom', 'garage', 'living room', 'bathroom', 'television room', 'closet', 'lobby', 'home office']
+Predicted     : ['kitchen', 'pantry', 'cabinet', 'storage room', 'closet', 'utility room', 'drawer', 'shelf', 'garage', 'box', 'suitcase']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.887
+------------------------------------------------------------
+
+[Object] camera
+Gold standard : ['storage room', 'corridor', 'bedroom', 'home office', 'garage', 'utility room', 'living room', 'dining room', 'pantry', 'closet', 'bathroom', 'exercise room', 'television room', 'childs room', 'playroom', 'lobby', 'kitchen']
+Predicted     : ['living room', 'bedroom', 'home office', 'closet', 'storage room', 'backpack', 'suitcase', 'television room cabinet', "child's room shelf", 'kitchen', 'dining room', 'garden', 'library', 'utility room', 'playroom']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] can opener
+Gold standard : ['childs room', 'utility room', 'dining room', 'playroom', 'living room', 'kitchen', 'corridor', 'garage', 'exercise room', 'lobby', 'home office', 'bedroom', 'pantry', 'bathroom', 'storage room', 'closet', 'television room']
+Predicted     : ['kitchen', 'utility room', 'pantry', 'garage', 'storage room', 'dining room', 'home office', 'camping backpack', 'picnic basket', 'junk drawer']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] candle
+Gold standard : ['living room', 'bathroom']
+Predicted     : ['dining room', 'living room', 'bedroom', 'bathroom', 'kitchen', 'home office', 'fireplace mantel', 'closet', 'storage room', 'pantry', 'garden', 'corridor']
+RR=0.500  AP@1=0.000  AP@3=0.500  AP@5=0.500
+------------------------------------------------------------
+
+[Object] candle holder
+Gold standard : ['kitchen', 'utility room', 'bedroom', 'garage', 'home office', 'storage room', 'lobby', 'exercise room', 'bathroom', 'closet', 'pantry', 'childs room', 'playroom', 'television room', 'living room', 'corridor', 'dining room']
+Predicted     : ['dining room', 'living room', 'bedroom', 'bathroom', 'kitchen', 'fireplace mantel', 'bookshelf', 'home office', 'corridor', 'patio table', 'garden', 'closet', 'storage room']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] candy
+Gold standard : ['jar', 'closet', 'exercise room', 'bathroom', 'playroom', 'utility room', 'home office', 'pantry', 'kitchen', 'garage', 'living room', 'television room', 'bedroom', 'lobby', 'corridor', 'storage room', 'dining room', 'childs room']
+Predicted     : ['kitchen', 'pantry', 'living room', "child's room drawer", "child's room shelf", 'bedroom', 'home office', 'playroom', 'backpack', 'purse', 'car glove compartment', 'candy jar', 'fridge', 'storage room', 'suitcase', 'utility room']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] candy bar
+Gold standard : ['childs room', 'pantry', 'bathroom', 'exercise room', 'utility room', 'bedroom', 'living room', 'playroom', 'television room', 'lobby', 'storage room', 'corridor', 'closet', 'kitchen', 'dining room', 'garage', 'home office']
+Predicted     : ['kitchen', 'pantry', 'living room', 'bedroom', 'home office', "child's room drawer", "child's room shelf", 'playroom', 'backpack', 'purse', 'car glove compartment', 'storage room', 'utility room', 'exercise room drawer', 'television room side table', 'fridge']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] canister
+Gold standard : ['bedroom', 'corridor', 'playroom', 'closet', 'kitchen', 'childs room', 'home office', 'dining room', 'storage room', 'garage', 'pantry', 'television room', 'utility room', 'living room', 'exercise room', 'lobby', 'bathroom']
+Predicted     : ['kitchen', 'pantry', 'storage room', 'utility room', 'garage', 'closet', 'shelf', 'cabinet', 'dining room', 'home office', 'laundry room', 'bathroom', 'childs room', 'playroom', 'fridge', 'table', 'desk']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] card game
+Gold standard : ['closet', 'garage', 'utility room', 'corridor', 'storage room', 'exercise room', 'bathroom', 'childs room', 'living room', 'lobby', 'playroom', 'pantry', 'home office', 'dining room', 'bedroom', 'television room', 'kitchen']
+Predicted     : ['living room', 'bedroom', 'playroom', "child's room box", 'home office', 'dining room', 'television room shelf', 'storage room', 'backpack', 'suitcase', 'sofa drawer', 'utility room', 'pantry']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.950
+------------------------------------------------------------
+
+[Object] carrying case
+Gold standard : ['home office', 'utility room', 'storage room', 'living room', 'pantry', 'bedroom', 'childs room', 'corridor', 'kitchen', 'dining room', 'garage', 'bathroom', 'exercise room', 'closet', 'playroom', 'lobby', 'television room']
+Predicted     : ['closet', 'bedroom', 'home office', 'storage room', 'garage', 'living room', 'under bed', 'shelf', 'cabinet', 'utility room', 'playroom', 'childs room', 'corridor', 'lobby', 'suitcase', 'backpack']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] casserole dish
+Gold standard : ['television room', 'bathroom', 'home office', 'storage room', 'childs room', 'bedroom', 'pantry', 'kitchen', 'lobby', 'exercise room', 'garage', 'closet', 'dining room', 'living room', 'playroom', 'utility room', 'corridor']
+Predicted     : ['kitchen', 'cabinet', 'oven', 'shelf', 'dining room', 'fridge', 'storage room', 'pantry', 'dishwasher', 'closet', 'utility room', 'drawer', 'garage']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.700
+------------------------------------------------------------
+
+[Object] cd
+Gold standard : ['bedroom']
+Predicted     : ['living room', 'bedroom', 'home office', 'television room cabinet', "child's room shelf", 'playroom', 'closet', 'storage room', 'library', 'entertainment center', 'backpack', 'suitcase', 'car glove compartment']
+RR=0.500  AP@1=0.000  AP@3=0.500  AP@5=0.500
+------------------------------------------------------------
+
+[Object] cellphone
+Gold standard : ['kitchen', 'living room', 'bedroom']
+Predicted     : ['bedside table', 'pocket', 'living room', 'kitchen', 'home office', 'bedroom', 'bathroom', 'backpack', 'car cup holder', 'charging station', 'dining room', 'jacket pocket', 'purse', 'gym bag', 'playroom', 'childs room', 'garage', 'utility room', 'drawer']
+RR=0.333  AP@1=0.000  AP@3=0.333  AP@5=0.417
+------------------------------------------------------------
+
+[Object] cereal
+Gold standard : ['utility room', 'television room', 'bedroom', 'home office', 'kitchen', 'storage room', 'playroom', 'childs room', 'living room', 'lobby', 'corridor', 'bathroom', 'garage', 'pantry', 'dining room', 'exercise room', 'closet']
+Predicted     : ['kitchen', 'pantry', 'cabinet', 'shelf', 'fridge', 'dining room', 'table', 'childs room', 'playroom', 'storage room', 'backpack', 'suitcase', 'drawer', 'utility room']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] chain
+Gold standard : ['utility room', 'television room', 'kitchen', 'corridor', 'pantry', 'playroom', 'closet', 'bathroom', 'home office', 'garage', 'bedroom', 'dining room', 'lobby', 'storage room', 'exercise room', 'living room', 'childs room']
+Predicted     : ['garage', 'storage room', 'utility room', 'garden', 'toolbox', 'drawer', 'closet', 'workshop', 'box', 'backpack', 'suitcase', 'childs room', 'playroom', 'bicycle rack']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] chair
+Gold standard : ['kitchen', 'living room', 'bedroom']
+Predicted     : ['living room', 'dining room', 'kitchen', 'bedroom', 'home office', 'childs room', 'garden', 'television room', 'desk', 'table', 'playroom', 'exercise room', 'corridor', 'lobby', 'closet']
+RR=1.000  AP@1=1.000  AP@3=0.833  AP@5=0.806
+------------------------------------------------------------
+
+[Object] chocolate
+Gold standard : ['storage room', 'dining room', 'exercise room', 'corridor', 'bathroom', 'kitchen', 'pantry', 'home office', 'childs room', 'playroom', 'bedroom', 'closet', 'living room', 'lobby', 'garage', 'utility room', 'television room']
+Predicted     : ['kitchen', 'pantry', 'fridge', 'living room', 'bedroom', 'home office', "child's room drawer", 'closet', 'storage room', 'backpack', 'suitcase', 'jar', 'dining room', 'television room snack drawer']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.887
+------------------------------------------------------------
+
+[Object] chocolate box
+Gold standard : ['lobby', 'exercise room', 'kitchen', 'dining room', 'television room', 'corridor', 'garage', 'bedroom', 'childs room', 'home office', 'storage room', 'living room', 'playroom', 'bathroom', 'utility room', 'closet', 'pantry']
+Predicted     : ['kitchen', 'pantry', 'living room', 'dining room', 'bedroom', 'closet', 'home office', 'fridge', "child's room drawer", 'storage room', 'gift wrap box', 'suitcase', 'backpack', 'television room side table', 'library', 'utility room', 'exercise room snack drawer', 'playroom']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] chocolate milk pods
+Gold standard : ['lobby', 'exercise room', 'kitchen', 'dining room', 'television room', 'corridor', 'garage', 'bedroom', 'childs room', 'home office', 'storage room', 'living room', 'playroom', 'bathroom', 'utility room', 'closet', 'pantry']
+Predicted     : ['fridge', 'pantry', 'kitchen', 'storage room', "child's room drawer", "child's room shelf", 'playroom', 'utility room', 'backpack', 'lunchbox', 'home office', 'snack box', 'gift box']
+RR=0.500  AP@1=0.000  AP@3=0.583  AP@5=0.639
+------------------------------------------------------------
+
+[Object] chocolate powder
+Gold standard : ['closet', 'corridor', 'playroom', 'storage room', 'lobby', 'dining room', 'bathroom', 'garage', 'bedroom', 'exercise room', 'utility room', 'pantry', 'childs room', 'living room', 'kitchen', 'television room', 'home office']
+Predicted     : ['pantry', 'kitchen', 'fridge', 'dining room', "child's room drawer", "child's room shelf", 'living room', 'storage room', 'utility room', 'home office', 'playroom', 'backpack', 'jar', 'can', 'box']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.917
+------------------------------------------------------------
+
+[Object] chopping board
+Gold standard : ['utility room', 'pantry', 'kitchen', 'bedroom', 'childs room', 'living room', 'closet', 'garage', 'television room', 'corridor', 'exercise room', 'dining room', 'playroom', 'storage room', 'home office', 'bathroom', 'lobby']
+Predicted     : ['kitchen', 'dining room', 'countertop', 'cabinet', 'shelf', 'pantry', 'drawer', 'table', 'storage room', 'utility room', 'garage']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] clamp
+Gold standard : ['playroom', 'garage', 'corridor', 'bedroom', 'pantry', 'bathroom', 'exercise room', 'home office', 'utility room', 'dining room', 'television room', 'living room', 'storage room', 'kitchen', 'childs room', 'lobby', 'closet']
+Predicted     : ['garage', 'utility room', 'toolbox', 'workbench', 'storage room', 'closet', 'drawer', 'shelf', 'home office', 'workshop', 'garden', 'cabinet', 'childs room', 'playroom']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.867
+------------------------------------------------------------
+
+[Object] clay
+Gold standard : ['kitchen', 'living room', 'television room', 'garage', 'bedroom', 'dining room', 'utility room', 'exercise room', 'home office', 'corridor', 'bathroom', 'playroom', 'childs room', 'pantry', 'storage room', 'lobby', 'closet']
+Predicted     : ['playroom', 'childs room', 'art studio', 'home office', 'desk', 'shelf', 'storage room', 'closet', 'box', 'drawer', 'table', 'cabinet', 'garden', 'utility room', 'pantry']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.917
+------------------------------------------------------------
+
+[Object] clock
+Gold standard : ['dining room', 'garage', 'pantry', 'living room', 'corridor', 'television room', 'bedroom', 'playroom', 'exercise room', 'utility room', 'closet', 'storage room', 'lobby', 'home office', 'childs room', 'kitchen', 'bathroom']
+Predicted     : ['bedroom', 'living room', 'kitchen', 'corridor', 'dining room', 'home office', 'childs room', 'bathroom', 'garage', 'utility room', 'television room', 'playroom', 'lobby', 'desk', 'shelf', 'wall']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] cloth
+Gold standard : ['bedroom', 'bathroom', 'storage room', 'corridor', 'childs room', 'playroom', 'dining room', 'garage', 'closet', 'lobby', 'home office', 'kitchen', 'exercise room', 'pantry', 'utility room', 'living room', 'television room']
+Predicted     : ['closet', 'laundry room', 'bathroom', 'living room', 'bedroom', 'utility room', 'storage room', 'playroom', 'dining room', 'kitchen', 'exercise room shelf', 'garden', 'suitcase', 'backpack']
+RR=1.000  AP@1=1.000  AP@3=0.833  AP@5=0.804
+------------------------------------------------------------
+
+[Object] coffee beans
+Gold standard : ['television room', 'closet', 'childs room', 'lobby', 'home office', 'storage room', 'bathroom', 'bedroom', 'kitchen', 'living room', 'playroom', 'exercise room', 'corridor', 'garage', 'dining room', 'pantry', 'utility room']
+Predicted     : ['kitchen', 'pantry', 'fridge', 'cabinet', 'shelf', 'drawer', 'storage room', 'dining room', 'home office', 'utility room', 'jar', 'can', 'closet', 'coffee maker', 'grocery bag']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] coffee pods
+Gold standard : ['exercise room', 'dining room', 'playroom', 'bedroom', 'home office', 'lobby', 'corridor', 'kitchen', 'living room', 'garage', 'pantry', 'bathroom', 'television room', 'utility room', 'storage room', 'closet', 'childs room']
+Predicted     : ['kitchen', 'pantry', 'cabinet', 'drawer', 'shelf', 'utility room', 'home office', 'dining room', 'living room', 'storage room', 'fridge', 'box', 'backpack', 'suitcase', 'jar']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] coffeemachine
+Gold standard : ['kitchen']
+Predicted     : ['kitchen', 'dining room', 'home office', 'living room', 'pantry', 'utility room', 'office break room', 'cabinet', 'shelf', 'countertop', 'desk', 'storage room', 'lobby', 'television room']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] coffeemaker
+Gold standard : ['pantry', 'lobby', 'dining room', 'storage room', 'utility room', 'garage', 'bathroom', 'television room', 'playroom', 'home office', 'closet', 'living room', 'exercise room', 'bedroom', 'kitchen', 'childs room', 'corridor']
+Predicted     : ['kitchen', 'dining room', 'home office', 'pantry', 'utility room', 'living room', 'cabinet', 'shelf', 'countertop', 'break room', 'coffee station', 'lobby']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] coffeetable
+Gold standard : ['living room', 'bedroom']
+Predicted     : ['living room', 'television room', 'bedroom', 'playroom', 'childs room', 'home office', 'lobby', 'library', 'corridor', 'garden']
+RR=1.000  AP@1=1.000  AP@3=0.833  AP@5=0.833
+------------------------------------------------------------
+
+[Object] colored wood blocks
+Gold standard : ['closet', 'living room', 'playroom', 'childs room', 'bedroom', 'bathroom', 'dining room', 'pantry', 'corridor', 'home office', 'exercise room', 'lobby', 'utility room', 'storage room', 'kitchen', 'garage', 'television room']
+Predicted     : ['childs room', 'playroom', 'living room', 'bedroom', 'closet', 'storage room', 'toy box', 'shelf', 'drawer', 'cabinet', 'backpack', 'suitcase', 'under bed', 'under sofa', 'table']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] condiment
+Gold standard : ['bedroom', 'home office', 'childs room', 'pantry', 'lobby', 'living room', 'storage room', 'utility room', 'exercise room', 'dining room', 'kitchen', 'garage', 'bathroom', 'television room', 'corridor', 'closet', 'playroom']
+Predicted     : ['kitchen', 'pantry', 'fridge', 'dining room', 'cabinet', 'shelf', 'drawer', 'fridge door', 'picnic basket', 'backpack', 'lunchbox', 'utility room', 'storage room', 'childs room', 'garage']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.917
+------------------------------------------------------------
+
+[Object] countertop
+Gold standard : ['kitchen', 'bedroom', 'bathroom']
+Predicted     : ['kitchen', 'bathroom', 'laundry room', 'utility room', 'garage', 'home office', 'dining room', 'living room', 'bedroom', 'pantry', 'childs room', 'playroom', 'corridor', 'lobby']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] cracker box
+Gold standard : ['corridor', 'living room', 'storage room', 'dining room', 'childs room', 'closet', 'television room', 'lobby', 'kitchen', 'home office', 'pantry', 'exercise room', 'utility room', 'bathroom', 'garage', 'playroom', 'bedroom']
+Predicted     : ['pantry', 'kitchen', 'dining room', 'living room', 'snack drawer', 'storage room', 'utility room', 'childs room', 'playroom', 'home office', 'backpack', 'suitcase']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] crayon
+Gold standard : ['home office', 'utility room', 'lobby', 'garage', 'playroom', 'storage room', 'bathroom', 'corridor', 'television room', 'kitchen', 'closet', 'pantry', 'bedroom', 'dining room', 'living room', 'exercise room', 'childs room']
+Predicted     : ['childs room', 'playroom', 'desk', 'drawer', 'backpack', 'kitchen', 'living room', 'home office', 'storage room', 'box', 'suitcase', 'shelf', 'closet', 'pantry', 'jar']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] creditcard
+Gold standard : ['kitchen', 'living room', 'bedroom']
+Predicted     : ['wallet', 'bedroom', 'desk drawer', 'purse', 'kitchen', 'living room', 'home office', 'backpack', 'suitcase', 'jacket pocket', 'nightstand', 'storage room', 'car glove compartment', 'coat pocket', 'bag', 'safe', 'bathroom', 'dresser drawer', 'utility room', 'pantry']
+RR=0.500  AP@1=0.000  AP@3=0.500  AP@5=0.450
+------------------------------------------------------------
+
+[Object] cube storage box
+Gold standard : ['utility room', 'bedroom', 'childs room', 'kitchen', 'home office', 'lobby', 'garage', 'exercise room', 'storage room', 'closet', 'dining room', 'pantry', 'playroom', 'living room', 'television room', 'corridor', 'bathroom']
+Predicted     : ['closet', 'bedroom', 'living room', 'home office', 'playroom', 'childs room', 'garage', 'storage room', 'utility room', 'corridor', 'under bed', 'shelf', 'cabinet', 'under desk', 'under table', 'laundry room', 'pantry', 'exercise room']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] cup
+Gold standard : ['kitchen', 'closet', 'storage room', 'living room', 'home office', 'bathroom', 'bedroom', 'garage', 'utility room', 'corridor', 'playroom', 'lobby', 'childs room', 'pantry', 'dining room', 'television room', 'exercise room']
+Predicted     : ['kitchen', 'dining room', 'living room', 'bedroom', 'home office', 'bathroom', 'playroom', 'childs room', 'desk', 'table', 'shelf', 'cabinet', 'dishwasher', 'sink', 'fridge', 'pantry', 'utility room', 'garden', 'television room', 'exercise room']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] curtain
+Gold standard : ['kitchen', 'living room', 'bedroom']
+Predicted     : ['living room', 'bedroom', 'bathroom', 'dining room', 'childs room', 'kitchen', 'home office', 'television room', 'closet', 'storage room', 'corridor', 'playroom', 'utility room', 'pantry', 'garden']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] cushion
+Gold standard : ['kitchen', 'bedroom', 'closet', 'storage room', 'garage', 'home office', 'bathroom', 'dining room', 'lobby', 'living room', 'exercise room', 'corridor', 'childs room', 'utility room', 'pantry', 'playroom', 'television room']
+Predicted     : ['living room', 'bedroom', 'television room sofa', 'playroom', 'childs room', 'garden', 'closet', 'storage room', 'utility room', 'dining room', 'home office', 'exercise room', 'corridor', 'lobby']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.887
+------------------------------------------------------------
+
+[Object] desk
+Gold standard : ['living room', 'bedroom']
+Predicted     : ['home office', 'bedroom', 'living room', 'childs room', 'library', 'playroom', 'dining room', 'kitchen', 'garage', 'storage room', 'corridor']
+RR=0.500  AP@1=0.000  AP@3=0.583  AP@5=0.583
+------------------------------------------------------------
+
+[Object] desk caddy
+Gold standard : ['garage', 'playroom', 'pantry', 'storage room', 'home office', 'bedroom', 'childs room', 'dining room', 'exercise room', 'television room', 'kitchen', 'utility room', 'living room', 'closet', 'bathroom', 'corridor', 'lobby']
+Predicted     : ['desk', 'home office', 'kitchen', 'dining room', 'living room', 'bedroom', "child's room desk", 'playroom', 'utility room', 'garage', 'bathroom', 'shelf', 'cabinet', 'drawer', 'bedside table']
+RR=0.500  AP@1=0.000  AP@3=0.583  AP@5=0.679
+------------------------------------------------------------
+
+[Object] desklamp
+Gold standard : ['living room', 'bedroom']
+Predicted     : ['desk', 'home office', 'bedroom', 'living room', 'table', 'nightstand', 'shelf', 'childs room', 'library', 'dining room', 'playroom', 'kitchen', 'bedside table', 'cabinet']
+RR=0.333  AP@1=0.000  AP@3=0.333  AP@5=0.417
+------------------------------------------------------------
+
+[Object] desktop
+Gold standard : ['bedroom']
+Predicted     : ['home office', 'bedroom', 'living room', "child's room desk", 'library', 'kitchen', 'dining room', 'television room desk', 'playroom', 'storage room', 'garage', 'closet', 'utility room', 'corridor']
+RR=0.500  AP@1=0.000  AP@3=0.500  AP@5=0.500
+------------------------------------------------------------
+
+[Object] diaper pack
+Gold standard : ['playroom', 'exercise room', 'utility room', 'bedroom', 'television room', 'bathroom', 'closet', 'pantry', 'corridor', 'garage', 'living room', 'dining room', 'home office', 'childs room', 'kitchen', 'storage room', 'lobby']
+Predicted     : ['childs room', 'bathroom', 'bedroom', 'closet', 'diaper bag', 'storage room', 'utility room', 'living room', 'pantry', 'laundry room', 'suitcase', 'backpack']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] dietary supplement
+Gold standard : ['childs room', 'living room', 'closet', 'bedroom', 'kitchen', 'playroom', 'exercise room', 'pantry', 'television room', 'home office', 'garage', 'lobby', 'corridor', 'bathroom', 'utility room', 'storage room', 'dining room']
+Predicted     : ['kitchen', 'bathroom', 'bedroom', 'fridge', 'pantry', 'dining room', 'home office', 'utility room', "child's room drawer", 'living room', 'backpack', 'suitcase', 'storage room', 'jar']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.950
+------------------------------------------------------------
+
+[Object] diningtable
+Gold standard : ['kitchen', 'living room']
+Predicted     : ['dining room', 'kitchen', 'living room', 'garden', 'balcony', 'breakfast nook', 'childs room', 'playroom', 'garage', 'storage room', 'corridor']
+RR=0.500  AP@1=0.000  AP@3=0.583  AP@5=0.583
+------------------------------------------------------------
+
+[Object] dish drainer
+Gold standard : ['dining room', 'bedroom', 'kitchen', 'closet', 'playroom', 'utility room', 'storage room', 'living room', 'television room', 'home office', 'bathroom', 'pantry', 'exercise room', 'garage', 'corridor', 'childs room', 'lobby']
+Predicted     : ['kitchen', 'dishwasher top', 'drying rack', 'utility room', 'pantry', 'storage room', 'closet', 'garage']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.700
+------------------------------------------------------------
+
+[Object] dishsponge
+Gold standard : ['kitchen', 'bathroom']
+Predicted     : ['kitchen', 'utility room', 'bathroom', 'laundry room', 'garage', 'garden', 'storage room', 'pantry', 'dishwasher', 'bucket', 'under the sink', 'countertop', 'box']
+RR=1.000  AP@1=1.000  AP@3=0.833  AP@5=0.833
+------------------------------------------------------------
+
+[Object] dishtowel
+Gold standard : ['utility room', 'childs room', 'pantry', 'living room', 'corridor', 'exercise room', 'garage', 'dining room', 'storage room', 'television room', 'playroom', 'closet', 'bathroom', 'bedroom', 'home office', 'lobby', 'kitchen']
+Predicted     : ['kitchen', 'dining room', 'utility room', 'laundry room', 'bathroom', 'pantry', 'drawer', 'cabinet', 'oven handle', 'shelf', 'table', 'fridge handle', 'backpack', 'box', 'suitcase']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.950
+------------------------------------------------------------
+
+[Object] dishwasher
+Gold standard : ['kitchen']
+Predicted     : ['kitchen', 'utility room', 'garage', 'pantry', 'laundry room', 'storage room', 'dining room', 'corridor', 'cabinet']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] dispensing closure
+Gold standard : ['home office', 'utility room', 'storage room', 'living room', 'pantry', 'bedroom', 'childs room', 'corridor', 'kitchen', 'dining room', 'garage', 'bathroom', 'exercise room', 'closet', 'playroom', 'lobby', 'television room']
+Predicted     : ['kitchen', 'bathroom', 'pantry', 'utility room', 'laundry room', 'garage', 'storage room', 'childs room', 'home office', 'playroom', 'closet', 'fridge', 'cabinet', 'shelf', 'drawer', 'jar', 'box']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] dog bowl
+Gold standard : ['dining room', 'exercise room', 'bedroom', 'bathroom', 'television room', 'storage room', 'childs room', 'pantry', 'corridor', 'living room', 'utility room', 'playroom', 'lobby', 'kitchen', 'closet', 'home office', 'garage']
+Predicted     : ['kitchen', 'dining room', 'utility room', 'garden', 'garage', 'corridor', 'laundry room', 'pantry', 'storage room', 'closet', 'childs room', 'under table', 'shelf', 'cabinet']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.950
+------------------------------------------------------------
+
+[Object] dog chew toy
+Gold standard : ['playroom', 'utility room', 'childs room', 'television room', 'home office', 'kitchen', 'bathroom', 'closet', 'exercise room', 'dining room', 'pantry', 'bedroom', 'corridor', 'living room', 'garage', 'storage room', 'lobby']
+Predicted     : ['childs room', 'living room', 'kitchen', 'bedroom', 'playroom', 'garden', 'closet', 'storage room', 'drawer', 'box', 'backpack', 'utility room', 'corridor', 'lobby']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] dogbed
+Gold standard : ['living room', 'bedroom']
+Predicted     : ['bedroom', 'living room', 'childs room', 'closet', 'playroom', 'home office', 'television room', 'corridor', 'utility room', 'garage', 'storage room', 'under table', 'under desk']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] dollhouse toy
+Gold standard : ['utility room', 'bedroom', 'corridor', 'garage', 'home office', 'dining room', 'playroom', 'kitchen', 'television room', 'lobby', 'exercise room', 'bathroom', 'living room', 'childs room', 'pantry', 'closet', 'storage room']
+Predicted     : ['childs room', 'playroom', 'living room', 'bedroom', 'closet', 'shelf', 'cabinet', 'storage room', 'box', 'under bed', 'toy chest', 'backpack', 'suitcase']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] donut
+Gold standard : ['corridor', 'home office', 'television room', 'playroom', 'lobby', 'storage room', 'garage', 'living room', 'pantry', 'utility room', 'closet', 'dining room', 'bedroom', 'kitchen', 'bathroom', 'childs room', 'exercise room']
+Predicted     : ['kitchen', 'pantry', 'fridge', 'table', 'countertop', 'dining room', 'living room', 'box', 'plate', 'bag', 'backpack', 'home office', 'childs room', 'jar', 'storage room']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] drawer
+Gold standard : ['kitchen', 'living room', 'bedroom', 'bathroom']
+Predicted     : ['kitchen', 'bedroom', 'home office', 'living room', 'bathroom', 'dining room', 'desk', 'dresser', 'nightstand', 'closet', 'childs room', 'playroom', 'utility room', 'television room', 'exercise room', 'corridor', 'lobby', 'library', 'laundry room']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.887
+------------------------------------------------------------
+
+[Object] dresser
+Gold standard : ['bedroom', 'living room', 'bathroom']
+Predicted     : ['bedroom', 'living room', 'childs room', 'corridor', 'closet', 'storage room', 'guest room', 'playroom', 'home office', 'utility room', 'television room']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] drink
+Gold standard : ['can', 'bar']
+Predicted     : ['kitchen', 'fridge', 'pantry', 'dining room', 'living room', 'table', 'cabinet', 'shelf', 'drawer', 'bedroom', 'nightstand', 'garage', 'cooler', 'backpack', 'suitcase', 'garden', 'exercise room', 'childs room', 'playroom', 'bar cart']
+RR=0.000  AP@1=0.000  AP@3=0.000  AP@5=0.000
+------------------------------------------------------------
+
+[Object] drink coaster
+Gold standard : ['dining room', 'utility room', 'home office', 'closet', 'bathroom', 'pantry', 'corridor', 'lobby', 'childs room', 'exercise room', 'playroom', 'bedroom', 'television room', 'living room', 'garage', 'storage room', 'kitchen']
+Predicted     : ['dining room', 'living room', 'kitchen', 'home office', 'bedside table', 'television room', 'bar cart', 'patio table', 'shelf', 'cabinet', 'drawer', 'storage room', 'playroom', 'childs room']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] dryer
+Gold standard : ['storage room']
+Predicted     : ['laundry room', 'utility room', 'garage', 'bathroom', 'closet', 'storage room', 'corridor', 'kitchen', 'pantry']
+RR=0.167  AP@1=0.000  AP@3=0.000  AP@5=0.000
+------------------------------------------------------------
+
+[Object] duct tape
+Gold standard : ['pantry', 'playroom', 'closet', 'garage', 'corridor', 'bathroom', 'dining room', 'home office', 'storage room', 'lobby', 'bedroom', 'exercise room', 'television room', 'childs room', 'living room', 'kitchen', 'utility room']
+Predicted     : ['garage', 'utility room', 'toolbox', 'drawer', 'storage room', 'closet', 'home office', 'kitchen', 'desk', 'pantry', 'laundry room', 'garden', 'backpack', 'suitcase', 'box']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.867
+------------------------------------------------------------
+
+[Object] dumbbell
+Gold standard : ['bedroom', 'living room', 'utility room', 'exercise room', 'storage room', 'lobby', 'garage', 'kitchen', 'corridor', 'dining room', 'home office', 'pantry', 'television room', 'bathroom', 'childs room', 'closet', 'playroom']
+Predicted     : ['exercise room', 'garage', 'bedroom', 'living room', 'closet', 'storage room', 'utility room', 'childs room', 'home office', 'garden', 'shelf', 'box', 'suitcase']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] dumbbell rack
+Gold standard : ['exercise room', 'childs room', 'storage room', 'corridor', 'playroom', 'bedroom', 'television room', 'living room', 'home office', 'lobby', 'garage', 'closet', 'pantry', 'utility room', 'kitchen', 'dining room', 'bathroom']
+Predicted     : ['garage', 'exercise room', 'bedroom', 'living room', 'home office', 'storage room', 'utility room', 'childs room', 'closet', 'playroom', 'corridor']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] dustpan and brush
+Gold standard : ['childs room', 'dining room', 'bathroom', 'home office', 'utility room', 'playroom', 'lobby', 'pantry', 'storage room', 'kitchen', 'closet', 'living room', 'exercise room', 'bedroom', 'garage', 'television room', 'corridor']
+Predicted     : ['kitchen', 'utility room', 'closet', 'storage room', 'laundry room', 'garage', 'corridor', 'bathroom', 'pantry', 'under sink', 'cleaning caddy', 'under stairs']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] dutch oven
+Gold standard : ['playroom', 'bedroom', 'exercise room', 'closet', 'corridor', 'garage', 'bathroom', 'storage room', 'kitchen', 'television room', 'childs room', 'dining room', 'living room', 'lobby', 'utility room', 'pantry', 'home office']
+Predicted     : ['kitchen', 'cabinet', 'shelf', 'oven', 'stove', 'dining room', 'pantry', 'storage room', 'closet', 'utility room', 'garage', 'drawer (for lids/accessories)']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] easter basket
+Gold standard : ['utility room', 'television room', 'bedroom', 'home office', 'kitchen', 'storage room', 'playroom', 'childs room', 'living room', 'lobby', 'corridor', 'bathroom', 'garage', 'pantry', 'dining room', 'exercise room', 'closet']
+Predicted     : ['childs room', 'living room', 'closet', 'storage room', 'playroom', 'dining room', 'kitchen', 'shelf', 'cabinet', 'table', 'bed', 'garden', 'utility room', 'pantry', 'box']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] egg
+Gold standard : ['kitchen']
+Predicted     : ['kitchen', 'fridge', 'pantry', 'dining room', 'table', 'countertop', 'egg carton', 'shelf', 'cabinet', 'drawer', 'refrigerator door', 'breakfast nook', 'utility room', 'storage room', 'box']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] electric heater
+Gold standard : ['storage room', 'corridor', 'bedroom', 'home office', 'garage', 'utility room', 'living room', 'dining room', 'pantry', 'closet', 'bathroom', 'exercise room', 'television room', 'childs room', 'playroom', 'lobby', 'kitchen']
+Predicted     : ['living room', 'bedroom', 'bathroom', 'home office', 'childs room', 'garage', 'utility room', 'corridor', 'closet', 'storage room', 'pantry', 'laundry room', 'dining room']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] electric toothbrush
+Gold standard : ['garage', 'playroom', 'pantry', 'storage room', 'home office', 'bedroom', 'childs room', 'dining room', 'exercise room', 'television room', 'kitchen', 'utility room', 'living room', 'closet', 'bathroom', 'corridor', 'lobby']
+Predicted     : ['bathroom', 'bedroom', 'travel bag', 'suitcase', 'drawer', 'cabinet', 'sink', 'countertop', 'storage room', 'closet', 'childs room', 'home office', 'utility room']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] electronic adapter
+Gold standard : ['dining room', 'kitchen', 'closet', 'bedroom', 'utility room', 'exercise room', 'bathroom', 'lobby', 'garage', 'living room', 'pantry', 'storage room', 'home office', 'playroom', 'television room', 'childs room', 'corridor']
+Predicted     : ['drawer', 'desk', 'shelf', 'cabinet', 'living room', 'bedroom', 'home office', 'utility room', 'backpack', 'suitcase', 'storage room', 'television room', 'kitchen', 'closet', 'childs room', 'exercise room', 'corridor', 'box', 'table']
+RR=0.200  AP@1=0.000  AP@3=0.000  AP@5=0.200
+------------------------------------------------------------
+
+[Object] electronic cable
+Gold standard : ['garage', 'playroom', 'television room', 'storage room', 'kitchen', 'home office', 'living room', 'pantry', 'bedroom', 'closet', 'bathroom', 'dining room', 'corridor', 'exercise room', 'utility room', 'childs room', 'lobby']
+Predicted     : ['drawer', 'closet', 'home office', 'living room', 'bedroom', 'garage', 'utility room', 'television room shelf', 'desk', 'backpack', 'storage room', 'kitchen', 'bedside table', 'entertainment center', 'suitcase']
+RR=0.500  AP@1=0.000  AP@3=0.583  AP@5=0.679
+------------------------------------------------------------
+
+[Object] face moisturizer
+Gold standard : ['television room', 'childs room', 'living room', 'home office', 'playroom', 'bedroom', 'kitchen', 'bathroom', 'corridor', 'pantry', 'dining room', 'utility room', 'storage room', 'garage', 'lobby', 'exercise room', 'closet']
+Predicted     : ['bathroom', 'bedroom', 'bedside table', 'vanity table', 'living room', 'handbag', 'backpack', 'purse', 'travel bag', 'gym bag', 'exercise room shelf', 'fridge (if refrigerated)', 'storage room', 'utility room', "child's room drawer", 'home office', 'corridor']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.867
+------------------------------------------------------------
+
+[Object] faucet
+Gold standard : ['bathroom', 'kitchen']
+Predicted     : ['bathroom', 'kitchen', 'utility room', 'laundry room', 'garden', 'garage', 'storage room', 'pantry', 'exercise room', 'childs room']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] file sorter
+Gold standard : ['exercise room', 'pantry', 'playroom', 'bathroom', 'living room', 'garage', 'home office', 'dining room', 'corridor', 'kitchen', 'utility room', 'television room', 'lobby', 'bedroom', 'storage room', 'childs room', 'closet']
+Predicted     : ['home office', 'desk', 'filing cabinet', 'shelf', 'drawer', 'living room', 'closet', 'storage room', 'utility room', 'bedroom', 'kitchen', 'dining room', 'library', 'childs room', 'playroom']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] fingerpaint
+Gold standard : ['exercise room', 'television room', 'kitchen', 'lobby', 'utility room', 'closet', 'living room', 'storage room', 'childs room', 'playroom', 'pantry', 'corridor', 'home office', 'bedroom', 'garage', 'bathroom', 'dining room']
+Predicted     : ['childs room', 'playroom', 'kitchen', 'dining room', 'desk', 'storage room', 'closet', 'utility room', 'shelf', 'box', 'backpack', 'jar', 'pantry', 'laundry room', 'garden']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] fitness tracker wristband
+Gold standard : ['storage room', 'bathroom', 'home office', 'utility room', 'exercise room', 'closet', 'dining room', 'television room', 'playroom', 'corridor', 'garage', 'pantry', 'lobby', 'bedroom', 'childs room', 'kitchen', 'living room']
+Predicted     : ['wrist', 'bedroom', 'bathroom', 'living room', 'home office', 'exercise room', 'drawer', 'nightstand', 'table', 'backpack', 'suitcase', 'charging station', 'closet', 'laundry room', 'shelf']
+RR=0.500  AP@1=0.000  AP@3=0.583  AP@5=0.679
+------------------------------------------------------------
+
+[Object] flashlight
+Gold standard : ['pantry', 'living room', 'playroom', 'childs room', 'lobby', 'television room', 'corridor', 'dining room', 'home office', 'closet', 'exercise room', 'utility room', 'bathroom', 'kitchen', 'bedroom', 'garage', 'storage room']
+Predicted     : ['drawer', 'closet', 'garage', 'utility room', 'kitchen', 'bedroom', 'living room', 'car', 'backpack', 'storage room', 'home office', 'bedside table', 'toolbox', 'pantry', 'camping gear', 'emergency kit', 'laundry room', 'glove compartment', 'shelf', 'cabinet']
+RR=0.500  AP@1=0.000  AP@3=0.583  AP@5=0.679
+------------------------------------------------------------
+
+[Object] flat screwdriver
+Gold standard : ['kitchen', 'utility room', 'bedroom', 'garage', 'home office', 'storage room', 'lobby', 'exercise room', 'bathroom', 'closet', 'pantry', 'childs room', 'playroom', 'television room', 'living room', 'corridor', 'dining room']
+Predicted     : ['toolbox', 'garage', 'utility room', 'kitchen', 'home office', 'workshop', 'storage room', 'tool cabinet', 'workbench', 'closet', 'junk drawer', 'laundry room', 'garden', 'backpack', 'tool belt']
+RR=0.500  AP@1=0.000  AP@3=0.583  AP@5=0.679
+------------------------------------------------------------
+
+[Object] floor
+Gold standard : ['kitchen', 'living room', 'bedroom', 'bathroom']
+Predicted     : ['the object "floor" is a surface rather than a movable item', 'but here are the prototypical household locations where different types of flooring or floor-related items (e.g.', 'floor mats', 'living room', 'bedroom', 'kitchen', 'bathroom', 'corridor', 'dining room', 'home office', 'childs room', 'playroom', 'garage', 'laundry room', 'utility room', 'exercise room', 'garden', 'lobby', 'pantry', 'closet', 'storage room', 'television room', 'library']
+RR=0.250  AP@1=0.000  AP@3=0.000  AP@5=0.325
+------------------------------------------------------------
+
+[Object] floorlamp
+Gold standard : ['living room']
+Predicted     : ['living room', 'bedroom', 'home office', 'childs room', 'television room', 'corridor', 'library', 'dining room', 'playroom', 'lobby', 'utility room', 'closet']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] foam brick
+Gold standard : ['dining room', 'bathroom', 'bedroom', 'television room', 'lobby', 'playroom', 'storage room', 'utility room', 'exercise room', 'corridor', 'kitchen', 'pantry', 'home office', 'childs room', 'garage', 'closet', 'living room']
+Predicted     : ['playroom', 'childs room', 'toy box', 'closet', 'storage room', 'garage', 'garden', 'living room', 'shelf', 'drawer', 'box', 'backpack', 'utility room', 'exercise room', 'suitcase']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.887
+------------------------------------------------------------
+
+[Object] folder
+Gold standard : ['playroom', 'bathroom', 'pantry', 'bedroom', 'garage', 'television room', 'kitchen', 'lobby', 'living room', 'closet', 'utility room', 'exercise room', 'corridor', 'dining room', 'home office', 'childs room', 'storage room']
+Predicted     : ['home office', 'living room', 'bedroom', "child's room desk drawer", "child's room shelf", 'dining room', 'playroom', 'closet', 'storage room', 'library', 'kitchen', 'utility room', 'corridor', 'backpack']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] fondant
+Gold standard : ['television room', 'storage room', 'living room', 'exercise room', 'home office', 'kitchen', 'dining room', 'closet', 'bedroom', 'corridor', 'pantry', 'playroom', 'utility room', 'garage', 'lobby', 'bathroom', 'childs room']
+Predicted     : ['pantry', 'kitchen', 'storage room', 'fridge', 'baking drawer', 'utility room', 'closet', 'home office', "child's room shelf", 'playroom', 'dining room', 'jar', 'box']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] footstool
+Gold standard : ['bedroom', 'bathroom']
+Predicted     : ['living room', 'bedroom', 'television room', 'childs room', 'home office', 'playroom', 'library', 'closet', 'storage room', 'utility room', 'under bed', 'under desk', 'under table', 'near sofa']
+RR=0.500  AP@1=0.000  AP@3=0.500  AP@5=0.500
+------------------------------------------------------------
+
+[Object] fork
+Gold standard : ['kitchen', 'corridor', 'pantry', 'storage room', 'garage', 'exercise room', 'playroom', 'bathroom', 'utility room', 'closet', 'bedroom', 'childs room', 'dining room', 'home office', 'living room', 'television room', 'lobby']
+Predicted     : ['kitchen', 'dining room', 'dishwasher', 'pantry', 'drawer', 'picnic basket', 'backpack', 'suitcase', 'storage room', 'dish rack', 'utensil holder', "child's room drawer", 'playroom', 'camping gear box', 'garden', 'buffet table']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.917
+------------------------------------------------------------
+
+[Object] fridge
+Gold standard : ['kitchen']
+Predicted     : ['kitchen', 'garage', 'utility room', 'pantry', 'storage room', 'dining room', 'home office', 'laundry room', 'backyard shed']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] fruit snack
+Gold standard : ['playroom', 'kitchen', 'television room', 'corridor', 'dining room', 'closet', 'bathroom', 'bedroom', 'storage room', 'pantry', 'lobby', 'living room', 'garage', 'exercise room', 'utility room', 'childs room', 'home office']
+Predicted     : ['kitchen', 'pantry', 'fridge', 'drawer', 'cabinet', 'childs room', 'backpack', 'lunchbox', 'living room', 'dining room', 'table', 'playroom', 'shelf', 'storage room', 'suitcase', 'desk', 'jar', 'utility room']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] furnace
+Gold standard : ['storage room']
+Predicted     : ['storage room', 'utility room', 'garage', 'closet', 'laundry room', 'corridor', 'pantry', 'home office', 'garden']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] garbage
+Gold standard : ['dumpster']
+Predicted     : ['kitchen', 'bathroom', 'bedroom', 'living room', 'home office', 'garage', 'childs room', 'dining room', 'laundry room', 'utility room', 'pantry', 'storage room', 'corridor', 'garden', 'desk', 'table', 'shelf', 'can']
+RR=0.000  AP@1=0.000  AP@3=0.000  AP@5=0.000
+------------------------------------------------------------
+
+[Object] garbagebag
+Gold standard : ['kitchen', 'bedroom']
+Predicted     : ['kitchen', 'bathroom', 'garage', 'utility room', 'laundry room', 'pantry', 'storage room', 'childs room', 'bedroom', 'living room', 'home office', 'dining room', 'closet', 'corridor', 'garden']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] garbagecan
+Gold standard : ['kitchen', 'living room', 'bedroom', 'bathroom']
+Predicted     : ['kitchen', 'bathroom', 'bedroom', 'home office', 'garage', 'utility room', 'laundry room', 'childs room', 'playroom', 'corridor', 'storage room', 'pantry', 'exercise room']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] gelatin box
+Gold standard : ['garage', 'childs room', 'home office', 'corridor', 'playroom', 'closet', 'dining room', 'kitchen', 'television room', 'lobby', 'pantry', 'bathroom', 'utility room', 'storage room', 'living room', 'exercise room', 'bedroom']
+Predicted     : ['pantry', 'kitchen', 'dining room', 'storage room', 'fridge', "child's room drawer", 'playroom', 'home office', 'utility room', 'closet', 'laundry room', 'garage']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] glove
+Gold standard : ['exercise room', 'bathroom', 'garage', 'playroom', 'storage room', 'utility room', 'home office', 'lobby', 'living room', 'pantry', 'bedroom', 'childs room', 'closet', 'television room', 'dining room', 'corridor', 'kitchen']
+Predicted     : ['drawer', 'closet', 'entryway', 'coat rack', 'car', 'garage', 'storage room', 'utility room', 'laundry room', 'box', 'backpack', 'suitcase', 'garden', 'childs room', 'exercise room', 'bedside table', 'shelf', 'cabinet', 'glove compartment', 'sports bag']
+RR=0.500  AP@1=0.000  AP@3=0.500  AP@5=0.500
+------------------------------------------------------------
+
+[Object] golf ball
+Gold standard : ['kitchen', 'exercise room', 'pantry', 'dining room', 'bedroom', 'storage room', 'living room', 'home office', 'television room', 'childs room', 'closet', 'bathroom', 'garage', 'playroom', 'lobby', 'corridor', 'utility room']
+Predicted     : ['garage', 'storage room', 'closet', 'suitcase', 'backpack', 'box', 'childs room', 'garden', 'living room', 'drawer', 'shelf', 'utility room', 'exercise room', 'lobby', 'corridor']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] graphics card
+Gold standard : ['storage room', 'dining room', 'exercise room', 'corridor', 'bathroom', 'kitchen', 'pantry', 'home office', 'childs room', 'playroom', 'bedroom', 'closet', 'living room', 'lobby', 'garage', 'utility room', 'television room']
+Predicted     : ['home office', 'bedroom', 'living room', 'storage room', 'garage', 'closet', 'playroom', "child's room desk drawer", 'utility room', 'library', 'exercise room shelf', 'suitcase', 'backpack']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] hair color
+Gold standard : ['closet', 'childs room', 'television room', 'kitchen', 'lobby', 'exercise room', 'living room', 'corridor', 'pantry', 'bathroom', 'playroom', 'home office', 'dining room', 'storage room', 'utility room', 'bedroom', 'garage']
+Predicted     : ['bathroom', 'bedroom', 'utility room', 'storage room', 'closet', 'pantry', 'home office', "child's room drawer", 'laundry room', 'suitcase', 'backpack']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] hair conditioner
+Gold standard : ['home office', 'bedroom', 'exercise room', 'lobby', 'closet', 'pantry', 'bathroom', 'garage', 'storage room', 'childs room', 'living room', 'kitchen', 'dining room', 'playroom', 'corridor', 'utility room', 'television room']
+Predicted     : ['bathroom', 'bedroom', 'utility room', 'storage room', 'closet', 'childs room', 'travel bag', 'suitcase', 'backpack']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] hair dryer
+Gold standard : ['dining room', 'bedroom', 'utility room', 'playroom', 'exercise room', 'lobby', 'childs room', 'storage room', 'pantry', 'television room', 'garage', 'kitchen', 'living room', 'bathroom', 'home office', 'corridor', 'closet']
+Predicted     : ['bathroom', 'bedroom', 'closet', 'drawer', 'cabinet', 'suitcase', 'backpack', 'storage room', 'utility room', 'laundry room', 'childs room', 'guest room']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] hair straightener
+Gold standard : ['exercise room', 'dining room', 'kitchen', 'bathroom', 'playroom', 'storage room', 'garage', 'pantry', 'bedroom', 'childs room', 'corridor', 'lobby', 'living room', 'utility room', 'closet', 'home office', 'television room']
+Predicted     : ['bathroom', 'bedroom', 'closet', 'drawer', 'shelf', 'cabinet', 'suitcase', 'backpack', 'storage room', 'utility room', 'childs room', 'playroom', 'laundry room']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] hammer
+Gold standard : ['closet', 'pantry', 'television room', 'dining room', 'bedroom', 'exercise room', 'home office', 'bathroom', 'lobby', 'garage', 'utility room', 'storage room', 'childs room', 'playroom', 'kitchen', 'living room', 'corridor']
+Predicted     : ['garage', 'toolbox', 'utility room', 'storage room', 'closet', 'drawer', 'workbench', 'garden', 'home office', 'backpack', 'suitcase', 'kitchen', 'laundry room', 'pantry']
+RR=1.000  AP@1=1.000  AP@3=0.833  AP@5=0.804
+------------------------------------------------------------
+
+[Object] hand bell
+Gold standard : ['corridor', 'childs room', 'television room', 'closet', 'bathroom', 'dining room', 'lobby', 'home office', 'living room', 'storage room', 'kitchen', 'exercise room', 'playroom', 'pantry', 'bedroom', 'garage', 'utility room']
+Predicted     : ['bedroom', 'living room', 'dining room', 'home office', 'kitchen', 'playroom', "child's room shelf", 'utility room', 'closet', 'storage room', 'pantry', 'corridor', 'lobby table', 'library', 'television room cabinet']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] handbag
+Gold standard : ['storage room', 'bathroom', 'corridor', 'childs room', 'playroom', 'dining room', 'garage', 'closet', 'lobby', 'home office', 'kitchen', 'exercise room', 'bedroom', 'pantry', 'utility room', 'living room', 'television room']
+Predicted     : ['closet', 'bedroom', 'living room', 'dining room', 'kitchen', 'home office', 'corridor', 'childs room', 'playroom', 'storage room', 'car', 'coat rack', 'bathroom', 'utility room', 'garage', 'backpack']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] handtowel
+Gold standard : ['bathroom']
+Predicted     : ['bathroom', 'kitchen', 'laundry room', 'utility room', 'childs room', 'exercise room', 'dining room', 'living room', 'closet', 'pantry', 'drawer', 'shelf', 'cabinet', 'box']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] handtowelholder
+Gold standard : ['bathroom']
+Predicted     : ['bathroom', 'kitchen', 'utility room', 'laundry room', 'garage', 'childs room', 'exercise room', 'dining room', 'corridor', 'closet', 'storage room', 'pantry', 'garden']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] hard drive
+Gold standard : ['television room', 'utility room', 'living room', 'dining room', 'pantry', 'closet', 'lobby', 'exercise room', 'playroom', 'garage', 'home office', 'storage room', 'childs room', 'kitchen', 'corridor', 'bedroom', 'bathroom']
+Predicted     : ['desk drawer', 'home office', 'desk', 'living room', 'bedroom', 'closet', 'storage room', 'garage', 'utility room', 'backpack', 'suitcase', 'entertainment center', 'television room shelf', 'library', "child's room desk"]
+RR=0.500  AP@1=0.000  AP@3=0.500  AP@5=0.533
+------------------------------------------------------------
+
+[Object] hard drive case
+Gold standard : ['dining room', 'bathroom', 'bedroom', 'television room', 'lobby', 'playroom', 'storage room', 'utility room', 'exercise room', 'corridor', 'kitchen', 'pantry', 'home office', 'childs room', 'garage', 'closet', 'living room']
+Predicted     : ['home office', 'desk drawer', 'closet', 'storage room', 'bedroom', 'living room', 'utility room', 'garage', 'backpack', 'suitcase', 'desk', 'entertainment center', 'library', 'filing cabinet', 'tech drawer', 'bedside table', 'office cabinet', 'playroom', 'exercise room', 'toolbox']
+RR=1.000  AP@1=1.000  AP@3=0.833  AP@5=0.804
+------------------------------------------------------------
+
+[Object] hat
+Gold standard : ['closet', 'corridor', 'lobby', 'television room', 'home office', 'bathroom', 'living room', 'garage', 'playroom', 'bedroom', 'utility room', 'storage room', 'kitchen', 'dining room', 'childs room', 'exercise room', 'pantry']
+Predicted     : ['closet', 'bedroom', 'coat rack', 'entryway', 'drawer', 'shelf', 'hat box', 'car', 'backpack', 'suitcase', 'storage room', 'garden', 'playroom', 'childs room', 'laundry room', 'garage']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] headphone
+Gold standard : ['utility room', 'storage room', 'bedroom', 'living room', 'childs room', 'closet', 'dining room', 'kitchen', 'lobby', 'pantry', 'exercise room', 'garage', 'television room', 'playroom', 'home office', 'corridor', 'bathroom']
+Predicted     : ['bedroom', 'living room', 'home office', 'television room cabinet', "child's room drawer", 'backpack', 'suitcase', 'exercise room shelf', 'kitchen', 'bedside table', 'entertainment center', 'coat pocket', 'car glove compartment', 'bag', 'storage room']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] heavy duty gloves
+Gold standard : ['garage', 'bedroom', 'home office', 'closet', 'utility room', 'television room', 'playroom', 'living room', 'exercise room', 'kitchen', 'storage room', 'corridor', 'childs room', 'pantry', 'lobby', 'dining room', 'bathroom']
+Predicted     : ['garage', 'utility room', 'garden', 'storage room', 'laundry room', 'kitchen', 'closet', 'toolbox', 'drawer', 'shelf', 'cabinet', 'exercise room', 'pantry', 'workshop', 'car trunk']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.917
+------------------------------------------------------------
+
+[Object] heavy master chef can
+Gold standard : ['lobby', 'storage room', 'corridor', 'bedroom', 'dining room', 'garage', 'childs room', 'television room', 'bathroom', 'exercise room', 'utility room', 'pantry', 'closet', 'kitchen', 'living room', 'playroom', 'home office']
+Predicted     : ['kitchen', 'pantry', 'cabinet', 'shelf', 'drawer', 'storage room', 'utility room', 'garage', 'dining room', 'table', 'box', 'suitcase', 'childs room', 'playroom']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] helmet
+Gold standard : ['exercise room', 'bathroom', 'television room', 'storage room', 'living room', 'pantry', 'dining room', 'closet', 'corridor', 'playroom', 'childs room', 'lobby', 'bedroom', 'garage', 'home office', 'utility room', 'kitchen']
+Predicted     : ['garage', 'closet', 'storage room', 'childs room', 'playroom', 'utility room', 'entryway', 'corridor', 'bike rack', 'shelf', 'cabinet', 'box', 'backpack', 'suitcase', 'exercise room']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] herring fillets
+Gold standard : ['childs room', 'closet', 'storage room', 'kitchen', 'living room', 'garage', 'pantry', 'exercise room', 'utility room', 'playroom', 'television room', 'corridor', 'lobby', 'bedroom', 'home office', 'dining room', 'bathroom']
+Predicted     : ['fridge', 'pantry', 'kitchen', 'dining room', 'storage room', 'garage', 'cabinet', 'shelf', 'can', 'jar', 'plate', 'backpack (if packed for lunch)', 'suitcase (if traveling)', 'utility room']
+RR=0.500  AP@1=0.000  AP@3=0.583  AP@5=0.679
+------------------------------------------------------------
+
+[Object] honey dipper
+Gold standard : ['television room', 'living room', 'lobby', 'dining room', 'childs room', 'garage', 'bathroom', 'kitchen', 'storage room', 'utility room', 'corridor', 'exercise room', 'bedroom', 'playroom', 'closet', 'home office', 'pantry']
+Predicted     : ['kitchen', 'pantry', 'dining room', 'storage room', 'utility room', 'living room', 'childs room box', 'playroom', 'fridge shelf']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] houseplant
+Gold standard : ['kitchen', 'living room', 'bedroom', 'bathroom']
+Predicted     : ['living room', 'bedroom', 'kitchen', 'bathroom', 'dining room', 'home office', 'childs room', 'garden', 'corridor', 'shelf', 'table', 'window sill', 'television room', 'lobby', 'playroom']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] incontinence pads
+Gold standard : ['childs room', 'playroom', 'garage', 'corridor', 'exercise room', 'closet', 'storage room', 'lobby', 'bathroom', 'pantry', 'living room', 'television room', 'utility room', 'bedroom', 'home office', 'dining room', 'kitchen']
+Predicted     : ['bathroom', 'bedroom', 'closet', 'bedside table', 'drawer', 'storage room', 'utility room', 'laundry room', 'suitcase', 'backpack', 'pantry', 'childs room', 'home office', 'garage']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] ink cartridge
+Gold standard : ['dining room', 'storage room', 'living room', 'television room', 'corridor', 'bathroom', 'childs room', 'playroom', 'home office', 'kitchen', 'lobby', 'garage', 'bedroom', 'pantry', 'utility room', 'closet', 'exercise room']
+Predicted     : ['home office', 'desk drawer', 'office supply box', 'storage room', 'utility room', 'living room', 'bedroom', "child's room desk drawer", 'pantry', 'closet', 'backpack', 'suitcase']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.700
+------------------------------------------------------------
+
+[Object] instant camera
+Gold standard : ['kitchen', 'living room', 'television room', 'garage', 'bedroom', 'dining room', 'utility room', 'exercise room', 'home office', 'corridor', 'bathroom', 'playroom', 'childs room', 'pantry', 'storage room', 'lobby', 'closet']
+Predicted     : ['living room', 'bedroom', 'home office', 'playroom', "child's room shelf", 'storage room', 'utility room', 'television room table', 'dining room', 'pantry', 'backpack', 'suitcase', 'library', 'corridor']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] invitation card
+Gold standard : ['childs room', 'corridor', 'lobby', 'garage', 'dining room', 'pantry', 'kitchen', 'closet', 'utility room', 'exercise room', 'home office', 'living room', 'playroom', 'television room', 'storage room', 'bedroom', 'bathroom']
+Predicted     : ['dining room', 'desk', 'home office', 'living room', 'kitchen', 'bedroom', 'entryway table', 'drawer', 'shelf', 'cabinet', 'mailbox', 'backpack', 'purse', "child's room desk", 'fridge (magnet-held)', 'bulletin board', 'television room table', 'playroom', 'library', 'storage room']
+RR=1.000  AP@1=1.000  AP@3=0.833  AP@5=0.804
+------------------------------------------------------------
+
+[Object] jar
+Gold standard : ['garage', 'bedroom', 'home office', 'pantry', 'childs room', 'lobby', 'utility room', 'storage room', 'television room', 'kitchen', 'bathroom', 'living room', 'dining room', 'corridor', 'playroom', 'closet', 'exercise room']
+Predicted     : ['kitchen', 'pantry', 'fridge', 'dining room', 'living room', 'bathroom', 'bedroom', "child's room shelf", 'utility room', 'storage room', 'garage', 'playroom', 'home office', 'library']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.887
+------------------------------------------------------------
+
+[Object] jenga
+Gold standard : ['dining room', 'bedroom', 'television room', 'garage', 'kitchen', 'childs room', 'storage room', 'home office', 'closet', 'playroom', 'living room', 'lobby', 'exercise room', 'corridor', 'bathroom', 'pantry', 'utility room']
+Predicted     : ['living room', 'childs room', 'playroom', 'television room', 'closet', 'storage room', 'shelf', 'cabinet', 'drawer', 'box', 'backpack', 'suitcase']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] jewelry box
+Gold standard : ['garage', 'bedroom', 'home office', 'pantry', 'childs room', 'lobby', 'utility room', 'storage room', 'television room', 'kitchen', 'bathroom', 'living room', 'dining room', 'corridor', 'playroom', 'closet', 'exercise room']
+Predicted     : ['bedroom', 'closet', 'dresser drawer', 'bathroom', 'jewelry armoire', 'nightstand', 'vanity table', 'safe', 'storage room', 'home office', 'suitcase', 'box', 'living room', 'childs room', 'playroom']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.917
+------------------------------------------------------------
+
+[Object] kettle
+Gold standard : ['kitchen']
+Predicted     : ['kitchen', 'utility room', 'pantry', 'dining room', 'home office', 'living room', 'garage', 'shelf', 'cabinet', 'table', 'countertop', 'stove', 'fridge (for electric kettles with water dispenser)']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] keyboard
+Gold standard : ['pantry', 'kitchen', 'utility room', 'playroom', 'bathroom', 'exercise room', 'closet', 'bedroom', 'home office', 'lobby', 'television room', 'dining room', 'garage', 'childs room', 'living room', 'storage room', 'corridor']
+Predicted     : ['desk', 'home office', 'living room', 'bedroom', 'childs room', 'gaming setup', 'television room', 'drawer', 'shelf', 'cabinet', 'backpack', 'suitcase', 'storage room', 'playroom', 'library']
+RR=0.500  AP@1=0.000  AP@3=0.583  AP@5=0.679
+------------------------------------------------------------
+
+[Object] keychain
+Gold standard : ['living room', 'bedroom']
+Predicted     : ['drawer', 'kitchen', 'entryway table', 'living room', 'bedroom', 'home office', 'purse/backpack', 'coat pocket', 'key hook', 'garage', 'storage room', 'car', 'utility room', 'childs room', 'pantry']
+RR=0.250  AP@1=0.000  AP@3=0.000  AP@5=0.325
+------------------------------------------------------------
+
+[Object] knife
+Gold standard : ['kitchen', 'utility room', 'television room', 'corridor', 'pantry', 'playroom', 'closet', 'bathroom', 'home office', 'garage', 'bedroom', 'dining room', 'lobby', 'storage room', 'exercise room', 'living room', 'childs room']
+Predicted     : ['kitchen', 'knife block', 'dining room', 'dishwasher', 'sink', 'cutting board', 'utility room', 'storage room', 'camping backpack', 'picnic basket', 'garden', 'playroom', 'garage']
+RR=1.000  AP@1=1.000  AP@3=0.833  AP@5=0.833
+------------------------------------------------------------
+
+[Object] knife block
+Gold standard : ['garage', 'bathroom', 'living room', 'dining room', 'television room', 'bedroom', 'playroom', 'closet', 'lobby', 'storage room', 'corridor', 'utility room', 'home office', 'pantry', 'childs room', 'kitchen', 'exercise room']
+Predicted     : ['kitchen', 'dining room', 'pantry', 'utility room', 'storage room', 'home office', 'closet']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] labeling tape
+Gold standard : ['utility room', 'storage room', 'garage', 'childs room', 'pantry', 'dining room', 'playroom', 'living room', 'exercise room', 'home office', 'bedroom', 'lobby', 'closet', 'corridor', 'kitchen', 'bathroom', 'television room']
+Predicted     : ['drawer', 'home office', 'utility room', 'garage', 'storage room', 'kitchen', 'desk', 'craft room', 'closet', 'pantry', 'toolbox', 'laundry room', 'box', 'shelf', 'cabinet']
+RR=0.500  AP@1=0.000  AP@3=0.583  AP@5=0.679
+------------------------------------------------------------
+
+[Object] ladle
+Gold standard : ['kitchen']
+Predicted     : ['kitchen', 'utensil jar', 'dining room', 'pantry', 'storage room', 'utility room', 'box', 'drawer', 'ladle holder']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] lamp
+Gold standard : ['bedroom', 'living room', 'bathroom', 'closet', 'garage', 'corridor', 'utility room', 'kitchen', 'television room', 'dining room', 'playroom', 'exercise room', 'storage room', 'home office', 'lobby', 'childs room', 'pantry']
+Predicted     : ['bedroom', 'living room', 'home office', 'desk', 'table', 'bedside table', 'shelf', 'corridor', 'dining room', 'childs room', 'garage', 'television room', 'playroom', 'library', 'utility room']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] lantern
+Gold standard : ['kitchen', 'corridor', 'pantry', 'storage room', 'garage', 'exercise room', 'playroom', 'bathroom', 'utility room', 'closet', 'bedroom', 'childs room', 'dining room', 'home office', 'living room', 'television room', 'lobby']
+Predicted     : ['garage', 'storage room', 'closet', 'utility room', 'garden', 'camping box', 'pantry', 'drawer', 'shelf', 'cabinet', 'childs room', 'living room']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] laptop
+Gold standard : ['living room', 'bedroom', 'lobby', 'garage', 'corridor', 'television room', 'closet', 'pantry', 'utility room', 'kitchen', 'home office', 'dining room', 'storage room', 'playroom', 'bathroom', 'childs room', 'exercise room']
+Predicted     : ['desk', 'home office', 'living room', 'bedroom', 'kitchen', 'dining room', 'backpack', 'suitcase', 'shelf', 'cabinet', 'childs room', 'playroom', 'library', 'bed']
+RR=0.500  AP@1=0.000  AP@3=0.583  AP@5=0.679
+------------------------------------------------------------
+
+[Object] laptop cover
+Gold standard : ['corridor', 'childs room', 'bedroom', 'pantry', 'living room', 'kitchen', 'garage', 'home office', 'exercise room', 'dining room', 'bathroom', 'lobby', 'playroom', 'closet', 'television room', 'utility room', 'storage room']
+Predicted     : ['desk', 'backpack', 'bedroom', 'living room', 'home office', 'drawer', 'shelf', 'cabinet', 'table', 'childs room', 'playroom', 'suitcase', 'box', 'television room']
+RR=0.333  AP@1=0.000  AP@3=0.333  AP@5=0.478
+------------------------------------------------------------
+
+[Object] laptop stand
+Gold standard : ['home office', 'closet', 'storage room', 'exercise room', 'childs room', 'lobby', 'kitchen', 'utility room', 'pantry', 'dining room', 'living room', 'bedroom', 'corridor', 'bathroom', 'television room', 'garage', 'playroom']
+Predicted     : ['desk', 'home office', 'bedroom', 'living room', 'dining room', 'kitchen', 'television room', 'childs room', 'playroom', 'shelf', 'cabinet', 'storage room', 'closet']
+RR=0.500  AP@1=0.000  AP@3=0.583  AP@5=0.679
+------------------------------------------------------------
+
+[Object] large marker
+Gold standard : ['utility room', 'childs room', 'pantry', 'playroom', 'television room', 'kitchen', 'dining room', 'corridor', 'bathroom', 'home office', 'bedroom', 'lobby', 'closet', 'exercise room', 'garage', 'storage room', 'living room']
+Predicted     : ['desk drawer', 'home office', 'kitchen', 'childs room', 'playroom', 'utility room', 'craft box', 'living room', 'television room shelf', 'bedroom', 'closet', 'storage room', 'pantry', 'laundry room', 'backpack', 'suitcase']
+RR=0.500  AP@1=0.000  AP@3=0.583  AP@5=0.679
+------------------------------------------------------------
+
+[Object] laundry box
+Gold standard : ['television room', 'home office', 'dining room', 'exercise room', 'bathroom', 'storage room', 'kitchen', 'garage', 'lobby', 'pantry', 'living room', 'corridor', 'utility room', 'playroom', 'closet', 'bedroom', 'childs room']
+Predicted     : ['laundry room', 'bedroom', 'bathroom', 'closet', 'corridor', 'utility room', 'childs room', 'storage room', 'playroom', 'garage', 'pantry', 'under bed', 'shelf', 'cabinet', 'box']
+RR=0.500  AP@1=0.000  AP@3=0.583  AP@5=0.679
+------------------------------------------------------------
+
+[Object] laundryhamper
+Gold standard : ['bedroom']
+Predicted     : ['bedroom', 'bathroom', 'laundry room', 'closet', 'utility room', 'childs room', 'corridor', 'playroom', 'storage room', 'garage']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] laxative
+Gold standard : ['childs room', 'closet', 'bathroom', 'bedroom', 'utility room', 'kitchen', 'exercise room', 'home office', 'corridor', 'playroom', 'living room', 'pantry', 'garage', 'dining room', 'storage room', 'lobby', 'television room']
+Predicted     : ['bathroom', 'medicine cabinet', 'bedroom', 'kitchen', 'pantry', 'storage room', 'utility room', 'home office', "child's room (out of reach)", 'closet', 'laundry room', 'fridge (if required to be chilled)', 'bedside table', 'desk drawer', 'first aid box']
+RR=1.000  AP@1=1.000  AP@3=0.833  AP@5=0.804
+------------------------------------------------------------
+
+[Object] lego duplo
+Gold standard : ['utility room', 'living room', 'corridor', 'dining room', 'exercise room', 'playroom', 'television room', 'home office', 'bedroom', 'garage', 'storage room', 'pantry', 'closet', 'childs room', 'lobby', 'kitchen', 'bathroom']
+Predicted     : ['childs room', 'playroom', 'living room', 'toy box', 'closet', 'storage room', 'shelf', 'drawer', 'backpack', 'suitcase', 'under bed', 'under sofa', 'utility room', 'box']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.950
+------------------------------------------------------------
+
+[Object] lemon
+Gold standard : ['kitchen', 'pantry', 'bathroom', 'corridor', 'playroom', 'lobby', 'closet', 'bedroom', 'utility room', 'storage room', 'exercise room', 'garage', 'dining room', 'childs room', 'home office', 'living room', 'television room']
+Predicted     : ['kitchen', 'fridge', 'pantry', 'fruit bowl', 'countertop', 'dining room', 'garden', 'storage room', 'utility room', 'drawer', 'shelf', 'cabinet', 'backpack', 'jar']
+RR=1.000  AP@1=1.000  AP@3=0.833  AP@5=0.833
+------------------------------------------------------------
+
+[Object] letter holder
+Gold standard : ['television room', 'storage room', 'living room', 'exercise room', 'home office', 'kitchen', 'dining room', 'closet', 'bedroom', 'corridor', 'pantry', 'playroom', 'utility room', 'garage', 'lobby', 'bathroom', 'childs room']
+Predicted     : ['desk', 'home office', 'kitchen', 'entryway table', 'living room', 'bedroom', 'dining room', 'corridor', 'playroom', "child's room desk", 'utility room', 'library', 'bedside table']
+RR=0.500  AP@1=0.000  AP@3=0.583  AP@5=0.589
+------------------------------------------------------------
+
+[Object] lettuce
+Gold standard : ['kitchen']
+Predicted     : ['fridge', 'pantry', 'kitchen', 'garden', 'drawer', 'shelf', 'cabinet', 'table', 'countertop', 'storage room', 'box', 'bag']
+RR=0.333  AP@1=0.000  AP@3=0.333  AP@5=0.333
+------------------------------------------------------------
+
+[Object] light bulb
+Gold standard : ['living room', 'kitchen', 'television room', 'playroom', 'pantry', 'closet', 'utility room', 'corridor', 'bedroom', 'garage', 'exercise room', 'dining room', 'storage room', 'lobby', 'childs room', 'bathroom', 'home office']
+Predicted     : ['closet', 'storage room', 'utility room', 'garage', 'drawer', 'shelf', 'cabinet', 'lamp', 'table', 'desk', 'box', 'bedroom', 'living room', 'corridor', 'bathroom', 'kitchen', 'home office', 'dining room', 'pantry', 'laundry room']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] lightswitch
+Gold standard : ['kitchen', 'living room', 'bedroom', 'bathroom']
+Predicted     : ['bedroom', 'living room', 'kitchen', 'bathroom', 'corridor', 'dining room', 'home office', "wall (child's room)", 'playroom', 'garage', 'laundry room', 'utility room', 'wall (exercise room)', 'pantry', 'storage room']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] lime squeezer
+Gold standard : ['childs room', 'closet', 'bathroom', 'bedroom', 'utility room', 'kitchen', 'exercise room', 'home office', 'corridor', 'playroom', 'living room', 'pantry', 'garage', 'dining room', 'storage room', 'lobby', 'television room']
+Predicted     : ['kitchen', 'drawer', 'cabinet', 'pantry', 'shelf', 'dining room', 'table', 'utility room', 'storage room', 'box', 'childs room', 'playroom']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.750
+------------------------------------------------------------
+
+[Object] lipstick
+Gold standard : ['playroom', 'utility room', 'childs room', 'exercise room', 'storage room', 'lobby', 'kitchen', 'television room', 'closet', 'bathroom', 'garage', 'dining room', 'corridor', 'bedroom', 'home office', 'living room', 'pantry']
+Predicted     : ['bathroom', 'bedroom', 'handbag', 'makeup bag', 'living room', 'purse', 'nightstand drawer', 'cosmetic case', 'coat pocket', 'desk drawer', 'travel bag', 'storage room']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.867
+------------------------------------------------------------
+
+[Object] lunch bag
+Gold standard : ['playroom', 'bathroom', 'living room', 'kitchen', 'corridor', 'television room', 'lobby', 'bedroom', 'utility room', 'storage room', 'pantry', 'closet', 'dining room', 'home office', 'exercise room', 'childs room', 'garage']
+Predicted     : ['kitchen', 'fridge', 'dining room', 'pantry', 'closet', 'home office', 'childs room', 'backpack', 'table', 'desk', 'shelf', 'cabinet', 'garage', 'laundry room', 'utility room']
+RR=1.000  AP@1=1.000  AP@3=0.833  AP@5=0.804
+------------------------------------------------------------
+
+[Object] lunch box
+Gold standard : ['bathroom', 'dining room', 'kitchen', 'exercise room', 'playroom', 'lobby', 'childs room', 'living room', 'utility room', 'corridor', 'television room', 'bedroom', 'garage', 'pantry', 'home office', 'closet', 'storage room']
+Predicted     : ['kitchen', 'fridge', 'backpack', 'dining room', 'table', 'childs room', 'home office', 'lunch bag', 'pantry', 'cabinet', 'drawer', 'shelf', 'suitcase', 'storage room', 'car', 'school locker', 'desk', 'picnic basket', 'playroom', 'utility room']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.750
+------------------------------------------------------------
+
+[Object] magnifying glass
+Gold standard : ['dining room', 'storage room', 'living room', 'television room', 'corridor', 'bathroom', 'childs room', 'playroom', 'home office', 'kitchen', 'lobby', 'garage', 'bedroom', 'pantry', 'utility room', 'closet', 'exercise room']
+Predicted     : ['desk drawer', 'home office', 'living room', 'bedroom', 'kitchen', 'study table', 'library', 'garage', 'utility room', 'bathroom', 'playroom', "child's room shelf", 'backpack', 'suitcase', 'closet']
+RR=0.500  AP@1=0.000  AP@3=0.583  AP@5=0.679
+------------------------------------------------------------
+
+[Object] mascara
+Gold standard : ['childs room', 'bathroom', 'living room', 'lobby', 'kitchen', 'corridor', 'exercise room', 'bedroom', 'garage', 'pantry', 'television room', 'storage room', 'home office', 'dining room', 'playroom', 'utility room', 'closet']
+Predicted     : ['bathroom', 'bedroom', 'makeup bag', 'purse', 'travel bag', 'suitcase', 'backpack', 'storage room', 'playroom', 'home office', 'living room', 'closet']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] master chef can
+Gold standard : ['closet', 'living room', 'playroom', 'childs room', 'bedroom', 'bathroom', 'dining room', 'pantry', 'corridor', 'home office', 'exercise room', 'lobby', 'utility room', 'storage room', 'kitchen', 'garage', 'television room']
+Predicted     : ['kitchen', 'pantry', 'utility room', 'storage room', 'garage', 'fridge', 'dining room', 'box', 'closet', 'suitcase (if being moved)']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] measuring tape
+Gold standard : ['living room', 'kitchen', 'television room', 'utility room', 'corridor', 'bedroom', 'lobby', 'exercise room', 'playroom', 'home office', 'childs room', 'closet', 'bathroom', 'pantry', 'dining room', 'garage', 'storage room']
+Predicted     : ['toolbox', 'garage', 'utility room', 'kitchen', 'home office', 'closet', 'laundry room', 'craft room', 'workshop', 'bathroom', 'garden', 'tool drawer', 'backpack', 'storage room', 'exercise room']
+RR=0.500  AP@1=0.000  AP@3=0.583  AP@5=0.679
+------------------------------------------------------------
+
+[Object] medicine
+Gold standard : ['childs room', 'closet', 'television room', 'corridor', 'bathroom', 'garage', 'bedroom', 'playroom', 'exercise room', 'storage room', 'kitchen', 'living room', 'home office', 'utility room', 'dining room', 'pantry', 'lobby']
+Predicted     : ['bathroom', 'bedroom', 'kitchen', 'fridge', 'pantry', 'home office', 'living room', "child's room drawer", 'utility room', 'storage room', 'dining room', 'medicine box', 'backpack', 'suitcase', 'first aid kit']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.950
+------------------------------------------------------------
+
+[Object] microwave
+Gold standard : ['kitchen']
+Predicted     : ['kitchen', 'utility room', 'garage', 'home office', 'pantry', 'dining room', 'break room', 'storage room', 'laundry room', 'childs room', 'playroom', 'cabinet', 'shelf', 'table', 'countertop']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] milk fror
+Gold standard : ['playroom', 'pantry', 'storage room', 'television room', 'bedroom', 'garage', 'closet', 'bathroom', 'exercise room', 'home office', 'childs room', 'living room', 'utility room', 'kitchen', 'corridor', 'dining room', 'lobby']
+Predicted     : ['fridge', 'kitchen', 'pantry', 'dining room', 'table', 'shelf', 'cabinet', 'childs room', 'garage', 'storage room', 'utility room', 'backpack (insulated)', 'box (cooler)', 'jar (if decanted)']
+RR=0.500  AP@1=0.000  AP@3=0.583  AP@5=0.639
+------------------------------------------------------------
+
+[Object] mini soccer ball
+Gold standard : ['corridor', 'home office', 'television room', 'playroom', 'lobby', 'storage room', 'garage', 'living room', 'pantry', 'utility room', 'closet', 'dining room', 'bedroom', 'kitchen', 'bathroom', 'childs room', 'exercise room']
+Predicted     : ['childs room', 'playroom', 'living room', 'garden', 'garage', 'closet', 'storage room', 'corridor', 'drawer', 'box', 'backpack', 'shelf', 'utility room', 'exercise room']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.950
+------------------------------------------------------------
+
+[Object] mirror
+Gold standard : ['kitchen', 'living room', 'bedroom', 'bathroom']
+Predicted     : ['bathroom', 'bedroom', 'corridor', 'living room', 'closet', 'entryway', 'garage', 'dining room', 'home office', 'childs room', 'exercise room', 'laundry room', 'pantry', 'lobby', 'vanity', 'drawer', 'cabinet', 'wall']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.917
+------------------------------------------------------------
+
+[Object] morboard
+Gold standard : ['television room', 'utility room', 'living room', 'dining room', 'pantry', 'closet', 'lobby', 'exercise room', 'playroom', 'garage', 'home office', 'storage room', 'childs room', 'kitchen', 'corridor', 'bedroom', 'bathroom']
+Predicted     : ['fridge', 'pantry', 'kitchen', 'dining room', 'table', 'plate', 'shelf', 'cabinet', 'storage room', 'utility room', 'childs room', 'playroom', 'backpack', 'box', 'jar']
+RR=0.500  AP@1=0.000  AP@3=0.583  AP@5=0.639
+------------------------------------------------------------
+
+[Object] mouse
+Gold standard : ['kitchen', 'living room', 'storage room', 'trap', 'childs room', 'utility room', 'corridor', 'bedroom', 'exercise room', 'pantry', 'dining room', 'playroom', 'garage', 'bathroom', 'television room', 'closet', 'lobby', 'home office']
+Predicted     : ['desk', 'home office', 'living room', 'bedroom', 'childs room', 'television room', 'drawer', 'shelf', 'cabinet', 'backpack', 'box', 'suitcase', 'table', 'playroom', 'library']
+RR=0.500  AP@1=0.000  AP@3=0.583  AP@5=0.679
+------------------------------------------------------------
+
+[Object] mouse pad
+Gold standard : ['home office', 'pantry', 'lobby', 'utility room', 'playroom', 'closet', 'bedroom', 'bathroom', 'television room', 'corridor', 'exercise room', 'storage room', 'kitchen', 'living room', 'garage', 'childs room', 'dining room']
+Predicted     : ['desk', 'home office', 'childs room', 'playroom', 'bedroom', 'living room', 'television room', 'kitchen', 'shelf', 'cabinet', 'backpack', 'suitcase', 'box']
+RR=0.500  AP@1=0.000  AP@3=0.583  AP@5=0.679
+------------------------------------------------------------
+
+[Object] movie dvd
+Gold standard : ['home office', 'bedroom', 'pantry', 'exercise room', 'garage', 'storage room', 'living room', 'kitchen', 'dining room', 'closet', 'television room', 'corridor', 'lobby', 'playroom', 'childs room', 'utility room', 'bathroom']
+Predicted     : ['living room', 'television room', 'bedroom', 'childs room', 'playroom', 'home office', 'shelf', 'cabinet', 'drawer', 'entertainment center', 'storage room', 'closet', 'backpack', 'suitcase', 'box']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] mug
+Gold standard : ['kitchen', 'bedroom', 'childs room', 'exercise room', 'bathroom', 'utility room', 'living room', 'playroom', 'television room', 'storage room', 'lobby', 'garage', 'home office', 'pantry', 'closet', 'dining room', 'corridor']
+Predicted     : ['kitchen', 'cabinet', 'dishwasher', 'sink', 'dining room', 'table', 'desk', 'home office', 'bedroom', 'nightstand', 'living room', 'shelf', 'pantry', 'utility room', 'playroom', 'childs room', 'box', 'backpack']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.700
+------------------------------------------------------------
+
+[Object] multiport hub
+Gold standard : ['living room', 'bathroom', 'closet', 'garage', 'corridor', 'utility room', 'kitchen', 'television room', 'dining room', 'bedroom', 'playroom', 'exercise room', 'storage room', 'home office', 'lobby', 'childs room', 'pantry']
+Predicted     : ['home office', 'bedroom', 'living room', 'kitchen', 'entertainment center shelf', 'television room cabinet', "child's room desk", 'playroom', 'utility room', 'garage', 'backpack', 'suitcase', 'storage room', 'corridor', 'library']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] mustard bottle
+Gold standard : ['home office', 'pantry', 'lobby', 'utility room', 'playroom', 'closet', 'bedroom', 'bathroom', 'television room', 'corridor', 'exercise room', 'storage room', 'kitchen', 'living room', 'garage', 'childs room', 'dining room']
+Predicted     : ['kitchen', 'fridge', 'pantry', 'dining room', 'cabinet', 'shelf', 'drawer', 'picnic basket', 'storage room', 'utility room', 'lunchbox', 'backpack', 'childs room', 'garage', 'garden']
+RR=1.000  AP@1=1.000  AP@3=0.833  AP@5=0.806
+------------------------------------------------------------
+
+[Object] neck rest
+Gold standard : ['living room', 'kitchen', 'television room', 'playroom', 'pantry', 'closet', 'utility room', 'corridor', 'bedroom', 'garage', 'exercise room', 'dining room', 'storage room', 'lobby', 'childs room', 'bathroom', 'home office']
+Predicted     : ['bedroom', 'living room', 'chair', 'home office', 'desk', 'car', 'closet', 'storage room', 'travel bag', 'suitcase', 'backpack', 'television room', 'exercise room', 'childs room']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.917
+------------------------------------------------------------
+
+[Object] newspaper
+Gold standard : ['living room']
+Predicted     : ['living room', 'kitchen', 'home office', 'bedroom', 'bathroom', 'dining room', 'mailbox', 'garage', 'lobby', 'childs room', 'playroom', 'backpack', 'recycling bin', 'storage room', 'suitcase', 'garden', 'utility room', 'newspaper rack']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] nine hole peg test
+Gold standard : ['garage', 'playroom', 'television room', 'storage room', 'kitchen', 'home office', 'living room', 'pantry', 'bedroom', 'closet', 'bathroom', 'dining room', 'corridor', 'exercise room', 'utility room', 'childs room', 'lobby']
+Predicted     : ['home office', 'childs room', 'playroom', 'living room', 'bedroom', 'closet', 'storage room', 'utility room', 'desk drawer', 'cabinet', 'medical kit', 'backpack', 'suitcase']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] nintendo switch
+Gold standard : ['television room', 'bathroom', 'exercise room', 'storage room', 'kitchen', 'lobby', 'dining room', 'home office', 'garage', 'pantry', 'playroom', 'corridor', 'closet', 'childs room', 'living room', 'utility room', 'bedroom']
+Predicted     : ['living room', 'childs room', 'bedroom', 'playroom', 'television room', 'home office', 'backpack', 'drawer', 'shelf', 'cabinet', 'suitcase', 'table', 'desk']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] orange
+Gold standard : ['lobby', 'home office', 'kitchen', 'garage', 'playroom', 'bedroom', 'television room', 'corridor', 'living room', 'utility room', 'childs room', 'exercise room', 'dining room', 'bathroom', 'closet', 'pantry', 'storage room']
+Predicted     : ['kitchen', 'fridge', 'fruit bowl', 'dining room', 'pantry', 'countertop', 'lunchbox', 'backpack', 'childs room', 'living room', 'garden', 'storage room', 'drawer', 'shelf', 'box']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.700
+------------------------------------------------------------
+
+[Object] ottoman
+Gold standard : ['living room']
+Predicted     : ['living room', 'bedroom', 'childs room', 'television room', 'home office', 'playroom', 'closet', 'storage room', 'corridor', 'lobby', 'garden']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] padlock
+Gold standard : ['television room', 'home office', 'garage', 'pantry', 'storage room', 'bathroom', 'exercise room', 'kitchen', 'playroom', 'corridor', 'lobby', 'closet', 'living room', 'childs room', 'utility room', 'bedroom', 'dining room']
+Predicted     : ['garage', 'storage room', 'closet', 'utility room', 'drawer', 'toolbox', 'suitcase', 'backpack', 'cabinet', 'garden', 'childs room', 'home office', 'pantry']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] paint bottle set
+Gold standard : ['bathroom', 'storage room', 'lobby', 'childs room', 'pantry', 'exercise room', 'home office', 'dining room', 'playroom', 'living room', 'corridor', 'bedroom', 'utility room', 'closet', 'kitchen', 'garage', 'television room']
+Predicted     : ['garage', 'storage room', 'utility room', 'closet', 'home office', 'playroom', 'childs room', 'pantry', 'shelf', 'cabinet', 'box', 'drawer', 'garden', 'laundry room', 'corridor']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] paint maker
+Gold standard : ['television room', 'storage room', 'garage', 'lobby', 'utility room', 'childs room', 'playroom', 'living room', 'home office', 'exercise room', 'bathroom', 'corridor', 'closet', 'dining room', 'kitchen', 'pantry', 'bedroom']
+Predicted     : ['garage', 'storage room', 'utility room', 'home office', 'closet', 'craft room', 'pantry', 'drawer', 'shelf', 'cabinet', 'box', 'childs room', 'playroom']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] painting
+Gold standard : ['living room', 'bedroom', 'bathroom']
+Predicted     : ['living room', 'bedroom', 'dining room', 'corridor', 'home office', 'childs room', 'library', 'lobby', 'bathroom', 'playroom', 'garage', 'storage room', 'closet', 'television room']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] pan
+Gold standard : ['kitchen', 'pantry', 'bathroom', 'corridor', 'playroom', 'lobby', 'closet', 'bedroom', 'utility room', 'storage room', 'exercise room', 'garage', 'dining room', 'childs room', 'home office', 'living room', 'television room']
+Predicted     : ['kitchen', 'cabinet', 'stove', 'shelf', 'drawer', 'dishwasher', 'drying rack', 'storage room', 'pantry', 'garage', 'utility room', 'oven', 'table', 'box']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] paper bag
+Gold standard : ['pantry', 'childs room', 'television room', 'kitchen', 'storage room', 'bathroom', 'dining room', 'playroom', 'closet', 'bedroom', 'corridor', 'living room', 'garage', 'utility room', 'home office', 'exercise room', 'lobby']
+Predicted     : ['kitchen', 'pantry', 'closet', 'storage room', 'utility room', 'garage', 'home office', 'dining room', 'living room', 'bedroom', 'childs room', 'laundry room', 'drawer', 'cabinet', 'shelf', 'table', 'box']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] papertowelroll
+Gold standard : ['kitchen', 'bathroom']
+Predicted     : ['kitchen', 'bathroom', 'dining room', 'utility room', 'laundry room', 'garage', 'pantry', 'storage room', 'closet', 'home office', 'childs room', 'living room', 'shelf', 'cabinet', 'table']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] parchment sheet
+Gold standard : ['lobby', 'living room', 'closet', 'pantry', 'corridor', 'dining room', 'bedroom', 'utility room', 'kitchen', 'bathroom', 'home office', 'childs room', 'playroom', 'exercise room', 'storage room', 'television room', 'garage']
+Predicted     : ['home office', 'library', 'living room', 'bedroom', 'dining room', 'storage room', 'closet', 'childs room desk drawer', 'playroom', 'suitcase', 'pantry', 'utility room', 'television room cabinet', 'exercise room shelf']
+RR=1.000  AP@1=1.000  AP@3=0.833  AP@5=0.804
+------------------------------------------------------------
+
+[Object] peach
+Gold standard : ['living room', 'playroom', 'storage room', 'garage', 'bedroom', 'home office', 'closet', 'bathroom', 'lobby', 'television room', 'corridor', 'dining room', 'pantry', 'childs room', 'kitchen', 'exercise room', 'utility room']
+Predicted     : ['kitchen', 'fridge', 'fruit bowl', 'dining room', 'countertop', 'pantry', 'lunchbox', 'backpack', 'garden', 'childs room', 'living room', 'drawer', 'shelf', 'plate']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.750
+------------------------------------------------------------
+
+[Object] pear
+Gold standard : ['bathroom', 'utility room', 'closet', 'bedroom', 'childs room', 'corridor', 'playroom', 'storage room', 'lobby', 'dining room', 'home office', 'garage', 'pantry', 'kitchen', 'exercise room', 'living room', 'television room']
+Predicted     : ['kitchen', 'fridge', 'fruit bowl', 'dining room', 'pantry', 'countertop', 'lunchbox', 'backpack', 'childs room', 'living room', 'garden', 'storage room', 'drawer', 'shelf', 'plate']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.700
+------------------------------------------------------------
+
+[Object] peg and hammer toy
+Gold standard : ['utility room', 'bedroom', 'corridor', 'garage', 'home office', 'dining room', 'playroom', 'kitchen', 'television room', 'lobby', 'exercise room', 'bathroom', 'living room', 'childs room', 'pantry', 'closet', 'storage room']
+Predicted     : ['childs room', 'playroom', 'toy box', 'closet', 'living room', 'bedroom', 'shelf', 'drawer', 'storage room', 'garage', 'utility room', 'backpack', 'suitcase']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.887
+------------------------------------------------------------
+
+[Object] pen
+Gold standard : ['kitchen', 'living room', 'bedroom']
+Predicted     : ['desk', 'home office', 'kitchen', 'living room', 'bedroom', 'utility room', 'pantry', 'backpack', 'purse', 'jacket pocket', 'table', 'nightstand', 'office cabinet', 'storage room', 'childs room', 'playroom', 'fridge (for shopping lists)', 'library', 'television room table', 'sofa crevice']
+RR=0.333  AP@1=0.000  AP@3=0.333  AP@5=0.478
+------------------------------------------------------------
+
+[Object] pencil
+Gold standard : ['kitchen', 'living room', 'bedroom']
+Predicted     : ['desk', 'home office', 'drawer', 'kitchen', 'living room', 'childs room', 'playroom', 'backpack', 'pencil case', 'jar', 'table', 'shelf', 'utility room', 'bedside table', 'library', 'suitcase', 'storage room', 'notebook']
+RR=0.250  AP@1=0.000  AP@3=0.000  AP@5=0.325
+------------------------------------------------------------
+
+[Object] pencil case
+Gold standard : ['closet', 'lobby', 'pantry', 'childs room', 'exercise room', 'corridor', 'bathroom', 'utility room', 'bedroom', 'playroom', 'storage room', 'kitchen', 'dining room', 'living room', 'home office', 'television room', 'garage']
+Predicted     : ['desk', 'backpack', 'drawer', 'childs room', 'home office', 'playroom', 'bedroom', 'living room', 'kitchen', 'storage room', 'suitcase', 'closet', 'library', 'table']
+RR=0.250  AP@1=0.000  AP@3=0.000  AP@5=0.325
+------------------------------------------------------------
+
+[Object] peppermint
+Gold standard : ['home office', 'utility room', 'kitchen', 'lobby', 'television room', 'dining room', 'storage room', 'childs room', 'closet', 'exercise room', 'corridor', 'bedroom', 'pantry', 'playroom', 'living room', 'bathroom', 'garage']
+Predicted     : ['kitchen', 'pantry', 'fridge', 'dining room', 'living room', 'bathroom', 'bedroom', 'home office', 'utility room', 'storage room', "child's room drawer", 'playroom', 'garden', 'backpack']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.887
+------------------------------------------------------------
+
+[Object] peppershaker
+Gold standard : ['kitchen']
+Predicted     : ['kitchen', 'dining room', 'pantry', 'spice rack', 'picnic basket', 'outdoor grill area', 'garden', 'storage room', 'utility room', 'drawer', 'backpack', 'suitcase']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] pepsi can pack
+Gold standard : ['playroom', 'exercise room', 'pantry', 'corridor', 'lobby', 'kitchen', 'bathroom', 'storage room', 'utility room', 'television room', 'dining room', 'childs room', 'bedroom', 'closet', 'garage', 'home office', 'living room']
+Predicted     : ['kitchen', 'fridge', 'pantry', 'garage', 'storage room', 'living room', 'dining room', 'television room', 'childs room', 'utility room', 'closet', 'backpack', 'suitcase', 'shelf', 'cabinet', 'table', 'box']
+RR=1.000  AP@1=1.000  AP@3=0.833  AP@5=0.804
+------------------------------------------------------------
+
+[Object] pet food supplement
+Gold standard : ['corridor', 'childs room', 'home office', 'storage room', 'television room', 'exercise room', 'pantry', 'lobby', 'dining room', 'kitchen', 'bedroom', 'utility room', 'closet', 'playroom', 'living room', 'bathroom', 'garage']
+Predicted     : ['pantry', 'kitchen', 'fridge', "pet's feeding area", 'utility room', 'storage room', 'garage', 'laundry room', "child's room (if pet is child's responsibility)", 'home office', 'closet', 'bathroom', 'dining room', "pet's travel bag"]
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.867
+------------------------------------------------------------
+
+[Object] phillips screwdriver
+Gold standard : ['dining room', 'kitchen', 'closet', 'bedroom', 'utility room', 'exercise room', 'bathroom', 'lobby', 'garage', 'living room', 'pantry', 'storage room', 'home office', 'playroom', 'television room', 'childs room', 'corridor']
+Predicted     : ['garage', 'toolbox', 'utility room', 'home office', 'drawer', 'kitchen', 'closet', 'storage room', 'workbench', 'backpack', 'suitcase', 'shelf', 'cabinet', 'childs room', 'playroom']
+RR=1.000  AP@1=1.000  AP@3=0.833  AP@5=0.806
+------------------------------------------------------------
+
+[Object] phone armband case
+Gold standard : ['living room', 'kitchen', 'television room', 'utility room', 'corridor', 'bedroom', 'lobby', 'exercise room', 'playroom', 'home office', 'childs room', 'closet', 'bathroom', 'pantry', 'dining room', 'garage', 'storage room']
+Predicted     : ['armband', 'exercise room', 'drawer', 'closet', 'backpack', 'suitcase', 'utility room', 'bedroom', 'living room', 'storage room', 'home office', 'laundry room', 'shelf', 'box']
+RR=0.500  AP@1=0.000  AP@3=0.500  AP@5=0.500
+------------------------------------------------------------
+
+[Object] phone stand
+Gold standard : ['exercise room', 'bathroom', 'playroom', 'garage', 'pantry', 'kitchen', 'television room', 'childs room', 'utility room', 'storage room', 'bedroom', 'corridor', 'dining room', 'living room', 'lobby', 'home office', 'closet']
+Predicted     : ['living room', 'bedroom', 'home office', 'kitchen', 'dining room', 'television room stand', "child's room desk", 'playroom', 'bathroom', 'utility room', 'garage', 'corridor', 'lobby table', 'exercise room shelf', 'closet']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] picture frame
+Gold standard : ['living room', 'utility room', 'exercise room', 'storage room', 'bedroom', 'lobby', 'garage', 'kitchen', 'corridor', 'dining room', 'home office', 'pantry', 'television room', 'bathroom', 'childs room', 'closet', 'playroom']
+Predicted     : ['living room', 'bedroom', 'corridor', 'home office', 'dining room', 'childs room', 'television room', 'shelf', 'wall', 'table', 'desk', 'mantelpiece', 'nightstand', 'bookshelf', 'cabinet']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] pie
+Gold standard : ['oven']
+Predicted     : ['kitchen', 'fridge', 'dining room', 'countertop', 'pantry', 'shelf', 'cabinet', 'oven', 'box', 'storage room', 'childs room', 'living room', 'jar', 'plate']
+RR=0.125  AP@1=0.000  AP@3=0.000  AP@5=0.000
+------------------------------------------------------------
+
+[Object] pillow
+Gold standard : ['bedroom', 'living room', 'corridor', 'childs room', 'pantry', 'kitchen', 'garage', 'home office', 'exercise room', 'dining room', 'bathroom', 'lobby', 'playroom', 'closet', 'television room', 'utility room', 'storage room']
+Predicted     : ['bed', 'living room', 'bedroom', 'closet', 'storage room', 'playroom', 'childs room', 'guest room', 'television room', 'exercise room', 'shelf', 'cabinet', 'box']
+RR=0.500  AP@1=0.000  AP@3=0.583  AP@5=0.679
+------------------------------------------------------------
+
+[Object] pitcher base
+Gold standard : ['television room', 'living room', 'garage', 'lobby', 'exercise room', 'utility room', 'bathroom', 'childs room', 'home office', 'pantry', 'corridor', 'closet', 'bedroom', 'storage room', 'playroom', 'dining room', 'kitchen']
+Predicted     : ['kitchen', 'dining room', 'fridge', 'pantry', 'cabinet', 'shelf', 'table', 'living room', 'utility room', 'storage room', 'closet', 'childs room', 'playroom', 'laundry room', 'garage']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.917
+------------------------------------------------------------
+
+[Object] plant
+Gold standard : ['garage', 'childs room', 'home office', 'corridor', 'playroom', 'closet', 'dining room', 'kitchen', 'television room', 'lobby', 'pantry', 'bathroom', 'utility room', 'storage room', 'living room', 'exercise room', 'bedroom']
+Predicted     : ['living room', 'garden', 'bedroom', 'kitchen', 'bathroom', 'home office', 'dining room', 'corridor', 'childs room', 'balcony', 'windowsill', 'shelf', 'table', 'desk', 'cabinet', 'plant stand', 'greenhouse', 'porch', 'utility room']
+RR=1.000  AP@1=1.000  AP@3=0.833  AP@5=0.804
+------------------------------------------------------------
+
+[Object] plant container
+Gold standard : ['utility room', 'storage room', 'garage', 'childs room', 'pantry', 'dining room', 'playroom', 'living room', 'exercise room', 'home office', 'bedroom', 'lobby', 'closet', 'corridor', 'kitchen', 'bathroom', 'television room']
+Predicted     : ['living room', 'garden', 'bedroom', 'kitchen', 'bathroom', 'balcony', 'windowsill', 'dining room', 'home office', 'corridor', 'shelf', 'table', 'desk', 'greenhouse', 'utility room', 'playroom', 'childs room', 'lobby', 'television room']
+RR=1.000  AP@1=1.000  AP@3=0.833  AP@5=0.804
+------------------------------------------------------------
+
+[Object] plant saucer
+Gold standard : ['television room', 'storage room', 'garage', 'lobby', 'utility room', 'childs room', 'playroom', 'living room', 'home office', 'exercise room', 'bathroom', 'corridor', 'closet', 'dining room', 'kitchen', 'pantry', 'bedroom']
+Predicted     : ['kitchen', 'living room', 'dining room', 'bedroom', 'bathroom', 'balcony', 'garden', 'greenhouse', 'plant stand', 'utility room', 'corridor', 'lobby', 'childs room', 'home office', 'television room shelf', 'plant cabinet']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] plate
+Gold standard : ['kitchen', 'living room', 'garage', 'bathroom', 'dining room', 'television room', 'bedroom', 'playroom', 'closet', 'lobby', 'storage room', 'corridor', 'utility room', 'home office', 'pantry', 'childs room', 'exercise room']
+Predicted     : ['kitchen', 'dining room', 'cabinet', 'shelf', 'dishwasher', 'table', 'sink', 'cupboard', 'pantry', 'living room', 'childs room', 'playroom', 'drawer', 'storage room', 'box']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] plum
+Gold standard : ['living room', 'dining room', 'bedroom', 'storage room', 'home office', 'pantry', 'childs room', 'utility room', 'lobby', 'exercise room', 'closet', 'bathroom', 'corridor', 'television room', 'kitchen', 'garage', 'playroom']
+Predicted     : ['kitchen', 'fridge', 'fruit bowl', 'dining room', 'pantry', 'countertop', 'lunchbox', 'backpack', 'childs room', 'garden', 'refrigerator drawer', 'shelf', 'plate', 'storage room', 'picnic basket']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.700
+------------------------------------------------------------
+
+[Object] plunger
+Gold standard : ['bathroom']
+Predicted     : ['bathroom', 'utility room', 'laundry room', 'storage room', 'garage', 'closet', 'pantry', 'kitchen', 'corridor', 'garden']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] portable speaker
+Gold standard : ['television room', 'closet', 'garage', 'childs room', 'living room', 'dining room', 'playroom', 'exercise room', 'corridor', 'utility room', 'bathroom', 'pantry', 'lobby', 'bedroom', 'storage room', 'kitchen', 'home office']
+Predicted     : ['living room', 'bedroom', 'kitchen', 'bathroom', 'garden', 'dining room', 'home office', 'childs room', 'playroom', 'garage', 'exercise room', 'television room', 'shelf', 'table', 'desk', 'backpack', 'cabinet', 'drawer']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] poster
+Gold standard : ['bedroom']
+Predicted     : ['bedroom', 'living room', 'childs room', 'playroom', 'home office', 'corridor', 'closet', 'storage room', 'garage', 'utility room', 'library', 'television room', 'lobby', 'dining room']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] pot
+Gold standard : ['kitchen']
+Predicted     : ['kitchen', 'cabinet', 'stove', 'shelf', 'dining room', 'table', 'storage room', 'pantry', 'garden', 'garage', 'utility room', 'drawer', 'closet', 'oven']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] potato
+Gold standard : ['kitchen']
+Predicted     : ['kitchen', 'pantry', 'fridge', 'cabinet', 'drawer', 'storage room', 'garage', 'garden', 'utility room', 'box', 'shelf']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] potted meat can
+Gold standard : ['television room', 'bedroom', 'playroom', 'childs room', 'dining room', 'corridor', 'utility room', 'lobby', 'storage room', 'kitchen', 'exercise room', 'home office', 'pantry', 'garage', 'living room', 'closet', 'bathroom']
+Predicted     : ['kitchen', 'pantry', 'fridge', 'cabinet', 'shelf', 'storage room', 'garage', 'utility room', 'dining room', 'table', 'closet', 'childs room', 'playroom', 'backpack', 'suitcase']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] power drill
+Gold standard : ['pantry', 'dining room', 'living room', 'playroom', 'lobby', 'utility room', 'television room', 'kitchen', 'exercise room', 'childs room', 'bathroom', 'corridor', 'bedroom', 'closet', 'garage', 'home office', 'storage room']
+Predicted     : ['garage', 'storage room', 'utility room', 'closet', 'home office', 'toolbox', 'shelf', 'cabinet', 'drawer', 'box', 'suitcase', 'backpack']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] pressure cooker
+Gold standard : ['lobby', 'exercise room', 'utility room', 'closet', 'storage room', 'playroom', 'bathroom', 'pantry', 'kitchen', 'corridor', 'childs room', 'television room', 'garage', 'dining room', 'bedroom', 'living room', 'home office']
+Predicted     : ['kitchen', 'pantry', 'cabinet', 'shelf', 'storage room', 'utility room', 'garage', 'closet', 'dining room', 'table', 'box']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.867
+------------------------------------------------------------
+
+[Object] pudding box
+Gold standard : ['utility room', 'kitchen', 'closet', 'home office', 'playroom', 'pantry', 'exercise room', 'bathroom', 'television room', 'bedroom', 'childs room', 'lobby', 'dining room', 'garage', 'corridor', 'living room', 'storage room']
+Predicted     : ['kitchen', 'pantry', 'fridge', 'cabinet', 'shelf', 'dining room', 'table', 'storage room', 'childs room', 'playroom', 'backpack', 'suitcase', 'utility room', 'closet', 'drawer']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] puzzle game
+Gold standard : ['utility room', 'pantry', 'home office', 'bathroom', 'garage', 'television room', 'storage room', 'dining room', 'corridor', 'bedroom', 'closet', 'kitchen', 'living room', 'childs room', 'exercise room', 'playroom', 'lobby']
+Predicted     : ['living room', "child's room shelf", 'playroom', 'bedroom', 'home office', 'closet', 'storage room', 'television room shelf', 'dining room', 'backpack', 'suitcase']
+RR=1.000  AP@1=1.000  AP@3=0.833  AP@5=0.804
+------------------------------------------------------------
+
+[Object] racquetball
+Gold standard : ['bedroom', 'childs room', 'exercise room', 'bathroom', 'utility room', 'living room', 'playroom', 'television room', 'storage room', 'lobby', 'kitchen', 'garage', 'home office', 'pantry', 'closet', 'dining room', 'corridor']
+Predicted     : ['playroom', 'childs room', 'exercise room', 'garage', 'storage room', 'closet', 'utility room', 'suitcase', 'backpack', 'box', 'shelf', 'cabinet']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] ramekin
+Gold standard : ['lobby', 'closet', 'television room', 'pantry', 'bedroom', 'exercise room', 'dining room', 'kitchen', 'storage room', 'living room', 'utility room', 'bathroom', 'playroom', 'home office', 'childs room', 'corridor', 'garage']
+Predicted     : ['kitchen', 'dining room', 'cabinet', 'shelf', 'pantry', 'drawer', 'storage room', 'closet', 'home office', 'living room', 'utility room', 'childs room', 'playroom', 'fridge', 'table', 'box']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.867
+------------------------------------------------------------
+
+[Object] remote control
+Gold standard : ['pantry', 'bathroom', 'dining room', 'childs room', 'bedroom', 'exercise room', 'home office', 'storage room', 'kitchen', 'closet', 'television room', 'garage', 'living room', 'corridor', 'playroom', 'lobby', 'utility room']
+Predicted     : ['living room', 'bedroom', 'television room', 'table', 'drawer', 'cabinet', 'childs room', 'playroom', 'home office', 'shelf', 'backpack', 'storage room', 'exercise room', 'bed']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] remotecontrol
+Gold standard : ['living room', 'bedroom']
+Predicted     : ['living room', 'television room', 'bedroom', 'table', 'drawer', 'cabinet', 'childs room', 'playroom', 'entertainment center', 'nightstand', 'storage room', 'backpack', 'suitcase']
+RR=1.000  AP@1=1.000  AP@3=0.833  AP@5=0.833
+------------------------------------------------------------
+
+[Object] rmal laminator
+Gold standard : ['bedroom', 'corridor', 'playroom', 'closet', 'kitchen', 'childs room', 'home office', 'dining room', 'storage room', 'garage', 'pantry', 'television room', 'utility room', 'living room', 'exercise room', 'lobby', 'bathroom']
+Predicted     : ['home office', 'desk', 'shelf', 'cabinet', 'storage room', 'utility room', 'playroom', 'childs room', 'library', 'closet', 'drawer', 'garage', 'box', 'backpack']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.700
+------------------------------------------------------------
+
+[Object] roast
+Gold standard : ['oven']
+Predicted     : ['kitchen', 'fridge', 'oven', 'pantry', 'dining room', 'table', 'cabinet', 'storage room', 'utility room', 'shelf', 'countertop']
+RR=0.333  AP@1=0.000  AP@3=0.333  AP@5=0.333
+------------------------------------------------------------
+
+[Object] roomdecor
+Gold standard : ['living room']
+Predicted     : ['living room', 'bedroom', 'dining room', 'childs room', 'corridor', 'bathroom', 'home office', 'playroom', 'television room', 'closet', 'shelf', 'wall', 'table', 'desk']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] router
+Gold standard : ['dining room', 'lobby', 'garage', 'exercise room', 'corridor', 'bedroom', 'pantry', 'home office', 'kitchen', 'utility room', 'playroom', 'storage room', 'television room', 'bathroom', 'childs room', 'closet', 'living room']
+Predicted     : ['home office', 'living room', 'television room', 'bedroom', 'corridor', 'closet', 'shelf', 'cabinet', 'desk', 'kitchen', 'dining room', 'garage', 'utility room', 'storage room', 'childs room']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] rubiks cube
+Gold standard : ['living room', 'dining room', 'bedroom', 'storage room', 'home office', 'pantry', 'childs room', 'utility room', 'lobby', 'exercise room', 'closet', 'bathroom', 'corridor', 'television room', 'kitchen', 'garage', 'playroom']
+Predicted     : ['childs room', 'playroom', 'living room', 'home office', 'desk', 'drawer', 'shelf', 'backpack', 'box', 'suitcase', 'television room', 'bedroom', 'closet', 'table', 'storage room']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] safe
+Gold standard : ['kitchen', 'living room', 'bedroom']
+Predicted     : ['closet', 'home office', 'bedroom', 'living room', 'garage', 'utility room', 'under bed', 'dining room', 'library', 'laundry room', 'behind television', 'inside suitcase (hidden)', 'pantry']
+RR=0.333  AP@1=0.000  AP@3=0.333  AP@5=0.417
+------------------------------------------------------------
+
+[Object] salt shaker
+Gold standard : ['bathroom', 'living room', 'garage', 'closet', 'playroom', 'pantry', 'childs room', 'bedroom', 'corridor', 'kitchen', 'television room', 'storage room', 'utility room', 'exercise room', 'dining room', 'home office', 'lobby']
+Predicted     : ['kitchen', 'dining room', 'pantry', 'spice rack', 'picnic basket', 'storage room', 'utility room', "child's room play table", 'camping gear box']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] saltshaker
+Gold standard : ['kitchen']
+Predicted     : ['kitchen', 'dining room', 'pantry', 'living room', 'fridge (top shelf)', 'utility room', 'storage room', "child's room table", 'playroom', 'home office', 'laundry room', 'garden']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] sanitary pads
+Gold standard : ['home office', 'exercise room', 'childs room', 'closet', 'lobby', 'dining room', 'garage', 'pantry', 'playroom', 'bedroom', 'television room', 'storage room', 'utility room', 'living room', 'bathroom', 'kitchen', 'corridor']
+Predicted     : ['bathroom', 'bedroom', 'handbag', 'backpack', 'purse', 'storage room', 'utility room', "child's room drawer", 'home office', 'closet', 'suitcase', 'first aid kit box', 'pantry']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] saucer
+Gold standard : ['kitchen', 'pantry', 'living room', 'bedroom', 'garage', 'television room', 'utility room', 'childs room', 'storage room', 'closet', 'home office', 'lobby', 'bathroom', 'dining room', 'playroom', 'corridor', 'exercise room']
+Predicted     : ['kitchen', 'dining room', 'cabinet', 'shelf', 'drawer', 'pantry', 'living room', 'china cabinet', 'table', 'sideboard', 'breakfast nook', 'dishwasher', 'sink', 'countertop']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] saute pan
+Gold standard : ['garage', 'playroom', 'kitchen', 'dining room', 'childs room', 'pantry', 'exercise room', 'bathroom', 'lobby', 'living room', 'utility room', 'corridor', 'bedroom', 'television room', 'home office', 'closet', 'storage room']
+Predicted     : ['kitchen', 'cabinet', 'stove', 'shelf', 'drawer', 'dishwasher', 'drying rack', 'storage room', 'pantry', 'garage', 'utility room', 'box', 'table']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] scissors
+Gold standard : ['utility room', 'pantry', 'kitchen', 'bedroom', 'childs room', 'living room', 'closet', 'garage', 'television room', 'corridor', 'exercise room', 'dining room', 'playroom', 'storage room', 'home office', 'bathroom', 'lobby']
+Predicted     : ['drawer', 'kitchen', 'desk', 'home office', 'craft room', 'utility room', 'bathroom', 'childs room', 'playroom', 'sewing kit', 'toolbox', 'backpack', 'bedside table', 'living room', 'pantry']
+RR=0.500  AP@1=0.000  AP@3=0.500  AP@5=0.500
+------------------------------------------------------------
+
+[Object] scrubbrush
+Gold standard : ['bathroom']
+Predicted     : ['bathroom', 'kitchen', 'utility room', 'laundry room', 'garage', 'storage room', 'pantry', 'closet', 'cleaning caddy', 'under sink', 'bucket', 'shelf', 'cabinet', 'drawer', 'garden']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] set-top box
+Gold standard : ['television room', 'bedroom', 'playroom', 'childs room', 'dining room', 'corridor', 'utility room', 'lobby', 'storage room', 'kitchen', 'exercise room', 'home office', 'pantry', 'garage', 'living room', 'closet', 'bathroom']
+Predicted     : ['living room', 'television room', 'home office', 'bedroom', 'childs room', 'entertainment cabinet', 'shelf', 'cabinet', 'under tv', 'behind tv', 'closet', 'storage room', 'drawer', 'desk']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] shelf
+Gold standard : ['bedroom', 'bathroom', 'kitchen', 'living room']
+Predicted     : ['closet', 'bedroom', 'living room', 'home office', 'library', 'garage', 'storage room', 'utility room', 'playroom', 'childs room', 'bathroom', 'kitchen', 'dining room', 'pantry', 'corridor', 'television room', 'exercise room']
+RR=0.500  AP@1=0.000  AP@3=0.583  AP@5=0.583
+------------------------------------------------------------
+
+[Object] shelvingunit
+Gold standard : ['kitchen', 'living room', 'bedroom']
+Predicted     : ['living room', 'bedroom', 'garage', 'home office', 'storage room', 'utility room', 'playroom', 'childs room', 'corridor', 'closet', 'pantry', 'library', 'laundry room', 'dining room', 'kitchen']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] shoe
+Gold standard : ['closet', 'bathroom', 'utility room', 'bedroom', 'childs room', 'corridor', 'playroom', 'storage room', 'lobby', 'dining room', 'home office', 'garage', 'pantry', 'kitchen', 'exercise room', 'living room', 'television room']
+Predicted     : ['floor near entrance', 'closet', 'bedroom', 'living room', 'corridor', 'shoe rack', 'under bed', 'garage', 'storage room', 'suitcase', 'backpack', 'box', 'utility room', 'childs room', 'garden']
+RR=0.500  AP@1=0.000  AP@3=0.583  AP@5=0.679
+------------------------------------------------------------
+
+[Object] shoe box
+Gold standard : ['television room', 'home office', 'dining room', 'exercise room', 'bathroom', 'storage room', 'kitchen', 'garage', 'lobby', 'pantry', 'living room', 'corridor', 'utility room', 'playroom', 'closet', 'bedroom', 'childs room']
+Predicted     : ['closet', 'bedroom', 'storage room', 'garage', 'under bed', 'shelf', 'utility room', 'corridor', 'childs room', 'playroom', 'entrance lobby', 'shoe cabinet', 'box', 'suitcase', 'under sofa']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] showercurtain
+Gold standard : ['bathroom']
+Predicted     : ['bathroom', 'closet', 'storage room', 'laundry room', 'utility room', 'garage', 'childs room', 'playroom', 'corridor', 'box']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] showerdoor
+Gold standard : ['bathroom']
+Predicted     : ['bathroom', 'storage room', 'utility room', 'garage', 'closet', 'pantry', 'corridor', 'lobby', 'laundry room', 'box', 'shelf', 'cabinet']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] showerglass
+Gold standard : ['bathroom']
+Predicted     : ['bathroom', 'storage room', 'garage', 'utility room', 'closet', 'box', 'shelf', 'cabinet', 'garden']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] showerhead
+Gold standard : ['bathroom']
+Predicted     : ['bathroom', 'storage room', 'utility room', 'closet', 'garage', 'pantry', 'box', 'shelf', 'cabinet', 'drawer']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] shredder
+Gold standard : ['kitchen', 'exercise room', 'pantry', 'dining room', 'bedroom', 'storage room', 'living room', 'home office', 'television room', 'childs room', 'closet', 'bathroom', 'garage', 'playroom', 'lobby', 'corridor', 'utility room']
+Predicted     : ['home office', 'library', 'utility room', 'storage room', 'closet', 'garage', 'bedroom', 'living room', 'childs room', 'kitchen', 'pantry', 'corridor', 'cabinet', 'shelf', 'drawer']
+RR=1.000  AP@1=1.000  AP@3=0.833  AP@5=0.804
+------------------------------------------------------------
+
+[Object] sidetable
+Gold standard : ['kitchen', 'living room', 'bedroom', 'bathroom']
+Predicted     : ['living room', 'bedroom', 'corridor', 'childs room', 'home office', 'television room', 'playroom', 'dining room', 'garden', 'lobby', 'closet', 'utility room']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] sidewalk chalk
+Gold standard : ['television room', 'bathroom', 'home office', 'storage room', 'childs room', 'bedroom', 'pantry', 'kitchen', 'lobby', 'exercise room', 'garage', 'closet', 'dining room', 'living room', 'playroom', 'utility room', 'corridor']
+Predicted     : ['childs room', 'playroom', 'garden', 'garage', 'storage room', 'closet', 'backpack', 'box', 'drawer', 'utility room', 'lobby', 'corridor', 'suitcase']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.887
+------------------------------------------------------------
+
+[Object] sink
+Gold standard : ['kitchen', 'bathroom']
+Predicted     : ['kitchen', 'bathroom', 'utility room', 'laundry room', 'garage', 'garden', 'bar area', 'pool area', 'storage room']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] sinkbasin
+Gold standard : ['kitchen', 'bathroom']
+Predicted     : ['kitchen', 'bathroom', 'utility room', 'laundry room', 'garage', 'garden', 'storage room', 'pantry', 'childs room', 'playroom', 'home office']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] skillet
+Gold standard : ['lobby', 'home office', 'kitchen', 'garage', 'playroom', 'bedroom', 'television room', 'corridor', 'living room', 'utility room', 'childs room', 'exercise room', 'dining room', 'bathroom', 'closet', 'pantry', 'storage room']
+Predicted     : ['kitchen', 'cabinet', 'stove', 'shelf', 'dishwasher', 'dining room', 'storage room', 'garage', 'utility room', 'closet', 'oven', 'drawer', 'pantry', 'box']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] skillet lid
+Gold standard : ['television room', 'exercise room', 'pantry', 'garage', 'utility room', 'closet', 'childs room', 'dining room', 'bathroom', 'living room', 'home office', 'storage room', 'lobby', 'bedroom', 'playroom', 'kitchen', 'corridor']
+Predicted     : ['kitchen', 'cabinet', 'drawer', 'shelf', 'stove', 'oven', 'countertop', 'dish rack', 'storage room', 'pantry', 'utility room', 'box', 'closet']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] skin care product
+Gold standard : ['closet', 'lobby', 'pantry', 'childs room', 'exercise room', 'corridor', 'bathroom', 'utility room', 'bedroom', 'playroom', 'storage room', 'kitchen', 'dining room', 'living room', 'home office', 'television room', 'garage']
+Predicted     : ['bathroom', 'bedroom', 'vanity table', 'fridge', 'closet', 'storage room', 'travel bag', 'suitcase', 'backpack', 'pantry', 'living room', 'home office', 'utility room', "child's room drawer"]
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.867
+------------------------------------------------------------
+
+[Object] skin moisturizer
+Gold standard : ['childs room', 'garage', 'utility room', 'lobby', 'bedroom', 'pantry', 'closet', 'corridor', 'bathroom', 'home office', 'playroom', 'kitchen', 'television room', 'exercise room', 'dining room', 'living room', 'storage room']
+Predicted     : ['bathroom', 'bedroom', 'bedside table', 'living room', 'handbag', 'backpack', 'purse', 'travel bag', 'suitcase', 'gym bag', 'exercise room shelf', 'corridor', "child's room drawer", 'home office', 'kitchen', 'fridge (if refrigerated)', 'pantry']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.917
+------------------------------------------------------------
+
+[Object] snack cake
+Gold standard : ['utility room', 'pantry', 'home office', 'bathroom', 'garage', 'television room', 'storage room', 'dining room', 'corridor', 'bedroom', 'closet', 'kitchen', 'living room', 'childs room', 'exercise room', 'playroom', 'lobby']
+Predicted     : ['kitchen', 'pantry', 'fridge', 'cabinet', 'drawer', 'table', 'lunchbox', 'backpack', 'childs room', 'living room', 'home office', 'car', 'storage room', 'snack jar']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] snack dispenser
+Gold standard : ['bathroom', 'playroom', 'storage room', 'kitchen', 'television room', 'dining room', 'childs room', 'corridor', 'garage', 'living room', 'utility room', 'bedroom', 'home office', 'exercise room', 'lobby', 'pantry', 'closet']
+Predicted     : ['kitchen', 'pantry', 'living room', 'home office', 'childs room', 'playroom', 'television room', 'dining room', 'utility room', 'garage', 'exercise room', 'closet', 'shelf', 'cabinet', 'desk', 'table']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] soap dish
+Gold standard : ['closet', 'corridor', 'playroom', 'storage room', 'lobby', 'dining room', 'bathroom', 'garage', 'bedroom', 'exercise room', 'utility room', 'pantry', 'childs room', 'living room', 'kitchen', 'television room', 'home office']
+Predicted     : ['bathroom', 'kitchen', 'utility room', 'laundry room', 'childs room', 'sink', 'shelf', 'cabinet', 'drawer', 'garden', 'storage room', 'pantry']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.950
+------------------------------------------------------------
+
+[Object] soap dispenser
+Gold standard : ['exercise room', 'dining room', 'storage room', 'lobby', 'closet', 'playroom', 'childs room', 'television room', 'bedroom', 'utility room', 'living room', 'home office', 'corridor', 'kitchen', 'pantry', 'bathroom', 'garage']
+Predicted     : ['bathroom', 'kitchen', 'laundry room', 'utility room', 'garage', 'pantry', 'childs room', 'dining room', 'home office', 'closet', 'storage room', 'playroom', 'exercise room', 'corridor']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.887
+------------------------------------------------------------
+
+[Object] soapbar
+Gold standard : ['bathroom']
+Predicted     : ['bathroom', 'sink', 'kitchen', 'utility room', 'laundry room', 'childs room', 'pantry', 'drawer', 'shelf', 'cabinet', 'box', 'backpack', 'suitcase']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] soapbottle
+Gold standard : ['kitchen', 'bathroom']
+Predicted     : ['bathroom', 'kitchen', 'laundry room', 'utility room', 'sink', 'pantry', 'storage room', 'closet', 'childs room', 'exercise room', 'drawer', 'shelf', 'cabinet']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] sofa
+Gold standard : ['living room', 'bedroom']
+Predicted     : ['living room', 'television room', 'bedroom', 'playroom', 'home office', 'childs room', 'lobby', 'garden', 'storage room', 'corridor']
+RR=1.000  AP@1=1.000  AP@3=0.833  AP@5=0.833
+------------------------------------------------------------
+
+[Object] softball
+Gold standard : ['television room', 'exercise room', 'pantry', 'garage', 'utility room', 'closet', 'childs room', 'dining room', 'bathroom', 'living room', 'home office', 'storage room', 'lobby', 'bedroom', 'playroom', 'kitchen', 'corridor']
+Predicted     : ['childs room', 'playroom', 'garage', 'storage room', 'closet', 'garden', 'sports bag', 'box', 'living room', 'utility room', 'exercise room', 'drawer', 'suitcase']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] software cd
+Gold standard : ['childs room', 'bathroom', 'living room', 'lobby', 'kitchen', 'corridor', 'exercise room', 'bedroom', 'garage', 'pantry', 'television room', 'storage room', 'home office', 'dining room', 'playroom', 'utility room', 'closet']
+Predicted     : ['home office', 'desk', 'drawer', 'shelf', 'cabinet', 'living room', 'entertainment center', 'bedroom', 'closet', 'storage room', 'box', 'backpack', 'suitcase', 'library', 'childs room', 'playroom', 'television room']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] sorting toy
+Gold standard : ['childs room', 'garage', 'utility room', 'lobby', 'bedroom', 'pantry', 'closet', 'corridor', 'bathroom', 'home office', 'playroom', 'kitchen', 'television room', 'exercise room', 'dining room', 'living room', 'storage room']
+Predicted     : ['childs room', 'playroom', 'living room', 'bedroom', 'closet', 'storage room', 'shelf', 'drawer', 'box', 'toy box', 'backpack', 'suitcase', 'table', 'floor']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] sparkling water
+Gold standard : ['childs room', 'corridor', 'lobby', 'garage', 'dining room', 'pantry', 'kitchen', 'closet', 'utility room', 'exercise room', 'home office', 'living room', 'playroom', 'television room', 'storage room', 'bedroom', 'bathroom']
+Predicted     : ['fridge', 'pantry', 'kitchen', 'dining room', 'living room', 'garage', 'storage room', 'utility room', 'cabinet', 'shelf', 'drawer', 'table', 'childs room', 'home office', 'backpack']
+RR=0.500  AP@1=0.000  AP@3=0.583  AP@5=0.679
+------------------------------------------------------------
+
+[Object] spatula
+Gold standard : ['kitchen', 'closet', 'playroom', 'corridor', 'dining room', 'television room', 'home office', 'living room', 'bedroom', 'pantry', 'utility room', 'bathroom', 'garage', 'storage room', 'childs room', 'lobby', 'exercise room']
+Predicted     : ['kitchen', 'dishwasher', 'drying rack', 'storage room', 'garage', 'utility room', 'pantry', 'backyard grill area']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.700
+------------------------------------------------------------
+
+[Object] spider
+Gold standard : ['storage room', 'closet']
+Predicted     : ['garden', 'garage', 'storage room', 'closet', 'bathroom', 'utility room', 'laundry room', 'corridor', 'under bed', 'behind sofa', 'pantry', 'under table']
+RR=0.333  AP@1=0.000  AP@3=0.333  AP@5=0.417
+------------------------------------------------------------
+
+[Object] sponge
+Gold standard : ['utility room', 'bedroom', 'childs room', 'kitchen', 'home office', 'lobby', 'garage', 'exercise room', 'storage room', 'closet', 'dining room', 'pantry', 'playroom', 'living room', 'television room', 'corridor', 'bathroom']
+Predicted     : ['kitchen', 'bathroom', 'utility room', 'cleaning caddy', 'laundry room', 'garage', 'storage room', 'pantry', 'bucket', 'sponge holder']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] sponge dish
+Gold standard : ['exercise room', 'dining room', 'storage room', 'lobby', 'closet', 'playroom', 'childs room', 'television room', 'bedroom', 'utility room', 'living room', 'home office', 'corridor', 'kitchen', 'pantry', 'bathroom', 'garage']
+Predicted     : ['kitchen', 'dishwasher', 'utility room', 'bathroom', 'laundry room', 'cleaning caddy', 'storage room', 'pantry', 'bucket', 'box']
+RR=1.000  AP@1=1.000  AP@3=0.833  AP@5=0.806
+------------------------------------------------------------
+
+[Object] spoon
+Gold standard : ['kitchen', 'lobby', 'storage room', 'corridor', 'bedroom', 'dining room', 'garage', 'childs room', 'television room', 'bathroom', 'exercise room', 'utility room', 'pantry', 'closet', 'living room', 'playroom', 'home office']
+Predicted     : ['kitchen', 'dishwasher', 'dining room', 'utensil jar', 'cutlery tray', 'pantry', 'living room', 'storage room', 'backpack', "child's room drawer", 'playroom', 'camping gear box', 'picnic basket']
+RR=1.000  AP@1=1.000  AP@3=0.833  AP@5=0.833
+------------------------------------------------------------
+
+[Object] spoon rest
+Gold standard : ['childs room', 'utility room', 'pantry', 'playroom', 'home office', 'kitchen', 'television room', 'exercise room', 'closet', 'corridor', 'living room', 'bedroom', 'dining room', 'garage', 'lobby', 'bathroom', 'storage room']
+Predicted     : ['kitchen', 'dish rack', 'drying mat', 'cabinet', 'utensil crock', 'stove top', 'sink area', 'pantry', 'storage room', 'drawer near oven']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] spraybottle
+Gold standard : ['kitchen', 'bathroom']
+Predicted     : ['bathroom', 'kitchen', 'laundry room', 'utility room', 'garden', 'storage room', 'closet', 'pantry', 'garage', 'home office', 'childs room', 'exercise room', 'drawer', 'cabinet', 'shelf']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] stacking cups
+Gold standard : ['closet', 'exercise room', 'bathroom', 'playroom', 'utility room', 'home office', 'pantry', 'kitchen', 'garage', 'living room', 'television room', 'bedroom', 'lobby', 'corridor', 'storage room', 'dining room', 'childs room']
+Predicted     : ['kitchen', 'playroom', 'childs room', 'cabinet', 'shelf', 'drawer', 'dining room', 'living room', 'storage room', 'pantry', 'closet', 'box', 'suitcase', 'table', 'utility room']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] stand mixer
+Gold standard : ['bathroom', 'playroom', 'bedroom', 'garage', 'living room', 'storage room', 'utility room', 'television room', 'kitchen', 'pantry', 'home office', 'exercise room', 'lobby', 'closet', 'childs room', 'corridor', 'dining room']
+Predicted     : ['kitchen', 'pantry', 'cabinet', 'shelf', 'storage room', 'utility room', 'garage', 'closet', 'dining room', 'home office', 'box']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.867
+------------------------------------------------------------
+
+[Object] statue
+Gold standard : ['kitchen', 'living room', 'bedroom']
+Predicted     : ['living room', 'bedroom', 'home office', 'dining room', 'garden', 'lobby', 'corridor', 'library', 'storage room', 'closet', 'television room cabinet']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] steak
+Gold standard : ['oven', 'fridge']
+Predicted     : ['fridge', 'kitchen', 'dining room', 'grill', 'pantry', 'oven', 'plate', 'garden', 'cooler', 'storage room', 'garage', 'suitcase (if traveling)', 'backpack (if camping)']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] stool
+Gold standard : ['kitchen', 'living room', 'bedroom']
+Predicted     : ['kitchen', 'dining room', 'living room', 'bedroom', 'home office', 'childs room', 'bathroom', 'garage', 'garden', 'utility room', 'closet', 'playroom', 'exercise room', 'television room', 'lobby', 'desk', 'table', 'shelf']
+RR=1.000  AP@1=1.000  AP@3=0.833  AP@5=0.806
+------------------------------------------------------------
+
+[Object] storage bin
+Gold standard : ['storage room', 'bathroom', 'home office', 'utility room', 'exercise room', 'closet', 'dining room', 'television room', 'playroom', 'corridor', 'garage', 'pantry', 'lobby', 'bedroom', 'childs room', 'kitchen', 'living room']
+Predicted     : ['closet', 'garage', 'storage room', 'bedroom', 'utility room', 'playroom', 'childs room', 'home office', 'pantry', 'under bed', 'shelf', 'cabinet', 'laundry room', 'corridor']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] stoveburner
+Gold standard : ['kitchen']
+Predicted     : ['kitchen', 'utility room', 'garage', 'storage room', 'pantry', 'garden', 'closet', 'home office', 'playroom', 'childs room']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] stoveknob
+Gold standard : ['kitchen']
+Predicted     : ['kitchen', 'utility room', 'storage room', 'garage', 'pantry', 'home office', "child's room box", 'laundry room']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] strawberry
+Gold standard : ['kitchen', 'lobby', 'bedroom', 'utility room', 'bathroom', 'playroom', 'home office', 'living room', 'childs room', 'corridor', 'closet', 'television room', 'storage room', 'dining room', 'pantry', 'garage', 'exercise room']
+Predicted     : ['kitchen', 'fridge', 'fruit bowl', 'dining room', 'pantry', 'garden', 'childs room', 'refrigerator drawer', 'countertop', 'plate', 'lunchbox', 'backpack', 'picnic basket', 'storage room', 'shelf']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.700
+------------------------------------------------------------
+
+[Object] string lights
+Gold standard : ['corridor', 'childs room', 'television room', 'closet', 'bathroom', 'dining room', 'lobby', 'home office', 'living room', 'storage room', 'kitchen', 'exercise room', 'playroom', 'pantry', 'bedroom', 'garage', 'utility room']
+Predicted     : ['bedroom', 'living room', 'garden', 'childs room', 'closet', 'storage room', 'playroom', 'dining room', 'home office', 'corridor', 'shelf', 'cabinet', 'drawer', 'box', 'suitcase', 'bed', 'television room', 'utility room', 'pantry']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.887
+------------------------------------------------------------
+
+[Object] stuffed toy
+Gold standard : ['childs room', 'garage', 'exercise room', 'utility room', 'dining room', 'bathroom', 'living room', 'corridor', 'closet', 'kitchen', 'bedroom', 'pantry', 'storage room', 'television room', 'home office', 'lobby', 'playroom']
+Predicted     : ['childs room', 'playroom', 'living room', 'bedroom', 'bed', 'closet', 'storage room', 'drawer', 'shelf', 'box', 'backpack', 'suitcase', 'television room', 'corridor']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] sugar box
+Gold standard : ['playroom', 'garage', 'corridor', 'bedroom', 'pantry', 'bathroom', 'exercise room', 'home office', 'utility room', 'dining room', 'television room', 'living room', 'storage room', 'kitchen', 'childs room', 'lobby', 'closet']
+Predicted     : ['kitchen', 'pantry', 'dining room', 'cabinet', 'shelf', 'drawer', 'fridge', 'table', 'storage room', 'utility room', 'closet', 'home office', 'playroom', 'childs room', 'jar']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] sugar sprinkles
+Gold standard : ['playroom', 'bathroom', 'living room', 'kitchen', 'corridor', 'television room', 'lobby', 'bedroom', 'utility room', 'storage room', 'pantry', 'closet', 'dining room', 'home office', 'exercise room', 'childs room', 'garage']
+Predicted     : ['kitchen', 'pantry', 'cabinet', 'shelf', 'drawer', 'fridge', 'dining room', 'table', 'childs room', 'playroom', 'storage room', 'utility room', 'jar', 'can', 'box']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] surface saver ring
+Gold standard : ['television room', 'living room', 'lobby', 'dining room', 'childs room', 'garage', 'bathroom', 'kitchen', 'storage room', 'utility room', 'corridor', 'exercise room', 'bedroom', 'playroom', 'closet', 'home office', 'pantry']
+Predicted     : ['drawer', 'kitchen', 'bathroom', 'home office', 'utility room', 'desk', 'shelf', 'cabinet', 'storage room', 'closet', 'pantry', 'childs room', 'laundry room', 'playroom', 'table']
+RR=0.500  AP@1=0.000  AP@3=0.583  AP@5=0.679
+------------------------------------------------------------
+
+[Object] sushi mat
+Gold standard : ['home office', 'exercise room', 'bathroom', 'closet', 'corridor', 'storage room', 'pantry', 'lobby', 'childs room', 'utility room', 'playroom', 'television room', 'living room', 'kitchen', 'dining room', 'bedroom', 'garage']
+Predicted     : ['kitchen', 'pantry', 'storage room', 'utility room', 'dining room', 'home office', 'closet', 'box', 'suitcase', 'backpack']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] table
+Gold standard : ['kitchen', 'bedroom', 'room']
+Predicted     : ['kitchen', 'dining room', 'living room', 'home office', 'bedroom', 'childs room', 'playroom', 'garden', 'garage', 'corridor', 'lobby', 'library', 'television room', 'exercise room', 'utility room']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.700
+------------------------------------------------------------
+
+[Object] table lamp
+Gold standard : ['television room', 'bedroom', 'lobby', 'bathroom', 'closet', 'pantry', 'exercise room', 'utility room', 'dining room', 'home office', 'garage', 'living room', 'corridor', 'kitchen', 'storage room', 'childs room', 'playroom']
+Predicted     : ['bedroom', 'living room', 'home office', 'bedside table', 'desk', 'side table', 'shelf', 'dining room', 'television room', 'childs room', 'corridor', 'lobby', 'playroom', 'library']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] tablet
+Gold standard : ['storage room', 'garage', 'television room', 'closet', 'utility room', 'bedroom', 'playroom', 'living room', 'exercise room', 'dining room', 'home office', 'childs room', 'kitchen', 'corridor', 'pantry', 'bathroom', 'lobby']
+Predicted     : ['living room', 'bedroom', 'home office', 'kitchen', 'dining room', 'table', 'desk', 'backpack', 'bedside table', 'bathroom', 'playroom', 'childs room', 'television room', 'drawer', 'shelf', 'cabinet']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] tablet holder
+Gold standard : ['childs room', 'closet', 'storage room', 'kitchen', 'living room', 'garage', 'pantry', 'exercise room', 'utility room', 'playroom', 'television room', 'corridor', 'lobby', 'bedroom', 'home office', 'dining room', 'bathroom']
+Predicted     : ['living room', 'bedroom', 'home office', 'kitchen', 'dining room', 'desk', 'table', 'nightstand', 'entertainment center', 'shelf', 'cabinet', 'childs room', 'playroom', 'bathroom']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] tablet stand
+Gold standard : ['corridor', 'childs room', 'home office', 'storage room', 'television room', 'exercise room', 'pantry', 'lobby', 'dining room', 'kitchen', 'bedroom', 'utility room', 'closet', 'playroom', 'living room', 'bathroom', 'garage']
+Predicted     : ['desk', 'nightstand', 'kitchen', 'living room', 'home office', 'television room shelf', 'bedroom', 'dining room', 'playroom', "child's room desk", 'bookshelf', 'entertainment center', 'side table']
+RR=0.333  AP@1=0.000  AP@3=0.333  AP@5=0.478
+------------------------------------------------------------
+
+[Object] tabletopdecor
+Gold standard : ['bedroom']
+Predicted     : ['living room', 'dining room', 'bedroom', 'home office', 'television room shelf', "child's room shelf", 'kitchen', 'bathroom', 'corridor', 'entryway table', 'bookshelf', 'mantelpiece', 'nightstand', 'sideboard']
+RR=0.333  AP@1=0.000  AP@3=0.333  AP@5=0.333
+------------------------------------------------------------
+
+[Object] tampon
+Gold standard : ['bedroom', 'childs room', 'storage room', 'living room', 'utility room', 'lobby', 'home office', 'playroom', 'pantry', 'corridor', 'kitchen', 'exercise room', 'television room', 'bathroom', 'dining room', 'garage', 'closet']
+Predicted     : ['bathroom', 'bedroom', 'purse', 'backpack', 'handbag', 'travel bag', 'suitcase', 'first aid kit', 'storage room', 'medicine cabinet', 'utility room', "child's room drawer", 'playroom', 'home office']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] tea can pack
+Gold standard : ['closet', 'garage', 'utility room', 'corridor', 'storage room', 'exercise room', 'bathroom', 'childs room', 'living room', 'lobby', 'playroom', 'pantry', 'home office', 'dining room', 'bedroom', 'television room', 'kitchen']
+Predicted     : ['kitchen', 'pantry', 'cabinet', 'shelf', 'drawer', 'storage room', 'utility room', 'dining room', 'living room', 'home office', 'closet', 'fridge', 'jar', 'box', 'backpack']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] tea pods
+Gold standard : ['closet', 'pantry', 'television room', 'living room', 'lobby', 'exercise room', 'playroom', 'bathroom', 'bedroom', 'dining room', 'kitchen', 'storage room', 'home office', 'childs room', 'utility room', 'garage', 'corridor']
+Predicted     : ['kitchen', 'pantry', 'cabinet', 'drawer', 'shelf', 'storage room', 'utility room', 'home office', 'dining room', 'table', 'desk', 'box', 'backpack', 'suitcase', 'jar']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] teapot
+Gold standard : ['dining room', 'bedroom', 'kitchen', 'closet', 'playroom', 'utility room', 'storage room', 'living room', 'television room', 'home office', 'bathroom', 'pantry', 'exercise room', 'garage', 'corridor', 'childs room', 'lobby']
+Predicted     : ['kitchen', 'cupboard', 'shelf', 'dining room', 'stove', 'pantry', 'cabinet', 'living room', 'sideboard', 'tea station', 'utility room', 'storage room', 'china cabinet', 'buffet', 'breakfast nook']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.750
+------------------------------------------------------------
+
+[Object] teddybear
+Gold standard : ['bedroom']
+Predicted     : ['childs room', 'bed', 'playroom', 'closet', 'shelf', 'living room', 'storage room', 'box', 'backpack', 'suitcase', 'drawer', 'television room', 'lobby', 'jar']
+RR=0.000  AP@1=0.000  AP@3=0.000  AP@5=0.000
+------------------------------------------------------------
+
+[Object] television
+Gold standard : ['living room', 'bedroom']
+Predicted     : ['living room', 'television room', 'bedroom', 'childs room', 'playroom', 'home office', 'kitchen', 'dining room', 'garage', 'exercise room', 'library', 'lobby']
+RR=1.000  AP@1=1.000  AP@3=0.833  AP@5=0.833
+------------------------------------------------------------
+
+[Object] tennis ball
+Gold standard : ['closet', 'playroom', 'corridor', 'dining room', 'television room', 'home office', 'kitchen', 'living room', 'bedroom', 'pantry', 'utility room', 'bathroom', 'garage', 'storage room', 'childs room', 'lobby', 'exercise room']
+Predicted     : ['childs room', 'playroom', 'garden', 'living room', 'garage', 'closet', 'storage room', 'drawer', 'box', 'backpack', 'suitcase', 'exercise room', 'corridor', 'lobby', 'utility room']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.887
+------------------------------------------------------------
+
+[Object] tennisracket
+Gold standard : ['bedroom']
+Predicted     : ['closet', 'garage', 'storage room', 'living room', 'childs room', 'playroom', 'utility room', 'sports bag', 'backpack', 'garden', 'exercise room', 'under bed', 'shelf', 'wall rack']
+RR=0.000  AP@1=0.000  AP@3=0.000  AP@5=0.000
+------------------------------------------------------------
+
+[Object] tissuebox
+Gold standard : ['living room', 'bedroom', 'bathroom']
+Predicted     : ['living room', 'bedroom', 'bathroom', 'kitchen', 'dining room', 'home office', 'childs room', 'playroom', 'corridor', 'closet', 'garage', 'utility room', 'television room', 'table', 'desk', 'shelf', 'cabinet', 'bedside table', 'car']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] toaster
+Gold standard : ['kitchen', 'lobby', 'garage', 'closet', 'bedroom', 'pantry', 'bathroom', 'corridor', 'playroom', 'home office', 'television room', 'utility room', 'exercise room', 'storage room', 'childs room', 'dining room', 'living room']
+Predicted     : ['kitchen', 'pantry', 'dining room', 'utility room', 'storage room', 'garage', 'closet', 'box', 'suitcase']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] toilet
+Gold standard : ['bathroom']
+Predicted     : ['bathroom', 'closet', 'utility room', 'storage room', 'garage', 'garden', 'corridor', 'lobby', 'childs room', 'bedroom']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] toiletpaper
+Gold standard : ['bathroom']
+Predicted     : ['bathroom', 'closet', 'storage room', 'utility room', 'pantry', 'laundry room', 'childs room', 'corridor', 'garage', 'dining room', 'living room', 'kitchen']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] toiletpaperhanger
+Gold standard : ['bathroom']
+Predicted     : ['bathroom', 'utility room', 'storage room', 'closet', 'garage', 'pantry', 'laundry room', 'childs room', 'playroom', 'home office']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] tomato
+Gold standard : ['kitchen']
+Predicted     : ['kitchen', 'fridge', 'pantry', 'dining room', 'garden', 'countertop', 'shelf', 'drawer', 'storage room', 'box', 'plate', 'jar', 'can', 'backpack', 'childs room']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] tomato soup can
+Gold standard : ['television room', 'utility room', 'kitchen', 'exercise room', 'living room', 'lobby', 'bathroom', 'closet', 'storage room', 'corridor', 'home office', 'playroom', 'childs room', 'bedroom', 'pantry', 'dining room', 'garage']
+Predicted     : ['pantry', 'kitchen', 'storage room', 'utility room', 'fridge', 'dining room', 'cupboard', 'garage', 'closet', 'box', 'suitcase', 'can rack', 'emergency kit', 'camping supplies']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] toothbrush holder
+Gold standard : ['pantry', 'childs room', 'television room', 'kitchen', 'storage room', 'bathroom', 'dining room', 'playroom', 'closet', 'bedroom', 'corridor', 'living room', 'garage', 'utility room', 'home office', 'exercise room', 'lobby']
+Predicted     : ['bathroom', 'sink', 'medicine cabinet', 'shelf', 'countertop', 'drawer', 'bedroom', 'childs room', 'travel bag', 'suitcase', 'storage room', 'utility room', 'closet']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] toothbrush pack
+Gold standard : ['playroom', 'kitchen', 'television room', 'corridor', 'dining room', 'closet', 'bathroom', 'bedroom', 'storage room', 'pantry', 'lobby', 'living room', 'garage', 'exercise room', 'utility room', 'childs room', 'home office']
+Predicted     : ['bathroom', 'medicine cabinet', "child's room drawer", "child's room cabinet", 'kitchen', 'utility room', 'storage room', 'travel bag', 'backpack', 'suitcase', 'pantry', 'home office']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.700
+------------------------------------------------------------
+
+[Object] towel
+Gold standard : ['bathroom', 'television room', 'living room', 'garage', 'lobby', 'exercise room', 'utility room', 'childs room', 'home office', 'pantry', 'corridor', 'closet', 'bedroom', 'storage room', 'playroom', 'dining room', 'kitchen']
+Predicted     : ['bathroom', 'closet', 'kitchen', 'laundry room', 'bedroom', 'pool area', 'garden', 'exercise room', 'childs room', 'utility room', 'drawer', 'shelf', 'cabinet', 'towel rack', 'suitcase', 'backpack', 'beach bag']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.950
+------------------------------------------------------------
+
+[Object] towelholder
+Gold standard : ['bathroom']
+Predicted     : ['bathroom', 'kitchen', 'laundry room', 'utility room', 'bedroom', 'closet', 'childs room', 'exercise room', 'garden', 'corridor', 'storage room', 'pantry']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] toy
+Gold standard : ['box']
+Predicted     : ['childs room', 'playroom', 'living room', 'bedroom', 'closet', 'storage room', 'toy box', 'under bed', 'shelf', 'drawer', 'garden', 'corridor', 'backpack', 'suitcase']
+RR=0.000  AP@1=0.000  AP@3=0.000  AP@5=0.000
+------------------------------------------------------------
+
+[Object] toy airplane
+Gold standard : ['dining room', 'bedroom', 'television room', 'bathroom', 'lobby', 'living room', 'kitchen', 'exercise room', 'playroom', 'home office', 'utility room', 'closet', 'storage room', 'childs room', 'pantry', 'garage', 'corridor']
+Predicted     : ['childs room', 'playroom', 'living room', 'bedroom', 'closet', 'storage room', 'toy box', 'shelf', 'under bed', 'drawer', 'garage', 'garden', 'corridor', 'box', 'backpack']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] toy animal
+Gold standard : ['kitchen', 'living room', 'utility room', 'playroom', 'home office', 'bedroom', 'television room', 'storage room', 'bathroom', 'garage', 'corridor', 'exercise room', 'lobby', 'childs room', 'dining room', 'pantry', 'closet']
+Predicted     : ['childs room', 'playroom', 'living room', 'bedroom', 'closet', 'toy box', 'shelf', 'under bed', 'storage room', 'backpack', 'suitcase', 'drawer', 'garden', 'corridor']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] toy basketball
+Gold standard : ['childs room', 'utility room', 'pantry', 'playroom', 'home office', 'kitchen', 'television room', 'exercise room', 'closet', 'corridor', 'living room', 'bedroom', 'dining room', 'garage', 'lobby', 'bathroom', 'storage room']
+Predicted     : ['childs room', 'playroom', 'living room', 'bedroom', 'closet', 'storage room', 'garage', 'garden', 'corridor', 'box', 'shelf', 'cabinet', 'drawer', 'backpack', 'suitcase']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] toy bowling set
+Gold standard : ['playroom', 'pantry', 'storage room', 'television room', 'bedroom', 'garage', 'closet', 'bathroom', 'exercise room', 'home office', 'childs room', 'living room', 'utility room', 'kitchen', 'corridor', 'dining room', 'lobby']
+Predicted     : ['childs room', 'playroom', 'living room', 'closet', 'storage room', 'garage', 'bedroom', 'utility room', 'television room', 'shelf', 'cabinet', 'box', 'under bed', 'garden']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] toy construction set
+Gold standard : ['closet', 'pantry', 'television room', 'living room', 'lobby', 'exercise room', 'playroom', 'bathroom', 'bedroom', 'dining room', 'kitchen', 'storage room', 'home office', 'childs room', 'utility room', 'garage', 'corridor']
+Predicted     : ['childs room', 'playroom', 'living room', 'closet', 'storage room', 'drawer', 'shelf', 'box', 'backpack', 'suitcase', 'toy chest', 'under bed', 'television room', 'corridor']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] toy fishing
+Gold standard : ['home office', 'exercise room', 'childs room', 'closet', 'lobby', 'dining room', 'garage', 'pantry', 'playroom', 'bedroom', 'television room', 'storage room', 'utility room', 'living room', 'bathroom', 'kitchen', 'corridor']
+Predicted     : ['childs room', 'playroom', 'living room', 'toy box', 'closet', 'storage room', 'shelf', 'drawer', 'backpack', 'suitcase', 'garage', 'garden', 'box', 'under bed']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.950
+------------------------------------------------------------
+
+[Object] toy food
+Gold standard : ['home office', 'exercise room', 'bathroom', 'closet', 'corridor', 'storage room', 'pantry', 'lobby', 'childs room', 'utility room', 'playroom', 'television room', 'living room', 'kitchen', 'dining room', 'bedroom', 'garage']
+Predicted     : ['childs room', 'playroom', 'living room', 'kitchen', 'toy box', 'closet', 'shelf', 'drawer', 'storage room', 'backpack', 'suitcase', 'box', 'television room', 'dining room']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] toy furniture set
+Gold standard : ['lobby', 'garage', 'closet', 'kitchen', 'bedroom', 'pantry', 'bathroom', 'corridor', 'playroom', 'home office', 'television room', 'utility room', 'exercise room', 'storage room', 'childs room', 'dining room', 'living room']
+Predicted     : ['childs room', 'playroom', 'living room', 'bedroom', 'closet', 'storage room', 'shelf', 'cabinet', 'box', 'under bed', 'toy chest', 'suitcase', 'backpack', 'drawer', 'television room']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] toy instrument
+Gold standard : ['playroom', 'utility room', 'childs room', 'television room', 'home office', 'kitchen', 'bathroom', 'closet', 'exercise room', 'dining room', 'pantry', 'bedroom', 'corridor', 'living room', 'garage', 'storage room', 'lobby']
+Predicted     : ['childs room', 'playroom', 'living room', 'toy box', 'closet', 'shelf', 'drawer', 'storage room', 'under bed', 'backpack', 'suitcase', 'box', 'television room', 'corridor']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.950
+------------------------------------------------------------
+
+[Object] toy kitchen set
+Gold standard : ['living room', 'utility room', 'home office', 'exercise room', 'television room', 'garage', 'pantry', 'corridor', 'kitchen', 'childs room', 'storage room', 'closet', 'lobby', 'bathroom', 'bedroom', 'dining room', 'playroom']
+Predicted     : ['childs room', 'playroom', 'living room', 'bedroom', 'closet', 'storage room', 'garage', 'utility room', 'shelf', 'cabinet', 'box', 'under bed', 'toy box', 'backpack', 'suitcase']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] toy tool kit
+Gold standard : ['playroom', 'television room', 'closet', 'lobby', 'utility room', 'home office', 'kitchen', 'childs room', 'storage room', 'dining room', 'corridor', 'exercise room', 'living room', 'garage', 'pantry', 'bedroom', 'bathroom']
+Predicted     : ['childs room', 'playroom', 'living room', 'closet', 'storage room', 'garage', 'drawer', 'shelf', 'cabinet', 'box', 'backpack', 'suitcase', 'utility room', 'toy box', 'under bed']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] toy vehicle
+Gold standard : ['exercise room', 'television room', 'kitchen', 'lobby', 'utility room', 'closet', 'living room', 'storage room', 'childs room', 'playroom', 'pantry', 'corridor', 'home office', 'bedroom', 'garage', 'bathroom', 'dining room']
+Predicted     : ['childs room', 'playroom', 'living room', 'bedroom', 'closet', 'storage room', 'garage', 'shelf', 'box', 'drawer', 'under bed', 'toy chest', 'garden', 'corridor']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] tray
+Gold standard : ['exercise room', 'bathroom', 'playroom', 'garage', 'pantry', 'kitchen', 'television room', 'childs room', 'utility room', 'storage room', 'bedroom', 'corridor', 'dining room', 'living room', 'lobby', 'home office', 'closet']
+Predicted     : ['kitchen', 'dining room', 'living room', 'bedroom', 'home office', 'desk', 'shelf', 'cabinet', 'oven', 'fridge', 'countertop', 'sideboard', 'bed', 'bathroom', 'utility room', 'pantry', 'playroom', 'childs room']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] tumbler
+Gold standard : ['bathroom', 'playroom', 'bedroom', 'garage', 'living room', 'storage room', 'utility room', 'television room', 'kitchen', 'pantry', 'home office', 'exercise room', 'lobby', 'closet', 'childs room', 'corridor', 'dining room']
+Predicted     : ['kitchen', 'dining room', 'living room', 'bedroom', 'home office', 'bathroom', 'childs room', 'playroom', 'exercise room', 'pantry', 'cabinet', 'shelf', 'desk', 'table', 'fridge', 'backpack', 'suitcase', 'garden', 'utility room', 'drawer']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] tv
+Gold standard : ['bedroom', 'house', 'living room']
+Predicted     : ['living room', 'bedroom', 'television room', 'childs room', 'home office', 'playroom', 'kitchen', 'garage', 'exercise room', 'dining room', 'library']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] tvstand
+Gold standard : ['living room']
+Predicted     : ['living room', 'television room', 'bedroom', 'childs room', 'playroom', 'home office', 'garage', 'storage room', 'utility room', 'closet']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] umbrella
+Gold standard : ['dining room', 'utility room', 'home office', 'closet', 'bathroom', 'pantry', 'corridor', 'lobby', 'childs room', 'exercise room', 'playroom', 'bedroom', 'television room', 'living room', 'garage', 'storage room', 'kitchen']
+Predicted     : ['closet', 'front door', 'coat rack', 'umbrella stand', 'entryway', 'storage room', 'garage', 'car', 'backpack', 'suitcase', 'bedroom', 'living room', 'utility room', 'bathroom', 'corridor']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] usb drive
+Gold standard : ['pantry', 'kitchen', 'bedroom', 'bathroom', 'corridor', 'dining room', 'storage room', 'garage', 'television room', 'exercise room', 'lobby', 'childs room', 'closet', 'utility room', 'home office', 'playroom', 'living room']
+Predicted     : ['desk drawer', 'home office', 'desk', 'living room', 'bedroom', 'backpack', 'purse', 'key bowl', 'kitchen', 'storage room', 'laptop bag', 'suitcase', 'office cabinet', 'entertainment center', "child's room desk", 'utility room', 'car glove compartment', 'library', 'bedside table', 'tech organizer box']
+RR=0.500  AP@1=0.000  AP@3=0.500  AP@5=0.533
+------------------------------------------------------------
+
+[Object] utensil holder
+Gold standard : ['lobby', 'living room', 'closet', 'pantry', 'corridor', 'dining room', 'bedroom', 'utility room', 'kitchen', 'bathroom', 'home office', 'childs room', 'playroom', 'exercise room', 'storage room', 'television room', 'garage']
+Predicted     : ['kitchen', 'dining room', 'pantry', 'utility room', 'home office', 'playroom', "child's room desk", 'storage room', 'garage', 'laundry room', 'living room', 'television room shelf']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] vacuumcleaner
+Gold standard : ['bedroom']
+Predicted     : ['closet', 'storage room', 'utility room', 'garage', 'corridor', 'under bed', 'laundry room', 'home office', 'living room', 'pantry', 'behind sofa']
+RR=0.000  AP@1=0.000  AP@3=0.000  AP@5=0.000
+------------------------------------------------------------
+
+[Object] vase
+Gold standard : ['kitchen', 'living room', 'bedroom', 'television room', 'home office', 'garage', 'pantry', 'storage room', 'bathroom', 'exercise room', 'playroom', 'corridor', 'lobby', 'closet', 'childs room', 'utility room', 'dining room']
+Predicted     : ['living room', 'dining room', 'bedroom', 'corridor', 'kitchen', 'bathroom', 'home office', 'garden', 'entryway table', 'television room shelf', "child's room shelf", 'pantry']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] video game
+Gold standard : ['exercise room', 'utility room', 'childs room', 'television room', 'pantry', 'lobby', 'storage room', 'living room', 'bathroom', 'playroom', 'kitchen', 'home office', 'bedroom', 'garage', 'closet', 'corridor', 'dining room']
+Predicted     : ['living room', 'childs room', 'bedroom', 'television room', 'playroom', 'home office', 'closet', 'shelf', 'cabinet', 'drawer', 'backpack', 'suitcase', 'entertainment center', 'desk']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] vinyl tape
+Gold standard : ['playroom', 'television room', 'closet', 'lobby', 'utility room', 'home office', 'kitchen', 'childs room', 'storage room', 'dining room', 'corridor', 'exercise room', 'living room', 'garage', 'pantry', 'bedroom', 'bathroom']
+Predicted     : ['garage', 'utility room', 'home office', 'storage room', 'drawer', 'toolbox', 'closet', 'kitchen', 'desk', 'shelf', 'cabinet', 'pantry', 'laundry room', 'childs room', 'playroom']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] virtual reality viewer
+Gold standard : ['lobby', 'exercise room', 'utility room', 'closet', 'storage room', 'playroom', 'bathroom', 'pantry', 'kitchen', 'corridor', 'childs room', 'television room', 'garage', 'dining room', 'bedroom', 'living room', 'home office']
+Predicted     : ['living room', 'bedroom', 'home office', 'playroom', 'childs room', 'television room', 'exercise room', 'closet', 'storage room', 'drawer', 'shelf', 'cabinet', 'backpack', 'box', 'desk']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] wardrobe
+Gold standard : ['room']
+Predicted     : ['bedroom', 'closet', 'storage room', 'corridor', 'childs room', 'guest room', 'utility room', 'garage', 'laundry room', 'playroom']
+RR=0.000  AP@1=0.000  AP@3=0.000  AP@5=0.000
+------------------------------------------------------------
+
+[Object] washcloth
+Gold standard : ['bathroom', 'playroom', 'storage room', 'kitchen', 'television room', 'dining room', 'childs room', 'corridor', 'garage', 'living room', 'utility room', 'bedroom', 'home office', 'exercise room', 'lobby', 'pantry', 'closet']
+Predicted     : ['bathroom', 'closet', 'laundry room', 'kitchen', 'utility room', 'childs room', 'sink', 'drawer', 'shelf', 'cabinet', 'box', 'backpack', 'suitcase']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.887
+------------------------------------------------------------
+
+[Object] waste basket
+Gold standard : ['living room', 'utility room', 'home office', 'exercise room', 'television room', 'garage', 'pantry', 'corridor', 'kitchen', 'childs room', 'storage room', 'closet', 'lobby', 'bathroom', 'bedroom', 'dining room', 'playroom']
+Predicted     : ['bathroom', 'kitchen', 'bedroom', 'home office', 'living room', 'childs room', 'garage', 'utility room', 'laundry room', 'corridor', 'dining room', 'playroom', 'closet', 'storage room', 'exercise room']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] watch
+Gold standard : ['living room', 'bedroom']
+Predicted     : ['wrist', 'bedroom', 'dresser drawer', 'closet', 'bathroom', 'living room', 'home office', 'kitchen', 'storage room', 'suitcase', 'backpack', 'watch box', 'jewelry box', 'exercise room shelf', "child's room drawer"]
+RR=0.500  AP@1=0.000  AP@3=0.500  AP@5=0.500
+------------------------------------------------------------
+
+[Object] water bottle
+Gold standard : ['television room', 'bedroom', 'lobby', 'bathroom', 'closet', 'pantry', 'exercise room', 'utility room', 'dining room', 'home office', 'garage', 'living room', 'corridor', 'kitchen', 'storage room', 'childs room', 'playroom']
+Predicted     : ['kitchen', 'bedroom', 'living room', 'bathroom', 'fridge', 'exercise room', 'backpack', 'car', 'dining room', 'desk', 'childs room', 'garage', 'pantry', 'shelf', 'cabinet', 'sports bag', 'suitcase', 'water bottle holder', 'nightstand']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] wateringcan
+Gold standard : ['living room']
+Predicted     : ['garden', 'garage', 'utility room', 'storage room', 'closet', 'pantry', 'balcony', 'corridor', 'laundry room', 'childs room', 'playroom', 'shelf', 'cabinet']
+RR=0.000  AP@1=0.000  AP@3=0.000  AP@5=0.000
+------------------------------------------------------------
+
+[Object] weight loss guide
+Gold standard : ['television room', 'closet', 'childs room', 'lobby', 'home office', 'storage room', 'bathroom', 'bedroom', 'kitchen', 'living room', 'playroom', 'exercise room', 'corridor', 'garage', 'dining room', 'pantry', 'utility room']
+Predicted     : ['bedside table', 'bedroom', 'living room', 'home office', 'kitchen', 'bathroom', 'dining room', 'backpack', 'suitcase', 'library', 'exercise room', 'pantry', 'utility room', "child's room bookshelf", 'sofa side table', 'closet', 'storage room', 'television room shelf', 'laundry room']
+RR=0.500  AP@1=0.000  AP@3=0.583  AP@5=0.679
+------------------------------------------------------------
+
+[Object] whale whistle
+Gold standard : ['dining room', 'exercise room', 'bedroom', 'bathroom', 'television room', 'storage room', 'childs room', 'pantry', 'corridor', 'living room', 'utility room', 'playroom', 'lobby', 'kitchen', 'closet', 'home office', 'garage']
+Predicted     : ['childs room', 'playroom', 'toy box', 'drawer', 'closet', 'shelf', 'backpack', 'suitcase', 'storage room', 'living room', 'box', 'jar', 'cabinet', 'desk', 'table']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.867
+------------------------------------------------------------
+
+[Object] window
+Gold standard : ['kitchen', 'living room', 'bedroom', 'bathroom']
+Predicted     : ['living room', 'bedroom', 'kitchen', 'bathroom', 'dining room', 'home office', 'childs room', 'playroom', 'corridor', 'garage', 'laundry room', 'utility room', 'exercise room', 'library', 'garden']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] wine glass
+Gold standard : ['kitchen']
+Predicted     : ['kitchen', 'dining room', 'living room', 'bar cabinet', 'china cabinet', 'storage room', 'pantry', 'closet', 'dishwasher', 'table', 'home office', 'fridge (for chilling)', 'sideboard']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] winebottle
+Gold standard : ['kitchen']
+Predicted     : ['kitchen', 'dining room', 'living room', 'pantry', 'storage room', 'closet', 'cabinet', 'fridge', 'shelf', 'wine cellar', 'bar', 'home office', 'garage', 'suitcase', 'box']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] wipe warmer
+Gold standard : ['corridor', 'home office', 'playroom', 'childs room', 'pantry', 'bedroom', 'dining room', 'bathroom', 'lobby', 'garage', 'television room', 'kitchen', 'closet', 'exercise room', 'storage room', 'utility room', 'living room']
+Predicted     : ['childs room', 'bathroom', 'changing table', 'diaper caddy', 'closet', 'shelf', 'cabinet', 'utility room', 'storage room', 'pantry', 'drawer']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.867
+------------------------------------------------------------
+
+[Object] wireless accessory
+Gold standard : ['bathroom', 'living room', 'garage', 'closet', 'playroom', 'pantry', 'childs room', 'bedroom', 'corridor', 'kitchen', 'television room', 'storage room', 'utility room', 'exercise room', 'dining room', 'home office', 'lobby']
+Predicted     : ['bedroom', 'living room', 'home office', 'kitchen', 'television room cabinet', "child's room box", 'backpack', 'suitcase', 'bedside table', 'entertainment center', 'charging station', 'utility room', 'playroom', 'corridor', 'garage']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=1.000
+------------------------------------------------------------
+
+[Object] xylitol sweetener
+Gold standard : ['garage', 'bedroom', 'home office', 'closet', 'utility room', 'television room', 'playroom', 'living room', 'exercise room', 'kitchen', 'storage room', 'corridor', 'childs room', 'pantry', 'lobby', 'dining room', 'bathroom']
+Predicted     : ['pantry', 'kitchen', 'fridge', 'dining room', 'home office', 'living room', 'bedroom', 'bathroom', 'storage room', 'utility room', "child's room drawer", 'backpack', 'suitcase']
+RR=1.000  AP@1=1.000  AP@3=1.000  AP@5=0.887
+------------------------------------------------------------
+
+
+============================================================
+SUMMARY
+============================================================
+N objects : 383
+MRR       : 0.8818
+MAP@1     : 0.8120
+MAP@3     : 0.8723
+MAP@5     : 0.8568
+MAR@1     : 0.1875
+MAR@3     : 0.2895
+MAR@5     : 0.3474
+============================================================

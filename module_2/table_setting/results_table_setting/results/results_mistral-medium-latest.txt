@@ -1,0 +1,1911 @@
+============================================================
+RESULT LOG - Table Setting Evaluation
+============================================================
+[Meal] Lamb and Bean Nachos With Salsa Fresca
+LLM Properties:
+  - reasoning: This is a handheld dish with toppings, not a scoopable bowl-style meal.
+  - is_soup_or_broth: False
+  - is_handheld_food: True
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Knife', 'Fork', 'Hands'}
+Predicted Cutlery:    {'Knife', 'Fork', 'Hands'} -> Jaccard: 1.000
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Dinner Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Meatloaf With BBQ Sauce
+LLM Properties:
+  - reasoning: This is a plated Western meat dish that does not require cutting as it is typically pre-sliced.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Fork', 'Knife'}
+Predicted Cutlery:    {'Fork', 'Knife'} -> Jaccard: 1.000
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Dinner Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Tiramisu
+LLM Properties:
+  - reasoning: This is a classic Italian dessert with layers of coffee-soaked ladyfingers and mascarpone cheese.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: True
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Spoon', 'Fork'}
+Predicted Cutlery:    {'Spoon', 'Fork'} -> Jaccard: 1.000
+Ground Truth Plate:   Dessert Plate
+Predicted Plate:      Dessert Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Loaded Potato Soup
+LLM Properties:
+  - reasoning: This is a thick, predominantly liquid dish with chunks of potato and toppings.
+  - is_soup_or_broth: True
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: True
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Spoon'}
+Predicted Cutlery:    {'Spoon', 'Fork'} -> Jaccard: 0.500
+Ground Truth Plate:   Bowl
+Predicted Plate:      Bowl -> Correct: True
+------------------------------------------------------------
+
+[Meal] Vegan Sushi Roll with Avocado, Carrot and Cucumber
+LLM Properties:
+  - reasoning: This is a traditional East Asian dish that is typically eaten with chopsticks and may contain long strands of ingredients.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: True
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Chopsticks', 'Hands'}
+Predicted Cutlery:    set() -> Jaccard: 0.000
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Dinner Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Spaghettini Bolognese
+LLM Properties:
+  - reasoning: This is a long-noodle Italian dish that is not typically eaten with chopsticks.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: True
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Spoon', 'Fork', 'Knife'}
+Predicted Cutlery:    {'Spoon', 'Fork', 'Knife'} -> Jaccard: 1.000
+Ground Truth Plate:   Bowl
+Predicted Plate:      Bowl -> Correct: True
+------------------------------------------------------------
+
+[Meal] Meatballs With Orzo and Italian Vegetables
+LLM Properties:
+  - reasoning: This is a plated entrée; despite sauce and small components, it is not typically served as a scoopable bowl meal.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Fork', 'Knife'}
+Predicted Cutlery:    {'Fork', 'Knife'} -> Jaccard: 1.000
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Dinner Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Orange Spinach Salmon Salad
+LLM Properties:
+  - reasoning: This is a plated salad dish that does not require cutting or specific utensils beyond a fork.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Fork', 'Knife'}
+Predicted Cutlery:    {'Fork', 'Knife'} -> Jaccard: 1.000
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Dinner Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Moussaka with Rice
+LLM Properties:
+  - reasoning: Moussaka with rice is a plated dish with layers that are typically served as a solid piece, not requiring scooping or cutting into small pieces.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Spoon', 'Fork', 'Knife'}
+Predicted Cutlery:    {'Fork', 'Knife'} -> Jaccard: 0.667
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Dinner Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Miso Broth Ramen
+LLM Properties:
+  - reasoning: This is a traditional Japanese noodle soup dish with long strands of noodles, typically eaten with chopsticks.
+  - is_soup_or_broth: True
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: True
+  - is_long_noodles: True
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Chopsticks', 'Spoon'}
+Predicted Cutlery:    {'Chopsticks', 'Spoon', 'Fork'} -> Jaccard: 0.667
+Ground Truth Plate:   Bowl
+Predicted Plate:      Bowl -> Correct: True
+------------------------------------------------------------
+
+[Meal] Leg of Lamb With Garlic Sauce and Fresh Herbs
+LLM Properties:
+  - reasoning: This is a plated Western meat dish that requires cutting; the sauce does not make it a scoopable bowl-style meal.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: True
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Fork', 'Knife'}
+Predicted Cutlery:    {'Fork', 'Knife'} -> Jaccard: 1.000
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Dinner Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Beer Battered Shrimp
+LLM Properties:
+  - reasoning: This is a handheld appetizer typically eaten with fingers, not requiring utensils or a bowl.
+  - is_soup_or_broth: False
+  - is_handheld_food: True
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Knife', 'Fork', 'Hands'}
+Predicted Cutlery:    {'Knife', 'Fork', 'Hands'} -> Jaccard: 1.000
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Dinner Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Beef Barbecue Casserole
+LLM Properties:
+  - reasoning: This is a baked casserole served plated; even if it has some sauce, it is not a scoopable bowl-style meal.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Fork', 'Knife'}
+Predicted Cutlery:    {'Fork', 'Knife'} -> Jaccard: 1.000
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Dinner Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Baked Salmon with Sweet Olive Salsa
+LLM Properties:
+  - reasoning: This is a plated Western fish dish that does not require cutting; the salsa does not make it a scoopable bowl-style meal.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Fork', 'Knife'}
+Predicted Cutlery:    {'Fork', 'Knife'} -> Jaccard: 1.000
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Dinner Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Ginger Hazelnut Cookies
+LLM Properties:
+  - reasoning: This is a dessert item that is typically handheld or eaten with a dessert fork.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: True
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Hands'}
+Predicted Cutlery:    {'Spoon', 'Fork'} -> Jaccard: 0.000
+Ground Truth Plate:   Dessert Plate
+Predicted Plate:      Dessert Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Cajun Chicken Sandwiches
+LLM Properties:
+  - reasoning: This is a handheld sandwich; despite the Cajun seasoning, it is not a chopsticks-appropriate dish.
+  - is_soup_or_broth: False
+  - is_handheld_food: True
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Hands'}
+Predicted Cutlery:    {'Knife', 'Fork', 'Hands'} -> Jaccard: 0.333
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Dinner Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Three Cheese Ravioli
+LLM Properties:
+  - reasoning: Ravioli are not long strands; they are typically eaten as a plated pasta dish and do not imply a bowl-style scoopable meal.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Spoon', 'Fork', 'Knife'}
+Predicted Cutlery:    {'Fork', 'Knife'} -> Jaccard: 0.667
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Dinner Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Stringy Macaroni & Cheese
+LLM Properties:
+  - reasoning: This is a plated dish with long pasta strands; it is not typically treated as a scoopable bowl meal.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: True
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Spoon', 'Fork'}
+Predicted Cutlery:    {'Spoon', 'Fork', 'Knife'} -> Jaccard: 0.667
+Ground Truth Plate:   Bowl
+Predicted Plate:      Bowl -> Correct: True
+------------------------------------------------------------
+
+[Meal] Mushroom Omelet
+LLM Properties:
+  - reasoning: This is a plated breakfast dish that is typically eaten with a fork and knife.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: True
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Fork', 'Knife'}
+Predicted Cutlery:    {'Fork', 'Knife'} -> Jaccard: 1.000
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Dinner Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Baked Apples with Candied Walnuts
+LLM Properties:
+  - reasoning: This is a dessert dish that is typically served plated and may require a spoon or fork for eating.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: True
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Knife', 'Spoon', 'Fork', 'Hands'}
+Predicted Cutlery:    {'Spoon', 'Fork'} -> Jaccard: 0.500
+Ground Truth Plate:   Dessert Plate
+Predicted Plate:      Dessert Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Spring Green Salad
+LLM Properties:
+  - reasoning: This is a plated dish with leafy greens and vegetables that are typically eaten with a fork.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Fork', 'Knife'}
+Predicted Cutlery:    {'Fork', 'Knife'} -> Jaccard: 1.000
+Ground Truth Plate:   Bowl
+Predicted Plate:      Dinner Plate -> Correct: False
+------------------------------------------------------------
+
+[Meal] Hamburgers
+LLM Properties:
+  - reasoning: Hamburgers are classic handheld foods eaten without utensils.
+  - is_soup_or_broth: False
+  - is_handheld_food: True
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Knife', 'Fork', 'Hands'}
+Predicted Cutlery:    {'Knife', 'Fork', 'Hands'} -> Jaccard: 1.000
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Dinner Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Hot Apple Oatmeal
+LLM Properties:
+  - reasoning: This is a warm, soft, and predominantly liquid breakfast dish that is typically served in a bowl.
+  - is_soup_or_broth: True
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: True
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Spoon'}
+Predicted Cutlery:    {'Spoon', 'Fork'} -> Jaccard: 0.500
+Ground Truth Plate:   Bowl
+Predicted Plate:      Bowl -> Correct: True
+------------------------------------------------------------
+
+[Meal] Quinoa Salad
+LLM Properties:
+  - reasoning: Quinoa salad is typically served as a plated dish with loose grains and vegetables, often requiring a fork or spoon to eat.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: True
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Spoon', 'Fork', 'Knife'}
+Predicted Cutlery:    {'Spoon', 'Fork'} -> Jaccard: 0.667
+Ground Truth Plate:   Bowl
+Predicted Plate:      Bowl -> Correct: True
+------------------------------------------------------------
+
+[Meal] Pan Fried Steak With Vegetables
+LLM Properties:
+  - reasoning: This is a plated Western meat dish that requires cutting; the vegetables are typically not treated as a scoopable bowl-style meal.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: True
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Fork', 'Knife'}
+Predicted Cutlery:    {'Fork', 'Knife'} -> Jaccard: 1.000
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Dinner Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Strawberry Custard Cake
+LLM Properties:
+  - reasoning: This is a dessert that is typically served in slices and may require a fork or spoon to eat.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: True
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Spoon', 'Fork'}
+Predicted Cutlery:    {'Spoon', 'Fork'} -> Jaccard: 1.000
+Ground Truth Plate:   Dessert Plate
+Predicted Plate:      Dessert Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Baked Breakfast Burritos
+LLM Properties:
+  - reasoning: This is a handheld breakfast item typically eaten without utensils.
+  - is_soup_or_broth: False
+  - is_handheld_food: True
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Knife', 'Fork', 'Hands'}
+Predicted Cutlery:    {'Knife', 'Fork', 'Hands'} -> Jaccard: 1.000
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Dinner Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Teriyaki Pork Chops
+LLM Properties:
+  - reasoning: This is a plated Western meat dish that requires cutting; the sauce does not make it a scoopable bowl-style meal.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: True
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Fork', 'Knife'}
+Predicted Cutlery:    {'Fork', 'Knife'} -> Jaccard: 1.000
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Dinner Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] White-Bean Soup with Bacon and Herbs
+LLM Properties:
+  - reasoning: This is a predominantly liquid dish with beans and bacon, typically served in a bowl.
+  - is_soup_or_broth: True
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: True
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Spoon'}
+Predicted Cutlery:    {'Spoon', 'Fork'} -> Jaccard: 0.500
+Ground Truth Plate:   Bowl
+Predicted Plate:      Bowl -> Correct: True
+------------------------------------------------------------
+
+[Meal] Velveeta Chicken Spaghetti
+LLM Properties:
+  - reasoning: This dish contains long strands of pasta but is not typically treated as a scoopable bowl meal.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: True
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Fork', 'Knife'}
+Predicted Cutlery:    {'Spoon', 'Fork', 'Knife'} -> Jaccard: 0.667
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Bowl -> Correct: False
+------------------------------------------------------------
+
+[Meal] Greek Chickpea Stew
+LLM Properties:
+  - reasoning: This is a thick stew that is typically served in a bowl and eaten with a spoon.
+  - is_soup_or_broth: True
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: True
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Spoon', 'Fork'}
+Predicted Cutlery:    {'Spoon', 'Fork'} -> Jaccard: 1.000
+Ground Truth Plate:   Bowl
+Predicted Plate:      Bowl -> Correct: True
+------------------------------------------------------------
+
+[Meal] Steamed Coconut Rice
+LLM Properties:
+  - reasoning: This is a scoopable rice dish that is not a dessert, soup, or handheld food.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: True
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: True
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Spoon', 'Fork'}
+Predicted Cutlery:    {'Chopsticks'} -> Jaccard: 0.000
+Ground Truth Plate:   Bowl
+Predicted Plate:      Bowl -> Correct: True
+------------------------------------------------------------
+
+[Meal] Caramelized Shallot and Mushroom Quiche
+LLM Properties:
+  - reasoning: This is a plated baked dish that is not handheld, does not require cutting, and is not a scoopable bowl meal.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Spoon', 'Fork', 'Knife'}
+Predicted Cutlery:    {'Fork', 'Knife'} -> Jaccard: 0.667
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Dinner Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Roasted Sweet Potato Slices
+LLM Properties:
+  - reasoning: This is a plated dish with solid pieces that are not typically cut further while eating.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Knife', 'Fork', 'Hands'}
+Predicted Cutlery:    {'Fork', 'Knife'} -> Jaccard: 0.667
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Dinner Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Sausage and Corn Quesadillas
+LLM Properties:
+  - reasoning: This is a handheld dish typically eaten without utensils.
+  - is_soup_or_broth: False
+  - is_handheld_food: True
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Knife', 'Fork', 'Hands'}
+Predicted Cutlery:    {'Knife', 'Fork', 'Hands'} -> Jaccard: 1.000
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Dinner Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Chicken Parmesan Panini
+LLM Properties:
+  - reasoning: This is a handheld sandwich with a filling that does not require cutting.
+  - is_soup_or_broth: False
+  - is_handheld_food: True
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Knife', 'Fork', 'Hands'}
+Predicted Cutlery:    {'Knife', 'Fork', 'Hands'} -> Jaccard: 1.000
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Dinner Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Eggplant Curry (Indian)
+LLM Properties:
+  - reasoning: This is a thick, scoopable curry dish served in a bowl, typical of Indian cuisine.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: True
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Spoon', 'Fork', 'Knife'}
+Predicted Cutlery:    {'Spoon', 'Fork'} -> Jaccard: 0.667
+Ground Truth Plate:   Bowl
+Predicted Plate:      Bowl -> Correct: True
+------------------------------------------------------------
+
+[Meal] Eggs with Chickpeas, Spinach, and Tomato
+LLM Properties:
+  - reasoning: This is a plated dish with solid components; it is not a scoopable bowl-style meal despite containing small pieces.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Spoon', 'Fork', 'Knife'}
+Predicted Cutlery:    {'Fork', 'Knife'} -> Jaccard: 0.667
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Dinner Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Brazilian Seafood Stew
+LLM Properties:
+  - reasoning: This is a predominantly liquid dish with chunks of seafood and vegetables.
+  - is_soup_or_broth: True
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: True
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Spoon', 'Fork'}
+Predicted Cutlery:    {'Spoon', 'Fork'} -> Jaccard: 1.000
+Ground Truth Plate:   Bowl
+Predicted Plate:      Bowl -> Correct: True
+------------------------------------------------------------
+
+[Meal] Asparagus and Artichoke Pasta Salad
+LLM Properties:
+  - reasoning: This is a plated dish with short pasta and vegetables; it is not a long-noodle dish and is typically not treated as a scoopable bowl meal.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Fork', 'Knife'}
+Predicted Cutlery:    {'Fork', 'Knife'} -> Jaccard: 1.000
+Ground Truth Plate:   Bowl
+Predicted Plate:      Dinner Plate -> Correct: False
+------------------------------------------------------------
+
+[Meal] Chocolate Chip Cranberry Muffins
+LLM Properties:
+  - reasoning: This is a handheld sweet baked good.
+  - is_soup_or_broth: False
+  - is_handheld_food: True
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: True
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Fork', 'Hands'}
+Predicted Cutlery:    {'Hands'} -> Jaccard: 0.500
+Ground Truth Plate:   Dessert Plate
+Predicted Plate:      Dessert Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Baklava
+LLM Properties:
+  - reasoning: This is a sweet dessert with layers of pastry and nuts, typically cut into small pieces and eaten with a fork.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: True
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Knife', 'Spoon', 'Fork', 'Hands'}
+Predicted Cutlery:    {'Spoon', 'Fork'} -> Jaccard: 0.500
+Ground Truth Plate:   Dessert Plate
+Predicted Plate:      Dessert Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Linguine Pasta with Shrimp and Tomatoes
+LLM Properties:
+  - reasoning: This is a long-noodle dish that is not typically eaten with chopsticks.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: True
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Spoon', 'Fork', 'Knife'}
+Predicted Cutlery:    {'Spoon', 'Fork', 'Knife'} -> Jaccard: 1.000
+Ground Truth Plate:   Coupe Plate
+Predicted Plate:      Bowl -> Correct: False
+------------------------------------------------------------
+
+[Meal] Sloppy Joes with Cornbread
+LLM Properties:
+  - reasoning: Sloppy Joes are typically served on a bun and eaten as a handheld food, while cornbread can be eaten with hands or utensils.
+  - is_soup_or_broth: False
+  - is_handheld_food: True
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Knife', 'Fork', 'Hands'}
+Predicted Cutlery:    {'Knife', 'Fork', 'Hands'} -> Jaccard: 1.000
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Dinner Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Chillaquillas
+LLM Properties:
+  - reasoning: This is a Mexican dish often served as a plated meal with tortilla pieces, sauce, and toppings, but it is not typically eaten with hands or as a scoopable bowl meal.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Knife', 'Fork', 'Hands'}
+Predicted Cutlery:    {'Fork', 'Knife'} -> Jaccard: 0.667
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Dinner Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Deep-Fried Plantain Rounds
+LLM Properties:
+  - reasoning: This is a handheld snack or side dish that is typically eaten with fingers.
+  - is_soup_or_broth: False
+  - is_handheld_food: True
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Knife', 'Fork', 'Hands'}
+Predicted Cutlery:    {'Knife', 'Fork', 'Hands'} -> Jaccard: 1.000
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Dinner Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Ranch and Avocado Pasta Salad
+LLM Properties:
+  - reasoning: This is a plated dish with short pasta; it is not a long-noodle dish and is typically not treated as a scoopable bowl meal.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Fork', 'Knife'}
+Predicted Cutlery:    {'Fork', 'Knife'} -> Jaccard: 1.000
+Ground Truth Plate:   Bowl
+Predicted Plate:      Dinner Plate -> Correct: False
+------------------------------------------------------------
+
+[Meal] Roasted Tomato Soup
+LLM Properties:
+  - reasoning: This is a predominantly liquid dish that is typically served in a bowl.
+  - is_soup_or_broth: True
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Spoon'}
+Predicted Cutlery:    {'Spoon', 'Fork'} -> Jaccard: 0.500
+Ground Truth Plate:   Bowl
+Predicted Plate:      Bowl -> Correct: True
+------------------------------------------------------------
+
+[Meal] Mushrooms & Scrambled Eggs on Toast
+LLM Properties:
+  - reasoning: This is a plated breakfast dish that typically does not require cutting or scooping.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Knife', 'Fork', 'Hands'}
+Predicted Cutlery:    {'Fork', 'Knife'} -> Jaccard: 0.667
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Dinner Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Baked Acorn Squash with Fruit
+LLM Properties:
+  - reasoning: This is a plated vegetable dish that is typically served in halves or slices and may require cutting.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: True
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Spoon', 'Fork', 'Knife'}
+Predicted Cutlery:    {'Fork', 'Knife'} -> Jaccard: 0.667
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Dinner Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Sea Bass with Gingered Vegetable Stir-Fry
+LLM Properties:
+  - reasoning: This is a plated entrée with a side of stir-fried vegetables; it is not a traditional Asian dish requiring chopsticks.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: True
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Fork', 'Knife'}
+Predicted Cutlery:    {'Fork', 'Knife'} -> Jaccard: 1.000
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Dinner Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Rhubarb Bread Pudding
+LLM Properties:
+  - reasoning: This is a dessert dish that is typically served in portions and eaten with a spoon or fork.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: True
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Spoon', 'Fork'}
+Predicted Cutlery:    {'Spoon', 'Fork'} -> Jaccard: 1.000
+Ground Truth Plate:   Dessert Plate
+Predicted Plate:      Dessert Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Green Tomato Pie
+LLM Properties:
+  - reasoning: This is a dessert pie, typically served in slices and may require a fork.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: True
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Knife', 'Spoon', 'Fork', 'Hands'}
+Predicted Cutlery:    {'Spoon', 'Fork'} -> Jaccard: 0.500
+Ground Truth Plate:   Dessert Plate
+Predicted Plate:      Dessert Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Classic Chili
+LLM Properties:
+  - reasoning: This is a thick stew-like dish often served in a bowl with small beans and ground meat.
+  - is_soup_or_broth: True
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: True
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Spoon', 'Fork'}
+Predicted Cutlery:    {'Spoon', 'Fork'} -> Jaccard: 1.000
+Ground Truth Plate:   Bowl
+Predicted Plate:      Bowl -> Correct: True
+------------------------------------------------------------
+
+[Meal] Pad Thai with Kale
+LLM Properties:
+  - reasoning: Pad Thai is a traditional Thai dish with long noodles, commonly eaten with chopsticks or a fork.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: True
+  - is_long_noodles: True
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Chopsticks', 'Fork'}
+Predicted Cutlery:    {'Chopsticks', 'Fork'} -> Jaccard: 1.000
+Ground Truth Plate:   Bowl
+Predicted Plate:      Bowl -> Correct: True
+------------------------------------------------------------
+
+[Meal] Korean-Style Cucumber Kimchi
+LLM Properties:
+  - reasoning: This is a traditional Korean side dish that is not typically eaten with utensils and is not a main course.
+  - is_soup_or_broth: False
+  - is_handheld_food: True
+  - needs_cutting: False
+  - is_asian_cuisine: True
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Chopsticks', 'Spoon', 'Fork'}
+Predicted Cutlery:    {'Chopsticks', 'Hands'} -> Jaccard: 0.250
+Ground Truth Plate:   Bowl
+Predicted Plate:      Dinner Plate -> Correct: False
+------------------------------------------------------------
+
+[Meal] BBQ Oysters
+LLM Properties:
+  - reasoning: This is a seafood dish that is typically served on a half shell and eaten with a fork.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Fork', 'Hands'}
+Predicted Cutlery:    {'Fork', 'Knife'} -> Jaccard: 0.333
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Dinner Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Spicy Sausage Ragu With Red Peppers
+LLM Properties:
+  - reasoning: This is a plated dish with sauce and vegetables, but it is not typically served as a scoopable bowl meal.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Spoon', 'Fork', 'Knife'}
+Predicted Cutlery:    {'Fork', 'Knife'} -> Jaccard: 0.667
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Dinner Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Garlic and Red Pepper Broccoli
+LLM Properties:
+  - reasoning: This is a plated vegetable dish that is not typically eaten with hands or chopsticks.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Chopsticks', 'Spoon', 'Fork', 'Knife'}
+Predicted Cutlery:    {'Fork', 'Knife'} -> Jaccard: 0.500
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Dinner Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Tropical Coleslaw
+LLM Properties:
+  - reasoning: This is a side dish typically served in a bowl, but it is not a soup or broth and does not require specific utensils beyond a fork or spoon.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: True
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Spoon', 'Fork'}
+Predicted Cutlery:    {'Spoon', 'Fork'} -> Jaccard: 1.000
+Ground Truth Plate:   Bowl
+Predicted Plate:      Bowl -> Correct: True
+------------------------------------------------------------
+
+[Meal] Middle Eastern Fava Bean Stew
+LLM Properties:
+  - reasoning: This is a thick stew that is typically served in a bowl and eaten with a spoon.
+  - is_soup_or_broth: True
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: True
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Spoon', 'Fork'}
+Predicted Cutlery:    {'Spoon', 'Fork'} -> Jaccard: 1.000
+Ground Truth Plate:   Bowl
+Predicted Plate:      Bowl -> Correct: True
+------------------------------------------------------------
+
+[Meal] Linguine With Sausage and Mushrooms
+LLM Properties:
+  - reasoning: This is a plated long-noodle pasta dish that is not typically eaten with chopsticks.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: True
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Fork', 'Knife'}
+Predicted Cutlery:    {'Spoon', 'Fork', 'Knife'} -> Jaccard: 0.667
+Ground Truth Plate:   Coupe Plate
+Predicted Plate:      Bowl -> Correct: False
+------------------------------------------------------------
+
+[Meal] Grilled Octopus with Ancho Chile Sauce
+LLM Properties:
+  - reasoning: This is a plated dish that may require cutting, but it is not a handheld, soup, or Asian cuisine dish.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: True
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Fork', 'Knife'}
+Predicted Cutlery:    {'Fork', 'Knife'} -> Jaccard: 1.000
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Dinner Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Chicken Wings with Salsa Verde
+LLM Properties:
+  - reasoning: Chicken wings are typically eaten as a handheld food without utensils.
+  - is_soup_or_broth: False
+  - is_handheld_food: True
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Knife', 'Fork', 'Hands'}
+Predicted Cutlery:    {'Knife', 'Fork', 'Hands'} -> Jaccard: 1.000
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Dinner Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Banh Mi (Vietnamese Pulled Pork Sandwich)
+LLM Properties:
+  - reasoning: This is a handheld sandwich; despite being Vietnamese, it is not a chopsticks-appropriate dish.
+  - is_soup_or_broth: False
+  - is_handheld_food: True
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Knife', 'Fork', 'Hands'}
+Predicted Cutlery:    {'Knife', 'Fork', 'Hands'} -> Jaccard: 1.000
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Dinner Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Veggie Pizza
+LLM Properties:
+  - reasoning: Pizza is a classic handheld food eaten without utensils.
+  - is_soup_or_broth: False
+  - is_handheld_food: True
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Knife', 'Fork', 'Hands'}
+Predicted Cutlery:    {'Knife', 'Fork', 'Hands'} -> Jaccard: 1.000
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Dinner Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Blueberry French Toast
+LLM Properties:
+  - reasoning: This is a plated breakfast dish that is not typically eaten with hands or cut into pieces.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: True
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Knife', 'Fork', 'Hands'}
+Predicted Cutlery:    {'Spoon', 'Fork'} -> Jaccard: 0.250
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Dessert Plate -> Correct: False
+------------------------------------------------------------
+
+[Meal] Baked Noodles and Eggplant
+LLM Properties:
+  - reasoning: This is a baked casserole-style dish that is not a long-noodle dish and is typically not treated as a scoopable bowl meal.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Chopsticks', 'Fork', 'Knife'}
+Predicted Cutlery:    {'Fork', 'Knife'} -> Jaccard: 0.667
+Ground Truth Plate:   Bowl
+Predicted Plate:      Dinner Plate -> Correct: False
+------------------------------------------------------------
+
+[Meal] Roasted Rosemary Turkey Breast
+LLM Properties:
+  - reasoning: This is a plated meat dish that requires cutting and is not typically served as a scoopable bowl meal.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: True
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Fork', 'Knife'}
+Predicted Cutlery:    {'Fork', 'Knife'} -> Jaccard: 1.000
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Dinner Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Baked Carrots
+LLM Properties:
+  - reasoning: This is a plated vegetable side dish that does not require cutting or special utensils.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Fork', 'Knife'}
+Predicted Cutlery:    {'Fork', 'Knife'} -> Jaccard: 1.000
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Dinner Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Dal With Chicken
+LLM Properties:
+  - reasoning: Dal with chicken is a traditional South Asian dish that is typically served with rice or bread and is not eaten with chopsticks.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: True
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Spoon', 'Fork', 'Knife'}
+Predicted Cutlery:    {'Spoon', 'Fork'} -> Jaccard: 0.667
+Ground Truth Plate:   Bowl
+Predicted Plate:      Bowl -> Correct: True
+------------------------------------------------------------
+
+[Meal] Apple Walnut Cake
+LLM Properties:
+  - reasoning: This is a dessert that is typically served in slices and may require a fork.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: True
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Spoon', 'Fork', 'Hands'}
+Predicted Cutlery:    {'Spoon', 'Fork'} -> Jaccard: 0.667
+Ground Truth Plate:   Dessert Plate
+Predicted Plate:      Dessert Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Grilled Peaches with Cinnamon Ice Cream
+LLM Properties:
+  - reasoning: This is a dessert featuring soft fruit and ice cream, typically eaten with a spoon.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: True
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Spoon', 'Fork'}
+Predicted Cutlery:    {'Spoon', 'Fork'} -> Jaccard: 1.000
+Ground Truth Plate:   Bowl
+Predicted Plate:      Dessert Plate -> Correct: False
+------------------------------------------------------------
+
+[Meal] Chili Prawn and Tomato Spaghetti
+LLM Properties:
+  - reasoning: This is a long-noodle dish with an Asian-inspired flavor profile, but it is not a traditional Asian dish.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: True
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Spoon', 'Fork', 'Knife'}
+Predicted Cutlery:    {'Spoon', 'Fork', 'Knife'} -> Jaccard: 1.000
+Ground Truth Plate:   Coupe Plate
+Predicted Plate:      Bowl -> Correct: False
+------------------------------------------------------------
+
+[Meal] Corn on the Cob with Cheese and Lime
+LLM Properties:
+  - reasoning: This is a handheld food typically eaten by holding the cob directly.
+  - is_soup_or_broth: False
+  - is_handheld_food: True
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Skewer', 'Hands'}
+Predicted Cutlery:    {'Knife', 'Fork', 'Hands'} -> Jaccard: 0.250
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Dinner Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Brownies
+LLM Properties:
+  - reasoning: Brownies are a sweet baked good typically eaten as a dessert.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: True
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Spoon', 'Fork', 'Hands'}
+Predicted Cutlery:    {'Spoon', 'Fork'} -> Jaccard: 0.667
+Ground Truth Plate:   Dessert Plate
+Predicted Plate:      Dessert Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Soft-Shell Crabs, With Lime Sauce
+LLM Properties:
+  - reasoning: This is a plated seafood dish that may require cutting or utensils to handle the crab.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: True
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Knife', 'Fork', 'Hands'}
+Predicted Cutlery:    {'Fork', 'Knife'} -> Jaccard: 0.667
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Dinner Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Beef Stew with Dried Mushrooms
+LLM Properties:
+  - reasoning: This is a predominantly liquid dish with chunks of meat and vegetables.
+  - is_soup_or_broth: True
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: True
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Spoon', 'Fork', 'Knife'}
+Predicted Cutlery:    {'Spoon', 'Fork'} -> Jaccard: 0.667
+Ground Truth Plate:   Bowl
+Predicted Plate:      Bowl -> Correct: True
+------------------------------------------------------------
+
+[Meal] Indian Spiced Shrimp
+LLM Properties:
+  - reasoning: This is a plated Indian dish; despite having sauce, it is not a scoopable bowl-style meal.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Knife', 'Spoon', 'Fork', 'Hands'}
+Predicted Cutlery:    {'Fork', 'Knife'} -> Jaccard: 0.500
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Dinner Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Stuffed Green Bell Peppers
+LLM Properties:
+  - reasoning: This is a plated dish that typically requires cutting and is not handheld or a scoopable bowl meal.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: True
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Fork', 'Knife'}
+Predicted Cutlery:    {'Fork', 'Knife'} -> Jaccard: 1.000
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Dinner Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Herbal Tuna Salad
+LLM Properties:
+  - reasoning: This is a plated dish that may contain solid chunks but is not typically a scoopable bowl meal.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Fork', 'Knife'}
+Predicted Cutlery:    {'Fork', 'Knife'} -> Jaccard: 1.000
+Ground Truth Plate:   Bowl
+Predicted Plate:      Dinner Plate -> Correct: False
+------------------------------------------------------------
+
+[Meal] Sweet and Sour Pork
+LLM Properties:
+  - reasoning: This is a traditional Chinese dish often eaten with chopsticks, featuring bite-sized pieces in a sauce.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: True
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: True
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Chopsticks', 'Fork', 'Knife'}
+Predicted Cutlery:    {'Chopsticks'} -> Jaccard: 0.333
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Bowl -> Correct: False
+------------------------------------------------------------
+
+[Meal] Caramel Oatmeal Bars
+LLM Properties:
+  - reasoning: This is a dessert item typically served as a bar or square.
+  - is_soup_or_broth: False
+  - is_handheld_food: True
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: True
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Hands'}
+Predicted Cutlery:    {'Hands'} -> Jaccard: 1.000
+Ground Truth Plate:   Dessert Plate
+Predicted Plate:      Dessert Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Snapper in Black Sauce
+LLM Properties:
+  - reasoning: This is a plated fish dish with sauce; it is not a scoopable bowl-style meal.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: True
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Spoon', 'Fork', 'Knife'}
+Predicted Cutlery:    {'Fork', 'Knife'} -> Jaccard: 0.667
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Dinner Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] American Potato Salad
+LLM Properties:
+  - reasoning: This is a scoopable side dish typically served in a bowl.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: True
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Spoon', 'Fork', 'Knife'}
+Predicted Cutlery:    {'Spoon', 'Fork'} -> Jaccard: 0.667
+Ground Truth Plate:   Bowl
+Predicted Plate:      Bowl -> Correct: True
+------------------------------------------------------------
+
+[Meal] Chicken Piccata
+LLM Properties:
+  - reasoning: This is a plated Western meat dish that requires cutting; the sauce does not make it a scoopable bowl-style meal.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: True
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Fork', 'Knife'}
+Predicted Cutlery:    {'Fork', 'Knife'} -> Jaccard: 1.000
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Dinner Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Creamy Baked Mac and Cheese
+LLM Properties:
+  - reasoning: This is a baked casserole-style plated dish with short pasta; it is not a long-noodle dish and is typically not treated as a scoopable bowl meal.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Spoon', 'Fork', 'Knife'}
+Predicted Cutlery:    {'Fork', 'Knife'} -> Jaccard: 0.667
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Dinner Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Chicken & Broccoli Cannelloni
+LLM Properties:
+  - reasoning: This is a plated pasta dish with large pieces that are not typically cut, and it is not a scoopable bowl meal.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Fork', 'Knife'}
+Predicted Cutlery:    {'Fork', 'Knife'} -> Jaccard: 1.000
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Dinner Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Rice With Lemon, Capers & Parsley
+LLM Properties:
+  - reasoning: This is a scoopable rice dish typically served in a bowl.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: True
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Spoon', 'Fork', 'Knife'}
+Predicted Cutlery:    {'Spoon', 'Fork'} -> Jaccard: 0.667
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Bowl -> Correct: False
+------------------------------------------------------------
+
+[Meal] Ham and Asparagus Pie
+LLM Properties:
+  - reasoning: This is a plated pie dish that may require cutting but is not handheld or a scoopable bowl meal.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: True
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Fork', 'Knife'}
+Predicted Cutlery:    {'Fork', 'Knife'} -> Jaccard: 1.000
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Dinner Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Cauliflower in Chilli Butter Sauce
+LLM Properties:
+  - reasoning: This is a plated dish with sauce but not typically a scoopable bowl meal.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Spoon', 'Fork', 'Knife'}
+Predicted Cutlery:    {'Fork', 'Knife'} -> Jaccard: 0.667
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Dinner Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Fruit and Veggie Couscous
+LLM Properties:
+  - reasoning: Couscous is a grain-like dish often served in a bowl, but it is not typically treated as a scoopable meal.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Spoon', 'Fork'}
+Predicted Cutlery:    {'Fork', 'Knife'} -> Jaccard: 0.333
+Ground Truth Plate:   Bowl
+Predicted Plate:      Dinner Plate -> Correct: False
+------------------------------------------------------------
+
+[Meal] Chicken Fingers with Tomato-Jalapeno Sauce
+LLM Properties:
+  - reasoning: This is a handheld food typically eaten with fingers, not requiring utensils or chopsticks.
+  - is_soup_or_broth: False
+  - is_handheld_food: True
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Knife', 'Fork', 'Hands'}
+Predicted Cutlery:    {'Knife', 'Fork', 'Hands'} -> Jaccard: 1.000
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Dinner Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Chocolate Caramel Cake
+LLM Properties:
+  - reasoning: This is a dessert that is typically served in slices and may require a fork or spoon to eat.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: True
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Spoon', 'Fork'}
+Predicted Cutlery:    {'Spoon', 'Fork'} -> Jaccard: 1.000
+Ground Truth Plate:   Dessert Plate
+Predicted Plate:      Dessert Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Mash Potatoes
+LLM Properties:
+  - reasoning: This is a soft, plated side dish that is not typically treated as a scoopable bowl meal.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Spoon', 'Fork'}
+Predicted Cutlery:    {'Fork', 'Knife'} -> Jaccard: 0.333
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Dinner Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Tom Kha Gai (Thai Spicy Coconut Soup)
+LLM Properties:
+  - reasoning: This is a traditional Thai soup that is predominantly liquid and typically eaten with a spoon.
+  - is_soup_or_broth: True
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: True
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Spoon'}
+Predicted Cutlery:    {'Spoon'} -> Jaccard: 1.000
+Ground Truth Plate:   Bowl
+Predicted Plate:      Bowl -> Correct: True
+------------------------------------------------------------
+
+[Meal] Black Bean Chili
+LLM Properties:
+  - reasoning: This is a thick, hearty dish that is typically served in a bowl and contains small pieces of beans and vegetables.
+  - is_soup_or_broth: True
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: True
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Spoon', 'Fork'}
+Predicted Cutlery:    {'Spoon', 'Fork'} -> Jaccard: 1.000
+Ground Truth Plate:   Bowl
+Predicted Plate:      Bowl -> Correct: True
+------------------------------------------------------------
+
+[Meal] Lemon Garlic Salmon
+LLM Properties:
+  - reasoning: This is a plated Western fish dish that may require cutting; it is not a scoopable bowl-style meal.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: True
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Fork', 'Knife'}
+Predicted Cutlery:    {'Fork', 'Knife'} -> Jaccard: 1.000
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Dinner Plate -> Correct: True
+------------------------------------------------------------
+
+[Meal] Heirloom Tomato Salad with Basil Vinaigrette
+LLM Properties:
+  - reasoning: This is a plated salad dish that does not require cutting or specific utensils beyond a fork.
+  - is_soup_or_broth: False
+  - is_handheld_food: False
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Fork', 'Knife'}
+Predicted Cutlery:    {'Fork', 'Knife'} -> Jaccard: 1.000
+Ground Truth Plate:   Bowl
+Predicted Plate:      Dinner Plate -> Correct: False
+------------------------------------------------------------
+
+[Meal] Quinoa Veggie Burgers
+LLM Properties:
+  - reasoning: This is a handheld food item typically eaten without utensils.
+  - is_soup_or_broth: False
+  - is_handheld_food: True
+  - needs_cutting: False
+  - is_asian_cuisine: False
+  - is_long_noodles: False
+  - has_sauce_or_small_pieces: False
+  - is_dessert: False
+  - is_skewer_food: False
+  - is_tongs_food: False
+
+Ground Truth Cutlery: {'Knife', 'Fork', 'Hands'}
+Predicted Cutlery:    {'Knife', 'Fork', 'Hands'} -> Jaccard: 1.000
+Ground Truth Plate:   Dinner Plate
+Predicted Plate:      Dinner Plate -> Correct: True
+------------------------------------------------------------
+
+
+============================================================
+SUMMARY
+============================================================
+Total Meals: 100
+Plate Accuracy: 0.840
+Cutlery Jaccard Similarity: 0.777
+============================================================

@@ -1,23 +1,25 @@
 """
 run_pipeline.py - Full End-to-End Pipeline Orchestrator
 =============================================================================
-Deploys the entire neuro-symbolic logic pipeline spanning Phase 1 & 2 for the 'goesIn' task.
+Deploys the neuro-symbolic logic pipeline for the 'goesIn' (tidy_up) task.
 
-OFFLINE PHASE (Rule Discovery via ConceptNet & LLM-guided ASP):
-  Step 1: ConceptNet extraction    (offline_phase/concept_net_extractor.py)
-  Step 2: Semantic object filter   (offline_phase/filter_objects.py)
-  Step 3: LLM SOMA annotation      (offline_phase/parsing.py)
-  Step 4: ASP integrity constraints(offline_phase/apply_constraints.py)
-  Step 5: ILASP example generation (offline_phase/generate_ilasp_examples.py)
-  Step 6: Logical Rule Learning    (ILASP --version=4)
+SHARED OFFLINE PHASE (Steps 1-4):
+  Step 1: ConceptNet extraction     (shared/concept_net_extractor.py)
+  Step 2: Semantic object filter    (shared/filter_objects.py)
+  Step 3: LLM SOMA annotation       (shared/parsing.py)
+  Step 4: ASP integrity constraints (shared/apply_constraints.py)
 
-ONLINE PHASE (Validation via Symbolic Inference):
-  Step 7: Real-world inference eval(online_phase/evaluate_tidy_up.py)
+TIDY UP — OFFLINE (Steps 5-6):
+  Step 5: ILASP example generation  (tidy_up/generate_ilasp_examples.py)
+  Step 6: Logical Rule Learning     (tidy_up/llm_rule_induction.py)
+
+TIDY UP — ONLINE (Step 7):
+  Step 7: Real-world inference eval (tidy_up/evaluate.py)
 
 Usage:
     python run_pipeline.py              # Run all steps continuously
     python run_pipeline.py --from 5     # Resume from step 5
-    python run_pipeline.py --only 7     # Run only evaluation
+    python run_pipeline.py --only 7     # Run only tidy_up evaluation
 =============================================================================
 """
 
@@ -32,11 +34,12 @@ RULES_DIR = MODULE_DIR / "rules"
 JSONS_DIR = MODULE_DIR / "jsons"
 
 STEPS = [
+    # ── SHARED (Steps 1-4) ──────────────────────────────────────────────
     {
         "number": 1,
         "name": "ConceptNet Extraction",
         "type": "python",
-        "script": "offline_phase/concept_net_extractor.py",
+        "script": "shared/concept_net_extractor.py",
         "description": "Extract domestic object subgraph from ConceptNet",
         "output_files": [JSONS_DIR / "conceptnet_domestic_subgraph.json"],
     },
@@ -44,64 +47,72 @@ STEPS = [
         "number": 2,
         "name": "Semantic Object Filtering",
         "type": "python",
-        "script": "offline_phase/filter_objects.py",
+        "script": "shared/filter_objects.py",
         "description": "Filter objects using LLM to keep only domestic items",
-        "output_files": [JSONS_DIR / "conceptnet_objects_kept.json", JSONS_DIR / "conceptnet_objects_rejected.json"],
+        "output_files": [JSONS_DIR / "conceptnet_objects_kept.json",
+                         JSONS_DIR / "conceptnet_objects_rejected.json"],
     },
     {
         "number": 3,
         "name": "SOMA Annotation",
         "type": "python",
-        "script": "offline_phase/parsing.py",
+        "script": "shared/parsing.py",
         "description": "Annotate objects with SOMA ontology labels via LLM",
-        "output_files": [RULES_DIR / "background_knowledge.las"],
+        "output_files": [RULES_DIR / "shared" / "background_knowledge.las"],
     },
     {
         "number": 4,
         "name": "ASP Integrity Constraints",
         "type": "python",
-        "script": "offline_phase/apply_constraints.py",
+        "script": "shared/apply_constraints.py",
         "description": "Validate and correct annotations using ASP constraints",
-        "output_files": [RULES_DIR / "background_knowledge_validated.las"],
+        "output_files": [RULES_DIR / "shared" / "background_knowledge_validated.las"],
     },
+
+    # ── TIDY UP (Steps 5-7) ─────────────────────────────────────────────
     {
         "number": 5,
-        "name": "Generate ILASP Examples",
+        "name": "Generate ILASP Examples — Tidy Up",
         "type": "python",
-        "script": "offline_phase/generate_ilasp_examples.py",
-        # Using MVP configs here to keep the pipeline execution fast.
-        # Remove --ml 1 --mvp for full runs.
-        "args": ["--ml", "1", "--mvp"],
-        "description": "Construct context-dependent inductive problem file",
-        "output_files": [RULES_DIR / "ilasp_tidy_up.las"],
+        "script": "tidy_up/generate_ilasp_examples.py",
+        "args": ["--ml", "2", "--full"],
+        "description": "Construct context-dependent inductive problem file (goesIn)",
+        "output_files": [RULES_DIR / "tidy_up" / "ilasp_tidy_up.las"],
     },
     {
         "number": 6,
-        "name": "ILASP Rule Learning",
-        "type": "shell",
-        "command": ["ILASP", "--version=4", str(RULES_DIR / "ilasp_tidy_up.las")],
-        "stdout_file": RULES_DIR / "learned_rules_mvp.txt",
-        "description": "Run ILASP Engine to induce logical rules",
-        "output_files": [RULES_DIR / "learned_rules_mvp.txt"],
+        "name": "LLM Rule Learning — Tidy Up",
+        "type": "python",
+        "script": "tidy_up/llm_rule_induction.py",
+        "description": "Use LLM generator and Clingo verifier to induce goesIn rules",
+        "output_files": [RULES_DIR / "tidy_up" / "learned_rules_llm_total.txt"],
     },
     {
         "number": 7,
-        "name": "Online Evaluation (Inference)",
+        "name": "Online Evaluation — Tidy Up",
         "type": "python",
-        "script": "online_phase/evaluate_tidy_up.py",
-        "args": ["--num-tests", "50"],
-        "description": "Execute Clingo inference on unseen objects simulating real world",
-        "output_files": [SCRIPT_DIR / "online_phase/evaluation_report.md"],
+        "script": "tidy_up/evaluate.py",
+        # "args": ["--num-tests", "50"],
+        "description": "Execute Clingo inference on unseen objects (tidy_up)",
+        "output_files": [SCRIPT_DIR / "tidy_up" / "evaluation_report.md"],
+        "extra_args_key": "eval_tidy_up",
     },
 ]
 
 
-def run_step(step: dict) -> bool:
-    """Execute a single pipeline step. Returns True on success."""
+def run_step(step: dict, extra_args: dict = None) -> bool:
+    """Execute a single pipeline step. Returns True on success.
+
+    Parameters
+    ----------
+    step       : step definition dict from STEPS
+    extra_args : mapping of extra_args_key -> list of additional CLI arguments
+                 (e.g. {"eval_tool_usage": ["--model", "mistral-large-latest"]})
+    """
     print(f"\n{'=' * 60}")
     print(f"  STEP {step['number']}/{len(STEPS)}: {step['name']}")
     print(f"  {step['description']}")
-    
+
     start_time = time.time()
 
     if step["type"] == "python":
@@ -109,15 +120,21 @@ def run_step(step: dict) -> bool:
         if not script_path.exists():
             print(f"  [ERROR] Script not found: {script_path}")
             return False
-            
+
         print(f"  Script: {step['script']}\n{'-' * 60}\n")
-        
-        args = [sys.executable, str(script_path)] + step.get("args", [])
-        result = subprocess.run(args, cwd=str(SCRIPT_DIR))
-        
+
+        step_args = step.get("args", [])
+        # Append any extra args registered for this step
+        key = step.get("extra_args_key")
+        if key and extra_args and key in extra_args:
+            step_args = step_args + extra_args[key]
+
+        args_cmd = [sys.executable, str(script_path)] + step_args
+        result = subprocess.run(args_cmd, cwd=str(SCRIPT_DIR))
+
     elif step["type"] == "shell":
         print(f"  Command: {' '.join(step['command'])}\n{'-' * 60}\n")
-        
+
         stdout_path = step["stdout_file"]
         with open(stdout_path, "w") as out:
             result = subprocess.run(step["command"], cwd=str(SCRIPT_DIR), stdout=out)
@@ -128,7 +145,6 @@ def run_step(step: dict) -> bool:
         print(f"\n  [FAILED] Step {step['number']} failed with exit code {result.returncode}")
         return False
 
-    # Verify output files exist
     for out_file in step["output_files"]:
         full_path = out_file
         if full_path.exists():
@@ -142,20 +158,40 @@ def run_step(step: dict) -> bool:
 
 
 def main():
-    # Parse arguments
-    start_from = 1
-    only_step = None
+    import argparse as _ap
 
-    args = sys.argv[1:]
-    if "--from" in args:
-        idx = args.index("--from")
-        start_from = int(args[idx + 1])
-    elif "--only" in args:
-        idx = args.index("--only")
-        only_step = int(args[idx + 1])
+    parser = _ap.ArgumentParser(description="Module 1 end-to-end pipeline")
+    parser.add_argument("--from", dest="start_from", type=int, default=1,
+                        help="Resume from this step number")
+    parser.add_argument("--only", dest="only_step", type=int, default=None,
+                        help="Run only this step number")
+    parser.add_argument("--model", type=str, default=None,
+                        help="Override evaluation model for tidy_up evaluation")
+    parser.add_argument("--ablation", type=str, default=None,
+                        choices=["none", "pure_llm", "no_synonyms"],
+                        help="Ablation mode for tidy_up evaluation")
+    parser.add_argument("--num-tests", type=int, default=None,
+                        help="Limit number of test questions for tidy_up evaluation")
+    cli = parser.parse_args()
+
+    start_from = cli.start_from
+    only_step = cli.only_step
+
+    # Build extra args for tidy_up evaluation
+    extra_args: dict[str, list] = {}
+    eval_extra: list[str] = []
+    if cli.model:
+        eval_extra += ["--model", cli.model]
+    if cli.ablation:
+        eval_extra += ["--ablation", cli.ablation]
+    if cli.num_tests:
+        eval_extra += ["--num-tests", str(cli.num_tests)]
+    if eval_extra:
+        extra_args["eval_tidy_up"] = eval_extra
 
     print("\n" + "#" * 70)
-    print("#  END-TO-END PIPELINE: Neuro-Symbolic Logic Learning (goesIn phase)")
+    print("#  END-TO-END PIPELINE: Neuro-Symbolic Logic Learning")
+    print("#  Task: goesIn (tidy_up)")
     print("#" * 70)
 
     if only_step:
@@ -174,7 +210,7 @@ def main():
     completed = 0
 
     for step in steps_to_run:
-        success = run_step(step)
+        success = run_step(step, extra_args=extra_args)
         if not success:
             print(f"\n  Pipeline stopped at step {step['number']}.")
             print(f"  To resume, run: python run_pipeline.py --from {step['number']}")

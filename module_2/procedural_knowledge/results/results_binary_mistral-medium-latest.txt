@@ -1,0 +1,3452 @@
+============================================================
+RESULT LOG - Procedural Knowledge Binary Evaluation
+============================================================
+Model: mistral-medium-latest
+Total recipes: 776
+Total questions: 3104
+============================================================
+
+[Q29] [FN]
+Question: In the recipe 'Yogurt Parfaits', did 'Layer ingredients' occur before 'Use serving dish'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: A serving dish must be used first before ingredients can be layered into it.
+  Step 1 (step_a):
+    - cooking_phase: assembly
+    - requires_heat: False
+    - is_final_step: True
+    - transforms_state: False
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: prep
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q30] [FP]
+Question: In the recipe 'Yogurt Parfaits', did 'Use serving dish' occur before 'Layer ingredients'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: A serving dish must be used first before ingredients can be layered into it.
+  Step 1 (step_a):
+    - cooking_phase: assembly
+    - requires_heat: False
+    - is_final_step: True
+    - transforms_state: False
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: prep
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q31] [FN]
+Question: In the recipe 'Yogurt Parfaits', did 'Use serving dish' occur after 'Layer ingredients'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: A serving dish must be used first before ingredients can be layered into it.
+  Step 1 (step_a):
+    - cooking_phase: assembly
+    - requires_heat: False
+    - is_final_step: True
+    - transforms_state: False
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: prep
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q32] [FP]
+Question: In the recipe 'Yogurt Parfaits', did 'Layer ingredients' occur after 'Use serving dish'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: A serving dish must be used first before ingredients can be layered into it.
+  Step 1 (step_a):
+    - cooking_phase: assembly
+    - requires_heat: False
+    - is_final_step: True
+    - transforms_state: False
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: prep
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q69] [FN]
+Question: In the recipe 'Steak & Asparagus Wraps', did 'Grill steak until medium' occur before 'Steam asparagus until crisp-tender'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: The steak needs to be grilled first as it takes longer to cook, while the asparagus can be steamed quickly just before assembling the wraps.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q70] [FP]
+Question: In the recipe 'Steak & Asparagus Wraps', did 'Steam asparagus until crisp-tender' occur before 'Grill steak until medium'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: The steak needs to be grilled first as it takes longer to cook, while the asparagus can be steamed quickly just before assembling the wraps.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q71] [FN]
+Question: In the recipe 'Steak & Asparagus Wraps', did 'Steam asparagus until crisp-tender' occur after 'Grill steak until medium'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: The steak needs to be grilled first as it takes longer to cook, while the asparagus can be steamed quickly just before assembling the wraps.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q72] [FP]
+Question: In the recipe 'Steak & Asparagus Wraps', did 'Grill steak until medium' occur after 'Steam asparagus until crisp-tender'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: The steak needs to be grilled first as it takes longer to cook, while the asparagus can be steamed quickly just before assembling the wraps.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q181] [FN]
+Question: In the recipe 'Best Ever Fettuccine Alfredo', did 'Melt butter, add garlic' occur before 'Mix cream, egg, Parmesan'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Butter needs to be melted and garlic added first to create a base for the sauce, then the cream mixture can be added.
+  Step 1 (step_a):
+    - cooking_phase: heating
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: mixing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q182] [FP]
+Question: In the recipe 'Best Ever Fettuccine Alfredo', did 'Mix cream, egg, Parmesan' occur before 'Melt butter, add garlic'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Butter needs to be melted and garlic added first to create a base for the sauce, then the cream mixture can be added.
+  Step 1 (step_a):
+    - cooking_phase: heating
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: mixing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q183] [FN]
+Question: In the recipe 'Best Ever Fettuccine Alfredo', did 'Mix cream, egg, Parmesan' occur after 'Melt butter, add garlic'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Butter needs to be melted and garlic added first to create a base for the sauce, then the cream mixture can be added.
+  Step 1 (step_a):
+    - cooking_phase: heating
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: mixing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q184] [FP]
+Question: In the recipe 'Best Ever Fettuccine Alfredo', did 'Melt butter, add garlic' occur after 'Mix cream, egg, Parmesan'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Butter needs to be melted and garlic added first to create a base for the sauce, then the cream mixture can be added.
+  Step 1 (step_a):
+    - cooking_phase: heating
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: mixing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q253] [FN]
+Question: In the recipe 'Peach Scones', did 'Top with peach pieces' occur before 'Bake until golden brown'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: The scones must be baked first before they can be topped with peach pieces.
+  Step 1 (step_a):
+    - cooking_phase: finishing
+    - requires_heat: False
+    - is_final_step: True
+    - transforms_state: False
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q254] [FP]
+Question: In the recipe 'Peach Scones', did 'Bake until golden brown' occur before 'Top with peach pieces'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: The scones must be baked first before they can be topped with peach pieces.
+  Step 1 (step_a):
+    - cooking_phase: finishing
+    - requires_heat: False
+    - is_final_step: True
+    - transforms_state: False
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q255] [FN]
+Question: In the recipe 'Peach Scones', did 'Bake until golden brown' occur after 'Top with peach pieces'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: The scones must be baked first before they can be topped with peach pieces.
+  Step 1 (step_a):
+    - cooking_phase: finishing
+    - requires_heat: False
+    - is_final_step: True
+    - transforms_state: False
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q256] [FP]
+Question: In the recipe 'Peach Scones', did 'Top with peach pieces' occur after 'Bake until golden brown'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: The scones must be baked first before they can be topped with peach pieces.
+  Step 1 (step_a):
+    - cooking_phase: finishing
+    - requires_heat: False
+    - is_final_step: True
+    - transforms_state: False
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q345] [FN]
+Question: In the recipe 'Chicken Sausage Stir Fry', did 'Cook sausage until browned' occur before 'Fry vegetables until cooked'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Sausage must be cooked first before vegetables are fried, as the sausage likely takes longer to cook and may be removed before the vegetables are added.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q346] [FP]
+Question: In the recipe 'Chicken Sausage Stir Fry', did 'Fry vegetables until cooked' occur before 'Cook sausage until browned'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Sausage must be cooked first before vegetables are fried, as the sausage likely takes longer to cook and may be removed before the vegetables are added.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q347] [FN]
+Question: In the recipe 'Chicken Sausage Stir Fry', did 'Fry vegetables until cooked' occur after 'Cook sausage until browned'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Sausage must be cooked first before vegetables are fried, as the sausage likely takes longer to cook and may be removed before the vegetables are added.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q348] [FP]
+Question: In the recipe 'Chicken Sausage Stir Fry', did 'Cook sausage until browned' occur after 'Fry vegetables until cooked'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Sausage must be cooked first before vegetables are fried, as the sausage likely takes longer to cook and may be removed before the vegetables are added.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q425] [FN]
+Question: In the recipe 'Cheese Stuffed Pork Roast W/ Cream Sauce', did 'Roll up, tie roast' occur before 'Saute onion in butter'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: The onions need to be sautéed before the roast is rolled and tied, as the onions are likely part of the stuffing or sauce.
+  Step 1 (step_a):
+    - cooking_phase: assembly
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q426] [FP]
+Question: In the recipe 'Cheese Stuffed Pork Roast W/ Cream Sauce', did 'Saute onion in butter' occur before 'Roll up, tie roast'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: The onions need to be sautéed before the roast is rolled and tied, as the onions are likely part of the stuffing or sauce.
+  Step 1 (step_a):
+    - cooking_phase: assembly
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q427] [FN]
+Question: In the recipe 'Cheese Stuffed Pork Roast W/ Cream Sauce', did 'Saute onion in butter' occur after 'Roll up, tie roast'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: The onions need to be sautéed before the roast is rolled and tied, as the onions are likely part of the stuffing or sauce.
+  Step 1 (step_a):
+    - cooking_phase: assembly
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q428] [FP]
+Question: In the recipe 'Cheese Stuffed Pork Roast W/ Cream Sauce', did 'Roll up, tie roast' occur after 'Saute onion in butter'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: The onions need to be sautéed before the roast is rolled and tied, as the onions are likely part of the stuffing or sauce.
+  Step 1 (step_a):
+    - cooking_phase: assembly
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q441] [FN]
+Question: In the recipe 'Joe's Pasta E Fagiolo', did 'Add remaining ingredients, simmer' occur before 'Drain pasta, add to soup'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: The pasta must be drained and added to the soup before the final simmering with all ingredients.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: True
+    - transforms_state: True
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: prep
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q442] [FP]
+Question: In the recipe 'Joe's Pasta E Fagiolo', did 'Drain pasta, add to soup' occur before 'Add remaining ingredients, simmer'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: The pasta must be drained and added to the soup before the final simmering with all ingredients.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: True
+    - transforms_state: True
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: prep
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q443] [FN]
+Question: In the recipe 'Joe's Pasta E Fagiolo', did 'Drain pasta, add to soup' occur after 'Add remaining ingredients, simmer'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: The pasta must be drained and added to the soup before the final simmering with all ingredients.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: True
+    - transforms_state: True
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: prep
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q444] [FP]
+Question: In the recipe 'Joe's Pasta E Fagiolo', did 'Add remaining ingredients, simmer' occur after 'Drain pasta, add to soup'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: The pasta must be drained and added to the soup before the final simmering with all ingredients.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: True
+    - transforms_state: True
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: prep
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q589] [FN]
+Question: In the recipe 'Real Margaritas', did 'Rub rims with lime' occur before 'Blend lime juice and tequila'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: The rims must be prepared with lime before the drink is blended and ready to serve.
+  Step 1 (step_a):
+    - cooking_phase: finishing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: mixing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q590] [FP]
+Question: In the recipe 'Real Margaritas', did 'Blend lime juice and tequila' occur before 'Rub rims with lime'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: The rims must be prepared with lime before the drink is blended and ready to serve.
+  Step 1 (step_a):
+    - cooking_phase: finishing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: mixing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q591] [FN]
+Question: In the recipe 'Real Margaritas', did 'Blend lime juice and tequila' occur after 'Rub rims with lime'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: The rims must be prepared with lime before the drink is blended and ready to serve.
+  Step 1 (step_a):
+    - cooking_phase: finishing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: mixing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q592] [FP]
+Question: In the recipe 'Real Margaritas', did 'Rub rims with lime' occur after 'Blend lime juice and tequila'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: The rims must be prepared with lime before the drink is blended and ready to serve.
+  Step 1 (step_a):
+    - cooking_phase: finishing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: mixing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q617] [FN]
+Question: In the recipe 'Buried in Vermicelli', did 'Simmer chicken with spices' occur before 'Cook vermicelli until al dente'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Chicken needs to be simmered first to cook it thoroughly before the vermicelli is cooked separately.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q618] [FP]
+Question: In the recipe 'Buried in Vermicelli', did 'Cook vermicelli until al dente' occur before 'Simmer chicken with spices'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Chicken needs to be simmered first to cook it thoroughly before the vermicelli is cooked separately.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q619] [FN]
+Question: In the recipe 'Buried in Vermicelli', did 'Cook vermicelli until al dente' occur after 'Simmer chicken with spices'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Chicken needs to be simmered first to cook it thoroughly before the vermicelli is cooked separately.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q620] [FP]
+Question: In the recipe 'Buried in Vermicelli', did 'Simmer chicken with spices' occur after 'Cook vermicelli until al dente'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Chicken needs to be simmered first to cook it thoroughly before the vermicelli is cooked separately.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q697] [FN]
+Question: In the recipe 'P. F. Changs Sauce for Fried Green Beans Appetizer', did 'Blend ingredients until smooth' occur before 'Dredge veggies in tempura batter'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Ingredients need to be blended into a smooth sauce before vegetables can be dredged in tempura batter.
+  Step 1 (step_a):
+    - cooking_phase: mixing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: prep
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q698] [FP]
+Question: In the recipe 'P. F. Changs Sauce for Fried Green Beans Appetizer', did 'Dredge veggies in tempura batter' occur before 'Blend ingredients until smooth'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Ingredients need to be blended into a smooth sauce before vegetables can be dredged in tempura batter.
+  Step 1 (step_a):
+    - cooking_phase: mixing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: prep
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q699] [FN]
+Question: In the recipe 'P. F. Changs Sauce for Fried Green Beans Appetizer', did 'Dredge veggies in tempura batter' occur after 'Blend ingredients until smooth'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Ingredients need to be blended into a smooth sauce before vegetables can be dredged in tempura batter.
+  Step 1 (step_a):
+    - cooking_phase: mixing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: prep
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q700] [FP]
+Question: In the recipe 'P. F. Changs Sauce for Fried Green Beans Appetizer', did 'Blend ingredients until smooth' occur after 'Dredge veggies in tempura batter'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Ingredients need to be blended into a smooth sauce before vegetables can be dredged in tempura batter.
+  Step 1 (step_a):
+    - cooking_phase: mixing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: prep
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q729] [FN]
+Question: In the recipe 'Rob and Lisa's Island-Escape Salad', did 'Grill fruit until browned' occur before 'Cut fruit into sticks'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Fruit must be cut into sticks before it can be grilled.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: prep
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q730] [FP]
+Question: In the recipe 'Rob and Lisa's Island-Escape Salad', did 'Cut fruit into sticks' occur before 'Grill fruit until browned'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Fruit must be cut into sticks before it can be grilled.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: prep
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q731] [FN]
+Question: In the recipe 'Rob and Lisa's Island-Escape Salad', did 'Cut fruit into sticks' occur after 'Grill fruit until browned'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Fruit must be cut into sticks before it can be grilled.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: prep
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q732] [FP]
+Question: In the recipe 'Rob and Lisa's Island-Escape Salad', did 'Grill fruit until browned' occur after 'Cut fruit into sticks'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Fruit must be cut into sticks before it can be grilled.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: prep
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q801] [FN]
+Question: In the recipe 'Salmon Pasta', did 'Cook pasta until al dente' occur before 'Fry bacon until crispy'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Pasta needs to be cooked first to be al dente before combining with other ingredients, while bacon can be fried simultaneously or earlier.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q802] [FP]
+Question: In the recipe 'Salmon Pasta', did 'Fry bacon until crispy' occur before 'Cook pasta until al dente'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Pasta needs to be cooked first to be al dente before combining with other ingredients, while bacon can be fried simultaneously or earlier.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q803] [FN]
+Question: In the recipe 'Salmon Pasta', did 'Fry bacon until crispy' occur after 'Cook pasta until al dente'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Pasta needs to be cooked first to be al dente before combining with other ingredients, while bacon can be fried simultaneously or earlier.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q804] [FP]
+Question: In the recipe 'Salmon Pasta', did 'Cook pasta until al dente' occur after 'Fry bacon until crispy'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Pasta needs to be cooked first to be al dente before combining with other ingredients, while bacon can be fried simultaneously or earlier.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q881] [FN]
+Question: In the recipe 'Frozen Lemonade Squares', did 'Mix crumbs and margarine' occur before 'Beat yogurt and concentrate'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Mixing crumbs and margarine is a preparation step that likely forms the base, while beating yogurt and concentrate is part of creating the filling or topping, which would come next.
+  Step 1 (step_a):
+    - cooking_phase: mixing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: mixing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q882] [FP]
+Question: In the recipe 'Frozen Lemonade Squares', did 'Beat yogurt and concentrate' occur before 'Mix crumbs and margarine'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Mixing crumbs and margarine is a preparation step that likely forms the base, while beating yogurt and concentrate is part of creating the filling or topping, which would come next.
+  Step 1 (step_a):
+    - cooking_phase: mixing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: mixing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q883] [FN]
+Question: In the recipe 'Frozen Lemonade Squares', did 'Beat yogurt and concentrate' occur after 'Mix crumbs and margarine'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Mixing crumbs and margarine is a preparation step that likely forms the base, while beating yogurt and concentrate is part of creating the filling or topping, which would come next.
+  Step 1 (step_a):
+    - cooking_phase: mixing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: mixing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q884] [FP]
+Question: In the recipe 'Frozen Lemonade Squares', did 'Mix crumbs and margarine' occur after 'Beat yogurt and concentrate'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Mixing crumbs and margarine is a preparation step that likely forms the base, while beating yogurt and concentrate is part of creating the filling or topping, which would come next.
+  Step 1 (step_a):
+    - cooking_phase: mixing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: mixing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q885] [FN]
+Question: In the recipe 'Pulled Chicken Minis with Ranch Slaw', did 'Cook chicken with sauce' occur before 'Combine coleslaw and dressing'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: The chicken needs to be cooked first before assembling the final dish, while the coleslaw can be prepared in parallel.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: mixing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q886] [FP]
+Question: In the recipe 'Pulled Chicken Minis with Ranch Slaw', did 'Combine coleslaw and dressing' occur before 'Cook chicken with sauce'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: The chicken needs to be cooked first before assembling the final dish, while the coleslaw can be prepared in parallel.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: mixing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q887] [FN]
+Question: In the recipe 'Pulled Chicken Minis with Ranch Slaw', did 'Combine coleslaw and dressing' occur after 'Cook chicken with sauce'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: The chicken needs to be cooked first before assembling the final dish, while the coleslaw can be prepared in parallel.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: mixing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q888] [FP]
+Question: In the recipe 'Pulled Chicken Minis with Ranch Slaw', did 'Cook chicken with sauce' occur after 'Combine coleslaw and dressing'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: The chicken needs to be cooked first before assembling the final dish, while the coleslaw can be prepared in parallel.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: mixing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q985] [FN]
+Question: In the recipe 'Sweet Knots', did 'Dip rolls in butter' occur before 'Tie into a knot'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Rolls must be tied into knots before they can be dipped in butter.
+  Step 1 (step_a):
+    - cooking_phase: finishing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: prep
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q986] [FP]
+Question: In the recipe 'Sweet Knots', did 'Tie into a knot' occur before 'Dip rolls in butter'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Rolls must be tied into knots before they can be dipped in butter.
+  Step 1 (step_a):
+    - cooking_phase: finishing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: prep
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q987] [FN]
+Question: In the recipe 'Sweet Knots', did 'Tie into a knot' occur after 'Dip rolls in butter'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Rolls must be tied into knots before they can be dipped in butter.
+  Step 1 (step_a):
+    - cooking_phase: finishing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: prep
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q988] [FP]
+Question: In the recipe 'Sweet Knots', did 'Dip rolls in butter' occur after 'Tie into a knot'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Rolls must be tied into knots before they can be dipped in butter.
+  Step 1 (step_a):
+    - cooking_phase: finishing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: prep
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1137] [FN]
+Question: In the recipe 'Gado Gado With Sambal Kacang (Spicy Peanut Sauce)', did 'Pan-fry the marinaded tofu' occur before 'Cook vegetables, then drain'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Tofu must be pan-fried first before vegetables are cooked and drained, as the tofu likely requires more time to cook thoroughly.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1138] [FP]
+Question: In the recipe 'Gado Gado With Sambal Kacang (Spicy Peanut Sauce)', did 'Cook vegetables, then drain' occur before 'Pan-fry the marinaded tofu'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Tofu must be pan-fried first before vegetables are cooked and drained, as the tofu likely requires more time to cook thoroughly.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1139] [FN]
+Question: In the recipe 'Gado Gado With Sambal Kacang (Spicy Peanut Sauce)', did 'Cook vegetables, then drain' occur after 'Pan-fry the marinaded tofu'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Tofu must be pan-fried first before vegetables are cooked and drained, as the tofu likely requires more time to cook thoroughly.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1140] [FP]
+Question: In the recipe 'Gado Gado With Sambal Kacang (Spicy Peanut Sauce)', did 'Pan-fry the marinaded tofu' occur after 'Cook vegetables, then drain'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Tofu must be pan-fried first before vegetables are cooked and drained, as the tofu likely requires more time to cook thoroughly.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1265] [FN]
+Question: In the recipe 'Easy Parmesan-Garlic Chicken and Pasta', did 'Bake chicken until cooked' occur before 'Cook pasta as directed'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Chicken needs to be baked first as it takes longer to cook, while pasta can be cooked simultaneously or after.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1266] [FP]
+Question: In the recipe 'Easy Parmesan-Garlic Chicken and Pasta', did 'Cook pasta as directed' occur before 'Bake chicken until cooked'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Chicken needs to be baked first as it takes longer to cook, while pasta can be cooked simultaneously or after.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1267] [FN]
+Question: In the recipe 'Easy Parmesan-Garlic Chicken and Pasta', did 'Cook pasta as directed' occur after 'Bake chicken until cooked'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Chicken needs to be baked first as it takes longer to cook, while pasta can be cooked simultaneously or after.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1268] [FP]
+Question: In the recipe 'Easy Parmesan-Garlic Chicken and Pasta', did 'Bake chicken until cooked' occur after 'Cook pasta as directed'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Chicken needs to be baked first as it takes longer to cook, while pasta can be cooked simultaneously or after.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1373] [FN]
+Question: In the recipe 'Cod BLT', did 'Cook bacon until crispy' occur before 'Broil fish and tomatoes'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Bacon needs to be cooked first before broiling the fish and tomatoes, as it is a preparation step for the main cooking process.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1374] [FP]
+Question: In the recipe 'Cod BLT', did 'Broil fish and tomatoes' occur before 'Cook bacon until crispy'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Bacon needs to be cooked first before broiling the fish and tomatoes, as it is a preparation step for the main cooking process.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1375] [FN]
+Question: In the recipe 'Cod BLT', did 'Broil fish and tomatoes' occur after 'Cook bacon until crispy'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Bacon needs to be cooked first before broiling the fish and tomatoes, as it is a preparation step for the main cooking process.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1376] [FP]
+Question: In the recipe 'Cod BLT', did 'Cook bacon until crispy' occur after 'Broil fish and tomatoes'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Bacon needs to be cooked first before broiling the fish and tomatoes, as it is a preparation step for the main cooking process.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1405] [FN]
+Question: In the recipe 'Chocolate Marshmallow Bars', did 'Sprinkle marshmallows over cake' occur before 'Spread chocolate mixture over bars'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: The chocolate mixture must be spread over the bars before sprinkling marshmallows on top.
+  Step 1 (step_a):
+    - cooking_phase: finishing
+    - requires_heat: False
+    - is_final_step: True
+    - transforms_state: False
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: assembly
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1406] [FP]
+Question: In the recipe 'Chocolate Marshmallow Bars', did 'Spread chocolate mixture over bars' occur before 'Sprinkle marshmallows over cake'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: The chocolate mixture must be spread over the bars before sprinkling marshmallows on top.
+  Step 1 (step_a):
+    - cooking_phase: finishing
+    - requires_heat: False
+    - is_final_step: True
+    - transforms_state: False
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: assembly
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1407] [FN]
+Question: In the recipe 'Chocolate Marshmallow Bars', did 'Spread chocolate mixture over bars' occur after 'Sprinkle marshmallows over cake'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: The chocolate mixture must be spread over the bars before sprinkling marshmallows on top.
+  Step 1 (step_a):
+    - cooking_phase: finishing
+    - requires_heat: False
+    - is_final_step: True
+    - transforms_state: False
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: assembly
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1408] [FP]
+Question: In the recipe 'Chocolate Marshmallow Bars', did 'Sprinkle marshmallows over cake' occur after 'Spread chocolate mixture over bars'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: The chocolate mixture must be spread over the bars before sprinkling marshmallows on top.
+  Step 1 (step_a):
+    - cooking_phase: finishing
+    - requires_heat: False
+    - is_final_step: True
+    - transforms_state: False
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: assembly
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1413] [FN]
+Question: In the recipe 'Crispy Pork Chops with Roasted Pepper Relish', did 'Broil peppers until charred' occur before 'Cook pork chops until golden'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Peppers need to be broiled first to prepare the relish before cooking the pork chops.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1414] [FP]
+Question: In the recipe 'Crispy Pork Chops with Roasted Pepper Relish', did 'Cook pork chops until golden' occur before 'Broil peppers until charred'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Peppers need to be broiled first to prepare the relish before cooking the pork chops.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1415] [FN]
+Question: In the recipe 'Crispy Pork Chops with Roasted Pepper Relish', did 'Cook pork chops until golden' occur after 'Broil peppers until charred'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Peppers need to be broiled first to prepare the relish before cooking the pork chops.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1416] [FP]
+Question: In the recipe 'Crispy Pork Chops with Roasted Pepper Relish', did 'Broil peppers until charred' occur after 'Cook pork chops until golden'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Peppers need to be broiled first to prepare the relish before cooking the pork chops.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1465] [FN]
+Question: In the recipe 'Pistachio Baklava With Orange-Cardamom Syrup', did 'Drizzle syrup over baklava' occur before 'Cool in pan on rack'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Baklava must be cooled in the pan before the syrup can be drizzled over it.
+  Step 1 (step_a):
+    - cooking_phase: finishing
+    - requires_heat: False
+    - is_final_step: True
+    - transforms_state: False
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooling
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1466] [FP]
+Question: In the recipe 'Pistachio Baklava With Orange-Cardamom Syrup', did 'Cool in pan on rack' occur before 'Drizzle syrup over baklava'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Baklava must be cooled in the pan before the syrup can be drizzled over it.
+  Step 1 (step_a):
+    - cooking_phase: finishing
+    - requires_heat: False
+    - is_final_step: True
+    - transforms_state: False
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooling
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1467] [FN]
+Question: In the recipe 'Pistachio Baklava With Orange-Cardamom Syrup', did 'Cool in pan on rack' occur after 'Drizzle syrup over baklava'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Baklava must be cooled in the pan before the syrup can be drizzled over it.
+  Step 1 (step_a):
+    - cooking_phase: finishing
+    - requires_heat: False
+    - is_final_step: True
+    - transforms_state: False
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooling
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1468] [FP]
+Question: In the recipe 'Pistachio Baklava With Orange-Cardamom Syrup', did 'Drizzle syrup over baklava' occur after 'Cool in pan on rack'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Baklava must be cooled in the pan before the syrup can be drizzled over it.
+  Step 1 (step_a):
+    - cooking_phase: finishing
+    - requires_heat: False
+    - is_final_step: True
+    - transforms_state: False
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooling
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1637] [FN]
+Question: In the recipe 'Classic Fish and Chips', did 'Fry potatoes until golden' occur before 'Fry fish until brown'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Potatoes need to be fried first before frying the fish, as the potatoes take longer to cook.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1638] [FP]
+Question: In the recipe 'Classic Fish and Chips', did 'Fry fish until brown' occur before 'Fry potatoes until golden'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Potatoes need to be fried first before frying the fish, as the potatoes take longer to cook.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1639] [FN]
+Question: In the recipe 'Classic Fish and Chips', did 'Fry fish until brown' occur after 'Fry potatoes until golden'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Potatoes need to be fried first before frying the fish, as the potatoes take longer to cook.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1640] [FP]
+Question: In the recipe 'Classic Fish and Chips', did 'Fry potatoes until golden' occur after 'Fry fish until brown'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Potatoes need to be fried first before frying the fish, as the potatoes take longer to cook.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1805] [FN]
+Question: In the recipe 'Sauteed Potatoes and Leeks', did 'Add leeks to frying pan' occur before 'Add potatoes to frying pan'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Potatoes need to be added to the frying pan before leeks to ensure they are properly cooked through.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1806] [FP]
+Question: In the recipe 'Sauteed Potatoes and Leeks', did 'Add potatoes to frying pan' occur before 'Add leeks to frying pan'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Potatoes need to be added to the frying pan before leeks to ensure they are properly cooked through.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1807] [FN]
+Question: In the recipe 'Sauteed Potatoes and Leeks', did 'Add potatoes to frying pan' occur after 'Add leeks to frying pan'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Potatoes need to be added to the frying pan before leeks to ensure they are properly cooked through.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1808] [FP]
+Question: In the recipe 'Sauteed Potatoes and Leeks', did 'Add leeks to frying pan' occur after 'Add potatoes to frying pan'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Potatoes need to be added to the frying pan before leeks to ensure they are properly cooked through.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1825] [FN]
+Question: In the recipe 'Salmon With Red-Pepper Saute', did 'Bake salmon in oven' occur before 'Cook onion and bell pepper'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: The vegetables need to be cooked first before the salmon is baked.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1826] [FP]
+Question: In the recipe 'Salmon With Red-Pepper Saute', did 'Cook onion and bell pepper' occur before 'Bake salmon in oven'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: The vegetables need to be cooked first before the salmon is baked.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1827] [FN]
+Question: In the recipe 'Salmon With Red-Pepper Saute', did 'Cook onion and bell pepper' occur after 'Bake salmon in oven'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: The vegetables need to be cooked first before the salmon is baked.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q1828] [FP]
+Question: In the recipe 'Salmon With Red-Pepper Saute', did 'Bake salmon in oven' occur after 'Cook onion and bell pepper'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: The vegetables need to be cooked first before the salmon is baked.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2033] [FN]
+Question: In the recipe 'Boneless Chicken With Potato Pepper Hash Recipe', did 'Cook peppers until browned' occur before 'Cook chicken until browned'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Peppers need to be cooked first before the chicken can be cooked, as the chicken is the main component of the dish.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2034] [FP]
+Question: In the recipe 'Boneless Chicken With Potato Pepper Hash Recipe', did 'Cook chicken until browned' occur before 'Cook peppers until browned'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Peppers need to be cooked first before the chicken can be cooked, as the chicken is the main component of the dish.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2035] [FN]
+Question: In the recipe 'Boneless Chicken With Potato Pepper Hash Recipe', did 'Cook chicken until browned' occur after 'Cook peppers until browned'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Peppers need to be cooked first before the chicken can be cooked, as the chicken is the main component of the dish.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2036] [FP]
+Question: In the recipe 'Boneless Chicken With Potato Pepper Hash Recipe', did 'Cook peppers until browned' occur after 'Cook chicken until browned'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Peppers need to be cooked first before the chicken can be cooked, as the chicken is the main component of the dish.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2125] [FN]
+Question: In the recipe 'Beef and Noodles', did 'Bake beef tips' occur before 'Cook and drain pasta'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Beef tips need to be baked first before the pasta is cooked and drained.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2126] [FP]
+Question: In the recipe 'Beef and Noodles', did 'Cook and drain pasta' occur before 'Bake beef tips'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Beef tips need to be baked first before the pasta is cooked and drained.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2127] [FN]
+Question: In the recipe 'Beef and Noodles', did 'Cook and drain pasta' occur after 'Bake beef tips'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Beef tips need to be baked first before the pasta is cooked and drained.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2128] [FP]
+Question: In the recipe 'Beef and Noodles', did 'Bake beef tips' occur after 'Cook and drain pasta'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Beef tips need to be baked first before the pasta is cooked and drained.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2169] [FN]
+Question: In the recipe 'Chocolate Banana Martini', did 'Drizzle chocolate in glass' occur before 'Shake and strain mixture'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: The glass must be prepared with chocolate drizzle before the mixture is shaken and strained into it.
+  Step 1 (step_a):
+    - cooking_phase: finishing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: mixing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2170] [FP]
+Question: In the recipe 'Chocolate Banana Martini', did 'Shake and strain mixture' occur before 'Drizzle chocolate in glass'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: The glass must be prepared with chocolate drizzle before the mixture is shaken and strained into it.
+  Step 1 (step_a):
+    - cooking_phase: finishing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: mixing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2171] [FN]
+Question: In the recipe 'Chocolate Banana Martini', did 'Shake and strain mixture' occur after 'Drizzle chocolate in glass'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: The glass must be prepared with chocolate drizzle before the mixture is shaken and strained into it.
+  Step 1 (step_a):
+    - cooking_phase: finishing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: mixing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2172] [FP]
+Question: In the recipe 'Chocolate Banana Martini', did 'Drizzle chocolate in glass' occur after 'Shake and strain mixture'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: The glass must be prepared with chocolate drizzle before the mixture is shaken and strained into it.
+  Step 1 (step_a):
+    - cooking_phase: finishing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: mixing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2257] [FN]
+Question: In the recipe 'Cold Broccoli Salad with Creamy Mustard Dressing', did 'Boil broccoli until crisp-tender' occur before 'Whisk yogurt, mayonnaise, mustards'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Broccoli must be boiled first before preparing the dressing, as the dressing will be added to the cooked broccoli.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: mixing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2258] [FP]
+Question: In the recipe 'Cold Broccoli Salad with Creamy Mustard Dressing', did 'Whisk yogurt, mayonnaise, mustards' occur before 'Boil broccoli until crisp-tender'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Broccoli must be boiled first before preparing the dressing, as the dressing will be added to the cooked broccoli.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: mixing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2259] [FN]
+Question: In the recipe 'Cold Broccoli Salad with Creamy Mustard Dressing', did 'Whisk yogurt, mayonnaise, mustards' occur after 'Boil broccoli until crisp-tender'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Broccoli must be boiled first before preparing the dressing, as the dressing will be added to the cooked broccoli.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: mixing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2260] [FP]
+Question: In the recipe 'Cold Broccoli Salad with Creamy Mustard Dressing', did 'Boil broccoli until crisp-tender' occur after 'Whisk yogurt, mayonnaise, mustards'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Broccoli must be boiled first before preparing the dressing, as the dressing will be added to the cooked broccoli.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: mixing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2281] [FN]
+Question: In the recipe 'David's German Potato Salad', did 'Boil potatoes until firm' occur before 'Brown onions until crispy'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Potatoes need to be boiled first before onions are browned, as the potatoes take longer to cook.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2282] [FP]
+Question: In the recipe 'David's German Potato Salad', did 'Brown onions until crispy' occur before 'Boil potatoes until firm'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Potatoes need to be boiled first before onions are browned, as the potatoes take longer to cook.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2283] [FN]
+Question: In the recipe 'David's German Potato Salad', did 'Brown onions until crispy' occur after 'Boil potatoes until firm'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Potatoes need to be boiled first before onions are browned, as the potatoes take longer to cook.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2284] [FP]
+Question: In the recipe 'David's German Potato Salad', did 'Boil potatoes until firm' occur after 'Brown onions until crispy'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Potatoes need to be boiled first before onions are browned, as the potatoes take longer to cook.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2393] [FN]
+Question: In the recipe 'Grilled Swordfish With Lemon Caper Butter', did 'Grill swordfish until opaque' occur before 'Melt butter with lemon'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Swordfish must be grilled first before the butter with lemon can be melted as a finishing sauce.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: heating
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2394] [FP]
+Question: In the recipe 'Grilled Swordfish With Lemon Caper Butter', did 'Melt butter with lemon' occur before 'Grill swordfish until opaque'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Swordfish must be grilled first before the butter with lemon can be melted as a finishing sauce.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: heating
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2395] [FN]
+Question: In the recipe 'Grilled Swordfish With Lemon Caper Butter', did 'Melt butter with lemon' occur after 'Grill swordfish until opaque'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Swordfish must be grilled first before the butter with lemon can be melted as a finishing sauce.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: heating
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2396] [FP]
+Question: In the recipe 'Grilled Swordfish With Lemon Caper Butter', did 'Grill swordfish until opaque' occur after 'Melt butter with lemon'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Swordfish must be grilled first before the butter with lemon can be melted as a finishing sauce.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: heating
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2513] [FN]
+Question: In the recipe 'Confetti Veggie Slaw (Rainforest Cafe)', did 'Combine veggies in large bowl' occur before 'Mix vinegar, sugar, oil'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: The veggies need to be combined in a bowl first before the dressing can be mixed and added to them.
+  Step 1 (step_a):
+    - cooking_phase: mixing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: mixing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2514] [FP]
+Question: In the recipe 'Confetti Veggie Slaw (Rainforest Cafe)', did 'Mix vinegar, sugar, oil' occur before 'Combine veggies in large bowl'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: The veggies need to be combined in a bowl first before the dressing can be mixed and added to them.
+  Step 1 (step_a):
+    - cooking_phase: mixing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: mixing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2515] [FN]
+Question: In the recipe 'Confetti Veggie Slaw (Rainforest Cafe)', did 'Mix vinegar, sugar, oil' occur after 'Combine veggies in large bowl'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: The veggies need to be combined in a bowl first before the dressing can be mixed and added to them.
+  Step 1 (step_a):
+    - cooking_phase: mixing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: mixing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2516] [FP]
+Question: In the recipe 'Confetti Veggie Slaw (Rainforest Cafe)', did 'Combine veggies in large bowl' occur after 'Mix vinegar, sugar, oil'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: The veggies need to be combined in a bowl first before the dressing can be mixed and added to them.
+  Step 1 (step_a):
+    - cooking_phase: mixing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: mixing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2525] [FN]
+Question: In the recipe 'Banana Pudding Cake Recipe', did 'Pour pineapple mixture over cake' occur before 'Spread pudding on cooled cake'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: The cake must be cooled and have pudding spread on it before the pineapple mixture can be poured over.
+  Step 1 (step_a):
+    - cooking_phase: assembly
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: assembly
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2526] [FP]
+Question: In the recipe 'Banana Pudding Cake Recipe', did 'Spread pudding on cooled cake' occur before 'Pour pineapple mixture over cake'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: The cake must be cooled and have pudding spread on it before the pineapple mixture can be poured over.
+  Step 1 (step_a):
+    - cooking_phase: assembly
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: assembly
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2527] [FN]
+Question: In the recipe 'Banana Pudding Cake Recipe', did 'Spread pudding on cooled cake' occur after 'Pour pineapple mixture over cake'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: The cake must be cooled and have pudding spread on it before the pineapple mixture can be poured over.
+  Step 1 (step_a):
+    - cooking_phase: assembly
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: assembly
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2528] [FP]
+Question: In the recipe 'Banana Pudding Cake Recipe', did 'Pour pineapple mixture over cake' occur after 'Spread pudding on cooled cake'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: The cake must be cooled and have pudding spread on it before the pineapple mixture can be poured over.
+  Step 1 (step_a):
+    - cooking_phase: assembly
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: assembly
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2537] [FN]
+Question: In the recipe 'Vegetable Fritters With Yoghurt Dip', did 'Deep fry until golden' occur before 'Mix cumin seeds with ingredients'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Ingredients need to be mixed with cumin seeds before they can be deep-fried.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: mixing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2538] [FP]
+Question: In the recipe 'Vegetable Fritters With Yoghurt Dip', did 'Mix cumin seeds with ingredients' occur before 'Deep fry until golden'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Ingredients need to be mixed with cumin seeds before they can be deep-fried.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: mixing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2539] [FN]
+Question: In the recipe 'Vegetable Fritters With Yoghurt Dip', did 'Mix cumin seeds with ingredients' occur after 'Deep fry until golden'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Ingredients need to be mixed with cumin seeds before they can be deep-fried.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: mixing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2540] [FP]
+Question: In the recipe 'Vegetable Fritters With Yoghurt Dip', did 'Deep fry until golden' occur after 'Mix cumin seeds with ingredients'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Ingredients need to be mixed with cumin seeds before they can be deep-fried.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: mixing
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2589] [FN]
+Question: In the recipe 'Honey and Mustard Glazes Roast Parsnips', did 'Drizzle mustard mixture' occur before 'Roast until golden and sticky'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Parsnips must be roasted first before the mustard mixture can be drizzled on them.
+  Step 1 (step_a):
+    - cooking_phase: finishing
+    - requires_heat: False
+    - is_final_step: True
+    - transforms_state: False
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2590] [FP]
+Question: In the recipe 'Honey and Mustard Glazes Roast Parsnips', did 'Roast until golden and sticky' occur before 'Drizzle mustard mixture'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Parsnips must be roasted first before the mustard mixture can be drizzled on them.
+  Step 1 (step_a):
+    - cooking_phase: finishing
+    - requires_heat: False
+    - is_final_step: True
+    - transforms_state: False
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2591] [FN]
+Question: In the recipe 'Honey and Mustard Glazes Roast Parsnips', did 'Roast until golden and sticky' occur after 'Drizzle mustard mixture'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Parsnips must be roasted first before the mustard mixture can be drizzled on them.
+  Step 1 (step_a):
+    - cooking_phase: finishing
+    - requires_heat: False
+    - is_final_step: True
+    - transforms_state: False
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2592] [FP]
+Question: In the recipe 'Honey and Mustard Glazes Roast Parsnips', did 'Drizzle mustard mixture' occur after 'Roast until golden and sticky'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Parsnips must be roasted first before the mustard mixture can be drizzled on them.
+  Step 1 (step_a):
+    - cooking_phase: finishing
+    - requires_heat: False
+    - is_final_step: True
+    - transforms_state: False
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2685] [FN]
+Question: In the recipe 'Beef Rib Eye Roast with Red Wine Mushroom Sauce', did 'Roast beef rib eye' occur before 'Prepare wine mushroom sauce'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: The beef rib eye must be roasted first before the wine mushroom sauce can be prepared, as the sauce is likely to be served with the roasted beef.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: mixing
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2686] [FP]
+Question: In the recipe 'Beef Rib Eye Roast with Red Wine Mushroom Sauce', did 'Prepare wine mushroom sauce' occur before 'Roast beef rib eye'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: The beef rib eye must be roasted first before the wine mushroom sauce can be prepared, as the sauce is likely to be served with the roasted beef.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: mixing
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2687] [FN]
+Question: In the recipe 'Beef Rib Eye Roast with Red Wine Mushroom Sauce', did 'Prepare wine mushroom sauce' occur after 'Roast beef rib eye'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: The beef rib eye must be roasted first before the wine mushroom sauce can be prepared, as the sauce is likely to be served with the roasted beef.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: mixing
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2688] [FP]
+Question: In the recipe 'Beef Rib Eye Roast with Red Wine Mushroom Sauce', did 'Roast beef rib eye' occur after 'Prepare wine mushroom sauce'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: The beef rib eye must be roasted first before the wine mushroom sauce can be prepared, as the sauce is likely to be served with the roasted beef.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: mixing
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2745] [FN]
+Question: In the recipe 'Chicken stir fry', did 'Stir broccoli until tender' occur before 'Stir chicken, carrots, peppers'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Chicken and vegetables need to be stir-fried first before adding broccoli, which cooks more quickly.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2746] [FP]
+Question: In the recipe 'Chicken stir fry', did 'Stir chicken, carrots, peppers' occur before 'Stir broccoli until tender'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Chicken and vegetables need to be stir-fried first before adding broccoli, which cooks more quickly.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2747] [FN]
+Question: In the recipe 'Chicken stir fry', did 'Stir chicken, carrots, peppers' occur after 'Stir broccoli until tender'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Chicken and vegetables need to be stir-fried first before adding broccoli, which cooks more quickly.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2748] [FP]
+Question: In the recipe 'Chicken stir fry', did 'Stir broccoli until tender' occur after 'Stir chicken, carrots, peppers'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Chicken and vegetables need to be stir-fried first before adding broccoli, which cooks more quickly.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: True
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2917] [FN]
+Question: In the recipe 'Orange Roughy with Basil and Peppers', did 'Microwave vegetables until tender' occur before 'Microwave fish until it flakes'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Vegetables need to be microwaved first before the fish, as they typically take longer to cook.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2918] [FP]
+Question: In the recipe 'Orange Roughy with Basil and Peppers', did 'Microwave fish until it flakes' occur before 'Microwave vegetables until tender'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Vegetables need to be microwaved first before the fish, as they typically take longer to cook.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2919] [FN]
+Question: In the recipe 'Orange Roughy with Basil and Peppers', did 'Microwave fish until it flakes' occur after 'Microwave vegetables until tender'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Vegetables need to be microwaved first before the fish, as they typically take longer to cook.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2920] [FP]
+Question: In the recipe 'Orange Roughy with Basil and Peppers', did 'Microwave vegetables until tender' occur after 'Microwave fish until it flakes'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Vegetables need to be microwaved first before the fish, as they typically take longer to cook.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2957] [FN]
+Question: In the recipe 'Sweet & Sour Black-Eyed Pea Succotash', did 'Grill corn until charred' occur before 'Cook onions, peppers, chile'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Onions, peppers, and chile need to be cooked first before the grilled corn can be added to the succotash.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2958] [FP]
+Question: In the recipe 'Sweet & Sour Black-Eyed Pea Succotash', did 'Cook onions, peppers, chile' occur before 'Grill corn until charred'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Onions, peppers, and chile need to be cooked first before the grilled corn can be added to the succotash.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2959] [FN]
+Question: In the recipe 'Sweet & Sour Black-Eyed Pea Succotash', did 'Cook onions, peppers, chile' occur after 'Grill corn until charred'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: Onions, peppers, and chile need to be cooked first before the grilled corn can be added to the succotash.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q2960] [FP]
+Question: In the recipe 'Sweet & Sour Black-Eyed Pea Succotash', did 'Grill corn until charred' occur after 'Cook onions, peppers, chile'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: Onions, peppers, and chile need to be cooked first before the grilled corn can be added to the succotash.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q3029] [FN]
+Question: In the recipe 'Stuffed Chicken Breasts with Lemon and Basil Couscous', did 'Grill chicken until cooked' occur before 'Fluff couscous with fork'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: The chicken must be grilled first before the couscous is fluffed, as the couscous is likely cooked while the chicken is grilling.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: prep
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q3030] [FP]
+Question: In the recipe 'Stuffed Chicken Breasts with Lemon and Basil Couscous', did 'Fluff couscous with fork' occur before 'Grill chicken until cooked'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: The chicken must be grilled first before the couscous is fluffed, as the couscous is likely cooked while the chicken is grilling.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: prep
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q3031] [FN]
+Question: In the recipe 'Stuffed Chicken Breasts with Lemon and Basil Couscous', did 'Fluff couscous with fork' occur after 'Grill chicken until cooked'?
+Predicted: No | Correct: Yes
+LLM Properties:
+  reasoning: The chicken must be grilled first before the couscous is fluffed, as the couscous is likely cooked while the chicken is grilling.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: prep
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+[Q3032] [FP]
+Question: In the recipe 'Stuffed Chicken Breasts with Lemon and Basil Couscous', did 'Grill chicken until cooked' occur after 'Fluff couscous with fork'?
+Predicted: Yes | Correct: No
+LLM Properties:
+  reasoning: The chicken must be grilled first before the couscous is fluffed, as the couscous is likely cooked while the chicken is grilling.
+  Step 1 (step_a):
+    - cooking_phase: cooking
+    - requires_heat: True
+    - is_final_step: False
+    - transforms_state: True
+    - depends_on_other: False
+    - belongs_to_recipe: True
+  Step 2 (step_b):
+    - cooking_phase: prep
+    - requires_heat: False
+    - is_final_step: False
+    - transforms_state: False
+    - depends_on_other: False
+    - belongs_to_recipe: True
+Prolog verdict (step_1 before step_2): False
+----------------------------------------
+
+
+============================================================
+SUMMARY
+============================================================
+TP: 1474 | TN: 1474 | FP: 78 | FN: 78
+Accuracy:    0.950
+Precision:   0.950
+Recall:      0.950
+Spec.:       0.950
+Ratio:       1.000
+F1 Score:    0.950
+============================================================
