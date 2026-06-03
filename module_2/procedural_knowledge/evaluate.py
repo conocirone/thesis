@@ -22,11 +22,29 @@ else:
 
 
 def _is_ollama_model(model_id: str) -> bool:
+    """Checks if a model ID corresponds to a local Ollama model.
+
+    Args:
+        model_id: The identifier string of the model.
+
+    Returns:
+        True if the model is local/Ollama, False otherwise.
+    """
     return not model_id.startswith("mistral")
 
 
 def _call_llm_once(messages: list) -> str:
-    """Single LLM call. Returns content string. Raises on error."""
+    """Executes a single chat completion request using the chosen LLM backend.
+
+    Args:
+        messages: A list of message dictionaries.
+
+    Returns:
+        The raw string content of the model's response.
+
+    Raises:
+        Exception: Re-raises any exceptions encountered during API calls.
+    """
     if _is_ollama_model(MODEL_ID):
         response = ollama_lib.chat(
             model=MODEL_ID,
@@ -47,6 +65,9 @@ def _call_llm_once(messages: list) -> str:
 # ---------------------------------------------------------------------------
 # Prompts & Parsing Logic
 # ---------------------------------------------------------------------------
+
+
+
 SYSTEM_PROMPT = """
 You are an expert chef and cooking procedure analyst.
 Your job is to analyze two steps from a cooking recipe and extract semantic properties that reveal their temporal order.
@@ -175,23 +196,47 @@ Step B: Chill for several hours
 """
 
 
+# Cooking-specific phase map (original)
+COOKING_PHASE_MAP = {
+    "preheating": 1, "prep": 2, "mixing": 3, "marinating": 4, "heating": 5,
+    "cooking": 6, "assembly": 7, "resting": 8, "cooling": 9,
+    "finishing": 10, "serving": 11,
+}
+
+ACTIVE_PHASE_MAP = COOKING_PHASE_MAP
+
+
 def keyword_extract_step_properties(title: str, step_a: str, step_b: str) -> dict:
+    """Extracts recipe step properties via simple keyword heuristics (pure logic ablation).
+
+    Args:
+        title: The recipe title.
+        step_a: The first proposed step.
+        step_b: The second proposed step.
+
+    Returns:
+        A dictionary containing reasoning and properties for both steps.
+    """
     def guess(step_str):
         s = step_str.lower()
-        if any(w in s for w in ["serve", "plate", "garnish"]):
+        if any(w in s for w in ["serve", "plate", "garnish", "present", "enjoy"]):
             phase = "serving"
         elif any(w in s for w in ["bake", "fry", "cook", "boil", "simmer", "roast", "grill"]):
             phase = "cooking"
         elif any(w in s for w in ["mix", "stir", "whisk", "combine", "blend", "add"]):
             phase = "mixing"
-        elif any(w in s for w in ["cool", "chill", "freeze", "refrigerate"]):
+        elif any(w in s for w in ["cool", "chill", "freeze", "refrigerate", "wait"]):
             phase = "cooling"
+        elif any(w in s for w in ["check", "test", "inspect", "taste"]):
+            phase = "finishing"
+        elif any(w in s for w in ["gather", "collect", "buy", "get", "prep"]):
+            phase = "prep"
         else:
             phase = "prep"
         return {
             "cooking_phase": phase,
-            "requires_heat": phase == "cooking",
-            "is_final_step": phase == "serving",
+            "requires_heat": phase in ["cooking"],
+            "is_final_step": phase in ["serving"],
             "transforms_state": phase in ["cooking", "cooling"],
             "depends_on_other": False,
             "belongs_to_recipe": True
@@ -199,6 +244,17 @@ def keyword_extract_step_properties(title: str, step_a: str, step_b: str) -> dic
     return {"reasoning": "Keyword logic mapper", "step_a": guess(step_a), "step_b": guess(step_b)}
 
 def pure_llm_temporal_predict(title: str, step_a: str, step_b: str, verbose: bool = False) -> bool:
+    """Uses the LLM directly to predict if Step A comes before Step B (pure LLM baseline).
+
+    Args:
+        title: The recipe title.
+        step_a: Proposed first step.
+        step_b: Proposed second step.
+        verbose: If True, prints verbose details. Defaults to False.
+
+    Returns:
+        True if the LLM predicts Step A is before Step B, False otherwise.
+    """
     system = "You are an expert chef. Evaluate if step A strictly comes BEFORE step B in the context of the recipe. Return pure JSON: {'a_before_b': true} or {'a_before_b': false}."
     messages = [{"role": "system", "content": system}, {"role": "user", "content": f"Recipe: {title}\nStep A: {step_a}\nStep B: {step_b}"}]
     for attempt in range(3):
@@ -210,7 +266,19 @@ def pure_llm_temporal_predict(title: str, step_a: str, step_b: str, verbose: boo
     return False
 
 def extract_step_properties(title, step_a, step_b, verbose=False, ablation="none"):
-    """Call Mistral to extract semantic properties for two recipe steps."""
+    """Calls the LLM to extract semantic properties for two recipe steps.
+
+    Args:
+        title: The recipe title.
+        step_a: First recipe step text.
+        step_b: Second recipe step text.
+        verbose: If True, prints LLM output. Defaults to False.
+        ablation: Ablation study configuration. Defaults to 'none'.
+
+    Returns:
+        A dictionary containing extracted properties for both steps, or a
+        neutral fallback dictionary if parsing fails.
+    """
     if ablation == "pure_logic": return keyword_extract_step_properties(title, step_a, step_b)
     
     sys_prompt = SYSTEM_PROMPT.strip()
@@ -223,7 +291,7 @@ def extract_step_properties(title, step_a, step_b, verbose=False, ablation="none
     for attempt in range(3):
         try:
             raw = _call_llm_once([
-                {"role": "system", "content": SYSTEM_PROMPT.strip()},
+                {"role": "system", "content": sys_prompt},
                 {"role": "user", "content": user_message},
             ])
 
@@ -238,9 +306,11 @@ def extract_step_properties(title, step_a, step_b, verbose=False, ablation="none
 
             props = json.loads(cleaned)
 
-            # Validate structure
+            # Validate structure — accept cooking phases
             valid_phases = {"preheating", "prep", "mixing", "marinating", "heating", "cooking",
                             "assembly", "resting", "cooling", "finishing", "serving"}
+            
+            default_phase = "cooking"
             for step_key in ["step_a", "step_b"]:
                 if step_key not in props:
                     raise ValueError(f"Missing '{step_key}' in response")
@@ -251,7 +321,7 @@ def extract_step_properties(title, step_a, step_b, verbose=False, ablation="none
                     if phase in valid_phases:
                         step["cooking_phase"] = phase
                     else:
-                        step["cooking_phase"] = "cooking"  # safe fallback
+                        step["cooking_phase"] = default_phase
 
             return props
 
@@ -265,12 +335,14 @@ def extract_step_properties(title, step_a, step_b, verbose=False, ablation="none
             time.sleep(2 * (attempt + 1))
 
     # Fallback: return neutral properties
+    fallback_early = "prep"
+    fallback_late = "cooking"
     return {
         "reasoning": "Parsing failed.",
-        "step_a": {"cooking_phase": "prep", "requires_heat": False,
+        "step_a": {"cooking_phase": fallback_early, "requires_heat": False,
                    "is_final_step": False, "transforms_state": False,
                    "depends_on_other": False, "belongs_to_recipe": True},
-        "step_b": {"cooking_phase": "cooking", "requires_heat": True,
+        "step_b": {"cooking_phase": fallback_late, "requires_heat": True,
                    "is_final_step": False, "transforms_state": True,
                    "depends_on_other": True, "belongs_to_recipe": True},
     }
@@ -283,9 +355,13 @@ PROLOG_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "reasoner
 
 
 def run_prolog_temporal(props):
-    """
-    Assert facts for step_a and step_b into Prolog, query comes_before.
-    Returns True if step_a comes before step_b according to the Prolog rules.
+    """Asserts step properties into Prolog and queries comes_before.
+
+    Args:
+        props: A dictionary of extracted step properties.
+
+    Returns:
+        True if Step A comes before Step B according to Prolog rules, False otherwise.
     """
     step_a = props.get("step_a", {})
     step_b = props.get("step_b", {})
@@ -327,9 +403,13 @@ def run_prolog_temporal(props):
 
 
 def run_prolog_temporal_swapped(props):
-    """
-    Query whether step_b comes before step_a (swap the roles).
-    We create swapped properties where step_a gets step_b's values and vice versa.
+    """Queries whether Step B comes before Step A by swapping the step roles.
+
+    Args:
+        props: A dictionary of extracted step properties.
+
+    Returns:
+        True if Step B comes before Step A, False otherwise.
     """
     swapped = {
         "reasoning": props.get("reasoning", ""),
@@ -352,11 +432,48 @@ def run_prolog_temporal_swapped(props):
 
 
 # ---------------------------------------------------------------------------
+# RecipeNLG Data Loader
+# ---------------------------------------------------------------------------
+def load_recipenlg_data() -> list[dict]:
+    """Loads the RecipeNLG step-ordering validation data from the JSON file.
+
+    Returns:
+        A list of step-pair dictionaries.
+    """
+    repo_root = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..")
+    json_path = os.path.join(repo_root, "RecipeNLG", "recipenlg_binary.json")
+    
+    if not os.path.exists(json_path):
+        print(f"ERROR: RecipeNLG data not found at {json_path}")
+        print("Run: python download_recipenlg.py")
+        return []
+    
+    with open(json_path, "r", encoding="utf-8") as f:
+        data = json.load(f)
+    print(f"Loaded {len(data)} RecipeNLG step pairs from {json_path}")
+    return data
+
+
+# ---------------------------------------------------------------------------
 # Binary Evaluation
 # ---------------------------------------------------------------------------
-def evaluate_binary(limit=None, verbose=False, output_file="results/results_binary.txt", ablation="none"):
+def evaluate_binary(limit=None, verbose=False, output_file="results/results_binary.txt", ablation="none", dataset="robo-csk"):
+    """Runs the neuro-symbolic binary step ordering evaluation.
+
+    Args:
+        limit: If set, limits evaluation to a random sample of N recipes.
+          Defaults to None.
+        verbose: If True, prints detailed evaluation logs. Defaults to False.
+        output_file: Path to write the evaluation logs. Defaults to
+          "results/results_binary.txt".
+        ablation: Ablation study configuration ('none', 'pure_llm', or
+          'pure_logic'). Defaults to 'none'.
+        dataset: The dataset name ('robo-csk' or 'recipenlg'). Defaults to
+          'robo-csk'.
+    """
+    dataset_label = dataset.upper().replace("-", "_")
     print("=" * 60)
-    print("Neuro-Symbolic Evaluation: Procedural Knowledge (Binary)")
+    print(f"Neuro-Symbolic Evaluation: Procedural Knowledge (Binary) [{dataset_label}]")
     print(f"Using model: {MODEL_ID}")
     print(f"Ablation Mode: {ablation}")
     print("=" * 60)
@@ -372,20 +489,27 @@ def evaluate_binary(limit=None, verbose=False, output_file="results/results_bina
         name, ext = os.path.splitext(output_file)
         output_file = f"{name}_ablation_{ablation}{ext}"
 
-    data_dir = "../../Robo-CSK-Benchmark/procedural_knowledge/data_generation/question_components_binary"
-    if not os.path.exists(data_dir):
-        print(f"ERROR: Cannot find data at {data_dir}")
-        return
+    # --- Load data based on dataset ---
+    if dataset == "recipenlg":
+        all_recipes = load_recipenlg_data()
+        if not all_recipes:
+            return
+        print(f"Loaded {len(all_recipes)} step pairs ({len(all_recipes) * 4} questions)")
+    else:
+        data_dir = "../../Robo-CSK-Benchmark/procedural_knowledge/data_generation/question_components_binary"
+        if not os.path.exists(data_dir):
+            print(f"ERROR: Cannot find data at {data_dir}")
+            return
 
-    # Load all recipes from all 4 files
-    all_recipes = []
-    for i in range(1, 5):
-        json_path = os.path.join(data_dir, f"questions_recipe_{i}.json")
-        with open(json_path, "r") as f:
-            recipes = json.load(f)
-            all_recipes.extend(recipes)
+        # Load all recipes from all 4 files
+        all_recipes = []
+        for i in range(1, 5):
+            json_path = os.path.join(data_dir, f"questions_recipe_{i}.json")
+            with open(json_path, "r") as f:
+                recipes = json.load(f)
+                all_recipes.extend(recipes)
 
-    print(f"Loaded {len(all_recipes)} recipes ({len(all_recipes) * 4} questions)")
+        print(f"Loaded {len(all_recipes)} recipes ({len(all_recipes) * 4} questions)")
 
     if limit:
         all_recipes = random.Random(42).sample(all_recipes, min(limit, len(all_recipes)))
@@ -521,7 +645,7 @@ def evaluate_binary(limit=None, verbose=False, output_file="results/results_bina
     log.write(f"F1 Score:    {f1:.3f}\n")
     log.write("=" * 60 + "\n")
     log.close()
-    print(f"\n✅ Results written to: {output_file}")
+    print(f"\nResults written to: {output_file}")
 
 
 
@@ -561,7 +685,19 @@ Do NOT add any text outside the JSON.
 """
 
 def llm_select_option(title, reference_step, options, temporal="before", verbose=False):
-    """Ask the LLM to directly pick the best option from the list."""
+    """Asks the LLM to select the correct predecessor/successor from a list.
+
+    Args:
+        title: The recipe title.
+        reference_step: The reference step text.
+        options: List of candidate step options.
+        temporal: The temporal query relation ('before' or 'after'). Defaults
+          to 'before'.
+        verbose: If True, prints verbose details. Defaults to False.
+
+    Returns:
+        A tuple of (selected_option_string, reasoning_string).
+    """
     if temporal == "before":
         system = MULTI_SYSTEM_PROMPT_BEFORE
     else:
@@ -621,6 +757,17 @@ def llm_select_option(title, reference_step, options, temporal="before", verbose
 # Multi-Choice Evaluation (Hybrid: LLM Direct Pick + Prolog Validation)
 # ---------------------------------------------------------------------------
 def evaluate_multi(limit=None, verbose=False, output_file="results/results_multi.txt", ablation="none"):
+    """Runs the neuro-symbolic multi-choice evaluation (LLM Direct Pick + Prolog Validation).
+
+    Args:
+        limit: If set, limits evaluation to a random sample of N recipes.
+          Defaults to None.
+        verbose: If True, prints detailed evaluation logs. Defaults to False.
+        output_file: Path to write the evaluation logs. Defaults to
+          "results/results_multi.txt".
+        ablation: Ablation study configuration ('none' or 'pure_llm').
+          Defaults to 'none'.
+    """
     print("=" * 60)
     print("Neuro-Symbolic Evaluation: Procedural Knowledge (Multi-Choice)")
     print(f"Using model: {MODEL_ID}")
@@ -818,12 +965,10 @@ def evaluate_multi(limit=None, verbose=False, output_file="results/results_multi
                 opt_props = llm_cache[cache_key]
                 step2_before_opt = run_prolog_temporal(opt_props)
                 if step2_before_opt:
-                    MAX_PHASES = 11
+                    MAX_PHASES = len(ACTIVE_PHASE_MAP)
                     pa = opt_props.get("step_a", {}).get("cooking_phase", "cooking")
                     pb = opt_props.get("step_b", {}).get("cooking_phase", "cooking")
-                    phase_map = {"preheating": 1, "prep": 2, "mixing": 3, "marinating": 4, "heating": 5,
-                                 "cooking": 6, "assembly": 7, "resting": 8, "cooling": 9,
-                                 "finishing": 10, "serving": 11}
+                    phase_map = ACTIVE_PHASE_MAP
                     phase_dist = phase_map.get(pb, 6) - phase_map.get(pa, 6)
                     if phase_dist <= 0:
                         phase_dist = 1
@@ -876,7 +1021,7 @@ def evaluate_multi(limit=None, verbose=False, output_file="results/results_multi
     log.write(f"Accuracy: {acc:.3f}\n")
     log.write("=" * 60 + "\n")
     log.close()
-    print(f"\n✅ Results written to: {output_file}")
+    print(f"\n Results written to: {output_file}")
 
 
 # ---------------------------------------------------------------------------
@@ -892,11 +1037,17 @@ if __name__ == "__main__":
     parser.add_argument('--output_file', type=str, default="./results/results.txt", help='Output file for results')
     parser.add_argument('--ablation', type=str, choices=['none', 'pure_llm', 'pure_logic', 'no_cot'], default='none', help='Ablation mode')
     parser.add_argument('--model', type=str, choices=['mistral-large-latest', 'mistral-medium-latest', 'mistral-small-latest', 'llama3.1', 'llama3.2:3b'], default='mistral-large-latest', help='Model choice (use llama3.1 for local Ollama inference)')
+    parser.add_argument('--dataset', type=str, choices=['robo-csk', 'recipenlg'], default='robo-csk',
+                        help='Dataset to evaluate on (default: robo-csk)')
     args = parser.parse_args()
     
     MODEL_ID = args.model
     
     if args.mode in ['binary', 'all']:
-        evaluate_binary(limit=args.limit, verbose=args.verbose, output_file=args.output_file.replace('.txt', '_binary.txt') if 'results.txt' in args.output_file else args.output_file, ablation=args.ablation)
+        evaluate_binary(limit=args.limit, verbose=args.verbose,
+                       output_file=args.output_file.replace('.txt', '_binary.txt') if 'results.txt' in args.output_file else args.output_file,
+                       ablation=args.ablation, dataset=args.dataset)
     if args.mode in ['multi', 'all']:
-        evaluate_multi(limit=args.limit, verbose=args.verbose, output_file=args.output_file.replace('.txt', '_multi.txt') if 'results.txt' in args.output_file else args.output_file, ablation=args.ablation)
+        evaluate_multi(limit=args.limit, verbose=args.verbose,
+                      output_file=args.output_file.replace('.txt', '_multi.txt') if 'results.txt' in args.output_file else args.output_file,
+                      ablation=args.ablation)

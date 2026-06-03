@@ -248,6 +248,14 @@ AFFORDANCE_SYNONYMS: dict[str, list[str]] = {
 
 
 def keyword_extract_affordance(task: str) -> dict:
+    """Extracts an affordance requirement from a task description using keyword heuristics.
+
+    Args:
+        task: The task description string.
+
+    Returns:
+        A dictionary containing reasoning and the extracted affordance.
+    """
     t = task.lower().strip()
     for keywords, affordance in KEYWORD_AFFORDANCE_MAP:
         if any(kw in t for kw in keywords):
@@ -259,6 +267,20 @@ def keyword_extract_affordance(task: str) -> dict:
 # LLM helpers
 # ---------------------------------------------------------------------------
 def llm_chat(messages: list, temperature: float = 0.0, json_format: bool = False) -> str:
+    """Sends a chat completion request to the Mistral API with automatic retry handling.
+
+    Args:
+        messages: A list of message dictionaries.
+        temperature: Controls randomness in generation. Defaults to 0.0.
+        json_format: If True, requests the model to output a JSON object.
+          Defaults to False.
+
+    Returns:
+        The text response content from the model.
+
+    Raises:
+        RuntimeError: If all API request retries are exhausted.
+    """
     max_retries = 10
     for attempt in range(max_retries):
         try:
@@ -287,7 +309,16 @@ def llm_chat(messages: list, temperature: float = 0.0, json_format: bool = False
 
 
 def extract_affordance_llm(task: str, ablation: str = "none") -> dict:
-    """Use LLM to extract the required affordance from a task description."""
+    """Extracts the physical affordance required by a task using an LLM.
+
+    Args:
+        task: The task description string.
+        ablation: Ablation study configuration. If 'pure_logic', falls back
+          to keyword extraction. Defaults to 'none'.
+
+    Returns:
+        A dictionary containing the reasoning and the extracted affordance.
+    """
     if ablation == "pure_logic":
         return keyword_extract_affordance(task)
 
@@ -318,7 +349,16 @@ def extract_affordance_llm(task: str, ablation: str = "none") -> dict:
 
 
 def llm_select_tool(task: str, candidates: list[str], context: str = "") -> str:
-    """LLM directly selects the most suitable tool from candidates."""
+    """Uses the LLM to select the most suitable tool from candidates.
+
+    Args:
+        task: The task description.
+        candidates: A list of candidate tool strings.
+        context: Optional knowledge base context to ground the selection.
+
+    Returns:
+        The chosen tool string.
+    """
     system = (
         "You are an expert robot assistant in a household environment.\n"
         "Given a task and a list of tools, choose the single most suitable tool.\n"
@@ -345,7 +385,15 @@ def llm_select_tool(task: str, candidates: list[str], context: str = "") -> str:
 
 
 def pure_llm_select(task: str, candidates: list[str]) -> str:
-    """Pure LLM selection (ablation)."""
+    """Pure LLM baseline that selects a tool without KB or affordance hints.
+
+    Args:
+        task: The task description.
+        candidates: A list of candidate tool strings.
+
+    Returns:
+        The chosen tool string.
+    """
     return llm_select_tool(task, candidates)
 
 
@@ -356,6 +404,11 @@ _KB_CACHE: dict | None = None
 
 
 def load_kb() -> dict:
+    """Loads the tool affordance knowledge base from the JSON file.
+
+    Returns:
+        The parsed knowledge base dictionary.
+    """
     global _KB_CACHE
     if _KB_CACHE is None:
         if not KB_JSON.exists():
@@ -377,11 +430,16 @@ def get_exemplars_for_affordance(
     synonyms: list[str] | None = None,
     max_exemplars: int = 8,
 ) -> tuple[str, list[str]]:
-    """
-    Reverse-lookup: given an affordance label, return objects in the KB that
-    have that affordance (or a synonym of it).
+    """Retrieves list of object exemplars that exhibit a specific affordance from KB.
 
-    Returns (matched_affordance, exemplar_list) so callers know which label hit.
+    Args:
+        affordance: The target affordance key to look up.
+        kb: The loaded tool affordance knowledge base dictionary.
+        synonyms: Optional list of fallback synonyms for the affordance.
+        max_exemplars: Maximum number of object exemplars to return. Defaults to 8.
+
+    Returns:
+        A tuple of (matched_affordance, list_of_exemplars).
     """
     def _collect(aff: str) -> list[str]:
         results = []
@@ -415,14 +473,15 @@ def run_prolog_solver(
     candidates: list[str],
     kb: dict,
 ) -> dict:
-    """
-    Assert KB facts and run the Prolog reasoner.
-    Returns {
-      "selected": str,             # tool name or "ambiguous" or "none"
-      "confidence": str,
-      "ambiguous_set": [...],      # non-empty only when selected == "ambiguous"
-      "cn_confirmed_set": [...],
-    }
+    """Asserts candidate tool facts into Prolog and runs the reasoner.
+
+    Args:
+        required_affordance: The required affordance key.
+        candidates: A list of candidate tool strings.
+        kb: The tool affordance knowledge base.
+
+    Returns:
+        A dictionary containing the Prolog decision: selected, confidence, etc.
     """
     goals = []
 
@@ -458,7 +517,14 @@ def run_prolog_solver(
 
 
 def _parse_prolog_output(output: str) -> dict:
-    """Parse the SELECTED=, CONFIDENCE=, AMBIGUOUS_SET= lines from Prolog output."""
+    """Parses raw text output from the Prolog executable into a dictionary.
+
+    Args:
+        output: Raw stdout string from swipl command.
+
+    Returns:
+        A dictionary containing parsed Prolog results.
+    """
     result = {
         "selected": "none",
         "confidence": "unknown",
@@ -498,6 +564,17 @@ def evaluate(
     ablation: str = "none",
     limit: int | None = None,
 ) -> None:
+    """Runs the neuro-symbolic multi-choice evaluation for the tool usage task.
+
+    Args:
+        verbose: If True, prints detailed evaluation logs. Defaults to False.
+        output_file: Path to write the evaluation logs. Defaults to
+          "results_tool_usage.txt".
+        ablation: Ablation study configuration ('none', 'pure_llm', 'pure_logic',
+          or 'no_cot'). Defaults to 'none'.
+        limit: If set, limits evaluation to a random sample of N questions.
+          Defaults to None.
+    """
     print("=" * 60)
     print("Neuro-Symbolic Evaluation: Tool Usage")
     print(f"Using model : {MODEL_ID}")
@@ -696,6 +773,13 @@ def evaluate(
 
 
 def _write_log_entry(log, entry: dict, verbose: bool) -> None:
+    """Writes an evaluation trial log entry to the results text file.
+
+    Args:
+        log: The opened file object for logging.
+        entry: A dictionary containing details of the evaluation trial.
+        verbose: If True, prints a summary of the trial to terminal.
+    """
     log.write(f"[Task] {entry['task']}\n")
     if "required_affordance" in entry:
         log.write(f"Required affordance : {entry['required_affordance']}\n")

@@ -1,3 +1,0 @@
-{
-  "bathroom": "goesIn(X, bathroom) :- hasRole(X, furnitureRole), affordsTask(X, hygieneTask).\ngoesIn(X, bathroom) :- hasRole(X, beddingRole), affordsTask(X, sleepingTask).\ngoesIn(X, bathroom) :- hasRole(X, cleaningToolRole), affordsTask(X, hygieneTask).\ngoesIn(X, bathroom) :- hasRole(X, toolRole), affordsTask(X, maintenanceTask).\ngoesIn(X, bathroom) :- hasRole(X, clothingRole), affordsTask(X, dressingTask)."
-}

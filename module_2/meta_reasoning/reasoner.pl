@@ -99,3 +99,44 @@ check_gripper_strict :- required_gripper(false).
 
 check_rigid_strict :- required_rigid(true), robot_rigid(true).
 check_rigid_strict :- required_rigid(false).
+
+
+% =============================================================================
+% EXPLAINABLE ROBOTICS / DEFICIENCY BACKTRACING
+% =============================================================================
+
+% Queries all active physical check failures and prints/returns them.
+explain_deficiencies :-
+    findall(D, check_single_deficiency(D), Deficiencies),
+    (   Deficiencies = []
+    ->  write('no_deficiencies')
+    ;   write(Deficiencies)
+    ).
+
+check_single_deficiency(mobility_failure) :-
+    required_mobile(true),
+    \+ robot_mobile(true).
+
+check_single_deficiency(insufficient_arms(Required, Actual)) :-
+    required_arms(Required),
+    robot_arms(Actual),
+    Actual < Required.
+
+check_single_deficiency(insufficient_dof(Required, Actual)) :-
+    required_dof(Required),
+    robot_dof(Actual),
+    Actual < Required.
+
+check_single_deficiency(missing_gripper) :-
+    required_gripper(true),
+    \+ (robot_arms(A), A >= 1).
+
+check_single_deficiency(missing_rigid_grip) :-
+    required_rigid(true),
+    \+ (robot_arms(A), A >= 1).
+
+check_single_deficiency(minimum_capability_failure) :-
+    task_needs_contact(false),
+    \+ task_needs_grasping(true),
+    robot_arms(A), A >= 1,
+    robot_dof(D), D < 3.

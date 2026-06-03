@@ -22,11 +22,29 @@ else:
 
 
 def _is_ollama_model(model_id: str) -> bool:
+    """Checks if a model ID corresponds to a local Ollama model.
+
+    Args:
+        model_id: The identifier string of the model.
+
+    Returns:
+        True if the model is local/Ollama, False otherwise.
+    """
     return not model_id.startswith("mistral")
 
 
 def _call_llm_once(messages: list) -> str:
-    """Single LLM call. Returns content string. Raises on error."""
+    """Executes a single chat completion request using the chosen LLM backend.
+
+    Args:
+        messages: A list of message dictionaries.
+
+    Returns:
+        The raw string content of the model's response.
+
+    Raises:
+        Exception: Re-raises any exceptions encountered during API calls.
+    """
     if _is_ollama_model(MODEL_ID):
         response = ollama_lib.chat(
             model=MODEL_ID,
@@ -164,6 +182,14 @@ Meal: Meatballs With Orzo and Italian Vegetables
 """
 
 def keyword_extract_meal_properties(meal_str: str) -> dict:
+    """Extracts meal properties via simple keyword heuristics (pure logic ablation).
+
+    Args:
+        meal_str: The name/description of the meal.
+
+    Returns:
+        A dictionary containing reasoning and properties for the meal.
+    """
     meal = meal_str.lower()
     return {
         "reasoning": "Keyword matching.",
@@ -179,6 +205,15 @@ def keyword_extract_meal_properties(meal_str: str) -> dict:
     }
 
 def pure_llm_predict_table_setting(meal_str: str, verbose: bool = False) -> tuple:
+    """Uses the LLM directly to predict the required cutlery and plate (pure LLM baseline).
+
+    Args:
+        meal_str: The name/description of the meal.
+        verbose: If True, prints verbose details. Defaults to False.
+
+    Returns:
+        A tuple of (set_of_predicted_cutlery, predicted_plate_string).
+    """
     system = """You are an expert chef. Evaluate the given meal and directly predict the required Cutlery and Plate.
 Options for Cutlery: Hands, Tongs, Knife, Fork, Skewer, Chopsticks, Spoon.
 Options for Plate: Dinner Plate, Dessert Plate, Bowl, Coupe Plate.
@@ -209,6 +244,16 @@ Output nothing else."""
     return set(), "Dinner Plate"
 
 def extract_meal_properties(meal_str: str, verbose: bool = False, ablation: str = "none") -> dict:
+    """Calls the LLM to extract semantic properties for a meal.
+
+    Args:
+        meal_str: The name/description of the meal.
+        verbose: If True, prints LLM output. Defaults to False.
+        ablation: Ablation study configuration. Defaults to 'none'.
+
+    Returns:
+        A dictionary containing the extracted properties for the meal.
+    """
     if ablation == "pure_logic":
         return keyword_extract_meal_properties(meal_str)
 
@@ -250,6 +295,14 @@ def extract_meal_properties(meal_str: str, verbose: bool = False, ablation: str 
     }
 
 def run_prolog_solver(props: dict) -> tuple:
+    """Asserts meal properties into Prolog and solves for cutlery and plate.
+
+    Args:
+        props: A dictionary of extracted meal properties.
+
+    Returns:
+        A tuple of (set_of_predicted_cutlery, predicted_plate_string).
+    """
     goals = []
     
     for key in ["is_soup_or_broth", "is_handheld_food", "needs_cutting", 
@@ -290,12 +343,31 @@ def run_prolog_solver(props: dict) -> tuple:
         print(f"Prolog inference failed: {e}")
         return set(), "Dinner Plate"
 
-def evaluate(verbose=False, output_file="results_table_setting.txt", ablation="none"):
+def evaluate(verbose=False, output_file="results_table_setting.txt", ablation="none", dataset="robocsk"):
+    """Runs the neuro-symbolic table setting evaluation.
+
+    Args:
+        verbose: If True, prints detailed evaluation logs. Defaults to False.
+        output_file: Path to write the evaluation logs. Defaults to
+          "results_table_setting.txt".
+        ablation: Ablation study configuration ('none', 'pure_llm', or
+          'pure_logic'). Defaults to 'none'.
+        dataset: The dataset name ('robocsk' or 'international'). Defaults to
+          'robocsk'.
+    """
     print("=" * 60)
     print("Neuro-Symbolic Evaluation: Table Setting")
     print(f"Using model: {MODEL_ID}")
     print(f"Ablation Mode: {ablation}")
+    print(f"Dataset: {dataset}")
     print("=" * 60)
+    
+    # Add dataset prefix if not default
+    if dataset != "robocsk":
+        name_base, ext_base = os.path.splitext(output_file)
+        if ext_base == '':
+            ext_base = '.txt'
+        output_file = f"{name_base}_{dataset}{ext_base}"
     
     # Add model name to output file
     name, ext = os.path.splitext(output_file)
@@ -309,9 +381,17 @@ def evaluate(verbose=False, output_file="results_table_setting.txt", ablation="n
         output_file = f"{name}_ablation_{ablation}{ext}"
     
     current_dir = os.path.dirname(os.path.abspath(__file__))
-    csv_path = os.path.join(current_dir, "../../Robo-CSK-Benchmark/table_setting/combined_prolific_data.csv")
+    
+    # Select dataset path
+    if dataset == "international":
+        csv_path = os.path.join(current_dir, "../../International-Cuisine/international_cuisine_table_setting.csv")
+    else:
+        csv_path = os.path.join(current_dir, "../../Robo-CSK-Benchmark/table_setting/combined_prolific_data.csv")
+    
     if not os.path.exists(csv_path):
         print(f"ERROR: Cannot find benchmark data at {csv_path}")
+        if dataset == "international":
+            print("Run: python create_international_cuisine.py")
         return
         
     df = pd.read_csv(csv_path)
@@ -404,8 +484,9 @@ if __name__ == "__main__":
     parser.add_argument('--output_file', type=str, default="results_table_setting.txt", help='Output file for results')
     parser.add_argument('--ablation', type=str, choices=['none', 'pure_llm', 'pure_logic', 'no_cot'], default='none', help='Ablation mode')
     parser.add_argument('--model', type=str, choices=['mistral-large-latest', 'mistral-medium-latest', 'mistral-small-latest', 'llama3.1', 'llama3.2:3b'], default='mistral-large-latest', help='Model choice (use llama3.1 for local Ollama inference)')
+    parser.add_argument('--dataset', type=str, choices=['robocsk', 'international'], default='robocsk', help='Dataset: robocsk (default) or international (OOD generalization)')
     args = parser.parse_args()
     
     MODEL_ID = args.model
     
-    evaluate(verbose=args.verbose, output_file=args.output_file, ablation=args.ablation)
+    evaluate(verbose=args.verbose, output_file=args.output_file, ablation=args.ablation, dataset=args.dataset)

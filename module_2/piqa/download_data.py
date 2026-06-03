@@ -13,6 +13,11 @@ OUT_DIR = REPO_ROOT / "PIQA"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
 def main():
+    """Downloads the PIQA dataset from HuggingFace and saves validation and train splits as CSVs.
+
+    Raises:
+        SystemExit: If the 'datasets' package is not installed.
+    """
     try:
         from datasets import load_dataset
     except ImportError:

@@ -13,8 +13,6 @@
 echo "Starting LLM + Clingo Rule Induction Job on node: $HOSTNAME"
 echo "Date: $(date)"
 
-# source /home/ccirone/myenv/bin/activate
-
 export OLLAMA_HOST="http://localhost:11434"
 export OLLAMA_MODEL="llama3.1:latest" 
 

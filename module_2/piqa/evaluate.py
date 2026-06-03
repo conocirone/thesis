@@ -204,6 +204,15 @@ KEYWORD_AFFORDANCE_MAP: list[tuple[list[str], str]] = [
 
 
 def keyword_extract_affordance(goal: str) -> dict:
+    """Extracts a physical affordance from a PIQA goal using simple keyword heuristics.
+
+    Args:
+        goal: The goal statement to extract the affordance from.
+
+    Returns:
+        A dictionary containing the reasoning and the extracted affordance:
+        {"reasoning": str, "affordance": str}
+    """
     t = goal.lower().strip()
     for keywords, affordance in KEYWORD_AFFORDANCE_MAP:
         if any(kw in t for kw in keywords):
@@ -215,6 +224,19 @@ def keyword_extract_affordance(goal: str) -> dict:
 # LLM helpers
 # ---------------------------------------------------------------------------
 def llm_chat(messages: list, temperature: float = 0.0, json_format: bool = False) -> str:
+    """Sends a chat completion request to the Mistral API with automatic retry handling.
+
+    Args:
+        messages: A list of messages to send to the chat completion endpoint.
+        temperature: Controls randomness in generation. Defaults to 0.0.
+        json_format: If True, requests the model to output a JSON object. Defaults to False.
+
+    Returns:
+        The text response content from the model.
+
+    Raises:
+        RuntimeError: If all API request retries are exhausted.
+    """
     max_retries = 10
     for attempt in range(max_retries):
         try:
@@ -243,7 +265,16 @@ def llm_chat(messages: list, temperature: float = 0.0, json_format: bool = False
 
 
 def extract_affordance_llm(goal: str, ablation: str = "none") -> dict:
-    """Use LLM to extract the required affordance from a PIQA goal."""
+    """Extracts the physical affordance required by a PIQA goal using an LLM.
+
+    Args:
+        goal: The PIQA goal statement.
+        ablation: The ablation study configuration. If 'pure_logic', falls back
+          to keyword extraction. Defaults to 'none'.
+
+    Returns:
+        A dictionary containing the reasoning and the extracted affordance.
+    """
     if ablation == "pure_logic":
         return keyword_extract_affordance(goal)
 
@@ -270,6 +301,11 @@ _KB_CACHE: dict | None = None
 
 
 def load_kb() -> dict:
+    """Loads the tool affordance knowledge base from the JSON file.
+
+    Returns:
+        The parsed knowledge base dictionary.
+    """
     global _KB_CACHE
     if _KB_CACHE is None:
         if not KB_JSON.exists():
@@ -288,7 +324,17 @@ def get_exemplars_for_affordance(
     synonyms: list[str] | None = None,
     max_exemplars: int = 8,
 ) -> tuple[str, list[str]]:
-    """Reverse-lookup: affordance → objects that have it."""
+    """Retrieves list of object exemplars that exhibit a specific affordance from KB.
+
+    Args:
+        affordance: The target affordance key to look up.
+        kb: The loaded tool affordance knowledge base dictionary.
+        synonyms: Optional list of fallback synonyms for the affordance.
+        max_exemplars: Maximum number of object exemplars to return. Defaults to 8.
+
+    Returns:
+        A tuple of (matched_affordance, list_of_exemplars).
+    """
     def _collect(aff: str) -> list[str]:
         results = []
         for obj, data in kb.items():
@@ -309,7 +355,15 @@ def get_exemplars_for_affordance(
 
 
 def count_kb_mentions(text: str, exemplars: list[str]) -> int:
-    """Count how many KB exemplar objects are mentioned in a solution text."""
+    """Counts the number of KB exemplar objects mentioned in a solution text.
+
+    Args:
+        text: The solution explanation text.
+        exemplars: A list of object exemplar strings.
+
+    Returns:
+        The count of exemplar matches found in the text.
+    """
     text_lower = text.lower()
     return sum(1 for ex in exemplars if ex.lower() in text_lower)
 
@@ -323,7 +377,17 @@ def llm_select_solution(
     sol2: str,
     context: str = "",
 ) -> int:
-    """LLM selects the better solution. Returns 0 (sol1) or 1 (sol2)."""
+    """Uses the LLM to select the physically plausible solution.
+
+    Args:
+        goal: The PIQA task goal.
+        sol1: First proposed solution.
+        sol2: Second proposed solution.
+        context: Optional knowledge base context to prompt the selection.
+
+    Returns:
+        0 if Solution 1 is selected, 1 if Solution 2 is selected.
+    """
     system = (
         "You are an expert in physical commonsense reasoning.\n"
         "Given a goal and two possible solutions, choose the solution that would "
@@ -353,7 +417,16 @@ def llm_select_solution(
 
 
 def pure_llm_select(goal: str, sol1: str, sol2: str) -> int:
-    """Pure LLM ablation — no KB context."""
+    """Pure LLM baseline that selects a solution without any KB context.
+
+    Args:
+        goal: The PIQA task goal.
+        sol1: First proposed solution.
+        sol2: Second proposed solution.
+
+    Returns:
+        0 if Solution 1 is selected, 1 if Solution 2 is selected.
+    """
     return llm_select_solution(goal, sol1, sol2)
 
 
@@ -364,7 +437,19 @@ def pure_logic_select(
     affordance: str,
     kb: dict,
 ) -> int:
-    """Pure logic ablation — KB object matching only, no LLM selection."""
+    """Pure logic baseline using KB match count comparison.
+
+    Args:
+        goal: The PIQA task goal.
+        sol1: First proposed solution.
+        sol2: Second proposed solution.
+        affordance: Extracted affordance key.
+        kb: The tool affordance knowledge base.
+
+    Returns:
+        0 if Solution 1 has more KB object matches, 1 if Solution 2 has more,
+        or a random choice if there is a tie.
+    """
     syns = AFFORDANCE_SYNONYMS.get(affordance, [])
     _, exemplars = get_exemplars_for_affordance(affordance, kb, synonyms=syns)
 
@@ -391,6 +476,17 @@ def evaluate(
     ablation: str = "none",
     limit: int | None = None,
 ) -> None:
+    """Runs the neuro-symbolic evaluation pipeline on the PIQA dataset.
+
+    Args:
+        verbose: If True, prints detailed evaluation logs. Defaults to False.
+        output_file: Base name of the file to save the evaluation logs.
+          Defaults to "results_piqa.txt".
+        ablation: The ablation study configuration ('none', 'pure_llm', or
+          'pure_logic'). Defaults to 'none'.
+        limit: If set, evaluates only on a random sample of N questions.
+          Defaults to None.
+    """
     print("=" * 60)
     print("Neuro-Symbolic Evaluation: PIQA")
     print(f"  Model    : {MODEL_ID}")

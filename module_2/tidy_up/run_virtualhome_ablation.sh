@@ -36,7 +36,7 @@ echo ""
 
 # Set HuggingFace cache directory (shared across jobs)
 export HF_HOME="${HF_HOME:-$REPO_DIR/.hf_cache}"
-export MISTRAL_API_KEY="${MISTRAL_API_KEY}"
+export MISTRAL_API_KEY="nZYAMBurofp30JsYW64RZWCZ0hNt7oc1"
 mkdir -p "$HF_HOME"
 echo "HF_HOME:  $HF_HOME"
 echo ""
@@ -49,7 +49,7 @@ cd "$REPO_DIR/module_2/tidy_up"
 mkdir -p results
 
 # Configuration
-DATASET="tidybot"       # "tidybot" or "robo-csk"
+DATASET="virtualhome"       
 TASK="multichoice"      # TidyBot only runs multichoice as open-ended has vocabulary alignment issues
 
 MODELS=("mistral-small-latest" "mistral-medium-latest" "mistral-large-latest")
@@ -76,8 +76,12 @@ python3 evaluate.py --ablation pure_logic --model "mistral-small-latest" --datas
 
 
 echo "====================================================="
-echo "Phase 2: Strict Zero-Shot Generalization (Ontology Only)"
+echo "Phase 2: Strict Zero-Shot Generalization (CSKG Ontology Only)"
 echo "====================================================="
+# --strict disables TIDYBOT_LOCATION_MAP. For VirtualHome the relevant fix is
+# the VIRTUALHOME_LOCATION_MAP (always active), so strict mode here tests
+# whether the CSKG KB alone (no dataset-specific overrides at all) can ground
+# the pipeline — a tighter generalization claim.
 
 # 1. Strict Full Pipeline (none --strict)
 for model in "${MODELS[@]}"; do

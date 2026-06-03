@@ -61,6 +61,8 @@ RESULTS_DIR.mkdir(exist_ok=True)
 # LLM client
 # ---------------------------------------------------------------------------
 MODEL_ID = "mistral-medium-latest"
+STRICT_GENERALIZATION = False
+
 
 api_key = os.environ.get("MISTRAL_API_KEY")
 if not api_key:
@@ -257,21 +259,125 @@ LOCATION_MAP: dict[str, str] = {
     "locker": "closet",
     # package / parcel → storage_room
     "package": "storage_room", "parcel": "storage_room",
+    # Universal semantic corrections — override TidyBot-specific entries below
+    # sofa is in the living room, not a bed-equivalent surface
+    "sofa": "living_room",
+    # nightstand belongs in the bedroom, not a generic table surface
+    "nightstand": "bedroom",
+    # chair — default to living room; dining context can't be inferred without room label
+    "chair": "living_room",
+}
+
+# TidyBot custom mappings 
+TIDYBOT_LOCATION_MAP: dict[str, str] = {
+    "big bowl": "table", "fruit bowl": "table", "bowl": "table",
+    "big storage chest": "cabinet", "small storage chest": "cabinet", "storage chest": "cabinet",
+    "bin 1": "trash", "bin 2": "trash", "recycling bin": "trash", "plastic bin": "trash", "trash can": "trash",
+    "bottom cabinet": "cabinet", "left cabinet": "cabinet", "right cabinet": "cabinet", "top cabinet": "cabinet",
+    "bottom drawer": "drawer", "left drawer": "drawer", "middle drawer": "drawer", "right drawer": "drawer", "top drawer": "drawer",
+    "bottom shelf": "shelf", "left shelf": "shelf", "rightmost shelf": "shelf", "leftmost shelf": "shelf", "right shelf": "shelf", "top shelf": "shelf", "shelf 1": "shelf", "shelf 2": "shelf", "top rack": "shelf",
+    "bucket": "cabinet",
+    "cabinet 1": "cabinet", "cabinet 2": "cabinet", "left cupboard": "cabinet", "right cupboard": "cabinet",
+    "cardboard box": "cabinet", "large cardboard box": "cabinet", "small cardboard box": "cabinet",
+    "chair": "bed",
+    "chest": "cabinet",
+    "coffee table": "table", "side table": "table", "console table": "table", "dining table": "table", "table": "table",
+    "cutting board": "table",
+    "desk": "table",
+    "drying rack": "shelf", "hanging rack": "shelf", "storage rack": "shelf",
+    "fireplace": "living_room",
+    "floor": "hallway",
+    "hamper": "laundry_room", "large hamper": "laundry_room", "small hamper": "laundry_room", "laundry basket": "laundry_room",
+    "nightstand": "table",
+    "ottoman": "bed",
+    "oven drawer": "kitchen",
+    "plastic box": "cabinet",
+    "plate": "table",
+    "rack": "shelf",
+    "small storage container": "cabinet",
+    "sofa": "bed",
+    "stool": "bed",
+    "storage box": "cabinet", "storage box 1": "cabinet", "storage box 2": "cabinet", "storage cabinet": "cabinet",
+    "underbed storage": "closet", "corner": "storage_room", "mat": "hallway",
+}
+
+
+VIRTUALHOME_LOCATION_MAP: dict[str, str] = {
+    # ── kitchen ──────────────────────────────────────────────────────────────
+    # VirtualHome uses concatenated names (no spaces). The spaced variants
+    # are kept at the end for safety but are normally shadowed by LOCATION_MAP.
+    "kitchencabinet":   "kitchen",
+    "kitchencounter":   "kitchen",
+    "cuttingboard":     "kitchen",
+    # ── bathroom ─────────────────────────────────────────────────────────────
+    "bathroomcabinet":  "bathroom",
+    "bathroomcounter":  "bathroom",
+    "towelrack":        "bathroom",
+    "toilet":           "bathroom",
+    # ── bedroom ──────────────────────────────────────────────────────────────
+    # nightstand and chair corrected in LOCATION_MAP above (higher priority)
+    # ── living room ──────────────────────────────────────────────────────────
+    # sofa corrected in LOCATION_MAP above
+    "coffeetable":      "living_room",   # coffee table is in the living room
+    "boardgame":        "living_room",   # board games stored in living room / playroom
+    "bench":            "hallway",       # entryway/hallway bench (most common domestic context)
+    # ── dining room ──────────────────────────────────────────────────────────
+    "diningtable":      "dining_room",
+    # ── storage / garage ─────────────────────────────────────────────────────
+    "toolbox":          "garage",
+    "utilitycloset":    "storage_room",
+    # ── laundry ──────────────────────────────────────────────────────────────
+    "laundrybasket":    "laundry_room",
+    "washingmachine":   "laundry_room",
+    # ── trash ────────────────────────────────────────────────────────────────
+    "garbagecan":       "trash",
+    "trashcan":         "trash",
+    # ── library / study ──────────────────────────────────────────────────────
+    "bookshelf":        "shelf",
+    # ── redundant spaced-form entries (dead code for VH but kept for safety) ─
+    "bathroom shelf":   "bathroom",
+    "bathroom vanity":  "bathroom",
+    "coffee table":     "living_room",
+    "dining table":     "dining_room",
+    "kitchen counter":  "kitchen",
+    "laundry basket":   "laundry_room",
+    "towel rack":       "bathroom",
+    "trash can":        "trash",
+    "utility closet":   "storage_room",
+    "washing machine":  "laundry_room",
+    "garbage can":      "trash",
 }
 
 
 def map_location(loc_str: str) -> str | None:
-    """Map a surface location string to a canonical key. Returns None if unknown."""
+    """Maps a surface location string to a canonical key.
+
+    Args:
+        loc_str: The raw surface location string to map.
+
+    Returns:
+        The canonical location key string, or None if unknown.
+    """
     if not loc_str:
         return None
     key = loc_str.lower().strip()
     if key in LOCATION_MAP:
         return LOCATION_MAP[key]
+    
+    # Check TidyBot mappings only if strict generalization is disabled
+    if not STRICT_GENERALIZATION and key in TIDYBOT_LOCATION_MAP:
+        return TIDYBOT_LOCATION_MAP[key]
+        
+    # Check VirtualHome mappings only if strict generalization is disabled
+    if not STRICT_GENERALIZATION and key in VIRTUALHOME_LOCATION_MAP:
+        return VIRTUALHOME_LOCATION_MAP[key]
+        
     # Space → underscore normalisation (e.g. "music room" → "music_room")
     underscored = key.replace(" ", "_")
     if underscored in CANONICAL_LOCATIONS:
         return underscored
     return None
+
 
 
 # ---------------------------------------------------------------------------
@@ -388,6 +494,15 @@ KEYWORD_LOCATION_MAP: list[tuple[list[str], str]] = [
 
 
 def keyword_extract_location(obj_name: str) -> dict:
+    """Extracts a canonical location for an object using simple keyword heuristics.
+
+    Args:
+        obj_name: The object name to analyze.
+
+    Returns:
+        A dictionary containing the reasoning and the canonical location key:
+        {"reasoning": str, "location": str}
+    """
     t = obj_name.lower().strip()
     for keywords, canon in KEYWORD_LOCATION_MAP:
         if any(kw in t for kw in keywords):
@@ -400,6 +515,20 @@ def keyword_extract_location(obj_name: str) -> dict:
 # ---------------------------------------------------------------------------
 def llm_chat(messages: list, temperature: float = 0.0,
              json_format: bool = False) -> str:
+    """Sends a chat completion request to the Mistral API with automatic retry handling.
+
+    Args:
+        messages: A list of message dictionaries.
+        temperature: Controls randomness in generation. Defaults to 0.0.
+        json_format: If True, requests the model to output a JSON object.
+          Defaults to False.
+
+    Returns:
+        The text response content from the model.
+
+    Raises:
+        RuntimeError: If all API request retries are exhausted.
+    """
     max_retries = 10
     for attempt in range(max_retries):
         try:
@@ -428,7 +557,16 @@ def llm_chat(messages: list, temperature: float = 0.0,
 
 
 def extract_location_llm(obj_name: str, ablation: str = "none") -> dict:
-    """Use LLM to extract the canonical location type for an object."""
+    """Extracts the canonical location type for an object using an LLM.
+
+    Args:
+        obj_name: The household object name.
+        ablation: Ablation study configuration. If 'pure_logic', falls back
+          to keyword extraction. Defaults to 'none'.
+
+    Returns:
+        A dictionary containing the reasoning and the canonical location.
+    """
     if ablation == "pure_logic":
         return keyword_extract_location(obj_name)
 
@@ -455,7 +593,16 @@ def extract_location_llm(obj_name: str, ablation: str = "none") -> dict:
 
 def llm_select_location(obj_name: str, candidates: list[str],
                         context: str = "") -> str:
-    """LLM directly selects the most suitable location from the 5 candidates."""
+    """Uses the LLM to select the most suitable location from a candidate list.
+
+    Args:
+        obj_name: The household object name.
+        candidates: A list of candidate location strings.
+        context: Optional knowledge base context to ground the selection.
+
+    Returns:
+        The chosen location string.
+    """
     system = (
         "You are a household robot that tidies up objects. "
         "Given an object and a list of possible locations, choose the SINGLE "
@@ -494,7 +641,15 @@ def llm_select_location(obj_name: str, candidates: list[str],
 
 
 def pure_llm_select(obj_name: str, candidates: list[str]) -> str:
-    """Pure LLM selection ablation — no KB, no location extraction."""
+    """Pure LLM baseline that selects a location without KB or canonical hints.
+
+    Args:
+        obj_name: The household object name.
+        candidates: A list of candidate location strings.
+
+    Returns:
+        The chosen location string.
+    """
     system = (
         "You are a household robot that tidies up objects. "
         "Given an object and a list of possible locations, choose the SINGLE "
@@ -527,16 +682,10 @@ _KB_CACHE: dict | None = None
 
 
 def load_kb() -> dict:
-    """
-    Load the CSKG-extracted tidy-up KB (object_locations_cskg.json).
+    """Loads the CSKG-extracted tidy-up knowledge base from the JSON file.
 
-    Structure mirrors tool_affordances_cskg.json used by module_2/tool_usage:
-        { object_name: {
-            "locations": ["kitchen", "drawer", ...],  # canonical room strings
-            "sources":   {"kitchen": ["cskg:cn"], ...},
-            "inherited_from": [],
-            "discovered_via_rooms": [...]
-          }, ... }
+    Returns:
+        The parsed knowledge base dictionary.
     """
     global _KB_CACHE
     if _KB_CACHE is None:
@@ -560,11 +709,16 @@ def get_exemplars_for_location(
     synonyms: list[str] | None = None,
     max_exemplars: int = 8,
 ) -> tuple[str, list[str]]:
-    """
-    Reverse-lookup: given a canonical location, return objects in the KB
-    known to belong there (or at a synonym location).
+    """Retrieves list of object exemplars that belong to a canonical location.
 
-    Returns (matched_canonical, exemplar_list) so callers know which label hit.
+    Args:
+        canonical: The canonical location key.
+        kb: The loaded CSKG knowledge base dictionary.
+        synonyms: Optional list of fallback synonyms for the location.
+        max_exemplars: Maximum number of exemplars to return. Defaults to 8.
+
+    Returns:
+        A tuple of (matched_canonical, list_of_exemplars).
     """
     def _collect(canon: str) -> list[str]:
         results = []
@@ -600,15 +754,15 @@ def run_prolog_solver(
     candidates: list[str],
     kb: dict,
 ) -> dict:
-    """
-    Assert KB location facts for each candidate and run the Prolog reasoner.
+    """Asserts location facts for candidates into Prolog and runs reasoner.
 
-    Returns {
-      "selected": str,            # candidate name, "ambiguous", or "none"
-      "confidence": str,
-      "ambiguous_set": [...],
-      "kb_confirmed_set": [...],
-    }
+    Args:
+        required_canonical: The required canonical location key.
+        candidates: A list of candidate location strings.
+        kb: The CSKG knowledge base.
+
+    Returns:
+        A dictionary containing the Prolog decision: selected, confidence, etc.
     """
     goals = []
 
@@ -647,7 +801,15 @@ def run_prolog_solver(
 
 
 def _collect_exemplars_fast(canon: str, kb: dict) -> list[str]:
-    """Quick check: any KB object with this canonical location?"""
+    """Performs a quick search in the KB for objects in a canonical location.
+
+    Args:
+        canon: Canonical location key.
+        kb: The CSKG knowledge base.
+
+    Returns:
+        A list of up to 3 object exemplar strings.
+    """
     results = []
     for obj, data in kb.items():
         locs = data.get("locations", [])  # CSKG KB: list of room strings
@@ -659,6 +821,14 @@ def _collect_exemplars_fast(canon: str, kb: dict) -> list[str]:
 
 
 def _parse_prolog_output(output: str) -> dict:
+    """Parses raw text output from the Prolog executable into a dictionary.
+
+    Args:
+        output: Raw stdout string from swipl command.
+
+    Returns:
+        A dictionary containing parsed Prolog results.
+    """
     result = {
         "selected": "none",
         "confidence": "unknown",
@@ -692,32 +862,63 @@ def evaluate(
     output_file: str = "results_tidy_up.txt",
     ablation: str = "none",
     limit: int | None = None,
+    dataset: str = "robo-csk",
 ) -> None:
+    """Runs the neuro-symbolic multi-choice evaluation for the tidy-up task.
+
+    Args:
+        verbose: If True, prints detailed evaluation logs. Defaults to False.
+        output_file: Path to write the evaluation logs. Defaults to
+          "results_tidy_up.txt".
+        ablation: Ablation study configuration ('none', 'pure_llm', or
+          'pure_logic'). Defaults to 'none'.
+        limit: If set, limits evaluation to a random sample of N questions.
+          Defaults to None.
+        dataset: The dataset name ('robo-csk', 'tidybot', or 'virtualhome').
+          Defaults to 'robo-csk'.
+    """
     print("=" * 60)
     print("Neuro-Symbolic Evaluation: Tidy-Up (module_2)")
-    print(f"  Model    : {MODEL_ID}")
-    print(f"  Ablation : {ablation}")
+    print(f"  Model      : {MODEL_ID}")
+    print(f"  Ablation   : {ablation}")
+    print(f"  Dataset    : {dataset}")
+    print(f"  Strict Gen : {STRICT_GENERALIZATION}")
     print("=" * 60)
 
-    # Add model name to output file
+    # Add dataset name to output file
     name, ext = os.path.splitext(output_file)
     if ext == '':
         ext = '.txt'
-    output_file = f"{name}_{MODEL_ID}{ext}"
+    output_file = f"{name}_{dataset}_{MODEL_ID}{ext}"
+
+    # Add strict suffix if strict generalization is enabled
+    if STRICT_GENERALIZATION:
+        name, ext = os.path.splitext(output_file)
+        output_file = f"{name}_strict{ext}"
 
     # Add ablation suffix if applicable
     if ablation != "none":
         name, ext = os.path.splitext(output_file)
         output_file = f"{name}_ablation_{ablation}{ext}"
 
+
     # Load benchmark
-    csv_path = BENCHMARK_DIR / "tidy_up_multichoice.csv"
+    if dataset == "tidybot":
+        benchmark_dir = REPO_ROOT / "TidyBot"
+        csv_path = benchmark_dir / "tidybot_multichoice.csv"
+    elif dataset == "virtualhome":
+        benchmark_dir = REPO_ROOT / "VirtualHome"
+        csv_path = benchmark_dir / "virtualhome_multichoice.csv"
+    else:
+        benchmark_dir = BENCHMARK_DIR
+        csv_path = benchmark_dir / "tidy_up_multichoice.csv"
+
     if not csv_path.exists():
         sys.exit(f"ERROR: Benchmark CSV not found at {csv_path}")
     df = pd.read_csv(csv_path)
     if limit is not None:
         df = df.sample(n=min(limit, len(df)), random_state=42).reset_index(drop=True)
-        print(f"[--limit] Running on {len(df)} randomly sampled questions")
+        print(f"[--limit] Running on {len(df)} randomly sampled questions from {dataset}")
 
     kb = load_kb()
 
@@ -1058,6 +1259,13 @@ def evaluate(
 
 
 def _write_log_entry(log, entry: dict, verbose: bool) -> None:
+    """Writes an evaluation trial log entry to the results text file.
+
+    Args:
+        log: The opened file object for logging.
+        entry: A dictionary containing details of the evaluation trial.
+        verbose: If True, prints a summary of the trial to terminal.
+    """
     log.write(f"[Object] {entry.get('object', entry.get('task', ''))}\n")
     if "required_canonical" in entry:
         log.write(f"Canonical location  : {entry['required_canonical']}\n")
@@ -1092,6 +1300,15 @@ def _write_log_entry(log, entry: dict, verbose: bool) -> None:
 # ---------------------------------------------------------------------------
 
 def _reciprocal_rank(retrieved: list[str], gold: list[str]) -> float:
+    """Calculates reciprocal rank (RR) for the retrieved list against gold.
+
+    Args:
+        retrieved: A list of predicted locations.
+        gold: A list of gold locations.
+
+    Returns:
+        The reciprocal rank score (float).
+    """
     for i, r in enumerate(retrieved):
         if r in gold:
             return 1.0 / (i + 1)
@@ -1099,6 +1316,16 @@ def _reciprocal_rank(retrieved: list[str], gold: list[str]) -> float:
 
 
 def _average_precision_at_k(k: int, retrieved: list[str], gold: list[str]) -> float:
+    """Calculates average precision at K (AP@K) for a retrieved list.
+
+    Args:
+        k: The rank cutoff value.
+        retrieved: A list of predicted locations.
+        gold: A list of gold locations.
+
+    Returns:
+        The average precision at K score.
+    """
     if not gold:
         return 0.0
     r = sum(1 for x in retrieved[:k] if x in gold)
@@ -1114,6 +1341,16 @@ def _average_precision_at_k(k: int, retrieved: list[str], gold: list[str]) -> fl
 
 
 def _recall_at_k(k: int, retrieved: list[str], gold: list[str]) -> float:
+    """Calculates recall at K (AR@K) for a retrieved list.
+
+    Args:
+        k: The rank cutoff value.
+        retrieved: A list of predicted locations.
+        gold: A list of gold locations.
+
+    Returns:
+        The recall at K score.
+    """
     if not gold:
         return 0.0
     cap = min(k, len(gold))
@@ -1281,10 +1518,13 @@ _OPEN_NORM_SUBSTR: list[tuple[str, str]] = [
 
 
 def normalize_open_prediction(loc: str) -> str:
-    """
-    Normalize a single predicted location string to a GT-compatible form.
-    Applies exact-match overrides first, then substring patterns.
-    Falls back to returning the original string lowercased.
+    """Normalizes a predicted location string to be ground-truth compatible.
+
+    Args:
+        loc: The raw location string.
+
+    Returns:
+        The normalized, lowercased location string.
     """
     s = loc.strip().lower()
     # Exact match
@@ -1339,22 +1579,39 @@ def evaluate_open(
     output_file: str = "results_tidy_up_open.txt",
     ablation: str = "none",
     limit: int | None = None,
+    dataset: str = "robo-csk",
 ) -> None:
-    """
-    Evaluate on the open-question task (tidy_up_data.csv).
-    Metrics: MRR, MAP@1/3/5, MAR@1/3/5  — matching the Robo-CSK-Benchmark.
+    """Runs the open-ended ranking evaluation (MRR, MAP, MAR) for the tidy-up task.
+
+    Args:
+        verbose: If True, prints detailed evaluation logs. Defaults to False.
+        output_file: Path to write the evaluation logs. Defaults to
+          "results_tidy_up_open.txt".
+        ablation: Ablation study configuration ('none', 'pure_llm', or
+          'pure_logic'). Defaults to 'none'.
+        limit: If set, limits evaluation to a random sample of N items.
+          Defaults to None.
+        dataset: The dataset name ('robo-csk', 'tidybot', or 'virtualhome').
+          Defaults to 'robo-csk'.
     """
     print("=" * 60)
     print("Neuro-Symbolic Evaluation: Tidy-Up OPEN task (module_2)")
-    print(f"  Model    : {MODEL_ID}")
-    print(f"  Ablation : {ablation}")
+    print(f"  Model      : {MODEL_ID}")
+    print(f"  Ablation   : {ablation}")
+    print(f"  Dataset    : {dataset}")
+    print(f"  Strict Gen : {STRICT_GENERALIZATION}")
     print("=" * 60)
 
-    # Add model name to output file
+    # Add dataset name to output file
     name, ext = os.path.splitext(output_file)
     if ext == '':
         ext = '.txt'
-    output_file = f"{name}_{MODEL_ID}{ext}"
+    output_file = f"{name}_{dataset}_{MODEL_ID}{ext}"
+
+    # Add strict suffix if strict generalization is enabled
+    if STRICT_GENERALIZATION:
+        name, ext = os.path.splitext(output_file)
+        output_file = f"{name}_strict{ext}"
 
     # Add ablation suffix if applicable
     if ablation != "none":
@@ -1363,10 +1620,17 @@ def evaluate_open(
 
     kb = load_kb()  # CSKG KB — used for context grounding
 
-    # Ground truth comes from the multi-source benchmark file
-    if not OPEN_GT_CSV.exists():
-        sys.exit(f"ERROR: Open-task ground truth not found at {OPEN_GT_CSV}")
-    df_gt = pd.read_csv(OPEN_GT_CSV)
+    # Ground truth comes from the benchmark file
+    if dataset == "tidybot":
+        open_gt_csv = REPO_ROOT / "TidyBot" / "tidybot_data.csv"
+    elif dataset == "virtualhome":
+        open_gt_csv = REPO_ROOT / "VirtualHome" / "virtualhome_data.csv"
+    else:
+        open_gt_csv = OPEN_GT_CSV
+
+    if not open_gt_csv.exists():
+        sys.exit(f"ERROR: Open-task ground truth not found at {open_gt_csv}")
+    df_gt = pd.read_csv(open_gt_csv)
     # Build {object_lower: [ranked locations]} from tidy_up_data.csv
     gt_map: dict[str, list[str]] = {}
     for _, row in df_gt.iterrows():
@@ -1546,6 +1810,10 @@ if __name__ == "__main__":
                         help=("Evaluation task: 'multichoice' (Accuracy, from "
                               "tidy_up_multichoice.csv) or 'open' (MRR/MAP/MAR, "
                               "from tidy_up_data.csv). Default: multichoice"))
+    parser.add_argument("--dataset", type=str,
+                        choices=["robo-csk", "tidybot", "virtualhome"],
+                        default="robo-csk",
+                        help="Benchmark dataset to run: 'robo-csk' (default), 'tidybot', or 'virtualhome'")
     parser.add_argument("--verbose", action="store_true",
                         help="Print per-question details")
     parser.add_argument("--output_file", type=str, default="./results/results.txt",
@@ -1558,9 +1826,12 @@ if __name__ == "__main__":
                         help="Mistral model to use")
     parser.add_argument("--limit", type=int, default=None,
                         help="Randomly sample N questions instead of all")
+    parser.add_argument("--strict", action="store_true",
+                        help="Enable strict zero-shot generalization by bypassing TidyBot mappings.")
     args = parser.parse_args()
 
     MODEL_ID = args.model
+    STRICT_GENERALIZATION = args.strict
 
     if args.task == "open":
         evaluate_open(
@@ -1568,6 +1839,7 @@ if __name__ == "__main__":
             output_file=args.output_file.replace('.txt', '_open.txt') if 'results.txt' in args.output_file else args.output_file,
             ablation=args.ablation,
             limit=args.limit,
+            dataset=args.dataset,
         )
     else:
         evaluate(
@@ -1575,4 +1847,5 @@ if __name__ == "__main__":
             output_file=args.output_file.replace('.txt', '_multichoice.txt') if 'results.txt' in args.output_file else args.output_file,
             ablation=args.ablation,
             limit=args.limit,
+            dataset=args.dataset,
         )

@@ -15,8 +15,20 @@
 
 set -euo pipefail
 
-REPO_DIR="$HOME/thesis"
-VENV_DIR="$REPO_DIR/thesis_env"
+# Detect repository root dynamically (works locally and on cluster)
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_DIR="$(cd "$SCRIPT_DIR/../.." && pwd)"
+
+# Resolve virtual environment directory
+if [ -d "$REPO_DIR/.thesis_env" ]; then
+    VENV_DIR="$REPO_DIR/.thesis_env"
+elif [ -d "$REPO_DIR/thesis_env" ]; then
+    VENV_DIR="$REPO_DIR/thesis_env"
+else
+    # Fallback to home directory location if executing in isolated cluster contexts
+    REPO_DIR="$HOME/thesis"
+    VENV_DIR="$REPO_DIR/thesis_env"
+fi
 
 echo "============================================================"
 echo "  Neuro-Symbolic Ablation Study: Procedural Knowledge (Module 2)"

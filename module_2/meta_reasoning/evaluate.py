@@ -24,11 +24,30 @@ else:
 
 
 def _is_ollama_model(model_id: str) -> bool:
+    """Checks if a model ID corresponds to a local Ollama model.
+
+    Args:
+        model_id: The identifier string of the model.
+
+    Returns:
+        True if the model is local/Ollama (does not start with 'mistral'),
+        False otherwise.
+    """
     return not model_id.startswith("mistral")
 
 
 def _call_llm_once(messages: list) -> str:
-    """Single LLM call. Returns content string. Raises on error."""
+    """Executes a single chat completion request using the chosen LLM backend.
+
+    Args:
+        messages: A list of message dictionaries (with 'role' and 'content' keys).
+
+    Returns:
+        The raw string content of the model's response.
+
+    Raises:
+        Exception: Re-raises any exceptions encountered during API calls.
+    """
     if _is_ollama_model(MODEL_ID):
         response = ollama_lib.chat(
             model=MODEL_ID,
@@ -132,7 +151,15 @@ Task: wrap the gloves in the yellow towel
 
 """
 
-def map_gripper_config(gripper_str):
+def map_gripper_config(gripper_str) -> str:
+    """Maps raw gripper config strings to a canonical representation.
+
+    Args:
+        gripper_str: Raw string description of the gripper configuration.
+
+    Returns:
+        Canonical gripper type string ('none' or 'two_finger').
+    """
     if pd.isna(gripper_str) or 'No specified Gripper' in str(gripper_str):
         return 'none'
     elif '2 Fingers' in str(gripper_str):
@@ -140,6 +167,19 @@ def map_gripper_config(gripper_str):
     return 'none'
 
 def parse_multi_choice_hardware_string(config_str: str) -> dict:
+    """Parses a raw hardware configuration description string into a dictionary.
+
+    Args:
+        config_str: Raw string describing the robot's hardware configuration.
+
+    Returns:
+        A dictionary containing parsed capabilities:
+        - mobile (bool)
+        - arms (int)
+        - dof (int)
+        - gripper_type (str)
+        - rigid (bool)
+    """
     config = {
         'mobile': False,
         'arms': 0,
@@ -163,6 +203,15 @@ def parse_multi_choice_hardware_string(config_str: str) -> dict:
     return config
 
 def parse_llm_json(llm_output: str) -> dict:
+    """Extracts and parses a JSON block from the LLM response text.
+
+    Args:
+        llm_output: Raw text output from the LLM.
+
+    Returns:
+        Parsed task properties dictionary, falling back to a default
+        dictionary if parsing fails.
+    """
     match = re.search(r'\{.*\}', str(llm_output), re.DOTALL)
     if match:
         try:
@@ -180,6 +229,14 @@ def parse_llm_json(llm_output: str) -> dict:
     }
 
 def keyword_extract_task_properties(task_str: str) -> dict:
+    """Heuristically extracts task properties via keyword matching.
+
+    Args:
+        task_str: Natural language description of the household task.
+
+    Returns:
+        A dictionary containing boolean requirements (Pure Logic ablation baseline).
+    """
     t = task_str.lower()
     return {
         "reasoning": "Keyword logic mapper",
@@ -192,6 +249,16 @@ def keyword_extract_task_properties(task_str: str) -> dict:
     }
 
 def pure_llm_binary_predict(task_str: str, robot_config: dict, verbose: bool = False) -> bool:
+    """Queries the LLM directly for binary compatibility prediction.
+
+    Args:
+        task_str: Description of the household task.
+        robot_config: Robot hardware configuration dictionary.
+        verbose: If True, prints additional logging.
+
+    Returns:
+        True if the LLM predicts the robot can execute the task, False otherwise.
+    """
     system = """You are an expert robot motion planner. 
 Given a task and a robot configuration, output a JSON {'can_execute': true} or {'can_execute': false}.
 Do not output anything else."""
@@ -206,6 +273,16 @@ Do not output anything else."""
     return False
 
 def pure_llm_multi_predict(task_str: str, configs: list, verbose: bool = False) -> str:
+    """Queries the LLM directly to select the best robot config.
+
+    Args:
+        task_str: Natural language description of the task.
+        configs: List of raw candidate hardware configuration strings.
+        verbose: If True, prints additional logging.
+
+    Returns:
+        The selected raw hardware configuration string from the options.
+    """
     system = """You are an expert robot motion planner.
 Given a task and a list of alternative valid robot hardware configurations, you must select the MOST CAPABLE viable configuration.
 Higher DoFs, more arms, and mobility typically imply higher capability.
@@ -229,6 +306,16 @@ Output a JSON: {'selected_config': '<exact string>'}"""
     return configs[0] if configs else ""
 
 def extract_task_properties(task_str: str, verbose: bool = False, ablation: str = "none") -> dict:
+    """Queries the LLM to analyze a task and extract physical requirements.
+
+    Args:
+        task_str: Natural language description of the task.
+        verbose: If True, prints additional logging.
+        ablation: The ablation study configuration ('none', 'pure_logic', 'no_cot').
+
+    Returns:
+        A dictionary containing parsed physical requirements of the task.
+    """
     if ablation == "pure_logic": return keyword_extract_task_properties(task_str)
     
     sys_prompt = SYSTEM_PROMPT.strip()
@@ -266,6 +353,16 @@ def extract_task_properties(task_str: str, verbose: bool = False, ablation: str 
     return parse_llm_json("")
 
 def run_prolog_solver(properties: dict, robot_config: dict, strict: bool = False) -> bool:
+    """Runs the Prolog reasoner to assess robot compatibility.
+
+    Args:
+        properties: Dictionary of extracted physical requirements of the task.
+        robot_config: Robot hardware config dictionary.
+        strict: If True, queries strict capability validation rules.
+
+    Returns:
+        True if the robot can execute the task according to logic rules, False otherwise.
+    """
     goals = []
     
     for key, value in properties.items():
@@ -298,9 +395,106 @@ def run_prolog_solver(properties: dict, robot_config: dict, strict: bool = False
         print(f"Prolog inference failed: {e}")
         return False
 
-def evaluate_binary(limit=None, verbose=False, output_file="results_binary.txt", ablation="none"):
+def run_prolog_explainer(properties: dict, robot_config: dict) -> str:
+    """Queries Prolog to explain missing robot capabilities for a task.
+
+    Args:
+        properties: Dictionary of physical requirements of the task.
+        robot_config: Robot hardware config dictionary.
+
+    Returns:
+        A raw string representation of the kinematic deficiencies list from Prolog.
+    """
+    goals = []
+    
+    for key, value in properties.items():
+        if not key.startswith("needs_"): 
+            continue
+        v_str = str(value).lower()
+        goals.append(f"assertz(task_{key}({v_str}))")
+        
+    goals.append(f"assertz(robot_mobile({str(robot_config['mobile']).lower()}))")
+    goals.append(f"assertz(robot_arms({robot_config['arms']}))")
+    goals.append(f"assertz(robot_dof({robot_config['dof']}))")
+    goals.append(f"assertz(robot_gripper_type({robot_config['gripper_type']}))")
+    goals.append(f"assertz(robot_rigid({str(robot_config['rigid']).lower()}))")
+    
+    goals.append("explain_deficiencies")
+    goals.append("halt")
+    
+    goal_str = ", ".join(goals)
+    cmd = ['swipl', '-f', 'reasoner.pl', '-g', goal_str]
+    
+    try:
+        result = subprocess.run(cmd, capture_output=True, text=True, timeout=10)
+        output = result.stdout.strip()
+        if "\n" in output:
+            output = output.split("\n")[-1].strip()
+        return output
+    except Exception as e:
+        return f"failed_to_explain({str(e)})"
+
+def format_deficiencies(raw_deficiencies: str) -> str:
+    """Formats raw Prolog deficiencies into human-readable bulletins.
+
+    Args:
+        raw_deficiencies: The raw string output from the Prolog explainer.
+
+    Returns:
+        A formatted multi-line string containing explanations of capability failures.
+    """
+    if raw_deficiencies == 'no_deficiencies':
+        return "  * All physical and kinematic requirements met."
+    
+    # Parse list: '[mobility_failure, insufficient_dof(6,4)]'
+    cleaned = raw_deficiencies.strip("[]")
+    if not cleaned:
+        return "  * Unknown physical mismatch."
+        
+    items = re.findall(r'[a-zA-Z0-9_]+(?:\([^)]*\))?', cleaned)
+    explanations = []
+    for item in items:
+        item = item.strip()
+        if item == 'mobility_failure':
+            explanations.append("Task requires a mobile base, but the robot is stationary.")
+        elif item.startswith('insufficient_arms'):
+            match = re.match(r'insufficient_arms\((\d+),(\d+)\)', item)
+            if match:
+                req, act = match.groups()
+                explanations.append(f"Task requires {req} arm(s) working simultaneously, but the robot only has {act} arm(s).")
+            else:
+                explanations.append("Insufficient number of robot manipulators.")
+        elif item.startswith('insufficient_dof'):
+            match = re.match(r'insufficient_dof\((\d+),(\d+)\)', item)
+            if match:
+                req, act = match.groups()
+                explanations.append(f"Task requires at least {req} Degrees of Freedom (DoF) to maneuver, but the robot arm only has {act} DoF.")
+            else:
+                explanations.append("Insufficient degrees of freedom per arm.")
+        elif item == 'missing_gripper':
+            explanations.append("Task requires lifting/grasping objects, which demands an active end-effector (gripper), but no arm or gripper is configured.")
+        elif item == 'missing_rigid_grip':
+            explanations.append("Task requires high torque or physical force, which demands a rigid clamp/gripper, but the robot lacks rigid grip capabilities.")
+        elif item == 'minimum_capability_failure':
+            explanations.append("Robot does not meet the minimum active configuration threshold (at least 3 DoF is required for arm-based contact).")
+        else:
+            explanations.append(f"Failed physical requirement: {item}")
+            
+    return "\n".join(f"  * {exp}" for exp in explanations)
+
+def evaluate_binary(limit=None, verbose=False, output_file="results_binary.txt", ablation="none", dataset="robo-csk") -> None:
+    """Runs binary task compatibility evaluation.
+
+    Args:
+        limit: Max number of samples to evaluate.
+        verbose: If True, prints additional logging.
+        output_file: Output text log file path.
+        ablation: Ablation setup to test.
+        dataset: Dataset identifier ('robo-csk' or 'behavior1k').
+    """
+    dataset_label = dataset.upper().replace("-", "_")
     print("=" * 60)
-    print("Neuro-Symbolic Evaluation: Meta-Reasoning (Binary Error Analysis)")
+    print(f"Neuro-Symbolic Evaluation: Meta-Reasoning (Binary) [{dataset_label}]")
     print(f"Using model: {MODEL_ID}")
     print(f"Ablation Mode: {ablation}")
     print("=" * 60)
@@ -316,10 +510,23 @@ def evaluate_binary(limit=None, verbose=False, output_file="results_binary.txt",
         name, ext = os.path.splitext(output_file)
         output_file = f"{name}_ablation_{ablation}{ext}"
 
-    csv_path = "../../Robo-CSK-Benchmark/meta_reasoning/meta_reasoning_with_negatives.csv"
-    if not os.path.exists(csv_path):
-        print(f"ERROR: Cannot find benchmark data at {csv_path}")
-        return
+    # --- Load data based on dataset ---
+    if dataset == "behavior1k":
+        csv_path = "../../BEHAVIOR-1K/behavior1k_annotated_llama3.1_latest.csv"
+        if not os.path.exists(csv_path):
+            print(f"ERROR: BEHAVIOR-1K data not found at {csv_path}")
+            print("Run: python download_behavior1k.py && python annotate_behavior1k.py")
+            return
+    elif dataset.endswith(".csv") or os.path.exists(dataset):
+        csv_path = dataset
+        if not os.path.exists(csv_path):
+            print(f"ERROR: Dataset file not found at {csv_path}")
+            return
+    else:
+        csv_path = "../../Robo-CSK-Benchmark/meta_reasoning/meta_reasoning_with_negatives.csv"
+        if not os.path.exists(csv_path):
+            print(f"ERROR: Cannot find benchmark data at {csv_path}")
+            return
 
     df = pd.read_csv(csv_path)
     if limit:
@@ -328,8 +535,6 @@ def evaluate_binary(limit=None, verbose=False, output_file="results_binary.txt",
     llm_cache = {}
     tp, tn, fp, fn = 0, 0, 0, 0
     
-    # Open error log file
-    #error_log = open("errors_2.txt", "w")
     error_log = open(output_file, "w")
     error_log.write("=" * 60 + "\n")
     error_log.write("ERROR LOG - Meta-Reasoning Binary Evaluation\n")
@@ -393,6 +598,12 @@ def evaluate_binary(limit=None, verbose=False, output_file="results_binary.txt",
             error_log.write(f"  - DoF: {robot_config['dof']}\n")
             error_log.write(f"  - Gripper Type: {robot_config['gripper_type']}\n")
             error_log.write(f"  - Rigid Grip: {robot_config['rigid']}\n")
+            
+            if ablation != "pure_llm":
+                raw_def = run_prolog_explainer(props, robot_config)
+                def_cert = format_deficiencies(raw_def)
+                error_log.write(f"Kinematic Deficiency Certificate:\n{def_cert}\n")
+                
             error_log.write(f"Ground Truth in Dataset: Can Execute = TRUE\n")
             error_log.write("-" * 40 + "\n")
 
@@ -414,7 +625,6 @@ def evaluate_binary(limit=None, verbose=False, output_file="results_binary.txt",
     print(f"F1 Score:    {f1:.3f}")
     print("=" * 40)
     
-    # Write summary to error log file
     error_log.write("\n" + "=" * 60 + "\n")
     error_log.write("SUMMARY\n")
     error_log.write("=" * 60 + "\n")
@@ -427,9 +637,17 @@ def evaluate_binary(limit=None, verbose=False, output_file="results_binary.txt",
     error_log.write(f"F1 Score:    {f1:.3f}\n")
     error_log.write("=" * 60 + "\n")
     error_log.close()
-    print(f"\n Error log written to: errors.txt")
+    print(f"\n Error log written to: {output_file}")
 
-def evaluate_multi(limit=None, verbose=False, output_file="results_multi.txt", ablation="none"):
+def evaluate_multi(limit=None, verbose=False, output_file="results_multi.txt", ablation="none") -> None:
+    """Runs multiple-choice evaluation (selecting correct robot config).
+
+    Args:
+        limit: Max number of samples to evaluate.
+        verbose: If True, prints additional logging.
+        output_file: Output text log file path.
+        ablation: Ablation setup to test.
+    """
     print("=" * 60)
     print("Neuro-Symbolic Evaluation: Meta-Reasoning (Multi-Choice)")
     print(f"Using model: {MODEL_ID}")
@@ -463,7 +681,6 @@ def evaluate_multi(limit=None, verbose=False, output_file="results_multi.txt", a
     error_count = 0
     no_valid_count = 0
 
-    # Open output log file
     log = open(output_file, "w")
     log.write("=" * 60 + "\n")
     log.write("RESULT LOG - Meta-Reasoning Multi-Choice Evaluation\n")
@@ -473,25 +690,16 @@ def evaluate_multi(limit=None, verbose=False, output_file="results_multi.txt", a
     log.write("=" * 60 + "\n\n")
 
     def score(cfg_str, task_props):
-        """Score a config for multi-choice selection.
-        The correct answer in the dataset is always the MOST CAPABLE 
-        minimum-viable robot. So among configs that pass Prolog, we 
-        pick the one with the highest capability score."""
         c = parse_multi_choice_hardware_string(cfg_str)
         s = 0
-        
-        # Base capability score (higher = more capable)
         s += c['arms'] * 1000
         s += c['dof'] * 100
         s += 50 if c['gripper_type'] != 'none' else 0
         s += 30 if c['mobile'] else 0
-        # Only reward rigid if the task actually needs it;
-        # slightly penalize rigid when not needed (breaks ties in favor of soft)
         if task_props.get('needs_rigid_grip'):
             s += 10 if c['rigid'] else 0
         else:
             s -= 1 if c['rigid'] else 0
-        
         return s
 
     for idx, row in tqdm(df.iterrows(), total=len(df), desc="Multi-Choice Eval", mininterval=10.0):
@@ -527,7 +735,6 @@ def evaluate_multi(limit=None, verbose=False, output_file="results_multi.txt", a
         is_correct_pred = False
         
         if ablation == "pure_llm":
-            # Just directly pipe all choices to LLM and trust it
             best_choice = pure_llm_multi_predict(task, all_choices, verbose=verbose)
             if best_choice == correct_conf_str:
                 correct_preds += 1
@@ -536,7 +743,6 @@ def evaluate_multi(limit=None, verbose=False, output_file="results_multi.txt", a
                 error_count += 1
                 
         elif len(valid_choices) >= 1:
-            # Pick the MOST capable valid config (highest score)
             valid_choices.sort(key=lambda cfg: score(cfg, props), reverse=True)
             best_choice = valid_choices[0]
             if best_choice == correct_conf_str:
@@ -548,7 +754,6 @@ def evaluate_multi(limit=None, verbose=False, output_file="results_multi.txt", a
             no_valid_count += 1
             error_count += 1
 
-        # Log every question (errors get a prominent label)
         if is_correct_pred:
             label = "CORRECT"
         elif best_choice is None:
@@ -582,7 +787,6 @@ def evaluate_multi(limit=None, verbose=False, output_file="results_multi.txt", a
 
     acc = correct_preds / len(df) if len(df) > 0 else 0
 
-    # Write summary
     log.write("\n" + "=" * 60 + "\n")
     log.write("SUMMARY\n")
     log.write("=" * 60 + "\n")
@@ -612,10 +816,16 @@ if __name__ == "__main__":
     parser.add_argument('--output_file', type=str, default="./results/results.txt", help='Output file for results')
     parser.add_argument('--ablation', type=str, choices=['none', 'pure_llm', 'pure_logic'], default='none', help='Ablation mode')
     parser.add_argument('--model', type=str, choices=['mistral-large-latest', 'mistral-medium-latest', 'mistral-small-latest', 'llama3.1'], default='mistral-large-latest', help='Model choice (use llama3.1 for local Ollama inference)')
+    parser.add_argument('--dataset', type=str, default='robo-csk',
+                        help='Dataset to evaluate on: robo-csk, behavior1k, or a path to a CSV file (default: robo-csk)')
     args = parser.parse_args()
     
     MODEL_ID = args.model
     if args.mode in ['binary', 'all']:
-        evaluate_binary(limit=args.limit, verbose=args.verbose, output_file=args.output_file.replace('.txt', '_binary.txt') if 'results.txt' in args.output_file else args.output_file, ablation=args.ablation)
+        evaluate_binary(limit=args.limit, verbose=args.verbose,
+                       output_file=args.output_file.replace('.txt', '_binary.txt') if 'results.txt' in args.output_file else args.output_file,
+                       ablation=args.ablation, dataset=args.dataset)
     if args.mode in ['multi', 'all']:
-        evaluate_multi(limit=args.limit, verbose=args.verbose, output_file=args.output_file.replace('.txt', '_multi.txt') if 'results.txt' in args.output_file else args.output_file, ablation=args.ablation)
+        evaluate_multi(limit=args.limit, verbose=args.verbose,
+                      output_file=args.output_file.replace('.txt', '_multi.txt') if 'results.txt' in args.output_file else args.output_file,
+                      ablation=args.ablation)

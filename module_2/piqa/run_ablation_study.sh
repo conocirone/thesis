@@ -52,13 +52,13 @@ MODELS_TO_USE=("mistral-small-latest" "mistral-medium-latest" "mistral-large-lat
 
 # First run pure_logic once (model-independent)
 echo " -> Running ablation: pure_logic..."
-python3 evaluate.py --ablation "pure_logic" --output_file "results/results_piqa.txt" --model "mistral-small-latest" "$@"
+python3 evaluate.py --ablation "pure_logic" --output_file "results_piqa.txt" --model "mistral-small-latest" "$@"
 
 # Then run LLM-based ablations across models
 for ablation in "${ABLATION_TO_DO[@]}"; do
     for model in "${MODELS_TO_USE[@]}"; do
         echo " -> Running ablation: $ablation with model: $model..."
-        python3 evaluate.py --ablation "$ablation" --output_file "results/results_piqa.txt" --model "$model" "$@"
+        python3 evaluate.py --ablation "$ablation" --output_file "results_piqa.txt" --model "$model" "$@"
     done
 done
 

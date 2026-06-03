@@ -1,20 +1,40 @@
+# Python virtual environments
 .thesis_env/
 .venv/
 venv/
 
+# Python cache
 __pycache__/
 *.pyc
 *.pyo
 
+# Jupyter
 .ipynb_checkpoints/
 
+# macOS metadata
 .DS_Store
 
-# Auto-generated runtime files
+# IDE config
+.idea/
+.vscode/
+
+# Auto-generated Typst output
+*.pdf
+
+# Auto-generated runtime / temp files
 module_2/temp_logic.pl
 *.pl.bak
+module_1/scripts/tidy_up/tmp/
+module_1/scripts/shared/progress_cache.json
 
-# Large data files
+# Slurm / HPC logs
+**/logs/*.out
+**/logs/*.err
+
+# Hugging Face cache
+.hf_cache/
+
+# Large raw data files (re-downloadable)
 module_1/ConceptNet/assertions.csv
 module_1/CSKG/cskg.tsv
 
@@ -22,5 +42,9 @@ module_1/CSKG/cskg.tsv
 module_1/scripts/rules/ilasp_test_*.las
 module_1/scripts/rules/learned_*.txt
 
-# Benchmark data (cloned separately)
+# Large generalization datasets (re-downloadable / re-generable)
+RecipeNLG/
+BEHAVIOR-1K/
+
+# Benchmark data (cloned separately as a submodule)
 ./Robo-CSK-Benchmark
